@@ -96,7 +96,7 @@
   <div class="container">
     less v1.6.1 has been released - 
     <strong>
-      <a href="https://github.com/less/less.js.git/blob/master/CHANGELOG.md">See what's new</a>
+      <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
   </div>
 </div>
@@ -578,7 +578,7 @@ content: @@var;</code></pre>
   <blockquote>
 <p>Extend is a LESS Pseudo-Class which merges the selector it is put on with ones that match what it references.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <pre><code class="language-less">nav ul {
   &amp;:extend(.inline);
   background: blue;
@@ -1351,7 +1351,7 @@ div {
 <blockquote>
 <p>Use <code>@import (reference)</code> to import external files, but without adding the imported styles to the compiled output unless referenced.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (reference) &quot;foo.less&quot;;</code></p>
 <p><code>reference</code> is one of the most powerful features in the LESS language. Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as [mixins][] or [extended][].</p>
 <p>Additionally, <strong><code>reference</code></strong> produces different results depending on which method was used (mixin or extend):</p>
@@ -1367,7 +1367,7 @@ div {
 <blockquote>
 <p>Use <code>@import (inline)</code> to include external files, but not process them.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (inline) &quot;not-less-compatible.css&quot;;</code></p>
 <p>You will use this when a CSS file may not be less compatible; this is because although less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
 <p>So you can use this to include the file in the output so that all CSS will be in one file.</p>
@@ -1375,14 +1375,14 @@ div {
 <blockquote>
 <p>Use <code>@import (less)</code> to treat imported files as LESS, regardless of file extension.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="language-less">@import (less) &quot;foo.css&quot;;</code></pre>
 <h2 id="css">css</h2>
 <blockquote>
 <p>Use <code>@import (css)</code> to treat imported files as regular CSS, regardless of file extension. This means the import statement will be left as it is.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="language-less">@import (css) &quot;foo.less&quot;;</code></pre>
 <p>outputs</p>
@@ -1391,7 +1391,7 @@ div {
 <blockquote>
 <p>The default behavior of <code>@import</code> statements. It means the file is imported only once and subsequent import statements for that file will be ignored.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>This is the default behavior of <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="language-less">@import (once) &quot;foo.less&quot;;
@@ -1400,7 +1400,7 @@ div {
 <blockquote>
 <p>Use <code>@import (multiple)</code> to allow importing of multiple files with the same name. This is the opposite behavior to once.</p>
 </blockquote>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="language-less">// file: foo.less
 .a {
@@ -1586,7 +1586,7 @@ div {
 <p>Combine properties</p>
 </blockquote>
 <p>The <code>merge</code> feature allows for aggregating values from multiple properties into a comma separated list under a single property. <code>merge</code> is useful for properties such as background and transform.</p>
-<p>Released <a href="/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example:</p>
 <pre><code class="language-less">.mixin() {
   box-shadow+: inset 0 0 10px #555;
@@ -1659,13 +1659,13 @@ div {
       <!--li class="muted">&middot;</li>
       <li><a href="">Blog</a></li-->
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js.git/issues?state=open">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues?&amp;state=open">Less.js Issues</a></li>
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less-docs.git/issues?state=open">Less Docs Issues</a></li>
+      <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js.git/blob/master/CHANGELOG.md">Changelog</a></li>
+      <li><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
       <!--li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less-docs.git/releases">Releases</a></li-->
+      <li><a href="https://github.com/less/less.js.git/releases">Releases</a></li-->
     </ul>
   </div>
 </footer>

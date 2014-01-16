@@ -7,7 +7,7 @@
 <meta name="description" content="LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
 ">
 <meta name="author" content="Alexis Sellier">
-<link rel="alternate" type="application/atom+xml" title="Usage Feed" href="/index.xml">
+<!--link rel="alternate" type="application/atom+xml" title="Usage Feed" href="/index.xml"-->
 
 <title>
   Usage | Less.js
@@ -45,7 +45,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="navbar-brand">LESS</a>
+      <a href="index.html" class="navbar-brand" alt="Less"></a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -487,6 +487,10 @@ $ lessc bootstrap.less bootstrap.css
 
 <span class="comment"># compile bootstrap.less to bootstrap.css and minify (compress) the result</span>
 $ lessc -x bootstrap.less bootstrap.css</code></pre>
+<h3 id="lessc-only-options">lessc only options</h3>
+<h4 id="help-h-help-">help (-h, --help)</h4>
+<p>Prints above help message and exits.</p>
+<h3 id="-">#</h3>
 <h2 id="client-side-usage">Client-side Usage</h2>
 <p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
 <pre><code class="language-html">&lt;!-- set options before less.js script --&gt;
@@ -504,38 +508,52 @@ $ lessc -x bootstrap.less bootstrap.css</code></pre>
   };
 &lt;/script&gt;
 &lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code></pre>
-<h4 id="env">env</h4>
+<h3 id="client-side-only-options">Client side only options</h3>
+<h4 id="environment-env-">Environment (env)</h4>
 <p>Type: <code>String</code>
-Default: <code>development</code></p>
-<p>Environment to run may be either <code>development</code> or <code>production</code>. If the document&#39;s URL starts with <code>file://</code> or <code>localhost</code> it will automatically be set to <code>development</code>.</p>
-<h4 id="loglevel">logLevel</h4>
+Default: depends on page URL</p>
+<p>Environment to run may be either <code>development</code> or <code>production</code>. </p>
+<p>In production, your css is cached in local storage and information messages are not output to the console.</p>
+<p>If the document&#39;s URL starts with <code>file://</code> or is on local machine or has a non standard port, it will automatically be set to <code>development</code>.</p>
+<p>e.g.</p>
+<pre><code>less = { env: &#39;production&#39; };</code></pre>
+<h4 id="log-level-loglevel-">Log level (logLevel)</h4>
 <p>Type: <code>Number</code>
 Default: 2</p>
-<p>The amount of logging in the javascript console.</p>
+<p>The amount of logging in the javascript console. Note: If you are in the environment &#39;production&#39; you will get no logging.</p>
 <pre><code class="language-bash"><span class="number">2</span> - Information and errors
 <span class="number">1</span> - Errors
 <span class="number">0</span> - Nothing</code></pre>
-<h4 id="async">async</h4>
+<h4 id="asyncronous-imports-async-">Asyncronous imports (async)</h4>
 <p>Type: <code>Boolean</code>
 Default: <code>false</code></p>
-<p>Load imports asynchronously.</p>
-<h4 id="fileasync">fileAsync</h4>
+<p>Whether to request the import files with the async option or not</p>
+<h4 id="asyncronous-file-imports-fileasync-">Asyncronous file imports (fileAsync)</h4>
 <p>Type: <code>Boolean</code>
 Default: <code>false</code></p>
-<p>Load imports asynchronously when in a page under a file protocol.</p>
-<h4 id="poll">poll</h4>
+<p>Whether to request the import asyncronously when in a page under a file protocol.</p>
+<h4 id="poll-time-poll-">Poll time (poll)</h4>
 <p>Type: <code>Integer</code>
 Default: <code>1000</code></p>
 <p>The amount of time (in milliseconds) between polls while in watch mode.</p>
-<h4 id="functions">functions</h4>
+<h4 id="plugin-functions-functions-">Plugin functions (functions)</h4>
 <p>Type: <code>object</code></p>
 <p>User functions, keyed by name.</p>
-<h4 id="dumplinenumbers">dumpLineNumbers</h4>
+<p>e.g.</p>
+<pre><code>less = { functions: { myfunc: function() { return 1; }} };</code></pre>
+<p>and it can be used like a native Less function e.g.</p>
+<pre><code class="language-less">.my-class {
+  border-width: unit(myfunc(), px);
+}</code></pre>
+<h4 id="dump-line-numbers-debugging-technique-before-sourcemaps-dumplinenumbers-">Dump line numbers - debugging technique before sourcemaps (dumpLineNumbers)</h4>
 <p>Type: <code>String</code>
-Options: <code>comments</code>|<code>mediaQuery</code>|<code>all</code>
-Default: <code>comments</code></p>
+Options: <code>|`comments`|`mediaQuery`|`all`
+Default:</code></p>
+<p>When set this outputs source line information directly into the output css file. This helps you debug where a particular rule came from.</p>
+<p>The comments option is used for outputting user understandable content, whilst mediaQuery is for use with a firefox extension which parses the css and extracts out the information.</p>
+<p>In the future we hope this option to be superseded by sourcemaps.</p>
 <p><strong>TODO</strong>: need more explanation here.</p>
-<h4 id="relativeurls">relativeUrls</h4>
+<h4 id="make-url-s-relative-to-the-entry-less-file-relativeurls-">make url()&#39;s relative to the entry less file (relativeUrls)</h4>
 <p>Type: <code>Boolean</code>
 Default: <code>false</code></p>
 <p>Optionally adjust URLs to be relative. When false, URLs are already relative to the entry less file.</p>
@@ -548,6 +566,51 @@ Default: <code>false</code></p>
 Options: <code>html</code>|<code>console</code>|<code>function</code>
 Default: <code>html</code></p>
 <p>Set the method of error reporting when compilation fails.</p>
+<h2 id="options-list">Options List</h2>
+<p>  --include-path=PATHS     Set include paths. Separated by <code>:&#39;. Use</code>;&#39; on Windows.
+  -M, --depends            Output a makefile import dependency list to stdout
+  --no-color               Disable colorized output.
+  --no-ie-compat           Disable IE compatibility checks.
+  --no-js                  Disable JavaScript in less files
+  -l, --lint               Syntax check only (lint).
+  -s, --silent             Suppress output of error messages.
+  --strict-imports         Force evaluation of imports.
+  --insecure               Allow imports from insecure https hosts.
+  -v, --version            Print version number and exit.
+  -x, --compress           Compress output by removing some whitespaces.
+  --clean-css              Compress output using clean-css
+  --clean-option=opt:val   Pass an option to clean css, using CLI arguments from
+                           <a href="https://github.com/GoalSmashers/clean-css">https://github.com/GoalSmashers/clean-css</a> e.g.
+                           --clean-option=--selectors-merge-mode:ie8
+                           and to switch on advanced use --clean-option=--advanced
+  --source-map[=FILENAME]  Outputs a v3 sourcemap to the filename (or output filename.map)
+  --source-map-rootpath=X  adds this path onto the sourcemap filename and less file paths
+  --source-map-basepath=X  Sets sourcemap base path, defaults to current working directory.
+  --source-map-less-inline puts the less files into the map instead of referencing them
+  --source-map-map-inline  puts the map (and any less files) into the output css file
+  --source-map-url=URL     the complete url and filename put in the less file
+  -rp, --rootpath=URL      Set rootpath for url rewriting in relative imports and urls.
+                           Works with or without the relative-urls option.
+  -ru, --relative-urls     re-write relative urls to the base less file.
+  -sm=on|off               Turn on or off strict math, where in strict mode, math
+  --strict-math=on|off     requires brackets. This option may default to on and then
+                           be removed in the future.
+  -su=on|off               Allow mixed units, e.g. 1px+1em or 1px*1px which have units
+  --strict-units=on|off    that cannot be represented.
+  --global-var=&#39;VAR=VALUE&#39; Defines a variable that can be referenced by the file.
+  --modify-var=&#39;VAR=VALUE&#39; Modifies a variable already declared in the file.</p>
+<p>-------------------------- Deprecated ----------------
+  -O0, -O1, -O2            Set the parser&#39;s optimization level. The lower
+                           the number, the less nodes it will create in the
+                           tree. This could matter for debugging, or if you
+                           want to access the individual nodes in the tree.
+  --line-numbers=TYPE      Outputs filename and line numbers.
+                           TYPE can be either &#39;comments&#39;, which will output
+                           the debug info within comments, &#39;mediaquery&#39;
+                           that will output the information within a fake
+                           media query which is compatible with the SASS
+                           format, and &#39;all&#39; which will do both.
+  --verbose                Be verbose.</p>
 
 </div>
 

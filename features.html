@@ -7,7 +7,7 @@
 <meta name="description" content="LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
 ">
 <meta name="author" content="Alexis Sellier">
-<link rel="alternate" type="application/atom+xml" title="Language Features Feed" href="/index.xml">
+<!--link rel="alternate" type="application/atom+xml" title="Language Features Feed" href="/index.xml"-->
 
 <title>
   Language Features | Less.js
@@ -45,7 +45,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="navbar-brand">LESS</a>
+      <a href="index.html" class="navbar-brand" alt="Less"></a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -375,7 +375,8 @@ height: 100% / 2 + @filler;</code></pre>
   background-color: spin(lighten(@base, 25%), 8);
 }</code></pre>
 <h3 id="namespaces-accessors">Namespaces &amp; Accessors</h3>
-<p>Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. You can do this pretty intuitively in LESS—say you want to bundle some mixins and variables under <code>#bundle</code>, for later reuse or distributing:</p>
+<p>(Not to be confused with <a href="http://www.w3.org/TR/css3-namespace/">CSS <code>@namespace</code>s</a>).
+Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. You can do this pretty intuitively in LESS, say you want to bundle some mixins and variables under <code>#bundle</code>, for later reuse or distributing:</p>
 <pre><code class="language-less">#bundle {
   .button {
     display: block;

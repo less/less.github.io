@@ -44,26 +44,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="navbar-brand" alt="Less"></a>
+      <a href="#" class="navbar-brand" alt="Less"></a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="features.html">Language Features</a>
+          <a href="features">Language Features</a>
         </li>
         
         <li>
-          <a href="functions.html">Function Reference</a>
+          <a href="functions">Function Reference</a>
         </li>
         <li>
-          <a href="usage.html">Usage</a>
+          <a href="usage">Usage</a>
         </li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
         <li>
-          <a href="about.html">About</a>
+          <a href="about">About</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
@@ -182,21 +182,13 @@
     <h1 id="using-less">Using Less</h1>
   </div>
   <blockquote>
-<p>Less can be used on the command line via npm, downloaded as a script file for the browser or used in a wide variety of third party tools. See the <a href="usage.html">Usage</a> section for more
+<p>Less can be used on the command line via npm, downloaded as a script file for the browser or used in a wide variety of third party tools. See the <a href="../usage">Usage</a> section for more
 detailed information.</p>
 </blockquote>
-<h2>
-  <a name="installation" class="anchor" href="#installation">
-    <span class="header-link"></span>
-  </a>Installation
-</h2><p>The easiest way to install LESS on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
+<h2 id="installation">Installation</h2><p>The easiest way to install LESS on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
 <pre><code class="lang-bash">$ npm install -g less
 </code></pre>
-<h2>
-  <a name="command-line-usage" class="anchor" href="#command-line-usage">
-    <span class="header-link"></span>
-  </a>Command-line usage
-</h2><p>Once installed, you can invoke the compiler from the command-line, as such:</p>
+<h2 id="command-line-usage">Command-line usage</h2><p>Once installed, you can invoke the compiler from the command-line, as such:</p>
 <pre><code class="lang-bash">$ lessc styles.less
 </code></pre>
 <p>This will output the compiled CSS to <code>stdout</code>, you may then redirect it to a file of your choice:</p>
@@ -206,11 +198,7 @@ detailed information.</p>
 the <a href="https://github.com/GoalSmashers/clean-css">Clean CSS</a> is also available with
 the <code>--clean-css</code> option.</p>
 <p>To see all the command line options run lessc without parameters.</p>
-<h2>
-  <a name="usage-in-code" class="anchor" href="#usage-in-code">
-    <span class="header-link"></span>
-  </a>Usage in Code
-</h2><p>You can invoke the compiler from node, as such:</p>
+<h2 id="usage-in-code">Usage in Code</h2><p>You can invoke the compiler from node, as such:</p>
 <pre><code class="lang-js"><span class="language-keyword">var</span> less = <span class="language-built_in">require</span>(<span class="language-string">'less'</span>);
 
 less.render(<span class="language-string">'.class { width: (1 + 1) }'</span>, <span class="language-function"><span class="language-keyword">function</span> <span class="language-params">(e, css)</span> {</span>
@@ -232,11 +220,7 @@ parser.parse(<span class="language-string">'.class { width: (1 + 1) }'</span>, <
   console.log(tree.toCSS());
 });
 </code></pre>
-<h2>
-  <a name="configuration" class="anchor" href="#configuration">
-    <span class="header-link"></span>
-  </a>Configuration
-</h2><p>You may pass some options to the compiler:</p>
+<h2 id="configuration">Configuration</h2><p>You may pass some options to the compiler:</p>
 <pre><code class="lang-js"><span class="language-keyword">var</span> parser = <span class="language-keyword">new</span>(less.Parser)({
   paths: [<span class="language-string">'.'</span>, <span class="language-string">'./lib'</span>], <span class="language-comment">// Specify search paths for @import directives</span>
   filename: <span class="language-string">'style.less'</span> <span class="language-comment">// Specify a filename, for better error messages</span>
@@ -249,47 +233,23 @@ parser.parse(<span class="language-string">'.class { width: (1 + 1) }'</span>, <
   });
 });
 </code></pre>
-<h2>
-  <a name="grunt" class="anchor" href="#grunt">
-    <span class="header-link"></span>
-  </a>Grunt
-</h2><p>Less also integrates with the popular build framework grunt, using the <a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a> plugin.</p>
-<h2>
-  <a name="third-party-tools" class="anchor" href="#third-party-tools">
-    <span class="header-link"></span>
-  </a>Third party tools
-</h2><p>See the <a href="usage.html">Usage</a> section for details of other tools.</p>
-<h1>
-  <a name="client-side-usage" class="anchor" href="#client-side-usage">
-    <span class="header-link"></span>
-  </a>Client-side usage
-</h1><blockquote>
+<h2 id="grunt">Grunt</h2><p>Less also integrates with the popular build framework grunt, using the <a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a> plugin.</p>
+<h2 id="third-party-tools">Third party tools</h2><p>See the <a href="../usage">Usage</a> section for details of other tools.</p>
+<h1 id="client-side-usage">Client-side usage</h1><blockquote>
 <p>Using less.js in the browser is great for development, but it&#39;s not recommended for production</p>
 </blockquote>
 <p>Client-side is the easiest way to get started and good for developing with LESS, but in production, when performance and reliability is important, <em>we recommend pre-compiling using node.js or one of the many third party tools available</em>.</p>
-<h2>
-  <a name="getting-started" class="anchor" href="#getting-started">
-    <span class="header-link"></span>
-  </a>Getting started
-</h2><p>Link your <code>.less</code> stylesheets with the <code>rel</code> attribute set to &quot;<code>stylesheet/less</code>&quot;:</p>
+<h2 id="getting-started">Getting started</h2><p>Link your <code>.less</code> stylesheets with the <code>rel</code> attribute set to &quot;<code>stylesheet/less</code>&quot;:</p>
 <pre><code class="lang-html"><span class="language-tag">&lt;<span class="language-title">link</span> <span class="language-attribute">rel</span>=<span class="language-value">"stylesheet/less"</span> <span class="language-attribute">type</span>=<span class="language-value">"text/css"</span> <span class="language-attribute">href</span>=<span class="language-value">"styles.less"</span> /&gt;</span>
 </code></pre>
 <p>Next, <a href="https://github.com/less/less.js/archive/master.zip">download less.js</a> and include it in a <code>&lt;script&gt;&lt;/script&gt;</code> tag in the <code>&lt;head&gt;</code> element of your page:</p>
 <pre><code class="lang-html"><span class="language-tag">&lt;<span class="language-title">script</span> <span class="language-attribute">src</span>=<span class="language-value">"less.js"</span> <span class="language-attribute">type</span>=<span class="language-value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="language-tag">&lt;/<span class="language-title">script</span>&gt;</span>
 </code></pre>
-<h3>
-  <a name="tips" class="anchor" href="#tips">
-    <span class="header-link"></span>
-  </a>Tips
-</h3><ul>
+<h3 id="tips">Tips</h3><ul>
 <li>Make sure you include your stylesheets <strong>before</strong> the script.</li>
 <li>When you link more than one <code>.less</code> stylesheet each of them is compiled independently. So any variables, mixins or namespaces you define in a stylesheet are not accessible in any other.</li>
 </ul>
-<h2>
-  <a name="browser-options" class="anchor" href="#browser-options">
-    <span class="header-link"></span>
-  </a>Browser Options
-</h2><p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
+<h2 id="browser-options">Browser Options</h2><p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
 <pre><code class="lang-html"><span class="language-comment">&lt;!-- set options before less.js script --&gt;</span>
 <span class="language-tag">&lt;<span class="language-title">script</span>&gt;</span><span class="javascript">
   less = {

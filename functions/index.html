@@ -13,8 +13,8 @@
 </title>
 
 <!-- Main styles -->
-<link href="assets/css/site.css" rel="stylesheet">
-<link href="assets/css/github.css" rel="stylesheet">
+<link href="../assets/css/site.css" rel="stylesheet">
+<link href="../assets/css/github.css" rel="stylesheet">
 
 <!-- Webfonts -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
@@ -26,7 +26,7 @@
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="shortcut icon" href="../assets/favicon.ico">
 
 
 
@@ -44,26 +44,26 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="index.html" class="navbar-brand" alt="Less"></a>
+      <a href="../#" class="navbar-brand" alt="Less"></a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="features.html">Language Features</a>
+          <a href="../features">Language Features</a>
         </li>
         
         <li class="active">
-          <a href="functions.html">Function Reference</a>
+          <a href="../functions">Function Reference</a>
         </li>
         <li>
-          <a href="usage.html">Usage</a>
+          <a href="../usage">Usage</a>
         </li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
         <li>
-          <a href="about.html">About</a>
+          <a href="../about">About</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
@@ -249,11 +249,7 @@
 
 <div class="docs-section">
   <h1 id="string-functions">String Functions</h1>
-  <h3>
-  <a name="escape" class="anchor" href="#escape">
-    <span class="header-link"></span>
-  </a>escape
-</h3><blockquote>
+  <h3 id="escape">escape</h3><blockquote>
 <p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
 </blockquote>
 <ul>
@@ -268,11 +264,7 @@
 <p>Output:</p>
 <pre><code>a%3D1
 </code></pre><p>Note: if the parameter is not a string, output is not defined. The current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behavior should not be relied on and may change in the future.</p>
-<h3>
-  <a name="e" class="anchor" href="#e">
-    <span class="header-link"></span>
-  </a>e
-</h3><blockquote>
+<h3 id="e">e</h3><blockquote>
 <p>CSS escaping similar to <code>~&quot;value&quot;</code> syntax.</p>
 </blockquote>
 <p>It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which LESS doesn&#39;t recognize.</p>
@@ -285,11 +277,7 @@
 <pre><code class="lang-css">filter: ms:alwaysHasItsOwnSyntax.For.Stuff();
 </code></pre>
 <p>Note: The function accepts also <code>~&quot;&quot;</code> escaped values and numbers as parameters. Anything else returns an error.</p>
-<h3>
-  <a name="format" class="anchor" href="#format">
-    <span class="header-link"></span>
-  </a>% format
-</h3><blockquote>
+<h3 id="format">% format</h3><blockquote>
 <p>The function <code>%(&quot;format&quot;, arguments ...)</code> formats a string.</p>
 </blockquote>
 <p>The first argument is string with placeholders. All placeholders start with percentage symbol <code>%</code> followed by letter <code>s</code>,<code>S</code>,<code>d</code>,<code>D</code>,<code>a</code>, or <code>A</code>. Remaining arguments contain expressions to replace placeholders. If you need to print the percentage symbol, escape it by another percentage <code>%%</code>.</p>
@@ -326,22 +314,14 @@ format-s-upper<span class="language-value">: <span class="language-string">"repe
 
 <div class="docs-section">
   <h1 id="misc-functions">Misc Functions</h1>
-  <h3>
-  <a name="color" class="anchor" href="#color">
-    <span class="header-link"></span>
-  </a>color
-</h3><blockquote>
+  <h3 id="color">color</h3><blockquote>
 <p>Parses a color, so a string representing a color becomes a color.</p>
 </blockquote>
 <p>Parameters: <code>string</code>: a string of the specified color.</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>color(&quot;#aaa&quot;);</code></p>
 <p>Output: <code>#aaa</code></p>
-<h3>
-  <a name="unit" class="anchor" href="#unit">
-    <span class="header-link"></span>
-  </a>unit
-</h3><blockquote>
+<h3 id="unit">unit</h3><blockquote>
 <p>Remove or change the unit of a dimension</p>
 </blockquote>
 <p>Parameters:</p>
@@ -353,11 +333,7 @@ format-s-upper<span class="language-value">: <span class="language-string">"repe
 <p>Output: <code>5px</code></p>
 <p>Example: <code>unit(5em)</code></p>
 <p>Output: <code>5</code></p>
-<h3>
-  <a name="convert" class="anchor" href="#convert">
-    <span class="header-link"></span>
-  </a>convert
-</h3><blockquote>
+<h3 id="convert">convert</h3><blockquote>
 <p>Convert a number from one unit into another.</p>
 </blockquote>
 <p>The first argument contains a number with units and second argument contains units. If the units are compatible, the number is converted. If they are not compatible, the first argument is returned unmodified.</p>
@@ -382,11 +358,7 @@ format-s-upper<span class="language-value">: <span class="language-string">"repe
 <pre><code>9000ms
 140mm
 8
-</code></pre><h3>
-  <a name="data-uri" class="anchor" href="#data-uri">
-    <span class="header-link"></span>
-  </a>data-uri
-</h3><blockquote>
+</code></pre><h3 id="data-uri">data-uri</h3><blockquote>
 <p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -402,11 +374,7 @@ format-s-upper<span class="language-value">: <span class="language-string">"repe
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/functions/misc.md">Improve this page.</a>
 </div>
-  <h3>
-  <a name="default" class="anchor" href="#default">
-    <span class="header-link"></span>
-  </a>default
-</h3><blockquote>
+  <h3 id="default">default</h3><blockquote>
 <p>Available inside guard conditions and returns <code>true</code> only if no other mixin matches, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Example:</p>
@@ -519,11 +487,7 @@ div-2 {
 
 <div class="docs-section">
   <h1 id="list-functions">List Functions</h1>
-  <h3>
-  <a name="length" class="anchor" href="#length">
-    <span class="header-link"></span>
-  </a>length
-</h3><blockquote>
+  <h3 id="length">length</h3><blockquote>
 <p>Returns the number of elements in a value list.</p>
 </blockquote>
 <p>Parameters: <code>list</code> - a comma or space separated list of values.
@@ -536,11 +500,7 @@ n<span class="language-value">: length(@list);</span>
 </code></pre>
 <p>Output:</p>
 <pre><code>n: 4;
-</code></pre><h3>
-  <a name="extract" class="anchor" href="#extract">
-    <span class="header-link"></span>
-  </a>extract
-</h3><blockquote>
+</code></pre><h3 id="extract">extract</h3><blockquote>
 <p>Returns the value at a specified position in a list.</p>
 </blockquote>
 <p>Parameters:
@@ -563,44 +523,28 @@ value<span class="language-value">: extract(@list, <span class="language-number"
 
 <div class="docs-section">
   <h1 id="math-functions">Math Functions</h1>
-  <h3>
-  <a name="ceil" class="anchor" href="#ceil">
-    <span class="header-link"></span>
-  </a>ceil
-</h3><blockquote>
+  <h3 id="ceil">ceil</h3><blockquote>
 <p>Rounds up to the next highest integer.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>integer</code></p>
 <p>Example: <code>ceil(2.4)</code></p>
 <p>Output: <code>3</code></p>
-<h3>
-  <a name="floor" class="anchor" href="#floor">
-    <span class="header-link"></span>
-  </a>floor
-</h3><blockquote>
+<h3 id="floor">floor</h3><blockquote>
 <p>Rounds down to the next lowest integer.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>integer</code></p>
 <p>Example: <code>floor(2.6)</code></p>
 <p>Output: <code>2</code></p>
-<h3>
-  <a name="percentage" class="anchor" href="#percentage">
-    <span class="header-link"></span>
-  </a>percentage
-</h3><blockquote>
+<h3 id="percentage">percentage</h3><blockquote>
 <p>Converts a floating point number into a percentage string.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>string</code></p>
 <p>Example: <code>percentage(0.5)</code></p>
 <p>Output: <code>50%</code></p>
-<h3>
-  <a name="round" class="anchor" href="#round">
-    <span class="header-link"></span>
-  </a>round
-</h3><blockquote>
+<h3 id="round">round</h3><blockquote>
 <p>Applies rounding.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -613,11 +557,7 @@ value<span class="language-value">: extract(@list, <span class="language-number"
 <p>Output: <code>2</code></p>
 <p>Example: <code>round(1.67, 1)</code></p>
 <p>Output: <code>1.7</code></p>
-<h3>
-  <a name="sqrt" class="anchor" href="#sqrt">
-    <span class="header-link"></span>
-  </a>sqrt
-</h3><blockquote>
+<h3 id="sqrt">sqrt</h3><blockquote>
 <p>Calculates square root of a number. Keeps units as they are.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - floating point number.</p>
@@ -634,11 +574,7 @@ value<span class="language-value">: extract(@list, <span class="language-number"
 <p>Output:</p>
 <pre><code class="lang-js"><span class="language-number">4.312771730569565</span>%;
 </code></pre>
-<h3>
-  <a name="abs" class="anchor" href="#abs">
-    <span class="header-link"></span>
-  </a>abs
-</h3><blockquote>
+<h3 id="abs">abs</h3><blockquote>
 <p>Calculates absolute value of a number. Keeps units as they are.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
@@ -647,11 +583,7 @@ value<span class="language-value">: extract(@list, <span class="language-number"
 <p>Output: <code>25cm</code></p>
 <p>Example #2: <code>abs(-18.6%)</code></p>
 <p>Output: <code>18.6%;</code></p>
-<h3>
-  <a name="sin" class="anchor" href="#sin">
-    <span class="header-link"></span>
-  </a>sin
-</h3><blockquote>
+<h3 id="sin">sin</h3><blockquote>
 <p>Calculates sine function.</p>
 </blockquote>
 <p>Assumes radians on numbers without units.</p>
@@ -666,11 +598,7 @@ value<span class="language-value">: extract(@list, <span class="language-number"
 <pre><code>0.8414709848078965; // sine of 1 radian
 0.01745240643728351; // sine of 1 degree
 0.015707317311820675; // sine of 1 gradian
-</code></pre><h3>
-  <a name="asin" class="anchor" href="#asin">
-    <span class="header-link"></span>
-  </a>asin
-</h3><blockquote>
+</code></pre><h3 id="asin">asin</h3><blockquote>
 <p>Calculates arcsine (inverse of sine) function.</p>
 </blockquote>
 <p>Returns number in radians e.g. a number between <code>-&amp;pi;/2</code> and <code>&amp;pi;/2</code>.</p>
@@ -685,11 +613,7 @@ value<span class="language-value">: extract(@list, <span class="language-number"
 <pre><code>-1rad
 0rad
 NaNrad
-</code></pre><h3>
-  <a name="cos" class="anchor" href="#cos">
-    <span class="header-link"></span>
-  </a>cos
-</h3><blockquote>
+</code></pre><h3 id="cos">cos</h3><blockquote>
 <p>Calculates cosine function.</p>
 </blockquote>
 <p>Assumes radians on numbers without units.</p>
@@ -704,11 +628,7 @@ NaNrad
 <pre><code>0.5403023058681398 // cosine of 1 radian
 0.9998476951563913 // cosine of 1 degree
 0.9998766324816606 // cosine of 1 gradian
-</code></pre><h3>
-  <a name="acos" class="anchor" href="#acos">
-    <span class="header-link"></span>
-  </a>acos
-</h3><blockquote>
+</code></pre><h3 id="acos">acos</h3><blockquote>
 <p>Calculates arccosine (inverse of cosine) function.</p>
 </blockquote>
 <p>Returns number in radians e.g. a number between 0 and &pi;.</p>
@@ -723,11 +643,7 @@ NaNrad
 <pre><code>1rad
 0rad
 NaNrad
-</code></pre><h3>
-  <a name="tan" class="anchor" href="#tan">
-    <span class="header-link"></span>
-  </a>tan
-</h3><blockquote>
+</code></pre><h3 id="tan">tan</h3><blockquote>
 <p>Calculates tangent function.</p>
 </blockquote>
 <p>Assumes radians on numbers without units.</p>
@@ -742,11 +658,7 @@ NaNrad
 <pre><code>1.5574077246549023   // tangent of 1 radian
 0.017455064928217585 // tangent of 1 degree
 0.015709255323664916 // tangent of 1 gradian
-</code></pre><h3>
-  <a name="atan" class="anchor" href="#atan">
-    <span class="header-link"></span>
-  </a>atan
-</h3><blockquote>
+</code></pre><h3 id="atan">atan</h3><blockquote>
 <p>Calculates arctangent (inverse of tangent) function.</p>
 </blockquote>
 <p>Returns number in radians e.g. a number between <code>-&amp;pi;/2</code> and <code>&amp;pi;/2</code>.</p>
@@ -761,11 +673,7 @@ NaNrad
 <pre><code>-1rad
 0rad
 1.525373rad;
-</code></pre><h3>
-  <a name="pi" class="anchor" href="#pi">
-    <span class="header-link"></span>
-  </a>pi
-</h3><blockquote>
+</code></pre><h3 id="pi">pi</h3><blockquote>
 <p>Returns &pi; (pi);</p>
 </blockquote>
 <p>Parameters: <code>none</code></p>
@@ -775,11 +683,7 @@ NaNrad
 </code></pre>
 <p>Output:</p>
 <pre><code>3.141592653589793
-</code></pre><h3>
-  <a name="pow" class="anchor" href="#pow">
-    <span class="header-link"></span>
-  </a>pow
-</h3><blockquote>
+</code></pre><h3 id="pow">pow</h3><blockquote>
 <p>Returns the value of the first argument raised to the power of the second argument.</p>
 </blockquote>
 <p>Returned value has the same dimension as the first parameter and the dimension of the second parameter is ignored.</p>
@@ -802,11 +706,7 @@ NaNrad
 5
 NaN
 NaN%
-</code></pre><h3>
-  <a name="mod" class="anchor" href="#mod">
-    <span class="header-link"></span>
-  </a>mod
-</h3><blockquote>
+</code></pre><h3 id="mod">mod</h3><blockquote>
 <p>Returns the value of the first argument modulus second argument.</p>
 </blockquote>
 <p>Returned value has the same dimension as the first parameter, the dimension of the second parameter is ignored. The function is able to handle also negative and floating point numbers.</p>
@@ -825,11 +725,7 @@ NaN%
 <pre><code>NaNcm;
 5cm
 -1%;
-</code></pre><h3>
-  <a name="min" class="anchor" href="#min">
-    <span class="header-link"></span>
-  </a>min
-</h3><blockquote>
+</code></pre><h3 id="min">min</h3><blockquote>
 <p>Returns the lowest of one or more values.</p>
 </blockquote>
 <p>Parameters: <code>value1, ..., valueN</code> - one or more values to compare.</p>
@@ -838,11 +734,7 @@ NaN%
 <p>Output: <code>5</code></p>
 <p>Example: <code>min(3px, 42px, 1px, 16px);</code></p>
 <p>Output: <code>1px</code></p>
-<h3>
-  <a name="max" class="anchor" href="#max">
-    <span class="header-link"></span>
-  </a>max
-</h3><blockquote>
+<h3 id="max">max</h3><blockquote>
 <p>Returns the highest of one or more values.</p>
 </blockquote>
 <p>Parameters: <code>value1, ..., valueN</code> - one or more values to compare.</p>
@@ -859,11 +751,7 @@ NaN%
 
 <div class="docs-section">
   <h1 id="type-functions">Type Functions</h1>
-  <h3>
-  <a name="isnumber" class="anchor" href="#isnumber">
-    <span class="header-link"></span>
-  </a>isnumber
-</h3><blockquote>
+  <h3 id="isnumber">isnumber</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -878,11 +766,7 @@ NaN%
 <span class="language-function">isnumber(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">isnumber(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="isstring" class="anchor" href="#isstring">
-    <span class="header-link"></span>
-  </a>isstring
-</h3><blockquote>
+<h3 id="isstring">isstring</h3><blockquote>
 <p>Returns <code>true</code> if a value is a string, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -897,11 +781,7 @@ NaN%
 <span class="language-function">isstring(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">isstring(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="iscolor" class="anchor" href="#iscolor">
-    <span class="header-link"></span>
-  </a>iscolor
-</h3><blockquote>
+<h3 id="iscolor">iscolor</h3><blockquote>
 <p>Returns <code>true</code> if a value is a color, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -916,11 +796,7 @@ NaN%
 <span class="language-function">iscolor(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">iscolor(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="iskeyword" class="anchor" href="#iskeyword">
-    <span class="header-link"></span>
-  </a>iskeyword
-</h3><blockquote>
+<h3 id="iskeyword">iskeyword</h3><blockquote>
 <p>Returns <code>true</code> if a value is a keyword, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -935,11 +811,7 @@ NaN%
 <span class="language-function">iskeyword(keyword)</span>;  <span class="language-comment">// true</span>
 <span class="language-function">iskeyword(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="isurl" class="anchor" href="#isurl">
-    <span class="header-link"></span>
-  </a>isurl
-</h3><blockquote>
+<h3 id="isurl">isurl</h3><blockquote>
 <p>Returns <code>true</code> if a value is a url, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -954,11 +826,7 @@ NaN%
 <span class="language-function">isurl(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">isurl(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// true</span>
 </code></pre>
-<h3>
-  <a name="ispixel" class="anchor" href="#ispixel">
-    <span class="header-link"></span>
-  </a>ispixel
-</h3><blockquote>
+<h3 id="ispixel">ispixel</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number in pixels, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -973,11 +841,7 @@ NaN%
 <span class="language-function">ispixel(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">ispixel(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="isem" class="anchor" href="#isem">
-    <span class="header-link"></span>
-  </a>isem
-</h3><blockquote>
+<h3 id="isem">isem</h3><blockquote>
 <p>Returns <code>true</code> if a value is an em value, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -992,11 +856,7 @@ NaN%
 <span class="language-function">isem(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">isem(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="ispercentage" class="anchor" href="#ispercentage">
-    <span class="header-link"></span>
-  </a>ispercentage
-</h3><blockquote>
+<h3 id="ispercentage">ispercentage</h3><blockquote>
 <p>Returns <code>true</code> if a value is a percentage value, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
@@ -1011,11 +871,7 @@ NaN%
 <span class="language-function">ispercentage(keyword)</span>;  <span class="language-comment">// false</span>
 <span class="language-function">ispercentage(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
 </code></pre>
-<h3>
-  <a name="isunit" class="anchor" href="#isunit">
-    <span class="header-link"></span>
-  </a>isunit
-</h3><blockquote>
+<h3 id="isunit">isunit</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number in specified units, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1051,11 +907,7 @@ NaN%
 
 <div class="docs-section">
   <h1 id="color-definition">Color Definition</h1>
-  <h3>
-  <a name="rgb" class="anchor" href="#rgb">
-    <span class="header-link"></span>
-  </a>rgb
-</h3><blockquote>
+  <h3 id="rgb">rgb</h3><blockquote>
 <p>Creates an opaque color object from decimal red, green and blue (RGB) values.</p>
 </blockquote>
 <p>Literal color values in standard HTML/CSS formats may also be used to define colors, for example <code>#ff0000</code>.</p>
@@ -1068,11 +920,7 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgb(90, 129, 32)</code></p>
 <p>Output: <code>#5a8120</code></p>
-<h3>
-  <a name="rgba" class="anchor" href="#rgba">
-    <span class="header-link"></span>
-  </a>rgba
-</h3><blockquote>
+<h3 id="rgba">rgba</h3><blockquote>
 <p>Creates a transparent color object from decimal red, green, blue and alpha (RGBA) values.
 Parameters:</p>
 </blockquote>
@@ -1085,11 +933,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgba(90, 129, 32, 0.5)</code></p>
 <p>Output: <code>rgba(90, 129, 32, 0.5)</code></p>
-<h3>
-  <a name="argb" class="anchor" href="#argb">
-    <span class="header-link"></span>
-  </a>argb
-</h3><blockquote>
+<h3 id="argb">argb</h3><blockquote>
 <p>Creates a hex representation of a color in <code>#AARRGGBB</code> format (<strong>NOT</strong> <code>#RRGGBBAA</code>!).</p>
 </blockquote>
 <p>This format is used in Internet Explorer, and .NET and Android development.</p>
@@ -1097,11 +941,7 @@ Parameters:</p>
 <p>Returns: <code>string</code></p>
 <p>Example: <code>argb(rgba(90, 23, 148, 0.5));</code></p>
 <p>Output: <code>#805a1794</code></p>
-<h3>
-  <a name="hsl" class="anchor" href="#hsl">
-    <span class="header-link"></span>
-  </a>hsl
-</h3><blockquote>
+<h3 id="hsl">hsl</h3><blockquote>
 <p>Creates an opaque color object from hue, saturation and lightness (HSL) values.
 Parameters:</p>
 </blockquote>
@@ -1115,11 +955,7 @@ Parameters:</p>
 <p>Output: <code>#80ff00</code></p>
 <p>This is useful if you want to create a new color based on another color&#39;s channel, forExample: <code>@new: hsl(hue(@old), 45%, 90%);</code></p>
 <p><code>@new</code> will have <code>@old</code>&#39;s <em>hue</em>, and its own saturation and lightness.</p>
-<h3>
-  <a name="hsla" class="anchor" href="#hsla">
-    <span class="header-link"></span>
-  </a>hsla
-</h3><blockquote>
+<h3 id="hsla">hsla</h3><blockquote>
 <p>Creates a transparent color object from hue, saturation, lightness and alpha (HSLA) values.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1132,11 +968,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsl(90, 100%, 50%, 0.5)</code></p>
 <p>Output: <code>rgba(128, 255, 0, 0.5)</code></p>
-<h3>
-  <a name="hsv" class="anchor" href="#hsv">
-    <span class="header-link"></span>
-  </a>hsv
-</h3><blockquote>
+<h3 id="hsv">hsv</h3><blockquote>
 <p>Creates an opaque color object from hue, saturation and value (HSV) values.</p>
 </blockquote>
 <p>Note that this is a color space available in Photoshop, and is not the same as <code>hsl</code>.</p>
@@ -1149,11 +981,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsv(90, 100%, 50%)</code></p>
 <p>Output: <code>#408000</code></p>
-<h3>
-  <a name="hsva" class="anchor" href="#hsva">
-    <span class="header-link"></span>
-  </a>hsva
-</h3><blockquote>
+<h3 id="hsva">hsva</h3><blockquote>
 <p>Creates a transparent color object from hue, saturation, value and alpha (HSVA) values.</p>
 </blockquote>
 <p>Note that this is not the same as <code>hsla</code>, and is a color space available in Photoshop.</p>
@@ -1175,121 +1003,77 @@ Parameters:</p>
 
 <div class="docs-section">
   <h1 id="color-channel">Color Channel</h1>
-  <h3>
-  <a name="hue" class="anchor" href="#hue">
-    <span class="header-link"></span>
-  </a>hue
-</h3><blockquote>
+  <h3 id="hue">hue</h3><blockquote>
 <p>Extracts the hue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hue(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3>
-  <a name="saturation" class="anchor" href="#saturation">
-    <span class="header-link"></span>
-  </a>saturation
-</h3><blockquote>
+<h3 id="saturation">saturation</h3><blockquote>
 <p>Extracts the saturation channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> <code>0-100</code></p>
 <p>Example: <code>saturation(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3>
-  <a name="lightness" class="anchor" href="#lightness">
-    <span class="header-link"></span>
-  </a>lightness
-</h3><blockquote>
+<h3 id="lightness">lightness</h3><blockquote>
 <p>Extracts the lightness channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> <code>0-100</code></p>
 <p>Example: <code>lightness(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3>
-  <a name="hsvhue" class="anchor" href="#hsvhue">
-    <span class="header-link"></span>
-  </a>hsvhue
-</h3><blockquote>
+<h3 id="hsvhue">hsvhue</h3><blockquote>
 <p>Extracts the hue channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hsvhue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3>
-  <a name="hsvsaturation" class="anchor" href="#hsvsaturation">
-    <span class="header-link"></span>
-  </a>hsvsaturation
-</h3><blockquote>
+<h3 id="hsvsaturation">hsvsaturation</h3><blockquote>
 <p>Extracts the saturation channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvsaturation(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3>
-  <a name="hsvvalue" class="anchor" href="#hsvvalue">
-    <span class="header-link"></span>
-  </a>hsvvalue
-</h3><blockquote>
+<h3 id="hsvvalue">hsvvalue</h3><blockquote>
 <p>Extracts the value channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvvalue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3>
-  <a name="red" class="anchor" href="#red">
-    <span class="header-link"></span>
-  </a>red
-</h3><blockquote>
+<h3 id="red">red</h3><blockquote>
 <p>Extracts the red channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-255</code></p>
 <p>Example: <code>red(rgb(10, 20, 30))</code></p>
 <p>Output: <code>10</code></p>
-<h3>
-  <a name="green" class="anchor" href="#green">
-    <span class="header-link"></span>
-  </a>green
-</h3><blockquote>
+<h3 id="green">green</h3><blockquote>
 <p>Extracts the green channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> 0-255</p>
 <p>Example: <code>green(rgb(10, 20, 30))</code></p>
 <p>Output: <code>20</code></p>
-<h3>
-  <a name="blue" class="anchor" href="#blue">
-    <span class="header-link"></span>
-  </a>blue
-</h3><blockquote>
+<h3 id="blue">blue</h3><blockquote>
 <p>Extracts the blue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> 0-255</p>
 <p>Example: <code>blue(rgb(10, 20, 30))</code></p>
 <p>Output: <code>30</code></p>
-<h3>
-  <a name="alpha" class="anchor" href="#alpha">
-    <span class="header-link"></span>
-  </a>alpha
-</h3><blockquote>
+<h3 id="alpha">alpha</h3><blockquote>
 <p>Extracts the alpha channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>float</code> <code>0-1</code></p>
 <p>Example: <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
 <p>Output: <code>0.5</code></p>
-<h3>
-  <a name="luma" class="anchor" href="#luma">
-    <span class="header-link"></span>
-  </a>luma
-</h3><blockquote>
+<h3 id="luma">luma</h3><blockquote>
 <p>Calculates the <a href="http://en.wikipedia.org/wiki/Luma_%28video%29">luma</a> (perceptual brightness) of a color object.</p>
 </blockquote>
 <p>Uses <strong>SMPTE C / Rec. 709</strong> coefficients, as recommended in <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>. This calculation is also used in the contrast function.</p>
@@ -1306,11 +1090,7 @@ Parameters:</p>
 <div class="docs-section">
   <h1 id="color-operations">Color Operations</h1>
   <p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&#39;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
-<h3>
-  <a name="saturate" class="anchor" href="#saturate">
-    <span class="header-link"></span>
-  </a>saturate
-</h3><blockquote>
+<h3 id="saturate">saturate</h3><blockquote>
 <p>Increase the saturation of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1322,11 +1102,7 @@ Parameters:</p>
 <p>Example: <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80ff00 // hsl(90, 100%, 50%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#80ff00:#000000/text:80ff00" alt="Color 2"></p>
-<h3>
-  <a name="desaturate" class="anchor" href="#desaturate">
-    <span class="header-link"></span>
-  </a>desaturate
-</h3><blockquote>
+<h3 id="desaturate">desaturate</h3><blockquote>
 <p>Decrease the saturation of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1338,11 +1114,7 @@ Parameters:</p>
 <p>Example: <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80cc33 // hsl(90, 60%, 50%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#80cc33:#000000/text:80cc33" alt="Color 2"></p>
-<h3>
-  <a name="lighten" class="anchor" href="#lighten">
-    <span class="header-link"></span>
-  </a>lighten
-</h3><blockquote>
+<h3 id="lighten">lighten</h3><blockquote>
 <p>Increase the lightness of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1354,11 +1126,7 @@ Parameters:</p>
 <p>Example: <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#b3f075 // hsl(90, 80%, 70%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#b3f075:#000000/text:b3f075" alt="Color 2"></p>
-<h3>
-  <a name="darken" class="anchor" href="#darken">
-    <span class="header-link"></span>
-  </a>darken
-</h3><blockquote>
+<h3 id="darken">darken</h3><blockquote>
 <p>Decrease the lightness of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1370,11 +1138,7 @@ Parameters:</p>
 <p>Example: <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#4d8a0f // hsl(90, 80%, 30%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#4d8a0f:#000000/text:4d8a0f" alt="Color 2"></p>
-<h3>
-  <a name="fadein" class="anchor" href="#fadein">
-    <span class="header-link"></span>
-  </a>fadein
-</h3><blockquote>
+<h3 id="fadein">fadein</h3><blockquote>
 <p>Decrease the transparency (or increase the opacity) of a color, making it more opaque.</p>
 </blockquote>
 <p>Has no effect on opaque colors. To fade in the other direction use <code>fadeout</code>.</p>
@@ -1386,11 +1150,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3>
-  <a name="fadeout" class="anchor" href="#fadeout">
-    <span class="header-link"></span>
-  </a>fadeout
-</h3><blockquote>
+<h3 id="fadeout">fadeout</h3><blockquote>
 <p>Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use <code>fadein</code>.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1401,11 +1161,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3>
-  <a name="fade" class="anchor" href="#fade">
-    <span class="header-link"></span>
-  </a>fade
-</h3><blockquote>
+<h3 id="fade">fade</h3><blockquote>
 <p>Set the absolute transparency of a color. Can be applied to colors whether they already have an opacity value or not.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1416,11 +1172,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fade(hsl(90, 90%, 50%), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)</code></p>
-<h3>
-  <a name="spin" class="anchor" href="#spin">
-    <span class="header-link"></span>
-  </a>spin
-</h3><blockquote>
+<h3 id="spin">spin</h3><blockquote>
 <p>Rotate the hue angle of a color in either direction.</p>
 </blockquote>
 <p>While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colors are passed through an RGB conversion, which doesn&#39;t retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don&#39;t do this:</p>
@@ -1446,11 +1198,7 @@ Parameters:</p>
 </code></pre>
 <p><img src="holder.js/100x40/#f2330d:#000000/text:f2330d" alt="Color 1"> ➜ <img src="holder.js/100x40/#f2a60d:#000000/text:f2a60d" alt="Color 2"></p>
 <p><img src="holder.js/100x40/#f2330d:#000000/text:f2330d" alt="Color 1"> ➜ <img src="holder.js/100x40/#f20d59:#000000/text:f20d59" alt="Color 2"></p>
-<h3>
-  <a name="mix" class="anchor" href="#mix">
-    <span class="header-link"></span>
-  </a>mix
-</h3><blockquote>
+<h3 id="mix">mix</h3><blockquote>
 <p>Mix two colors together in variable proportion. Opacity is included in the calculations.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1469,11 +1217,7 @@ Parameters:</p>
 rgba(75, 25, 0, 0.75)
 </code></pre>
 <p><img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 1"> + <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2"> ➜ <img src="holder.js/100x40/#800080:#ffffff/text:800080" alt="Color 3"></p>
-<h3>
-  <a name="greyscale" class="anchor" href="#greyscale">
-    <span class="header-link"></span>
-  </a>greyscale
-</h3><blockquote>
+<h3 id="greyscale">greyscale</h3><blockquote>
 <p>Remove all saturation from a color; the same as calling <code>desaturate(@color, 100%)</code>.</p>
 </blockquote>
 <p>Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <a href="#luma"><code>luma</code></a> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale(&#39;#0000ff&#39;)</code> will return the same value as <code>greyscale(&#39;#00ff00&#39;)</code>, though they appear quite different in brightness to the human eye.</p>
@@ -1490,11 +1234,7 @@ rgba(75, 25, 0, 0.75)
 <p>Output: <code>#cacaca</code></p>
 <p><img src="holder.js/100x40/#80f20d:#000000/text:80f20d" alt="Color 1"> ➜ <img src="holder.js/100x40/#cacaca:#000000/text:cacaca" alt="Color 2"></p>
 <p>This time the grey&#39;s lightness looks about the same as the green, though its value is actually higher.</p>
-<h3>
-  <a name="contrast" class="anchor" href="#contrast">
-    <span class="header-link"></span>
-  </a>contrast
-</h3><blockquote>
+<h3 id="contrast">contrast</h3><blockquote>
 <p>Choose which of two colors provides the greatest contrast with another.</p>
 </blockquote>
 <p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their <a href="#luma">luma</a> value, not their lightness.</p>
@@ -1537,11 +1277,7 @@ rgba(75, 25, 0, 0.75)
   <blockquote>
 <p>These operations are <em>similar</em> (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks or GIMP, so you can use them to make your CSS colors match your images.</p>
 </blockquote>
-<h2>
-  <a name="multiply" class="anchor" href="#multiply">
-    <span class="header-link"></span>
-  </a>multiply
-</h2><blockquote>
+<h2 id="multiply">multiply</h2><blockquote>
 <p>Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1596,11 +1332,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 3"></p>
-<h2>
-  <a name="screen" class="anchor" href="#screen">
-    <span class="header-link"></span>
-  </a>screen
-</h2><blockquote>
+<h2 id="screen">screen</h2><blockquote>
 <p>Do the opposite of <code>multiply</code>. The result is a brighter color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1655,11 +1387,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#000000/text:ff66ff" alt="Color 3"></p>
-<h2>
-  <a name="overlay" class="anchor" href="#overlay">
-    <span class="header-link"></span>
-  </a>overlay
-</h2><blockquote>
+<h2 id="overlay">overlay</h2><blockquote>
 <p>Combines the effects of both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1714,11 +1442,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 3"></p>
-<h2>
-  <a name="softlight" class="anchor" href="#softlight">
-    <span class="header-link"></span>
-  </a>softlight
-</h2><blockquote>
+<h2 id="softlight">softlight</h2><blockquote>
 <p>Similar to <code>overlay</code> but avoids pure black resulting in pure black, and pure white resulting in pure white.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1773,11 +1497,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff2900:#ffffff/text:ff2900" alt="Color 3"></p>
-<h2>
-  <a name="hardlight" class="anchor" href="#hardlight">
-    <span class="header-link"></span>
-  </a>hardlight
-</h2><blockquote>
+<h2 id="hardlight">hardlight</h2><blockquote>
 <p>The same as <code>overlay</code> but with the color roles reversed.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1832,11 +1552,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 3"></p>
-<h2>
-  <a name="difference" class="anchor" href="#difference">
-    <span class="header-link"></span>
-  </a>difference
-</h2><blockquote>
+<h2 id="difference">difference</h2><blockquote>
 <p>Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1891,11 +1607,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#000000/text:ff66ff" alt="Color 3"></p>
-<h2>
-  <a name="exclusion" class="anchor" href="#exclusion">
-    <span class="header-link"></span>
-  </a>exclusion
-</h2><blockquote>
+<h2 id="exclusion">exclusion</h2><blockquote>
 <p>A similar effect to <code>difference</code> with lower contrast.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1950,11 +1662,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#000000/text:ff66ff" alt="Color 3"></p>
-<h2>
-  <a name="average" class="anchor" href="#average">
-    <span class="header-link"></span>
-  </a>average
-</h2><blockquote>
+<h2 id="average">average</h2><blockquote>
 <p>Compute the average of two colors on a per-channel (RGB) basis.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -2009,11 +1717,7 @@ rgba(75, 25, 0, 0.75)
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#803380:#ffffff/text:803380" alt="Color 3"></p>
-<h2>
-  <a name="negation" class="anchor" href="#negation">
-    <span class="header-link"></span>
-  </a>negation
-</h2><blockquote>
+<h2 id="negation">negation</h2><blockquote>
 <p>Do the opposite effect to <code>difference</code>.</p>
 </blockquote>
 <p>The result is a brighter color. <strong>Note</strong>: The <em>opposite</em> effect doesn&#39;t mean the <em>inverted</em> effect as resulting from an <em>addition</em> operation.</p>
@@ -2113,18 +1817,18 @@ rgba(75, 25, 0, 0.75)
     <!-- Core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
 
 
-<script src="assets/js/holder.js"></script>
-<script src="assets/js/hiless.js"></script>
-<script src="assets/js/highlight.js"></script>
-<script src="assets/js/highlight.pack.js"></script>
+<script src="../assets/js/holder.js"></script>
+<script src="../assets/js/hiless.js"></script>
+<script src="../assets/js/highlight.js"></script>
+<script src="../assets/js/highlight.pack.js"></script>
 
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="assets/js/application.js"></script>
+<script src="../assets/js/application.js"></script>
 
 
 

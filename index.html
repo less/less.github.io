@@ -7,7 +7,6 @@
 <meta name="description" content="LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
 ">
 <meta name="author" content="Alexis Sellier">
-<!--link rel="alternate" type="application/atom+xml" title="Getting started Feed" href="/index.xml"-->
 
 <title>
   Getting started | Less.js
@@ -26,8 +25,8 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="assets/favicon.ico">
+<!-- Favicons -->
+<link rel="shortcut icon" href="assets/favicon.ico">
 
 
 
@@ -50,21 +49,21 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="./features.html">Language Features</a>
+          <a href="features.html">Language Features</a>
         </li>
         
         <li>
-          <a href="./functions.html">Function Reference</a>
+          <a href="functions.html">Function Reference</a>
         </li>
         <li>
-          <a href="./usage.html">Usage</a>
+          <a href="usage.html">Usage</a>
         </li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
         <li>
-          <a href="./about.html">About</a>
+          <a href="about.html">About</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
@@ -73,7 +72,7 @@
             <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
             <li class="divider"></li>
             <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues?&amp;state=open">Less.js Issues</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
           </ul>
         </li>
       </ul>
@@ -94,7 +93,7 @@
     <!-- Callout for the old docs link -->
     <div class="banner">
   <div class="container">
-    less v1.6.1 has been released - 
+    less v1.6.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -108,8 +107,7 @@
         <div class="col-md-3">
           <div class="sidebar hidden-print" role="complementary">
             <ul class="nav sidenav">
-              
-                <li>
+              <li>
   <a href="#getting-started">Getting Started</a>
 </li>
 <li>
@@ -119,7 +117,7 @@
   <a href="http://less2css.org/" target="_blank">Try it now! <span class="glyphicon glyphicon-new-window"></span></a>
 </li>
 <li>
-  <a href="#using-less">Using Less</a> 
+  <a href="#using-less">Using Less</a>
   <ul class="nav">
     <li><a href="#server-side-usage">Server-side usage</a></li>
     <li><a href="#client-side-usage">Client-side usage</a></li>
@@ -128,16 +126,6 @@
 </li>
 <li> <a href="#license-faqs">License FAQs</a> </li>
 
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
             </ul>
           </div>
         </div>
@@ -150,36 +138,42 @@
   <div class="page-header">
     <h1 id="getting-started">Getting Started</h1>
   </div>
-  <p>Less is a CSS pre-processor - it extends the CSS language, adding features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.</p>
+  <p>Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.</p>
 <p>Less runs inside Node, in the browser and inside Rhino. There are also many 3rd party tools that allow you to compile your files and watch for changes.</p>
-<p>For example.</p>
-<pre><code class="language-less">@base: #f938ab;
+<p>For example:</p>
+<pre><code class="lang-less"><span class="language-at_rule">@base: <span class="language-hexcolor">#f938ab</span>;</span>
 
-.box-shadow(@style, @c) when (iscolor(@c)) {
-  -webkit-box-shadow: @style @c;
-  -moz-box-shadow:    @style @c;
-  box-shadow:         @style @c;
+<span class="language-class">.box-shadow</span>(<span class="language-at_rule">@style, @c)<span class="language-preprocessor"> when</span> (<span class="language-function">iscolor(@c)</span>) {</span>
+  -webkit-<span class="language-attribute">box-shadow</span><span class="language-value">: @style @c;</span>
+  -moz-<span class="language-attribute">box-shadow</span><span class="language-value">:    @style @c;</span>
+  <span class="language-attribute">box-shadow</span><span class="language-value">:         @style @c;</span>
 }
-.box-shadow(@style, @alpha: 50%) when (isnumber(@alpha)) {
-  .box-shadow(@style, rgba(0, 0, 0, @alpha));
+<span class="language-class">.box-shadow</span>(<span class="language-at_rule">@style, @alpha:<span class="language-preprocessor"> 50</span>%)<span class="language-preprocessor"> when</span> (<span class="language-function">isnumber(@alpha)</span>) {</span>
+  <span class="language-class">.box-shadow</span>(<span class="language-at_rule">@style,<span class="language-preprocessor"> rgba</span>(<span class="language-number">0</span>,<span class="language-preprocessor"> 0</span>,<span class="language-preprocessor"> 0</span>, @alpha));</span>
 }
-.box {
-  color: saturate(@base, 5%);
-  border-color: lighten(@base, 30%);
-  div { .box-shadow(0 0 5px, 30%) }
-}</code></pre>
+<span class="language-class">.box</span> {
+  <span class="language-attribute">color</span><span class="language-value">: saturate(@base, <span class="language-number">5</span>%);</span>
+  <span class="language-attribute">border-color</span><span class="language-value">: lighten(@base, <span class="language-number">30</span>%);</span>
+  <span class="language-tag">div</span> { <span class="language-class">.box-shadow</span>(0 0 5px, 30%) }
+}
+</code></pre>
 <p>compiles to</p>
-<pre><code class="language-css"><span class="class">.box</span> <span class="rules">{
-  <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fe33ac</span></span></span>;
-  <span class="rule"><span class="attribute">border-color</span>:<span class="value"> <span class="hexcolor">#fdcdea</span></span></span>;
-<span class="rule">}</span></span>
-<span class="class">.box</span> <span class="tag">div</span> <span class="rules">{
-  <span class="rule"><span class="attribute">-webkit-box-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px <span class="function">rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.3</span>)</span></span></span>;
-  <span class="rule"><span class="attribute">-moz-box-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px <span class="function">rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.3</span>)</span></span></span>;
-  <span class="rule"><span class="attribute">box-shadow</span>:<span class="value"> <span class="number">0</span> <span class="number">0</span> <span class="number">5</span>px <span class="function">rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.3</span>)</span></span></span>;
-<span class="rule">}</span></span></code></pre>
-
+<pre><code class="lang-css">.box {
+  color: #fe33ac;
+  border-color: #fdcdea;
+}
+.box div {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/home/getting-started.md">Improve this page.</a>
 </div>
+</div>
+
+
 
 <!-- Usage
 ================================================== -->
@@ -187,88 +181,134 @@
   <div class="page-header">
     <h1 id="using-less">Using Less</h1>
   </div>
-  <p>Less can be used on the command line via npm, downloaded as a script file for the browser or used in a wide variety of third party tools. See the <a href="usage.html">Usage</a> section for more detailed information.</p>
-<h1 id="server-side-usage">Server-side usage</h1>
-<h2 id="installation">Installation</h2>
-<p>The easiest way to install LESS on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
-<pre><code class="language-bash">$ npm install -g less</code></pre>
-<h2 id="command-line-usage">Command-line usage</h2>
-<p>Once installed, you can invoke the compiler from the command-line, as such:</p>
-<pre><code class="language-bash">$ lessc styles.less</code></pre>
+  <blockquote>
+<p>Less can be used on the command line via npm, downloaded as a script file for the browser or used in a wide variety of third party tools. See the <a href="usage.html">Usage</a> section for more
+detailed information.</p>
+</blockquote>
+<h2>
+  <a name="installation" class="anchor" href="#installation">
+    <span class="header-link"></span>
+  </a>Installation
+</h2><p>The easiest way to install LESS on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
+<pre><code class="lang-bash">$ npm install -g less
+</code></pre>
+<h2>
+  <a name="command-line-usage" class="anchor" href="#command-line-usage">
+    <span class="header-link"></span>
+  </a>Command-line usage
+</h2><p>Once installed, you can invoke the compiler from the command-line, as such:</p>
+<pre><code class="lang-bash">$ lessc styles.less
+</code></pre>
 <p>This will output the compiled CSS to <code>stdout</code>, you may then redirect it to a file of your choice:</p>
-<pre><code class="language-bash">$ lessc styles.less &gt; styles.css</code></pre>
+<pre><code class="lang-bash">$ lessc styles.less &gt; styles.css
+</code></pre>
 <p>To output minified CSS, simply pass the <code>-x</code> option. If you would like more involved minification,
 the <a href="https://github.com/GoalSmashers/clean-css">Clean CSS</a> is also available with
 the <code>--clean-css</code> option.</p>
 <p>To see all the command line options run lessc without parameters.</p>
-<h2 id="usage-in-code">Usage in Code</h2>
-<p>You can invoke the compiler from node, as such:</p>
-<pre><code class="language-js"><span class="keyword">var</span> less = require(<span class="string">'less'</span>);
+<h2>
+  <a name="usage-in-code" class="anchor" href="#usage-in-code">
+    <span class="header-link"></span>
+  </a>Usage in Code
+</h2><p>You can invoke the compiler from node, as such:</p>
+<pre><code class="lang-js"><span class="language-keyword">var</span> less = <span class="language-built_in">require</span>(<span class="language-string">'less'</span>);
 
-less.render(<span class="string">'.class { width: (1 + 1) }'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e, css)</span> {</span>
+less.render(<span class="language-string">'.class { width: (1 + 1) }'</span>, <span class="language-function"><span class="language-keyword">function</span> <span class="language-params">(e, css)</span> {</span>
   console.log(css);
-});</code></pre>
+});
+</code></pre>
 <p>which will output</p>
-<pre><code class="language-css"><span class="class">.class</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">2</span></span></span>;
-<span class="rule">}</span></span></code></pre>
+<pre><code class="lang-css">.class {
+  width: 2;
+}
+</code></pre>
 <p>you may also manually invoke the parser and compiler:</p>
-<pre><code class="language-js"><span class="keyword">var</span> parser = <span class="keyword">new</span>(less.Parser);
+<pre><code class="lang-js"><span class="language-keyword">var</span> parser = <span class="language-keyword">new</span>(less.Parser);
 
-parser.parse(<span class="string">'.class { width: (1 + 1) }'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(err, tree)</span> {</span>
-  <span class="keyword">if</span> (err) {
-    <span class="keyword">return</span> console.error(err)
+parser.parse(<span class="language-string">'.class { width: (1 + 1) }'</span>, <span class="language-function"><span class="language-keyword">function</span> <span class="language-params">(err, tree)</span> {</span>
+  <span class="language-keyword">if</span> (err) {
+    <span class="language-keyword">return</span> console.error(err)
   }
   console.log(tree.toCSS());
-});</code></pre>
-<h2 id="configuration">Configuration</h2>
-<p>You may pass some options to the compiler:</p>
-<pre><code class="language-js"><span class="keyword">var</span> parser = <span class="keyword">new</span>(less.Parser)({
-  paths: [<span class="string">'.'</span>, <span class="string">'./lib'</span>], <span class="comment">// Specify search paths for @import directives</span>
-  filename: <span class="string">'style.less'</span> <span class="comment">// Specify a filename, for better error messages</span>
+});
+</code></pre>
+<h2>
+  <a name="configuration" class="anchor" href="#configuration">
+    <span class="header-link"></span>
+  </a>Configuration
+</h2><p>You may pass some options to the compiler:</p>
+<pre><code class="lang-js"><span class="language-keyword">var</span> parser = <span class="language-keyword">new</span>(less.Parser)({
+  paths: [<span class="language-string">'.'</span>, <span class="language-string">'./lib'</span>], <span class="language-comment">// Specify search paths for @import directives</span>
+  filename: <span class="language-string">'style.less'</span> <span class="language-comment">// Specify a filename, for better error messages</span>
 });
 
-parser.parse(<span class="string">'.class { width: (1 + 1) }'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(e, tree)</span> {</span>
+parser.parse(<span class="language-string">'.class { width: (1 + 1) }'</span>, <span class="language-function"><span class="language-keyword">function</span> <span class="language-params">(e, tree)</span> {</span>
   tree.toCSS({
-    <span class="comment">// Minify CSS output</span>
-    compress: <span class="literal">true</span>
+    <span class="language-comment">// Minify CSS output</span>
+    compress: <span class="language-literal">true</span>
   });
-});</code></pre>
-<h2 id="grunt">Grunt</h2>
-<p>Less also integrates with the popular build framework grunt, using the <a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a> plugin.</p>
-<h2 id="third-party-tools">Third party tools</h2>
-<p>See the <a href="usage.html">Usage</a> section for details of other tools.</p>
-<h1 id="client-side-usage">Client-side usage</h1>
-<blockquote>
+});
+</code></pre>
+<h2>
+  <a name="grunt" class="anchor" href="#grunt">
+    <span class="header-link"></span>
+  </a>Grunt
+</h2><p>Less also integrates with the popular build framework grunt, using the <a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a> plugin.</p>
+<h2>
+  <a name="third-party-tools" class="anchor" href="#third-party-tools">
+    <span class="header-link"></span>
+  </a>Third party tools
+</h2><p>See the <a href="usage.html">Usage</a> section for details of other tools.</p>
+<h1>
+  <a name="client-side-usage" class="anchor" href="#client-side-usage">
+    <span class="header-link"></span>
+  </a>Client-side usage
+</h1><blockquote>
 <p>Using less.js in the browser is great for development, but it&#39;s not recommended for production</p>
 </blockquote>
 <p>Client-side is the easiest way to get started and good for developing with LESS, but in production, when performance and reliability is important, <em>we recommend pre-compiling using node.js or one of the many third party tools available</em>.</p>
-<h2 id="getting-started">Getting started</h2>
-<p>Link your <code>.less</code> stylesheets with the <code>rel</code> attribute set to &quot;<code>stylesheet/less</code>&quot;:</p>
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</code></pre>
+<h2>
+  <a name="getting-started" class="anchor" href="#getting-started">
+    <span class="header-link"></span>
+  </a>Getting started
+</h2><p>Link your <code>.less</code> stylesheets with the <code>rel</code> attribute set to &quot;<code>stylesheet/less</code>&quot;:</p>
+<pre><code class="lang-html"><span class="language-tag">&lt;<span class="language-title">link</span> <span class="language-attribute">rel</span>=<span class="language-value">"stylesheet/less"</span> <span class="language-attribute">type</span>=<span class="language-value">"text/css"</span> <span class="language-attribute">href</span>=<span class="language-value">"styles.less"</span> /&gt;</span>
+</code></pre>
 <p>Next, <a href="https://github.com/less/less.js/archive/master.zip">download less.js</a> and include it in a <code>&lt;script&gt;&lt;/script&gt;</code> tag in the <code>&lt;head&gt;</code> element of your page:</p>
-<pre><code class="language-html">&lt;script src=&quot;less.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;</code></pre>
-<h3 id="tips">Tips</h3>
-<ul>
+<pre><code class="lang-html"><span class="language-tag">&lt;<span class="language-title">script</span> <span class="language-attribute">src</span>=<span class="language-value">"less.js"</span> <span class="language-attribute">type</span>=<span class="language-value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="language-tag">&lt;/<span class="language-title">script</span>&gt;</span>
+</code></pre>
+<h3>
+  <a name="tips" class="anchor" href="#tips">
+    <span class="header-link"></span>
+  </a>Tips
+</h3><ul>
 <li>Make sure you include your stylesheets <strong>before</strong> the script.</li>
 <li>When you link more than one <code>.less</code> stylesheet each of them is compiled independently. So any variables, mixins or namespaces you define in a stylesheet are not accessible in any other.</li>
 </ul>
-<h2 id="browser-options">Browser Options</h2>
-<p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
-<pre><code class="language-html">&lt;!-- set options before less.js script --&gt;
-&lt;script&gt;
+<h2>
+  <a name="browser-options" class="anchor" href="#browser-options">
+    <span class="header-link"></span>
+  </a>Browser Options
+</h2><p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
+<pre><code class="lang-html"><span class="language-comment">&lt;!-- set options before less.js script --&gt;</span>
+<span class="language-tag">&lt;<span class="language-title">script</span>&gt;</span><span class="javascript">
   less = {
-    env: &quot;development&quot;,
-    async: false,
-    fileAsync: false,
-    poll: 1000,
+    env: <span class="language-string">"development"</span>,
+    async: <span class="language-literal">false</span>,
+    fileAsync: <span class="language-literal">false</span>,
+    poll: <span class="language-number">1000</span>,
     functions: {},
-    dumpLineNumbers: &quot;comments&quot;,
-    relativeUrls: false,
-    rootpath: &quot;:/a.com/&quot;
+    dumpLineNumbers: <span class="language-string">"comments"</span>,
+    relativeUrls: <span class="language-literal">false</span>,
+    rootpath: <span class="language-string">":/a.com/"</span>
   };
-&lt;/script&gt;
-&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code></pre>
+</span><span class="language-tag">&lt;/<span class="language-title">script</span>&gt;</span>
+<span class="language-tag">&lt;<span class="language-title">script</span> <span class="language-attribute">src</span>=<span class="language-value">"less.js"</span>&gt;</span><span class="javascript"></span><span class="language-tag">&lt;/<span class="language-title">script</span>&gt;</span>
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/home/using-less.md">Improve this page.</a>
+</div>
+
 
   <h3 id="browser-downloads">Browser downloads</h3>
   <p><a class="btn btn-lg btn-primary" href="https://raw.github.com/less/less.js/master/dist/less-.min.js" onclick="_gaq.push(['_trackEvent', 'Getting started', 'Download', 'Download compiled']);" role="button">Download Less.js v1.6.1</a></p>
@@ -291,48 +331,50 @@ parser.parse(<span class="string">'.class { width: (1 + 1) }'</span>, <span clas
   <p>TODO <a href="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js">CDN</a>.</p>
 <pre><code class="language-html">&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js&quot;&gt;&lt;/script&gt;</code></pre>
 
-</div>
+</div><!-- /usage -->
 
-  <!-- License FAQs
-  ================================================== -->
-  <div class="docs-section">
-    <div class="page-header">
-      <h1 id="license-faqs">License FAQs</h1>
+
+
+<!-- License FAQs
+================================================== -->
+<div class="docs-section">
+  <div class="page-header">
+    <h1 id="license-faqs">License FAQs</h1>
+  </div>
+  <p class="lead">Less.js is released under the Apache 2 License (<a href="https://github.com/less/less.js/issues/1029">though there are plans to dual license it</a>). Copyright 2009-2014, Alexis Sellier and the Less Core Team (see about). Boiled down to smaller chunks, it can be described with the following conditions.</p>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h4>It allows you to:</h4>
+      <ul>
+        <li>Freely download and use Less.js, in whole or in part, for personal, company internal or commercial purposes</li>
+        <li>Use Less.js in packages or distributions that you create</li>
+      </ul>
     </div>
-    <p class="lead">Less.js is released under the Apache 2 License (<a href="https://github.com/less/less.js/issues/1029">though there are plans to dual license it</a>). Copyright 2009-2014, Alexis Sellier and the Less Core Team (see about). Boiled down to smaller chunks, it can be described with the following conditions.</p>
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <h4>It allows you to:</h4>
-        <ul>
-          <li>Freely download and use Less.js, in whole or in part, for personal, company internal or commercial purposes</li>
-          <li>Use Less.js in packages or distributions that you create</li>
-        </ul>
-      </div>
-      <div class="col-12 col-lg-6">
-        <h4>It forbids you to:</h4>
-        <ul>
-          <li>Redistribute any piece of Less.js without proper attribution</li>
-        </ul>
-      </div>
+    <div class="col-12 col-lg-6">
+      <h4>It forbids you to:</h4>
+      <ul>
+        <li>Redistribute any piece of Less.js without proper attribution</li>
+      </ul>
     </div>
-    <div class="row">
-      <div class="col-12 col-lg-6">
-        <h4>It requires you to:</h4>
-        <ul>
-          <li>Include a copy of the license in any redistribution you may make that includes Less.js</li>
-          <li>Provide clear attribution to The Less Core Team for any distributions that include Less.js</li>
-        </ul>
-      </div>
-      <div class="col-12 col-lg-6">
-        <h4>It does not require you to:</h4>
-        <ul>
-          <li>Include the source of Less.js itself, or of any modifications you may have made to it, in any redistribution you may assemble that includes it</li>
-          <li>Submit changes that you make to Less.js back to the Less.js project (though such feedback is encouraged)</li>
-        </ul>
-      </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h4>It requires you to:</h4>
+      <ul>
+        <li>Include a copy of the license in any redistribution you may make that includes Less.js</li>
+        <li>Provide clear attribution to The Less Core Team for any distributions that include Less.js</li>
+      </ul>
     </div>
-    <p>The full Less.js license is located <a href="https://github.com/less/less.js/blob/master/LICENSE">in the project repository</a> for more information.</p>
-  </div><!-- /.docs-section -->
+    <div class="col-12 col-lg-6">
+      <h4>It does not require you to:</h4>
+      <ul>
+        <li>Include the source of Less.js itself, or of any modifications you may have made to it, in any redistribution you may assemble that includes it</li>
+        <li>Submit changes that you make to Less.js back to the Less.js project (though such feedback is encouraged)</li>
+      </ul>
+    </div>
+  </div>
+  <p>The full Less.js license is located <a href="https://github.com/less/less.js/blob/master/LICENSE">in the project repository</a> for more information.</p>
+</div><!-- /license-faqs -->
 
         </div>
       </div>
@@ -353,19 +395,17 @@ parser.parse(<span class="string">'.class { width: (1 + 1) }'</span>, <span clas
 </div>
 
     <p><a href="https://github.com/less/less.js">Less.js</a> was created by <a href="https://github.com/cloudhead" target="_blank">Alexis Sellier</a>, aka <a href="http://twitter.com/cloudhead" target="_blank">@cloudhead</a>.</p>
-    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
       <li>Currently v1.6.1</li>
-      <!--li class="muted">&middot;</li>
-      <li><a href="">Blog</a></li-->
+      
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js/issues?&amp;state=open">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
-      <!--li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js.git/releases">Releases</a></li-->
+      <li><a href="https://github.com/less/less.js/blob/master//CHANGELOG.md">Changelog</a></li>
+      
     </ul>
   </div>
 </footer>
@@ -382,6 +422,8 @@ parser.parse(<span class="string">'.class { width: (1 + 1) }'</span>, <span clas
 <script src="assets/js/holder.js"></script>
 <script src="assets/js/hiless.js"></script>
 <script src="assets/js/highlight.js"></script>
+<script src="assets/js/highlight.pack.js"></script>
+
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script src="assets/js/application.js"></script>

@@ -7,7 +7,6 @@
 <meta name="description" content="LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
 ">
 <meta name="author" content="Alexis Sellier">
-<!--link rel="alternate" type="application/atom+xml" title="Functions Feed" href="/index.xml"-->
 
 <title>
   Functions | Less.js
@@ -26,8 +25,8 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
 
-  <!-- Favicons -->
-  <link rel="shortcut icon" href="assets/favicon.ico">
+<!-- Favicons -->
+<link rel="shortcut icon" href="assets/favicon.ico">
 
 
 
@@ -50,21 +49,21 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li>
-          <a href="./features.html">Language Features</a>
+          <a href="features.html">Language Features</a>
         </li>
         
         <li class="active">
-          <a href="./functions.html">Function Reference</a>
+          <a href="functions.html">Function Reference</a>
         </li>
         <li>
-          <a href="./usage.html">Usage</a>
+          <a href="usage.html">Usage</a>
         </li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
         <li>
-          <a href="./about.html">About</a>
+          <a href="about.html">About</a>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
@@ -73,7 +72,7 @@
             <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
             <li class="divider"></li>
             <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues?&amp;state=open">Less.js Issues</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
           </ul>
         </li>
       </ul>
@@ -86,7 +85,7 @@
     <div class="docs-header" id="content">
       <div class="container">
         <h1>Functions</h1>
-        <p>Function reference.</p>
+        <p>Function reference</p>
         
       </div>
     </div>
@@ -94,7 +93,7 @@
     <!-- Callout for the old docs link -->
     <div class="banner">
   <div class="container">
-    less v1.6.1 has been released - 
+    less v1.6.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -108,10 +107,7 @@
         <div class="col-md-3">
           <div class="sidebar hidden-print" role="complementary">
             <ul class="nav sidenav">
-              
-              
-              
-                <li><a href="#functions-overview">Functions Overview</a></li>
+              <li><a href="#functions-overview">Functions Overview</a></li>
 
 <li>
   <a href="#string-functions">String</a>
@@ -233,14 +229,6 @@
   </ul>
 </li>
 
-              
-              
-              
-              
-              
-              
-              
-              
             </ul>
           </div>
         </div>
@@ -249,6 +237,7 @@
 
 <!-- Functions
 ================================================== -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="functions-overview">Functions</h1>
@@ -257,10 +246,14 @@
   
 </div>
 
+
 <div class="docs-section">
   <h1 id="string-functions">String Functions</h1>
-  <h3 id="escape">escape</h3>
-<blockquote>
+  <h3>
+  <a name="escape" class="anchor" href="#escape">
+    <span class="header-link"></span>
+  </a>escape
+</h3><blockquote>
 <p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
 </blockquote>
 <ul>
@@ -270,24 +263,33 @@
 <p>Parameters: <code>string</code>: a string to escape.</p>
 <p>Returns: escaped <code>string</code> content without quotes.</p>
 <p>Example:</p>
-<pre><code class="language-less">escape(&#39;a=1&#39;)</code></pre>
+<pre><code class="lang-less"><span class="language-function">escape(<span class="language-string">'a=1'</span>)</span>
+</code></pre>
 <p>Output:</p>
-<pre><code>a%3D1</code></pre>
-<p>Note: if the parameter is not a string, output is not defined. The current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behavior should not be relied on and may change in the future.</p>
-<h3 id="e">e</h3>
-<blockquote>
+<pre><code>a%3D1
+</code></pre><p>Note: if the parameter is not a string, output is not defined. The current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behavior should not be relied on and may change in the future.</p>
+<h3>
+  <a name="e" class="anchor" href="#e">
+    <span class="header-link"></span>
+  </a>e
+</h3><blockquote>
 <p>CSS escaping similar to <code>~&quot;value&quot;</code> syntax.</p>
 </blockquote>
 <p>It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which LESS doesn&#39;t recognize.</p>
 <p>Parameters: <code>string</code> - a string to escape.</p>
 <p>Returns: <code>string</code> - the escaped string, without quotes.</p>
 <p>Example:</p>
-<pre><code class="language-css"><span class="tag">filter</span>: <span class="tag">e</span>("<span class="tag">ms</span><span class="pseudo">:alwaysHasItsOwnSyntax</span><span class="class">.For</span><span class="class">.Stuff</span>()");</code></pre>
+<pre><code class="lang-css">filter: e(&quot;ms:alwaysHasItsOwnSyntax.For.Stuff()&quot;);
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-css"><span class="tag">filter</span>: <span class="tag">ms</span><span class="pseudo">:alwaysHasItsOwnSyntax</span><span class="class">.For</span><span class="class">.Stuff</span>();</code></pre>
+<pre><code class="lang-css">filter: ms:alwaysHasItsOwnSyntax.For.Stuff();
+</code></pre>
 <p>Note: The function accepts also <code>~&quot;&quot;</code> escaped values and numbers as parameters. Anything else returns an error.</p>
-<h3 id="-format">% format</h3>
-<blockquote>
+<h3>
+  <a name="format" class="anchor" href="#format">
+    <span class="header-link"></span>
+  </a>% format
+</h3><blockquote>
 <p>The function <code>%(&quot;format&quot;, arguments ...)</code> formats a string.</p>
 </blockquote>
 <p>The first argument is string with placeholders. All placeholders start with percentage symbol <code>%</code> followed by letter <code>s</code>,<code>S</code>,<code>d</code>,<code>D</code>,<code>a</code>, or <code>A</code>. Remaining arguments contain expressions to replace placeholders. If you need to print the percentage symbol, escape it by another percentage <code>%%</code>.</p>
@@ -305,30 +307,41 @@ The function escapes all special characters except <code>()&#39;~!</code>. Space
 </ul>
 <p>Returns: formatted <code>string</code>.</p>
 <p>Example:</p>
-<pre><code class="language-less">format-a-d: %(&quot;repetitions: %a file: %d&quot;, 1 + 2, &quot;directory/file.less&quot;);
-format-a-d-upper: %(&#39;repetitions: %A file: %D&#39;, 1 + 2, &quot;directory/file.less&quot;);
-format-s: %(&quot;repetitions: %s file: %s&quot;, 1 + 2, &quot;directory/file.less&quot;);
-format-s-upper: %(&#39;repetitions: %S file: %S&#39;, 1 + 2, &quot;directory/file.less&quot;);</code></pre>
+<pre><code class="lang-less">format-<span class="language-tag">a</span>-d<span class="language-value">: %(<span class="language-string">"repetitions: %a file: %d"</span>, <span class="language-number">1</span> + <span class="language-number">2</span>, <span class="language-string">"directory/file.less"</span>);</span>
+format-<span class="language-tag">a</span>-d-upper<span class="language-value">: %(<span class="language-string">'repetitions: %A file: %D'</span>, <span class="language-number">1</span> + <span class="language-number">2</span>, <span class="language-string">"directory/file.less"</span>);</span>
+format-s<span class="language-value">: %(<span class="language-string">"repetitions: %s file: %s"</span>, <span class="language-number">1</span> + <span class="language-number">2</span>, <span class="language-string">"directory/file.less"</span>);</span>
+format-s-upper<span class="language-value">: %(<span class="language-string">'repetitions: %S file: %S'</span>, <span class="language-number">1</span> + <span class="language-number">2</span>, <span class="language-string">"directory/file.less"</span>);</span>
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-less">format-a-d: &quot;repetitions: 3 file: &quot;directory/file.less&quot;&quot;;
-format-a-d-upper: &quot;repetitions: 3 file: %22directory%2Ffile.less%22&quot;;
-format-s: &quot;repetitions: 3 file: directory/file.less&quot;;
-format-s-upper: &quot;repetitions: 3 file: directory%2Ffile.less&quot;;</code></pre>
-
+<pre><code class="lang-less">format-<span class="language-tag">a</span>-d<span class="language-value">: <span class="language-string">"repetitions: 3 file: "</span>directory/file.less<span class="language-string">""</span>;</span>
+format-<span class="language-tag">a</span>-d-upper<span class="language-value">: <span class="language-string">"repetitions: 3 file: %22directory%2Ffile.less%22"</span>;</span>
+format-s<span class="language-value">: <span class="language-string">"repetitions: 3 file: directory/file.less"</span>;</span>
+format-s-upper<span class="language-value">: <span class="language-string">"repetitions: 3 file: directory%2Ffile.less"</span>;</span>
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/string.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="misc-functions">Misc Functions</h1>
-  <h3 id="color">color</h3>
-<blockquote>
+  <h3>
+  <a name="color" class="anchor" href="#color">
+    <span class="header-link"></span>
+  </a>color
+</h3><blockquote>
 <p>Parses a color, so a string representing a color becomes a color.</p>
 </blockquote>
 <p>Parameters: <code>string</code>: a string of the specified color.</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>color(&quot;#aaa&quot;);</code></p>
 <p>Output: <code>#aaa</code></p>
-<h3 id="unit">unit</h3>
-<blockquote>
+<h3>
+  <a name="unit" class="anchor" href="#unit">
+    <span class="header-link"></span>
+  </a>unit
+</h3><blockquote>
 <p>Remove or change the unit of a dimension</p>
 </blockquote>
 <p>Parameters:</p>
@@ -340,8 +353,11 @@ format-s-upper: &quot;repetitions: 3 file: directory%2Ffile.less&quot;;</code></
 <p>Output: <code>5px</code></p>
 <p>Example: <code>unit(5em)</code></p>
 <p>Output: <code>5</code></p>
-<h3 id="convert">convert</h3>
-<blockquote>
+<h3>
+  <a name="convert" class="anchor" href="#convert">
+    <span class="header-link"></span>
+  </a>convert
+</h3><blockquote>
 <p>Convert a number from one unit into another.</p>
 </blockquote>
 <p>The first argument contains a number with units and second argument contains units. If the units are compatible, the number is converted. If they are not compatible, the first argument is returned unmodified.</p>
@@ -358,15 +374,19 @@ format-s-upper: &quot;repetitions: 3 file: directory%2Ffile.less&quot;;</code></
 </ul>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">convert(9s, &quot;ms&quot;)
-convert(14cm, mm)
-convert(8, mm) // incompatible unit types</code></pre>
+<pre><code class="lang-less"><span class="language-function">convert(<span class="language-number">9</span>s, <span class="language-string">"ms"</span>)</span>
+<span class="language-function">convert(<span class="language-number">14</span>cm, mm)</span>
+<span class="language-function">convert(<span class="language-number">8</span>, mm)</span> <span class="language-comment">// incompatible unit types</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>9000ms
 140mm
-8</code></pre>
-<h3 id="data-uri">data-uri</h3>
-<blockquote>
+8
+</code></pre><h3>
+  <a name="data-uri" class="anchor" href="#data-uri">
+    <span class="header-link"></span>
+  </a>data-uri
+</h3><blockquote>
 <p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -379,81 +399,93 @@ convert(8, mm) // incompatible unit types</code></pre>
 <p>Output in browser: <code>url(&#39;../data/image.jpg&#39;);</code></p>
 <p>Example: <code>data-uri(&#39;image/jpeg;base64&#39;, &#39;../data/image.jpg&#39;);</code></p>
 <p>Output: <code>url(&#39;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&#39;);</code></p>
-
-  <h3 id="default">default</h3>
-<blockquote>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/misc.md">Improve this page.</a>
+</div>
+  <h3>
+  <a name="default" class="anchor" href="#default">
+    <span class="header-link"></span>
+  </a>default
+</h3><blockquote>
 <p>Available inside guard conditions and returns <code>true</code> only if no other mixin matches, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Example:</p>
-<pre><code class="language-less">.mixin(1)                   {x: 11}
-.mixin(2)                   {y: 22}
+<pre><code class="lang-less"><span class="language-class">.mixin</span>(1)                   {x<span class="language-value">: <span class="language-number">11</span>}
+.mixin(<span class="language-number">2</span>)                   {y: <span class="language-number">22</span>}
 .mixin(@x) when (default()) {z: @x}
 
 div {
-  .mixin(3);
+  .mixin(<span class="language-number">3</span>);</span>
 }
 
-div.special {
-  .mixin(1);
-}</code></pre>
+<span class="language-tag">div</span><span class="language-class">.special</span> {
+  <span class="language-class">.mixin</span>(1);
+}
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-css"><span class="tag">div</span> <span class="rules">{
-  <span class="rule"><span class="attribute">z</span>:<span class="value"> <span class="number">3</span></span></span>;
-<span class="rule">}</span></span>
-<span class="tag">div</span><span class="class">.special</span> <span class="rules">{
-  <span class="rule"><span class="attribute">x</span>:<span class="value"> <span class="number">11</span></span></span>;
-<span class="rule">}</span></span></code></pre>
+<pre><code class="lang-css">div {
+  z: 3;
+}
+div.special {
+  x: 11;
+}
+</code></pre>
 <p>It is possible to use the value returned by <code>default</code> with guard operators. For example <code>.mixin() when not(default()) {}</code> will match only if there&#39;s at least one more mixin definition that matches<code>.mixin()</code> call:</p>
-<pre><code class="language-less">.mixin(@value) when (ispixel(@value)) {width: @value}
-.mixin(@value) when not(default())    {padding: (@value / 5)}
+<pre><code class="lang-less"><span class="language-class">.mixin</span>(<span class="language-at_rule">@value)<span class="language-preprocessor"> when</span> (<span class="language-function">ispixel(@value)</span>) {</span><span class="language-attribute">width</span><span class="language-value">: @value}
+.mixin(@value) when not(default())    {padding: (@value / <span class="language-number">5</span>)}
 
-div-1 {
-  .mixin(100px);
+div-<span class="language-number">1</span> {
+  .mixin(<span class="language-number">100</span>px);</span>
 }
 
+<span class="language-tag">div</span>-2 {
+  <span class="language-comment">/* ... */</span>
+  <span class="language-class">.mixin</span>(100%);
+}
+</code></pre>
+<p>result:</p>
+<pre><code class="lang-css">div-1 {
+  width: 100px;
+  padding: 20px;
+}
 div-2 {
   /* ... */
-  .mixin(100%);
-}</code></pre>
-<p>result:</p>
-<pre><code class="language-css"><span class="tag">div-1</span> <span class="rules">{
-  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">100</span>px</span></span>;
-  <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">20</span>px</span></span>;
-<span class="rule">}</span></span>
-<span class="tag">div-2</span> <span class="rules">{
-  <span class="comment">/* ... */</span>
-<span class="rule">}</span></span></code></pre>
+}
+</code></pre>
 <p>It is allowed to make multiple <code>default()</code> calls in the same guard condition or in a different conditions of a mixins with the same name:</p>
-<pre><code class="language-less">div {
-  .m(@x) when (default()), not(default())    {always: @x}
+<pre><code class="lang-less"><span class="language-tag">div</span> {
+  <span class="language-class">.m</span>(<span class="language-at_rule">@x)<span class="language-preprocessor"> when</span> (<span class="language-function">default()</span>),<span class="language-preprocessor"> not</span>(<span class="language-function">default()</span>)    {</span><span class="language-value">always</span><span class="language-value">: @x}
   .m(@x) when (default()) and not(default()) {never:  @x}
 
-  .m(1); // OK
-}</code></pre>
+  .m(<span class="language-number">1</span>);</span> <span class="language-comment">// OK</span>
+}
+</code></pre>
 <p>However LESS will throw a error if it detects a <em>potential</em> conflict between multiple mixin definitions using <code>default()</code>:</p>
-<pre><code class="language-less">div {
-  .m(@x) when (default())    {}
-  .m(@x) when not(default()) {}
+<pre><code class="lang-less"><span class="language-tag">div</span> {
+  <span class="language-class">.m</span>(<span class="language-at_rule">@x)<span class="language-preprocessor"> when</span> (<span class="language-function">default()</span>)    {</span>}
+  <span class="language-class">.m</span>(<span class="language-at_rule">@x)<span class="language-preprocessor"> when</span><span class="language-preprocessor"> not</span>(<span class="language-function">default()</span>) {</span>}
 
-  .m(1); // Error
-}</code></pre>
+  <span class="language-class">.m</span>(1); <span class="language-comment">// Error</span>
+}
+</code></pre>
 <p>In above example it is impossible to determine what value each <code>default()</code> call should return since they recursively depend on each other.</p>
 <p>Advanced multiple <code>default()</code> usage:</p>
-<pre><code class="language-less">.x {
-  .m(red)                                    {case-1: darkred}
-  .m(blue)                                   {case-2: darkblue}
+<pre><code class="lang-less"><span class="language-class">.x</span> {
+  <span class="language-class">.m</span>(red)                                    {case-1<span class="language-value">: darkred}
+  .m(blue)                                   {case-<span class="language-number">2</span>: darkblue}
   .m(@x) when (iscolor(@x)) and (default())  {default-color: @x}
-  .m(&#39;foo&#39;)                                  {case-1: I am &#39;foo&#39;}
-  .m(&#39;bar&#39;)                                  {case-2: I am &#39;bar&#39;}
+  .m(<span class="language-string">'foo'</span>)                                  {case-<span class="language-number">1</span>: I am <span class="language-string">'foo'</span>}
+  .m(<span class="language-string">'bar'</span>)                                  {case-<span class="language-number">2</span>: I am <span class="language-string">'bar'</span>}
   .m(@x) when (isstring(@x)) and (default()) {default-string: and I am the default}
 
   &amp;-blue  {.m(blue)}
   &amp;-green {.m(green)}
-  &amp;-foo   {.m(&#39;foo&#39;)}
-  &amp;-baz   {.m(&#39;baz&#39;)}
-}</code></pre>
+  &amp;-foo   {.m(<span class="language-string">'foo'</span>)}
+  &amp;-baz   {.m(<span class="language-string">'baz'</span>)}
+}</span>
+</code></pre>
 <p>Result:</p>
-<pre><code class="language-css">.x-blue {
+<pre><code class="lang-css">.x-blue {
   case-2: #00008b;
 }
 .x-green {
@@ -464,25 +496,34 @@ div-2 {
 }
 .x-baz {
   default-string: and I am the default;
-}</code></pre>
+}
+</code></pre>
 <p>The <code>default</code> function is available as a LESS built-in function <em>only inside guard expressions</em>. If used outside of a mixin guard condition it is interpreted as a regular CSS value:</p>
 <p>Example:</p>
-<pre><code class="language-less">div {
+<pre><code class="lang-less"><span class="language-tag">div</span> {
+  foo<span class="language-value">: default();</span>
+  bar<span class="language-value">: default(<span class="language-number">42</span>);</span>
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css">div {
   foo: default();
   bar: default(42);
-}</code></pre>
-<p>Result:</p>
-<pre><code class="language-css"><span class="tag">div</span> <span class="rules">{
-  <span class="rule"><span class="attribute">foo</span>:<span class="value"> <span class="function">default()</span></span></span>;
-  <span class="rule"><span class="attribute">bar</span>:<span class="value"> <span class="function">default(<span class="number">42</span>)</span></span></span>;
-<span class="rule">}</span></span></code></pre>
-
+}
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/default-function.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="list-functions">List Functions</h1>
-  <h3 id="length">length</h3>
-<blockquote>
+  <h3>
+  <a name="length" class="anchor" href="#length">
+    <span class="header-link"></span>
+  </a>length
+</h3><blockquote>
 <p>Returns the number of elements in a value list.</p>
 </blockquote>
 <p>Parameters: <code>list</code> - a comma or space separated list of values.
@@ -490,12 +531,16 @@ Returns: an integer number of elements in a list</p>
 <p>Example: <code>length(1px solid #0080ff);</code>
 Output: <code>3</code></p>
 <p>Example:</p>
-<pre><code class="language-less">@list: &quot;banana&quot;, &quot;tomato&quot;, &quot;potato&quot;, &quot;peach&quot;;
-n: length(@list);</code></pre>
+<pre><code class="lang-less"><span class="language-at_rule">@list: <span class="language-string">"banana"</span>, <span class="language-string">"tomato"</span>, <span class="language-string">"potato"</span>, <span class="language-string">"peach"</span>;</span>
+n<span class="language-value">: length(@list);</span>
+</code></pre>
 <p>Output:</p>
-<pre><code>n: 4;</code></pre>
-<h3 id="extract">extract</h3>
-<blockquote>
+<pre><code>n: 4;
+</code></pre><h3>
+  <a name="extract" class="anchor" href="#extract">
+    <span class="header-link"></span>
+  </a>extract
+</h3><blockquote>
 <p>Returns the value at a specified position in a list.</p>
 </blockquote>
 <p>Parameters:
@@ -505,41 +550,57 @@ Returns: a value at the specified position in a list.</p>
 <p>Example: <code>extract(8px dotted red, 2);</code>
 Output: <code>dotted</code></p>
 <p>Example:</p>
-<pre><code class="language-less">@list: apple, pear, coconut, orange;
-value: extract(@list, 3);</code></pre>
+<pre><code class="lang-less"><span class="language-at_rule">@list:<span class="language-preprocessor"> apple</span>,<span class="language-preprocessor"> pear</span>,<span class="language-preprocessor"> coconut</span>,<span class="language-preprocessor"> orange</span>;</span>
+value<span class="language-value">: extract(@list, <span class="language-number">3</span>);</span>
+</code></pre>
 <p>Output:</p>
-<pre><code>value: coconut;</code></pre>
-
+<pre><code>value: coconut;
+</code></pre><div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/list.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="math-functions">Math Functions</h1>
-  <h3 id="ceil">ceil</h3>
-<blockquote>
+  <h3>
+  <a name="ceil" class="anchor" href="#ceil">
+    <span class="header-link"></span>
+  </a>ceil
+</h3><blockquote>
 <p>Rounds up to the next highest integer.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>integer</code></p>
 <p>Example: <code>ceil(2.4)</code></p>
 <p>Output: <code>3</code></p>
-<h3 id="floor">floor</h3>
-<blockquote>
+<h3>
+  <a name="floor" class="anchor" href="#floor">
+    <span class="header-link"></span>
+  </a>floor
+</h3><blockquote>
 <p>Rounds down to the next lowest integer.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>integer</code></p>
 <p>Example: <code>floor(2.6)</code></p>
 <p>Output: <code>2</code></p>
-<h3 id="percentage">percentage</h3>
-<blockquote>
+<h3>
+  <a name="percentage" class="anchor" href="#percentage">
+    <span class="header-link"></span>
+  </a>percentage
+</h3><blockquote>
 <p>Converts a floating point number into a percentage string.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>string</code></p>
 <p>Example: <code>percentage(0.5)</code></p>
 <p>Output: <code>50%</code></p>
-<h3 id="round">round</h3>
-<blockquote>
+<h3>
+  <a name="round" class="anchor" href="#round">
+    <span class="header-link"></span>
+  </a>round
+</h3><blockquote>
 <p>Applies rounding.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -552,22 +613,32 @@ value: extract(@list, 3);</code></pre>
 <p>Output: <code>2</code></p>
 <p>Example: <code>round(1.67, 1)</code></p>
 <p>Output: <code>1.7</code></p>
-<h3 id="sqrt">sqrt</h3>
-<blockquote>
+<h3>
+  <a name="sqrt" class="anchor" href="#sqrt">
+    <span class="header-link"></span>
+  </a>sqrt
+</h3><blockquote>
 <p>Calculates square root of a number. Keeps units as they are.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - floating point number.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">sqrt(25cm)</code></pre>
+<pre><code class="lang-less"><span class="language-function">sqrt(<span class="language-number">25</span>cm)</span>
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-css">5<span class="tag">cm</span></code></pre>
+<pre><code class="lang-css">5cm
+</code></pre>
 <p>Example:</p>
-<pre><code class="language-less">sqrt(18.6%)</code></pre>
+<pre><code class="lang-less"><span class="language-function">sqrt(<span class="language-number">18.6</span>%)</span>
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-js"><span class="number">4.312771730569565</span>%;</code></pre>
-<h3 id="abs">abs</h3>
-<blockquote>
+<pre><code class="lang-js"><span class="language-number">4.312771730569565</span>%;
+</code></pre>
+<h3>
+  <a name="abs" class="anchor" href="#abs">
+    <span class="header-link"></span>
+  </a>abs
+</h3><blockquote>
 <p>Calculates absolute value of a number. Keeps units as they are.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
@@ -576,108 +647,139 @@ value: extract(@list, 3);</code></pre>
 <p>Output: <code>25cm</code></p>
 <p>Example #2: <code>abs(-18.6%)</code></p>
 <p>Output: <code>18.6%;</code></p>
-<h3 id="sin">sin</h3>
-<blockquote>
+<h3>
+  <a name="sin" class="anchor" href="#sin">
+    <span class="header-link"></span>
+  </a>sin
+</h3><blockquote>
 <p>Calculates sine function.</p>
 </blockquote>
 <p>Assumes radians on numbers without units.</p>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">sin(1); // sine of 1 radian
-sin(1deg); // sine of 1 degree
-sin(1grad); // sine of 1 gradian</code></pre>
+<pre><code class="lang-less"><span class="language-function">sin(<span class="language-number">1</span>)</span>; <span class="language-comment">// sine of 1 radian</span>
+<span class="language-function">sin(<span class="language-number">1</span>deg)</span>; <span class="language-comment">// sine of 1 degree</span>
+<span class="language-function">sin(<span class="language-number">1</span>grad)</span>; <span class="language-comment">// sine of 1 gradian</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>0.8414709848078965; // sine of 1 radian
 0.01745240643728351; // sine of 1 degree
-0.015707317311820675; // sine of 1 gradian</code></pre>
-<h3 id="asin">asin</h3>
-<blockquote>
+0.015707317311820675; // sine of 1 gradian
+</code></pre><h3>
+  <a name="asin" class="anchor" href="#asin">
+    <span class="header-link"></span>
+  </a>asin
+</h3><blockquote>
 <p>Calculates arcsine (inverse of sine) function.</p>
 </blockquote>
 <p>Returns number in radians e.g. a number between <code>-&amp;pi;/2</code> and <code>&amp;pi;/2</code>.</p>
 <p>Parameters: <code>number</code> - floating point number from <code>[-1, 1]</code> interval.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">asin(-0.8414709848078965)
-asin(0)
-asin(2)</code></pre>
+<pre><code class="lang-less"><span class="language-function">asin(-<span class="language-number">0.8414709848078965</span>)</span>
+<span class="language-function">asin(<span class="language-number">0</span>)</span>
+<span class="language-function">asin(<span class="language-number">2</span>)</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>-1rad
 0rad
-NaNrad</code></pre>
-<h3 id="cos">cos</h3>
-<blockquote>
+NaNrad
+</code></pre><h3>
+  <a name="cos" class="anchor" href="#cos">
+    <span class="header-link"></span>
+  </a>cos
+</h3><blockquote>
 <p>Calculates cosine function.</p>
 </blockquote>
 <p>Assumes radians on numbers without units.</p>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">cos(1) // cosine of 1 radian
-cos(1deg) // cosine of 1 degree
-cos(1grad) // cosine of 1 gradian</code></pre>
+<pre><code class="lang-less"><span class="language-function">cos(<span class="language-number">1</span>)</span> <span class="language-comment">// cosine of 1 radian</span>
+<span class="language-function">cos(<span class="language-number">1</span>deg)</span> <span class="language-comment">// cosine of 1 degree</span>
+<span class="language-function">cos(<span class="language-number">1</span>grad)</span> <span class="language-comment">// cosine of 1 gradian</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>0.5403023058681398 // cosine of 1 radian
 0.9998476951563913 // cosine of 1 degree
-0.9998766324816606 // cosine of 1 gradian</code></pre>
-<h3 id="acos">acos</h3>
-<blockquote>
+0.9998766324816606 // cosine of 1 gradian
+</code></pre><h3>
+  <a name="acos" class="anchor" href="#acos">
+    <span class="header-link"></span>
+  </a>acos
+</h3><blockquote>
 <p>Calculates arccosine (inverse of cosine) function.</p>
 </blockquote>
 <p>Returns number in radians e.g. a number between 0 and &pi;.</p>
 <p>Parameters: <code>number</code> - a floating point number from [-1, 1] interval.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">acos(0.5403023058681398)
-acos(1)
-acos(2)</code></pre>
+<pre><code class="lang-less"><span class="language-function">acos(<span class="language-number">0.5403023058681398</span>)</span>
+<span class="language-function">acos(<span class="language-number">1</span>)</span>
+<span class="language-function">acos(<span class="language-number">2</span>)</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>1rad
 0rad
-NaNrad</code></pre>
-<h3 id="tan">tan</h3>
-<blockquote>
+NaNrad
+</code></pre><h3>
+  <a name="tan" class="anchor" href="#tan">
+    <span class="header-link"></span>
+  </a>tan
+</h3><blockquote>
 <p>Calculates tangent function.</p>
 </blockquote>
 <p>Assumes radians on numbers without units.</p>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">tan(1) // tangent of 1 radian
-tan(1deg) // tangent of 1 degree
-tan(1grad) // tangent of 1 gradian</code></pre>
+<pre><code class="lang-less"><span class="language-function">tan(<span class="language-number">1</span>)</span> <span class="language-comment">// tangent of 1 radian</span>
+<span class="language-function">tan(<span class="language-number">1</span>deg)</span> <span class="language-comment">// tangent of 1 degree</span>
+<span class="language-function">tan(<span class="language-number">1</span>grad)</span> <span class="language-comment">// tangent of 1 gradian</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>1.5574077246549023   // tangent of 1 radian
 0.017455064928217585 // tangent of 1 degree
-0.015709255323664916 // tangent of 1 gradian</code></pre>
-<h3 id="atan">atan</h3>
-<blockquote>
+0.015709255323664916 // tangent of 1 gradian
+</code></pre><h3>
+  <a name="atan" class="anchor" href="#atan">
+    <span class="header-link"></span>
+  </a>atan
+</h3><blockquote>
 <p>Calculates arctangent (inverse of tangent) function.</p>
 </blockquote>
 <p>Returns number in radians e.g. a number between <code>-&amp;pi;/2</code> and <code>&amp;pi;/2</code>.</p>
 <p>Parameters: <code>number</code> - a floating point number.</p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">atan(-1.5574077246549023)
-atan(0)
-round(atan(22), 6) // arctangent of 22 rounded to 6 decimal places</code></pre>
+<pre><code class="lang-less"><span class="language-function">atan(-<span class="language-number">1.5574077246549023</span>)</span>
+<span class="language-function">atan(<span class="language-number">0</span>)</span>
+<span class="language-function">round(<span class="language-function">atan(<span class="language-number">22</span>)</span>, <span class="language-number">6</span>)</span> <span class="language-comment">// arctangent of 22 rounded to 6 decimal places</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>-1rad
 0rad
-1.525373rad;</code></pre>
-<h3 id="pi">pi</h3>
-<blockquote>
+1.525373rad;
+</code></pre><h3>
+  <a name="pi" class="anchor" href="#pi">
+    <span class="header-link"></span>
+  </a>pi
+</h3><blockquote>
 <p>Returns &pi; (pi);</p>
 </blockquote>
 <p>Parameters: <code>none</code></p>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">pi()</code></pre>
+<pre><code class="lang-less"><span class="language-function">pi()</span>
+</code></pre>
 <p>Output:</p>
-<pre><code>3.141592653589793</code></pre>
-<h3 id="pow">pow</h3>
-<blockquote>
+<pre><code>3.141592653589793
+</code></pre><h3>
+  <a name="pow" class="anchor" href="#pow">
+    <span class="header-link"></span>
+  </a>pow
+</h3><blockquote>
 <p>Returns the value of the first argument raised to the power of the second argument.</p>
 </blockquote>
 <p>Returned value has the same dimension as the first parameter and the dimension of the second parameter is ignored.</p>
@@ -688,19 +790,23 @@ round(atan(22), 6) // arctangent of 22 rounded to 6 decimal places</code></pre>
 </ul>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">pow(0cm, 0px)
-pow(25, -2)
-pow(25, 0.5)
-pow(-25, 0.5)
-pow(-25%, -0.5)</code></pre>
+<pre><code class="lang-less"><span class="language-function">pow(<span class="language-number">0</span>cm, <span class="language-number">0</span>px)</span>
+<span class="language-function">pow(<span class="language-number">25</span>, -<span class="language-number">2</span>)</span>
+<span class="language-function">pow(<span class="language-number">25</span>, <span class="language-number">0.5</span>)</span>
+<span class="language-function">pow(-<span class="language-number">25</span>, <span class="language-number">0.5</span>)</span>
+<span class="language-function">pow(-<span class="language-number">25</span>%, -<span class="language-number">0.5</span>)</span>
+</code></pre>
 <p>Output:</p>
 <pre><code>1cm
 0.0016
 5
 NaN
-NaN%</code></pre>
-<h3 id="mod">mod</h3>
-<blockquote>
+NaN%
+</code></pre><h3>
+  <a name="mod" class="anchor" href="#mod">
+    <span class="header-link"></span>
+  </a>mod
+</h3><blockquote>
 <p>Returns the value of the first argument modulus second argument.</p>
 </blockquote>
 <p>Returned value has the same dimension as the first parameter, the dimension of the second parameter is ignored. The function is able to handle also negative and floating point numbers.</p>
@@ -711,15 +817,19 @@ NaN%</code></pre>
 </ul>
 <p>Returns: <code>number</code></p>
 <p>Example:</p>
-<pre><code class="language-less">mod(0cm, 0px)
-mod(11cm, 6px);
-mod(-26%, -5);</code></pre>
+<pre><code class="lang-less"><span class="language-function">mod(<span class="language-number">0</span>cm, <span class="language-number">0</span>px)</span>
+<span class="language-function">mod(<span class="language-number">11</span>cm, <span class="language-number">6</span>px)</span>;
+<span class="language-function">mod(-<span class="language-number">26</span>%, -<span class="language-number">5</span>)</span>;
+</code></pre>
 <p>Output:</p>
 <pre><code>NaNcm;
 5cm
--1%;</code></pre>
-<h3 id="min">min</h3>
-<blockquote>
+-1%;
+</code></pre><h3>
+  <a name="min" class="anchor" href="#min">
+    <span class="header-link"></span>
+  </a>min
+</h3><blockquote>
 <p>Returns the lowest of one or more values.</p>
 </blockquote>
 <p>Parameters: <code>value1, ..., valueN</code> - one or more values to compare.</p>
@@ -728,8 +838,11 @@ mod(-26%, -5);</code></pre>
 <p>Output: <code>5</code></p>
 <p>Example: <code>min(3px, 42px, 1px, 16px);</code></p>
 <p>Output: <code>1px</code></p>
-<h3 id="max">max</h3>
-<blockquote>
+<h3>
+  <a name="max" class="anchor" href="#max">
+    <span class="header-link"></span>
+  </a>max
+</h3><blockquote>
 <p>Returns the highest of one or more values.</p>
 </blockquote>
 <p>Parameters: <code>value1, ..., valueN</code> - one or more values to compare.</p>
@@ -738,133 +851,171 @@ mod(-26%, -5);</code></pre>
 <p>Output: <code>10</code></p>
 <p>Example: <code>max(3%, 42%, 1%, 16%);</code></p>
 <p>Output: <code>42%</code></p>
-
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/math.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="type-functions">Type Functions</h1>
-  <h3 id="isnumber">isnumber</h3>
-<blockquote>
+  <h3>
+  <a name="isnumber" class="anchor" href="#isnumber">
+    <span class="header-link"></span>
+  </a>isnumber
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a number, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">isnumber(#ff0);     // false
-isnumber(blue);     // false
-isnumber(&quot;string&quot;); // false
-isnumber(1234);     // true
-isnumber(56px);     // true
-isnumber(7.8%);     // true
-isnumber(keyword);  // false
-isnumber(url(...)); // false</code></pre>
-<h3 id="isstring">isstring</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">isnumber(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isnumber(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isnumber(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">isnumber(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">isnumber(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">isnumber(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">isnumber(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isnumber(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="isstring" class="anchor" href="#isstring">
+    <span class="header-link"></span>
+  </a>isstring
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a string, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a string, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">isstring(#ff0);     // false
-isstring(blue);     // false
-isstring(&quot;string&quot;); // true
-isstring(1234);     // false
-isstring(56px);     // false
-isstring(7.8%);     // false
-isstring(keyword);  // false
-isstring(url(...)); // false</code></pre>
-<h3 id="iscolor">iscolor</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">isstring(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isstring(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isstring(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// true</span>
+<span class="language-function">isstring(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isstring(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isstring(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isstring(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isstring(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="iscolor" class="anchor" href="#iscolor">
+    <span class="header-link"></span>
+  </a>iscolor
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a color, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a color, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">iscolor(#ff0);     // true
-iscolor(blue);     // true
-iscolor(&quot;string&quot;); // false
-iscolor(1234);     // false
-iscolor(56px);     // false
-iscolor(7.8%);     // false
-iscolor(keyword);  // false
-iscolor(url(...)); // false</code></pre>
-<h3 id="iskeyword">iskeyword</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">iscolor(#ff0)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">iscolor(blue)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">iscolor(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">iscolor(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iscolor(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iscolor(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iscolor(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">iscolor(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="iskeyword" class="anchor" href="#iskeyword">
+    <span class="header-link"></span>
+  </a>iskeyword
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a keyword, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a keyword, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">iskeyword(#ff0);     // false
-iskeyword(blue);     // false
-iskeyword(&quot;string&quot;); // false
-iskeyword(1234);     // false
-iskeyword(56px);     // false
-iskeyword(7.8%);     // false
-iskeyword(keyword);  // true
-iskeyword(url(...)); // false</code></pre>
-<h3 id="isurl">isurl</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">iskeyword(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iskeyword(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iskeyword(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">iskeyword(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iskeyword(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iskeyword(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">iskeyword(keyword)</span>;  <span class="language-comment">// true</span>
+<span class="language-function">iskeyword(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="isurl" class="anchor" href="#isurl">
+    <span class="header-link"></span>
+  </a>isurl
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a url, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a url, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">isurl(#ff0);     // false
-isurl(blue);     // false
-isurl(&quot;string&quot;); // false
-isurl(1234);     // false
-isurl(56px);     // false
-isurl(7.8%);     // false
-isurl(keyword);  // false
-isurl(url(...)); // true</code></pre>
-<h3 id="ispixel">ispixel</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">isurl(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isurl(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isurl(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">isurl(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isurl(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isurl(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isurl(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isurl(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// true</span>
+</code></pre>
+<h3>
+  <a name="ispixel" class="anchor" href="#ispixel">
+    <span class="header-link"></span>
+  </a>ispixel
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number in pixels, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a pixel, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">ispixel(#ff0);     // false
-ispixel(blue);     // false
-ispixel(&quot;string&quot;); // false
-ispixel(1234);     // false
-ispixel(56px);     // true
-ispixel(7.8%);     // false
-ispixel(keyword);  // false
-ispixel(url(...)); // false</code></pre>
-<h3 id="isem">isem</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">ispixel(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispixel(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispixel(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">ispixel(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispixel(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">ispixel(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispixel(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">ispixel(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="isem" class="anchor" href="#isem">
+    <span class="header-link"></span>
+  </a>isem
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is an em value, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is an em value, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">isem(#ff0);     // false
-isem(blue);     // false
-isem(&quot;string&quot;); // false
-isem(1234);     // false
-isem(56px);     // false
-isem(7.8em);    // true
-isem(keyword);  // false
-isem(url(...)); // false</code></pre>
-<h3 id="ispercentage">ispercentage</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">isem(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isem(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isem(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">isem(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isem(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">isem(<span class="language-number">7.8</span>em)</span>;    <span class="language-comment">// true</span>
+<span class="language-function">isem(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isem(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="ispercentage" class="anchor" href="#ispercentage">
+    <span class="header-link"></span>
+  </a>ispercentage
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a percentage value, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
 <p>Returns: <code>true</code> if value is a percentage value, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">ispercentage(#ff0);     // false
-ispercentage(blue);     // false
-ispercentage(&quot;string&quot;); // false
-ispercentage(1234);     // false
-ispercentage(56px);     // false
-ispercentage(7.8%);     // true
-ispercentage(keyword);  // false
-ispercentage(url(...)); // false</code></pre>
-<h3 id="isunit">isunit</h3>
-<blockquote>
+<pre><code class="lang-less"><span class="language-function">ispercentage(#ff0)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispercentage(blue)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispercentage(<span class="language-string">"string"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">ispercentage(<span class="language-number">1234</span>)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispercentage(<span class="language-number">56</span>px)</span>;     <span class="language-comment">// false</span>
+<span class="language-function">ispercentage(<span class="language-number">7.8</span>%)</span>;     <span class="language-comment">// true</span>
+<span class="language-function">ispercentage(keyword)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">ispercentage(<span class="language-function">url(...)</span>)</span>; <span class="language-comment">// false</span>
+</code></pre>
+<h3>
+  <a name="isunit" class="anchor" href="#isunit">
+    <span class="header-link"></span>
+  </a>isunit
+</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number in specified units, <code>false</code> otherwise.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -874,17 +1025,21 @@ ispercentage(url(...)); // false</code></pre>
 </ul>
 <p>Returns: <code>true</code> if value is a number in specified units, <code>false</code> otherwise.</p>
 <p>Example:</p>
-<pre><code class="language-less">isunit(11px, px);  // true
-isunit(2.2%, px);  // false
-isunit(33px, rem); // false
-isunit(4rem, rem); // true
-isunit(56px, &quot;%&quot;); // false
-isunit(7.8%, &#39;%&#39;); // true
-isunit(1234, em);  // false
-isunit(#ff0, pt);  // false
-isunit(&quot;mm&quot;, mm);  // false</code></pre>
-
+<pre><code class="lang-less"><span class="language-function">isunit(<span class="language-number">11</span>px, px)</span>;  <span class="language-comment">// true</span>
+<span class="language-function">isunit(<span class="language-number">2.2</span>%, px)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isunit(<span class="language-number">33</span>px, rem)</span>; <span class="language-comment">// false</span>
+<span class="language-function">isunit(<span class="language-number">4</span>rem, rem)</span>; <span class="language-comment">// true</span>
+<span class="language-function">isunit(<span class="language-number">56</span>px, <span class="language-string">"%"</span>)</span>; <span class="language-comment">// false</span>
+<span class="language-function">isunit(<span class="language-number">7.8</span>%, <span class="language-string">'%'</span>)</span>; <span class="language-comment">// true</span>
+<span class="language-function">isunit(<span class="language-number">1234</span>, em)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isunit(#ff0, pt)</span>;  <span class="language-comment">// false</span>
+<span class="language-function">isunit(<span class="language-string">"mm"</span>, mm)</span>;  <span class="language-comment">// false</span>
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/type.md">Improve this page.</a>
 </div>
+</div>
+
 
 <!-- Section -->
 <div class="docs-section">
@@ -893,10 +1048,14 @@ isunit(&quot;mm&quot;, mm);  // false</code></pre>
   </div>
 </div>
 
+
 <div class="docs-section">
   <h1 id="color-definition">Color Definition</h1>
-  <h3 id="rgb">rgb</h3>
-<blockquote>
+  <h3>
+  <a name="rgb" class="anchor" href="#rgb">
+    <span class="header-link"></span>
+  </a>rgb
+</h3><blockquote>
 <p>Creates an opaque color object from decimal red, green and blue (RGB) values.</p>
 </blockquote>
 <p>Literal color values in standard HTML/CSS formats may also be used to define colors, for example <code>#ff0000</code>.</p>
@@ -909,8 +1068,11 @@ isunit(&quot;mm&quot;, mm);  // false</code></pre>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgb(90, 129, 32)</code></p>
 <p>Output: <code>#5a8120</code></p>
-<h3 id="rgba">rgba</h3>
-<blockquote>
+<h3>
+  <a name="rgba" class="anchor" href="#rgba">
+    <span class="header-link"></span>
+  </a>rgba
+</h3><blockquote>
 <p>Creates a transparent color object from decimal red, green, blue and alpha (RGBA) values.
 Parameters:</p>
 </blockquote>
@@ -923,17 +1085,23 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgba(90, 129, 32, 0.5)</code></p>
 <p>Output: <code>rgba(90, 129, 32, 0.5)</code></p>
-<h3 id="argb">argb</h3>
-<blockquote>
+<h3>
+  <a name="argb" class="anchor" href="#argb">
+    <span class="header-link"></span>
+  </a>argb
+</h3><blockquote>
 <p>Creates a hex representation of a color in <code>#AARRGGBB</code> format (<strong>NOT</strong> <code>#RRGGBBAA</code>!).</p>
 </blockquote>
 <p>This format is used in Internet Explorer, and .NET and Android development.</p>
-<p>Parameters: <code>color</code> - color object.</p>
+<p>Parameters: <code>color</code>, color object.</p>
 <p>Returns: <code>string</code></p>
 <p>Example: <code>argb(rgba(90, 23, 148, 0.5));</code></p>
 <p>Output: <code>#805a1794</code></p>
-<h3 id="hsl">hsl</h3>
-<blockquote>
+<h3>
+  <a name="hsl" class="anchor" href="#hsl">
+    <span class="header-link"></span>
+  </a>hsl
+</h3><blockquote>
 <p>Creates an opaque color object from hue, saturation and lightness (HSL) values.
 Parameters:</p>
 </blockquote>
@@ -947,8 +1115,11 @@ Parameters:</p>
 <p>Output: <code>#80ff00</code></p>
 <p>This is useful if you want to create a new color based on another color&#39;s channel, forExample: <code>@new: hsl(hue(@old), 45%, 90%);</code></p>
 <p><code>@new</code> will have <code>@old</code>&#39;s <em>hue</em>, and its own saturation and lightness.</p>
-<h3 id="hsla">hsla</h3>
-<blockquote>
+<h3>
+  <a name="hsla" class="anchor" href="#hsla">
+    <span class="header-link"></span>
+  </a>hsla
+</h3><blockquote>
 <p>Creates a transparent color object from hue, saturation, lightness and alpha (HSLA) values.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -961,8 +1132,11 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsl(90, 100%, 50%, 0.5)</code></p>
 <p>Output: <code>rgba(128, 255, 0, 0.5)</code></p>
-<h3 id="hsv">hsv</h3>
-<blockquote>
+<h3>
+  <a name="hsv" class="anchor" href="#hsv">
+    <span class="header-link"></span>
+  </a>hsv
+</h3><blockquote>
 <p>Creates an opaque color object from hue, saturation and value (HSV) values.</p>
 </blockquote>
 <p>Note that this is a color space available in Photoshop, and is not the same as <code>hsl</code>.</p>
@@ -975,8 +1149,11 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsv(90, 100%, 50%)</code></p>
 <p>Output: <code>#408000</code></p>
-<h3 id="hsva">hsva</h3>
-<blockquote>
+<h3>
+  <a name="hsva" class="anchor" href="#hsva">
+    <span class="header-link"></span>
+  </a>hsva
+</h3><blockquote>
 <p>Creates a transparent color object from hue, saturation, value and alpha (HSVA) values.</p>
 </blockquote>
 <p>Note that this is not the same as <code>hsla</code>, and is a color space available in Photoshop.</p>
@@ -990,93 +1167,129 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsva(90, 100%, 50%, 0.5)</code></p>
 <p>Output: <code>rgba(64, 128, 0, 0.5)</code></p>
-
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/color-definition.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="color-channel">Color Channel</h1>
-  <h3 id="hue">hue</h3>
-<blockquote>
+  <h3>
+  <a name="hue" class="anchor" href="#hue">
+    <span class="header-link"></span>
+  </a>hue
+</h3><blockquote>
 <p>Extracts the hue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hue(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3 id="saturation">saturation</h3>
-<blockquote>
+<h3>
+  <a name="saturation" class="anchor" href="#saturation">
+    <span class="header-link"></span>
+  </a>saturation
+</h3><blockquote>
 <p>Extracts the saturation channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> <code>0-100</code></p>
 <p>Example: <code>saturation(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3 id="lightness">lightness</h3>
-<blockquote>
+<h3>
+  <a name="lightness" class="anchor" href="#lightness">
+    <span class="header-link"></span>
+  </a>lightness
+</h3><blockquote>
 <p>Extracts the lightness channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> <code>0-100</code></p>
 <p>Example: <code>lightness(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3 id="hsvhue">hsvhue</h3>
-<blockquote>
+<h3>
+  <a name="hsvhue" class="anchor" href="#hsvhue">
+    <span class="header-link"></span>
+  </a>hsvhue
+</h3><blockquote>
 <p>Extracts the hue channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hsvhue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3 id="hsvsaturation">hsvsaturation</h3>
-<blockquote>
+<h3>
+  <a name="hsvsaturation" class="anchor" href="#hsvsaturation">
+    <span class="header-link"></span>
+  </a>hsvsaturation
+</h3><blockquote>
 <p>Extracts the saturation channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvsaturation(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3 id="hsvvalue">hsvvalue</h3>
-<blockquote>
+<h3>
+  <a name="hsvvalue" class="anchor" href="#hsvvalue">
+    <span class="header-link"></span>
+  </a>hsvvalue
+</h3><blockquote>
 <p>Extracts the value channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvvalue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3 id="red">red</h3>
-<blockquote>
+<h3>
+  <a name="red" class="anchor" href="#red">
+    <span class="header-link"></span>
+  </a>red
+</h3><blockquote>
 <p>Extracts the red channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-255</code></p>
 <p>Example: <code>red(rgb(10, 20, 30))</code></p>
 <p>Output: <code>10</code></p>
-<h3 id="green">green</h3>
-<blockquote>
+<h3>
+  <a name="green" class="anchor" href="#green">
+    <span class="header-link"></span>
+  </a>green
+</h3><blockquote>
 <p>Extracts the green channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> 0-255</p>
 <p>Example: <code>green(rgb(10, 20, 30))</code></p>
 <p>Output: <code>20</code></p>
-<h3 id="blue">blue</h3>
-<blockquote>
+<h3>
+  <a name="blue" class="anchor" href="#blue">
+    <span class="header-link"></span>
+  </a>blue
+</h3><blockquote>
 <p>Extracts the blue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> 0-255</p>
 <p>Example: <code>blue(rgb(10, 20, 30))</code></p>
 <p>Output: <code>30</code></p>
-<h3 id="alpha">alpha</h3>
-<blockquote>
+<h3>
+  <a name="alpha" class="anchor" href="#alpha">
+    <span class="header-link"></span>
+  </a>alpha
+</h3><blockquote>
 <p>Extracts the alpha channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>float</code> <code>0-1</code></p>
 <p>Example: <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
 <p>Output: <code>0.5</code></p>
-<h3 id="luma">luma</h3>
-<blockquote>
+<h3>
+  <a name="luma" class="anchor" href="#luma">
+    <span class="header-link"></span>
+  </a>luma
+</h3><blockquote>
 <p>Calculates the <a href="http://en.wikipedia.org/wiki/Luma_%28video%29">luma</a> (perceptual brightness) of a color object.</p>
 </blockquote>
 <p>Uses <strong>SMPTE C / Rec. 709</strong> coefficients, as recommended in <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>. This calculation is also used in the contrast function.</p>
@@ -1084,14 +1297,20 @@ Parameters:</p>
 <p>Returns: <code>percentage</code> 0-100%</p>
 <p>Example: <code>luma(rgb(100, 200, 30))</code></p>
 <p>Output: <code>65%</code></p>
-
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/color-channel.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="color-operations">Color Operations</h1>
   <p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&#39;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
-<h3 id="saturate">saturate</h3>
-<blockquote>
+<h3>
+  <a name="saturate" class="anchor" href="#saturate">
+    <span class="header-link"></span>
+  </a>saturate
+</h3><blockquote>
 <p>Increase the saturation of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1103,8 +1322,11 @@ Parameters:</p>
 <p>Example: <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80ff00 // hsl(90, 100%, 50%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#80ff00:#000000/text:80ff00" alt="Color 2"></p>
-<h3 id="desaturate">desaturate</h3>
-<blockquote>
+<h3>
+  <a name="desaturate" class="anchor" href="#desaturate">
+    <span class="header-link"></span>
+  </a>desaturate
+</h3><blockquote>
 <p>Decrease the saturation of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1116,8 +1338,11 @@ Parameters:</p>
 <p>Example: <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80cc33 // hsl(90, 60%, 50%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#80cc33:#000000/text:80cc33" alt="Color 2"></p>
-<h3 id="lighten">lighten</h3>
-<blockquote>
+<h3>
+  <a name="lighten" class="anchor" href="#lighten">
+    <span class="header-link"></span>
+  </a>lighten
+</h3><blockquote>
 <p>Increase the lightness of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1129,8 +1354,11 @@ Parameters:</p>
 <p>Example: <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#b3f075 // hsl(90, 80%, 70%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#b3f075:#000000/text:b3f075" alt="Color 2"></p>
-<h3 id="darken">darken</h3>
-<blockquote>
+<h3>
+  <a name="darken" class="anchor" href="#darken">
+    <span class="header-link"></span>
+  </a>darken
+</h3><blockquote>
 <p>Decrease the lightness of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1142,8 +1370,11 @@ Parameters:</p>
 <p>Example: <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#4d8a0f // hsl(90, 80%, 30%)</code></p>
 <p><img src="holder.js/100x40/#80e619:#000000/text:80e619" alt="Color 1"> ➜ <img src="holder.js/100x40/#4d8a0f:#000000/text:4d8a0f" alt="Color 2"></p>
-<h3 id="fadein">fadein</h3>
-<blockquote>
+<h3>
+  <a name="fadein" class="anchor" href="#fadein">
+    <span class="header-link"></span>
+  </a>fadein
+</h3><blockquote>
 <p>Decrease the transparency (or increase the opacity) of a color, making it more opaque.</p>
 </blockquote>
 <p>Has no effect on opaque colors. To fade in the other direction use <code>fadeout</code>.</p>
@@ -1155,8 +1386,11 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3 id="fadeout">fadeout</h3>
-<blockquote>
+<h3>
+  <a name="fadeout" class="anchor" href="#fadeout">
+    <span class="header-link"></span>
+  </a>fadeout
+</h3><blockquote>
 <p>Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use <code>fadein</code>.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1167,8 +1401,11 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3 id="fade">fade</h3>
-<blockquote>
+<h3>
+  <a name="fade" class="anchor" href="#fade">
+    <span class="header-link"></span>
+  </a>fade
+</h3><blockquote>
 <p>Set the absolute transparency of a color. Can be applied to colors whether they already have an opacity value or not.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1179,14 +1416,19 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fade(hsl(90, 90%, 50%), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)</code></p>
-<h3 id="spin">spin</h3>
-<blockquote>
+<h3>
+  <a name="spin" class="anchor" href="#spin">
+    <span class="header-link"></span>
+  </a>spin
+</h3><blockquote>
 <p>Rotate the hue angle of a color in either direction.</p>
 </blockquote>
 <p>While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colors are passed through an RGB conversion, which doesn&#39;t retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don&#39;t do this:</p>
-<pre><code class="language-less">@c: saturate(spin(#aaaaaa, 10), 10%);</code></pre>
+<pre><code class="lang-less"><span class="language-at_rule">@c:<span class="language-preprocessor"> saturate</span>(<span class="language-function">spin(#aaaaaa, <span class="language-number">10</span>)</span>,<span class="language-preprocessor"> 10</span>%);</span>
+</code></pre>
 <p>Do this instead:</p>
-<pre><code class="language-less">@c: spin(saturate(#aaaaaa, 10%), 10);</code></pre>
+<pre><code class="lang-less"><span class="language-at_rule">@c:<span class="language-preprocessor"> spin</span>(<span class="language-function">saturate(#aaaaaa, <span class="language-number">10</span>%)</span>,<span class="language-preprocessor"> 10</span>);</span>
+</code></pre>
 <p>Colors are always returned as RGB values, so applying <code>spin</code> to a grey value will do nothing.</p>
 <p>Parameters:</p>
 <ul>
@@ -1195,15 +1437,20 @@ Parameters:</p>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">spin(hsl(10, 90%, 50%), 30)
-spin(hsl(10, 90%, 50%), -30)</code></pre>
+<pre><code class="lang-less"><span class="language-function">spin(<span class="language-function">hsl(<span class="language-number">10</span>, <span class="language-number">90</span>%, <span class="language-number">50</span>%)</span>, <span class="language-number">30</span>)</span>
+<span class="language-function">spin(<span class="language-function">hsl(<span class="language-number">10</span>, <span class="language-number">90</span>%, <span class="language-number">50</span>%)</span>, -<span class="language-number">30</span>)</span>
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-css">#f2a60d // hsl(40, 90%, 50%)
-#f20d59 // hsl(340, 90%, 50%)</code></pre>
+<pre><code class="lang-css">#f2a60d // hsl(40, 90%, 50%)
+#f20d59 // hsl(340, 90%, 50%)
+</code></pre>
 <p><img src="holder.js/100x40/#f2330d:#000000/text:f2330d" alt="Color 1"> ➜ <img src="holder.js/100x40/#f2a60d:#000000/text:f2a60d" alt="Color 2"></p>
 <p><img src="holder.js/100x40/#f2330d:#000000/text:f2330d" alt="Color 1"> ➜ <img src="holder.js/100x40/#f20d59:#000000/text:f20d59" alt="Color 2"></p>
-<h3 id="mix">mix</h3>
-<blockquote>
+<h3>
+  <a name="mix" class="anchor" href="#mix">
+    <span class="header-link"></span>
+  </a>mix
+</h3><blockquote>
 <p>Mix two colors together in variable proportion. Opacity is included in the calculations.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1214,14 +1461,19 @@ spin(hsl(10, 90%, 50%), -30)</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">mix(#ff0000, #0000ff, 50%)
-mix(rgba(100,0,0,1.0), rgba(0,100,0,0.5), 50%)</code></pre>
+<pre><code class="lang-less"><span class="language-function">mix(#ff0000, #<span class="language-number">0000</span>ff, <span class="language-number">50</span>%)</span>
+<span class="language-function">mix(<span class="language-function">rgba(<span class="language-number">100</span>,<span class="language-number">0</span>,<span class="language-number">0</span>,<span class="language-number">1.0</span>)</span>, <span class="language-function">rgba(<span class="language-number">0</span>,<span class="language-number">100</span>,<span class="language-number">0</span>,<span class="language-number">0.5</span>)</span>, <span class="language-number">50</span>%)</span>
+</code></pre>
 <p>Output:</p>
-<pre><code class="language-css"><span class="id">#800080</span>
-<span class="tag">rgba</span>(75, 25, 0, 0<span class="class">.75</span>)</code></pre>
+<pre><code class="lang-css">#800080
+rgba(75, 25, 0, 0.75)
+</code></pre>
 <p><img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 1"> + <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2"> ➜ <img src="holder.js/100x40/#800080:#ffffff/text:800080" alt="Color 3"></p>
-<h3 id="greyscale">greyscale</h3>
-<blockquote>
+<h3>
+  <a name="greyscale" class="anchor" href="#greyscale">
+    <span class="header-link"></span>
+  </a>greyscale
+</h3><blockquote>
 <p>Remove all saturation from a color; the same as calling <code>desaturate(@color, 100%)</code>.</p>
 </blockquote>
 <p>Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <a href="#luma"><code>luma</code></a> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale(&#39;#0000ff&#39;)</code> will return the same value as <code>greyscale(&#39;#00ff00&#39;)</code>, though they appear quite different in brightness to the human eye.</p>
@@ -1232,13 +1484,17 @@ mix(rgba(100,0,0,1.0), rgba(0,100,0,0.5), 50%)</code></pre>
 <p><img src="holder.js/100x40/#80f20d:#000000/text:80f20d" alt="Color 1"> ➜ <img src="holder.js/100x40/#808080:#000000/text:808080" alt="Color 2"></p>
 <p>Notice that the generated grey looks darker than the original green, even though its lightness value is the same.</p>
 <p>Compare with using <code>luma</code> (usage is different because <code>luma</code> returns a single value, not a color):</p>
-<pre><code class="language-less">@c: luma(hsl(90, 90%, 50%));
-color: rgb(@c, @c, @c);</code></pre>
+<pre><code class="lang-less"><span class="language-at_rule">@c:<span class="language-preprocessor"> luma</span>(<span class="language-function">hsl(<span class="language-number">90</span>, <span class="language-number">90</span>%, <span class="language-number">50</span>%)</span>);</span>
+<span class="language-attribute">color</span><span class="language-value">: rgb(@c, @c, @c);</span>
+</code></pre>
 <p>Output: <code>#cacaca</code></p>
 <p><img src="holder.js/100x40/#80f20d:#000000/text:80f20d" alt="Color 1"> ➜ <img src="holder.js/100x40/#cacaca:#000000/text:cacaca" alt="Color 2"></p>
 <p>This time the grey&#39;s lightness looks about the same as the green, though its value is actually higher.</p>
-<h3 id="contrast">contrast</h3>
-<blockquote>
+<h3>
+  <a name="contrast" class="anchor" href="#contrast">
+    <span class="header-link"></span>
+  </a>contrast
+</h3><blockquote>
 <p>Choose which of two colors provides the greatest contrast with another.</p>
 </blockquote>
 <p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their <a href="#luma">luma</a> value, not their lightness.</p>
@@ -1252,33 +1508,40 @@ color: rgb(@c, @c, @c);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">contrast(#aaaaaa)
-contrast(#222222, #101010)
-contrast(#222222, #101010, #dddddd)
-contrast(hsl(90, 100%, 50%), #000000, #ffffff, 40%);
-contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
+<pre><code class="lang-less"><span class="language-function">contrast(#aaaaaa)</span>
+<span class="language-function">contrast(#<span class="language-number">222222</span>, #<span class="language-number">101010</span>)</span>
+<span class="language-function">contrast(#<span class="language-number">222222</span>, #<span class="language-number">101010</span>, #dddddd)</span>
+<span class="language-function">contrast(<span class="language-function">hsl(<span class="language-number">90</span>, <span class="language-number">100</span>%, <span class="language-number">50</span>%)</span>, #<span class="language-number">000000</span>, #ffffff, <span class="language-number">40</span>%)</span>;
+<span class="language-function">contrast(<span class="language-function">hsl(<span class="language-number">90</span>, <span class="language-number">100</span>%, <span class="language-number">50</span>%)</span>, #<span class="language-number">000000</span>, #ffffff, <span class="language-number">60</span>%)</span>;
+</code></pre>
 <p>Output:</p>
 <pre><code>#000000 // black
 #ffffff // white
 #dddddd
 #000000 // black
-#ffffff // white</code></pre>
-<p>These examples use the calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&#39;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
+#ffffff // white
+</code></pre><p>These examples use the calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&#39;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
 <p><img src="holder.js/100x40/#aaaaaa:#000000/text:000000" alt="Color 1">
 <img src="holder.js/100x40/#222222:#ffffff/text:ffffff" alt="Color 1">
 <img src="holder.js/100x40/#222222:#dddddd/text:dddddd" alt="Color 1">
 <img src="holder.js/100x40/#80ff00:#000000/text:000000" alt="Color 1">
 <img src="holder.js/100x40/#80ff00:#ffffff/text:ffffff" alt="Color 1"></p>
-
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/color-operations.md">Improve this page.</a>
 </div>
+</div>
+
 
 <div class="docs-section">
   <h1 id="color-blending">Color Blending</h1>
   <blockquote>
 <p>These operations are <em>similar</em> (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks or GIMP, so you can use them to make your CSS colors match your images.</p>
 </blockquote>
-<h2 id="multiply">multiply</h2>
-<blockquote>
+<h2>
+  <a name="multiply" class="anchor" href="#multiply">
+    <span class="header-link"></span>
+  </a>multiply
+</h2><blockquote>
 <p>Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1288,44 +1551,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p><strong>Examples</strong>:</p>
-<pre><code class="language-less">multiply(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#331400:#ffffff/text:331400" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#662900:#ffffff/text:662900" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#993d00:#ffffff/text:993d00" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#cc5200:#ffffff/text:cc5200" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#006600:#ffffff/text:006600" alt="Color 3"></p>
-<pre><code class="language-less">multiply(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">multiply(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 3"></p>
-<h2 id="screen">screen</h2>
-<blockquote>
+<h2>
+  <a name="screen" class="anchor" href="#screen">
+    <span class="header-link"></span>
+  </a>screen
+</h2><blockquote>
 <p>Do the opposite of <code>multiply</code>. The result is a brighter color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1335,44 +1610,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">screen(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#ff8533:#ffffff/text:ff8533" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#ffa366:#ffffff/text:ffa366" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ffc299:#000000/text:ffc299" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#ffe0cc:#000000/text:ffe0cc" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ffff00:#ffffff/text:ffff00" alt="Color 3"></p>
-<pre><code class="language-less">screen(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">screen(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#000000/text:ff66ff" alt="Color 3"></p>
-<h2 id="overlay">overlay</h2>
-<blockquote>
+<h2>
+  <a name="overlay" class="anchor" href="#overlay">
+    <span class="header-link"></span>
+  </a>overlay
+</h2><blockquote>
 <p>Combines the effects of both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1382,44 +1669,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">overlay(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#ff2900:#ffffff/text:ff2900" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#ff5200:#ffffff/text:ff5200" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ff7a00:#ffffff/text:ff7a00" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#ffa300:#ffffff/text:ffa300" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#ffcc00:#ffffff/text:ffcc00" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#ffcc00:#ffffff/text:ffcc00" alt="Color 3"></p>
-<pre><code class="language-less">overlay(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">overlay(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 3"></p>
-<h2 id="softlight">softlight</h2>
-<blockquote>
+<h2>
+  <a name="softlight" class="anchor" href="#softlight">
+    <span class="header-link"></span>
+  </a>softlight
+</h2><blockquote>
 <p>Similar to <code>overlay</code> but avoids pure black resulting in pure black, and pure white resulting in pure white.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1429,44 +1728,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">softlight(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#ff2900:#ffffff/text:ff2900" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#ff4100:#ffffff/text:ff4100" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#ff5a00:#ffffff/text:ff5a00" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ff7200:#ffffff/text:ff7200" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#ff8a00:#ffffff/text:ff8a00" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#ffa100:#ffffff/text:ffa100" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#ff2900:#ffffff/text:ff2900" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#ffa100:#ffffff/text:ffa100" alt="Color 3"></p>
-<pre><code class="language-less">softlight(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">softlight(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff2900:#ffffff/text:ff2900" alt="Color 3"></p>
-<h2 id="hardlight">hardlight</h2>
-<blockquote>
+<h2>
+  <a name="hardlight" class="anchor" href="#hardlight">
+    <span class="header-link"></span>
+  </a>hardlight
+</h2><blockquote>
 <p>The same as <code>overlay</code> but with the color roles reversed.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1476,44 +1787,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">hardlight(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#662900:#ffffff/text:662900" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#cc5200:#ffffff/text:cc5200" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#ff8533:#ffffff/text:ff8533" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#ff2900:#ffffff/text:ff2900" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 3"></p>
-<pre><code class="language-less">hardlight(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">hardlight(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 3"></p>
-<h2 id="difference">difference</h2>
-<blockquote>
+<h2>
+  <a name="difference" class="anchor" href="#difference">
+    <span class="header-link"></span>
+  </a>difference
+</h2><blockquote>
 <p>Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1523,44 +1846,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">difference(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#cc3333:#ffffff/text:cc3333" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#990066:#ffffff/text:990066" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#663399:#ffffff/text:663399" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#3366cc:#ffffff/text:3366cc" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#0099ff:#ffffff/text:0099ff" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#006600:#ffffff/text:006600" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#ff9900:#ffffff/text:ff9900" alt="Color 3"></p>
-<pre><code class="language-less">difference(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">difference(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#000000/text:ff66ff" alt="Color 3"></p>
-<h2 id="exclusion">exclusion</h2>
-<blockquote>
+<h2>
+  <a name="exclusion" class="anchor" href="#exclusion">
+    <span class="header-link"></span>
+  </a>exclusion
+</h2><blockquote>
 <p>A similar effect to <code>difference</code> with lower contrast.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1570,44 +1905,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">exclusion(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#cc7033:#ffffff/text:cc7033" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#997a66:#ffffff/text:997a66" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#668599:#ffffff/text:668599" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#338fcc:#ffffff/text:338fcc" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#0099ff:#ffffff/text:0099ff" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#006600:#ffffff/text:006600" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#ff9900:#ffffff/text:ff9900" alt="Color 3"></p>
-<pre><code class="language-less">exclusion(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">exclusion(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#000000/text:ff66ff" alt="Color 3"></p>
-<h2 id="average">average</h2>
-<blockquote>
+<h2>
+  <a name="average" class="anchor" href="#average">
+    <span class="header-link"></span>
+  </a>average
+</h2><blockquote>
 <p>Compute the average of two colors on a per-channel (RGB) basis.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1617,44 +1964,56 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">average(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#803300:#ffffff/text:803300" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#994d1a:#ffffff/text:994d1a" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#b36633:#ffffff/text:b36633" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#cc804d:#ffffff/text:cc804d" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#e69966:#ffffff/text:e69966" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#ffb380:#000000/text:ffb380" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#ff3300:#ffffff/text:ff3300" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#80b300:#ffffff/text:80b300" alt="Color 3"></p>
-<pre><code class="language-less">average(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">average(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#803380:#ffffff/text:803380" alt="Color 3"></p>
-<h2 id="negation">negation</h2>
-<blockquote>
+<h2>
+  <a name="negation" class="anchor" href="#negation">
+    <span class="header-link"></span>
+  </a>negation
+</h2><blockquote>
 <p>Do the opposite effect to <code>difference</code>.</p>
 </blockquote>
 <p>The result is a brighter color. <strong>Note</strong>: The <em>opposite</em> effect doesn&#39;t mean the <em>inverted</em> effect as resulting from an <em>addition</em> operation.</p>
@@ -1665,43 +2024,54 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="language-less">negation(#ff6600, #000000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #<span class="language-number">000000</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#000000:#ffffff/text:000000" alt="Color 2">
 <img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #333333);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #<span class="language-number">333333</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#333333:#ffffff/text:333333" alt="Color 2">
 <img src="holder.js/100x40/#cc9933:#ffffff/text:cc9933" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #666666);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #<span class="language-number">666666</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#666666:#ffffff/text:666666" alt="Color 2">
 <img src="holder.js/100x40/#99cc66:#ffffff/text:99cc66" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #999999);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #<span class="language-number">999999</span>)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#999999:#ffffff/text:999999" alt="Color 2">
 <img src="holder.js/100x40/#66ff99:#ffffff/text:66ff99" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #cccccc);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #cccccc)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#cccccc:#000000/text:cccccc" alt="Color 2">
 <img src="holder.js/100x40/#33cccc:#ffffff/text:33cccc" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #ffffff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #ffffff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ffffff:#000000/text:ffffff" alt="Color 2">
 <img src="holder.js/100x40/#0099ff:#ffffff/text:0099ff" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #ff0000);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #ff0000)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#ff0000:#ffffff/text:ff0000" alt="Color 2">
 <img src="holder.js/100x40/#006600:#ffffff/text:006600" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #00ff00);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #<span class="language-number">00</span>ff00)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#00ff00:#ffffff/text:00ff00" alt="Color 2">
 <img src="holder.js/100x40/#ff9900:#ffffff/text:ff9900" alt="Color 3"></p>
-<pre><code class="language-less">negation(#ff6600, #0000ff);</code></pre>
+<pre><code class="lang-less"><span class="language-function">negation(#ff6600, #<span class="language-number">0000</span>ff)</span>;
+</code></pre>
 <p><img src="holder.js/100x40/#ff6600:#ffffff/text:ff6600" alt="Color 1">
 <img src="holder.js/100x40/#0000ff:#ffffff/text:0000ff" alt="Color 2">
 <img src="holder.js/100x40/#ff66ff:#ffffff/text:ff66ff" alt="Color 3"></p>
-
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/functions/color-blending.md">Improve this page.</a>
+</div>
 </div>
 
         </div>
@@ -1723,19 +2093,17 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 </div>
 
     <p><a href="https://github.com/less/less.js">Less.js</a> was created by <a href="https://github.com/cloudhead" target="_blank">Alexis Sellier</a>, aka <a href="http://twitter.com/cloudhead" target="_blank">@cloudhead</a>.</p>
-    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
       <li>Currently v1.6.1</li>
-      <!--li class="muted">&middot;</li>
-      <li><a href="">Blog</a></li-->
+      
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js/issues?&amp;state=open">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
-      <!--li class="muted">&middot;</li>
-      <li><a href="https://github.com/less/less.js.git/releases">Releases</a></li-->
+      <li><a href="https://github.com/less/less.js/blob/master//CHANGELOG.md">Changelog</a></li>
+      
     </ul>
   </div>
 </footer>
@@ -1752,6 +2120,8 @@ contrast(hsl(90, 100%, 50%), #000000, #ffffff, 60%);</code></pre>
 <script src="assets/js/holder.js"></script>
 <script src="assets/js/hiless.js"></script>
 <script src="assets/js/highlight.js"></script>
+<script src="assets/js/highlight.pack.js"></script>
+
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script src="assets/js/application.js"></script>

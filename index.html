@@ -104,7 +104,7 @@
         <div class="col-md-3">
           <div class="sidebar hidden-print" role="complementary">
             <div id="toc">
-            <ul class="nav sidenav"><li><a href="#getting-started">Getting Started</a></li><li><a href="#using-less">Using Less</a><ul class="nav"><li><a href="#installation">Installation</a></li><li><a href="#command-line-usage">Command-line usage</a></li><li><a href="#usage-in-code">Usage in Code</a></li><li><a href="#configuration">Configuration</a></li><li><a href="#grunt">Grunt</a></li><li><a href="#third-party-tools">Third party tools</a></li></ul></li><li><a href="#client-side-usage">Client-side usage</a><ul class="nav"><li><a href="#tips">Tips</a></li><li><a href="#browser-options">Browser Options</a></li><li><a href="#browser-downloads">Browser downloads</a></li><li><a href="#download-cdn">Less CDN</a></li></ul></li><li><a href="#license-faqs">License FAQs</a></li></ul></div>
+            <ul class="nav sidenav"><li><a href="#getting-started">Getting Started</a></li><li><a href="#using-less">Using Less</a><ul class="nav"><li><a href="#using-less-installation">Installation</a></li><li><a href="#using-less-command-line-usage">Command-line usage</a></li><li><a href="#using-less-usage-in-code">Usage in Code</a></li><li><a href="#using-less-configuration">Configuration</a></li><li><a href="#using-less-grunt">Grunt</a></li><li><a href="#using-less-third-party-tools">Third party tools</a></li></ul></li><li><a href="#client-side-usage">Client-side usage</a><ul class="nav"><li><a href="#client-side-usage-tips">Tips</a></li><li><a href="#client-side-usage-browser-options">Browser Options</a></li><li><a href="#client-side-usage-browser-downloads">Browser downloads</a></li><li><a href="#client-side-usage-download-cdn">Less CDN</a></li></ul></li><li><a href="#license-faqs">License FAQs</a></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -163,10 +163,10 @@
 <p>Less can be used on the command line via npm, downloaded as a script file for the browser or used in a wide variety of third party tools. See the <a href="../usage">Usage</a> section for more
 detailed information.</p>
 </blockquote>
-<h2 id="installation">Installation</h2><p>The easiest way to install LESS on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
+<h2 id="using-less-installation">Installation</h2><p>The easiest way to install LESS on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
 <pre><code class="lang-bash">$ npm install -g less
 </code></pre>
-<h2 id="command-line-usage">Command-line usage</h2><p>Once installed, you can invoke the compiler from the command-line, as such:</p>
+<h2 id="using-less-command-line-usage">Command-line usage</h2><p>Once installed, you can invoke the compiler from the command-line, as such:</p>
 <pre><code class="lang-bash">$ lessc styles.less
 </code></pre>
 <p>This will output the compiled CSS to <code>stdout</code>, you may then redirect it to a file of your choice:</p>
@@ -176,7 +176,7 @@ detailed information.</p>
 the <a href="https://github.com/GoalSmashers/clean-css">Clean CSS</a> is also available with
 the <code>--clean-css</code> option.</p>
 <p>To see all the command line options run lessc without parameters.</p>
-<h2 id="usage-in-code">Usage in Code</h2><p>You can invoke the compiler from node, as such:</p>
+<h2 id="using-less-usage-in-code">Usage in Code</h2><p>You can invoke the compiler from node, as such:</p>
 <pre><code class="lang-js"><span class="lang-keyword">var</span> less = <span class="lang-built_in">require</span>(<span class="lang-string">'less'</span>);
 
 less.render(<span class="lang-string">'.class { width: (1 + 1) }'</span>, <span class="lang-function"><span class="lang-keyword">function</span> <span class="lang-params">(e, css)</span> {</span>
@@ -198,7 +198,7 @@ parser.parse(<span class="lang-string">'.class { width: (1 + 1) }'</span>, <span
   console.log(tree.toCSS());
 });
 </code></pre>
-<h2 id="configuration">Configuration</h2><p>You may pass some options to the compiler:</p>
+<h2 id="using-less-configuration">Configuration</h2><p>You may pass some options to the compiler:</p>
 <pre><code class="lang-js"><span class="lang-keyword">var</span> parser = <span class="lang-keyword">new</span>(less.Parser)({
   paths: [<span class="lang-string">'.'</span>, <span class="lang-string">'./lib'</span>], <span class="lang-comment">// Specify search paths for @import directives</span>
   filename: <span class="lang-string">'style.less'</span> <span class="lang-comment">// Specify a filename, for better error messages</span>
@@ -211,8 +211,8 @@ parser.parse(<span class="lang-string">'.class { width: (1 + 1) }'</span>, <span
   });
 });
 </code></pre>
-<h2 id="grunt">Grunt</h2><p>Less also integrates with the popular build framework grunt, using the <a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a> plugin.</p>
-<h2 id="third-party-tools">Third party tools</h2><p>See the <a href="../usage">Usage</a> section for details of other tools.</p>
+<h2 id="using-less-grunt">Grunt</h2><p>Less also integrates with the popular build framework grunt, using the <a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a> plugin.</p>
+<h2 id="using-less-third-party-tools">Third party tools</h2><p>See the <a href="../usage">Usage</a> section for details of other tools.</p>
 <h1 id="client-side-usage">Client-side usage</h1><blockquote>
 <p>Using less.js in the browser is great for development, but it&#39;s not recommended for production</p>
 </blockquote>
@@ -223,11 +223,11 @@ parser.parse(<span class="lang-string">'.class { width: (1 + 1) }'</span>, <span
 <p>Next, <a href="https://github.com/less/less.js/archive/master.zip">download less.js</a> and include it in a <code>&lt;script&gt;&lt;/script&gt;</code> tag in the <code>&lt;head&gt;</code> element of your page:</p>
 <pre><code class="lang-html"><span class="lang-tag">&lt;<span class="lang-title">script</span> <span class="lang-attribute">src</span>=<span class="lang-value">"less.js"</span> <span class="lang-attribute">type</span>=<span class="lang-value">"text/javascript"</span>&gt;</span><span class="javascript"></span><span class="lang-tag">&lt;/<span class="lang-title">script</span>&gt;</span>
 </code></pre>
-<h3 id="tips">Tips</h3><ul>
+<h3 id="client-side-usage-tips">Tips</h3><ul>
 <li>Make sure you include your stylesheets <strong>before</strong> the script.</li>
 <li>When you link more than one <code>.less</code> stylesheet each of them is compiled independently. So any variables, mixins or namespaces you define in a stylesheet are not accessible in any other.</li>
 </ul>
-<h2 id="browser-options">Browser Options</h2><p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
+<h2 id="client-side-usage-browser-options">Browser Options</h2><p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
 <pre><code class="lang-html"><span class="lang-comment">&lt;!-- set options before less.js script --&gt;</span>
 <span class="lang-tag">&lt;<span class="lang-title">script</span>&gt;</span><span class="javascript">
   less = {
@@ -248,7 +248,7 @@ parser.parse(<span class="lang-string">'.class { width: (1 + 1) }'</span>, <span
 </div>
 
 
-  <h3 id="browser-downloads">Browser downloads</h3>
+  <h3 id="client-side-usage-browser-downloads">Browser downloads</h3>
   <p><a class="btn btn-lg btn-primary" href="https://raw.github.com/less/less.js/master/dist/less-.min.js" onclick="_gaq.push([&apos;_trackEvent&apos;, &apos;Getting started&apos;, &apos;Download&apos;, &apos;Download compiled&apos;]);" role="button">Download Less.js v1.6.1</a></p>
   <div class="docs-dl-options">
     <h4>
@@ -265,7 +265,7 @@ parser.parse(<span class="lang-string">'.class { width: (1 + 1) }'</span>, <span
 <pre><code class="language-bash">bower install less</code></pre>
 
   </div>
-  <h3 id="download-cdn">Less CDN</h3>
+  <h3 id="client-side-usage-download-cdn">Less CDN</h3>
   <p>TODO <a href="//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js">CDN</a>.</p>
 <pre><code class="language-html">&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/1.5.0/less.min.js&quot;&gt;&lt;/script&gt;</code></pre>
 

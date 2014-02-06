@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
+<meta name="description" content="Less extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
 ">
 <meta name="author" content="The Core Less Team">
 
@@ -118,7 +118,7 @@
     </div>
     <div class="section-content">
       <blockquote>
-<p>As an extension to CSS, LESS is not only backwards compatible with CSS, but the extra features it adds use existing CSS syntax. This makes learning LESS a breeze, and if in doubt, lets you fall back to vanilla CSS.</p>
+<p>As an extension to CSS, Less is not only backwards compatible with CSS, but the extra features it adds use existing CSS syntax. This makes learning Less a breeze, and if in doubt, lets you fall back to vanilla CSS.</p>
 </blockquote>
 <h3 id="features-overview-feature-variables">Variables</h3><p>These are pretty self-explanatory:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@nice-blue: <span class="lang-hexcolor">#5B83AD</span>;</span>
@@ -154,10 +154,10 @@
 <p>The properties of the <code>.bordered</code> class will now appear in both <code>#menu a</code> and <code>.post a</code>. (Note that you can also use <code>#ids</code> as mixins.)</p>
 <p><strong>Learn more</strong></p>
 <ul>
-<li><a href="features/#mixins">More about mixins</a></li>
-<li><a href="features/#parametric-mixins">Parametric Mixins</a></li>
+<li><a href="#mixins-feature">More about mixins</a></li>
+<li><a href="#mixins-parametric-feature">Parametric Mixins</a></li>
 </ul>
-<h3 id="features-overview-feature-nested-rules">Nested rules</h3><p>LESS gives you the ability to use nesting instead of, or in combination with cascading. Let&#39;s say we have the following CSS:</p>
+<h3 id="features-overview-feature-nested-rules">Nested rules</h3><p>Less gives you the ability to use nesting instead of, or in combination with cascading. Let&#39;s say we have the following CSS:</p>
 <pre><code class="lang-css"><span class="lang-id">#header</span> <span class="lang-rules">{
   <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> black</span></span>;
 <span class="lang-rule">}</span></span>
@@ -168,7 +168,7 @@
   <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">300</span>px</span></span>;
 <span class="lang-rule">}</span></span>
 </code></pre>
-<p>In LESS, we can also write it this way:</p>
+<p>In Less, we can also write it this way:</p>
 <pre><code class="lang-less"><span class="lang-id">#header</span> {
   <span class="lang-attribute">color</span><span class="lang-value">: black;</span>
   <span class="lang-class">.navigation</span> {
@@ -204,11 +204,11 @@
 <span class="lang-attribute">background-color</span><span class="lang-value">: @base-color + <span class="lang-hexcolor">#111</span>;</span>
 <span class="lang-attribute">height</span><span class="lang-value">: <span class="lang-number">100</span>% / <span class="lang-number">2</span> + @filler;</span>
 </code></pre>
-<p>The output is pretty much what you expect—LESS understands the difference between colors and units. If a unit is used in an operation, like in:</p>
+<p>The output is pretty much what you expect—Less understands the difference between colors and units. If a unit is used in an operation, like in:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@var:<span class="lang-preprocessor"> 1px</span> +<span class="lang-preprocessor"> 5</span>;</span>
 </code></pre>
-<p>LESS will use that unit for the final output—<code>6px</code> in this case.</p>
-<h3 id="features-overview-feature-functions">Functions</h3><p>LESS provides a variety of functions which transform colors, manipulate strings and do maths. They are documented fully in the function reference.</p>
+<p>Less will use that unit for the final output—<code>6px</code> in this case.</p>
+<h3 id="features-overview-feature-functions">Functions</h3><p>Less provides a variety of functions which transform colors, manipulate strings and do maths. They are documented fully in the function reference.</p>
 <p>Using them is pretty straightforward. The following example uses percentage to convert 0.5 to 50%, increases the saturation of a base color by 5% and then sets the background color to one that is lightened by 25% and spun by 8 degrees:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@base: <span class="lang-hexcolor">#f04615</span>;</span>
 <span class="lang-at_rule">@width:<span class="lang-preprocessor"> 0.5</span>;</span>
@@ -220,7 +220,7 @@
 }
 </code></pre>
 <h3 id="features-overview-feature-namespaces-amp-accessors">Namespaces &amp; Accessors</h3><p>(Not to be confused with <a href="http://www.w3.org/TR/css3-namespace/">CSS <code>@namespace</code></a> or <a href="http://www.w3.org/TR/css3-selectors/#typenmsp">namespace selectors</a>).</p>
-<p>Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. You can do this pretty intuitively in LESS, say you want to bundle some mixins and variables under <code>#bundle</code>, for later reuse or distributing:</p>
+<p>Sometimes, you may want to group your variables or mixins, for organizational purposes, or just to offer some encapsulation. You can do this pretty intuitively in Less, say you want to bundle some mixins and variables under <code>#bundle</code>, for later reuse or distributing:</p>
 <pre><code class="lang-less"><span class="lang-id">#bundle</span> {
   <span class="lang-class">.button</span> {
     <span class="lang-attribute">display</span><span class="lang-value">: block;</span>
@@ -240,7 +240,7 @@
   <span class="lang-id">#bundle</span> &gt; <span class="lang-class">.button</span>;
 }
 </code></pre>
-<h3 id="features-overview-feature-scope">Scope</h3><p>Scope in LESS is very similar to that of programming languages. Variables and mixins are first looked for locally, and if they aren&#39;t found, the compiler will look in the parent scope, and so on.</p>
+<h3 id="features-overview-feature-scope">Scope</h3><p>Scope in Less is very similar to that of programming languages. Variables and mixins are first looked for locally, and if they aren&#39;t found, the compiler will look in the parent scope, and so on.</p>
 <p>Note that the order of declaration <strong>does</strong> matter.</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@var:<span class="lang-preprocessor"> red</span>;</span>
 
@@ -370,7 +370,7 @@ This means that this usage is typically limited to when you an inject a variable
 </code></pre><h2 id="variables-feature-lazy-loading">Lazy Loading</h2><blockquote>
 <p>Variables are lazy loaded and do not have to be declared before being used.</p>
 </blockquote>
-<p>Valid LESS snippet:</p>
+<p>Valid Less snippet:</p>
 <pre><code class="lang-less"><span class="lang-class">.lazy-eval</span> {
   <span class="lang-attribute">width</span><span class="lang-value">: @var;</span>
 }
@@ -378,7 +378,7 @@ This means that this usage is typically limited to when you an inject a variable
 <span class="lang-at_rule">@var: @a;</span>
 <span class="lang-at_rule">@a:<span class="lang-preprocessor"> 9</span>%;</span>
 </code></pre>
-<p>this is valid LESS too:</p>
+<p>this is valid Less too:</p>
 <pre><code class="lang-less"><span class="lang-class">.lazy-eval-scope</span> {
   <span class="lang-attribute">width</span><span class="lang-value">: @var;</span>
   <span class="lang-at_rule">@a:<span class="lang-preprocessor"> 9</span>%;</span>
@@ -437,7 +437,7 @@ This means that this usage is typically limited to when you an inject a variable
     </div>
     <div class="section-content">
       <blockquote>
-<p>Extend is a LESS Pseudo-Class which merges the selector it is put on with ones that match what it references.</p>
+<p>Extend is a Less Pseudo-Class which merges the selector it is put on with ones that match what it references.</p>
 </blockquote>
 <p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <pre><code class="lang-less"><span class="lang-tag">nav</span> <span class="lang-tag">ul</span> {
@@ -1254,9 +1254,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </code></pre>
 <h2 id="import-directives-feature-file-extensions">File extensions</h2><p><code>@import</code> statements may be treated differently by Less depending on the file extension:</p>
 <ul>
-<li>If the file has a <code>.css</code> extension it will be treated as CSS and the <code>@import</code> statement left as-is (see the <a href="#inline">inline option</a> below).</li>
-<li>If it has <em>any other extension</em> it will be treated as LESS and imported.</li>
-<li>If it does not have an extension, <code>.less</code> will be appended and it will be included as a imported LESS file.</li>
+<li>If the file has a <code>.css</code> extension it will be treated as CSS and the <code>@import</code> statement left as-is (see the <a href="#import-options-inline">inline option</a> below).</li>
+<li>If it has <em>any other extension</em> it will be treated as Less and imported.</li>
+<li>If it does not have an extension, <code>.less</code> will be appended and it will be included as a imported Less file.</li>
 </ul>
 <p>Examples:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@<span class="lang-keyword">import</span> <span class="lang-string">"foo"</span>;</span>      <span class="lang-comment">// foo.less is imported</span>
@@ -1266,7 +1266,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </code></pre>
 <p>The following options can be used to override this behavior.</p>
 <h1 id="import-options">Import Options</h1><blockquote>
-<p>LESS offers several extensions to the CSS <code>@import</code> CSS at-rule to provide more flexibility over what you can do with external files.</p>
+<p>Less offers several extensions to the CSS <code>@import</code> CSS at-rule to provide more flexibility over what you can do with external files.</p>
 </blockquote>
 <p>Syntax: <code>@import (keyword) &quot;filename&quot;;</code></p>
 <p>The following import directives have been implemented:</p>
@@ -1283,11 +1283,11 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (reference) &quot;foo.less&quot;;</code></p>
-<p><code>reference</code> is one of the most powerful features in the LESS language. Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as [mixins][] or [extended][].</p>
+<p><code>reference</code> is one of the most powerful features in the Less language. Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as <a href="#mixins-feature">mixins</a> or <a href="#extend-feature">extended</a>.</p>
 <p>Additionally, <strong><code>reference</code></strong> produces different results depending on which method was used (mixin or extend):</p>
 <ul>
-<li><strong><a href="#extend">extend</a></strong>: When a selector is extended, only the new selector is marked as <em>not referenced</em>, and it is pulled in at the position of the reference <code>@import</code> statement.</li>
-<li><strong><a href="#mixins">mixins</a></strong>: When a <code>reference</code> style is used as an [[implicit mixin|Mixins]], its rules are are mixed-in, marked &quot;not reference&quot;, and appear in the referenced place as normal.</li>
+<li><strong><a href="#extend-feature">extend</a></strong>: When a selector is extended, only the new selector is marked as <em>not referenced</em>, and it is pulled in at the position of the reference <code>@import</code> statement.</li>
+<li><strong><a href="#mixins-feature">mixins</a></strong>: When a <code>reference</code> style is used as an <a href="#mixins-feature">implicit mixin</a>, its rules are are mixed-in, marked &quot;not reference&quot;, and appear in the referenced place as normal.</li>
 </ul>
 <h3 id="import-options-reference-example">reference example</h3><p>This allows you to pull in only specific, targeted styles from a library such as <a href="https://github.com/twbs/bootstrap">Bootstrap</a> by doing something like this:</p>
 <pre><code class="lang-less"><span class="lang-class">.navbar</span><span class="lang-value">:extend(.navbar all) {}</span>
@@ -1301,7 +1301,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>You will use this when a CSS file may not be less compatible; this is because although less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
 <p>So you can use this to include the file in the output so that all CSS will be in one file.</p>
 <h2 id="import-options-less">less</h2><blockquote>
-<p>Use <code>@import (less)</code> to treat imported files as LESS, regardless of file extension.</p>
+<p>Use <code>@import (less)</code> to treat imported files as Less, regardless of file extension.</p>
 </blockquote>
 <p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
@@ -1363,7 +1363,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Conditional mixins</p>
 </blockquote>
 <p>Guards are useful when you want to match on <em>expressions</em>, as opposed to simple values or arity. If you are familiar with functional programming, you have probably encountered them already.</p>
-<p>In trying to stay as close as possible to the declarative nature of CSS, LESS has opted to implement conditional execution via <strong>guarded mixins</strong> instead of <code>if</code>/<code>else</code> statements, in the vein of <code>@media</code> query feature specifications.</p>
+<p>In trying to stay as close as possible to the declarative nature of CSS, Less has opted to implement conditional execution via <strong>guarded mixins</strong> instead of <code>if</code>/<code>else</code> statements, in the vein of <code>@media</code> query feature specifications.</p>
 <p>Let&#39;s start with an example:</p>
 <pre><code class="lang-less"><span class="lang-class">.mixin</span> (<span class="lang-at_rule">@a)<span class="lang-preprocessor"> when</span> (<span class="lang-function">lightness(@a)</span> &gt;=<span class="lang-preprocessor"> 50</span>%) {</span>
   <span class="lang-attribute">background-color</span><span class="lang-value">: black;</span>
@@ -1493,7 +1493,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
       <blockquote>
 <p>Creating loops</p>
 </blockquote>
-<p>In LESS a mixin can call itself. Such recursive mixins, when combined with <a href="#">Guard Expressions</a> and <a href="#">Pattern Matching</a>, can be used to create various iterative/loop structures.</p>
+<p>In Less a mixin can call itself. Such recursive mixins, when combined with <a href="#mixin-guards-feature">Guard Expressions</a> and <a href="#mixins-parametric-feature-pattern-matching">Pattern Matching</a>, can be used to create various iterative/loop structures.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-class">.loop</span>(<span class="lang-at_rule">@counter)<span class="lang-preprocessor"> when</span> (@counter &gt;<span class="lang-preprocessor"> 0</span>) {</span>
   <span class="lang-class">.loop</span>((<span class="lang-at_rule">@counter<span class="lang-preprocessor"> -</span><span class="lang-preprocessor"> 1</span>));</span>    <span class="lang-comment">// next iteration</span>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="LESS extends CSS with dynamic behavior such as variables, mixins, operations and functions. LESS runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
+<meta name="description" content="Less extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
 ">
 <meta name="author" content="The Core Less Team">
 
@@ -104,7 +104,7 @@
         <div class="col-md-3">
           <div class="sidebar hidden-print" role="complementary">
             <div id="toc">
-            <ul class="nav sidenav"><li><a href="#functions-overview">Functions</a></li><li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li><li><a href="#string-functions-e">e</a></li><li><a href="#string-functions-format">% format</a></li></ul></li><li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li><li><a href="#misc-functions-unit">unit</a></li><li><a href="#misc-functions-convert">convert</a></li><li><a href="#misc-functions-data-uri">data-uri</a></li><li><a href="#misc-functions-default">default</a></li></ul></li><li><a href="#list-functions">List Functions</a><ul class="nav"><li><a href="#list-functions-length">length</a></li><li><a href="#list-functions-extract">extract</a></li></ul></li><li><a href="#math-functions">Math Functions</a><ul class="nav"><li><a href="#math-functions-ceil">ceil</a></li><li><a href="#math-functions-floor">floor</a></li><li><a href="#math-functions-percentage">percentage</a></li><li><a href="#math-functions-round">round</a></li><li><a href="#math-functions-sqrt">sqrt</a></li><li><a href="#math-functions-abs">abs</a></li><li><a href="#math-functions-sin">sin</a></li><li><a href="#math-functions-asin">asin</a></li><li><a href="#math-functions-cos">cos</a></li><li><a href="#math-functions-acos">acos</a></li><li><a href="#math-functions-tan">tan</a></li><li><a href="#math-functions-atan">atan</a></li><li><a href="#math-functions-pi">pi</a></li><li><a href="#math-functions-pow">pow</a></li><li><a href="#math-functions-mod">mod</a></li><li><a href="#math-functions-min">min</a></li><li><a href="#math-functions-max">max</a></li></ul></li><li><a href="#type-functions">Type Functions</a><ul class="nav"><li><a href="#type-functions-isnumber">isnumber</a></li><li><a href="#type-functions-isstring">isstring</a></li><li><a href="#type-functions-iscolor">iscolor</a></li><li><a href="#type-functions-iskeyword">iskeyword</a></li><li><a href="#type-functions-isurl">isurl</a></li><li><a href="#type-functions-ispixel">ispixel</a></li><li><a href="#type-functions-isem">isem</a></li><li><a href="#type-functions-ispercentage">ispercentage</a></li><li><a href="#type-functions-isunit">isunit</a></li></ul></li><li><a href="#color-functions">Color Functions</a></li><li><a href="#color-definition">Color Definition</a><ul class="nav"><li><a href="#color-definition-rgb">rgb</a></li><li><a href="#color-definition-rgba">rgba</a></li><li><a href="#color-definition-argb">argb</a></li><li><a href="#color-definition-hsl">hsl</a></li><li><a href="#color-definition-hsla">hsla</a></li><li><a href="#color-definition-hsv">hsv</a></li><li><a href="#color-definition-hsva">hsva</a></li></ul></li><li><a href="#color-channel">Color Channel</a><ul class="nav"><li><a href="#color-channel-hue">hue</a></li><li><a href="#color-channel-saturation">saturation</a></li><li><a href="#color-channel-lightness">lightness</a></li><li><a href="#color-channel-hsvhue">hsvhue</a></li><li><a href="#color-channel-hsvsaturation">hsvsaturation</a></li><li><a href="#color-channel-hsvvalue">hsvvalue</a></li><li><a href="#color-channel-red">red</a></li><li><a href="#color-channel-green">green</a></li><li><a href="#color-channel-blue">blue</a></li><li><a href="#color-channel-alpha">alpha</a></li><li><a href="#color-channel-luma">luma</a></li></ul></li><li><a href="#color-operations">Color Operations</a><ul class="nav"><li><a href="#color-operations-saturate">saturate</a></li><li><a href="#color-operations-desaturate">desaturate</a></li><li><a href="#color-operations-lighten">lighten</a></li><li><a href="#color-operations-darken">darken</a></li><li><a href="#color-operations-fadein">fadein</a></li><li><a href="#color-operations-fadeout">fadeout</a></li><li><a href="#color-operations-fade">fade</a></li><li><a href="#color-operations-spin">spin</a></li><li><a href="#color-operations-mix">mix</a></li><li><a href="#color-operations-greyscale">greyscale</a></li><li><a href="#color-operations-contrast">contrast</a></li></ul></li><li><a href="#color-blending">Color Blending</a><ul class="nav"><li><a href="#color-blending-multiply">multiply</a></li><li><a href="#color-blending-screen">screen</a></li><li><a href="#color-blending-overlay">overlay</a></li><li><a href="#color-blending-softlight">softlight</a></li><li><a href="#color-blending-hardlight">hardlight</a></li><li><a href="#color-blending-difference">difference</a></li><li><a href="#color-blending-exclusion">exclusion</a></li><li><a href="#color-blending-average">average</a></li><li><a href="#color-blending-negation">negation</a></li></ul></li></ul></div>
+            <ul class="nav sidenav"><li><a href="#functions-overview">Functions</a></li><li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li><li><a href="#string-functions-e">e</a></li><li><a href="#string-functions-format">% format</a></li></ul></li><li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li><li><a href="#misc-functions-unit">unit</a></li><li><a href="#misc-functions-convert">convert</a></li><li><a href="#misc-functions-data-uri">data-uri</a></li><li><a href="#misc-functions-default">default</a></li></ul></li><li><a href="#list-functions">List Functions</a><ul class="nav"><li><a href="#list-functions-length">length</a></li><li><a href="#list-functions-extract">extract</a></li></ul></li><li><a href="#math-functions">Math Functions</a><ul class="nav"><li><a href="#math-functions-ceil">ceil</a></li><li><a href="#math-functions-floor">floor</a></li><li><a href="#math-functions-percentage">percentage</a></li><li><a href="#math-functions-round">round</a></li><li><a href="#math-functions-sqrt">sqrt</a></li><li><a href="#math-functions-abs">abs</a></li><li><a href="#math-functions-sin">sin</a></li><li><a href="#math-functions-asin">asin</a></li><li><a href="#math-functions-cos">cos</a></li><li><a href="#math-functions-acos">acos</a></li><li><a href="#math-functions-tan">tan</a></li><li><a href="#math-functions-atan">atan</a></li><li><a href="#math-functions-pi">pi</a></li><li><a href="#math-functions-pow">pow</a></li><li><a href="#math-functions-mod">mod</a></li><li><a href="#math-functions-min">min</a></li><li><a href="#math-functions-max">max</a></li></ul></li><li><a href="#type-functions">Type Functions</a><ul class="nav"><li><a href="#type-functions-isnumber">isnumber</a></li><li><a href="#type-functions-isstring">isstring</a></li><li><a href="#type-functions-iscolor">iscolor</a></li><li><a href="#type-functions-iskeyword">iskeyword</a></li><li><a href="#type-functions-isurl">isurl</a></li><li><a href="#type-functions-ispixel">ispixel</a></li><li><a href="#type-functions-isem">isem</a></li><li><a href="#type-functions-ispercentage">ispercentage</a></li><li><a href="#type-functions-isunit">isunit</a></li></ul></li><li><a href="#color-functions">Color Functions</a><ul class="nav"><li><a href="#color-functions-color-definition">Color Definition</a></li><li><a href="#color-functions-rgb">rgb</a></li><li><a href="#color-functions-rgba">rgba</a></li><li><a href="#color-functions-argb">argb</a></li><li><a href="#color-functions-hsl">hsl</a></li><li><a href="#color-functions-hsla">hsla</a></li><li><a href="#color-functions-hsv">hsv</a></li><li><a href="#color-functions-hsva">hsva</a></li><li><a href="#color-functions-color-channel">Color Channel</a></li><li><a href="#color-functions-hue">hue</a></li><li><a href="#color-functions-saturation">saturation</a></li><li><a href="#color-functions-lightness">lightness</a></li><li><a href="#color-functions-hsvhue">hsvhue</a></li><li><a href="#color-functions-hsvsaturation">hsvsaturation</a></li><li><a href="#color-functions-hsvvalue">hsvvalue</a></li><li><a href="#color-functions-red">red</a></li><li><a href="#color-functions-green">green</a></li><li><a href="#color-functions-blue">blue</a></li><li><a href="#color-functions-alpha">alpha</a></li><li><a href="#color-functions-luma">luma</a></li><li><a href="#color-functions-color-operations">Color Operations</a></li><li><a href="#color-functions-saturate">saturate</a></li><li><a href="#color-functions-desaturate">desaturate</a></li><li><a href="#color-functions-lighten">lighten</a></li><li><a href="#color-functions-darken">darken</a></li><li><a href="#color-functions-fadein">fadein</a></li><li><a href="#color-functions-fadeout">fadeout</a></li><li><a href="#color-functions-fade">fade</a></li><li><a href="#color-functions-spin">spin</a></li><li><a href="#color-functions-mix">mix</a></li><li><a href="#color-functions-greyscale">greyscale</a></li><li><a href="#color-functions-contrast">contrast</a></li><li><a href="#color-functions-color-blending">Color Blending</a></li><li><a href="#color-functions-multiply">multiply</a></li><li><a href="#color-functions-screen">screen</a></li><li><a href="#color-functions-overlay">overlay</a></li><li><a href="#color-functions-softlight">softlight</a></li><li><a href="#color-functions-hardlight">hardlight</a></li><li><a href="#color-functions-difference">difference</a></li><li><a href="#color-functions-exclusion">exclusion</a></li><li><a href="#color-functions-average">average</a></li><li><a href="#color-functions-negation">negation</a></li></ul></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -121,9 +121,11 @@
   
 </div>
 
-
+<!-- String -->
 <div class="docs-section">
-  <h1 id="string-functions">String Functions</h1>
+  <div class="page-header">
+    <h1 id="string-functions">String Functions</h1>
+  </div>
   <h3 id="string-functions-escape">escape</h3><blockquote>
 <p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
 </blockquote>
@@ -142,7 +144,7 @@
 <h3 id="string-functions-e">e</h3><blockquote>
 <p>CSS escaping, replaced with <code>~&quot;value&quot;</code> syntax.</p>
 </blockquote>
-<p>It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which LESS doesn&#39;t recognize.</p>
+<p>It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which Less doesn&#39;t recognize.</p>
 <p>Parameters: <code>string</code> - a string to escape.</p>
 <p>Returns: <code>string</code> - the escaped string, without quotes.</p>
 <p>Example:</p>
@@ -186,9 +188,11 @@ format-s-upper<span class="lang-value">: <span class="lang-string">"repetitions:
 </div>
 </div>
 
-
+<!-- Misc -->
 <div class="docs-section">
-  <h1 id="misc-functions">Misc Functions</h1>
+  <div class="page-header">
+    <h1 id="misc-functions">Misc Functions</h1>
+  </div>
   <h3 id="misc-functions-color">color</h3><blockquote>
 <p>Parses a color, so a string representing a color becomes a color.</p>
 </blockquote>
@@ -303,7 +307,7 @@ div-<span class="lang-number">1</span> {
   .m(<span class="lang-number">1</span>);</span> <span class="lang-comment">// OK</span>
 }
 </code></pre>
-<p>However LESS will throw a error if it detects a <em>potential</em> conflict between multiple mixin definitions using <code>default()</code>:</p>
+<p>However Less will throw a error if it detects a <em>potential</em> conflict between multiple mixin definitions using <code>default()</code>:</p>
 <pre><code class="lang-less"><span class="lang-tag">div</span> {
   <span class="lang-class">.m</span>(<span class="lang-at_rule">@x)<span class="lang-preprocessor"> when</span> (<span class="lang-function">default()</span>)    {</span>}
   <span class="lang-class">.m</span>(<span class="lang-at_rule">@x)<span class="lang-preprocessor"> when</span><span class="lang-preprocessor"> not</span>(<span class="lang-function">default()</span>) {</span>}
@@ -341,7 +345,7 @@ div-<span class="lang-number">1</span> {
   default-string: and I am the default;
 }
 </code></pre>
-<p>The <code>default</code> function is available as a LESS built-in function <em>only inside guard expressions</em>. If used outside of a mixin guard condition it is interpreted as a regular CSS value:</p>
+<p>The <code>default</code> function is available as a Less built-in function <em>only inside guard expressions</em>. If used outside of a mixin guard condition it is interpreted as a regular CSS value:</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-tag">div</span> {
   foo<span class="lang-value">: default();</span>
@@ -359,9 +363,11 @@ div-<span class="lang-number">1</span> {
 </div>
 </div>
 
-
+<!-- List -->
 <div class="docs-section">
-  <h1 id="list-functions">List Functions</h1>
+  <div class="page-header">
+    <h1 id="list-functions">List Functions</h1>
+  </div>
   <h3 id="list-functions-length">length</h3><blockquote>
 <p>Returns the number of elements in a value list.</p>
 </blockquote>
@@ -395,9 +401,11 @@ value<span class="lang-value">: extract(@list, <span class="lang-number">3</span
 </div>
 </div>
 
-
+<!-- Math -->
 <div class="docs-section">
-  <h1 id="math-functions">Math Functions</h1>
+  <div class="page-header">
+    <h1 id="math-functions">Math Functions</h1>
+  </div>
   <h3 id="math-functions-ceil">ceil</h3><blockquote>
 <p>Rounds up to the next highest integer.</p>
 </blockquote>
@@ -623,9 +631,11 @@ NaN%
 </div>
 </div>
 
-
+<!-- Type -->
 <div class="docs-section">
-  <h1 id="type-functions">Type Functions</h1>
+  <div class="page-header">
+    <h1 id="type-functions">Type Functions</h1>
+  </div>
   <h3 id="type-functions-isnumber">isnumber</h3><blockquote>
 <p>Returns <code>true</code> if a value is a number, <code>false</code> otherwise.</p>
 </blockquote>
@@ -772,17 +782,17 @@ NaN%
 </div>
 
 
-<!-- Section -->
+
+<!-- Color -->
 <div class="docs-section">
   <div class="page-header">
     <h1 id="color-functions">Color Functions</h1>
   </div>
 </div>
 
-
 <div class="docs-section">
-  <h1 id="color-definition">Color Definition</h1>
-  <h3 id="color-definition-rgb">rgb</h3><blockquote>
+  <h2 id="color-functions-color-definition">Color Definition</h2>
+  <h3 id="color-functions-rgb">rgb</h3><blockquote>
 <p>Creates an opaque color object from decimal red, green and blue (RGB) values.</p>
 </blockquote>
 <p>Literal color values in standard HTML/CSS formats may also be used to define colors, for example <code>#ff0000</code>.</p>
@@ -795,7 +805,7 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgb(90, 129, 32)</code></p>
 <p>Output: <code>#5a8120</code></p>
-<h3 id="color-definition-rgba">rgba</h3><blockquote>
+<h3 id="color-functions-rgba">rgba</h3><blockquote>
 <p>Creates a transparent color object from decimal red, green, blue and alpha (RGBA) values.
 Parameters:</p>
 </blockquote>
@@ -808,7 +818,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgba(90, 129, 32, 0.5)</code></p>
 <p>Output: <code>rgba(90, 129, 32, 0.5)</code></p>
-<h3 id="color-definition-argb">argb</h3><blockquote>
+<h3 id="color-functions-argb">argb</h3><blockquote>
 <p>Creates a hex representation of a color in <code>#AARRGGBB</code> format (<strong>NOT</strong> <code>#RRGGBBAA</code>!).</p>
 </blockquote>
 <p>This format is used in Internet Explorer, and .NET and Android development.</p>
@@ -816,7 +826,7 @@ Parameters:</p>
 <p>Returns: <code>string</code></p>
 <p>Example: <code>argb(rgba(90, 23, 148, 0.5));</code></p>
 <p>Output: <code>#805a1794</code></p>
-<h3 id="color-definition-hsl">hsl</h3><blockquote>
+<h3 id="color-functions-hsl">hsl</h3><blockquote>
 <p>Creates an opaque color object from hue, saturation and lightness (HSL) values.
 Parameters:</p>
 </blockquote>
@@ -830,7 +840,7 @@ Parameters:</p>
 <p>Output: <code>#80ff00</code></p>
 <p>This is useful if you want to create a new color based on another color&#39;s channel, forExample: <code>@new: hsl(hue(@old), 45%, 90%);</code></p>
 <p><code>@new</code> will have <code>@old</code>&#39;s <em>hue</em>, and its own saturation and lightness.</p>
-<h3 id="color-definition-hsla">hsla</h3><blockquote>
+<h3 id="color-functions-hsla">hsla</h3><blockquote>
 <p>Creates a transparent color object from hue, saturation, lightness and alpha (HSLA) values.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -843,7 +853,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsl(90, 100%, 50%, 0.5)</code></p>
 <p>Output: <code>rgba(128, 255, 0, 0.5)</code></p>
-<h3 id="color-definition-hsv">hsv</h3><blockquote>
+<h3 id="color-functions-hsv">hsv</h3><blockquote>
 <p>Creates an opaque color object from hue, saturation and value (HSV) values.</p>
 </blockquote>
 <p>Note that this is a color space available in Photoshop, and is not the same as <code>hsl</code>.</p>
@@ -856,7 +866,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsv(90, 100%, 50%)</code></p>
 <p>Output: <code>#408000</code></p>
-<h3 id="color-definition-hsva">hsva</h3><blockquote>
+<h3 id="color-functions-hsva">hsva</h3><blockquote>
 <p>Creates a transparent color object from hue, saturation, value and alpha (HSVA) values.</p>
 </blockquote>
 <p>Note that this is not the same as <code>hsla</code>, and is a color space available in Photoshop.</p>
@@ -875,80 +885,79 @@ Parameters:</p>
 </div>
 </div>
 
-
 <div class="docs-section">
-  <h1 id="color-channel">Color Channel</h1>
-  <h3 id="color-channel-hue">hue</h3><blockquote>
+  <h2 id="color-functions-color-channel">Color Channel</h2>
+  <h3 id="color-functions-hue">hue</h3><blockquote>
 <p>Extracts the hue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hue(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3 id="color-channel-saturation">saturation</h3><blockquote>
+<h3 id="color-functions-saturation">saturation</h3><blockquote>
 <p>Extracts the saturation channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> <code>0-100</code></p>
 <p>Example: <code>saturation(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3 id="color-channel-lightness">lightness</h3><blockquote>
+<h3 id="color-functions-lightness">lightness</h3><blockquote>
 <p>Extracts the lightness channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> <code>0-100</code></p>
 <p>Example: <code>lightness(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3 id="color-channel-hsvhue">hsvhue</h3><blockquote>
+<h3 id="color-functions-hsvhue">hsvhue</h3><blockquote>
 <p>Extracts the hue channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hsvhue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3 id="color-channel-hsvsaturation">hsvsaturation</h3><blockquote>
+<h3 id="color-functions-hsvsaturation">hsvsaturation</h3><blockquote>
 <p>Extracts the saturation channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvsaturation(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3 id="color-channel-hsvvalue">hsvvalue</h3><blockquote>
+<h3 id="color-functions-hsvvalue">hsvvalue</h3><blockquote>
 <p>Extracts the value channel of a color object in the HSV color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvvalue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3 id="color-channel-red">red</h3><blockquote>
+<h3 id="color-functions-red">red</h3><blockquote>
 <p>Extracts the red channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> <code>0-255</code></p>
 <p>Example: <code>red(rgb(10, 20, 30))</code></p>
 <p>Output: <code>10</code></p>
-<h3 id="color-channel-green">green</h3><blockquote>
+<h3 id="color-functions-green">green</h3><blockquote>
 <p>Extracts the green channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> 0-255</p>
 <p>Example: <code>green(rgb(10, 20, 30))</code></p>
 <p>Output: <code>20</code></p>
-<h3 id="color-channel-blue">blue</h3><blockquote>
+<h3 id="color-functions-blue">blue</h3><blockquote>
 <p>Extracts the blue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>integer</code> 0-255</p>
 <p>Example: <code>blue(rgb(10, 20, 30))</code></p>
 <p>Output: <code>30</code></p>
-<h3 id="color-channel-alpha">alpha</h3><blockquote>
+<h3 id="color-functions-alpha">alpha</h3><blockquote>
 <p>Extracts the alpha channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
 <p>Returns: <code>float</code> <code>0-1</code></p>
 <p>Example: <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
 <p>Output: <code>0.5</code></p>
-<h3 id="color-channel-luma">luma</h3><blockquote>
+<h3 id="color-functions-luma">luma</h3><blockquote>
 <p>Calculates the <a href="http://en.wikipedia.org/wiki/Luma_%28video%29">luma</a> (perceptual brightness) of a color object.</p>
 </blockquote>
 <p>Uses <strong>SMPTE C / Rec. 709</strong> coefficients, as recommended in <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>. This calculation is also used in the contrast function.</p>
@@ -961,11 +970,10 @@ Parameters:</p>
 </div>
 </div>
 
-
 <div class="docs-section">
-  <h1 id="color-operations">Color Operations</h1>
+  <h2 id="color-functions-color-operations">Color Operations</h2>
   <p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&#39;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
-<h3 id="color-operations-saturate">saturate</h3><blockquote>
+<h3 id="color-functions-saturate">saturate</h3><blockquote>
 <p>Increase the saturation of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -977,7 +985,7 @@ Parameters:</p>
 <p>Example: <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80ff00 // hsl(90, 100%, 50%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#80ff00:#000000/text:80ff00"></p>
-<h3 id="color-operations-desaturate">desaturate</h3><blockquote>
+<h3 id="color-functions-desaturate">desaturate</h3><blockquote>
 <p>Decrease the saturation of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -989,7 +997,7 @@ Parameters:</p>
 <p>Example: <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80cc33 // hsl(90, 60%, 50%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#80cc33:#000000/text:80cc33"></p>
-<h3 id="color-operations-lighten">lighten</h3><blockquote>
+<h3 id="color-functions-lighten">lighten</h3><blockquote>
 <p>Increase the lightness of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1001,7 +1009,7 @@ Parameters:</p>
 <p>Example: <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#b3f075 // hsl(90, 80%, 70%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#b3f075:#000000/text:b3f075"></p>
-<h3 id="color-operations-darken">darken</h3><blockquote>
+<h3 id="color-functions-darken">darken</h3><blockquote>
 <p>Decrease the lightness of a color by an absolute amount.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1013,7 +1021,7 @@ Parameters:</p>
 <p>Example: <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#4d8a0f // hsl(90, 80%, 30%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#4d8a0f:#000000/text:4d8a0f"></p>
-<h3 id="color-operations-fadein">fadein</h3><blockquote>
+<h3 id="color-functions-fadein">fadein</h3><blockquote>
 <p>Decrease the transparency (or increase the opacity) of a color, making it more opaque.</p>
 </blockquote>
 <p>Has no effect on opaque colors. To fade in the other direction use <code>fadeout</code>.</p>
@@ -1025,7 +1033,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3 id="color-operations-fadeout">fadeout</h3><blockquote>
+<h3 id="color-functions-fadeout">fadeout</h3><blockquote>
 <p>Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use <code>fadein</code>.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1036,7 +1044,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3 id="color-operations-fade">fade</h3><blockquote>
+<h3 id="color-functions-fade">fade</h3><blockquote>
 <p>Set the absolute transparency of a color. Can be applied to colors whether they already have an opacity value or not.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1047,7 +1055,7 @@ Parameters:</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fade(hsl(90, 90%, 50%), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)</code></p>
-<h3 id="color-operations-spin">spin</h3><blockquote>
+<h3 id="color-functions-spin">spin</h3><blockquote>
 <p>Rotate the hue angle of a color in either direction.</p>
 </blockquote>
 <p>While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colors are passed through an RGB conversion, which doesn&#39;t retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don&#39;t do this:</p>
@@ -1073,7 +1081,7 @@ Parameters:</p>
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#f2a60d:#000000/text:f2a60d"></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#f20d59:#000000/text:f20d59"></p>
-<h3 id="color-operations-mix">mix</h3><blockquote>
+<h3 id="color-functions-mix">mix</h3><blockquote>
 <p>Mix two colors together in variable proportion. Opacity is included in the calculations.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1092,7 +1100,7 @@ Parameters:</p>
 <span class="lang-tag">rgba</span>(75, 25, 0, 0<span class="lang-class">.75</span>)
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"> + <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"> ➜ <img alt="Color 3" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
-<h3 id="color-operations-greyscale">greyscale</h3><blockquote>
+<h3 id="color-functions-greyscale">greyscale</h3><blockquote>
 <p>Remove all saturation from a color; the same as calling <code>desaturate(@color, 100%)</code>.</p>
 </blockquote>
 <p>Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <a href="#luma"><code>luma</code></a> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale(&#39;#0000ff&#39;)</code> will return the same value as <code>greyscale(&#39;#00ff00&#39;)</code>, though they appear quite different in brightness to the human eye.</p>
@@ -1109,7 +1117,7 @@ Parameters:</p>
 <p>Output: <code>#cacaca</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80f20d:#000000/text:80f20d"> ➜ <img alt="Color 2" data-src="holder.js/100x40/#cacaca:#000000/text:cacaca"></p>
 <p>This time the grey&#39;s lightness looks about the same as the green, though its value is actually higher.</p>
-<h3 id="color-operations-contrast">contrast</h3><blockquote>
+<h3 id="color-functions-contrast">contrast</h3><blockquote>
 <p>Choose which of two colors provides the greatest contrast with another.</p>
 </blockquote>
 <p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their <a href="#luma">luma</a> value, not their lightness.</p>
@@ -1146,13 +1154,12 @@ Parameters:</p>
 </div>
 </div>
 
-
 <div class="docs-section">
-  <h1 id="color-blending">Color Blending</h1>
+  <h2 id="color-functions-color-blending">Color Blending</h2>
   <blockquote>
 <p>These operations are <em>similar</em> (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks or GIMP, so you can use them to make your CSS colors match your images.</p>
 </blockquote>
-<h2 id="color-blending-multiply">multiply</h2><blockquote>
+<h2 id="color-functions-multiply">multiply</h2><blockquote>
 <p>Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1207,7 +1214,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
-<h2 id="color-blending-screen">screen</h2><blockquote>
+<h2 id="color-functions-screen">screen</h2><blockquote>
 <p>Do the opposite of <code>multiply</code>. The result is a brighter color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1262,7 +1269,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h2 id="color-blending-overlay">overlay</h2><blockquote>
+<h2 id="color-functions-overlay">overlay</h2><blockquote>
 <p>Combines the effects of both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1317,7 +1324,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
-<h2 id="color-blending-softlight">softlight</h2><blockquote>
+<h2 id="color-functions-softlight">softlight</h2><blockquote>
 <p>Similar to <code>overlay</code> but avoids pure black resulting in pure black, and pure white resulting in pure white.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1372,7 +1379,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
-<h2 id="color-blending-hardlight">hardlight</h2><blockquote>
+<h2 id="color-functions-hardlight">hardlight</h2><blockquote>
 <p>The same as <code>overlay</code> but with the color roles reversed.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1427,7 +1434,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"></p>
-<h2 id="color-blending-difference">difference</h2><blockquote>
+<h2 id="color-functions-difference">difference</h2><blockquote>
 <p>Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1482,7 +1489,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h2 id="color-blending-exclusion">exclusion</h2><blockquote>
+<h2 id="color-functions-exclusion">exclusion</h2><blockquote>
 <p>A similar effect to <code>difference</code> with lower contrast.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1537,7 +1544,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h2 id="color-blending-average">average</h2><blockquote>
+<h2 id="color-functions-average">average</h2><blockquote>
 <p>Compute the average of two colors on a per-channel (RGB) basis.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1592,7 +1599,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#803380:#ffffff/text:803380"></p>
-<h2 id="color-blending-negation">negation</h2><blockquote>
+<h2 id="color-functions-negation">negation</h2><blockquote>
 <p>Do the opposite effect to <code>difference</code>.</p>
 </blockquote>
 <p>The result is a brighter color. <strong>Note</strong>: The <em>opposite</em> effect doesn&#39;t mean the <em>inverted</em> effect as resulting from an <em>addition</em> operation.</p>
@@ -1652,6 +1659,8 @@ Parameters:</p>
   <a href="https://github.com/less/less-docs/tree/master/content/functions/color-blending.md">Improve this section.</a>
 </div>
 </div>
+
+
 
         </div>
       </div>

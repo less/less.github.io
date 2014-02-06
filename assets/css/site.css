@@ -563,11 +563,11 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 38px;
 }
 h2,
 .h2 {
-  font-size: 30px;
+  font-size: 31px;
 }
 h3,
 .h3 {
@@ -6205,25 +6205,6 @@ body {
   color: #555;
 }
 /*
- * Docs sections
- *
- * Content blocks for each component or feature.
- */
-/* Space things out */
-.docs-section + .docs-section {
-  padding-top: 10px;
-}
-/* Janky fix for preventing navbar from overlapping */
-h1[id] {
-  padding-top: 80px;
-  margin-top: -45px;
-}
-h2[id],
-h3[id] {
-  padding-top: 80px;
-  margin-top: -60px;
-}
-/*
  * Grid examples
  *
  * Highlight the grid columns within the docs so folks can see their padding,
@@ -7112,6 +7093,18 @@ h3 {
 }
 body {
   padding-top: 60px;
+}
+.docs-section + .docs-section {
+  padding-top: 40px;
+}
+h1[id] {
+  padding-top: 80px;
+  margin-top: -45px;
+}
+h2[id],
+h3[id] {
+  padding-top: 80px;
+  margin-top: -60px;
 }
 /**
  * Neutralize background color to allow our

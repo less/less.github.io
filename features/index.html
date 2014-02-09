@@ -29,9 +29,7 @@
 
   </head>
   <body>
-    <a class="sr-only" href="#content">Skip to main content</a>
-
-    <!-- Docs master nav -->
+    
     <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -78,7 +76,7 @@
 </header>
 
 
-    <!-- Header -->
+    
     <div class="docs-header" id="content">
       <div class="container">
         <h1>Language Features</h1>
@@ -87,7 +85,7 @@
       </div>
     </div>
 
-    <!-- Callout for the old docs link -->
+    
     <div class="banner">
   <div class="container">
     less v1.6.2 has been released -
@@ -98,7 +96,7 @@
 </div>
 
 
-    <!-- Content -->
+    
     <div class="container docs-container">
       <div class="row">
         <div class="col-md-3">
@@ -439,7 +437,7 @@ This means that this usage is typically limited to when you an inject a variable
       <blockquote>
 <p>Extend is a Less Pseudo-Class which merges the selector it is put on with ones that match what it references.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <pre><code class="lang-less"><span class="lang-tag">nav</span> <span class="lang-tag">ul</span> {
   &amp;<span class="lang-value">:extend(.inline);</span>
   <span class="lang-attribute">background</span><span class="lang-value">: blue;</span>
@@ -1281,7 +1279,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <h2 id="import-options-reference">reference</h2><blockquote>
 <p>Use <code>@import (reference)</code> to import external files, but without adding the imported styles to the compiled output unless referenced.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (reference) &quot;foo.less&quot;;</code></p>
 <p><code>reference</code> is one of the most powerful features in the Less language. Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as <a href="#mixins-feature">mixins</a> or <a href="#extend-feature">extended</a>.</p>
 <p>Additionally, <strong><code>reference</code></strong> produces different results depending on which method was used (mixin or extend):</p>
@@ -1296,21 +1294,21 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <h2 id="import-options-inline">inline</h2><blockquote>
 <p>Use <code>@import (inline)</code> to include external files, but not process them.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (inline) &quot;not-less-compatible.css&quot;;</code></p>
 <p>You will use this when a CSS file may not be less compatible; this is because although less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
 <p>So you can use this to include the file in the output so that all CSS will be in one file.</p>
 <h2 id="import-options-less">less</h2><blockquote>
 <p>Use <code>@import (less)</code> to treat imported files as Less, regardless of file extension.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@<span class="lang-keyword">import</span> (less) <span class="lang-string">"foo.css"</span>;</span>
 </code></pre>
 <h2 id="import-options-css">css</h2><blockquote>
 <p>Use <code>@import (css)</code> to treat imported files as regular CSS, regardless of file extension. This means the import statement will be left as it is.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@<span class="lang-keyword">import</span> (css) <span class="lang-string">"foo.less"</span>;</span>
 </code></pre>
@@ -1320,7 +1318,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <h2 id="import-options-once">once</h2><blockquote>
 <p>The default behavior of <code>@import</code> statements. It means the file is imported only once and subsequent import statements for that file will be ignored.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>This is the default behavior of <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@<span class="lang-keyword">import</span> (once) <span class="lang-string">"foo.less"</span>;</span>
@@ -1329,7 +1327,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <h2 id="import-options-multiple">multiple</h2><blockquote>
 <p>Use <code>@import (multiple)</code> to allow importing of multiple files with the same name. This is the opposite behavior to once.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-comment">// file: foo.less</span>
 <span class="lang-class">.a</span> {
@@ -1516,7 +1514,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>A generic example of using a recursive loop to generate CSS grid classes:</p>
 <pre><code class="lang-less"><span class="lang-class">.generate-columns</span>(4);
 
-<span class="lang-class">.generate-columns</span>(<span class="lang-at_rule">@n, @i:<span class="lang-preprocessor"> 1</span>)<span class="lang-preprocessor"> when</span> (@i &lt;= @n) {</span>
+<span class="lang-class">.generate-columns</span>(<span class="lang-at_rule">@n, @i:<span class="lang-preprocessor"> 1</span>)<span class="lang-preprocessor"> when</span> (@i =&lt; @n) {</span>
   <span class="lang-class">.column-</span><span class="lang-at_rule">@{</span><span class="lang-tag">i</span>} {
     <span class="lang-attribute">width</span><span class="lang-value">: (@i * <span class="lang-number">100</span>% / @n);</span>
   }
@@ -1553,7 +1551,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Combine properties</p>
 </blockquote>
 <p>The <code>merge</code> feature allows for aggregating values from multiple properties into a comma separated list under a single property. <code>merge</code> is useful for properties such as background and transform.</p>
-<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-class">.mixin</span>() {
   <span class="lang-attribute">box-shadow</span>+<span class="lang-value">: inset <span class="lang-number">0</span> <span class="lang-number">0</span> <span class="lang-number">10</span>px <span class="lang-hexcolor">#555</span>;</span>
@@ -1582,7 +1580,31 @@ but if we call it with <em>two</em> arguments, we will get the second definition
       <h1 id="parent-selectors-feature">Parent Selectors</h1>
     </div>
     <div class="section-content">
-      
+      <blockquote>
+<p>Changing selector order</p>
+</blockquote>
+<p>When using <strong>Nested rules</strong>, it can be very useful to prepend a selector to the inherited (parent) scope.  This feature is known as &quot;Parent Selectors&quot;, and can be done by putting the parent selector before an ampersand <code>&amp;</code>.</p>
+<p>For example, when using Modernizr, you might want to specify different rules based on supported features:</p>
+<pre><code class="lang-css">.header {
+  .menu {
+    border-radius: 5px;
+    .no-borderradius &amp; {
+      background-image: url('images/button-background.png');
+    }
+  }
+}
+</code></pre>
+<p>The selector <code>.no-borderradius &amp;</code> will be combined with the inherited scope, <code>.header .menu</code>, to form the selector <code>.no-borderradius .header .menu</code>.</p>
+<pre><code class="lang-css"><span class="lang-class">.header</span> <span class="lang-class">.menu</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">border-radius</span>:<span class="lang-value"> <span class="lang-number">5</span>px</span></span>;
+<span class="lang-rule">}</span></span>
+<span class="lang-class">.no-borderradius</span> <span class="lang-class">.header</span> <span class="lang-class">.menu</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">background-image</span>:<span class="lang-value"> <span class="lang-function">url(<span class="lang-string">'images/button-background.png'</span>)</span></span></span>;
+<span class="lang-rule">}</span></span>
+</code></pre>
+<div class="source-link">
+  <a href="https://github.com/less/less-docs/tree/master/content/features/parent-selectors.md">Improve this section.</a>
+</div>
     </div>
   </div>
 
@@ -1590,7 +1612,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
       </div>
     </div>
 
-    <!-- Footer -->
+    
     <footer class="bs-footer" role="contentinfo">
   <div class="container">
     <div class="bs-social">
@@ -1621,7 +1643,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </footer>
 
 
-    <!-- JavaScript and analytics only. -->
+    
     <!-- Core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -1632,7 +1654,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 
 <script src="../assets/js/application.js"></script>
-
 
 
 

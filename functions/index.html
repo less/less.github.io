@@ -29,9 +29,7 @@
 
   </head>
   <body>
-    <a class="sr-only" href="#content">Skip to main content</a>
-
-    <!-- Docs master nav -->
+    
     <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -78,7 +76,7 @@
 </header>
 
 
-    <!-- Header -->
+    
     <div class="docs-header" id="content">
       <div class="container">
         <h1>Functions</h1>
@@ -87,7 +85,7 @@
       </div>
     </div>
 
-    <!-- Callout for the old docs link -->
+    
     <div class="banner">
   <div class="container">
     less v1.6.2 has been released -
@@ -98,7 +96,7 @@
 </div>
 
 
-    <!-- Content -->
+    
     <div class="container docs-container">
       <div class="row">
         <div class="col-md-3">
@@ -110,8 +108,7 @@
         <div class="col-md-9" role="main">
           
 
-<!-- Functions
-================================================== -->
+
 
 <div class="docs-section">
   <div class="page-header">
@@ -121,7 +118,7 @@
   
 </div>
 
-<!-- String -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="string-functions">String Functions</h1>
@@ -188,7 +185,7 @@ format-s-upper<span class="lang-value">: <span class="lang-string">"repetitions:
 </div>
 </div>
 
-<!-- Misc -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="misc-functions">Misc Functions</h1>
@@ -363,7 +360,7 @@ div-<span class="lang-number">1</span> {
 </div>
 </div>
 
-<!-- List -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="list-functions">List Functions</h1>
@@ -401,7 +398,7 @@ value<span class="lang-value">: extract(@list, <span class="lang-number">3</span
 </div>
 </div>
 
-<!-- Math -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="math-functions">Math Functions</h1>
@@ -631,7 +628,7 @@ NaN%
 </div>
 </div>
 
-<!-- Type -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="type-functions">Type Functions</h1>
@@ -783,7 +780,7 @@ NaN%
 
 
 
-<!-- Color -->
+
 <div class="docs-section">
   <div class="page-header">
     <h1 id="color-functions">Color Functions</h1>
@@ -1103,7 +1100,7 @@ Parameters:</p>
 <h3 id="color-functions-greyscale">greyscale</h3><blockquote>
 <p>Remove all saturation from a color; the same as calling <code>desaturate(@color, 100%)</code>.</p>
 </blockquote>
-<p>Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <a href="#luma"><code>luma</code></a> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale(&#39;#0000ff&#39;)</code> will return the same value as <code>greyscale(&#39;#00ff00&#39;)</code>, though they appear quite different in brightness to the human eye.</p>
+<p>Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <a href="#color-functions-luma"><code>luma</code></a> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale(&#39;#0000ff&#39;)</code> will return the same value as <code>greyscale(&#39;#00ff00&#39;)</code>, though they appear quite different in brightness to the human eye.</p>
 <p>Parameters: <code>color</code>: A color object.</p>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>greyscale(hsl(90, 90%, 50%))</code></p>
@@ -1120,7 +1117,7 @@ Parameters:</p>
 <h3 id="color-functions-contrast">contrast</h3><blockquote>
 <p>Choose which of two colors provides the greatest contrast with another.</p>
 </blockquote>
-<p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their <a href="#luma">luma</a> value, not their lightness.</p>
+<p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their <a href="#color-functions-luma">luma</a> value, not their lightness.</p>
 <p>The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark automatically, which means you can&#39;t use this function to select the <em>least</em> contrasting color by reversing the order.</p>
 <p>Parameters:</p>
 <ul>
@@ -1159,7 +1156,7 @@ Parameters:</p>
   <blockquote>
 <p>These operations are <em>similar</em> (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks or GIMP, so you can use them to make your CSS colors match your images.</p>
 </blockquote>
-<h2 id="color-functions-multiply">multiply</h2><blockquote>
+<h3 id="color-functions-multiply">multiply</h3><blockquote>
 <p>Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1214,7 +1211,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
-<h2 id="color-functions-screen">screen</h2><blockquote>
+<h3 id="color-functions-screen">screen</h3><blockquote>
 <p>Do the opposite of <code>multiply</code>. The result is a brighter color.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1269,7 +1266,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h2 id="color-functions-overlay">overlay</h2><blockquote>
+<h3 id="color-functions-overlay">overlay</h3><blockquote>
 <p>Combines the effects of both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1324,7 +1321,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
-<h2 id="color-functions-softlight">softlight</h2><blockquote>
+<h3 id="color-functions-softlight">softlight</h3><blockquote>
 <p>Similar to <code>overlay</code> but avoids pure black resulting in pure black, and pure white resulting in pure white.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1379,7 +1376,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
-<h2 id="color-functions-hardlight">hardlight</h2><blockquote>
+<h3 id="color-functions-hardlight">hardlight</h3><blockquote>
 <p>The same as <code>overlay</code> but with the color roles reversed.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1434,7 +1431,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"></p>
-<h2 id="color-functions-difference">difference</h2><blockquote>
+<h3 id="color-functions-difference">difference</h3><blockquote>
 <p>Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1489,7 +1486,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h2 id="color-functions-exclusion">exclusion</h2><blockquote>
+<h3 id="color-functions-exclusion">exclusion</h3><blockquote>
 <p>A similar effect to <code>difference</code> with lower contrast.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1544,7 +1541,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h2 id="color-functions-average">average</h2><blockquote>
+<h3 id="color-functions-average">average</h3><blockquote>
 <p>Compute the average of two colors on a per-channel (RGB) basis.</p>
 </blockquote>
 <p>Parameters:</p>
@@ -1599,7 +1596,7 @@ Parameters:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#803380:#ffffff/text:803380"></p>
-<h2 id="color-functions-negation">negation</h2><blockquote>
+<h3 id="color-functions-negation">negation</h3><blockquote>
 <p>Do the opposite effect to <code>difference</code>.</p>
 </blockquote>
 <p>The result is a brighter color. <strong>Note</strong>: The <em>opposite</em> effect doesn&#39;t mean the <em>inverted</em> effect as resulting from an <em>addition</em> operation.</p>
@@ -1660,13 +1657,11 @@ Parameters:</p>
 </div>
 </div>
 
-
-
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
+    
     <footer class="bs-footer" role="contentinfo">
   <div class="container">
     <div class="bs-social">
@@ -1697,7 +1692,7 @@ Parameters:</p>
 </footer>
 
 
-    <!-- JavaScript and analytics only. -->
+    
     <!-- Core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -1708,7 +1703,6 @@ Parameters:</p>
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 
 <script src="../assets/js/application.js"></script>
-
 
 
 

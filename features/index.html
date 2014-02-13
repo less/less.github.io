@@ -88,7 +88,7 @@
     
     <div class="banner">
   <div class="container">
-    less v1.6.2 has been released -
+    less v1.6.3 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -239,7 +239,6 @@
 }
 </code></pre>
 <h3 id="features-overview-feature-scope">Scope</h3><p>Scope in Less is very similar to that of programming languages. Variables and mixins are first looked for locally, and if they aren&#39;t found, the compiler will look in the parent scope, and so on.</p>
-<p>Note that the order of declaration <strong>does</strong> matter.</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@var:<span class="lang-preprocessor"> red</span>;</span>
 
 <span class="lang-id">#page</span> {
@@ -249,6 +248,20 @@
   }
 }
 </code></pre>
+<p>Note that the order of declarations does not matter so the following Less code is identical to the previous example:</p>
+<pre><code class="lang-less"><span class="lang-at_rule">@var:<span class="lang-preprocessor"> red</span>;</span>
+
+<span class="lang-id">#page</span> {
+  <span class="lang-id">#header</span> {
+    <span class="lang-attribute">color</span><span class="lang-value">: @var;</span> <span class="lang-comment">// white</span>
+  }
+  <span class="lang-at_rule">@var:<span class="lang-preprocessor"> white</span>;</span>
+}
+</code></pre>
+<p><strong>See also</strong></p>
+<ul>
+<li><a href="#variables-feature-lazy-loading">Lazy Loading</a></li>
+</ul>
 <h3 id="features-overview-feature-comments">Comments</h3><p>Both block-style and inline comments may be used:</p>
 <pre><code class="lang-less"><span class="lang-comment">/* One hell of a block
 style comment! */</span>
@@ -1269,10 +1282,10 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Syntax: <code>@import (keyword) &quot;filename&quot;;</code></p>
 <p>The following import directives have been implemented:</p>
 <ul>
-<li><code>reference</code>: use a less file but do not output it</li>
+<li><code>reference</code>: use a Less file but do not output it</li>
 <li><code>inline</code>: include the source file in the output but do not process it</li>
-<li><code>less</code>: treat the file as a less file, no matter what the file extension</li>
-<li><code>css</code>: treat the file as a css file, no matter what the file extension</li>
+<li><code>less</code>: treat the file as a Less file, no matter what the file extension</li>
+<li><code>css</code>: treat the file as a CSS file, no matter what the file extension</li>
 <li><code>once</code>: only include the file once (this is default behavior)</li>
 <li><code>multiple</code>: include the file multiple times</li>
 </ul>
@@ -1296,7 +1309,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (inline) &quot;not-less-compatible.css&quot;;</code></p>
-<p>You will use this when a CSS file may not be less compatible; this is because although less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
+<p>You will use this when a CSS file may not be Less compatible; this is because although Less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
 <p>So you can use this to include the file in the output so that all CSS will be in one file.</p>
 <h2 id="import-options-less">less</h2><blockquote>
 <p>Use <code>@import (less)</code> to treat imported files as Less, regardless of file extension.</p>
@@ -1629,7 +1642,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.6.2</li>
+      <li>Currently v1.6.3</li>
       
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

@@ -248,7 +248,7 @@
   }
 }
 </code></pre>
-<p>Note that the order of declarations does not matter so the following Less code is identical to the previous example:</p>
+<p>Variables and mixins do not have to be declared before being used so the following Less code is identical to the previous example:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@var:<span class="lang-preprocessor"> red</span>;</span>
 
 <span class="lang-id">#page</span> {
@@ -270,9 +270,9 @@ style comment! */</span>
 <span class="lang-comment">// Get in line!</span>
 <span class="lang-at_rule">@var:<span class="lang-preprocessor"> white</span>;</span>
 </code></pre>
-<h3 id="features-overview-feature-importing">Importing</h3><p>Importing works pretty much as expected. You can import a <code>.less</code> file, and all the variables in it will be available. If the file is a <code>.less</code>, the extension is optional:</p>
-<pre><code class="lang-css"><span class="lang-at_rule">@<span class="lang-keyword">import</span> <span class="lang-string">"library"</span></span>;
-<span class="lang-at_rule">@<span class="lang-keyword">import</span> <span class="lang-string">"typo.css"</span></span>;
+<h3 id="features-overview-feature-importing">Importing</h3><p>Importing works pretty much as expected. You can import a <code>.less</code> file, and all the variables in it will be available. The extension is optionally specified for <code>.less</code> files.</p>
+<pre><code class="lang-css">@import &quot;library&quot;; // library.less
+@import &quot;typo.css&quot;;
 </code></pre>
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/features-overview.md">Improve this section.</a>
@@ -348,7 +348,7 @@ style comment! */</span>
 <h3 id="variables-feature-import-statements">Import statements</h3><p>Version: 1.4.0</p>
 <p>Syntax: <code>@import &quot;@{themes}/tidal-wave.less&quot;;</code></p>
 <p>Note that currently, only variables which have been declared in the root or current scope will be considered and that only the current file and calling files will be considered when looking for a variable.
-This means that this usage is typically limited to when you an inject a variable into the compile process or define a variable at the beginning of your root file.</p>
+This means that this usage is typically limited to when you inject a variable into the compile process or define a variable at the beginning of your root file.</p>
 <p>When you are importing a css file and not using the inline option (e.g. the import statement will be kept intact) then the above does not apply.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-comment">// Variables</span>
@@ -777,16 +777,16 @@ This means that this usage is typically limited to when you an inject a variable
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-class">.alert-info</span>,
 <span class="lang-class">.widget</span> {
-  <span class="lang-comment">// declarations</span>
+  <span class="lang-comment">/* declarations */</span>
 }
 
 <span class="lang-class">.alert</span><span class="lang-value">:extend(.alert-info, .widget) {}</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.alert</span>,
+<pre><code class="lang-css"><span class="lang-class">.alert-info</span>,
 <span class="lang-class">.widget</span>,
 <span class="lang-class">.alert</span>,
-<span class="lang-class">.alert-info</span> <span class="lang-rules">{
+<span class="lang-class">.alert</span> <span class="lang-rules">{
   <span class="lang-comment">/* declarations */</span>
 <span class="lang-rule">}</span></span>
 </code></pre>
@@ -897,11 +897,22 @@ This means that this usage is typically limited to when you an inject a variable
   <span class="lang-id">#b</span>();
 }
 </code></pre>
-<p>When you call the mixin, the parenthesis are optional.</p>
+<p>which results in:</p>
+<pre><code class="lang-css"><span class="lang-class">.a</span>, <span class="lang-id">#b</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
+<span class="lang-rule">}</span></span>
+<span class="lang-class">.mixin-class</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
+<span class="lang-rule">}</span></span>
+<span class="lang-class">.mixin-id</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
+<span class="lang-rule">}</span></span>
+</code></pre>
+<p>Notice that when you call the mixin, the parenthesis are optional.</p>
 <pre><code class="lang-less"><span class="lang-class">.a</span>();   <span class="lang-comment">//these lines do the same thing</span>
 <span class="lang-class">.a</span>;
 </code></pre>
-<h2 id="mixins-feature-not-outputting-the-mixin">Not outputting the mixin</h2><p>If you want to create a mixin but you do not want that mixin to be output, you can put parenthesis around it.</p>
+<h2 id="mixins-feature-not-outputting-the-mixin">Not outputting the mixin</h2><p>If you want to create a mixin but you do not want that mixin to be output, you can put parenthesis after it.</p>
 <pre><code class="lang-less"><span class="lang-class">.my-mixin</span> {
   <span class="lang-attribute">color</span><span class="lang-value">: black;</span>
 }
@@ -1465,6 +1476,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
       <blockquote>
 <p>&quot;if&quot;&#39;s around selectors</p>
 </blockquote>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Guards can also be applied to css selectors, which is syntactic sugar for declaring the mixin and then calling it immediately.</p>
 <p>For instance, before 1.5.0 you would have had to do this.</p>
 <pre><code class="lang-less"><span class="lang-class">.my-optional-style</span>() when (<span class="lang-at_rule">@my-option =<span class="lang-preprocessor"> true</span>) {</span>

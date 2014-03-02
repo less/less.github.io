@@ -13,7 +13,7 @@
 </title>
 
 <!-- Main styles -->
-<link href="../assets/css/site.css" rel="stylesheet">
+<link href="../public/css/index.css" rel="stylesheet">
 
 <!-- Webfonts -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
 
   </head>
   <body>
@@ -39,7 +39,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../#" class="navbar-brand" alt="Less"></a>
+      <a href="../#" class="navbar-brand" alt="Less">
+        <img src="../public/img/logo.png">
+      </a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -88,7 +90,7 @@
     
     <div class="banner">
   <div class="container">
-    less v1.6.3 has been released -
+    less v1.7.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -102,7 +104,7 @@
         <div class="col-md-3">
           <div class="sidebar hidden-print" role="complementary">
             <div id="toc">
-            <ul class="nav sidenav"><li><a href="#features-overview-feature">Overview</a><ul class="nav"><li><a href="#features-overview-feature-variables">Variables</a></li><li><a href="#features-overview-feature-mixins">Mixins</a></li><li><a href="#features-overview-feature-nested-rules">Nested rules</a></li><li><a href="#features-overview-feature-operations">Operations</a></li><li><a href="#features-overview-feature-functions">Functions</a></li><li><a href="#features-overview-feature-namespaces-amp-accessors">Namespaces & Accessors</a></li><li><a href="#features-overview-feature-scope">Scope</a></li><li><a href="#features-overview-feature-comments">Comments</a></li><li><a href="#features-overview-feature-importing">Importing</a></li></ul></li><li><a href="#variables-feature">Variables</a><ul class="nav"><li><a href="#variables-feature-overview">Overview</a></li><li><a href="#variables-feature-variable-interpolation">Variable Interpolation</a></li><li><a href="#variables-feature-selectors">Selectors</a></li><li><a href="#variables-feature-urls">URLs</a></li><li><a href="#variables-feature-import-statements">Import statements</a></li><li><a href="#variables-feature-properties">Properties</a></li><li><a href="#variables-feature-variable-names">Variable Names</a></li><li><a href="#variables-feature-lazy-loading">Lazy Loading</a></li><li><a href="#variables-feature-default-variables">default variables</a></li></ul></li><li><a href="#extend-feature">Extend</a><ul class="nav"><li><a href="#extend-feature-extend-syntax">Extend syntax</a></li><li><a href="#extend-feature-extend-attached-to-selector">Extend attached to selector</a></li><li><a href="#extend-feature-extend-inside-ruleset">Extend inside ruleset</a></li><li><a href="#extend-feature-extending-nested-selectors">Extending nested Selectors</a></li><li><a href="#extend-feature-exact-matching-with-extend">Exact Matching with Extend</a></li><li><a href="#extend-feature-nth-expression">nth expression</a></li><li><a href="#extend-feature-extend-quotallquot">Extend "all"</a></li><li><a href="#extend-feature-selector-interpolation-with-extend">Selector Interpolation with Extend</a></li><li><a href="#extend-feature-scoping-extend-inside-media">Scoping / Extend Inside @media</a></li><li><a href="#extend-feature-duplication-detection">Duplication Detection</a></li><li><a href="#extend-feature-use-cases-for-extend">Use Cases for Extend</a></li><li><a href="#extend-feature-classic-use-case">Classic Use Case</a></li><li><a href="#extend-feature-reducing-css-size">Reducing CSS Size</a></li><li><a href="#extend-feature-combining-styles-a-more-advanced-mixin">Combining Styles / a more advanced mixin</a></li></ul></li><li><a href="#mixins-feature">Mixins</a><ul class="nav"><li><a href="#mixins-feature-not-outputting-the-mixin">Not outputting the mixin</a></li><li><a href="#mixins-feature-selectors-in-mixins">Selectors in mixins</a></li><li><a href="#mixins-feature-namespaces">Namespaces</a></li><li><a href="#mixins-feature-the-codeimportantcode-keyword">The !important keyword</a></li></ul></li><li><a href="#mixins-parametric-feature">Parametric Mixins</a><ul class="nav"><li><a href="#mixins-parametric-feature-mixins-with-multiple-parameters">Mixins With Multiple Parameters</a></li><li><a href="#mixins-parametric-feature-named-parameters">Named Parameters</a></li><li><a href="#mixins-parametric-feature-the-codeargumentscode-variable">The @arguments variable</a></li><li><a href="#mixins-parametric-feature-advanced-arguments-and-the-coderestcode-variable">Advanced arguments and the @rest variable</a></li><li><a href="#mixins-parametric-feature-pattern-matching">Pattern-matching</a></li></ul></li><li><a href="#mixins-as-functions-feature">Mixins as Functions</a></li><li><a href="#import-directives-feature">Import Directives</a><ul class="nav"><li><a href="#import-directives-feature-file-extensions">File extensions</a></li></ul></li><li><a href="#import-options">Import Options</a><ul class="nav"><li><a href="#import-options-reference">reference</a></li><li><a href="#import-options-reference-example">reference example</a></li><li><a href="#import-options-inline">inline</a></li><li><a href="#import-options-less">less</a></li><li><a href="#import-options-css">css</a></li><li><a href="#import-options-once">once</a></li><li><a href="#import-options-multiple">multiple</a></li></ul></li><li><a href="#mixin-guards-feature">Mixin Guards</a><ul class="nav"><li><a href="#mixin-guards-feature-guard-comparison-operators">Guard comparison operators</a></li><li><a href="#mixin-guards-feature-type-checking-functions">Type checking functions</a></li><li><a href="#mixin-guards-feature-conditional-mixins">Conditional mixins</a></li></ul></li><li><a href="#css-guards-feature">CSS Guards</a></li><li><a href="#loops-feature">Loops</a></li><li><a href="#merge-feature">Merge</a></li><li><a href="#parent-selectors-feature">Parent Selectors</a></li></ul></div>
+            <ul class="nav sidenav"><li><a href="#features-overview-feature">Overview</a><ul class="nav"><li><a href="#features-overview-feature-variables">Variables</a></li><li><a href="#features-overview-feature-mixins">Mixins</a></li><li><a href="#features-overview-feature-nested-rules">Nested rules</a></li><li><a href="#features-overview-feature-operations">Operations</a></li><li><a href="#features-overview-feature-functions">Functions</a></li><li><a href="#features-overview-feature-namespaces-amp-accessors">Namespaces & Accessors</a></li><li><a href="#features-overview-feature-scope">Scope</a></li><li><a href="#features-overview-feature-comments">Comments</a></li><li><a href="#features-overview-feature-importing">Importing</a></li></ul></li><li><a href="#variables-feature">Variables</a><ul class="nav"><li><a href="#variables-feature-overview">Overview</a></li><li><a href="#variables-feature-variable-interpolation">Variable Interpolation</a></li><li><a href="#variables-feature-selectors">Selectors</a></li><li><a href="#variables-feature-urls">URLs</a></li><li><a href="#variables-feature-import-statements">Import statements</a></li><li><a href="#variables-feature-properties">Properties</a></li><li><a href="#variables-feature-variable-names">Variable Names</a></li><li><a href="#variables-feature-lazy-loading">Lazy Loading</a></li><li><a href="#variables-feature-default-variables">default variables</a></li></ul></li><li><a href="#extend-feature">Extend</a><ul class="nav"><li><a href="#extend-feature-extend-syntax">Extend syntax</a></li><li><a href="#extend-feature-extend-attached-to-selector">Extend attached to selector</a></li><li><a href="#extend-feature-extend-inside-ruleset">Extend inside ruleset</a></li><li><a href="#extend-feature-extending-nested-selectors">Extending nested Selectors</a></li><li><a href="#extend-feature-exact-matching-with-extend">Exact Matching with Extend</a></li><li><a href="#extend-feature-nth-expression">nth expression</a></li><li><a href="#extend-feature-extend-quotallquot">Extend "all"</a></li><li><a href="#extend-feature-selector-interpolation-with-extend">Selector Interpolation with Extend</a></li><li><a href="#extend-feature-scoping-extend-inside-media">Scoping / Extend Inside @media</a></li><li><a href="#extend-feature-duplication-detection">Duplication Detection</a></li><li><a href="#extend-feature-use-cases-for-extend">Use Cases for Extend</a></li><li><a href="#extend-feature-classic-use-case">Classic Use Case</a></li><li><a href="#extend-feature-reducing-css-size">Reducing CSS Size</a></li><li><a href="#extend-feature-combining-styles-a-more-advanced-mixin">Combining Styles / a more advanced mixin</a></li></ul></li><li><a href="#mixins-feature">Mixins</a><ul class="nav"><li><a href="#mixins-feature-not-outputting-the-mixin">Not outputting the mixin</a></li><li><a href="#mixins-feature-selectors-in-mixins">Selectors in mixins</a></li><li><a href="#mixins-feature-namespaces">Namespaces</a></li><li><a href="#mixins-feature-the-codeimportantcode-keyword">The !important keyword</a></li></ul></li><li><a href="#mixins-parametric-feature">Parametric Mixins</a><ul class="nav"><li><a href="#mixins-parametric-feature-mixins-with-multiple-parameters">Mixins With Multiple Parameters</a></li><li><a href="#mixins-parametric-feature-named-parameters">Named Parameters</a></li><li><a href="#mixins-parametric-feature-the-codeargumentscode-variable">The @arguments variable</a></li><li><a href="#mixins-parametric-feature-advanced-arguments-and-the-coderestcode-variable">Advanced arguments and the @rest variable</a></li><li><a href="#mixins-parametric-feature-pattern-matching">Pattern-matching</a></li></ul></li><li><a href="#mixins-as-functions-feature">Mixins as Functions</a></li><li><a href="#import-directives-feature">Import Directives</a><ul class="nav"><li><a href="#import-directives-feature-file-extensions">File extensions</a></li></ul></li><li><a href="#import-options">Import Options</a><ul class="nav"><li><a href="#import-options-reference">reference</a></li><li><a href="#import-options-reference-example">reference example</a></li><li><a href="#import-options-inline">inline</a></li><li><a href="#import-options-less">less</a></li><li><a href="#import-options-css">css</a></li><li><a href="#import-options-once">once</a></li><li><a href="#import-options-multiple">multiple</a></li></ul></li><li><a href="#mixin-guards-feature">Mixin Guards</a><ul class="nav"><li><a href="#mixin-guards-feature-guard-comparison-operators">Guard comparison operators</a></li><li><a href="#mixin-guards-feature-type-checking-functions">Type checking functions</a></li><li><a href="#mixin-guards-feature-conditional-mixins">Conditional mixins</a></li></ul></li><li><a href="#css-guards-feature">CSS Guards</a></li><li><a href="#loops-feature">Loops</a></li><li><a href="#merge-feature">Merge</a></li><li><a href="#parent-selectors-feature">Parent Selectors</a><ul class="nav"><li><a href="#parent-selectors-feature-multiple-codeampcode">Multiple &</a></li><li><a href="#parent-selectors-feature-changing-selector-order">Changing selector order</a></li><li><a href="#parent-selectors-feature-combinatorial-explosion">Combinatorial explosion</a></li></ul></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -127,16 +129,16 @@
 }
 </code></pre>
 <p>Outputs:</p>
-<pre><code class="lang-css"><span class="lang-id">#header</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#6c94be</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">#header {
+  color: #6c94be;
+}
 </code></pre>
 <p>Note that variables are actually &quot;constants&quot; in that they can only be defined once.</p>
 <h3 id="features-overview-feature-mixins">Mixins</h3><p>Mixins are a way of including (&quot;mixing in&quot;) a bunch of properties from one rule-set into another rule-set. So say we have the following class:</p>
-<pre><code class="lang-css"><span class="lang-class">.bordered</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">border-top</span>:<span class="lang-value"> dotted <span class="lang-number">1</span>px black</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">border-bottom</span>:<span class="lang-value"> solid <span class="lang-number">2</span>px black</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
 </code></pre>
 <p>And we want to use these properties inside other rule-sets. Well, we just have to drop in the name of the class where we want the properties, like so:</p>
 <pre><code class="lang-less"><span class="lang-id">#menu</span> <span class="lang-tag">a</span> {
@@ -156,15 +158,15 @@
 <li><a href="#mixins-parametric-feature">Parametric Mixins</a></li>
 </ul>
 <h3 id="features-overview-feature-nested-rules">Nested rules</h3><p>Less gives you the ability to use nesting instead of, or in combination with cascading. Let&#39;s say we have the following CSS:</p>
-<pre><code class="lang-css"><span class="lang-id">#header</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> black</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-id">#header</span> <span class="lang-class">.navigation</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">font-size</span>:<span class="lang-value"> <span class="lang-number">12</span>px</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-id">#header</span> <span class="lang-class">.logo</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">300</span>px</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">#header {
+  color: black;
+}
+#header .navigation {
+  font-size: 12px;
+}
+#header .logo {
+  width: 300px;
+}
 </code></pre>
 <p>In Less, we can also write it this way:</p>
 <pre><code class="lang-less"><span class="lang-id">#header</span> {
@@ -193,6 +195,10 @@
   }
 }
 </code></pre>
+<p><strong>See also</strong></p>
+<ul>
+<li><a href="#parent-selectors-feature">Parent Selectors</a></li>
+</ul>
 <h3 id="features-overview-feature-operations">Operations</h3><p>Any number, color or variable can be operated on. Here are a couple of examples:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@base:<span class="lang-preprocessor"> 5</span>%;</span>
 <span class="lang-at_rule">@filler: @base *<span class="lang-preprocessor"> 2</span>;</span>
@@ -212,7 +218,7 @@
 <span class="lang-at_rule">@width:<span class="lang-preprocessor"> 0.5</span>;</span>
 
 <span class="lang-class">.class</span> {
-  <span class="lang-attribute">width</span><span class="lang-value">: percentage(<span class="lang-number">0.5</span>);</span> <span class="lang-comment">// returns `50%`</span>
+  <span class="lang-attribute">width</span><span class="lang-value">: percentage(@width);</span> <span class="lang-comment">// returns `50%`</span>
   <span class="lang-attribute">color</span><span class="lang-value">: saturate(@base, <span class="lang-number">5</span>%);</span>
   <span class="lang-attribute">background-color</span><span class="lang-value">: spin(lighten(@base, <span class="lang-number">25</span>%), <span class="lang-number">8</span>);</span>
 }
@@ -290,14 +296,14 @@ style comment! */</span>
 <p>Control commonly used values in a single location.</p>
 </blockquote>
 <h2 id="variables-feature-overview">Overview</h2><p>It&#39;s not uncommon to see the same value repeated dozens <em>if not hundreds of times</em> across your stylesheets:</p>
-<pre><code class="lang-css"><span class="lang-tag">a</span>,
-<span class="lang-class">.link</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#428bca</span></span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.widget</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#fff</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">background</span>:<span class="lang-value"> <span class="lang-hexcolor">#428bca</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">a,
+.link {
+  color: #428bca;
+}
+.widget {
+  color: #fff;
+  background: #428bca;
+}
 </code></pre>
 <p>Variables make your code easier to maintain by giving you a way to control those values from a single location:</p>
 <pre><code class="lang-less"><span class="lang-comment">// Variables</span>
@@ -330,11 +336,11 @@ style comment! */</span>
 }
 </code></pre>
 <p>Compiles to:</p>
-<pre><code class="lang-css"><span class="lang-class">.banner</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">font-weight</span>:<span class="lang-value"> bold</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">line-height</span>:<span class="lang-value"> <span class="lang-number">40</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">margin</span>:<span class="lang-value"> <span class="lang-number">0</span> auto</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.banner {
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}
 </code></pre>
 <h3 id="variables-feature-urls">URLs</h3><pre><code class="lang-less"><span class="lang-comment">// Variables</span>
 <span class="lang-at_rule">@images: <span class="lang-string">"../img"</span>;</span>
@@ -366,10 +372,10 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Compiles to:</p>
-<pre><code class="lang-css"><span class="lang-class">.widget</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#0ee</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">background-color</span>:<span class="lang-value"> <span class="lang-hexcolor">#999</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.widget {
+  color: #0ee;
+  background-color: #999;
+}
 </code></pre>
 <h2 id="variables-feature-variable-names">Variable Names</h2><p>It is also possible to define variables with a variable name:</p>
 <pre><code class="lang-less"><span class="lang-at_rule">@fnord:  <span class="lang-string">"I am fnord."</span>;</span>
@@ -399,9 +405,9 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-at_rule">@a:<span class="lang-preprocessor"> 100</span>%;</span>
 </code></pre>
 <p>both compile into:</p>
-<pre><code class="lang-css"><span class="lang-class">.lazy-eval-scope</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">9</span>%</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.lazy-eval-scope {
+  width: 9%;
+}
 </code></pre>
 <p>When defining a variable twice, the last definition of the variable is used, searching from the current scope upwards. This is similar to css itself where the last property inside a definition is used to determine the value.</p>
 <p>For instance:</p>
@@ -417,12 +423,12 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Compiles to:</p>
-<pre><code class="lang-css"><span class="lang-class">.class1</span> <span class="lang-class">.class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">three</span>:<span class="lang-value"> <span class="lang-number">3</span></span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">one</span>:<span class="lang-value"> <span class="lang-number">1</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.class1 .class {
+  three: 3;
+}
+.class {
+  one: 1;
+}
 </code></pre>
 <h2 id="variables-feature-default-variables">default variables</h2><p>We sometimes get requests for default variables - an ability to set a variable only if it is not already set. This feature is not required because you can easily override a variable by putting the definition afterwards.</p>
 <p>For instance:</p>
@@ -467,13 +473,13 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-tag">nav</span> <span class="lang-tag">ul</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.inline</span>,
-<span class="lang-tag">nav</span> <span class="lang-tag">ul</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">nav ul {
+  background: blue;
+}
+.inline,
+nav ul {
+  color: red;
+}
 </code></pre>
 <p>Notice how the <code>nav ul:extend(.inline)</code> selector gets output as <code>nav ul</code> - the extend gets removed before output and the selector block left as-is. If no properties are put in that block then it gets removed from the output (but the extend still may affect other selectors).</p>
 <h2 id="extend-feature-extend-syntax">Extend syntax</h2><p>The extend is either attached to a selector or placed into a ruleset. It looks like a pseudoclass with selector parameter optionally followed by the keyword <code>all</code>:</p>
@@ -535,10 +541,10 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.some-class</span><span class="lang-value">:extend(.bucket tr) {} // nested ruleset is recognized</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.bucket</span> <span class="lang-tag">tr</span>,
-<span class="lang-class">.some-class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.bucket tr,
+.some-class {
+  color: blue;
+}
 </code></pre>
 <p>Essentially the extend looks at the compiled css, not the original less.</p>
 <p>Example:</p>
@@ -550,10 +556,10 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.some-class</span><span class="lang-value">:extend(tr .bucket) {} // nested ruleset is recognized</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-tag">tr</span> <span class="lang-class">.bucket</span>,
-<span class="lang-class">.some-class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">tr .bucket,
+.some-class {
+  color: blue;
+}
 </code></pre>
 <h3 id="extend-feature-exact-matching-with-extend">Exact Matching with Extend</h3><p>Extend by default looks for exact match between selectors. It does matter whether selector uses leading start or not. It does not matter that two nth-expressions have the same meaning, they need to have to same form in order to be matched. The only exception are quotes in attribute selector, less knows they have the same meaning and matches them.</p>
 <p>Example:</p>
@@ -571,9 +577,9 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.noStar</span><span class="lang-value">:extend(.class) {} // this will NOT match the *.class selector</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css">*<span class="lang-class">.class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">*.class {
+  color: blue;
+}
 </code></pre>
 <p>Order of pseudoclasses does matter. Selectors <code>link:hover:visited</code> and <code>link:visited:hover</code> match the same set of elements, but extend treats them as different:</p>
 <pre><code class="lang-less"><span class="lang-tag">link</span><span class="lang-pseudo">:hover</span><span class="lang-pseudo">:visited</span> {
@@ -582,9 +588,9 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.selector</span><span class="lang-value">:extend(link:visited:hover) {}</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-tag">link</span><span class="lang-pseudo">:hover</span><span class="lang-pseudo">:visited</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">link:hover:visited {
+  color: blue;
+}
 </code></pre>
 <h3 id="extend-feature-nth-expression">nth expression</h3><p>Nth expression form does matter. Nth-expressions <code>1n+3</code> and <code>n+3</code> are equivalent, but extend will not match them:</p>
 <pre><code class="lang-less"><span class="lang-pseudo">:nth-child</span>(1n+3) {
@@ -593,9 +599,9 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.child</span><span class="lang-value">:extend(n+<span class="lang-number">3</span>) {}</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-pseudo">:nth-child(1n+3)</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">:nth-child(1n+3) {
+  color: blue;
+}
 </code></pre>
 <p>Quote type in attribute selector does not matter. All of the following are equivalent.</p>
 <pre><code class="lang-less"><span class="lang-attr_selector">[title=identifier]</span> {
@@ -613,26 +619,26 @@ This means that this usage is typically limited to when you inject a variable in
 .doubleQuote:extend([title=<span class="lang-string">"identifier"</span>]) {}</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-attr_selector">[title=identifier]</span>,
-<span class="lang-class">.noQuote</span>,
-<span class="lang-class">.singleQuote</span>,
-<span class="lang-class">.doubleQuote</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">[title=identifier],
+.noQuote,
+.singleQuote,
+.doubleQuote {
+  color: blue;
+}
 
-<span class="lang-attr_selector">[title='identifier']</span>,
-<span class="lang-class">.noQuote</span>,
-<span class="lang-class">.singleQuote</span>,
-<span class="lang-class">.doubleQuote</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+[title=&#39;identifier&#39;],
+.noQuote,
+.singleQuote,
+.doubleQuote {
+  color: blue;
+}
 
-<span class="lang-attr_selector">[title="identifier"]</span>,
-<span class="lang-class">.noQuote</span>,
-<span class="lang-class">.singleQuote</span>,
-<span class="lang-class">.doubleQuote</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-<span class="lang-rule">}</span></span>
+[title=&quot;identifier&quot;],
+.noQuote,
+.singleQuote,
+.doubleQuote {
+  color: blue;
+}
 </code></pre>
 <h2 id="extend-feature-extend-quotallquot">Extend &quot;all&quot;</h2><p>When you specify the all keyword last in an extend argument it tells Less to match that selector as part of another selector. The selector will be copied and the matched part of the selector only will then be replaced with the extend, making a new selector.</p>
 <p>Example:</p>
@@ -649,16 +655,16 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.replacement</span><span class="lang-value">:extend(.test all) {}</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.a</span><span class="lang-class">.b</span><span class="lang-class">.test</span>,
-<span class="lang-class">.test</span><span class="lang-class">.c</span>,
-<span class="lang-class">.a</span><span class="lang-class">.b</span><span class="lang-class">.replacement</span>,
-<span class="lang-class">.replacement</span><span class="lang-class">.c</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> orange</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.test</span><span class="lang-pseudo">:hover</span>,
-<span class="lang-class">.replacement</span><span class="lang-pseudo">:hover</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> green</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.a.b.test,
+.test.c,
+.a.b.replacement,
+.replacement.c {
+  color: orange;
+}
+.test:hover,
+.replacement:hover {
+  color: green;
+}
 </code></pre>
 <p><em>You can think of this mode of operation as essentially doing a non-destructive search and replace.</em></p>
 <h3 id="extend-feature-selector-interpolation-with-extend">Selector Interpolation with Extend</h3><blockquote>
@@ -713,19 +719,19 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="lang-at_rule">@<span class="lang-keyword">media</span> print </span>{
-  <span class="lang-class">.selector</span>,
-  <span class="lang-class">.screenClass</span> <span class="lang-rules">{ <span class="lang-comment">/*  ruleset inside the same media was extended */</span>
-    <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> black</span></span>;
-  <span class="lang-rule">}</span></span>
+<pre><code class="lang-css">@media print {
+  .selector,
+  .screenClass { /*  ruleset inside the same media was extended */
+    color: black;
+  }
 }
-<span class="lang-class">.selector</span> <span class="lang-rules">{ <span class="lang-comment">/* ruleset on top of style sheet was ignored */</span>
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-at_rule">@<span class="lang-keyword">media</span> screen </span>{
-  <span class="lang-class">.selector</span> <span class="lang-rules">{ <span class="lang-comment">/* ruleset inside another media was ignored */</span>
-    <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-  <span class="lang-rule">}</span></span>
+.selector { /* ruleset on top of style sheet was ignored */
+  color: red;
+}
+@media screen {
+  .selector { /* ruleset inside another media was ignored */
+    color: blue;
+  }
 }
 </code></pre>
 <p>Extend written inside a media declaration does not match selectors inside nested declaration:</p>
@@ -739,10 +745,10 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="lang-at_rule">@<span class="lang-keyword">media</span> screen and (min-width: <span class="lang-number">1023</span>px) </span>{
-  <span class="lang-class">.selector</span> <span class="lang-rules">{ <span class="lang-comment">/* ruleset inside another nested media was ignored */</span>
-    <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-  <span class="lang-rule">}</span></span>
+<pre><code class="lang-css">@media screen and (min-width: 1023px) {
+  .selector { /* ruleset inside another nested media was ignored */
+    color: blue;
+  }
 }
 </code></pre>
 <p>Top level extend matches everything including selectors inside nested media:</p>
@@ -760,17 +766,17 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.topLevel</span><span class="lang-value">:extend(.selector) {} /* top level extend matches everything */</span>
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="lang-at_rule">@<span class="lang-keyword">media</span> screen </span>{
-  <span class="lang-class">.selector</span>,
-  <span class="lang-class">.topLevel</span> <span class="lang-rules">{ <span class="lang-comment">/* ruleset inside media was extended */</span>
-    <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-  <span class="lang-rule">}</span></span>
+<pre><code class="lang-css">@media screen {
+  .selector,
+  .topLevel { /* ruleset inside media was extended */
+    color: blue;
+  }
 }
-<span class="lang-at_rule">@<span class="lang-keyword">media</span> screen and (min-width: <span class="lang-number">1023</span>px) </span>{
-  <span class="lang-class">.selector</span>,
-  <span class="lang-class">.topLevel</span> <span class="lang-rules">{ <span class="lang-comment">/* ruleset inside nested media was extended */</span>
-    <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> blue</span></span>;
-  <span class="lang-rule">}</span></span>
+@media screen and (min-width: 1023px) {
+  .selector,
+  .topLevel { /* ruleset inside nested media was extended */
+    color: blue;
+  }
 }
 </code></pre>
 <h3 id="extend-feature-duplication-detection">Duplication Detection</h3><p>Currently there is no duplication detection.</p>
@@ -783,29 +789,29 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-class">.alert</span><span class="lang-value">:extend(.alert-info, .widget) {}</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.alert-info</span>,
-<span class="lang-class">.widget</span>,
-<span class="lang-class">.alert</span>,
-<span class="lang-class">.alert</span> <span class="lang-rules">{
-  <span class="lang-comment">/* declarations */</span>
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.alert-info,
+.widget,
+.alert,
+.alert {
+  /* declarations */
+}
 </code></pre>
 <h2 id="extend-feature-use-cases-for-extend">Use Cases for Extend</h2><h3 id="extend-feature-classic-use-case">Classic Use Case</h3><p>The classic use case is to avoid adding a base class. For example, if you have</p>
-<pre><code class="lang-css"><span class="lang-class">.animal</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-color</span>:<span class="lang-value"> black</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> white</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.animal {
+  background-color: black;
+  color: white;
+}
 </code></pre>
 <p>and you want to have a subtype of animal which overrides the background color then you have two options, firstly change your HTML</p>
 <pre><code class="lang-html"><span class="lang-tag">&lt;<span class="lang-title">a</span> <span class="lang-attribute">class</span>=<span class="lang-value">"animal bear"</span>&gt;</span>Bear<span class="lang-tag">&lt;/<span class="lang-title">a</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-css"><span class="lang-class">.animal</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-color</span>:<span class="lang-value"> black</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> white</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.bear</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-color</span>:<span class="lang-value"> brown</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.animal {
+  background-color: black;
+  color: white;
+}
+.bear {
+  background-color: brown;
+}
 </code></pre>
 <p>or have simplified html and use extend in your less. e.g.</p>
 <pre><code class="lang-html"><span class="lang-tag">&lt;<span class="lang-title">a</span> <span class="lang-attribute">class</span>=<span class="lang-value">"bear"</span>&gt;</span>Bear<span class="lang-tag">&lt;/<span class="lang-title">a</span>&gt;</span>
@@ -833,14 +839,14 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.thing1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">display</span>:<span class="lang-value"> inline-block</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">font-size</span>:<span class="lang-value"> <span class="lang-number">0</span></span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.thing2</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">display</span>:<span class="lang-value"> inline-block</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">font-size</span>:<span class="lang-value"> <span class="lang-number">0</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.thing1 {
+  display: inline-block;
+  font-size: 0;
+}
+.thing2 {
+  display: inline-block;
+  font-size: 0;
+}
 </code></pre>
 <p>Example (with extends):</p>
 <pre><code class="lang-less"><span class="lang-class">.my-inline-block</span> {
@@ -855,12 +861,12 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.my-inline-block</span>,
-<span class="lang-class">.thing1</span>,
-<span class="lang-class">.thing2</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">display</span>:<span class="lang-value"> inline-block</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">font-size</span>:<span class="lang-value"> <span class="lang-number">0</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.my-inline-block,
+.thing1,
+.thing2 {
+  display: inline-block;
+  font-size: 0;
+}
 </code></pre>
 <h3 id="extend-feature-combining-styles-a-more-advanced-mixin">Combining Styles / a more advanced mixin</h3><p>Another use-case is as an alternative for a mixin - because mixins can only be used with simple selectors, if you have two different blocks on html, but need to apply the same styles to both you can use extends to relate two areas.</p>
 <p>Example:</p>
@@ -898,15 +904,15 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>which results in:</p>
-<pre><code class="lang-css"><span class="lang-class">.a</span>, <span class="lang-id">#b</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.mixin-class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.mixin-id</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> red</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.a, #b {
+  color: red;
+}
+.mixin-class {
+  color: red;
+}
+.mixin-id {
+  color: red;
+}
 </code></pre>
 <p>Notice that when you call the mixin, the parenthesis are optional.</p>
 <pre><code class="lang-less"><span class="lang-class">.a</span>();   <span class="lang-comment">//these lines do the same thing</span>
@@ -925,13 +931,13 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.my-mixin</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> black</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> black</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">background</span>:<span class="lang-value"> white</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.my-mixin {
+  color: black;
+}
+.class {
+  color: black;
+  background: white;
+}
 </code></pre>
 <h2 id="mixins-feature-selectors-in-mixins">Selectors in mixins</h2><p>Mixins can contain more than just properties, they can contain selectors to.</p>
 <p>For example:</p>
@@ -945,9 +951,9 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-tag">button</span><span class="lang-pseudo">:hover</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">border</span>:<span class="lang-value"> <span class="lang-number">1</span>px solid red</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">button:hover {
+  border: 1px solid red;
+}
 </code></pre>
 <h2 id="mixins-feature-namespaces">Namespaces</h2><p>If you want to mixin properties inside a more complicated selector, you can stack up multiple id&#39;s or classes.</p>
 <pre><code class="lang-less"><span class="lang-id">#outer</span> {
@@ -993,14 +999,14 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Results in:</p>
-<pre><code class="lang-css"><span class="lang-class">.unimportant</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background</span>:<span class="lang-value"> <span class="lang-hexcolor">#f5f5f5</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#900</span></span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.important</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background</span>:<span class="lang-value"> <span class="lang-hexcolor">#f5f5f5</span> <span class="lang-important">!important</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#900</span> <span class="lang-important">!important</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.unimportant {
+  background: #f5f5f5;
+  color: #900;
+}
+.important {
+  background: #f5f5f5 !important;
+  color: #900 !important;
+}
 </code></pre>
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/features/mixins.md">Improve this section.</a>
@@ -1057,12 +1063,12 @@ This means that this usage is typically limited to when you inject a variable in
 <span class="lang-tag">pre</span> { <span class="lang-class">.wrap</span> }
 </code></pre>
 <p>Which would output:</p>
-<pre><code class="lang-css"><span class="lang-tag">pre</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">text-wrap</span>:<span class="lang-value"> wrap</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">white-space</span>:<span class="lang-value"> -moz-pre-wrap</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">white-space</span>:<span class="lang-value"> pre-wrap</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">word-wrap</span>:<span class="lang-value"> break-word</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">pre {
+  text-wrap: wrap;
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 </code></pre>
 <h3 id="mixins-parametric-feature-mixins-with-multiple-parameters">Mixins With Multiple Parameters</h3><p>Parameters are either <em>semicolon</em> or <em>comma</em> separated. It is recommended to use <em>semicolon</em>. The symbol comma has double meaning: it can be interpreted either as a mixin parameters separator or css list separator.</p>
 <p>Using comma as mixin separator makes it impossible to create comma separated lists as an argument. On the other hand, if the compiler sees at least one semicolon inside mixin call or declaration, it assumes that arguments are separated by semicolons and all commas belong to css lists:</p>
@@ -1110,16 +1116,16 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="lang-class">.class1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#33acfe</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">margin</span>:<span class="lang-value"> <span class="lang-number">20</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">padding</span>:<span class="lang-value"> <span class="lang-number">20</span>px</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.class2</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#efca44</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">margin</span>:<span class="lang-value"> <span class="lang-number">10</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">padding</span>:<span class="lang-value"> <span class="lang-number">40</span>px</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.class1 {
+  color: #33acfe;
+  margin: 20px;
+  padding: 20px;
+}
+.class2 {
+  color: #efca44;
+  margin: 10px;
+  padding: 40px;
+}
 </code></pre>
 <h3 id="mixins-parametric-feature-the-codeargumentscode-variable">The <code>@arguments</code> variable</h3><p><code>@arguments</code> has a special meaning inside mixins, it contains all the arguments passed, when the mixin was called. This is useful if you don&#39;t want to deal with individual parameters:</p>
 <pre><code class="lang-less"><span class="lang-class">.box-shadow</span>(<span class="lang-at_rule">@x:<span class="lang-preprocessor"> 0</span>;</span> <span class="lang-at_rule">@y:<span class="lang-preprocessor"> 0</span>;</span> <span class="lang-at_rule">@blur:<span class="lang-preprocessor"> 1px</span>;</span> <span class="lang-at_rule">@color: <span class="lang-hexcolor">#000</span>) {</span>
@@ -1132,11 +1138,11 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Which results in:</p>
-<pre><code class="lang-css"><span class="lang-class">.big-block</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">-webkit-box-shadow</span>:<span class="lang-value"> <span class="lang-number">2</span>px <span class="lang-number">5</span>px <span class="lang-number">1</span>px <span class="lang-hexcolor">#000</span></span></span>;
-     <span class="lang-rule"><span class="lang-attribute">-moz-box-shadow</span>:<span class="lang-value"> <span class="lang-number">2</span>px <span class="lang-number">5</span>px <span class="lang-number">1</span>px <span class="lang-hexcolor">#000</span></span></span>;
-          <span class="lang-rule"><span class="lang-attribute">box-shadow</span>:<span class="lang-value"> <span class="lang-number">2</span>px <span class="lang-number">5</span>px <span class="lang-number">1</span>px <span class="lang-hexcolor">#000</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.big-block {
+  -webkit-box-shadow: 2px 5px 1px #000;
+     -moz-box-shadow: 2px 5px 1px #000;
+          box-shadow: 2px 5px 1px #000;
+}
 </code></pre>
 <h3 id="mixins-parametric-feature-advanced-arguments-and-the-coderestcode-variable">Advanced arguments and the <code>@rest</code> variable</h3><p>You can use <code>...</code> if you want your mixin to take a variable number of arguments. Using this after a variable name will assign those arguments to the variable.</p>
 <pre><code class="lang-less"><span class="lang-class">.mixin</span>(...) {        <span class="lang-comment">// matches 0-N arguments</span>
@@ -1177,10 +1183,10 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>We will get the following CSS:</p>
-<pre><code class="lang-css"><span class="lang-class">.class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#a2a2a2</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">display</span>:<span class="lang-value"> block</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.class {
+  color: #a2a2a2;
+  display: block;
+}
 </code></pre>
 <p>Where the color passed to <code>.mixin</code> was lightened. If the value of <code>@switch</code> was <code>dark</code>,
 the result would be a darker color.</p>
@@ -1231,10 +1237,10 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 <p>Results in:</p>
-<pre><code class="lang-css"><span class="lang-class">.caller</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value">  <span class="lang-number">100</span>%</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">height</span>:<span class="lang-value"> <span class="lang-number">200</span>px</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.caller {
+  width:  100%;
+  height: 200px;
+}
 </code></pre>
 <p>Thus variables defined in a mixin can act as its return values. This allows us to create a mixin that can be used almost like a function.</p>
 <p>Example:</p>
@@ -1248,9 +1254,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 <p>Results in:</p>
-<pre><code class="lang-css"><span class="lang-tag">div</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">padding</span>:<span class="lang-value"> <span class="lang-number">33</span>px</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">div {
+  padding: 33px;
+}
 </code></pre>
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/features/mixins-as-functions.md">Improve this section.</a>
@@ -1402,14 +1408,14 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <span class="lang-class">.class2</span> { <span class="lang-class">.mixin</span>(<span class="lang-id">#555</span>) }
 </code></pre>
 <p>Here&#39;s what we&#39;ll get:</p>
-<pre><code class="lang-css"><span class="lang-class">.class1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-color</span>:<span class="lang-value"> black</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#ddd</span></span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.class2</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-color</span>:<span class="lang-value"> white</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">color</span>:<span class="lang-value"> <span class="lang-hexcolor">#555</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.class1 {
+  background-color: black;
+  color: #ddd;
+}
+.class2 {
+  background-color: white;
+  color: #555;
+}
 </code></pre>
 <h3 id="mixin-guards-feature-guard-comparison-operators">Guard comparison operators</h3><p>The full list of comparison operators usable in guards are: <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>=&lt;</code>, <code>&lt;</code>. Additionally, the keyword <code>true</code> is the only truthy value, making these two mixins equivalent:</p>
 <pre><code class="lang-less"><span class="lang-class">.truth</span> (<span class="lang-at_rule">@a)<span class="lang-preprocessor"> when</span> (@a) {</span> ... }
@@ -1528,13 +1534,13 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="lang-tag">div</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">10</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">20</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">30</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">40</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">50</span>px</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">div {
+  width: 10px;
+  width: 20px;
+  width: 30px;
+  width: 40px;
+  width: 50px;
+}
 </code></pre>
 <p>A generic example of using a recursive loop to generate CSS grid classes:</p>
 <pre><code class="lang-less"><span class="lang-class">.generate-columns</span>(4);
@@ -1547,18 +1553,18 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="lang-class">.column-1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">25</span>%</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.column-2</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">50</span>%</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.column-3</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">75</span>%</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.column-4</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">100</span>%</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.column-1 {
+  width: 25%;
+}
+.column-2 {
+  width: 50%;
+}
+.column-3 {
+  width: 75%;
+}
+.column-4 {
+  width: 100%;
+}
 </code></pre>
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/features/loops.md">Improve this section.</a>
@@ -1587,9 +1593,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="lang-class">.myclass</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">box-shadow</span>:<span class="lang-value"> inset <span class="lang-number">0</span> <span class="lang-number">0</span> <span class="lang-number">10</span>px <span class="lang-hexcolor">#555</span>, <span class="lang-number">0</span> <span class="lang-number">0</span> <span class="lang-number">20</span>px black</span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.myclass {
+  box-shadow: inset 0 0 10px #555, 0 0 20px black;
+}
 </code></pre>
 <p>To avoid any unintentional joins, <code>merge</code> requires an explicit <code>+</code> flag on each join pending declaration.</p>
 <p><em>Note: although convention on the transform property is to have space separated, comma separation is supported which is why there is no option on this feature for whether to generate space or comma separated.</em></p>
@@ -1606,26 +1612,172 @@ but if we call it with <em>two</em> arguments, we will get the second definition
     </div>
     <div class="section-content">
       <blockquote>
-<p>Changing selector order</p>
+<p>Referencing parent selectors with <code>&amp;</code></p>
 </blockquote>
-<p>When using <strong>Nested rules</strong>, it can be very useful to prepend a selector to the inherited (parent) scope.  This feature is known as &quot;Parent Selectors&quot;, and can be done by putting the parent selector before an ampersand <code>&amp;</code>.</p>
-<p>For example, when using Modernizr, you might want to specify different rules based on supported features:</p>
-<pre><code class="lang-css">.header {
-  .menu {
-    border-radius: 5px;
-    .no-borderradius &amp; {
-      background-image: url('images/button-background.png');
+<p>The <code>&amp;</code> operator represents the parent selectors of a <a href="#features-overview-feature-nested-rules">nested rule</a> and is most commonly used when applying a modifying class or pseudo-class to an existing selector:</p>
+<pre><code class="lang-less"><span class="lang-tag">a</span> {
+  <span class="lang-attribute">color</span><span class="lang-value">: blue;</span>
+  &amp;<span class="lang-pseudo">:hover</span> {
+    <span class="lang-attribute">color</span><span class="lang-value">: green;</span>
+  }
+}
+</code></pre>
+<p>results in:</p>
+<pre><code class="lang-css">a {
+  color: blue;
+}
+
+a:hover {
+  color: green;
+}
+</code></pre>
+<p>Notice that without the <code>&amp;</code>, the above example would result in <code>a :hover</code> rule (a descendant selector that matches hovered elements inside of <code>&lt;a&gt;</code> tags) and this is not what we typically would want with the nested <code>:hover</code>.</p>
+<p>The &quot;parent selectors&quot; operator has a variety of uses. Basically any time you need the selectors of the nested rules to be combined in other ways than the default. For example another typical use of the <code>&amp;</code> is to produce repetitive class names:</p>
+<pre><code class="lang-less"><span class="lang-class">.button</span> {
+  &amp;-ok {
+    <span class="lang-attribute">background-image</span><span class="lang-value">: url(<span class="lang-string">"ok.png"</span>);</span>
+  }
+  &amp;-cancel {
+    <span class="lang-attribute">background-image</span><span class="lang-value">: url(<span class="lang-string">"cancel.png"</span>);</span>
+  }
+
+  &amp;-custom {
+    <span class="lang-attribute">background-image</span><span class="lang-value">: url(<span class="lang-string">"custom.png"</span>);</span>
+  }
+}
+</code></pre>
+<p>output:</p>
+<pre><code class="lang-css">.button-ok {
+  background-image: url(&quot;ok.png&quot;);
+}
+.button-cancel {
+  background-image: url(&quot;cancel.png&quot;);
+}
+.button-custom {
+  background-image: url(&quot;custom.png&quot;);
+}
+</code></pre>
+<h3 id="parent-selectors-feature-multiple-codeampcode">Multiple <code>&amp;</code></h3><p><code>&amp;</code> may appear more then once within a selector. This makes it possible to repeatedly refer to a parent selector without repeating its name.</p>
+<pre><code class="lang-less"><span class="lang-class">.link</span> {
+  &amp; + &amp; {
+    <span class="lang-attribute">color</span><span class="lang-value">: red;</span>
+  }
+
+  &amp; &amp; {
+    <span class="lang-attribute">color</span><span class="lang-value">: green;</span>
+  }
+
+  &amp;&amp; {
+    <span class="lang-attribute">color</span><span class="lang-value">: blue;</span>
+  }
+
+  &amp;, &amp;ish {
+    <span class="lang-attribute">color</span><span class="lang-value">: cyan;</span>
+  }
+}
+</code></pre>
+<p>will output:</p>
+<pre><code class="lang-css">.link + .link {
+  color: red;
+}
+.link .link {
+  color: green;
+}
+.link.link {
+  color: blue;
+}
+.link, .linkish {
+  color: cyan;
+}
+</code></pre>
+<p>Note that <code>&amp;</code> represents all parent selectors (not just the nearest ancestor) so the following example:</p>
+<pre><code class="lang-less"><span class="lang-class">.grand</span> {
+  <span class="lang-class">.parent</span> {
+    &amp; &gt; &amp; {
+      <span class="lang-attribute">color</span><span class="lang-value">: red;</span>
+    }
+
+    &amp; &amp; {
+      <span class="lang-attribute">color</span><span class="lang-value">: green;</span>
+    }
+
+    &amp;&amp; {
+      <span class="lang-attribute">color</span><span class="lang-value">: blue;</span>
+    }
+
+    &amp;, &amp;ish {
+      <span class="lang-attribute">color</span><span class="lang-value">: cyan;</span>
     }
   }
 }
 </code></pre>
-<p>The selector <code>.no-borderradius &amp;</code> will be combined with the inherited scope, <code>.header .menu</code>, to form the selector <code>.no-borderradius .header .menu</code>.</p>
-<pre><code class="lang-css"><span class="lang-class">.header</span> <span class="lang-class">.menu</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">border-radius</span>:<span class="lang-value"> <span class="lang-number">5</span>px</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-class">.no-borderradius</span> <span class="lang-class">.header</span> <span class="lang-class">.menu</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-image</span>:<span class="lang-value"> <span class="lang-function">url(<span class="lang-string">'images/button-background.png'</span>)</span></span></span>;
-<span class="lang-rule">}</span></span>
+<p>results in:</p>
+<pre><code class="lang-css">.grand .parent &gt; .grand .parent {
+  color: red;
+}
+.grand .parent .grand .parent {
+  color: green;
+}
+.grand .parent.grand .parent {
+  color: blue;
+}
+.grand .parent,
+.grand .parentish {
+  color: cyan;
+}
+</code></pre>
+<h3 id="parent-selectors-feature-changing-selector-order">Changing selector order</h3><p>It can be useful to prepend a selector to the inherited (parent) selectors.  This can be done by putting the <code>&amp;</code> after current selector.
+For example, when using Modernizr, you might want to specify different rules based on supported features:</p>
+<pre><code class="lang-less"><span class="lang-class">.header</span> {
+  <span class="lang-class">.menu</span> {
+    <span class="lang-attribute">border-radius</span><span class="lang-value">: <span class="lang-number">5</span>px;</span>
+    <span class="lang-class">.no-borderradius</span> &amp; {
+      <span class="lang-attribute">background-image</span><span class="lang-value">: url(<span class="lang-string">'images/button-background.png'</span>);</span>
+    }
+  }
+}
+</code></pre>
+<p>The selector <code>.no-borderradius &amp;</code> will prepend <code>.no-borderradius</code> to its parent <code>.header .menu</code> to form the<code>.no-borderradius .header .menu</code> on output:</p>
+<pre><code class="lang-css">.header .menu {
+  border-radius: 5px;
+}
+.no-borderradius .header .menu {
+  background-image: url(&#39;images/button-background.png&#39;);
+}
+</code></pre>
+<h3 id="parent-selectors-feature-combinatorial-explosion">Combinatorial explosion</h3><p><code>&amp;</code> can also be used to generate every possible permutation of selectors in a comma separated list:</p>
+<pre><code class="lang-less"><span class="lang-tag">p</span>, <span class="lang-tag">a</span>, <span class="lang-tag">ul</span>, <span class="lang-tag">li</span> {
+<span class="lang-attribute">border-top</span><span class="lang-value">: <span class="lang-number">2</span>px dotted <span class="lang-hexcolor">#366</span>;</span>
+  &amp; + &amp; {
+      <span class="lang-attribute">border-top</span><span class="lang-value">: <span class="lang-number">0</span>;</span>
+  }
+}
+</code></pre>
+<p>This expands to all possible (16) combinations of the specified elements:</p>
+<pre><code class="lang-css">p,
+a,
+ul,
+li {
+  border-top: 2px dotted #366;
+}
+p + p,
+p + a,
+p + ul,
+p + li,
+a + p,
+a + a,
+a + ul,
+a + li,
+ul + p,
+ul + a,
+ul + ul,
+ul + li,
+li + p,
+li + a,
+li + ul,
+li + li {
+  border-top: 0;
+}
 </code></pre>
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/features/parent-selectors.md">Improve this section.</a>
@@ -1654,7 +1806,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.6.3</li>
+      <li>Currently v1.7.0</li>
       
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -1678,7 +1830,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 
-<script src="../assets/js/application.js"></script>
+<script src="../public/js/application.js"></script>
 
 
 

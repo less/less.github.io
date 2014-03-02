@@ -13,7 +13,7 @@
 </title>
 
 <!-- Main styles -->
-<link href="../assets/css/site.css" rel="stylesheet">
+<link href="../public/css/index.css" rel="stylesheet">
 
 <!-- Webfonts -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
 
   </head>
   <body>
@@ -39,7 +39,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../#" class="navbar-brand" alt="Less"></a>
+      <a href="../#" class="navbar-brand" alt="Less">
+        <img src="../public/img/logo.png">
+      </a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -88,7 +90,7 @@
     
     <div class="banner">
   <div class="container">
-    less v1.6.3 has been released -
+    less v1.7.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -102,7 +104,7 @@
         <div class="col-md-3">
           <div class="sidebar hidden-print" role="complementary">
             <div id="toc">
-            <ul class="nav sidenav"><li><a href="#using-less-environments">Using Less</a></li><li><a href="#command-line-usage">Command Line Usage</a><ul class="nav"><li><a href="#command-line-usage-installing-lessc-for-use-globally">Installing lessc for use globally</a></li><li><a href="#command-line-usage-installing-for-node-development">Installing for node development</a></li><li><a href="#command-line-usage-server-side-and-command-line-usage">Server-Side and Command Line Usage</a></li><li><a href="#command-line-usage-command-line-usage">Command line usage</a></li><li><a href="#command-line-usage-help">Help</a></li><li><a href="#command-line-usage-include-paths">Include paths</a></li><li><a href="#command-line-usage-makefile">Makefile</a></li><li><a href="#command-line-usage-no-color">No Color</a></li><li><a href="#command-line-usage-no-ie-compatability">No IE Compatability</a></li><li><a href="#command-line-usage-disable-javascript">Disable JavaScript</a></li><li><a href="#command-line-usage-lint">Lint</a></li><li><a href="#command-line-usage-silent">Silent</a></li><li><a href="#command-line-usage-strict-imports">Strict Imports</a></li><li><a href="#command-line-usage-allow-imports-from-insecure-https-hosts">Allow imports from insecure https hosts</a></li><li><a href="#command-line-usage-version">Version</a></li><li><a href="#command-line-usage-compress">Compress</a></li><li><a href="#command-line-usage-clean-css">Clean CSS</a></li><li><a href="#command-line-usage-clean-css-options">Clean CSS Options</a></li><li><a href="#command-line-usage-source-map-output-filename">Source Map Output Filename</a></li><li><a href="#command-line-usage-source-map-rootpath">Source Map Rootpath</a></li><li><a href="#command-line-usage-source-map-basepath">Source Map Basepath</a></li><li><a href="#command-line-usage-source-map-less-inline">Source Map Less Inline</a></li><li><a href="#command-line-usage-source-map-map-inline">Source Map Map Inline</a></li><li><a href="#command-line-usage-source-map-url">Source Map URL</a></li><li><a href="#command-line-usage-rootpath">Rootpath</a></li><li><a href="#command-line-usage-relative-urls">Relative URLs</a></li><li><a href="#command-line-usage-strict-math">Strict Math</a></li><li><a href="#command-line-usage-strict-units">Strict Units</a></li><li><a href="#command-line-usage-global-variable">Global Variable</a></li><li><a href="#command-line-usage-modify-variable">Modify Variable</a></li><li><a href="#command-line-usage-url-arguments">URL Arguments</a></li><li><a href="#command-line-usage-line-numbers">Line Numbers</a></li></ul></li><li><a href="#using-less-in-the-browser">Using Less in the Browser</a><ul class="nav"><li><a href="#using-less-in-the-browser-watch-mode">Watch mode</a></li><li><a href="#using-less-in-the-browser-modify-variables">Modify variables</a></li><li><a href="#using-less-in-the-browser-debugging">Debugging</a></li><li><a href="#using-less-in-the-browser-client-side-usage">Client-side Usage</a></li><li><a href="#using-less-in-the-browser-client-side-options">Client side options</a></li></ul></li><li><a href="#browser-support">Browser Support</a></li><li><a href="#online-less-compilers">Online Less Compilers</a><ul class="nav"><li><a href="#online-less-compilers-a-hrefhttpless2cssorgless2cssorga">less2css.org</a></li><li><a href="#online-less-compilers-a-hrefhttpwinlessorgonline-less-compilerwinlessorgonline-less-compilera">winless.org/online-less-compiler</a></li><li><a href="#online-less-compilers-a-hrefhttplesstestercomlesstestercoma">lesstester.com</a></li><li><a href="#online-less-compilers-a-hrefhttpwwwdopeflycomless-converterless-converterhtmldopeflycomless-convertera">dopefly.com/less-converter</a></li><li><a href="#online-less-compilers-a-hrefhttplessphpgpeasycomdemolessphpgpeasycomdemoa">lessphp.gpeasy.com/demo</a></li><li><a href="#online-less-compilers-a-hrefhttpleafonetlessphpeditorhtmlleafonetlessphpeditora">leafo.net/lessphp/editor</a></li><li><a href="#online-less-compilers-online-web-idesplaygrounds-with-less-support">Online Web IDEs/Playgrounds with Less support</a></li><li><a href="#online-less-compilers-a-hrefhttpcssdeckcomlabscssdeck-labsa">CSSDeck Labs</a></li><li><a href="#online-less-compilers-a-hrefhttpcodepeniocodepena">CodePen</a></li><li><a href="#online-less-compilers-a-hrefhttpfiddlesaladcomlessfiddle-salada">Fiddle Salad</a></li><li><a href="#online-less-compilers-a-hrefhttpjsbincomjs-bina">JS Bin</a></li><li><a href="#online-less-compilers-a-hrefhttpjsfiddlenetsmd8wjsfiddlea">jsFiddle</a></li></ul></li><li><a href="#guis-for-less">GUIs for Less</a><ul class="nav"><li><a href="#guis-for-less-cross-platform">Cross platform</a></li><li><a href="#guis-for-less-a-hrefhttpcrunchappnetcruncha">Crunch!</a></li><li><a href="#guis-for-less-a-hrefhttpmixtureiomixturea">Mixture</a></li><li><a href="#guis-for-less-a-hrefhttpwearekisscomsimplesssimplessa">SimpLESS</a></li><li><a href="#guis-for-less-a-hrefhttpkoala-appcomkoalaa">Koala</a></li><li><a href="#guis-for-less-specific-platforms">Specific platforms</a></li><li><a href="#guis-for-less-windows">Windows</a></li><li><a href="#guis-for-less-osx">OSx</a></li><li><a href="#guis-for-less-linux">Linux</a></li></ul></li><li><a href="#editors-and-plugins">Editors and Plugins</a><ul class="nav"><li><a href="#editors-and-plugins-editors-and-ides">Editors and IDEs</a></li><li><a href="#editors-and-plugins-a-hrefhttpsublimetextcomsublime-text-2-amp-3a">Sublime Text 2 & 3</a></li><li><a href="#editors-and-plugins-a-hrefhttpwwweclipseorgeclipsea">Eclipse</a></li><li><a href="#editors-and-plugins-a-hrefhttpwwwvisualstudiocomvisual-studioa">Visual Studio</a></li><li><a href="#editors-and-plugins-a-hrefhttpwwwadobecomproductsdreamweaverhtmldreamweavera">Dreamweaver</a></li><li><a href="#editors-and-plugins-a-hrefhttpnotepad-plus-plusorgnotepad-6xa">Notepad++ 6.x</a></li></ul></li><li><a href="#third-party-compilers">Third Party Compilers</a><ul class="nav"><li><a href="#third-party-compilers-nodejs-compilers">Node.js compilers</a></li><li><a href="#third-party-compilers-other-technologies">Other technologies</a></li></ul></li><li><a href="#frameworks-using-less">Frameworks Using Less</a></li><li><a href="#developing-less">Developing Less</a><ul class="nav"><li><a href="#developing-less-install-these-tools">Install these tools</a></li><li><a href="#developing-less-usage">Usage</a></li><li><a href="#developing-less-guide">Guide</a></li></ul></li></ul></div>
+            <ul class="nav sidenav"><li><a href="#using-less-environments">Using Less</a></li><li><a href="#command-line-usage">Command Line Usage</a><ul class="nav"><li><a href="#command-line-usage-installing-lessc-for-use-globally">Installing lessc for use globally</a></li><li><a href="#command-line-usage-installing-for-node-development">Installing for node development</a></li><li><a href="#command-line-usage-server-side-and-command-line-usage">Server-Side and Command Line Usage</a></li><li><a href="#command-line-usage-command-line-usage">Command line usage</a></li><li><a href="#command-line-usage-help">Help</a></li><li><a href="#command-line-usage-include-paths">Include paths</a></li><li><a href="#command-line-usage-makefile">Makefile</a></li><li><a href="#command-line-usage-no-color">No Color</a></li><li><a href="#command-line-usage-no-ie-compatability">No IE Compatability</a></li><li><a href="#command-line-usage-disable-javascript">Disable JavaScript</a></li><li><a href="#command-line-usage-lint">Lint</a></li><li><a href="#command-line-usage-silent">Silent</a></li><li><a href="#command-line-usage-strict-imports">Strict Imports</a></li><li><a href="#command-line-usage-allow-imports-from-insecure-https-hosts">Allow imports from insecure https hosts</a></li><li><a href="#command-line-usage-version">Version</a></li><li><a href="#command-line-usage-compress">Compress</a></li><li><a href="#command-line-usage-clean-css">Clean CSS</a></li><li><a href="#command-line-usage-clean-css-options">Clean CSS Options</a></li><li><a href="#command-line-usage-source-map-output-filename">Source Map Output Filename</a></li><li><a href="#command-line-usage-source-map-rootpath">Source Map Rootpath</a></li><li><a href="#command-line-usage-source-map-basepath">Source Map Basepath</a></li><li><a href="#command-line-usage-source-map-less-inline">Source Map Less Inline</a></li><li><a href="#command-line-usage-source-map-map-inline">Source Map Map Inline</a></li><li><a href="#command-line-usage-source-map-url">Source Map URL</a></li><li><a href="#command-line-usage-rootpath">Rootpath</a></li><li><a href="#command-line-usage-relative-urls">Relative URLs</a></li><li><a href="#command-line-usage-strict-math">Strict Math</a></li><li><a href="#command-line-usage-strict-units">Strict Units</a></li><li><a href="#command-line-usage-global-variable">Global Variable</a></li><li><a href="#command-line-usage-modify-variable">Modify Variable</a></li><li><a href="#command-line-usage-url-arguments">URL Arguments</a></li><li><a href="#command-line-usage-line-numbers">Line Numbers</a></li></ul></li><li><a href="#using-less-in-the-browser">Using Less in the Browser</a><ul class="nav"><li><a href="#using-less-in-the-browser-watch-mode">Watch mode</a></li><li><a href="#using-less-in-the-browser-modify-variables">Modify variables</a></li><li><a href="#using-less-in-the-browser-debugging">Debugging</a></li><li><a href="#using-less-in-the-browser-client-side-usage">Client-side Usage</a></li><li><a href="#using-less-in-the-browser-client-side-options">Client side options</a></li></ul></li><li><a href="#browser-support">Browser Support</a></li><li><a href="#online-less-compilers">Online Less Compilers</a><ul class="nav"><li><a href="#online-less-compilers-a-hrefhttpless2cssorgless2cssorga">less2css.org</a></li><li><a href="#online-less-compilers-a-hrefhttpwinlessorgonline-less-compilerwinlessorgonline-less-compilera">winless.org/online-less-compiler</a></li><li><a href="#online-less-compilers-a-hrefhttplesstestercomlesstestercoma">lesstester.com</a></li><li><a href="#online-less-compilers-a-hrefhttpwwwdopeflycomless-converterless-converterhtmldopeflycomless-convertera">dopefly.com/less-converter</a></li><li><a href="#online-less-compilers-a-hrefhttplessphpgpeasycomdemolessphpgpeasycomdemoa">lessphp.gpeasy.com/demo</a></li><li><a href="#online-less-compilers-a-hrefhttpleafonetlessphpeditorhtmlleafonetlessphpeditora">leafo.net/lessphp/editor</a></li><li><a href="#online-less-compilers-online-web-idesplaygrounds-with-less-support">Online Web IDEs/Playgrounds with Less support</a></li><li><a href="#online-less-compilers-a-hrefhttpcssdeckcomlabscssdeck-labsa">CSSDeck Labs</a></li><li><a href="#online-less-compilers-a-hrefhttpcodepeniocodepena">CodePen</a></li><li><a href="#online-less-compilers-a-hrefhttpfiddlesaladcomlessfiddle-salada">Fiddle Salad</a></li><li><a href="#online-less-compilers-a-hrefhttpjsbincomjs-bina">JS Bin</a></li><li><a href="#online-less-compilers-a-hrefhttpjsfiddlenett2xe9jsfiddlea">jsFiddle</a></li></ul></li><li><a href="#guis-for-less">GUIs for Less</a><ul class="nav"><li><a href="#guis-for-less-cross-platform">Cross platform</a></li><li><a href="#guis-for-less-a-hrefhttpcrunchappnetcruncha">Crunch!</a></li><li><a href="#guis-for-less-a-hrefhttpmixtureiomixturea">Mixture</a></li><li><a href="#guis-for-less-a-hrefhttpwearekisscomsimplesssimplessa">SimpLESS</a></li><li><a href="#guis-for-less-a-hrefhttpkoala-appcomkoalaa">Koala</a></li><li><a href="#guis-for-less-specific-platforms">Specific platforms</a></li><li><a href="#guis-for-less-windows">Windows</a></li><li><a href="#guis-for-less-osx">OSx</a></li><li><a href="#guis-for-less-linux">Linux</a></li></ul></li><li><a href="#editors-and-plugins">Editors and Plugins</a><ul class="nav"><li><a href="#editors-and-plugins-editors-and-ides">Editors and IDEs</a></li><li><a href="#editors-and-plugins-a-hrefhttpsublimetextcomsublime-text-2-amp-3a">Sublime Text 2 & 3</a></li><li><a href="#editors-and-plugins-a-hrefhttpwwweclipseorgeclipsea">Eclipse</a></li><li><a href="#editors-and-plugins-a-hrefhttpwwwvisualstudiocomvisual-studioa">Visual Studio</a></li><li><a href="#editors-and-plugins-a-hrefhttpwwwadobecomproductsdreamweaverhtmldreamweavera">Dreamweaver</a></li><li><a href="#editors-and-plugins-a-hrefhttpnotepad-plus-plusorgnotepad-6xa">Notepad++ 6.x</a></li></ul></li><li><a href="#third-party-compilers">Third Party Compilers</a><ul class="nav"><li><a href="#third-party-compilers-nodejs-compilers">Node.js compilers</a></li><li><a href="#third-party-compilers-other-technologies">Other technologies</a></li></ul></li><li><a href="#frameworks-using-less">Frameworks Using Less</a><ul class="nav"><li><a href="#frameworks-using-less-uitheme-frameworks-and-components">UI/Theme Frameworks and Components</a></li><li><a href="#frameworks-using-less-grid-systems">Grid Systems</a></li><li><a href="#frameworks-using-less-mixin-libraries">Mixin Libraries</a></li></ul></li><li><a href="#developing-less">Developing Less</a><ul class="nav"><li><a href="#developing-less-install-these-tools">Install these tools</a></li><li><a href="#developing-less-usage">Usage</a></li><li><a href="#developing-less-guide">Guide</a></li></ul></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -238,14 +240,14 @@ lessc --relative-urls
 }
 </code></pre>
 <p>this will output the following normally</p>
-<pre><code class="lang-css"><span class="lang-class">.icon-1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-image</span>:<span class="lang-value"> <span class="lang-function">url(<span class="lang-string">'images/lamp-post.png'</span>)</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.icon-1 {
+  background-image: url(&#39;images/lamp-post.png&#39;);
+}
 </code></pre>
 <p>but with this option on it will instead output</p>
-<pre><code class="lang-css"><span class="lang-class">.icon-1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">background-image</span>:<span class="lang-value"> <span class="lang-function">url(<span class="lang-string">'files/images/lamp-post.png'</span>)</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.icon-1 {
+  background-image: url(&#39;files/images/lamp-post.png&#39;);
+}
 </code></pre>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
 <h3 id="command-line-usage-strict-math">Strict Math</h3><pre><code class="lang-bash">lessc -sm=on
@@ -265,11 +267,11 @@ lessc --strict-math=on
   <span class="lang-attribute">font-size</span><span class="lang-value">: <span class="lang-number">1</span> / <span class="lang-number">4</span>;</span>
 }
 </code></pre>
-<pre><code class="lang-css"><span class="lang-class">.class</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-function">calc(<span class="lang-number">100</span>% - <span class="lang-number">5</span>px)</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">height</span>:<span class="lang-value"> <span class="lang-number">25</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">font-size</span>:<span class="lang-value"> <span class="lang-number">1</span> / <span class="lang-number">4</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">.class {
+  width: calc(100% - 5px);
+  height: 25px;
+  font-size: 1 / 4;
+}
 </code></pre>
 <p>We originally planned to default this to true in the future, but it has been a contraversial option and we are considering whether we have solved the problem in the right way, or whether less should just have exceptions for instances where <code>/</code> is valid or calc is used.</p>
 <h3 id="command-line-usage-strict-units">Strict Units</h3><pre><code class="lang-bash">lessc -su=on
@@ -335,6 +337,10 @@ lessc --line-numbers=all
     functions: {},
     dumpLineNumbers: <span class="lang-string">"comments"</span>,
     relativeUrls: <span class="lang-literal">false</span>,
+    globalVars: {
+      var1: <span class="lang-string">'"string value"'</span>,
+      var2: <span class="lang-string">'regular value'</span>
+    },
     rootpath: <span class="lang-string">":/a.com/"</span>
   };
 </span><span class="lang-tag">&lt;/<span class="lang-title">script</span>&gt;</span>
@@ -387,6 +393,9 @@ Default: depends on page URL</p>
 <h4 id="relativeurls">relativeUrls</h4><p>Type: <code>Boolean</code></p>
 <p>Default: <code>false</code></p>
 <p>Optionally adjust URLs to be relative. When false, URLs are already relative to the entry less file.</p>
+<h4 id="globalvars">globalVars</h4><p>Type: <code>Object</code></p>
+<p>Default: <code>undefined</code></p>
+<p>List of global variables to be injected into the code. Keys of the object are variables names, values are variables values. Variables of &quot;string&quot; type must explicity include quites.</p>
 <h4 id="rootpath">rootpath</h4><p>Type: <code>String</code></p>
 <p>Default: <code>false</code></p>
 <p>A path to add on to the start of every URL resource.</p>
@@ -447,7 +456,7 @@ Default: depends on page URL</p>
 <h3 id="online-less-compilers-a-hrefhttpjsbincomjs-bina"><a href="http://jsbin.com">JS Bin</a></h3><blockquote>
 <p>JS Bin is a webapp specifically designed to help JavaScript and CSS folk test snippets of code.</p>
 </blockquote>
-<h3 id="online-less-compilers-a-hrefhttpjsfiddlenetsmd8wjsfiddlea"><a href="http://jsfiddle.net/SmD8W/">jsFiddle</a></h3><blockquote>
+<h3 id="online-less-compilers-a-hrefhttpjsfiddlenett2xe9jsfiddlea"><a href="http://jsfiddle.net/T2Xe9/">jsFiddle</a></h3><blockquote>
 <p>Online Web Editor</p>
 </blockquote>
 <div class="source-link">
@@ -621,19 +630,191 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
       <h1 id="frameworks-using-less">Frameworks Using Less</h1>
     </div>
     <div class="section-content">
-      <ul>
-<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
-<li><a href="http://madscript.com/pre/">Pre</a></li>
-<li><a href="http://github.com/DominikGuzei/flawless.css">Flaw{Less} CSS Framework</a></li>
-<li><a href="http://centage.peruste.net">Centage!</a></li>
-<li><a href="https://github.com/pailoro/Moreless">More Less</a></li>
-<li><a href="http://p.erkins.com/">Perkins</a></li>
-<li><a href="https://github.com/jonikorpi/Golden-Grid-System">Golden Grid System</a></li>
-<li><a href="https://github.com/cowboyd/less.rb">Ruby Less</a></li>
-<li><a href="https://github.com/metaskills/less-rails">Less In Rails Asset Pipeline</a></li>
-<li><a href="http://graphite.estate.nl/">Graphite, for ASP.NET platform</a></li>
-<li><a href="https://github.com/bassjobsen/jamedo-bootstrap-start-theme">JBST</a>, WordPress theme with built-in Less compiler</li>
-</ul>
+      <h2 id="frameworks-using-less-uitheme-frameworks-and-components">UI/Theme Frameworks and Components</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.flathemes.com/">Bootflat</a></td>
+<td>Open source Flat UI KIT based on Bootstrap</td>
+</tr>
+<tr>
+<td><a href="http://getbootstrap.com/">Bootstrap</a></td>
+<td>Front-end framework for developing responsive, mobile first projects on the web</td>
+</tr>
+<tr>
+<td><a href="http://bootswatch.com/">Bootswatch</a></td>
+<td>Collection of free themes for Bootstrap</td>
+</tr>
+<tr>
+<td><a href="http://cardinalcss.com/">Cardinal</a></td>
+<td>Small &quot;mobile first&quot; CSS framework for front-end developers who build responsive web applications</td>
+</tr>
+<tr>
+<td><a href="http://csshor.us/">CSSHórus</a></td>
+<td>Library for development of responsive and mobile websites</td>
+</tr>
+<tr>
+<td><a href="http://designmodo.com/flat-free/">Flat UI Free</a></td>
+<td>Theme and framework for Bootstrap</td>
+</tr>
+<tr>
+<td><a href="https://github.com/vitto/frontsize-less">frontsize</a></td>
+<td>CSS front end framework</td>
+</tr>
+<tr>
+<td><a href="http://brunodsgn.github.io/InContent/">InContent</a></td>
+<td>Image content with description created with CSS</td>
+</tr>
+<tr>
+<td><a href="http://ink.sapo.pt/">Ink</a></td>
+<td>set of tools for quick development of web interfaces</td>
+</tr>
+<tr>
+<td><a href="http://jbst.eu/">JBST</a></td>
+<td>Theme framework that can be used as a standalone website builder or to create WordPress themes</td>
+</tr>
+<tr>
+<td><a href="http://www.knacss.com/">KNACSS</a></td>
+<td>Minimalist, responsive and extensible style sheet to kick-start your HTML / CSS projects</td>
+</tr>
+<tr>
+<td><a href="http://imperavi.com/kube/">Kube</a></td>
+<td>Minimalistic CSS-framework for developers and designers</td>
+</tr>
+<tr>
+<td><a href="http://metroui.org.ua/">Metro UI CSS</a></td>
+<td>Set of styles to create a site with an interface similar to Windows 8</td>
+</tr>
+<tr>
+<td><a href="http://madscript.com/pre/">Pre</a></td>
+<td>CSS framework</td>
+</tr>
+<tr>
+<td><a href="http://danmalarkey.github.io/schema/">Schema</a></td>
+<td>Light, responsive, and lean frontend UI framework</td>
+</tr>
+<tr>
+<td><a href="http://getuikit.com/">UIkit</a></td>
+<td>Lightweight and modular front-end framework for developing web interfaces</td>
+</tr>
+</tbody>
+</table>
+<h2 id="frameworks-using-less-grid-systems">Grid Systems</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://fluidable.com/">Fluidable</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://goldengridsystem.com/">Golden Grid System</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/chromice/order.less">Order.less</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/BuschFunker/responsibly">responsibly</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://responsiveboilerplate.com/">Responsive Boilerplate</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://semantic.gs/">Semantic.gs</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="frameworks-using-less-mixin-libraries">Mixin Libraries</h2><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://mateuszkocz.github.io/3l/">3L</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/joshuapekera/animate">animate</a></td>
+<td>Library of CSS3 keyframe animations</td>
+</tr>
+<tr>
+<td><a href="http://clearleft.github.io/clearless/">Clearless</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="http://adodson.com/css-effects/">CssEffects</a></td>
+<td>Collection of CSS style effects</td>
+</tr>
+<tr>
+<td><a href="http://cssowl.owl-stars.com/">Cssowl</a></td>
+<td>Mixin library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sparanoid/cube.less">cube.less</a></td>
+<td>Animated 3D cube using only CSS</td>
+</tr>
+<tr>
+<td><a href="http://db0company.github.io/css-hexagon/">Hexagon</a></td>
+<td>Generate CSS hexagons with custom size and color</td>
+</tr>
+<tr>
+<td><a href="http://lesselements.com/">LESS Elements</a></td>
+<td>Set of mixins</td>
+</tr>
+<tr>
+<td><a href="http://lesshat.com/">LESS Hat</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielkatz/less-bidi">LESS-bidi</a></td>
+<td>Set of mixins for creating bi-directional styling</td>
+</tr>
+<tr>
+<td><a href="https://github.com/himedlooff/media-query-to-type">media-query-to-type</a></td>
+<td>Media Queries to Media Types with Less</td>
+</tr>
+<tr>
+<td><a href="http://jasonrobb.github.io/More-Colors.less/">More-Colors.less</a></td>
+<td>Variables for easier color manipulation while you design in the browser</td>
+</tr>
+<tr>
+<td><a href="https://github.com/weinitz/More.less">More.less</a></td>
+<td>Mixins, animations, shapes and more</td>
+</tr>
+<tr>
+<td><a href="http://oban.io/">Oban</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="http://getpreboot.com/">Preboot</a></td>
+<td>Collection of variables and mixins. The precursor to Bootstrap</td>
+</tr>
+<tr>
+<td><a href="https://github.com/fahad19/shape.less">Shape.LESS</a></td>
+<td>Collection of mixins for various shapes</td>
+</tr>
+<tr>
+<td><a href="https://github.com/therebelrobot/tRRtoolbelt.less">tRRtoolbelt.less</a></td>
+<td>Mixins and functions for common actions</td>
+</tr>
+</tbody>
+</table>
 <div class="source-link">
   <a href="https://github.com/less/less-docs/tree/master/content/usage/frameworks-using-less.md">Improve this section.</a>
 </div>
@@ -695,7 +876,7 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.6.3</li>
+      <li>Currently v1.7.0</li>
       
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -719,7 +900,7 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 
-<script src="../assets/js/application.js"></script>
+<script src="../public/js/application.js"></script>
 
 
 

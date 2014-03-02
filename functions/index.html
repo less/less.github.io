@@ -13,7 +13,7 @@
 </title>
 
 <!-- Main styles -->
-<link href="../assets/css/site.css" rel="stylesheet">
+<link href="../public/css/index.css" rel="stylesheet">
 
 <!-- Webfonts -->
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300|Open+Sans+Condensed:300,700" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
 <![endif]-->
 
 <!-- Favicons -->
-<link rel="shortcut icon" href="../assets/favicon.ico">
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
 
   </head>
   <body>
@@ -39,7 +39,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../#" class="navbar-brand" alt="Less"></a>
+      <a href="../#" class="navbar-brand" alt="Less">
+        <img src="../public/img/logo.png">
+      </a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -88,7 +90,7 @@
     
     <div class="banner">
   <div class="container">
-    less v1.6.3 has been released -
+    less v1.7.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -187,12 +189,12 @@ div {
 }
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="lang-tag">div</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">z</span>:<span class="lang-value"> <span class="lang-number">3</span></span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-tag">div</span><span class="lang-class">.special</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">x</span>:<span class="lang-value"> <span class="lang-number">11</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">div {
+  z: 3;
+}
+div.special {
+  x: 11;
+}
 </code></pre>
 <p>It is possible to use the value returned by <code>default</code> with guard operators. For example <code>.mixin() when not(default()) {}</code> will match only if there&#39;s at least one more mixin definition that matches<code>.mixin()</code> call:</p>
 <pre><code class="lang-less"><span class="lang-class">.mixin</span>(<span class="lang-at_rule">@value)<span class="lang-preprocessor"> when</span> (<span class="lang-function">ispixel(@value)</span>) {</span><span class="lang-attribute">width</span><span class="lang-value">: @value}
@@ -208,13 +210,13 @@ div-<span class="lang-number">1</span> {
 }
 </code></pre>
 <p>result:</p>
-<pre><code class="lang-css"><span class="lang-tag">div-1</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-number">100</span>px</span></span>;
-  <span class="lang-rule"><span class="lang-attribute">padding</span>:<span class="lang-value"> <span class="lang-number">20</span>px</span></span>;
-<span class="lang-rule">}</span></span>
-<span class="lang-tag">div-2</span> <span class="lang-rules">{
-  <span class="lang-comment">/* ... */</span>
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">div-1 {
+  width: 100px;
+  padding: 20px;
+}
+div-2 {
+  /* ... */
+}
 </code></pre>
 <p>It is allowed to make multiple <code>default()</code> calls in the same guard condition or in a different conditions of a mixins with the same name:</p>
 <pre><code class="lang-less"><span class="lang-tag">div</span> {
@@ -270,10 +272,10 @@ div-<span class="lang-number">1</span> {
 }
 </code></pre>
 <p>Result:</p>
-<pre><code class="lang-css"><span class="lang-tag">div</span> <span class="lang-rules">{
-  <span class="lang-rule"><span class="lang-attribute">foo</span>:<span class="lang-value"> <span class="lang-function">default()</span></span></span>;
-  <span class="lang-rule"><span class="lang-attribute">bar</span>:<span class="lang-value"> <span class="lang-function">default(<span class="lang-number">42</span>)</span></span></span>;
-<span class="lang-rule">}</span></span>
+<pre><code class="lang-css">div {
+  foo: default();
+  bar: default(42);
+}
 </code></pre>
 <h3 id="misc-functions-unit">unit</h3><blockquote>
 <p>Remove or change the unit of a dimension</p>
@@ -313,7 +315,7 @@ div-<span class="lang-number">1</span> {
 <pre><code class="lang-less"><span class="lang-function">escape(<span class="lang-string">'a=1'</span>)</span>
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="lang-tag">a</span>%3<span class="lang-tag">D1</span>
+<pre><code class="lang-css">a%3D1
 </code></pre>
 <p>Note: if the parameter is not a string, output is not defined. The current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behavior should not be relied on and may change in the future.</p>
 <h3 id="string-functions-e">e</h3><blockquote>
@@ -326,7 +328,7 @@ div-<span class="lang-number">1</span> {
 <pre><code class="lang-less"><span class="lang-attribute">filter</span><span class="lang-value">: e(<span class="lang-string">"ms:alwaysHasItsOwnSyntax.For.Stuff()"</span>);</span>
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="lang-tag">filter</span>: <span class="lang-tag">ms</span><span class="lang-pseudo">:alwaysHasItsOwnSyntax</span><span class="lang-class">.For</span><span class="lang-class">.Stuff</span>();
+<pre><code class="lang-css">filter: ms:alwaysHasItsOwnSyntax.For.Stuff();
 </code></pre>
 <p>Note: The function accepts also <code>~&quot;&quot;</code> escaped values and numbers as parameters. Anything else returns an error.</p>
 <h3 id="string-functions-format">% format</h3><blockquote>
@@ -477,7 +479,7 @@ value<span class="lang-value">: extract(@list, <span class="lang-number">3</span
 <pre><code class="lang-less"><span class="lang-function">sqrt(<span class="lang-number">25</span>cm)</span>
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css">5<span class="lang-tag">cm</span>
+<pre><code class="lang-css">5cm
 </code></pre>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="lang-function">sqrt(<span class="lang-number">18.6</span>%)</span>
@@ -1132,8 +1134,8 @@ Parameters:</p>
 <span class="lang-function">mix(<span class="lang-function">rgba(<span class="lang-number">100</span>,<span class="lang-number">0</span>,<span class="lang-number">0</span>,<span class="lang-number">1.0</span>)</span>, <span class="lang-function">rgba(<span class="lang-number">0</span>,<span class="lang-number">100</span>,<span class="lang-number">0</span>,<span class="lang-number">0.5</span>)</span>, <span class="lang-number">50</span>%)</span>
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="lang-id">#800080</span>
-<span class="lang-tag">rgba</span>(75, 25, 0, 0<span class="lang-class">.75</span>)
+<pre><code class="lang-css">#800080
+rgba(75, 25, 0, 0.75)
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"> + <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"> ➜ <img alt="Color 3" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
 <h3 id="color-operations-greyscale">greyscale</h3><blockquote>
@@ -1724,7 +1726,7 @@ Parameters:</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.6.3</li>
+      <li>Currently v1.7.0</li>
       
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -1748,7 +1750,7 @@ Parameters:</p>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 
-<script src="../assets/js/application.js"></script>
+<script src="../public/js/application.js"></script>
 
 
 

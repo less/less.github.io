@@ -240,14 +240,14 @@ lessc --relative-urls
 }
 </code></pre>
 <p>this will output the following normally</p>
-<pre><code class="lang-css">.icon-1 {
-  background-image: url(&#39;images/lamp-post.png&#39;);
-}
+<pre><code class="lang-css"><span class="lang-class">.icon-1</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">background-image</span>:<span class="lang-value"> <span class="lang-function">url(<span class="lang-string">'images/lamp-post.png'</span>)</span></span></span>;
+<span class="lang-rule">}</span></span>
 </code></pre>
 <p>but with this option on it will instead output</p>
-<pre><code class="lang-css">.icon-1 {
-  background-image: url(&#39;files/images/lamp-post.png&#39;);
-}
+<pre><code class="lang-css"><span class="lang-class">.icon-1</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">background-image</span>:<span class="lang-value"> <span class="lang-function">url(<span class="lang-string">'files/images/lamp-post.png'</span>)</span></span></span>;
+<span class="lang-rule">}</span></span>
 </code></pre>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
 <h3 id="command-line-usage-strict-math">Strict Math</h3><pre><code class="lang-bash">lessc -sm=on
@@ -267,11 +267,11 @@ lessc --strict-math=on
   <span class="lang-attribute">font-size</span><span class="lang-value">: <span class="lang-number">1</span> / <span class="lang-number">4</span>;</span>
 }
 </code></pre>
-<pre><code class="lang-css">.class {
-  width: calc(100% - 5px);
-  height: 25px;
-  font-size: 1 / 4;
-}
+<pre><code class="lang-css"><span class="lang-class">.class</span> <span class="lang-rules">{
+  <span class="lang-rule"><span class="lang-attribute">width</span>:<span class="lang-value"> <span class="lang-function">calc(<span class="lang-number">100</span>% - <span class="lang-number">5</span>px)</span></span></span>;
+  <span class="lang-rule"><span class="lang-attribute">height</span>:<span class="lang-value"> <span class="lang-number">25</span>px</span></span>;
+  <span class="lang-rule"><span class="lang-attribute">font-size</span>:<span class="lang-value"> <span class="lang-number">1</span> / <span class="lang-number">4</span></span></span>;
+<span class="lang-rule">}</span></span>
 </code></pre>
 <p>We originally planned to default this to true in the future, but it has been a contraversial option and we are considering whether we have solved the problem in the right way, or whether less should just have exceptions for instances where <code>/</code> is valid or calc is used.</p>
 <h3 id="command-line-usage-strict-units">Strict Units</h3><pre><code class="lang-bash">lessc -su=on

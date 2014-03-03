@@ -7033,8 +7033,8 @@ h3 {
 .docs-nav {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
   background-color: #1d365d;
-  border-color: #111f36;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.07);
 }
 .docs-nav .navbar-collapse {
   border-color: #111f36;
@@ -7058,7 +7058,7 @@ h3 {
 .docs-nav .navbar-nav > .active > a,
 .docs-nav .navbar-nav > .active > a:hover {
   color: #fff;
-  background-color: #111f36;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .docs-nav .navbar-toggle {
   border-color: #1d365d;

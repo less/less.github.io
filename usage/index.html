@@ -533,8 +533,8 @@ lessc --line-numbers=all
 <h3 class="docs-heading">Debugging<span class="anchor-target" id="using-less-in-the-browser-debugging"></span>
 <a href="#using-less-in-the-browser-debugging" name="using-less-in-the-browser-debugging" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>It is possible to output rules in your CSS which allow tools to locate the source of the rule.</p>
-<p>Either specify the option <code>dumpLineNumbers</code> as above or add <code>!dumpLineNumbers:mediaQuery</code> to the url.</p>
-<p>You can use the &quot;comments&quot; option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> and the &quot;mediaQuery&quot; option with FireBug/Chrome dev tools (it is identical to the SCSS media query debugging format).</p>
+<p>Either specify the option <code>dumpLineNumbers</code> as above or add <code>!dumpLineNumbers:mediaquery</code> to the url.</p>
+<p>You can use the &quot;comments&quot; option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> and the &quot;mediaquery&quot; option with FireBug/Chrome dev tools (it is identical to the SCSS media query debugging format).</p>
 <h2 class="docs-heading">Client-side Usage<span class="anchor-target" id="using-less-in-the-browser-client-side-usage"></span>
 <a href="#using-less-in-the-browser-client-side-usage" name="using-less-in-the-browser-client-side-usage" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
@@ -568,10 +568,10 @@ lessc --line-numbers=all
 <h3 class="docs-heading">dumpLineNumbers<span class="anchor-target" id="using-less-in-the-browser-dumplinenumbers"></span>
 <a href="#using-less-in-the-browser-dumplinenumbers" name="using-less-in-the-browser-dumplinenumbers" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Type: <code>String</code>
-Options: <code>|`comments`|`mediaQuery`|`all`
+Options: <code>|`comments`|`mediaquery`|`all`
 Default:</code></p>
 <p>When set this outputs source line information directly into the output css file. This helps you debug where a particular rule came from.</p>
-<p>The comments option is used for outputting user understandable content, whilst mediaQuery is for use with a firefox extension which parses the css and extracts out the information.</p>
+<p>The comments option is used for outputting user understandable content, whilst mediaquery is for use with a firefox extension which parses the css and extracts out the information.</p>
 <p>In the future we hope this option to be superseded by sourcemaps.</p>
 <h3 class="docs-heading">env<span class="anchor-target" id="using-less-in-the-browser-env"></span>
 <a href="#using-less-in-the-browser-env" name="using-less-in-the-browser-env" class="anchor glyphicon glyphicon-link"></a></h3>

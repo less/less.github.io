@@ -101,7 +101,7 @@
 
 <div class="banner">
   <div class="container">
-    less v1.7.3 has been released -
+    less v1.7.4 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -122,10 +122,11 @@
 <li><a href="#using-less-usage-in-code">Usage in Code</a></li>
 <li><a href="#using-less-configuration">Configuration</a></li>
 <li><a href="#using-less-third-party-tools">Third party tools</a></li></ul></li>
+<li><a href="#command-line-with-rhino">Command-line With Rhino</a></li>
 <li><a href="#client-side-usage">Client-side usage</a><ul class="nav"><li><a href="#client-side-usage-tips">Tips</a></li>
 <li><a href="#client-side-usage-browser-options">Browser Options</a></li></ul></li>
 <li><a href="#download-options">Get Less.js</a><ul class="nav"><li><a href="#download-options-browser-downloads">Browser downloads</a></li>
-<li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-3-less-min-js-">Less CDN</a></li></ul></li>
+<li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-4-less-min-js-">Less CDN</a></li></ul></li>
 <li><a href="#license-faqs">License FAQs</a></li></ul></div>
           </div>
         </div>
@@ -242,6 +243,19 @@ parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span
 <h2 class="docs-heading">Third party tools<span class="anchor-target" id="using-less-third-party-tools"></span>
 <a href="#using-less-third-party-tools" name="using-less-third-party-tools" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>See the <a href="usage/index.html">Usage</a> section for details of other tools.</p>
+<h1 class="docs-heading">Command-line With Rhino<span class="anchor-target" id="command-line-with-rhino"></span>
+<a href="#command-line-with-rhino" name="command-line-with-rhino" class="anchor glyphicon glyphicon-link"></a></h1>
+<blockquote>
+<p>Each less.js release contains also rhino-compatible version.</p>
+</blockquote>
+<p>Command line rhino version requires two files:</p>
+<ul>
+<li>less-rhino-<version>.js - compiler implementation,</version></li>
+<li>lessc-rhino-<version>.js - command line support.</version></li>
+</ul>
+<p>Command to run the compiler:</p>
+<pre><code>java -jar js.jar -f less-rhino-&lt;version&gt;.js lessc-rhino-&lt;version&gt;.js styles.less styles.css
+</code></pre><p>This will compile styles.less file and save the result to styles.css file. The output file parameter is optional. If it is missing, less will output the result to <code>stdout</code>.</p>
 <h1 class="docs-heading">Client-side usage<span class="anchor-target" id="client-side-usage"></span>
 <a href="#client-side-usage" name="client-side-usage" class="anchor glyphicon glyphicon-link"></a></h1>
 <blockquote>
@@ -294,10 +308,10 @@ parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span
 
   <h2 class="docs-heading">Browser downloads<span class="anchor-target" id="download-options-browser-downloads"></span>
 <a href="#download-options-browser-downloads" name="download-options-browser-downloads" class="anchor glyphicon glyphicon-link"></a></h2>
-  <a class="btn btn-default" href="https://raw.github.com/less/less.js/master/dist/less-1.7.3.min.js">Download Less.js v1.7.3</a>
+  <a class="btn btn-default" href="https://raw.github.com/less/less.js/master/dist/less-1.7.4.min.js">Download Less.js v1.7.4</a>
 
   <div class="docs-dl-options">
-    <h4 id="-download-source-code-https-github-com-less-less-js-archive-v1-7-3-zip-"><a href="https://github.com/less/less.js/archive/v1.7.3.zip">Download source code</a></h4>
+    <h4 id="-download-source-code-https-github-com-less-less-js-archive-v1-7-4-zip-"><a href="https://github.com/less/less.js/archive/v1.7.4.zip">Download source code</a></h4>
 <p>Get the latest Less.js source code by downloading it directly from GitHub.</p>
 <h4 id="-clone-or-fork-via-github-https-github-com-less-less-js-git-"><a href="https://github.com/less/less.js.git">Clone or fork via GitHub</a></h4>
 <p>Fork the project and send us a pull request!</p>
@@ -309,9 +323,9 @@ parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span
   </div>
 
   <div class="cdn-options">
-    <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-3-less-min-js-"></span>
-<a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-3-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-3-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.4/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-4-less-min-js-"></span>
+<a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-4-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-4-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.4/less.min.js"</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 
   </div>
@@ -382,7 +396,7 @@ parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span
     <p>Less.js and these docs are maintained by <a href="about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.7.3</li>
+      <li>Currently v1.7.4</li>
       
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

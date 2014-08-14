@@ -101,7 +101,7 @@
 
 <div class="banner">
   <div class="container">
-    less v1.7.3 has been released -
+    less v1.7.4 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what's new</a>
     </strong>
@@ -121,7 +121,9 @@
 <li><a href="#misc-functions-convert">convert</a></li>
 <li><a href="#misc-functions-data-uri">data-uri</a></li>
 <li><a href="#misc-functions-default">default</a></li>
-<li><a href="#misc-functions-unit">unit</a></li></ul></li>
+<li><a href="#misc-functions-unit">unit</a></li>
+<li><a href="#misc-functions-get-unit">get-unit</a></li>
+<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li></ul></li>
 <li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li>
 <li><a href="#string-functions-e">e</a></li>
 <li><a href="#string-functions--format">% format</a></li>
@@ -410,6 +412,56 @@ div-<span class="hljs-number">1</span> {
 <p>Output: <code>5px</code></p>
 <p>Example: <code>unit(5em)</code></p>
 <p>Output: <code>5</code></p>
+<h3 class="docs-heading">get-unit<span class="anchor-target" id="misc-functions-get-unit"></span>
+<a href="#misc-functions-get-unit" name="misc-functions-get-unit" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Returns units of a number.</p>
+</blockquote>
+<p>If the argument contains a number with units, the function returns its units. The argument without units results in an empty return value.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: a number with or without units.</li>
+</ul>
+<p>Example: <code>get-unit(5px)</code></p>
+<p>Output: <code>px</code></p>
+<p>Example: <code>get-unit(5)</code></p>
+<p>Output: <code>//nothing</code> </p>
+<h3 class="docs-heading">svg-gradient<span class="anchor-target" id="misc-functions-svg-gradient"></span>
+<a href="#misc-functions-svg-gradient" name="misc-functions-svg-gradient" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Generates multi-stop svg gradients.</p>
+</blockquote>
+<p>Svg-gradient function generates multi-stop svg gradients. It must have at least three parameters. First parameter specifies gradient type and direction and remaining parameters list colors and their positions. The position of first and last specified color are optional, remaining colors must have positions specified.</p>
+<p>The direction must be one of <code>to bottom</code>, <code>to right</code>, <code>to bottom right</code>, <code>to top right</code>, <code>ellipse</code> or <code>ellipse at center</code>. The direction can be specified as both escaped value and space separated list of words.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
+<li><code>color [percentage]</code> pair: first color and its relative position (position is optional)</li>
+<li><code>color percent</code> pair: (optional) second color and its relative position</li>
+<li>...</li>
+<li><code>color percent</code> pair: (optional) n-th color and its relative position</li>
+<li><code>color [percentage]</code> pair: last color and its relative position (position is optional)</li>
+</ul>
+<p>Returns: <code>url</code> with base64 encoded svg gradient.</p>
+<p>Example:</p>
+<pre><code>div {
+  background-image: svg-gradient(to right, red, green 30%, blue);
+}
+</code></pre><p>results in:</p>
+<pre><code>div {
+  background-image: url(&#39;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIvPjxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjMDA4MDAwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMGZmIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgLz48L3N2Zz4=&#39;)
+}
+</code></pre><p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
+<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version="1.0" ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">svg</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">"http://www.w3.org/2000/svg"</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">"1.1"</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">"100%"</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">"100%"</span> <span class="hljs-attribute">viewBox</span>=<span class="hljs-value">"0 0 1 1"</span> <span class="hljs-attribute">preserveAspectRatio</span>=<span class="hljs-value">"none"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">linearGradient</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"gradient"</span> <span class="hljs-attribute">gradientUnits</span>=<span class="hljs-value">"userSpaceOnUse"</span> <span class="hljs-attribute">x1</span>=<span class="hljs-value">"0%"</span> <span class="hljs-attribute">y1</span>=<span class="hljs-value">"0%"</span> <span class="hljs-attribute">x2</span>=<span class="hljs-value">"100%"</span> <span class="hljs-attribute">y2</span>=<span class="hljs-value">"0%"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">stop</span> <span class="hljs-attribute">offset</span>=<span class="hljs-value">"0%"</span> <span class="hljs-attribute">stop-color</span>=<span class="hljs-value">"#ff0000"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">stop</span> <span class="hljs-attribute">offset</span>=<span class="hljs-value">"30%"</span> <span class="hljs-attribute">stop-color</span>=<span class="hljs-value">"#008000"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">stop</span> <span class="hljs-attribute">offset</span>=<span class="hljs-value">"100%"</span> <span class="hljs-attribute">stop-color</span>=<span class="hljs-value">"#0000ff"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">linearGradient</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">rect</span> <span class="hljs-attribute">x</span>=<span class="hljs-value">"0"</span> <span class="hljs-attribute">y</span>=<span class="hljs-value">"0"</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">"1"</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">"1"</span> <span class="hljs-attribute">fill</span>=<span class="hljs-value">"url(#gradient)"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">svg</span>&gt;</span>
+</code></pre>
 
 
       <br>
@@ -510,7 +562,7 @@ format-s-upper: &quot;repetitions: 3 file: directory%2Ffile.less&quot;;
 <blockquote>
 <p>Replaces a text within a string.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.7.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
 <p>Parameters:</p>
 <ul>
 <li><code>string</code>: The string to search and replace in.</li>
@@ -1543,31 +1595,35 @@ Parameters:</p>
 <blockquote>
 <p>Choose which of two colors provides the greatest contrast with another.</p>
 </blockquote>
-<p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their <a href="#color-channel-luma">luma</a> value, not their lightness.</p>
+<p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their gamma-corrected <a href="#color-channel-luma">luma</a> value, not their lightness.</p>
 <p>The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark automatically, which means you can&#39;t use this function to select the <em>least</em> contrasting color by reversing the order.</p>
 <p>Parameters:</p>
 <ul>
 <li><code>color</code>: A color object to compare against.</li>
 <li><code>dark</code>: optional - A designated dark color (defaults to black).</li>
 <li><code>light</code>: optional - A designated light color (defaults to white).</li>
-<li><code>threshold</code>: optional - A percentage 0-100% specifying where the transition from &quot;dark&quot; to &quot;light&quot; is (defaults to 43%, matching SASS). This is used to bias the contrast one way or another, for example to allow you to decide whether a 50% grey background should result in black or white text. You would generally set this lower for &#39;lighter&#39; palettes, higher for &#39;darker&#39; ones..</li>
+<li><code>threshold</code>: optional - A percentage 0-100% specifying where the transition from &quot;dark&quot; to &quot;light&quot; is (defaults to 43%, matching SASS). This is used to bias the contrast one way or another, for example to allow you to decide whether a 50% grey background should result in black or white text. You would generally set this lower for &#39;lighter&#39; palettes, higher for &#39;darker&#39; ones.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-function">contrast(#aaaaaa)</span>
-<span class="hljs-function">contrast(#<span class="hljs-number">222222</span>, #<span class="hljs-number">101010</span>)</span>
-<span class="hljs-function">contrast(#<span class="hljs-number">222222</span>, #<span class="hljs-number">101010</span>, #dddddd)</span>
-<span class="hljs-function">contrast(<span class="hljs-function">hsl(<span class="hljs-number">90</span>, <span class="hljs-number">100</span>%, <span class="hljs-number">50</span>%)</span>, #<span class="hljs-number">000000</span>, #ffffff, <span class="hljs-number">40</span>%)</span>;
-<span class="hljs-function">contrast(<span class="hljs-function">hsl(<span class="hljs-number">90</span>, <span class="hljs-number">100</span>%, <span class="hljs-number">50</span>%)</span>, #<span class="hljs-number">000000</span>, #ffffff, <span class="hljs-number">60</span>%)</span>;
+<pre><code class="lang-less"><span class="hljs-tag">p</span> {
+    <span class="hljs-tag">a</span><span class="hljs-value">: contrast(<span class="hljs-hexcolor">#bbbbbb</span>);</span>
+    <span class="hljs-tag">b</span><span class="hljs-value">: contrast(<span class="hljs-hexcolor">#222222</span>, <span class="hljs-hexcolor">#101010</span>);</span>
+    c<span class="hljs-value">: contrast(<span class="hljs-hexcolor">#222222</span>, <span class="hljs-hexcolor">#101010</span>, <span class="hljs-hexcolor">#dddddd</span>);</span>
+    d<span class="hljs-value">: contrast(hsl(<span class="hljs-number">90</span>, <span class="hljs-number">100</span>%, <span class="hljs-number">50</span>%), <span class="hljs-hexcolor">#000000</span>, <span class="hljs-hexcolor">#ffffff</span>, <span class="hljs-number">30</span>%);</span>
+    e<span class="hljs-value">: contrast(hsl(<span class="hljs-number">90</span>, <span class="hljs-number">100</span>%, <span class="hljs-number">50</span>%), <span class="hljs-hexcolor">#000000</span>, <span class="hljs-hexcolor">#ffffff</span>, <span class="hljs-number">80</span>%);</span>
+}
 </code></pre>
 <p>Output:</p>
-<pre><code>#000000 // black
-#ffffff // white
-#dddddd
-#000000 // black
-#ffffff // white
-</code></pre><p>These examples use the calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&#39;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
-<p><img alt="Color 1" data-src="holder.js/100x40/#aaaaaa:#000000/text:000000">
+<pre><code>p {
+    a: #000000 // black
+    b: #ffffff // white
+    c: #dddddd
+    d: #000000 // black
+    e: #ffffff // white
+}
+</code></pre><p>These examples use the above calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&#39;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#bbbbbb:#000000/text:000000">
 <img alt="Color 1" data-src="holder.js/100x40/#222222:#ffffff/text:ffffff">
 <img alt="Color 1" data-src="holder.js/100x40/#222222:#dddddd/text:dddddd">
 <img alt="Color 1" data-src="holder.js/100x40/#80ff00:#000000/text:000000">
@@ -2151,7 +2207,7 @@ Parameters:</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.7.3</li>
+      <li>Currently v1.7.4</li>
       
       <li class="muted">&middot;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

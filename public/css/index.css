@@ -1,104 +1,3 @@
-/*
-    Based on the github style
-*/
-
-pre code {
-    display: block; padding: 0.5em;
-    color: #333;
-    background: #f8f8ff
-}
-
-.hljs-comment,
-.hljs-template_comment {
-    color: #998;
-    font-style: italic
-}
-
-.hljs-keyword,
-.hljs-css .hljs-rule .hljs-keyword,
-.hljs-javascript .hljs-title,
-.hljs-subst,
-.hljs-request,
-.hljs-status {
-    color: #333;
-    font-weight: bold
-}
-
-.hljs-number,
-.hljs-hexcolor {
-    color: #099;
-}
-
-.hljs-string,
-.tag .value {
-    color: #d14
-}
-
-.hljs-title,
-.hljs-id {
-    color: #900;
-    font-weight: bold
-}
-
-.hljs-javascript .hljs-title {
-    font-weight: normal
-}
-
-.hljs-class .hljs-title {
-    color: #458;
-    font-weight: bold
-}
-
-.hljs-tag,
-.hljs-tag .hljs-title,
-.hljs-rules .hljs-property {
-    color: #000080;
-    font-weight: normal
-}
-
-.hljs-attribute,
-.hljs-variable {
-    color: #008080
-}
-
-.hljs-regexp {
-    color: #009926
-}
-
-.hljs-class {
-    color: #458;
-    font-weight: bold
-}
-
-.hljs-symbol,
-.hljs-prompt {
-    color: #990073
-}
-
-.hljs-built_in {
-    color: #0086b3
-}
-
-.hljs-preprocessor,
-.hljs-pi,
-.hljs-doctype,
-.hljs-shebang,
-.hljs-cdata {
-    color: #999;
-    font-weight: bold
-}
-
-.hljs-deletion {
-    background: #fdd
-}
-
-.hljs-addition {
-    background: #dfd
-}
-
-.hljs-chunk {
-    color: #aaa
-}
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
 article,
 aside,
@@ -5912,6 +5811,65 @@ body {
 .docs-dl-options h4 {
   margin-top: 15px;
   margin-bottom: 5px;
+}
+/*
+    Code coloring (minimalistic (sort of) scheme)
+    Assuming we only highlight the following languages:
+    less, css, html, js and "generic shell"
+*/
+pre code {
+  display: block;
+  padding: 0.5em;
+  color: #657b83;
+}
+.hljs-comment {
+  color: #93a1a1;
+  font-style: italic;
+}
+.hljs-id {
+  color: #268bd2;
+}
+.hljs-class {
+  color: #284a80;
+}
+.hljs-tag {
+  color: #4b5e64;
+}
+.hljs-variable {
+  color: #4b5e64;
+}
+.hljs-attribute {
+  color: #4b5e64;
+}
+.hljs-keyword {
+  color: #4b5e64;
+}
+.hljs-built_in {
+  color: #4b5e64;
+}
+.hljs-value {
+  color: #2aa198;
+}
+.hljs-number {
+  color: #2aa198;
+}
+.hljs-hexcolor {
+  color: #2aa198;
+}
+.hljs-literal {
+  color: #2aa198;
+}
+.hljs-string {
+  color: #2aa198;
+}
+.hljs-attr_selector {
+  color: #d33682;
+}
+.hljs-at_rule {
+  color: #cb4b16;
+}
+.lang-less .hljs-built_in {
+  color: #859900;
 }
 h1,
 h2,

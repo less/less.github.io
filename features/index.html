@@ -57,7 +57,7 @@
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         <li class="active">
-          <a href="/">Language Features</a>
+          <a href="./">Language Features</a>
         </li>
         
         <li>
@@ -159,7 +159,7 @@
 <li><a href="#mixins-parametric-feature-advanced-arguments-and-the-rest-variable">Advanced arguments and the @rest variable</a></li>
 <li><a href="#mixins-parametric-feature-pattern-matching">Pattern-matching</a></li></ul></li>
 <li><a href="#mixins-as-functions-feature">Mixins as Functions</a></li>
-<li><a href="#detached-rulesets-feature">Passing Rulesets to Mixins</a></li>
+<li><a href="#detached-rulesets-feature">Passing Rulesets to Mixins</a><ul class="nav"><li><a href="#detached-rulesets-feature-scoping">Scoping</a></li></ul></li>
 <li><a href="#import-directives-feature">Import Directives</a><ul class="nav"><li><a href="#import-directives-feature-file-extensions">File extensions</a></li></ul></li>
 <li><a href="#import-options">Import Options</a><ul class="nav"><li><a href="#import-options-reference">reference</a></li>
 <li><a href="#import-options-reference-example">reference example</a></li>
@@ -216,35 +216,35 @@
 <h3 class="docs-heading">Variables<span class="anchor-target" id="features-overview-feature-variables"></span>
 <a href="#features-overview-feature-variables" name="features-overview-feature-variables" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>These are pretty self-explanatory:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@nice-blue: <span class="hljs-hexcolor">#5B83AD</span>;</span>
-<span class="hljs-at_rule">@light-blue: @nice-blue + <span class="hljs-hexcolor">#111</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@nice-blue:</span> <span class="hljs-hexcolor">#5B83AD</span>;
+<span class="hljs-variable">@light-blue:</span> <span class="hljs-variable">@nice-blue</span> + <span class="hljs-hexcolor">#111</span>;
 
 <span class="hljs-id">#header</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @light-blue;</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@light-blue</span>;
 }
 </code></pre>
 <p>Outputs:</p>
-<pre><code class="lang-css"><span class="hljs-id">#header</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#6c94be</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-id">#header</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#6c94be</span>;
+}
 </code></pre>
 <p>Note that variables are actually &quot;constants&quot; in that they can only be defined once.</p>
 <h3 class="docs-heading">Mixins<span class="anchor-target" id="features-overview-feature-mixins"></span>
 <a href="#features-overview-feature-mixins" name="features-overview-feature-mixins" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Mixins are a way of including (&quot;mixing in&quot;) a bunch of properties from one rule-set into another rule-set. So say we have the following class:</p>
-<pre><code class="lang-css"><span class="hljs-class">.bordered</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">border-top</span>:<span class="hljs-value"> dotted <span class="hljs-number">1</span>px black</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">border-bottom</span>:<span class="hljs-value"> solid <span class="hljs-number">2</span>px black</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.bordered</span> {
+  <span class="hljs-attribute">border-top</span>: dotted <span class="hljs-number">1px</span> black;
+  <span class="hljs-attribute">border-bottom</span>: solid <span class="hljs-number">2px</span> black;
+}
 </code></pre>
 <p>And we want to use these properties inside other rule-sets. Well, we just have to drop in the name of the class where we want the properties, like so:</p>
 <pre><code class="lang-less"><span class="hljs-id">#menu</span> <span class="hljs-tag">a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#111</span>;</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#111</span>;
   <span class="hljs-class">.bordered</span>;
 }
 
 <span class="hljs-class">.post</span> <span class="hljs-tag">a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+  <span class="hljs-attribute">color</span>: red;
   <span class="hljs-class">.bordered</span>;
 }
 </code></pre>
@@ -257,40 +257,40 @@
 <h3 class="docs-heading">Nested rules<span class="anchor-target" id="features-overview-feature-nested-rules"></span>
 <a href="#features-overview-feature-nested-rules" name="features-overview-feature-nested-rules" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Less gives you the ability to use nesting instead of, or in combination with cascading. Let&#39;s say we have the following CSS:</p>
-<pre><code class="lang-css"><span class="hljs-id">#header</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> black</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-id">#header</span> <span class="hljs-class">.navigation</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">12</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-id">#header</span> <span class="hljs-class">.logo</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">300</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-id">#header</span> {
+  <span class="hljs-attribute">color</span>: black;
+}
+<span class="hljs-id">#header</span> <span class="hljs-class">.navigation</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
+}
+<span class="hljs-id">#header</span> <span class="hljs-class">.logo</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
+}
 </code></pre>
 <p>In Less, we can also write it this way:</p>
 <pre><code class="lang-less"><span class="hljs-id">#header</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: black;</span>
+  <span class="hljs-attribute">color</span>: black;
   <span class="hljs-class">.navigation</span> {
-    <span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">12</span>px;</span>
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
   }
   <span class="hljs-class">.logo</span> {
-    <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">300</span>px;</span>
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">300px</span>;
   }
 }
 </code></pre>
 <p>The resulting code is more concise, and mimics the structure of your HTML.</p>
 <p>You can also bundle pseudo-selectors with your mixins using this method. Here&#39;s the classic clearfix hack, rewritten as a mixin (<code>&amp;</code> represents the current selector parent):</p>
 <pre><code class="lang-less"><span class="hljs-class">.clearfix</span> {
-  <span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
-  zoom<span class="hljs-value">: <span class="hljs-number">1</span>;</span>
+  <span class="hljs-attribute">display</span>: block;
+  <span class="hljs-attribute">zoom</span>: <span class="hljs-number">1</span>;
 
-  &amp;<span class="hljs-pseudo">:after</span> {
-    <span class="hljs-attribute">content</span><span class="hljs-value">: <span class="hljs-string">" "</span>;</span>
-    <span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
-    <span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
-    <span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
-    <span class="hljs-attribute">clear</span><span class="hljs-value">: both;</span>
-    <span class="hljs-attribute">visibility</span><span class="hljs-value">: hidden;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-pseudo">:after</span> {
+    <span class="hljs-attribute">content</span>: <span class="hljs-string">" "</span>;
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">clear</span>: both;
+    <span class="hljs-attribute">visibility</span>: hidden;
   }
 }
 </code></pre>
@@ -302,60 +302,60 @@
 <a href="#features-overview-feature-media-query-bubbling-and-nested-media-queries" name="features-overview-feature-media-query-bubbling-and-nested-media-queries" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Media queries can be nested in the same way as selectors. Selectors are copied into the body of the media query:</p>
 <pre><code class="lang-less"><span class="hljs-class">.screencolor</span>{
-  <span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> screen</span> {</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
-    <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> (min-width:<span class="hljs-number">768</span>px) {</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+  <span class="hljs-at_rule">@media</span> screen {
+    <span class="hljs-attribute">color</span>: green;
+    <span class="hljs-at_rule">@media</span> (min-width:<span class="hljs-number">768px</span>) {
+    <span class="hljs-attribute">color</span>: red;
     }
     }
-  <span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> tv</span> {</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: black;</span>
+  <span class="hljs-at_rule">@media</span> tv {
+    <span class="hljs-attribute">color</span>: black;
   }
 }
 </code></pre>
 <p>outputs:</p>
-<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen </span>{
-  <span class="hljs-class">.screencolor</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> green</span></span>;
-  <span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-at_rule">@media</span> screen {
+  <span class="hljs-class">.screencolor</span> {
+    <span class="hljs-attribute">color</span>: green;
+  }
 }
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">768</span>px) </span>{
-  <span class="hljs-class">.screencolor</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-  <span class="hljs-rule">}</span></span>
+<span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">768px</span>) {
+  <span class="hljs-class">.screencolor</span> {
+    <span class="hljs-attribute">color</span>: red;
+  }
 }
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> tv </span>{
-  <span class="hljs-class">.screencolor</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule">}</span></span>
+<span class="hljs-at_rule">@media</span> tv {
+  <span class="hljs-class">.screencolor</span> {
+    <span class="hljs-attribute">color</span>: black;
+  }
 }
 </code></pre>
 <h3 class="docs-heading">Operations<span class="anchor-target" id="features-overview-feature-operations"></span>
 <a href="#features-overview-feature-operations" name="features-overview-feature-operations" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Any number, color or variable can be operated on. Here are a couple of examples:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@base:<span class="hljs-preprocessor"> 5</span>%;</span>
-<span class="hljs-at_rule">@filler: @base *<span class="hljs-preprocessor"> 2</span>;</span>
-<span class="hljs-at_rule">@other: @base + @filler;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-number">5%</span>;
+<span class="hljs-variable">@filler:</span> <span class="hljs-variable">@base</span> * <span class="hljs-number">2</span>;
+<span class="hljs-variable">@other:</span> <span class="hljs-variable">@base</span> + <span class="hljs-variable">@filler</span>;
 
-<span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#888</span> / <span class="hljs-number">4</span>;</span>
-<span class="hljs-attribute">background-color</span><span class="hljs-value">: @base-color + <span class="hljs-hexcolor">#111</span>;</span>
-<span class="hljs-attribute">height</span><span class="hljs-value">: <span class="hljs-number">100</span>% / <span class="hljs-number">2</span> + @filler;</span>
+<span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#888</span> / <span class="hljs-number">4</span>;
+<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">@base-color</span> + <span class="hljs-hexcolor">#111</span>;
+<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span> / <span class="hljs-number">2</span> + <span class="hljs-variable">@filler</span>;
 </code></pre>
 <p>The output is pretty much what you expect—Less understands the difference between colors and units. If a unit is used in an operation, like in:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> 1px</span> +<span class="hljs-preprocessor"> 5</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@var:</span> <span class="hljs-number">1px</span> + <span class="hljs-number">5</span>;
 </code></pre>
 <p>Less will use that unit for the final output—<code>6px</code> in this case.</p>
 <h3 class="docs-heading">Functions<span class="anchor-target" id="features-overview-feature-functions"></span>
 <a href="#features-overview-feature-functions" name="features-overview-feature-functions" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Less provides a variety of functions which transform colors, manipulate strings and do maths. They are documented fully in the function reference.</p>
 <p>Using them is pretty straightforward. The following example uses percentage to convert 0.5 to 50%, increases the saturation of a base color by 5% and then sets the background color to one that is lightened by 25% and spun by 8 degrees:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@base: <span class="hljs-hexcolor">#f04615</span>;</span>
-<span class="hljs-at_rule">@width:<span class="hljs-preprocessor"> 0.5</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-hexcolor">#f04615</span>;
+<span class="hljs-variable">@width:</span> <span class="hljs-number">0.5</span>;
 
 <span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">width</span><span class="hljs-value">: percentage(@width);</span> <span class="hljs-comment">// returns `50%`</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: saturate(@base, <span class="hljs-number">5</span>%);</span>
-  <span class="hljs-attribute">background-color</span><span class="hljs-value">: spin(lighten(@base, <span class="hljs-number">25</span>%), <span class="hljs-number">8</span>);</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-function">percentage</span>(<span class="hljs-variable">@width</span>); <span class="hljs-comment">// returns `50%`</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">saturate</span>(<span class="hljs-variable">@base</span>, <span class="hljs-number">5%</span>);
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-function">spin</span>(<span class="hljs-function">lighten</span>(<span class="hljs-variable">@base</span>, <span class="hljs-number">25%</span>), <span class="hljs-number">8</span>);
 }
 </code></pre>
 <h3 class="docs-heading">Namespaces &amp; Accessors<span class="anchor-target" id="features-overview-feature-namespaces-accessors"></span>
@@ -364,20 +364,20 @@
 <p>Sometimes, you may want to group your mixins, for organizational purposes, or just to offer some encapsulation. You can do this pretty intuitively in Less, say you want to bundle some mixins and variables under <code>#bundle</code>, for later reuse or distributing:</p>
 <pre><code class="lang-less"><span class="hljs-id">#bundle</span> {
   <span class="hljs-class">.button</span> {
-    <span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
-    <span class="hljs-attribute">border</span><span class="hljs-value">: <span class="hljs-number">1</span>px solid black;</span>
-    <span class="hljs-attribute">background-color</span><span class="hljs-value">: grey;</span>
-    &amp;<span class="hljs-pseudo">:hover</span> {
-      <span class="hljs-attribute">background-color</span><span class="hljs-value">: white
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+    <span class="hljs-attribute">background-color</span>: grey;
+    <span class="hljs-keyword">&amp;</span><span class="hljs-pseudo">:hover</span> {
+      <span class="hljs-attribute">background-color</span>: white
     }
   }
-  .tab { ... }
-  .citation { ... }
-}</span>
+  <span class="hljs-class">.tab</span> { ... }
+  <span class="hljs-class">.citation</span> { ... }
+}
 </code></pre>
 <p>Now if we want to mixin the <code>.button</code> class in our <code>#header a</code>, we can do:</p>
 <pre><code class="lang-less"><span class="hljs-id">#header</span> <span class="hljs-tag">a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: orange;</span>
+  <span class="hljs-attribute">color</span>: orange;
   <span class="hljs-id">#bundle</span> &gt; <span class="hljs-class">.button</span>;
 }
 </code></pre>
@@ -385,23 +385,23 @@
 <h3 class="docs-heading">Scope<span class="anchor-target" id="features-overview-feature-scope"></span>
 <a href="#features-overview-feature-scope" name="features-overview-feature-scope" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Scope in Less is very similar to that of programming languages. Variables and mixins are first looked for locally, and if they aren&#39;t found, the compiler will look in the parent scope, and so on.</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> red</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@var:</span> red;
 
 <span class="hljs-id">#page</span> {
-  <span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> white</span>;</span>
+  <span class="hljs-variable">@var:</span> white;
   <span class="hljs-id">#header</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: @var;</span> <span class="hljs-comment">// white</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">@var</span>; <span class="hljs-comment">// white</span>
   }
 }
 </code></pre>
 <p>Variables and mixins do not have to be declared before being used so the following Less code is identical to the previous example:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> red</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@var:</span> red;
 
 <span class="hljs-id">#page</span> {
   <span class="hljs-id">#header</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: @var;</span> <span class="hljs-comment">// white</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">@var</span>; <span class="hljs-comment">// white</span>
   }
-  <span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> white</span>;</span>
+  <span class="hljs-variable">@var:</span> white;
 }
 </code></pre>
 <p><strong>See also</strong></p>
@@ -413,16 +413,16 @@
 <p>Both block-style and inline comments may be used:</p>
 <pre><code class="lang-less"><span class="hljs-comment">/* One hell of a block
 style comment! */</span>
-<span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> red</span>;</span>
+<span class="hljs-variable">@var:</span> red;
 
 <span class="hljs-comment">// Get in line!</span>
-<span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> white</span>;</span>
+<span class="hljs-variable">@var:</span> white;
 </code></pre>
 <h3 class="docs-heading">Importing<span class="anchor-target" id="features-overview-feature-importing"></span>
 <a href="#features-overview-feature-importing" name="features-overview-feature-importing" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Importing works pretty much as expected. You can import a <code>.less</code> file, and all the variables in it will be available. The extension is optionally specified for <code>.less</code> files.</p>
-<pre><code class="lang-css">@import &quot;library&quot;; // library.less
-@import &quot;typo.css&quot;;
+<pre><code class="lang-css"><span class="hljs-at_rule">@import</span> <span class="hljs-string">"library"</span>; <span class="hljs-comment">// library.less</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"typo.css"</span>;
 </code></pre>
 
 
@@ -462,30 +462,30 @@ style comment! */</span>
 <a href="#variables-feature-overview" name="variables-feature-overview" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>It&#39;s not uncommon to see the same value repeated dozens <em>if not hundreds of times</em> across your stylesheets:</p>
 <pre><code class="lang-css"><span class="hljs-tag">a</span>,
-<span class="hljs-class">.link</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#428bca</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.widget</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fff</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#428bca</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.link</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#428bca</span>;
+}
+<span class="hljs-class">.widget</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#fff</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-hexcolor">#428bca</span>;
+}
 </code></pre>
 <p>Variables make your code easier to maintain by giving you a way to control those values from a single location:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
-<span class="hljs-at_rule">@link-color:        <span class="hljs-hexcolor">#428bca</span>;</span> <span class="hljs-comment">// sea blue</span>
-<span class="hljs-at_rule">@link-color-hover: <span class="hljs-preprocessor"> darken</span>(@link-color,<span class="hljs-preprocessor"> 10</span>%);</span>
+<span class="hljs-variable">@link-color:</span>        <span class="hljs-hexcolor">#428bca</span>; <span class="hljs-comment">// sea blue</span>
+<span class="hljs-variable">@link-color-hover:</span>  <span class="hljs-function">darken</span>(<span class="hljs-variable">@link-color</span>, <span class="hljs-number">10%</span>);
 
 <span class="hljs-comment">// Usage</span>
 <span class="hljs-tag">a</span>,
 <span class="hljs-class">.link</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @link-color;</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@link-color</span>;
 }
 <span class="hljs-tag">a</span><span class="hljs-pseudo">:hover</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @link-color-hover;</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@link-color-hover</span>;
 }
 <span class="hljs-class">.widget</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#fff</span>;</span>
-  <span class="hljs-attribute">background</span><span class="hljs-value">: @link-color;</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#fff</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-variable">@link-color</span>;
 }
 </code></pre>
 <h2 class="docs-heading">Variable Interpolation<span class="anchor-target" id="variables-feature-variable-interpolation"></span>
@@ -495,31 +495,31 @@ style comment! */</span>
 <a href="#variables-feature-selectors" name="variables-feature-selectors" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Version: 1.4.0</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
-<span class="hljs-at_rule">@mySelector:<span class="hljs-preprocessor"> banner</span>;</span>
+<span class="hljs-variable">@mySelector:</span> banner;
 
 <span class="hljs-comment">// Usage</span>
-.<span class="hljs-at_rule">@{</span>mySelector} {
-  <span class="hljs-attribute">font-weight</span><span class="hljs-value">: bold;</span>
-  <span class="hljs-attribute">line-height</span><span class="hljs-value">: <span class="hljs-number">40</span>px;</span>
-  <span class="hljs-attribute">margin</span><span class="hljs-value">: <span class="hljs-number">0</span> auto;</span>
+<span class="hljs-class">.@{mySelector}</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
 }
 </code></pre>
 <p>Compiles to:</p>
-<pre><code class="lang-css"><span class="hljs-class">.banner</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">font-weight</span>:<span class="hljs-value"> bold</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">line-height</span>:<span class="hljs-value"> <span class="hljs-number">40</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">0</span> auto</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.banner</span> {
+  <span class="hljs-attribute">font-weight</span>: bold;
+  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+}
 </code></pre>
 <h3 class="docs-heading">URLs<span class="anchor-target" id="variables-feature-urls"></span>
 <a href="#variables-feature-urls" name="variables-feature-urls" class="anchor glyphicon glyphicon-link"></a></h3>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
-<span class="hljs-at_rule">@images: <span class="hljs-string">"../img"</span>;</span>
+<span class="hljs-variable">@images:</span> <span class="hljs-string">"../img"</span>;
 
 <span class="hljs-comment">// Usage</span>
 <span class="hljs-tag">body</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-hexcolor">#444</span>;</span>
-  <span class="hljs-attribute">background</span><span class="hljs-value">: url(<span class="hljs-string">"@{images}/white-sand.png"</span>);</span>
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#444</span>;
+  <span class="hljs-attribute">background</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"@{images}/white-sand.png"</span>);
 }
 </code></pre>
 <h3 class="docs-heading">Import statements<span class="anchor-target" id="variables-feature-import-statements"></span>
@@ -531,33 +531,33 @@ This means that this usage is typically limited to when you inject a variable in
 <p>When you are importing a css file and not using the inline option (e.g. the import statement will be kept intact) then the above does not apply.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
-<span class="hljs-at_rule">@themes: <span class="hljs-string">"../../src/themes"</span>;</span>
+<span class="hljs-variable">@themes:</span> <span class="hljs-string">"../../src/themes"</span>;
 
 <span class="hljs-comment">// Usage</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"@{themes}/tidal-wave.less"</span>;</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"@{themes}/tidal-wave.less"</span>;
 </code></pre>
 <h3 class="docs-heading">Properties<span class="anchor-target" id="variables-feature-properties"></span>
 <a href="#variables-feature-properties" name="variables-feature-properties" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Version: 1.6.0</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@property:<span class="hljs-preprocessor"> color</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@property:</span> color;
 
 <span class="hljs-class">.widget</span> {
-  <span class="hljs-at_rule">@{</span>property}<span class="hljs-value">: <span class="hljs-hexcolor">#0ee</span>;</span>
-  <span class="hljs-attribute">background</span>-<span class="hljs-at_rule">@{</span>property}<span class="hljs-value">: <span class="hljs-hexcolor">#999</span>;</span>
+  <span class="hljs-attribute">@{property}</span>: <span class="hljs-hexcolor">#0ee</span>;
+  <span class="hljs-attribute">background-@{property}</span>: <span class="hljs-hexcolor">#999</span>;
 }
 </code></pre>
 <p>Compiles to:</p>
-<pre><code class="lang-css"><span class="hljs-class">.widget</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#0ee</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#999</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.widget</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#0ee</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-hexcolor">#999</span>;
+}
 </code></pre>
 <h2 class="docs-heading">Variable Names<span class="anchor-target" id="variables-feature-variable-names"></span>
 <a href="#variables-feature-variable-names" name="variables-feature-variable-names" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>It is also possible to define variables with a variable name:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@fnord:  <span class="hljs-string">"I am fnord."</span>;</span>
-<span class="hljs-at_rule">@var:    <span class="hljs-string">"fnord"</span>;</span>
-<span class="hljs-attribute">content</span><span class="hljs-value">: @@var;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@fnord:</span>  <span class="hljs-string">"I am fnord."</span>;
+<span class="hljs-variable">@var:</span>    <span class="hljs-string">"fnord"</span>;
+<span class="hljs-attribute">content</span>: <span class="hljs-variable">@@var</span>;
 </code></pre>
 <p>Which compiles to:</p>
 <pre><code>content: &quot;I am fnord.&quot;;
@@ -568,60 +568,60 @@ This means that this usage is typically limited to when you inject a variable in
 </blockquote>
 <p>Valid Less snippet:</p>
 <pre><code class="lang-less"><span class="hljs-class">.lazy-eval</span> {
-  <span class="hljs-attribute">width</span><span class="hljs-value">: @var;</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-variable">@var</span>;
 }
 
-<span class="hljs-at_rule">@var: @a;</span>
-<span class="hljs-at_rule">@a:<span class="hljs-preprocessor"> 9</span>%;</span>
+<span class="hljs-variable">@var:</span> <span class="hljs-variable">@a</span>;
+<span class="hljs-variable">@a:</span> <span class="hljs-number">9%</span>;
 </code></pre>
 <p>this is valid Less too:</p>
 <pre><code class="lang-less"><span class="hljs-class">.lazy-eval-scope</span> {
-  <span class="hljs-attribute">width</span><span class="hljs-value">: @var;</span>
-  <span class="hljs-at_rule">@a:<span class="hljs-preprocessor"> 9</span>%;</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-variable">@var</span>;
+  <span class="hljs-variable">@a:</span> <span class="hljs-number">9%</span>;
 }
 
-<span class="hljs-at_rule">@var: @a;</span>
-<span class="hljs-at_rule">@a:<span class="hljs-preprocessor"> 100</span>%;</span>
+<span class="hljs-variable">@var:</span> <span class="hljs-variable">@a</span>;
+<span class="hljs-variable">@a:</span> <span class="hljs-number">100%</span>;
 </code></pre>
 <p>both compile into:</p>
-<pre><code class="lang-css"><span class="hljs-class">.lazy-eval-scope</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">9</span>%</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.lazy-eval-scope</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">9%</span>;
+}
 </code></pre>
 <p>When defining a variable twice, the last definition of the variable is used, searching from the current scope upwards. This is similar to css itself where the last property inside a definition is used to determine the value.</p>
 <p>For instance:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> 0</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@var:</span> <span class="hljs-number">0</span>;
 <span class="hljs-class">.class</span> {
-  <span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> 1</span>;</span>
+  <span class="hljs-variable">@var:</span> <span class="hljs-number">1</span>;
   <span class="hljs-class">.brass</span> {
-    <span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> 2</span>;</span>
-    three<span class="hljs-value">: @var;</span>
-    <span class="hljs-at_rule">@var:<span class="hljs-preprocessor"> 3</span>;</span>
+    <span class="hljs-variable">@var:</span> <span class="hljs-number">2</span>;
+    <span class="hljs-attribute">three</span>: <span class="hljs-variable">@var</span>;
+    <span class="hljs-variable">@var:</span> <span class="hljs-number">3</span>;
   }
-  one<span class="hljs-value">: @var;</span>
+  <span class="hljs-attribute">one</span>: <span class="hljs-variable">@var</span>;
 }
 </code></pre>
 <p>Compiles to:</p>
-<pre><code class="lang-css"><span class="hljs-class">.class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">one</span>:<span class="hljs-value"> <span class="hljs-number">1</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.class</span> <span class="hljs-class">.brass</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">three</span>:<span class="hljs-value"> <span class="hljs-number">3</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">one</span>: <span class="hljs-number">1</span>;
+}
+<span class="hljs-class">.class</span> <span class="hljs-class">.brass</span> {
+  <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>;
+}
 </code></pre>
 <h2 class="docs-heading">default variables<span class="anchor-target" id="variables-feature-default-variables"></span>
 <a href="#variables-feature-default-variables" name="variables-feature-default-variables" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>We sometimes get requests for default variables - an ability to set a variable only if it is not already set. This feature is not required because you can easily override a variable by putting the definition afterwards.</p>
 <p>For instance:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// library</span>
-<span class="hljs-at_rule">@base-color:<span class="hljs-preprocessor"> green</span>;</span>
-<span class="hljs-at_rule">@dark-color:<span class="hljs-preprocessor"> darken</span>(@base-color,<span class="hljs-preprocessor"> 10</span>%);</span>
+<span class="hljs-variable">@base-color:</span> green;
+<span class="hljs-variable">@dark-color:</span> <span class="hljs-function">darken</span>(<span class="hljs-variable">@base-color</span>, <span class="hljs-number">10%</span>);
 
 <span class="hljs-comment">// use of library</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"library.less"</span>;</span>
-<span class="hljs-at_rule">@base-color:<span class="hljs-preprocessor"> red</span>;</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"library.less"</span>;
+<span class="hljs-variable">@base-color:</span> red;
 </code></pre>
-<p>This works fine - base-color is overidden and dark-color is a dark red.</p>
+<p>This works fine because of <a href="#variables-feature-lazy-loading">Lazy Loading</a> - base-color is overidden and dark-color is a dark red.</p>
 
 
       <br>
@@ -658,55 +658,55 @@ This means that this usage is typically limited to when you inject a variable in
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
 <pre><code class="lang-less"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
-  &amp;<span class="hljs-value">:extend(.inline);</span>
-  <span class="hljs-attribute">background</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.inline</span>);
+  <span class="hljs-attribute">background</span>: blue;
 }
 </code></pre>
 <p>In the rule set above, the <code>:extend</code> selector will apply the &quot;extending selector&quot; (<code>nav ul</code>) onto the <code>.inline</code> class <em>wherever the <code>.inline</code> class appears</em>. The declaration block will be kept as-is, but without any reference to the extend (because extend isn&#39;t css).</p>
 <p>So the following:</p>
 <pre><code class="lang-less"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
-  &amp;<span class="hljs-value">:extend(.inline);</span>
-  <span class="hljs-attribute">background</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.inline</span>);
+  <span class="hljs-attribute">background</span>: blue;
 }
 <span class="hljs-class">.inline</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+  <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
+  <span class="hljs-attribute">background</span>: blue;
+}
 <span class="hljs-class">.inline</span>,
-<span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
 </code></pre>
 <p>Notice how the <code>nav ul:extend(.inline)</code> selector gets output as <code>nav ul</code> - the extend gets removed before output and the selector block left as-is. If no properties are put in that block then it gets removed from the output (but the extend still may affect other selectors).</p>
 <h2 class="docs-heading">Extend syntax<span class="anchor-target" id="extend-feature-extend-syntax"></span>
 <a href="#extend-feature-extend-syntax" name="extend-feature-extend-syntax" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>The extend is either attached to a selector or placed into a ruleset. It looks like a pseudoclass with selector parameter optionally followed by the keyword <code>all</code>:</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-value">:extend(.b) {}
+<pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.b</span>) {}
 
-// the above block does the same thing as the below block
-.a {
-  &amp;:extend(.b);</span>
+<span class="hljs-comment">// the above block does the same thing as the below block</span>
+<span class="hljs-class">.a</span> {
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.b</span>);
 }
 </code></pre>
-<pre><code class="lang-less"><span class="hljs-class">.c</span><span class="hljs-value">:extend(.d all) {
-  // extends all instances of <span class="hljs-string">".d"</span> e.g. <span class="hljs-string">".x.d"</span> or <span class="hljs-string">".d.x"</span>
+<pre><code class="lang-less"><span class="hljs-class">.c</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.d</span> <span class="hljs-keyword">all</span>) {
+  <span class="hljs-comment">// extends all instances of ".d" e.g. ".x.d" or ".d.x"</span>
 }
-.c:extend(.d) {
-  // extends only instances where the selector will be output as just <span class="hljs-string">".d"</span>
-}</span>
+<span class="hljs-class">.c</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.d</span>) {
+  <span class="hljs-comment">// extends only instances where the selector will be output as just ".d"</span>
+}
 </code></pre>
 <p>It can contain one more classes to extend, separated by commas.</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.e</span><span class="hljs-value">:extend(.f) {}
-.e:extend(.g) {}
+<pre><code class="lang-less"><span class="hljs-class">.e</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.f</span>) {}
+<span class="hljs-class">.e</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.g</span>) {}
 
-// the above an the below do the same thing
-.e:extend(.f, .g) {}</span>
+<span class="hljs-comment">// the above an the below do the same thing</span>
+<span class="hljs-class">.e</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.f</span>, <span class="hljs-class">.g</span>) {}
 </code></pre>
 <h3 class="docs-heading">Extend attached to selector<span class="anchor-target" id="extend-feature-extend-attached-to-selector"></span>
 <a href="#extend-feature-extend-attached-to-selector" name="extend-feature-extend-attached-to-selector" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -719,10 +719,10 @@ This means that this usage is typically limited to when you inject a variable in
 </ul>
 <p>If a ruleset contains multiple selectors, any of them can have the extend keyword. Multiple selectors with extend in one ruleset:</p>
 <pre><code class="lang-less"><span class="hljs-class">.big-division</span>,
-<span class="hljs-class">.big-bag</span><span class="hljs-value">:extend(.bag),
-.big-bucket:extend(.bucket) {
-  // body
-}</span>
+<span class="hljs-class">.big-bag</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bag</span>),
+<span class="hljs-class">.big-bucket</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bucket</span>) {
+  <span class="hljs-comment">// body</span>
+}
 </code></pre>
 <h3 class="docs-heading">Extend inside ruleset<span class="anchor-target" id="extend-feature-extend-inside-ruleset"></span>
 <a href="#extend-feature-extend-inside-ruleset" name="extend-feature-extend-inside-ruleset" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -730,12 +730,12 @@ This means that this usage is typically limited to when you inject a variable in
 <p>Extend inside a body:</p>
 <pre><code class="lang-less"><span class="hljs-tag">pre</span><span class="hljs-pseudo">:hover</span>,
 <span class="hljs-class">.some-class</span> {
-  &amp;<span class="hljs-value">:extend(div pre);</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-tag">div</span> <span class="hljs-tag">pre</span>);
 }
 </code></pre>
 <p>is exactly the same as adding an extend after each selector:</p>
-<pre><code class="lang-less"><span class="hljs-tag">pre</span><span class="hljs-pseudo">:hover</span><span class="hljs-value">:extend(div pre),
-.some-class:extend(div pre) {}</span>
+<pre><code class="lang-less"><span class="hljs-tag">pre</span><span class="hljs-pseudo">:hover</span><span class="hljs-keyword">:extend</span>(<span class="hljs-tag">div</span> <span class="hljs-tag">pre</span>),
+<span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-tag">div</span> <span class="hljs-tag">pre</span>) {}
 </code></pre>
 <h3 class="docs-heading">Extending nested Selectors<span class="anchor-target" id="extend-feature-extending-nested-selectors"></span>
 <a href="#extend-feature-extending-nested-selectors" name="extend-feature-extending-nested-selectors" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -743,31 +743,31 @@ This means that this usage is typically limited to when you inject a variable in
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
   <span class="hljs-tag">tr</span> { <span class="hljs-comment">// nested ruleset with target selector</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+    <span class="hljs-attribute">color</span>: blue;
   }
 }
-<span class="hljs-class">.some-class</span><span class="hljs-value">:extend(.bucket tr) {} // nested ruleset is recognized</span>
+<span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bucket</span> <span class="hljs-tag">tr</span>) {} <span class="hljs-comment">// nested ruleset is recognized</span>
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-css"><span class="hljs-class">.bucket</span> <span class="hljs-tag">tr</span>,
-<span class="hljs-class">.some-class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.some-class</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 </code></pre>
 <p>Essentially the extend looks at the compiled css, not the original less.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
-  <span class="hljs-tag">tr</span> &amp; { <span class="hljs-comment">// nested ruleset with target selector</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-tag">tr</span> <span class="hljs-keyword">&amp;</span> { <span class="hljs-comment">// nested ruleset with target selector</span>
+    <span class="hljs-attribute">color</span>: blue;
   }
 }
-<span class="hljs-class">.some-class</span><span class="hljs-value">:extend(tr .bucket) {} // nested ruleset is recognized</span>
+<span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-tag">tr</span> <span class="hljs-class">.bucket</span>) {} <span class="hljs-comment">// nested ruleset is recognized</span>
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-css"><span class="hljs-tag">tr</span> <span class="hljs-class">.bucket</span>,
-<span class="hljs-class">.some-class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.some-class</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 </code></pre>
 <h3 class="docs-heading">Exact Matching with Extend<span class="anchor-target" id="extend-feature-exact-matching-with-extend"></span>
 <a href="#extend-feature-exact-matching-with-extend" name="extend-feature-exact-matching-with-extend" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -776,81 +776,81 @@ This means that this usage is typically limited to when you inject a variable in
 <pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-class">.class</span>,
 <span class="hljs-class">.class</span><span class="hljs-class">.a</span>,
 <span class="hljs-class">.class</span> &gt; <span class="hljs-class">.a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-class">.test</span><span class="hljs-value">:extend(.class) {} // this will NOT match the any selectors above</span>
+<span class="hljs-class">.test</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.class</span>) {} <span class="hljs-comment">// this will NOT match the any selectors above</span>
 </code></pre>
 <p>Leading star does matter. Selectors <code>*.class</code> and <code>.class</code> are equivalent, but extend will not match them:</p>
 <pre><code class="lang-less">*<span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-class">.noStar</span><span class="hljs-value">:extend(.class) {} // this will NOT match the *.class selector</span>
+<span class="hljs-class">.noStar</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.class</span>) {} <span class="hljs-comment">// this will NOT match the *.class selector</span>
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css">*<span class="hljs-class">.class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css">*<span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 </code></pre>
 <p>Order of pseudoclasses does matter. Selectors <code>link:hover:visited</code> and <code>link:visited:hover</code> match the same set of elements, but extend treats them as different:</p>
 <pre><code class="lang-less"><span class="hljs-tag">link</span><span class="hljs-pseudo">:hover</span><span class="hljs-pseudo">:visited</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-class">.selector</span><span class="hljs-value">:extend(link:visited:hover) {}</span>
+<span class="hljs-class">.selector</span><span class="hljs-keyword">:extend</span>(<span class="hljs-tag">link</span><span class="hljs-pseudo">:visited</span><span class="hljs-pseudo">:hover</span>) {}
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-tag">link</span><span class="hljs-pseudo">:hover</span><span class="hljs-pseudo">:visited</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">link</span><span class="hljs-pseudo">:hover</span><span class="hljs-pseudo">:visited</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 </code></pre>
 <h3 class="docs-heading">nth expression<span class="anchor-target" id="extend-feature-nth-expression"></span>
 <a href="#extend-feature-nth-expression" name="extend-feature-nth-expression" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Nth expression form does matter. Nth-expressions <code>1n+3</code> and <code>n+3</code> are equivalent, but extend will not match them:</p>
-<pre><code class="lang-less"><span class="hljs-pseudo">:nth-child</span>(1n+3) {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+<pre><code class="lang-less"><span class="hljs-pseudo">:nth-child</span>(<span class="hljs-number">1</span>n+<span class="hljs-number">3</span>) {
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-class">.child</span><span class="hljs-value">:extend(:nth-child(n+<span class="hljs-number">3</span>)) {}</span>
+<span class="hljs-class">.child</span><span class="hljs-keyword">:extend</span>(<span class="hljs-pseudo">:nth-child</span>(n+<span class="hljs-number">3</span>)) {}
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-pseudo">:nth-child(1n+3)</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-pseudo">:nth-child</span>(<span class="hljs-number">1</span>n+<span class="hljs-number">3</span>) {
+  <span class="hljs-attribute">color</span>: blue;
+}
 </code></pre>
 <p>Quote type in attribute selector does not matter. All of the following are equivalent.</p>
 <pre><code class="lang-less"><span class="hljs-attr_selector">[title=identifier]</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
 <span class="hljs-attr_selector">[title='identifier']</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
 <span class="hljs-attr_selector">[title="identifier"]</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
 
-<span class="hljs-class">.noQuote</span><span class="hljs-value">:extend([title=identifier]) {}
-.singleQuote:extend([title=<span class="hljs-string">'identifier'</span>]) {}
-.doubleQuote:extend([title=<span class="hljs-string">"identifier"</span>]) {}</span>
+<span class="hljs-class">.noQuote</span><span class="hljs-keyword">:extend</span>(<span class="hljs-attr_selector">[title=identifier]</span>) {}
+<span class="hljs-class">.singleQuote</span><span class="hljs-keyword">:extend</span>(<span class="hljs-attr_selector">[title='identifier']</span>) {}
+<span class="hljs-class">.doubleQuote</span><span class="hljs-keyword">:extend</span>(<span class="hljs-attr_selector">[title="identifier"]</span>) {}
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-css"><span class="hljs-attr_selector">[title=identifier]</span>,
 <span class="hljs-class">.noQuote</span>,
 <span class="hljs-class">.singleQuote</span>,
-<span class="hljs-class">.doubleQuote</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.doubleQuote</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 
 <span class="hljs-attr_selector">[title='identifier']</span>,
 <span class="hljs-class">.noQuote</span>,
 <span class="hljs-class">.singleQuote</span>,
-<span class="hljs-class">.doubleQuote</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.doubleQuote</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 
 <span class="hljs-attr_selector">[title="identifier"]</span>,
 <span class="hljs-class">.noQuote</span>,
 <span class="hljs-class">.singleQuote</span>,
-<span class="hljs-class">.doubleQuote</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.doubleQuote</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 </code></pre>
 <h2 class="docs-heading">Extend &quot;all&quot;<span class="anchor-target" id="extend-feature-extend-all-"></span>
 <a href="#extend-feature-extend-all-" name="extend-feature-extend-all-" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -858,27 +858,27 @@ This means that this usage is typically limited to when you inject a variable in
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-class">.b</span><span class="hljs-class">.test</span>,
 <span class="hljs-class">.test</span><span class="hljs-class">.c</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: orange;</span>
+  <span class="hljs-attribute">color</span>: orange;
 }
 <span class="hljs-class">.test</span> {
-  &amp;<span class="hljs-pseudo">:hover</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-pseudo">:hover</span> {
+    <span class="hljs-attribute">color</span>: green;
   }
 }
 
-<span class="hljs-class">.replacement</span><span class="hljs-value">:extend(.test all) {}</span>
+<span class="hljs-class">.replacement</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.test</span> <span class="hljs-keyword">all</span>) {}
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-css"><span class="hljs-class">.a</span><span class="hljs-class">.b</span><span class="hljs-class">.test</span>,
 <span class="hljs-class">.test</span><span class="hljs-class">.c</span>,
 <span class="hljs-class">.a</span><span class="hljs-class">.b</span><span class="hljs-class">.replacement</span>,
-<span class="hljs-class">.replacement</span><span class="hljs-class">.c</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> orange</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.replacement</span><span class="hljs-class">.c</span> {
+  <span class="hljs-attribute">color</span>: orange;
+}
 <span class="hljs-class">.test</span><span class="hljs-pseudo">:hover</span>,
-<span class="hljs-class">.replacement</span><span class="hljs-pseudo">:hover</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> green</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.replacement</span><span class="hljs-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
 </code></pre>
 <p><em>You can think of this mode of operation as essentially doing a non-destructive search and replace.</em></p>
 <h3 class="docs-heading">Selector Interpolation with Extend<span class="anchor-target" id="extend-feature-selector-interpolation-with-extend"></span>
@@ -888,113 +888,113 @@ This means that this usage is typically limited to when you inject a variable in
 </blockquote>
 <p>There is a pending feature request for this but it is not an easy change.  However, extend can be attached to interpolated selector.</p>
 <p>Selector with variable will not be matched:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@variable:<span class="hljs-preprocessor"> .bucket</span>;</span>
-<span class="hljs-at_rule">@{</span>variable} { <span class="hljs-comment">// interpolated selector</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@variable:</span> .bucket;
+<span class="hljs-variable">@{variable}</span> { <span class="hljs-comment">// interpolated selector</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-class">.some-class</span><span class="hljs-value">:extend(.bucket) {} // does nothing, no match is found</span>
+<span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bucket</span>) {} <span class="hljs-comment">// does nothing, no match is found</span>
 </code></pre>
 <p>and extend with variable in target selector matches nothing:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-class">.some-class</span><span class="hljs-value">:extend(@{variable}) {} // interpolated selector matches nothing
-@variable: .bucket;</span>
+<span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-variable">@{variable}</span>) {} <span class="hljs-comment">// interpolated selector matches nothing</span>
+<span class="hljs-variable">@variable:</span> .bucket;
 </code></pre>
 <p>Both of the previous examples compile into:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
 <p>However, <code>:extend</code> attached to an interpolated selector works:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
-<span class="hljs-at_rule">@{</span>variable}<span class="hljs-value">:extend(.bucket) {}
-@variable: .selector;</span>
+<span class="hljs-variable">@{variable}</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bucket</span>) {}
+<span class="hljs-variable">@variable:</span> .selector;
 </code></pre>
 <p>previous less compiles into:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span>, <span class="hljs-class">.selector</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
 <h2 class="docs-heading">Scoping / Extend Inside @media<span class="anchor-target" id="extend-feature-scoping-extend-inside-media"></span>
 <a href="#extend-feature-scoping-extend-inside-media" name="extend-feature-scoping-extend-inside-media" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Extend written inside a media declaration should match only selectors inside the same media declaration:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> print</span> {</span>
-  <span class="hljs-class">.screenClass</span><span class="hljs-value">:extend(.selector) {} // extend inside media
-  .selector { // this will be matched - it is in the same media
-    color: black;</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@media</span> print {
+  <span class="hljs-class">.screenClass</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.selector</span>) {} <span class="hljs-comment">// extend inside media</span>
+  <span class="hljs-class">.selector</span> { <span class="hljs-comment">// this will be matched - it is in the same media</span>
+    <span class="hljs-attribute">color</span>: black;
   }
 }
 <span class="hljs-class">.selector</span> { <span class="hljs-comment">// ruleset on top of style sheet - extend ignores it</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+  <span class="hljs-attribute">color</span>: red;
 }
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> screen</span> {</span>
+<span class="hljs-at_rule">@media</span> screen {
   <span class="hljs-class">.selector</span> {  <span class="hljs-comment">// ruleset inside another media - extend ignores it</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+    <span class="hljs-attribute">color</span>: blue;
   }
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> print </span>{
+<pre><code class="lang-css"><span class="hljs-at_rule">@media</span> print {
   <span class="hljs-class">.selector</span>,
-  <span class="hljs-class">.screenClass</span> <span class="hljs-rules">{ <span class="hljs-comment">/*  ruleset inside the same media was extended */</span>
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule">}</span></span>
+  <span class="hljs-class">.screenClass</span> { <span class="hljs-comment">/*  ruleset inside the same media was extended */</span>
+    <span class="hljs-attribute">color</span>: black;
+  }
 }
-<span class="hljs-class">.selector</span> <span class="hljs-rules">{ <span class="hljs-comment">/* ruleset on top of style sheet was ignored */</span>
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen </span>{
-  <span class="hljs-class">.selector</span> <span class="hljs-rules">{ <span class="hljs-comment">/* ruleset inside another media was ignored */</span>
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-  <span class="hljs-rule">}</span></span>
+<span class="hljs-class">.selector</span> { <span class="hljs-comment">/* ruleset on top of style sheet was ignored */</span>
+  <span class="hljs-attribute">color</span>: red;
+}
+<span class="hljs-at_rule">@media</span> screen {
+  <span class="hljs-class">.selector</span> { <span class="hljs-comment">/* ruleset inside another media was ignored */</span>
+    <span class="hljs-attribute">color</span>: blue;
+  }
 }
 </code></pre>
 <p>Extend written inside a media declaration does not match selectors inside nested declaration:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> screen</span> {</span>
-  <span class="hljs-class">.screenClass</span><span class="hljs-value">:extend(.selector) {} // extend inside media
-  @media (min-width: <span class="hljs-number">1023</span>px) {
-    .selector {  // ruleset inside nested media - extend ignores it
-      color: blue;</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@media</span> screen {
+  <span class="hljs-class">.screenClass</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.selector</span>) {} <span class="hljs-comment">// extend inside media</span>
+  <span class="hljs-at_rule">@media</span> (min-width: <span class="hljs-number">1023px</span>) {
+    <span class="hljs-class">.selector</span> {  <span class="hljs-comment">// ruleset inside nested media - extend ignores it</span>
+      <span class="hljs-attribute">color</span>: blue;
     }
   }
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1023</span>px) </span>{
-  <span class="hljs-class">.selector</span> <span class="hljs-rules">{ <span class="hljs-comment">/* ruleset inside another nested media was ignored */</span>
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-  <span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1023px</span>) {
+  <span class="hljs-class">.selector</span> { <span class="hljs-comment">/* ruleset inside another nested media was ignored */</span>
+    <span class="hljs-attribute">color</span>: blue;
+  }
 }
 </code></pre>
 <p>Top level extend matches everything including selectors inside nested media:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> screen</span> {</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@media</span> screen {
   <span class="hljs-class">.selector</span> {  <span class="hljs-comment">/* ruleset inside nested media - top level extend works */</span>
-    <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+    <span class="hljs-attribute">color</span>: blue;
   }
-  <span class="hljs-at_rule">@<span class="hljs-keyword">media</span> (min-width:<span class="hljs-preprocessor"> 1023px</span>) {</span>
+  <span class="hljs-at_rule">@media</span> (min-width: <span class="hljs-number">1023px</span>) {
     <span class="hljs-class">.selector</span> {  <span class="hljs-comment">/* ruleset inside nested media - top level extend works */</span>
-      <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+      <span class="hljs-attribute">color</span>: blue;
     }
   }
 }
 
-<span class="hljs-class">.topLevel</span><span class="hljs-value">:extend(.selector) {} /* top level extend matches everything */</span>
+<span class="hljs-class">.topLevel</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.selector</span>) {} <span class="hljs-comment">/* top level extend matches everything */</span>
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen </span>{
+<pre><code class="lang-css"><span class="hljs-at_rule">@media</span> screen {
   <span class="hljs-class">.selector</span>,
-  <span class="hljs-class">.topLevel</span> <span class="hljs-rules">{ <span class="hljs-comment">/* ruleset inside media was extended */</span>
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-  <span class="hljs-rule">}</span></span>
+  <span class="hljs-class">.topLevel</span> { <span class="hljs-comment">/* ruleset inside media was extended */</span>
+    <span class="hljs-attribute">color</span>: blue;
+  }
 }
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1023</span>px) </span>{
+<span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1023px</span>) {
   <span class="hljs-class">.selector</span>,
-  <span class="hljs-class">.topLevel</span> <span class="hljs-rules">{ <span class="hljs-comment">/* ruleset inside nested media was extended */</span>
-    <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-  <span class="hljs-rule">}</span></span>
+  <span class="hljs-class">.topLevel</span> { <span class="hljs-comment">/* ruleset inside nested media was extended */</span>
+    <span class="hljs-attribute">color</span>: blue;
+  }
 }
 </code></pre>
 <h3 class="docs-heading">Duplication Detection<span class="anchor-target" id="extend-feature-duplication-detection"></span>
@@ -1006,47 +1006,47 @@ This means that this usage is typically limited to when you inject a variable in
   <span class="hljs-comment">/* declarations */</span>
 }
 
-<span class="hljs-class">.alert</span><span class="hljs-value">:extend(.alert-info, .widget) {}</span>
+<span class="hljs-class">.alert</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.alert-info</span>, <span class="hljs-class">.widget</span>) {}
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-css"><span class="hljs-class">.alert-info</span>,
 <span class="hljs-class">.widget</span>,
 <span class="hljs-class">.alert</span>,
-<span class="hljs-class">.alert</span> <span class="hljs-rules">{
+<span class="hljs-class">.alert</span> {
   <span class="hljs-comment">/* declarations */</span>
-<span class="hljs-rule">}</span></span>
+}
 </code></pre>
 <h2 class="docs-heading">Use Cases for Extend<span class="anchor-target" id="extend-feature-use-cases-for-extend"></span>
 <a href="#extend-feature-use-cases-for-extend" name="extend-feature-use-cases-for-extend" class="anchor glyphicon glyphicon-link"></a></h2>
 <h3 class="docs-heading">Classic Use Case<span class="anchor-target" id="extend-feature-classic-use-case"></span>
 <a href="#extend-feature-classic-use-case" name="extend-feature-classic-use-case" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>The classic use case is to avoid adding a base class. For example, if you have</p>
-<pre><code class="lang-css"><span class="hljs-class">.animal</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> white</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.animal</span> {
+  <span class="hljs-attribute">background-color</span>: black;
+  <span class="hljs-attribute">color</span>: white;
+}
 </code></pre>
 <p>and you want to have a subtype of animal which overrides the background color then you have two options, firstly change your HTML</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"animal bear"</span>&gt;</span>Bear<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 </code></pre>
-<pre><code class="lang-css"><span class="hljs-class">.animal</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> white</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.bear</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> brown</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.animal</span> {
+  <span class="hljs-attribute">background-color</span>: black;
+  <span class="hljs-attribute">color</span>: white;
+}
+<span class="hljs-class">.bear</span> {
+  <span class="hljs-attribute">background-color</span>: brown;
+}
 </code></pre>
 <p>or have simplified html and use extend in your less. e.g.</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"bear"</span>&gt;</span>Bear<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 </code></pre>
 <pre><code class="lang-less"><span class="hljs-class">.animal</span> {
-  <span class="hljs-attribute">background-color</span><span class="hljs-value">: black;</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: white;</span>
+  <span class="hljs-attribute">background-color</span>: black;
+  <span class="hljs-attribute">color</span>: white;
 }
 <span class="hljs-class">.bear</span> {
-  &amp;<span class="hljs-value">:extend(.animal);</span>
-  <span class="hljs-attribute">background-color</span><span class="hljs-value">: brown;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.animal</span>);
+  <span class="hljs-attribute">background-color</span>: brown;
 }
 </code></pre>
 <h3 class="docs-heading">Reducing CSS Size<span class="anchor-target" id="extend-feature-reducing-css-size"></span>
@@ -1054,8 +1054,8 @@ This means that this usage is typically limited to when you inject a variable in
 <p>Mixins copy all of the properties into a selector, which can lead to unnecessary duplication. Therefore you can use extends instead of mixins to move the selector up to the properties you wish to use, which leads to less css being generated.</p>
 <p>Example - with mixin:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-inline-block</span>() {
-    <span class="hljs-attribute">display</span><span class="hljs-value">: inline-block;</span>
-  <span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+    <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
 }
 <span class="hljs-class">.thing1</span> {
   <span class="hljs-class">.my-inline-block</span>;
@@ -1065,34 +1065,34 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-class">.thing1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> inline-block</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.thing2</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> inline-block</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.thing1</span> {
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+}
+<span class="hljs-class">.thing2</span> {
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+}
 </code></pre>
 <p>Example (with extends):</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-inline-block</span> {
-  <span class="hljs-attribute">display</span><span class="hljs-value">: inline-block;</span>
-  <span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
 }
 <span class="hljs-class">.thing1</span> {
-  &amp;<span class="hljs-value">:extend(.my-inline-block);</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.my-inline-block</span>);
 }
 <span class="hljs-class">.thing2</span> {
-  &amp;<span class="hljs-value">:extend(.my-inline-block);</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.my-inline-block</span>);
 }
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-css"><span class="hljs-class">.my-inline-block</span>,
 <span class="hljs-class">.thing1</span>,
-<span class="hljs-class">.thing2</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> inline-block</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.thing2</span> {
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
+}
 </code></pre>
 <h3 class="docs-heading">Combining Styles / a more advanced mixin<span class="anchor-target" id="extend-feature-combining-styles-a-more-advanced-mixin"></span>
 <a href="#extend-feature-combining-styles-a-more-advanced-mixin" name="extend-feature-combining-styles-a-more-advanced-mixin" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1102,7 +1102,7 @@ This means that this usage is typically limited to when you inject a variable in
   <span class="hljs-comment">// list styles</span>
 }
 <span class="hljs-tag">button</span><span class="hljs-class">.list-style</span> {
-  &amp;<span class="hljs-value">:extend(li.list &gt; a);</span> <span class="hljs-comment">// use the same list styles</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-tag">li</span><span class="hljs-class">.list</span> &gt; <span class="hljs-tag">a</span>); <span class="hljs-comment">// use the same list styles</span>
 }
 </code></pre>
 
@@ -1141,7 +1141,7 @@ This means that this usage is typically limited to when you inject a variable in
 </blockquote>
 <p>You can mix-in class selectors and id selectors, e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span>, <span class="hljs-id">#b</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+  <span class="hljs-attribute">color</span>: red;
 }
 <span class="hljs-class">.mixin-class</span> {
   <span class="hljs-class">.a</span>();
@@ -1151,15 +1151,15 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>which results in:</p>
-<pre><code class="lang-css"><span class="hljs-class">.a</span>, <span class="hljs-id">#b</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.mixin-class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.mixin-id</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.a</span>, <span class="hljs-id">#b</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+<span class="hljs-class">.mixin-class</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+<span class="hljs-class">.mixin-id</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
 </code></pre>
 <p>Notice that when you call the mixin, the parentheses are optional.</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span>();   <span class="hljs-comment">//these lines do the same thing</span>
@@ -1169,10 +1169,10 @@ This means that this usage is typically limited to when you inject a variable in
 <a href="#mixins-feature-not-outputting-the-mixin" name="mixins-feature-not-outputting-the-mixin" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>If you want to create a mixin but you do not want that mixin to be output, you can put parentheses after it.</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-mixin</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: black;</span>
+  <span class="hljs-attribute">color</span>: black;
 }
 <span class="hljs-class">.my-other-mixin</span>() {
-  <span class="hljs-attribute">background</span><span class="hljs-value">: white;</span>
+  <span class="hljs-attribute">background</span>: white;
 }
 <span class="hljs-class">.class</span> {
   <span class="hljs-class">.my-mixin</span>;
@@ -1180,21 +1180,21 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>outputs</p>
-<pre><code class="lang-css"><span class="hljs-class">.my-mixin</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> black</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> white</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.my-mixin</span> {
+  <span class="hljs-attribute">color</span>: black;
+}
+<span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">color</span>: black;
+  <span class="hljs-attribute">background</span>: white;
+}
 </code></pre>
 <h2 class="docs-heading">Selectors in mixins<span class="anchor-target" id="mixins-feature-selectors-in-mixins"></span>
 <a href="#mixins-feature-selectors-in-mixins" name="mixins-feature-selectors-in-mixins" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Mixins can contain more than just properties, they can contain selectors too.</p>
 <p>For example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-hover-mixin</span>() {
-  &amp;<span class="hljs-pseudo">:hover</span> {
-    <span class="hljs-attribute">border</span><span class="hljs-value">: <span class="hljs-number">1</span>px solid red;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-pseudo">:hover</span> {
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;
   }
 }
 <span class="hljs-tag">button</span> {
@@ -1202,16 +1202,16 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-tag">button</span><span class="hljs-pseudo">:hover</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid red</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">button</span><span class="hljs-pseudo">:hover</span> {
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid red;
+}
 </code></pre>
 <h2 class="docs-heading">Namespaces<span class="anchor-target" id="mixins-feature-namespaces"></span>
 <a href="#mixins-feature-namespaces" name="mixins-feature-namespaces" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>If you want to mixin properties inside a more complicated selector, you can stack up multiple id&#39;s or classes.</p>
 <pre><code class="lang-less"><span class="hljs-id">#outer</span> {
   <span class="hljs-class">.inner</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+    <span class="hljs-attribute">color</span>: red;
   }
 }
 
@@ -1232,7 +1232,7 @@ This means that this usage is typically limited to when you inject a variable in
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-id">#my-library</span> {
   <span class="hljs-class">.my-mixin</span>() {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: black;</span>
+    <span class="hljs-attribute">color</span>: black;
   }
 }
 <span class="hljs-comment">// which can be used like this</span>
@@ -1244,9 +1244,9 @@ This means that this usage is typically limited to when you inject a variable in
 <a href="#mixins-feature-the-important-keyword" name="mixins-feature-the-important-keyword" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Use the <code>!important</code> keyword after mixin call to mark all properties inherited by it as <code>!important</code>:</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.foo</span> (<span class="hljs-at_rule">@bg: <span class="hljs-hexcolor">#f5f5f5</span>, @color: <span class="hljs-hexcolor">#900</span>) {</span>
-  <span class="hljs-attribute">background</span><span class="hljs-value">: @bg;</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @color;</span>
+<pre><code class="lang-less"><span class="hljs-class">.foo</span> (<span class="hljs-variable">@bg</span>: <span class="hljs-hexcolor">#f5f5f5</span>, <span class="hljs-variable">@color</span>: <span class="hljs-hexcolor">#900</span>) {
+  <span class="hljs-attribute">background</span>: <span class="hljs-variable">@bg</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@color</span>;
 }
 <span class="hljs-class">.unimportant</span> {
   <span class="hljs-class">.foo</span>();
@@ -1256,14 +1256,14 @@ This means that this usage is typically limited to when you inject a variable in
 }
 </code></pre>
 <p>Results in:</p>
-<pre><code class="lang-css"><span class="hljs-class">.unimportant</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#f5f5f5</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#900</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.important</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#f5f5f5</span> <span class="hljs-important">!important</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#900</span> <span class="hljs-important">!important</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.unimportant</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-hexcolor">#f5f5f5</span>;
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#900</span>;
+}
+<span class="hljs-class">.important</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-hexcolor">#f5f5f5</span> !important;
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#900</span> !important;
+}
 </code></pre>
 
 
@@ -1301,25 +1301,25 @@ This means that this usage is typically limited to when you inject a variable in
 </blockquote>
 <p>Mixins can also take arguments, which are variables passed to the block of selectors when it is mixed in.</p>
 <p>For example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.border-radius</span>(<span class="hljs-at_rule">@radius) {</span>
-  -webkit-<span class="hljs-attribute">border-radius</span><span class="hljs-value">: @radius;</span>
-     -moz-<span class="hljs-attribute">border-radius</span><span class="hljs-value">: @radius;</span>
-          <span class="hljs-attribute">border-radius</span><span class="hljs-value">: @radius;</span>
+<pre><code class="lang-less"><span class="hljs-class">.border-radius</span>(<span class="hljs-variable">@radius</span>) {
+  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-variable">@radius</span>;
+     <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-variable">@radius</span>;
+          <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">@radius</span>;
 }
 </code></pre>
 <p>And here&#39;s how we can mix it into various rulesets:</p>
 <pre><code class="lang-less"><span class="hljs-id">#header</span> {
-  <span class="hljs-class">.border-radius</span>(4px);
+  <span class="hljs-class">.border-radius</span>(<span class="hljs-number">4px</span>);
 }
 <span class="hljs-class">.button</span> {
-  <span class="hljs-class">.border-radius</span>(6px);
+  <span class="hljs-class">.border-radius</span>(<span class="hljs-number">6px</span>);
 }
 </code></pre>
 <p>Parametric mixins can also have default values for their parameters:</p>
-<pre><code class="lang-less"><span class="hljs-class">.border-radius</span>(<span class="hljs-at_rule">@radius:<span class="hljs-preprocessor"> 5px</span>) {</span>
-  -webkit-<span class="hljs-attribute">border-radius</span><span class="hljs-value">: @radius;</span>
-     -moz-<span class="hljs-attribute">border-radius</span><span class="hljs-value">: @radius;</span>
-          <span class="hljs-attribute">border-radius</span><span class="hljs-value">: @radius;</span>
+<pre><code class="lang-less"><span class="hljs-class">.border-radius</span>(<span class="hljs-variable">@radius</span>: <span class="hljs-number">5px</span>) {
+  <span class="hljs-attribute">-webkit-border-radius</span>: <span class="hljs-variable">@radius</span>;
+     <span class="hljs-attribute">-moz-border-radius</span>: <span class="hljs-variable">@radius</span>;
+          <span class="hljs-attribute">border-radius</span>: <span class="hljs-variable">@radius</span>;
 }
 </code></pre>
 <p>We can invoke it like this now:</p>
@@ -1330,21 +1330,21 @@ This means that this usage is typically limited to when you inject a variable in
 <p>And it will include a 5px border-radius.</p>
 <p>You can also use parametric mixins which don&#39;t take parameters. This is useful if you want to hide the ruleset from the CSS output, but want to include its properties in other rulesets:</p>
 <pre><code class="lang-less"><span class="hljs-class">.wrap</span>() {
-  <span class="hljs-value">text</span>-wrap<span class="hljs-value">: wrap;</span>
-  <span class="hljs-attribute">white-space</span><span class="hljs-value">: -moz-pre-wrap;</span>
-  <span class="hljs-attribute">white-space</span><span class="hljs-value">: pre-wrap;</span>
-  <span class="hljs-attribute">word-wrap</span><span class="hljs-value">: break-word;</span>
+  <span class="hljs-attribute">text-wrap</span>: wrap;
+  <span class="hljs-attribute">white-space</span>: -moz-pre-wrap;
+  <span class="hljs-attribute">white-space</span>: pre-wrap;
+  <span class="hljs-attribute">word-wrap</span>: break-word;
 }
 
 <span class="hljs-tag">pre</span> { <span class="hljs-class">.wrap</span> }
 </code></pre>
 <p>Which would output:</p>
-<pre><code class="lang-css"><span class="hljs-tag">pre</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">text-wrap</span>:<span class="hljs-value"> wrap</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">white-space</span>:<span class="hljs-value"> -moz-pre-wrap</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">white-space</span>:<span class="hljs-value"> pre-wrap</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">word-wrap</span>:<span class="hljs-value"> break-word</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">pre</span> {
+  <span class="hljs-attribute">text-wrap</span>: wrap;
+  <span class="hljs-attribute">white-space</span>: -moz-pre-wrap;
+  <span class="hljs-attribute">white-space</span>: pre-wrap;
+  <span class="hljs-attribute">word-wrap</span>: break-word;
+}
 </code></pre>
 <h3 class="docs-heading">Mixins With Multiple Parameters<span class="anchor-target" id="mixins-parametric-feature-mixins-with-multiple-parameters"></span>
 <a href="#mixins-parametric-feature-mixins-with-multiple-parameters" name="mixins-parametric-feature-mixins-with-multiple-parameters" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1357,86 +1357,86 @@ This means that this usage is typically limited to when you inject a variable in
 <li>comma separated default value: <code>.name(@param1: red, blue;)</code>.</li>
 </ul>
 <p>It is legal to define multiple mixins with the same name and number of parameters. Less will use properties of all that can apply. If you used the mixin with one parameter e.g. <code>.mixin(green);</code>, then properties of all mixins with exactly one mandatory parameter will be used:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@color) {</span>
-  <span class="hljs-attribute">color</span>-1<span class="hljs-value">: @color;</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@color</span>) {
+  <span class="hljs-attribute">color-1</span>: <span class="hljs-variable">@color</span>;
 }
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@color;</span> <span class="hljs-at_rule">@padding:<span class="hljs-number">2</span>) {</span>
-  <span class="hljs-attribute">color</span>-2<span class="hljs-value">: @color;</span>
-  <span class="hljs-attribute">padding</span>-2<span class="hljs-value">: @padding;</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@color</span>; <span class="hljs-variable">@padding</span>:<span class="hljs-number">2</span>) {
+  <span class="hljs-attribute">color-2</span>: <span class="hljs-variable">@color</span>;
+  <span class="hljs-attribute">padding-2</span>: <span class="hljs-variable">@padding</span>;
 }
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@color;</span> <span class="hljs-at_rule">@padding;</span> <span class="hljs-at_rule">@margin:<span class="hljs-preprocessor"> 2</span>) {</span>
-  <span class="hljs-attribute">color</span>-3<span class="hljs-value">: @color;</span>
-  <span class="hljs-attribute">padding</span>-3<span class="hljs-value">: @padding;</span>
-  <span class="hljs-attribute">margin</span><span class="hljs-value">: @margin @margin @margin @margin;</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@color</span>; <span class="hljs-variable">@padding</span>; <span class="hljs-variable">@margin</span>: <span class="hljs-number">2</span>) {
+  <span class="hljs-attribute">color-3</span>: <span class="hljs-variable">@color</span>;
+  <span class="hljs-attribute">padding-3</span>: <span class="hljs-variable">@padding</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-variable">@margin</span> <span class="hljs-variable">@margin</span> <span class="hljs-variable">@margin</span> <span class="hljs-variable">@margin</span>;
 }
 <span class="hljs-class">.some</span> <span class="hljs-class">.selector</span> <span class="hljs-tag">div</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-id">#008000</span>);
+  <span class="hljs-class">.mixin</span>(<span class="hljs-hexcolor">#008000</span>);
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css">.some .selector div {
-  color-1: #008000;
-  color-2: #008000;
-  padding-2: 2;
+<pre><code class="lang-css"><span class="hljs-class">.some</span> <span class="hljs-class">.selector</span> <span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">color-1</span>: <span class="hljs-hexcolor">#008000</span>;
+  <span class="hljs-attribute">color-2</span>: <span class="hljs-hexcolor">#008000</span>;
+  <span class="hljs-attribute">padding-2</span>: <span class="hljs-number">2</span>;
 }
 </code></pre>
 <h3 class="docs-heading">Named Parameters<span class="anchor-target" id="mixins-parametric-feature-named-parameters"></span>
 <a href="#mixins-parametric-feature-named-parameters" name="mixins-parametric-feature-named-parameters" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>A mixin reference can supply parameters values by their names instead of just positions. Any parameter can be referenced by its name and they do not have to be in any special order:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@color:<span class="hljs-preprocessor"> black</span>;</span> <span class="hljs-at_rule">@margin:<span class="hljs-preprocessor"> 10px</span>;</span> <span class="hljs-at_rule">@padding:<span class="hljs-preprocessor"> 20px</span>) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @color;</span>
-  <span class="hljs-attribute">margin</span><span class="hljs-value">: @margin;</span>
-  <span class="hljs-attribute">padding</span><span class="hljs-value">: @padding;</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@color</span>: black; <span class="hljs-variable">@margin</span>: <span class="hljs-number">10px</span>; <span class="hljs-variable">@padding</span>: <span class="hljs-number">20px</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@color</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-variable">@margin</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-variable">@padding</span>;
 }
 <span class="hljs-class">.class1</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@margin:<span class="hljs-preprocessor"> 20px</span>;</span> <span class="hljs-at_rule">@color: <span class="hljs-hexcolor">#33acfe</span>);</span>
+  <span class="hljs-class">.mixin</span>(<span class="hljs-variable">@margin</span>: <span class="hljs-number">20px</span>; <span class="hljs-variable">@color</span>: <span class="hljs-hexcolor">#33acfe</span>);
 }
 <span class="hljs-class">.class2</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-id">#efca44</span>; <span class="hljs-at_rule">@padding:<span class="hljs-preprocessor"> 40px</span>);</span>
+  <span class="hljs-class">.mixin</span>(<span class="hljs-hexcolor">#efca44</span>; <span class="hljs-variable">@padding</span>: <span class="hljs-number">40px</span>);
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="hljs-class">.class1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#33acfe</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">20</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">20</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.class2</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#efca44</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">10</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">40</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.class1</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#33acfe</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+<span class="hljs-class">.class2</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#efca44</span>;
+  <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">40px</span>;
+}
 </code></pre>
 <h3 class="docs-heading">The <code>@arguments</code> variable<span class="anchor-target" id="mixins-parametric-feature-the-arguments-variable"></span>
 <a href="#mixins-parametric-feature-the-arguments-variable" name="mixins-parametric-feature-the-arguments-variable" class="anchor glyphicon glyphicon-link"></a></h3>
 <p><code>@arguments</code> has a special meaning inside mixins, it contains all the arguments passed, when the mixin was called. This is useful if you don&#39;t want to deal with individual parameters:</p>
-<pre><code class="lang-less"><span class="hljs-class">.box-shadow</span>(<span class="hljs-at_rule">@x:<span class="hljs-preprocessor"> 0</span>;</span> <span class="hljs-at_rule">@y:<span class="hljs-preprocessor"> 0</span>;</span> <span class="hljs-at_rule">@blur:<span class="hljs-preprocessor"> 1px</span>;</span> <span class="hljs-at_rule">@color: <span class="hljs-hexcolor">#000</span>) {</span>
-  -webkit-<span class="hljs-attribute">box-shadow</span><span class="hljs-value">: @arguments;</span>
-     -moz-<span class="hljs-attribute">box-shadow</span><span class="hljs-value">: @arguments;</span>
-          <span class="hljs-attribute">box-shadow</span><span class="hljs-value">: @arguments;</span>
+<pre><code class="lang-less"><span class="hljs-class">.box-shadow</span>(<span class="hljs-variable">@x</span>: <span class="hljs-number">0</span>; <span class="hljs-variable">@y</span>: <span class="hljs-number">0</span>; <span class="hljs-variable">@blur</span>: <span class="hljs-number">1px</span>; <span class="hljs-variable">@color</span>: <span class="hljs-hexcolor">#000</span>) {
+  <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-variable">@arguments</span>;
+     <span class="hljs-attribute">-moz-box-shadow</span>: <span class="hljs-variable">@arguments</span>;
+          <span class="hljs-attribute">box-shadow</span>: <span class="hljs-variable">@arguments</span>;
 }
 <span class="hljs-class">.big-block</span> {
-  <span class="hljs-class">.box-shadow</span>(2px; 5px);
+  <span class="hljs-class">.box-shadow</span>(<span class="hljs-number">2px</span>; <span class="hljs-number">5px</span>);
 }
 </code></pre>
 <p>Which results in:</p>
-<pre><code class="lang-css"><span class="hljs-class">.big-block</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">-webkit-box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">2</span>px <span class="hljs-number">5</span>px <span class="hljs-number">1</span>px <span class="hljs-hexcolor">#000</span></span></span>;
-     <span class="hljs-rule"><span class="hljs-attribute">-moz-box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">2</span>px <span class="hljs-number">5</span>px <span class="hljs-number">1</span>px <span class="hljs-hexcolor">#000</span></span></span>;
-          <span class="hljs-rule"><span class="hljs-attribute">box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">2</span>px <span class="hljs-number">5</span>px <span class="hljs-number">1</span>px <span class="hljs-hexcolor">#000</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.big-block</span> {
+  <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> <span class="hljs-hexcolor">#000</span>;
+     <span class="hljs-attribute">-moz-box-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> <span class="hljs-hexcolor">#000</span>;
+          <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> <span class="hljs-hexcolor">#000</span>;
+}
 </code></pre>
 <h3 class="docs-heading">Advanced arguments and the <code>@rest</code> variable<span class="anchor-target" id="mixins-parametric-feature-advanced-arguments-and-the-rest-variable"></span>
 <a href="#mixins-parametric-feature-advanced-arguments-and-the-rest-variable" name="mixins-parametric-feature-advanced-arguments-and-the-rest-variable" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>You can use <code>...</code> if you want your mixin to take a variable number of arguments. Using this after a variable name will assign those arguments to the variable.</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>(...) {        <span class="hljs-comment">// matches 0-N arguments</span>
 <span class="hljs-class">.mixin</span>() {           <span class="hljs-comment">// matches exactly 0 arguments</span>
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@a:<span class="hljs-preprocessor"> 1</span>) {</span>      <span class="hljs-comment">// matches 0-1 arguments</span>
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@a:<span class="hljs-preprocessor"> 1</span>;</span> ...) { <span class="hljs-comment">// matches 0-N arguments</span>
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@a;</span> ...) {    <span class="hljs-comment">// matches 1-N arguments</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>: <span class="hljs-number">1</span>) {      <span class="hljs-comment">// matches 0-1 arguments</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>: <span class="hljs-number">1</span>; ...) { <span class="hljs-comment">// matches 0-N arguments</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; ...) {    <span class="hljs-comment">// matches 1-N arguments</span>
 </code></pre>
 <p>Furthermore:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@a;</span> <span class="hljs-at_rule">@rest...) {</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@rest</span>...) {
    <span class="hljs-comment">// @rest is bound to arguments after @a</span>
    <span class="hljs-comment">// @arguments is bound to all arguments</span>
 }
@@ -1444,35 +1444,35 @@ This means that this usage is typically limited to when you inject a variable in
 <h2 class="docs-heading">Pattern-matching<span class="anchor-target" id="mixins-parametric-feature-pattern-matching"></span>
 <a href="#mixins-parametric-feature-pattern-matching" name="mixins-parametric-feature-pattern-matching" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Sometimes, you may want to change the behavior of a mixin, based on the parameters you pass to it. Let&#39;s start with something basic:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@s;</span> <span class="hljs-at_rule">@color) {</span> ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@s</span>; <span class="hljs-variable">@color</span>) { ... }
 
 <span class="hljs-class">.class</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@switch;</span> <span class="hljs-id">#888</span>);
+  <span class="hljs-class">.mixin</span>(<span class="hljs-variable">@switch</span>; <span class="hljs-hexcolor">#888</span>);
 }
 </code></pre>
 <p>Now let&#39;s say we want <code>.mixin</code> to behave differently, based on the value of <code>@switch</code>, we could define <code>.mixin</code> as such:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(dark; <span class="hljs-at_rule">@color) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: darken(@color, <span class="hljs-number">10</span>%);</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(dark; <span class="hljs-variable">@color</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">darken</span>(<span class="hljs-variable">@color</span>, <span class="hljs-number">10%</span>);
 }
-<span class="hljs-class">.mixin</span>(light; <span class="hljs-at_rule">@color) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: lighten(@color, <span class="hljs-number">10</span>%);</span>
+<span class="hljs-class">.mixin</span>(light; <span class="hljs-variable">@color</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">lighten</span>(<span class="hljs-variable">@color</span>, <span class="hljs-number">10%</span>);
 }
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@_;</span> <span class="hljs-at_rule">@color) {</span>
-  <span class="hljs-attribute">display</span><span class="hljs-value">: block;</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@_</span>; <span class="hljs-variable">@color</span>) {
+  <span class="hljs-attribute">display</span>: block;
 }
 </code></pre>
 <p>Now, if we run:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@switch:<span class="hljs-preprocessor"> light</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@switch:</span> light;
 
 <span class="hljs-class">.class</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@switch;</span> <span class="hljs-id">#888</span>);
+  <span class="hljs-class">.mixin</span>(<span class="hljs-variable">@switch</span>; <span class="hljs-hexcolor">#888</span>);
 }
 </code></pre>
 <p>We will get the following CSS:</p>
-<pre><code class="lang-css"><span class="hljs-class">.class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#a2a2a2</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">display</span>:<span class="hljs-value"> block</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#a2a2a2</span>;
+  <span class="hljs-attribute">display</span>: block;
+}
 </code></pre>
 <p>Where the color passed to <code>.mixin</code> was lightened. If the value of <code>@switch</code> was <code>dark</code>,
 the result would be a darker color.</p>
@@ -1485,11 +1485,11 @@ the result would be a darker color.</p>
 <p>Only mixin definitions which matched were used. Variables match and bind to any value.
 Anything other than a variable matches only with a value equal to itself.</p>
 <p>We can also match on arity, here&#39;s an example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@a) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @a;</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@a</span>;
 }
-<span class="hljs-class">.mixin</span>(<span class="hljs-at_rule">@a;</span> <span class="hljs-at_rule">@b) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: fade(@a;</span> <span class="hljs-at_rule">@b);</span>
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">fade</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>);
 }
 </code></pre>
 <p>Now if we call <code>.mixin</code> with a single argument, we will get the output of the first definition,
@@ -1526,42 +1526,77 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 
 
 <blockquote>
-<p>Return variables from mixins</p>
+<p>Return variables or mixins from mixins</p>
 </blockquote>
-<p>All variables defined in a mixin are visible and can be used in caller&#39;s scope (unless the caller defines its own variable with the same name).</p>
+<p>Variables and mixins defined in a mixin are visible and can be used in caller&#39;s scope. There is only one exception, variable is not copied if the caller contains a variable with the same name (that includes variables defined by another mixin call).  Only variables present in callers local scope are protected. Variables inherited from parent scopes are overridden.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
-  <span class="hljs-at_rule">@width: <span class="hljs-preprocessor"> 100</span>%;</span>
-  <span class="hljs-at_rule">@height:<span class="hljs-preprocessor"> 200px</span>;</span>
+  <span class="hljs-variable">@width:</span>  <span class="hljs-number">100%</span>;
+  <span class="hljs-variable">@height:</span> <span class="hljs-number">200px</span>;
 }
 
 <span class="hljs-class">.caller</span> {
   <span class="hljs-class">.mixin</span>();
-  <span class="hljs-attribute">width</span><span class="hljs-value">:  @width;</span>
-  <span class="hljs-attribute">height</span><span class="hljs-value">: @height;</span>
+  <span class="hljs-attribute">width</span>:  <span class="hljs-variable">@width</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-variable">@height</span>;
 }
 </code></pre>
 <p>Results in:</p>
-<pre><code class="lang-css"><span class="hljs-class">.caller</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value">  <span class="hljs-number">100</span>%</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">200</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.caller</span> {
+  <span class="hljs-attribute">width</span>:  <span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+}
 </code></pre>
 <p>Thus variables defined in a mixin can act as its return values. This allows us to create a mixin that can be used almost like a function.</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-at_rule">@x, @y) {</span>
-  <span class="hljs-at_rule">@average: ((@x + @y) /<span class="hljs-preprocessor"> 2</span>);</span>
+<pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-variable">@x</span>, <span class="hljs-variable">@y</span>) {
+  <span class="hljs-variable">@average:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
 }
 
 <span class="hljs-tag">div</span> {
-  <span class="hljs-class">.average</span>(16px, 50px); <span class="hljs-comment">// "call" the mixin</span>
-  <span class="hljs-attribute">padding</span><span class="hljs-value">: @average;</span>    <span class="hljs-comment">// use its "return" value</span>
+  <span class="hljs-class">.average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>); <span class="hljs-comment">// "call" the mixin</span>
+  <span class="hljs-attribute">padding</span>: <span class="hljs-variable">@average</span>;    <span class="hljs-comment">// use its "return" value</span>
 }
 </code></pre>
 <p>Results in:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">33</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
+}
+</code></pre>
+<p>Variable defined directly in callers scope can not be overriden. However, variable defined in callers parent scope is not protected and will be overriden:</p>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
+  <span class="hljs-variable">@size:</span> in-mixin; 
+  <span class="hljs-variable">@definedOnlyInMixin:</span> in-mixin;
+}
+
+<span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">margin</span>: <span class="hljs-variable">@size</span> <span class="hljs-variable">@definedOnlyInMixin</span>;
+  <span class="hljs-class">.mixin</span>(); 
+}
+
+<span class="hljs-variable">@size:</span> globaly-defined-value; <span class="hljs-comment">// callers parent scope - no protection</span>
+</code></pre>
+<p>Results in:</p>
+<pre><code class="lang-css"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">margin</span>: in-mixin in-mixin;
+}
+</code></pre>
+<p>Finally, mixin defined in mixin acts as return value too:</p>
+<pre><code class="lang-less"><span class="hljs-class">.unlock</span>(<span class="hljs-variable">@value</span>) { <span class="hljs-comment">// outer mixin</span>
+  <span class="hljs-class">.doSomething</span>() { <span class="hljs-comment">// nested mixin</span>
+    <span class="hljs-attribute">declaration</span>: <span class="hljs-variable">@value</span>;
+  }
+}
+
+<span class="hljs-id">#namespace</span> {
+  <span class="hljs-class">.unlock</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// unlock doSomething mixin</span>
+  <span class="hljs-class">.doSomething</span>(); <span class="hljs-comment">//nested mixin was copied here and is usable </span>
+}
+</code></pre>
+<p>Results in:</p>
+<pre><code class="lang-css"><span class="hljs-id">#namespace</span> {
+  <span class="hljs-attribute">declaration</span>: <span class="hljs-number">5</span>;
+}
 </code></pre>
 
 
@@ -1598,57 +1633,188 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Allow wrapping of a css block, defined in a mixin</p>
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.7.0</a></p>
-<p>You may want to define a mixin that will abstract out either wrapping a piece of code in a media query or a non supported browser class name. You can now pass rulesets to mixins so that the mixin can wrap the content. E.g.</p>
-<pre><code class="lang-less"><span class="hljs-class">.desktop-and-old-ie</span>(<span class="hljs-at_rule">@rules) {</span>
-  <span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> screen</span><span class="hljs-preprocessor"> and</span> (min-width:<span class="hljs-preprocessor"> 1200</span>) {</span> <span class="hljs-at_rule">@<span class="hljs-function">rules()</span>;</span> }
-  <span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> &amp;                       { <span class="hljs-at_rule">@<span class="hljs-function">rules()</span>;</span> }
+<p>Detached ruleset is a group of css properties, nested rulestes, media declarations or anything else stored in a variable. You can include it into a ruleset or another structure and all its properties are going to be copied there. You can also use it as a mixin argument and pass it around as any other variable.</p>
+<p>Simple example:</p>
+<pre><code class="lang-less"><span class="hljs-comment">// declare detached ruleset</span>
+<span class="hljs-variable">@detached-ruleset:</span> { <span class="hljs-attribute">background</span>: red; };
+
+<span class="hljs-comment">// use detached ruleset</span>
+<span class="hljs-class">.top</span> {
+    <span class="hljs-variable">@detached-ruleset</span>(); 
+}
+</code></pre>
+<p>compiles into:</p>
+<pre><code class="lang-css"><span class="hljs-class">.top</span> {
+  <span class="hljs-attribute">background</span>: red;
+}
+</code></pre>
+<p>Parentheses after detached ruleset call are mandatory. The <code>@detached-ruleset;</code> call would NOT work.</p>
+<p>It is usefull when you want to define a mixin that abstracts out either wrapping a piece of code in a media query or a non supported browser class name. The rulesets can be passed to mixin so that the mixin can wrap the content. E.g.</p>
+<pre><code class="lang-less"><span class="hljs-class">.desktop-and-old-ie</span>(<span class="hljs-variable">@rules</span>) {
+  <span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200</span>) { <span class="hljs-variable">@rules</span>(); }
+  <span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> <span class="hljs-keyword">&amp;</span>                       { <span class="hljs-variable">@rules</span>(); }
 }
 
 <span class="hljs-tag">header</span> {
-  <span class="hljs-attribute">background-color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-attribute">background-color</span>: blue;
 
   <span class="hljs-class">.desktop-and-old-ie</span>({
-    <span class="hljs-attribute">background-color</span><span class="hljs-value">: red;</span>
+    <span class="hljs-attribute">background-color</span>: red;
   });
 }
 </code></pre>
 <p>Here the <code>desktop-and-old-ie</code> mixin defines the media query and root class so that you can use a mixin to wrap a piece of code. This will output..</p>
-<pre><code class="lang-css"><span class="hljs-tag">header</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1200</span>) </span>{
-  <span class="hljs-tag">header</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> red</span></span>;
-  <span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">header</span> {
+  <span class="hljs-attribute">background-color</span>: blue;
 }
-<span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> <span class="hljs-tag">header</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200</span>) {
+  <span class="hljs-tag">header</span> {
+    <span class="hljs-attribute">background-color</span>: red;
+  }
+}
+<span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> <span class="hljs-tag">header</span> {
+  <span class="hljs-attribute">background-color</span>: red;
+}
 </code></pre>
 <p>A ruleset can be now assigned to a variable or passed in to a mixin and can contain the full set of less features, e.g.</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@my-ruleset: {</span>
+<pre><code class="lang-less"><span class="hljs-variable">@my-ruleset:</span> {
     <span class="hljs-class">.my-selector</span> {
-      <span class="hljs-attribute">background-color</span><span class="hljs-value">: black;</span>
+      <span class="hljs-attribute">background-color</span>: black;
     }
   };
 </code></pre>
-<p>You can even take advantage of <a href="#media-query-bubbling-and-nested-media-queries">media query bubbling</a>, for instance</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@my-ruleset: {</span>
+<p>You can even take advantage of <a href="#features-overview-feature-media-query-bubbling-and-nested-media-queries">media query bubbling</a>, for instance</p>
+<pre><code class="lang-less"><span class="hljs-variable">@my-ruleset:</span> {
     <span class="hljs-class">.my-selector</span> {
-      <span class="hljs-at_rule">@<span class="hljs-keyword">media</span><span class="hljs-preprocessor"> tv</span> {</span>
-        <span class="hljs-attribute">background-color</span><span class="hljs-value">: black;</span>
+      <span class="hljs-at_rule">@media</span> tv {
+        <span class="hljs-attribute">background-color</span>: black;
       }
     }
   };
-<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> (orientation:portrait) {</span>
-    <span class="hljs-at_rule">@<span class="hljs-function">my-ruleset()</span>;</span>
+<span class="hljs-at_rule">@media</span> (orientation:portrait) {
+    <span class="hljs-variable">@my-ruleset</span>();
 }
 </code></pre>
 <p>which will output</p>
-<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> (orientation: portrait) and tv </span>{
-  <span class="hljs-class">.my-selector</span> <span class="hljs-rules">{
-    <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-at_rule">@media</span> (orientation: portrait) and tv {
+  <span class="hljs-class">.my-selector</span> {
+    <span class="hljs-attribute">background-color</span>: black;
+  }
+}
+</code></pre>
+<p>Detached ruleset call unlocks (returns) all its mixins into caller the same way as mixin calls do. However, it does NOT return variables.</p>
+<p>Returned mixin:</p>
+<pre><code class="lang-less"><span class="hljs-comment">// detached ruleset with a mixin</span>
+<span class="hljs-variable">@detached-ruleset:</span> { 
+    <span class="hljs-class">.mixin</span>() {
+        <span class="hljs-attribute">color</span>:blue;
+    }
+};
+<span class="hljs-comment">// call detached ruleset</span>
+<span class="hljs-class">.caller</span> {
+    <span class="hljs-variable">@detached-ruleset</span>(); 
+    <span class="hljs-class">.mixin</span>();
+}
+</code></pre>
+<p>Results in:</p>
+<pre><code class="lang-css"><span class="hljs-class">.caller</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+</code></pre>
+<p>Private variables:</p>
+<pre><code class="lang-less"><span class="hljs-tag">detached-ruleset</span>: { 
+    <span class="hljs-variable">@color:</span>blue; <span class="hljs-comment">//this variable is private</span>
+};
+<span class="hljs-class">.caller</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-variable">@color</span>; <span class="hljs-comment">//syntax error</span>
+}
+</code></pre>
+<h2 class="docs-heading">Scoping<span class="anchor-target" id="detached-rulesets-feature-scoping"></span>
+<a href="#detached-rulesets-feature-scoping" name="detached-rulesets-feature-scoping" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>Detached ruleset can use all variables and mixins accessible on place where it is <em>defined</em> and where it is <em>called</em>. Otherwise said, both definition and caller scopes are available to it. If both scopes contains the same variable or mixin, declaration scope value takes precedence. </p>
+<p><em>Declaration scope</em> is the one where detached ruleset body is defined. Copying  detached ruleset from one variable into another can not modify its scope. Ruleset does not gain access to new scopes just by being referenced there.</p>
+<p>Lastly, detached ruleset can gain access to scope by being unlocked (imported) into it.</p>
+<h4 id="definition-and-caller-scope-visibility">Definition and Caller Scope Visibility</h4>
+<p>Detached mixin sees callers variables and mixins:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@detached-ruleset:</span> {
+  <span class="hljs-attribute">caller-variable</span>: <span class="hljs-variable">@callerVariable</span>; <span class="hljs-comment">// variable is undefined here</span>
+  <span class="hljs-class">.callerMixin</span>(); <span class="hljs-comment">// mixin is undefined here</span>
+};
+
+<span class="hljs-tag">selector</span> {
+  <span class="hljs-comment">// use detached ruleset</span>
+  <span class="hljs-variable">@detached-ruleset</span>(); 
+
+  <span class="hljs-comment">// define variable and mixin needed inside the detached ruleset</span>
+  <span class="hljs-variable">@callerVariable:</span> value;
+  <span class="hljs-class">.callerMixin</span>() {
+    <span class="hljs-attribute">variable</span>: declaration;
+  }
+}
+</code></pre>
+<p>compiles into:</p>
+<pre><code class="lang-css"><span class="hljs-tag">selector</span> {
+  <span class="hljs-attribute">caller-variable</span>: value;
+  <span class="hljs-attribute">variable</span>: declaration;
+}
+</code></pre>
+<p>Variable and mixins accessible form definition win over those available in caller:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@variable:</span> global;
+<span class="hljs-variable">@detached-ruleset:</span> {
+  <span class="hljs-comment">//will use global variable, because it is accessible</span>
+  <span class="hljs-comment">//from detached-ruleset definition</span>
+  <span class="hljs-attribute">variable</span>: <span class="hljs-variable">@variable</span>; 
+};
+
+<span class="hljs-tag">selector</span> {
+  <span class="hljs-variable">@detached-ruleset</span>();
+  <span class="hljs-variable">@variable:</span> value; <span class="hljs-comment">//variable defined in caller - will be ignored</span>
+}
+</code></pre>
+<p>compiles into:</p>
+<pre><code class="lang-css"><span class="hljs-tag">selector</span> {
+  <span class="hljs-attribute">variable</span>: global;
+}
+</code></pre>
+<h4 id="referencing-wont-modify-detached-ruleset-scope">Referencing WONT Modify Detached Ruleset Scope</h4>
+<p>Ruleset does not gain access to new scopes just by being referenced there:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@detached-1:</span> { <span class="hljs-attribute">scope-detached</span>: <span class="hljs-variable">@one</span> <span class="hljs-variable">@two</span>; };
+<span class="hljs-class">.one</span> {
+  <span class="hljs-variable">@one:</span> visible;
+  <span class="hljs-class">.two</span> {
+    <span class="hljs-variable">@detached-2:</span> <span class="hljs-variable">@detached-1</span>; <span class="hljs-comment">// copying/renaming ruleset </span>
+    <span class="hljs-variable">@two:</span> visible; <span class="hljs-comment">// ruleset can not see this variable</span>
+  }
+}
+
+<span class="hljs-class">.usePlace</span> {
+  <span class="hljs-class">.one</span> &gt; <span class="hljs-class">.two</span>(); 
+  <span class="hljs-variable">@detached-2</span>();
+}
+</code></pre>
+<p>throws an error:</p>
+<pre><code>ERROR 1:32 The variable &quot;@one&quot; was not declared.
+</code></pre><h4 id="unlocking-will-modify-detached-ruleset-scope">Unlocking WILL Modify Detached Ruleset Scope</h4>
+<p>Detached ruleset gains access by being unlocked (imported) inside a scope:</p>
+<pre><code class="lang-less"><span class="hljs-id">#space</span> {
+  <span class="hljs-class">.importer1</span>() {
+    <span class="hljs-variable">@detached:</span> { <span class="hljs-attribute">scope-detached</span>: <span class="hljs-variable">@variable</span>; }; <span class="hljs-comment">// define detached ruleset</span>
+  }
+}
+
+<span class="hljs-class">.importer2</span>() {
+  <span class="hljs-variable">@variable:</span> value; <span class="hljs-comment">// unlocked detached ruleset CAN see this variable</span>
+  <span class="hljs-id">#space</span> &gt; <span class="hljs-class">.importer1</span>(); <span class="hljs-comment">// unlock/import detached ruleset</span>
+}
+
+<span class="hljs-class">.usePlace</span> {
+  <span class="hljs-class">.importer2</span>(); <span class="hljs-comment">// unlock/import detached ruleset second time</span>
+   <span class="hljs-variable">@detached</span>();
+}
+</code></pre>
+<p>compiles into:</p>
+<pre><code class="lang-css"><span class="hljs-class">.usePlace</span> {
+  <span class="hljs-attribute">scope-detached</span>: value;
 }
 </code></pre>
 
@@ -1688,9 +1854,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>In standard CSS, <code>@import</code> at-rules must precede all other types of rules. But Less.js doesn&#39;t care where you put <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.foo</span> {
-  <span class="hljs-attribute">background</span><span class="hljs-value">: <span class="hljs-hexcolor">#900</span>;</span>
+  <span class="hljs-attribute">background</span>: <span class="hljs-hexcolor">#900</span>;
 }
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"this-is-valid.less"</span>;</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"this-is-valid.less"</span>;
 </code></pre>
 <h2 class="docs-heading">File extensions<span class="anchor-target" id="import-directives-feature-file-extensions"></span>
 <a href="#import-directives-feature-file-extensions" name="import-directives-feature-file-extensions" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1701,10 +1867,10 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <li>If it does not have an extension, <code>.less</code> will be appended and it will be included as a imported Less file.</li>
 </ul>
 <p>Examples:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"foo"</span>;</span>      <span class="hljs-comment">// foo.less is imported</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"foo.less"</span>;</span> <span class="hljs-comment">// foo.less is imported</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"foo.php"</span>;</span>  <span class="hljs-comment">// foo.php imported as a less file</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"foo.css"</span>;</span>  <span class="hljs-comment">// statement left in place, as-is</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> <span class="hljs-string">"foo"</span>;      <span class="hljs-comment">// foo.less is imported</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"foo.less"</span>; <span class="hljs-comment">// foo.less is imported</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"foo.php"</span>;  <span class="hljs-comment">// foo.php imported as a less file</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">"foo.css"</span>;  <span class="hljs-comment">// statement left in place, as-is</span>
 </code></pre>
 <p>The following options can be used to override this behavior.</p>
 <h1 class="docs-heading">Import Options<span class="anchor-target" id="import-options"></span>
@@ -1738,7 +1904,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <h3 class="docs-heading">reference example<span class="anchor-target" id="import-options-reference-example"></span>
 <a href="#import-options-reference-example" name="import-options-reference-example" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>This allows you to pull in only specific, targeted styles from a library such as <a href="https://github.com/twbs/bootstrap">Bootstrap</a> by doing something like this:</p>
-<pre><code class="lang-less"><span class="hljs-class">.navbar</span><span class="hljs-value">:extend(.navbar all) {}</span>
+<pre><code class="lang-less"><span class="hljs-class">.navbar</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.navbar</span> <span class="hljs-keyword">all</span>) {}
 </code></pre>
 <p>And you will pull in only <code>.navbar</code> related styles from Bootstrap.</p>
 <h2 class="docs-heading">inline<span class="anchor-target" id="import-options-inline"></span>
@@ -1757,7 +1923,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> (less) <span class="hljs-string">"foo.css"</span>;</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">"foo.css"</span>;
 </code></pre>
 <h2 class="docs-heading">css<span class="anchor-target" id="import-options-css"></span>
 <a href="#import-options-css" name="import-options-css" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1766,10 +1932,10 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> (css) <span class="hljs-string">"foo.less"</span>;</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (css) <span class="hljs-string">"foo.less"</span>;
 </code></pre>
 <p>outputs</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> <span class="hljs-string">"foo.less"</span>;</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> <span class="hljs-string">"foo.less"</span>;
 </code></pre>
 <h2 class="docs-heading">once<span class="anchor-target" id="import-options-once"></span>
 <a href="#import-options-once" name="import-options-once" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1779,8 +1945,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
 <p>This is the default behavior of <code>@import</code> statements.</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">import</span> (once) <span class="hljs-string">"foo.less"</span>;</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> (once) <span class="hljs-string">"foo.less"</span>;</span> <span class="hljs-comment">// this statement will be ignored</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (once) <span class="hljs-string">"foo.less"</span>;
+<span class="hljs-at_rule">@import</span> (once) <span class="hljs-string">"foo.less"</span>; <span class="hljs-comment">// this statement will be ignored</span>
 </code></pre>
 <h2 class="docs-heading">multiple<span class="anchor-target" id="import-options-multiple"></span>
 <a href="#import-options-multiple" name="import-options-multiple" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1791,18 +1957,18 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// file: foo.less</span>
 <span class="hljs-class">.a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+  <span class="hljs-attribute">color</span>: green;
 }
 <span class="hljs-comment">// file: main.less</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> (multiple) <span class="hljs-string">"foo.less"</span>;</span>
-<span class="hljs-at_rule">@<span class="hljs-keyword">import</span> (multiple) <span class="hljs-string">"foo.less"</span>;</span>
+<span class="hljs-at_rule">@import</span> (multiple) <span class="hljs-string">"foo.less"</span>;
+<span class="hljs-at_rule">@import</span> (multiple) <span class="hljs-string">"foo.less"</span>;
 </code></pre>
 <p>Outputs</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+  <span class="hljs-attribute">color</span>: green;
 }
 <span class="hljs-class">.a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+  <span class="hljs-attribute">color</span>: green;
 }
 </code></pre>
 
@@ -1842,67 +2008,67 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Guards are useful when you want to match on <em>expressions</em>, as opposed to simple values or arity. If you are familiar with functional programming, you have probably encountered them already.</p>
 <p>In trying to stay as close as possible to the declarative nature of CSS, Less has opted to implement conditional execution via <strong>guarded mixins</strong> instead of <code>if</code>/<code>else</code> statements, in the vein of <code>@media</code> query feature specifications.</p>
 <p>Let&#39;s start with an example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">lightness(@a)</span> &gt;=<span class="hljs-preprocessor"> 50</span>%) {</span>
-  <span class="hljs-attribute">background-color</span><span class="hljs-value">: black;</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">lightness</span>(<span class="hljs-variable">@a</span>) &gt;= <span class="hljs-number">50%</span>) {
+  <span class="hljs-attribute">background-color</span>: black;
 }
-<span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">lightness(@a)</span> &lt;<span class="hljs-preprocessor"> 50</span>%) {</span>
-  <span class="hljs-attribute">background-color</span><span class="hljs-value">: white;</span>
+<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">lightness</span>(<span class="hljs-variable">@a</span>) &lt; <span class="hljs-number">50%</span>) {
+  <span class="hljs-attribute">background-color</span>: white;
 }
-<span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: @a;</span>
+<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@a</span>;
 }
 </code></pre>
 <p>The key is the <code>when</code> keyword, which introduces a guard sequence (here with only one guard). Now if we run the following code:</p>
-<pre><code class="lang-less"><span class="hljs-class">.class1</span> { <span class="hljs-class">.mixin</span>(<span class="hljs-id">#ddd</span>) }
-<span class="hljs-class">.class2</span> { <span class="hljs-class">.mixin</span>(<span class="hljs-id">#555</span>) }
+<pre><code class="lang-less"><span class="hljs-class">.class1</span> { <span class="hljs-class">.mixin</span>(<span class="hljs-hexcolor">#ddd</span>) }
+<span class="hljs-class">.class2</span> { <span class="hljs-class">.mixin</span>(<span class="hljs-hexcolor">#555</span>) }
 </code></pre>
 <p>Here&#39;s what we&#39;ll get:</p>
-<pre><code class="lang-css"><span class="hljs-class">.class1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> black</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#ddd</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.class2</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-color</span>:<span class="hljs-value"> white</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#555</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.class1</span> {
+  <span class="hljs-attribute">background-color</span>: black;
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#ddd</span>;
+}
+<span class="hljs-class">.class2</span> {
+  <span class="hljs-attribute">background-color</span>: white;
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#555</span>;
+}
 </code></pre>
 <h3 class="docs-heading">Guard comparison operators<span class="anchor-target" id="mixin-guards-feature-guard-comparison-operators"></span>
 <a href="#mixin-guards-feature-guard-comparison-operators" name="mixin-guards-feature-guard-comparison-operators" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>The full list of comparison operators usable in guards are: <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>=&lt;</code>, <code>&lt;</code>. Additionally, the keyword <code>true</code> is the only truthy value, making these two mixins equivalent:</p>
-<pre><code class="lang-less"><span class="hljs-class">.truth</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (@a) {</span> ... }
-<span class="hljs-class">.truth</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (@a =<span class="hljs-preprocessor"> true</span>) {</span> ... }
+<pre><code class="lang-less"><span class="hljs-class">.truth</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span>) { ... }
+<span class="hljs-class">.truth</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> = true) { ... }
 </code></pre>
 <p>Any value other than the keyword <code>true</code> is falsy:</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-class">.truth</span>(40); <span class="hljs-comment">// Will not match any of the above definitions.</span>
+  <span class="hljs-class">.truth</span>(<span class="hljs-number">40</span>); <span class="hljs-comment">// Will not match any of the above definitions.</span>
 }
 </code></pre>
 <p>Note that you can also compare arguments with each other, or with non-arguments:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span>:<span class="hljs-preprocessor"> mobile</span>;</span>
+<pre><code class="lang-less"><span class="hljs-at_rule">@media</span>: mobile;
 
-<span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (@<span class="hljs-keyword">media</span> =<span class="hljs-preprocessor"> mobile</span>) {</span> ... }
-<span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (@<span class="hljs-keyword">media</span> =<span class="hljs-preprocessor"> desktop</span>) {</span> ... }
+<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@media</span> = mobile) { ... }
+<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@media</span> = desktop) { ... }
 
-<span class="hljs-class">.max</span> (<span class="hljs-at_rule">@a;</span> <span class="hljs-at_rule">@b)<span class="hljs-preprocessor"> when</span> (@a &gt; @b) {</span> <span class="hljs-attribute">width</span><span class="hljs-value">: @a }
-.max (@a;</span> <span class="hljs-at_rule">@b)<span class="hljs-preprocessor"> when</span> (@a &lt; @b) {</span> <span class="hljs-attribute">width</span><span class="hljs-value">: @b }</span>
+<span class="hljs-class">.max</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@a</span> }
+<span class="hljs-class">.max</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &lt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@b</span> }
 </code></pre>
 <h3 class="docs-heading">Guard logical operators<span class="anchor-target" id="mixin-guards-feature-guard-logical-operators"></span>
 <a href="#mixin-guards-feature-guard-logical-operators" name="mixin-guards-feature-guard-logical-operators" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>You can use logical operators with guards. The syntax is based on CSS media queries.</p>
 <p>Use the <code>and</code> keyword to combine guards:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">isnumber(@a)</span>)<span class="hljs-preprocessor"> and</span> (@a &gt;<span class="hljs-preprocessor"> 0</span>) {</span> ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@a</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">0</span>) { ... }
 </code></pre>
 <p>You can emulate the <em>or</em> operator by separating guards with a comma <code>,</code>. If any of the guards evaluate to true, it&#39;s considered a match:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (@a &gt;<span class="hljs-preprocessor"> 10</span>), (@a &lt;<span class="hljs-preprocessor"> -10</span>) {</span> ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">10</span>), (<span class="hljs-variable">@a</span> &lt; -<span class="hljs-number">10</span>) { ... }
 </code></pre>
 <p>Use the <code>not</code> keyword to negate conditions:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@b)<span class="hljs-preprocessor"> when</span><span class="hljs-preprocessor"> not</span> (@b &gt;<span class="hljs-preprocessor"> 0</span>) {</span> ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@b</span> &gt; <span class="hljs-number">0</span>) { ... }
 </code></pre>
 <h3 class="docs-heading">Type checking functions<span class="anchor-target" id="mixin-guards-feature-type-checking-functions"></span>
 <a href="#mixin-guards-feature-type-checking-functions" name="mixin-guards-feature-type-checking-functions" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Lastly, if you want to match mixins based on value type, you can use the <code>is</code> functions:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a;</span> <span class="hljs-at_rule">@b:<span class="hljs-preprocessor"> 0</span>)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">isnumber(@b)</span>) {</span> ... }
-<span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a;</span> <span class="hljs-at_rule">@b:<span class="hljs-preprocessor"> black</span>)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">iscolor(@b)</span>) {</span> ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: <span class="hljs-number">0</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@b</span>)) { ... }
+<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: black) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@b</span>)) { ... }
 </code></pre>
 <p>Here are the basic type checking functions:</p>
 <ul>
@@ -1922,8 +2088,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <h3 class="docs-heading">Conditional mixins<span class="anchor-target" id="mixin-guards-feature-conditional-mixins"></span>
 <a href="#mixin-guards-feature-conditional-mixins" name="mixin-guards-feature-conditional-mixins" class="anchor glyphicon glyphicon-link"></a></h3>
 <p><em>(<strong>FIXME</strong>)</em> Additionally, the <code>default</code> function may be used to make a mixin match depending on other mixing matches, and you may use it to create &quot;conditional mixins&quot; similar to <code>else</code> or <code>default</code> statements (of <code>if</code> and <code>case</code> structures respectively):</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (@a &gt;<span class="hljs-preprocessor"> 0</span>) {</span> ...  }
-<span class="hljs-class">.mixin</span> (<span class="hljs-at_rule">@a)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">default()</span>) {</span> ... } <span class="hljs-comment">// matches only if first mixin does not, i.e. when @a &lt;= 0</span>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">0</span>) { ...  }
+<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) { ... } <span class="hljs-comment">// matches only if first mixin does not, i.e. when @a &lt;= 0</span>
 </code></pre>
 
 
@@ -1962,25 +2128,25 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.5.0</a></p>
 <p>Guards can also be applied to css selectors, which is syntactic sugar for declaring the mixin and then calling it immediately.</p>
 <p>For instance, before 1.5.0 you would have had to do this:</p>
-<pre><code class="lang-less"><span class="hljs-class">.my-optional-style</span>() when (<span class="hljs-at_rule">@my-option =<span class="hljs-preprocessor"> true</span>) {</span>
+<pre><code class="lang-less"><span class="hljs-class">.my-optional-style</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@my-option</span> = true) {
   <span class="hljs-tag">button</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: white;</span>
+    <span class="hljs-attribute">color</span>: white;
   }
 }
 <span class="hljs-class">.my-optional-style</span>();
 </code></pre>
 <p>Now, you can apply the guard directly to a style.</p>
-<pre><code class="lang-less"><span class="hljs-tag">button</span> when (<span class="hljs-at_rule">@my-option =<span class="hljs-preprocessor"> true</span>) {</span>
-  <span class="hljs-attribute">color</span><span class="hljs-value">: white;</span>
+<pre><code class="lang-less"><span class="hljs-tag">button</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@my-option</span> = true) {
+  <span class="hljs-attribute">color</span>: white;
 }
 </code></pre>
 <p>You can also achieve an <code>if</code> type statement by combining this with the <code>&amp;</code> feature, allowing you to group multiple guards. </p>
-<pre><code class="lang-less">&amp; when (<span class="hljs-at_rule">@my-option =<span class="hljs-preprocessor"> true</span>) {</span>
+<pre><code class="lang-less"><span class="hljs-keyword">&amp;</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@my-option</span> = true) {
   <span class="hljs-tag">button</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: white;</span>
+    <span class="hljs-attribute">color</span>: white;
   }
   <span class="hljs-tag">a</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+    <span class="hljs-attribute">color</span>: blue;
   }
 }
 </code></pre>
@@ -2020,47 +2186,47 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>In Less a mixin can call itself. Such recursive mixins, when combined with <a href="#mixin-guards-feature">Guard Expressions</a> and <a href="#mixins-parametric-feature-pattern-matching">Pattern Matching</a>, can be used to create various iterative/loop structures.</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.loop</span>(<span class="hljs-at_rule">@counter)<span class="hljs-preprocessor"> when</span> (@counter &gt;<span class="hljs-preprocessor"> 0</span>) {</span>
-  <span class="hljs-class">.loop</span>((<span class="hljs-at_rule">@counter<span class="hljs-preprocessor"> -</span><span class="hljs-preprocessor"> 1</span>));</span>    <span class="hljs-comment">// next iteration</span>
-  <span class="hljs-attribute">width</span><span class="hljs-value">: (<span class="hljs-number">10</span>px * @counter);</span> <span class="hljs-comment">// code for each iteration</span>
+<pre><code class="lang-less"><span class="hljs-class">.loop</span>(<span class="hljs-variable">@counter</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@counter</span> &gt; <span class="hljs-number">0</span>) {
+  <span class="hljs-class">.loop</span>((<span class="hljs-variable">@counter</span> - <span class="hljs-number">1</span>));    <span class="hljs-comment">// next iteration</span>
+  <span class="hljs-attribute">width</span>: (<span class="hljs-number">10px</span> * <span class="hljs-variable">@counter</span>); <span class="hljs-comment">// code for each iteration</span>
 }
 
 <span class="hljs-tag">div</span> {
-  <span class="hljs-class">.loop</span>(5); <span class="hljs-comment">// launch the loop</span>
+  <span class="hljs-class">.loop</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// launch the loop</span>
 }
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">10</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">20</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">30</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">40</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">50</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">20px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">30px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;
+}
 </code></pre>
 <p>A generic example of using a recursive loop to generate CSS grid classes:</p>
-<pre><code class="lang-less"><span class="hljs-class">.generate-columns</span>(4);
+<pre><code class="lang-less"><span class="hljs-class">.generate-columns</span>(<span class="hljs-number">4</span>);
 
-<span class="hljs-class">.generate-columns</span>(<span class="hljs-at_rule">@n, @i:<span class="hljs-preprocessor"> 1</span>)<span class="hljs-preprocessor"> when</span> (@i =&lt; @n) {</span>
-  <span class="hljs-class">.column-</span><span class="hljs-at_rule">@{</span><span class="hljs-tag">i</span>} {
-    <span class="hljs-attribute">width</span><span class="hljs-value">: (@i * <span class="hljs-number">100</span>% / @n);</span>
+<span class="hljs-class">.generate-columns</span>(<span class="hljs-variable">@n</span>, <span class="hljs-variable">@i</span>: <span class="hljs-number">1</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@i</span> =&lt; <span class="hljs-variable">@n</span>) {
+  <span class="hljs-class">.column-@{i}</span> {
+    <span class="hljs-attribute">width</span>: (<span class="hljs-variable">@i</span> * <span class="hljs-number">100%</span> / <span class="hljs-variable">@n</span>);
   }
-  <span class="hljs-class">.generate-columns</span>(<span class="hljs-at_rule">@n, (@i +<span class="hljs-preprocessor"> 1</span>));</span>
+  <span class="hljs-class">.generate-columns</span>(<span class="hljs-variable">@n</span>, (<span class="hljs-variable">@i</span> + <span class="hljs-number">1</span>));
 }
 </code></pre>
 <p>Output:</p>
-<pre><code class="lang-css"><span class="hljs-class">.column-1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">25</span>%</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.column-2</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">50</span>%</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.column-3</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">75</span>%</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.column-4</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100</span>%</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.column-1</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">25%</span>;
+}
+<span class="hljs-class">.column-2</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">50%</span>;
+}
+<span class="hljs-class">.column-3</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">75%</span>;
+}
+<span class="hljs-class">.column-4</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
 </code></pre>
 
 
@@ -2105,17 +2271,17 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.5.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
-  <span class="hljs-attribute">box-shadow</span>+<span class="hljs-value">: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10</span>px <span class="hljs-hexcolor">#555</span>;</span>
+  <span class="hljs-attribute">box-shadow</span>+: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-hexcolor">#555</span>;
 }
 <span class="hljs-class">.myclass</span> {
   <span class="hljs-class">.mixin</span>();
-  <span class="hljs-attribute">box-shadow</span>+<span class="hljs-value">: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20</span>px black;</span>
+  <span class="hljs-attribute">box-shadow</span>+: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span> black;
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-class">.myclass</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">box-shadow</span>:<span class="hljs-value"> inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10</span>px <span class="hljs-hexcolor">#555</span>, <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20</span>px black</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.myclass</span> {
+  <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-hexcolor">#555</span>, <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span> black;
+}
 </code></pre>
 <h2 class="docs-heading">Space<span class="anchor-target" id="merge-feature-space"></span>
 <a href="#merge-feature-space" name="merge-feature-space" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -2125,17 +2291,17 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.7.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
-  <span class="hljs-attribute">transform</span>+_<span class="hljs-value">: scale(<span class="hljs-number">2</span>);</span>
+  <span class="hljs-attribute">transform</span>+_: <span class="hljs-function">scale</span>(<span class="hljs-number">2</span>);
 }
 <span class="hljs-class">.myclass</span> {
   <span class="hljs-class">.mixin</span>();
-  <span class="hljs-attribute">transform</span>+_<span class="hljs-value">: rotate(<span class="hljs-number">15</span>deg);</span>
+  <span class="hljs-attribute">transform</span>+_: <span class="hljs-function">rotate</span>(<span class="hljs-number">15deg</span>);
 }
 </code></pre>
 <p>Outputs</p>
-<pre><code class="lang-css"><span class="hljs-class">.myclass</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">transform</span>:<span class="hljs-value"> <span class="hljs-function">scale(<span class="hljs-number">2</span>)</span> <span class="hljs-function">rotate(<span class="hljs-number">15</span>deg)</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.myclass</span> {
+  <span class="hljs-attribute">transform</span>: <span class="hljs-function">scale</span>(<span class="hljs-number">2</span>) <span class="hljs-function">rotate</span>(<span class="hljs-number">15deg</span>);
+}
 </code></pre>
 <p>To avoid any unintentional joins, <code>merge</code> requires an explicit <code>+</code> or <code>+_</code> flag on each join pending declaration.</p>
 
@@ -2174,117 +2340,117 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>The <code>&amp;</code> operator represents the parent selectors of a <a href="#features-overview-feature-nested-rules">nested rule</a> and is most commonly used when applying a modifying class or pseudo-class to an existing selector:</p>
 <pre><code class="lang-less"><span class="hljs-tag">a</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
-  &amp;<span class="hljs-pseudo">:hover</span> {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+  <span class="hljs-attribute">color</span>: blue;
+  <span class="hljs-keyword">&amp;</span><span class="hljs-pseudo">:hover</span> {
+    <span class="hljs-attribute">color</span>: green;
   }
 }
 </code></pre>
 <p>results in:</p>
-<pre><code class="lang-css"><span class="hljs-tag">a</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-tag">a</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 
-<span class="hljs-tag">a</span><span class="hljs-pseudo">:hover</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> green</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-tag">a</span><span class="hljs-pseudo">:hover</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
 </code></pre>
 <p>Notice that without the <code>&amp;</code>, the above example would result in <code>a :hover</code> rule (a descendant selector that matches hovered elements inside of <code>&lt;a&gt;</code> tags) and this is not what we typically would want with the nested <code>:hover</code>.</p>
 <p>The &quot;parent selectors&quot; operator has a variety of uses. Basically any time you need the selectors of the nested rules to be combined in other ways than the default. For example another typical use of the <code>&amp;</code> is to produce repetitive class names:</p>
 <pre><code class="lang-less"><span class="hljs-class">.button</span> {
-  &amp;-ok {
-    <span class="hljs-attribute">background-image</span><span class="hljs-value">: url(<span class="hljs-string">"ok.png"</span>);</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-ok</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"ok.png"</span>);
   }
-  &amp;-cancel {
-    <span class="hljs-attribute">background-image</span><span class="hljs-value">: url(<span class="hljs-string">"cancel.png"</span>);</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-cancel</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"cancel.png"</span>);
   }
 
-  &amp;-custom {
-    <span class="hljs-attribute">background-image</span><span class="hljs-value">: url(<span class="hljs-string">"custom.png"</span>);</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-custom</span> {
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"custom.png"</span>);
   }
 }
 </code></pre>
 <p>output:</p>
-<pre><code class="lang-css"><span class="hljs-class">.button-ok</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-image</span>:<span class="hljs-value"> <span class="hljs-function">url(<span class="hljs-string">"ok.png"</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.button-cancel</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-image</span>:<span class="hljs-value"> <span class="hljs-function">url(<span class="hljs-string">"cancel.png"</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.button-custom</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-image</span>:<span class="hljs-value"> <span class="hljs-function">url(<span class="hljs-string">"custom.png"</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.button-ok</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"ok.png"</span>);
+}
+<span class="hljs-class">.button-cancel</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"cancel.png"</span>);
+}
+<span class="hljs-class">.button-custom</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">"custom.png"</span>);
+}
 </code></pre>
 <h3 class="docs-heading">Multiple <code>&amp;</code><span class="anchor-target" id="parent-selectors-feature-multiple-"></span>
 <a href="#parent-selectors-feature-multiple-" name="parent-selectors-feature-multiple-" class="anchor glyphicon glyphicon-link"></a></h3>
 <p><code>&amp;</code> may appear more than once within a selector. This makes it possible to repeatedly refer to a parent selector without repeating its name.</p>
 <pre><code class="lang-less"><span class="hljs-class">.link</span> {
-  &amp; + &amp; {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+  <span class="hljs-keyword">&amp;</span> + <span class="hljs-keyword">&amp;</span> {
+    <span class="hljs-attribute">color</span>: red;
   }
 
-  &amp; &amp; {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+  <span class="hljs-keyword">&amp;</span> <span class="hljs-keyword">&amp;</span> {
+    <span class="hljs-attribute">color</span>: green;
   }
 
-  &amp;&amp; {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+  <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">&amp;</span> {
+    <span class="hljs-attribute">color</span>: blue;
   }
 
-  &amp;, &amp;ish {
-    <span class="hljs-attribute">color</span><span class="hljs-value">: cyan;</span>
+  <span class="hljs-keyword">&amp;</span>, <span class="hljs-keyword">&amp;</span><span class="hljs-tag">ish</span> {
+    <span class="hljs-attribute">color</span>: cyan;
   }
 }
 </code></pre>
 <p>will output:</p>
-<pre><code class="lang-css"><span class="hljs-class">.link</span> + <span class="hljs-class">.link</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.link</span> <span class="hljs-class">.link</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> green</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.link</span><span class="hljs-class">.link</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.link</span>, <span class="hljs-class">.linkish</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> cyan</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.link</span> + <span class="hljs-class">.link</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+<span class="hljs-class">.link</span> <span class="hljs-class">.link</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+<span class="hljs-class">.link</span><span class="hljs-class">.link</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+<span class="hljs-class">.link</span>, <span class="hljs-class">.linkish</span> {
+  <span class="hljs-attribute">color</span>: cyan;
+}
 </code></pre>
 <p>Note that <code>&amp;</code> represents all parent selectors (not just the nearest ancestor) so the following example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.grand</span> {
   <span class="hljs-class">.parent</span> {
-    &amp; &gt; &amp; {
-      <span class="hljs-attribute">color</span><span class="hljs-value">: red;</span>
+    <span class="hljs-keyword">&amp;</span> &gt; <span class="hljs-keyword">&amp;</span> {
+      <span class="hljs-attribute">color</span>: red;
     }
 
-    &amp; &amp; {
-      <span class="hljs-attribute">color</span><span class="hljs-value">: green;</span>
+    <span class="hljs-keyword">&amp;</span> <span class="hljs-keyword">&amp;</span> {
+      <span class="hljs-attribute">color</span>: green;
     }
 
-    &amp;&amp; {
-      <span class="hljs-attribute">color</span><span class="hljs-value">: blue;</span>
+    <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">&amp;</span> {
+      <span class="hljs-attribute">color</span>: blue;
     }
 
-    &amp;, &amp;ish {
-      <span class="hljs-attribute">color</span><span class="hljs-value">: cyan;</span>
+    <span class="hljs-keyword">&amp;</span>, <span class="hljs-keyword">&amp;</span><span class="hljs-tag">ish</span> {
+      <span class="hljs-attribute">color</span>: cyan;
     }
   }
 }
 </code></pre>
 <p>results in:</p>
-<pre><code class="lang-css"><span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> &gt; <span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> red</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> <span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> green</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span><span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> blue</span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> &gt; <span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> {
+  <span class="hljs-attribute">color</span>: red;
+}
+<span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> <span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> {
+  <span class="hljs-attribute">color</span>: green;
+}
+<span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span><span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
 <span class="hljs-class">.grand</span> <span class="hljs-class">.parent</span>,
-<span class="hljs-class">.grand</span> <span class="hljs-class">.parentish</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> cyan</span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-class">.grand</span> <span class="hljs-class">.parentish</span> {
+  <span class="hljs-attribute">color</span>: cyan;
+}
 </code></pre>
 <h3 class="docs-heading">Changing selector order<span class="anchor-target" id="parent-selectors-feature-changing-selector-order"></span>
 <a href="#parent-selectors-feature-changing-selector-order" name="parent-selectors-feature-changing-selector-order" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -2292,28 +2458,28 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 For example, when using Modernizr, you might want to specify different rules based on supported features:</p>
 <pre><code class="lang-less"><span class="hljs-class">.header</span> {
   <span class="hljs-class">.menu</span> {
-    <span class="hljs-attribute">border-radius</span><span class="hljs-value">: <span class="hljs-number">5</span>px;</span>
-    <span class="hljs-class">.no-borderradius</span> &amp; {
-      <span class="hljs-attribute">background-image</span><span class="hljs-value">: url(<span class="hljs-string">'images/button-background.png'</span>);</span>
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+    <span class="hljs-class">.no-borderradius</span> <span class="hljs-keyword">&amp;</span> {
+      <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">'images/button-background.png'</span>);
     }
   }
 }
 </code></pre>
 <p>The selector <code>.no-borderradius &amp;</code> will prepend <code>.no-borderradius</code> to its parent <code>.header .menu</code> to form the<code>.no-borderradius .header .menu</code> on output:</p>
-<pre><code class="lang-css"><span class="hljs-class">.header</span> <span class="hljs-class">.menu</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">5</span>px</span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.no-borderradius</span> <span class="hljs-class">.header</span> <span class="hljs-class">.menu</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-image</span>:<span class="hljs-value"> <span class="hljs-function">url(<span class="hljs-string">'images/button-background.png'</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.header</span> <span class="hljs-class">.menu</span> {
+  <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
+}
+<span class="hljs-class">.no-borderradius</span> <span class="hljs-class">.header</span> <span class="hljs-class">.menu</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">'images/button-background.png'</span>);
+}
 </code></pre>
 <h3 class="docs-heading">Combinatorial explosion<span class="anchor-target" id="parent-selectors-feature-combinatorial-explosion"></span>
 <a href="#parent-selectors-feature-combinatorial-explosion" name="parent-selectors-feature-combinatorial-explosion" class="anchor glyphicon glyphicon-link"></a></h3>
 <p><code>&amp;</code> can also be used to generate every possible permutation of selectors in a comma separated list:</p>
 <pre><code class="lang-less"><span class="hljs-tag">p</span>, <span class="hljs-tag">a</span>, <span class="hljs-tag">ul</span>, <span class="hljs-tag">li</span> {
-<span class="hljs-attribute">border-top</span><span class="hljs-value">: <span class="hljs-number">2</span>px dotted <span class="hljs-hexcolor">#366</span>;</span>
-  &amp; + &amp; {
-      <span class="hljs-attribute">border-top</span><span class="hljs-value">: <span class="hljs-number">0</span>;</span>
+<span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> dotted <span class="hljs-hexcolor">#366</span>;
+  <span class="hljs-keyword">&amp;</span> + <span class="hljs-keyword">&amp;</span> {
+      <span class="hljs-attribute">border-top</span>: <span class="hljs-number">0</span>;
   }
 }
 </code></pre>
@@ -2321,9 +2487,9 @@ For example, when using Modernizr, you might want to specify different rules bas
 <pre><code class="lang-css"><span class="hljs-tag">p</span>,
 <span class="hljs-tag">a</span>,
 <span class="hljs-tag">ul</span>,
-<span class="hljs-tag">li</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">border-top</span>:<span class="hljs-value"> <span class="hljs-number">2</span>px dotted <span class="hljs-hexcolor">#366</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-tag">li</span> {
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> dotted <span class="hljs-hexcolor">#366</span>;
+}
 <span class="hljs-tag">p</span> + <span class="hljs-tag">p</span>,
 <span class="hljs-tag">p</span> + <span class="hljs-tag">a</span>,
 <span class="hljs-tag">p</span> + <span class="hljs-tag">ul</span>,
@@ -2339,9 +2505,9 @@ For example, when using Modernizr, you might want to specify different rules bas
 <span class="hljs-tag">li</span> + <span class="hljs-tag">p</span>,
 <span class="hljs-tag">li</span> + <span class="hljs-tag">a</span>,
 <span class="hljs-tag">li</span> + <span class="hljs-tag">ul</span>,
-<span class="hljs-tag">li</span> + <span class="hljs-tag">li</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">border-top</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<span class="hljs-tag">li</span> + <span class="hljs-tag">li</span> {
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">0</span>;
+}
 </code></pre>
 
 

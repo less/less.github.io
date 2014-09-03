@@ -64,7 +64,7 @@
           <a href="../functions/">Function Reference</a>
         </li>
         <li class="active">
-          <a href="/">Usage</a>
+          <a href="./">Usage</a>
         </li>
         
       </ul>
@@ -382,7 +382,7 @@ dev-files/main.less
 <a href="#command-line-usage-source-map-less-inline" name="command-line-usage-source-map-less-inline" class="anchor glyphicon glyphicon-link"></a></h3>
 <pre><code class="lang-bash">lessc --source-map-less-inline
 </code></pre>
-<p>This option specifies that we should include all of the css files in to the sourcemap. This means that you only need your map file to get to your original source.</p>
+<p>This option specifies that we should include all of the Less files in to the sourcemap. This means that you only need your map file to get to your original source.</p>
 <p>This can be used in conjunction with the map inline option so that you do not need to have any additional external files at all.</p>
 <h3 class="docs-heading">Source Map Map Inline<span class="anchor-target" id="command-line-usage-source-map-map-inline"></span>
 <a href="#command-line-usage-source-map-map-inline" name="command-line-usage-source-map-map-inline" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -415,14 +415,14 @@ lessc --relative-urls
 }
 </code></pre>
 <p>this will output the following normally</p>
-<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-image</span>:<span class="hljs-value"> <span class="hljs-function">url(<span class="hljs-string">'images/lamp-post.png'</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">'images/lamp-post.png'</span>);
+}
 </code></pre>
 <p>but with this option on it will instead output</p>
-<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">background-image</span>:<span class="hljs-value"> <span class="hljs-function">url(<span class="hljs-string">'files/images/lamp-post.png'</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">'files/images/lamp-post.png'</span>);
+}
 </code></pre>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
 <h3 class="docs-heading">Strict Math<span class="anchor-target" id="command-line-usage-strict-math"></span>
@@ -433,22 +433,22 @@ lessc --strict-math=on
 <p>Defaults to Off. </p>
 <p>Without this option on Less will try and process all maths in your css e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">height</span><span class="hljs-value">: calc(<span class="hljs-number">100</span>% - <span class="hljs-number">10</span>px);</span>
+  <span class="hljs-attribute">height</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">10px</span>);
 }
 </code></pre>
 <p>will be processed currently.</p>
 <p>With strict math on, only maths that is inside un-necessary parenthesis will be processed. For instance.</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">width</span><span class="hljs-value">: calc(<span class="hljs-number">100</span>% - (<span class="hljs-number">10</span>px  - <span class="hljs-number">5</span>px));</span>
-  <span class="hljs-attribute">height</span><span class="hljs-value">: (<span class="hljs-number">100</span>px / <span class="hljs-number">4</span>px);</span>
-  <span class="hljs-attribute">font-size</span><span class="hljs-value">: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;</span>
+  <span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - (<span class="hljs-number">10px</span>  - <span class="hljs-number">5px</span>));
+  <span class="hljs-attribute">height</span>: (<span class="hljs-number">100px</span> / <span class="hljs-number">4px</span>);
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;
 }
 </code></pre>
-<pre><code class="lang-css"><span class="hljs-class">.class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-function">calc(<span class="hljs-number">100</span>% - <span class="hljs-number">5</span>px)</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">25</span>px</span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">font-size</span>:<span class="hljs-value"> <span class="hljs-number">1</span> / <span class="hljs-number">4</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">5px</span>);
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;
+}
 </code></pre>
 <p>We originally planned to default this to true in the future, but it has been a contraversial option and we are considering whether we have solved the problem in the right way, or whether less should just have exceptions for instances where <code>/</code> is valid or calc is used.</p>
 <h3 class="docs-heading">Strict Units<span class="anchor-target" id="command-line-usage-strict-units"></span>
@@ -459,7 +459,7 @@ lessc --strict-units=on
 <p>Defaults to off.</p>
 <p>Without this option, less attempts to guess at the output unit when it does maths. For instance</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  property<span class="hljs-value">: <span class="hljs-number">1</span>px * <span class="hljs-number">2</span>px;</span>
+  <span class="hljs-attribute">property</span>: <span class="hljs-number">1px</span> * <span class="hljs-number">2px</span>;
 }
 </code></pre>
 <p>In this case, things are clearly not right - a length multiplied by a length gives an area, but css does not support specifying areas. So we assume that the user meant for one of the values to be a value, not a unit of length and we output <code>2px</code>.</p>
@@ -603,7 +603,7 @@ Default: depends on page URL</p>
 <p>e.g.</p>
 <pre><code class="lang-js">less = { 
     functions: { 
-        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> {</span> 
+        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ 
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span>(less.tree.Dimension)(<span class="hljs-number">1</span>);
         }
     }
@@ -611,7 +611,7 @@ Default: depends on page URL</p>
 </code></pre>
 <p>and it can be used like a native Less function e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-class</span> {
-  <span class="hljs-attribute">border-width</span><span class="hljs-value">: unit(myfunc(), px);</span>
+  <span class="hljs-attribute">border-width</span>: <span class="hljs-function">unit</span>(<span class="hljs-function">myfunc</span>(), px);
 }
 </code></pre>
 <h3 class="docs-heading">logLevel<span class="anchor-target" id="using-less-in-the-browser-loglevel"></span>
@@ -1224,6 +1224,10 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 <tr>
 <td><a href="http://clearleft.github.io/clearless/">Clearless</a></td>
 <td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="http://chrsr.com/css3lessplease/">Css3LessPlease</a></td>
+<td>Conversion of css3please.com to LESS mixins</td>
 </tr>
 <tr>
 <td><a href="http://adodson.com/css-effects/">CssEffects</a></td>

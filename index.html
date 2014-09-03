@@ -50,7 +50,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/#" class="navbar-brand" alt="Less">
+      <a href="./#" class="navbar-brand" alt="Less">
         <img src="public/img/logo.png">
       </a>
     </div>
@@ -144,30 +144,30 @@
   <p>Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.</p>
 <p>Less runs inside Node, in the browser and inside Rhino. There are also many 3rd party tools that allow you to compile your files and watch for changes.</p>
 <p>For example:</p>
-<pre><code class="lang-less"><span class="hljs-at_rule">@base: <span class="hljs-hexcolor">#f938ab</span>;</span>
+<pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-hexcolor">#f938ab</span>;
 
-<span class="hljs-class">.box-shadow</span>(<span class="hljs-at_rule">@style, @c)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">iscolor(@c)</span>) {</span>
-  -webkit-<span class="hljs-attribute">box-shadow</span><span class="hljs-value">: @style @c;</span>
-  <span class="hljs-attribute">box-shadow</span><span class="hljs-value">:         @style @c;</span>
+<span class="hljs-class">.box-shadow</span>(<span class="hljs-variable">@style</span>, <span class="hljs-variable">@c</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@c</span>)) {
+  <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-variable">@style</span> <span class="hljs-variable">@c</span>;
+  <span class="hljs-attribute">box-shadow</span>:         <span class="hljs-variable">@style</span> <span class="hljs-variable">@c</span>;
 }
-<span class="hljs-class">.box-shadow</span>(<span class="hljs-at_rule">@style, @alpha:<span class="hljs-preprocessor"> 50</span>%)<span class="hljs-preprocessor"> when</span> (<span class="hljs-function">isnumber(@alpha)</span>) {</span>
-  <span class="hljs-class">.box-shadow</span>(<span class="hljs-at_rule">@style,<span class="hljs-preprocessor"> rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-preprocessor"> 0</span>,<span class="hljs-preprocessor"> 0</span>, @alpha));</span>
+<span class="hljs-class">.box-shadow</span>(<span class="hljs-variable">@style</span>, <span class="hljs-variable">@alpha</span>: <span class="hljs-number">50%</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@alpha</span>)) {
+  <span class="hljs-class">.box-shadow</span>(<span class="hljs-variable">@style</span>, <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-variable">@alpha</span>));
 }
 <span class="hljs-class">.box</span> {
-  <span class="hljs-attribute">color</span><span class="hljs-value">: saturate(@base, <span class="hljs-number">5</span>%);</span>
-  <span class="hljs-attribute">border-color</span><span class="hljs-value">: lighten(@base, <span class="hljs-number">30</span>%);</span>
-  <span class="hljs-tag">div</span> { <span class="hljs-class">.box-shadow</span>(0 0 5px, 30%) }
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">saturate</span>(<span class="hljs-variable">@base</span>, <span class="hljs-number">5%</span>);
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-function">lighten</span>(<span class="hljs-variable">@base</span>, <span class="hljs-number">30%</span>);
+  <span class="hljs-tag">div</span> { <span class="hljs-class">.box-shadow</span>(<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span>, <span class="hljs-number">30%</span>) }
 }
 </code></pre>
 <p>compiles to</p>
-<pre><code class="lang-css"><span class="hljs-class">.box</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fe33ac</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">border-color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#fdcdea</span></span></span>;
-<span class="hljs-rule">}</span></span>
-<span class="hljs-class">.box</span> <span class="hljs-tag">div</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">-webkit-box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5</span>px <span class="hljs-function">rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.3</span>)</span></span></span>;
-  <span class="hljs-rule"><span class="hljs-attribute">box-shadow</span>:<span class="hljs-value"> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5</span>px <span class="hljs-function">rgba(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.3</span>)</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#fe33ac</span>;
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-hexcolor">#fdcdea</span>;
+}
+<span class="hljs-class">.box</span> <span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.3</span>);
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.3</span>);
+}
 </code></pre>
 
 </div>
@@ -206,23 +206,23 @@ the <code>--clean-css</code> option.</p>
 <p>You can invoke the compiler from node, as such:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> less = <span class="hljs-built_in">require</span>(<span class="hljs-string">'less'</span>);
 
-less.render(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, css)</span> {</span>
-  console.log(css);
+less.render(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, css)</span> </span>{
+  <span class="hljs-built_in">console</span>.log(css);
 });
 </code></pre>
 <p>which will output</p>
-<pre><code class="lang-css"><span class="hljs-class">.class</span> <span class="hljs-rules">{
-  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">2</span></span></span>;
-<span class="hljs-rule">}</span></span>
+<pre><code class="lang-css"><span class="hljs-class">.class</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">2</span>;
+}
 </code></pre>
 <p>you may also manually invoke the parser and compiler:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span>(less.Parser);
 
-parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, tree)</span> {</span>
+parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, tree)</span> </span>{
   <span class="hljs-keyword">if</span> (err) {
-    <span class="hljs-keyword">return</span> console.error(err)
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err)
   }
-  console.log(tree.toCSS());
+  <span class="hljs-built_in">console</span>.log(tree.toCSS());
 });
 </code></pre>
 <h2 class="docs-heading">Configuration<span class="anchor-target" id="using-less-configuration"></span>
@@ -233,7 +233,7 @@ parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span
   filename: <span class="hljs-string">'style.less'</span> <span class="hljs-comment">// Specify a filename, for better error messages</span>
 });
 
-parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, tree)</span> {</span>
+parser.parse(<span class="hljs-string">'.class { width: (1 + 1) }'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, tree)</span> </span>{
   tree.toCSS({
     <span class="hljs-comment">// Minify CSS output</span>
     compress: <span class="hljs-literal">true</span>

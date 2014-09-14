@@ -6571,10 +6571,16 @@ table th[class*="col-"] {
   color: transparent;
   font-size: 18px;
   padding: 10px 10px 10px 25px;
-  width: 100%;
+  width: 60px;
 }
 h2 .anchor {
-  margin-bottom: -9px;
+  margin-bottom: -3px;
+}
+h3 .anchor {
+  margin-bottom: -7px;
+}
+h4 .anchor {
+  margin-bottom: -11px;
 }
 h1,
 h2,

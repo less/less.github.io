@@ -37,7 +37,6 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="../public/ico/favicon.ico">
-
   </head>
   <body class="features">
     
@@ -88,7 +87,6 @@
   </div>
 </header>
 
-
     
 <div class="docs-header" id="content">
   <div class="container">
@@ -101,13 +99,12 @@
 
 <div class="banner">
   <div class="container">
-    less v1.7.5 has been released -
+    less v2.0.0-b1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
   </div>
 </div>
-
 
     
     <div class="container docs-container">
@@ -122,7 +119,7 @@
 <li><a href="#features-overview-feature-media-query-bubbling-and-nested-media-queries">Media query bubbling and nested media queries</a></li>
 <li><a href="#features-overview-feature-operations">Operations</a></li>
 <li><a href="#features-overview-feature-functions">Functions</a></li>
-<li><a href="#features-overview-feature-namespaces-accessors">Namespaces &amp; Accessors</a></li>
+<li><a href="#features-overview-feature-namespaces-and-accessors">Namespaces and Accessors</a></li>
 <li><a href="#features-overview-feature-scope">Scope</a></li>
 <li><a href="#features-overview-feature-comments">Comments</a></li>
 <li><a href="#features-overview-feature-importing">Importing</a></li></ul></li>
@@ -182,11 +179,8 @@
           </div>
         </div>
         <div class="col-md-9" role="main">
-          
-<div class="panel docs-content">
+          <div class="panel docs-content">
   
-
-
   <!-- Overview -->
   <div class="docs-section">
     <div class="page-header">
@@ -204,7 +198,6 @@
 <a id="features-overviewmd" href="https://github.com/less/less-docs/blob/master/content/features-overview.md" target="_blank">Edit the markdown source for &quot;features-overview&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- features-overview -->
        
@@ -358,8 +351,8 @@
   <span class="hljs-attribute">background-color</span>: <span class="hljs-function">spin</span>(<span class="hljs-function">lighten</span>(<span class="hljs-variable">@base</span>, <span class="hljs-number">25%</span>), <span class="hljs-number">8</span>);
 }
 </code></pre>
-<h3 class="docs-heading">Namespaces &amp; Accessors<span class="anchor-target" id="features-overview-feature-namespaces-accessors"></span>
-<a href="#features-overview-feature-namespaces-accessors" name="features-overview-feature-namespaces-accessors" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading">Namespaces and Accessors<span class="anchor-target" id="features-overview-feature-namespaces-and-accessors"></span>
+<a href="#features-overview-feature-namespaces-and-accessors" name="features-overview-feature-namespaces-and-accessors" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>(Not to be confused with <a href="http://www.w3.org/TR/css3-namespace/">CSS <code>@namespace</code></a> or <a href="http://www.w3.org/TR/css3-selectors/#typenmsp">namespace selectors</a>).</p>
 <p>Sometimes, you may want to group your mixins, for organizational purposes, or just to offer some encapsulation. You can do this pretty intuitively in Less, say you want to bundle some mixins and variables under <code>#bundle</code>, for later reuse or distributing:</p>
 <pre><code class="lang-less"><span class="hljs-id">#bundle</span> {
@@ -449,7 +442,6 @@ style comment! */</span>
 <a id="variablesmd" href="https://github.com/less/less-docs/blob/master/content/features/variables.md" target="_blank">Edit the markdown source for &quot;variables&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- variables -->
        
@@ -648,7 +640,6 @@ This means that this usage is typically limited to when you inject a variable in
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- extend -->
        
 
@@ -656,7 +647,7 @@ This means that this usage is typically limited to when you inject a variable in
 <blockquote>
 <p>Extend is a Less Pseudo-Class which merges the selector it is put on with ones that match what it references.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <pre><code class="lang-less"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
   <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.inline</span>);
   <span class="hljs-attribute">background</span>: blue;
@@ -700,7 +691,7 @@ This means that this usage is typically limited to when you inject a variable in
   <span class="hljs-comment">// extends only instances where the selector will be output as just &quot;.d&quot;</span>
 }
 </code></pre>
-<p>It can contain one more classes to extend, separated by commas.</p>
+<p>It can contain one or more classes to extend, separated by commas.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.e</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.f</span>) {}
 <span class="hljs-class">.e</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.g</span>) {}
@@ -1096,7 +1087,7 @@ This means that this usage is typically limited to when you inject a variable in
 </code></pre>
 <h3 class="docs-heading">Combining Styles / a more advanced mixin<span class="anchor-target" id="extend-feature-combining-styles-a-more-advanced-mixin"></span>
 <a href="#extend-feature-combining-styles-a-more-advanced-mixin" name="extend-feature-combining-styles-a-more-advanced-mixin" class="anchor glyphicon glyphicon-link"></a></h3>
-<p>Another use-case is as an alternative for a mixin - because mixins can only be used with simple selectors, if you have two different blocks on html, but need to apply the same styles to both you can use extends to relate two areas.</p>
+<p>Another use-case is as an alternative for a mixin - because mixins can only be used with simple selectors, if you have two different blocks of html, but need to apply the same styles to both you can use extends to relate two areas.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-tag">li</span><span class="hljs-class">.list</span> &gt; <span class="hljs-tag">a</span> {
   <span class="hljs-comment">// list styles</span>
@@ -1130,7 +1121,6 @@ This means that this usage is typically limited to when you inject a variable in
 <a id="mixinsmd" href="https://github.com/less/less-docs/blob/master/content/features/mixins.md" target="_blank">Edit the markdown source for &quot;mixins&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- mixins -->
        
@@ -1290,7 +1280,6 @@ This means that this usage is typically limited to when you inject a variable in
 <a id="mixins-parametricmd" href="https://github.com/less/less-docs/blob/master/content/features/mixins-parametric.md" target="_blank">Edit the markdown source for &quot;mixins-parametric&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- mixins-parametric -->
        
@@ -1520,7 +1509,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- mixins-as-functions -->
        
 
@@ -1624,7 +1612,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- detached-rulesets -->
        
 
@@ -1632,7 +1619,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Allow wrapping of a css block, defined in a mixin</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.7.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
 <p>Detached ruleset is a group of css properties, nested rulestes, media declarations or anything else stored in a variable. You can include it into a ruleset or another structure and all its properties are going to be copied there. You can also use it as a mixin argument and pass it around as any other variable.</p>
 <p>Simple example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// declare detached ruleset</span>
@@ -1843,7 +1830,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- import-directives -->
        
 
@@ -1893,7 +1879,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Use <code>@import (reference)</code> to import external files, but without adding the imported styles to the compiled output unless referenced.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (reference) &quot;foo.less&quot;;</code></p>
 <p><code>reference</code> is one of the most powerful features in the Less language. Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as <a href="#mixins-feature">mixins</a> or <a href="#extend-feature">extended</a>.</p>
 <p>Additionally, <strong><code>reference</code></strong> produces different results depending on which method was used (mixin or extend):</p>
@@ -1912,7 +1898,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Use <code>@import (inline)</code> to include external files, but not process them.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (inline) &quot;not-less-compatible.css&quot;;</code></p>
 <p>You will use this when a CSS file may not be Less compatible; this is because although Less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
 <p>So you can use this to include the file in the output so that all CSS will be in one file.</p>
@@ -1921,7 +1907,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Use <code>@import (less)</code> to treat imported files as Less, regardless of file extension.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">&quot;foo.css&quot;</span>;
 </code></pre>
@@ -1930,7 +1916,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Use <code>@import (css)</code> to treat imported files as regular CSS, regardless of file extension. This means the import statement will be left as it is.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (css) <span class="hljs-string">&quot;foo.less&quot;</span>;
 </code></pre>
@@ -1942,7 +1928,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>The default behavior of <code>@import</code> statements. It means the file is imported only once and subsequent import statements for that file will be ignored.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>This is the default behavior of <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (once) <span class="hljs-string">&quot;foo.less&quot;</span>;
@@ -1953,7 +1939,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Use <code>@import (multiple)</code> to allow importing of multiple files with the same name. This is the opposite behavior to once.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// file: foo.less</span>
 <span class="hljs-class">.a</span> {
@@ -1996,7 +1982,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a id="mixin-guardsmd" href="https://github.com/less/less-docs/blob/master/content/features/mixin-guards.md" target="_blank">Edit the markdown source for &quot;mixin-guards&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- mixin-guards -->
        
@@ -2117,7 +2102,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- css-guards -->
        
 
@@ -2125,7 +2109,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>&quot;if&quot;&apos;s around selectors</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Guards can also be applied to css selectors, which is syntactic sugar for declaring the mixin and then calling it immediately.</p>
 <p>For instance, before 1.5.0 you would have had to do this:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-optional-style</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@my-option</span> = true) {
@@ -2175,7 +2159,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a id="loopsmd" href="https://github.com/less/less-docs/blob/master/content/features/loops.md" target="_blank">Edit the markdown source for &quot;loops&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- loops -->
        
@@ -2254,7 +2237,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- merge -->
        
 
@@ -2268,7 +2250,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Append property value with comma</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-attribute">box-shadow</span>+: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-hexcolor">#555</span>;
@@ -2288,7 +2270,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <blockquote>
 <p>Append property value with space</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/masterCHANGELOG.md">v1.7.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-attribute">transform</span>+_: <span class="hljs-function">scale</span>(<span class="hljs-number">2</span>);
@@ -2329,7 +2311,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a id="parent-selectorsmd" href="https://github.com/less/less-docs/blob/master/content/features/parent-selectors.md" target="_blank">Edit the markdown source for &quot;parent-selectors&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- parent-selectors -->
        
@@ -2535,11 +2516,10 @@ For example, when using Modernizr, you might want to specify different rules bas
     </li>
   </ul>
 </div>
-
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.7.5</li>
+      <li>Currently v2.0.0-b1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -2552,7 +2532,6 @@ For example, when using Modernizr, you might want to specify different rules bas
   </div>
 </footer>
 
-
     
     <!-- Core JavaScript
 ================================================== -->
@@ -2563,7 +2542,6 @@ For example, when using Modernizr, you might want to specify different rules bas
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 <script src="../public/js/application.js"></script>
-
 
 
 

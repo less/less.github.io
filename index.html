@@ -37,7 +37,6 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="public/ico/favicon.ico">
-
   </head>
   <body class="index">
     
@@ -88,7 +87,6 @@
   </div>
 </header>
 
-
     
 <div class="docs-header" id="content">
   <div class="container">
@@ -101,13 +99,12 @@
 
 <div class="banner">
   <div class="container">
-    less v1.7.5 has been released -
+    less v2.0.0-b1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
   </div>
 </div>
-
 
     
     <div class="container docs-container">
@@ -126,16 +123,13 @@
 <li><a href="#client-side-usage">Client-side usage</a><ul class="nav"><li><a href="#client-side-usage-tips">Tips</a></li>
 <li><a href="#client-side-usage-browser-options">Browser Options</a></li></ul></li>
 <li><a href="#download-options">Get Less.js</a><ul class="nav"><li><a href="#download-options-browser-downloads">Browser downloads</a></li>
-<li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-5-less-min-js-">Less CDN</a></li></ul></li>
+<li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-0-0-b1-less-min-js-">Less CDN</a></li></ul></li>
 <li><a href="#license-faqs">License FAQs</a></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
-          
-<div class="panel docs-content">
+          <div class="panel docs-content">
   
-
-
 <div class="docs-section">
   <div class="page-header">
     <h1 class="docs-heading">Getting Started<span class="anchor-target" id="getting-started"></span>
@@ -199,8 +193,8 @@ detailed information.</p>
 </code></pre>
 <p>To output minified CSS, simply pass the <code>-x</code> option. If you would like more involved minification,
 the <a href="https://github.com/GoalSmashers/clean-css">Clean CSS</a> is also available with
-the <code>--clean-css</code> option.</p>
-<p>To see all the command line options run lessc without parameters.</p>
+the <code>--clean-css</code> <a href="https://github.com/less/less-plugin-clean-css">plugin</a>.</p>
+<p>To see all the command line options run lessc without parameters or see <a href="usage/index.html">Usage</a>.</p>
 <h2 class="docs-heading">Usage in Code<span class="anchor-target" id="using-less-usage-in-code"></span>
 <a href="#using-less-usage-in-code" name="using-less-usage-in-code" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>You can invoke the compiler from node, as such:</p>
@@ -215,31 +209,22 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
   <span class="hljs-attribute">width</span>: <span class="hljs-number">2</span>;
 }
 </code></pre>
-<p>you may also manually invoke the parser and compiler:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span>(less.Parser);
-
-parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(err, tree)</span> </span>{
-  <span class="hljs-keyword">if</span> (err) {
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">console</span>.error(err)
-  }
-  <span class="hljs-built_in">console</span>.log(tree.toCSS());
-});
-</code></pre>
 <h2 class="docs-heading">Configuration<span class="anchor-target" id="using-less-configuration"></span>
 <a href="#using-less-configuration" name="using-less-configuration" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>You may pass some options to the compiler:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> parser = <span class="hljs-keyword">new</span>(less.Parser)({
-  paths: [<span class="hljs-string">&apos;.&apos;</span>, <span class="hljs-string">&apos;./lib&apos;</span>], <span class="hljs-comment">// Specify search paths for @import directives</span>
-  filename: <span class="hljs-string">&apos;style.less&apos;</span> <span class="hljs-comment">// Specify a filename, for better error messages</span>
-});
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> less = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;less&apos;</span>);
 
-parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, tree)</span> </span>{
-  tree.toCSS({
-    <span class="hljs-comment">// Minify CSS output</span>
-    compress: <span class="hljs-literal">true</span>
-  });
-});
+less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</span>,
+    {
+      paths: [<span class="hljs-string">&apos;.&apos;</span>, <span class="hljs-string">&apos;./lib&apos;</span>],  <span class="hljs-comment">// Specify search paths for @import directives</span>
+      filename: <span class="hljs-string">&apos;style.less&apos;</span>, <span class="hljs-comment">// Specify a filename, for better error messages</span>
+      compress: <span class="hljs-literal">true</span>          <span class="hljs-comment">// Minify CSS output</span>
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, css)</span> </span>{
+       <span class="hljs-built_in">console</span>.log(css);
+    });
 </code></pre>
+<p>See <a href="usage/index.html">Usage</a> for more information.</p>
 <h2 class="docs-heading">Third party tools<span class="anchor-target" id="using-less-third-party-tools"></span>
 <a href="#using-less-third-party-tools" name="using-less-third-party-tools" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>See the <a href="usage/index.html">Usage</a> section for details of other tools.</p>
@@ -308,10 +293,10 @@ parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</sp
 
   <h2 class="docs-heading">Browser downloads<span class="anchor-target" id="download-options-browser-downloads"></span>
 <a href="#download-options-browser-downloads" name="download-options-browser-downloads" class="anchor glyphicon glyphicon-link"></a></h2>
-  <a class="btn btn-default" href="https://raw.github.com/less/less.js/master/dist/less-1.7.5.min.js">Download Less.js v1.7.5</a>
+  <a class="btn btn-default" href="https://raw.github.com/less/less.js/master/dist/less-2.0.0-b1.min.js">Download Less.js v2.0.0-b1</a>
 
   <div class="docs-dl-options">
-    <h4 id="-download-source-code-https-github-com-less-less-js-archive-v1-7-5-zip-"><a href="https://github.com/less/less.js/archive/v1.7.5.zip">Download source code</a></h4>
+    <h4 id="-download-source-code-https-github-com-less-less-js-archive-v2-0-0-b1-zip-"><a href="https://github.com/less/less.js/archive/v2.0.0-b1.zip">Download source code</a></h4>
 <p>Get the latest Less.js source code by downloading it directly from GitHub.</p>
 <h4 id="-clone-or-fork-via-github-https-github-com-less-less-js-git-"><a href="https://github.com/less/less.js.git">Clone or fork via GitHub</a></h4>
 <p>Fork the project and send us a pull request!</p>
@@ -323,9 +308,9 @@ parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</sp
   </div>
 
   <div class="cdn-options">
-    <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-5-less-min-js-"></span>
-<a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-5-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-1-7-5-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.5/less.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.0.0-b1/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-0-0-b1-less-min-js-"></span>
+<a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-0-0-b1-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-0-0-b1-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.0.0-b1/less.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 
   </div>
@@ -373,7 +358,6 @@ parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</sp
   </div>
   <p>The full Less.js license is located <a href="https://github.com/less/less.js/blob/master/LICENSE">in the project repository</a> for more information.</p>
 </div>
-
 </div>
         </div>
       </div>
@@ -392,11 +376,10 @@ parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</sp
     </li>
   </ul>
 </div>
-
     <p>Less.js and these docs are maintained by <a href="about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.7.5</li>
+      <li>Currently v2.0.0-b1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -409,7 +392,6 @@ parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</sp
   </div>
 </footer>
 
-
     
     <!-- Core JavaScript
 ================================================== -->
@@ -420,7 +402,6 @@ parser.parse(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</sp
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 <script src="public/js/application.js"></script>
-
 
 
 

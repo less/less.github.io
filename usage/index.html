@@ -37,7 +37,6 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="../public/ico/favicon.ico">
-
   </head>
   <body class="usage">
     
@@ -88,7 +87,6 @@
   </div>
 </header>
 
-
     
 <div class="docs-header" id="content">
   <div class="container">
@@ -101,13 +99,12 @@
 
 <div class="banner">
   <div class="container">
-    less v1.7.5 has been released -
+    less v2.0.0-b1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
   </div>
 </div>
-
 
     
     <div class="container docs-container">
@@ -117,56 +114,28 @@
             <div id="navigation">
   
 <ul class="nav sidenav"><li><a href="#using-less-environments">Using Less</a></li>
+<li><a href="#v2-upgrade-guide">V2 Upgrade Guide</a><ul class="nav"><li><a href="#v2-upgrade-guide-command-line-usage">Command line usage</a></li>
+<li><a href="#v2-upgrade-guide-clean-css">Clean Css</a></li>
+<li><a href="#v2-upgrade-guide-sourcemaps">Sourcemaps</a></li>
+<li><a href="#v2-upgrade-guide-programmatic-usage">Programmatic Usage</a></li>
+<li><a href="#v2-upgrade-guide-browser-usage">Browser usage</a></li></ul></li>
 <li><a href="#command-line-usage">Command Line Usage</a><ul class="nav"><li><a href="#command-line-usage-installing-lessc-for-use-globally">Installing lessc for use globally</a></li>
 <li><a href="#command-line-usage-installing-for-node-development">Installing for node development</a></li>
 <li><a href="#command-line-usage-server-side-and-command-line-usage">Server-Side and Command Line Usage</a></li>
 <li><a href="#command-line-usage-command-line-usage">Command line usage</a></li>
-<li><a href="#command-line-usage-help">Help</a></li>
-<li><a href="#command-line-usage-include-paths">Include paths</a></li>
-<li><a href="#command-line-usage-makefile">Makefile</a></li>
-<li><a href="#command-line-usage-no-color">No Color</a></li>
-<li><a href="#command-line-usage-no-ie-compatability">No IE Compatability</a></li>
-<li><a href="#command-line-usage-disable-javascript">Disable JavaScript</a></li>
-<li><a href="#command-line-usage-lint">Lint</a></li>
-<li><a href="#command-line-usage-silent">Silent</a></li>
-<li><a href="#command-line-usage-strict-imports">Strict Imports</a></li>
-<li><a href="#command-line-usage-allow-imports-from-insecure-https-hosts">Allow imports from insecure https hosts</a></li>
-<li><a href="#command-line-usage-version">Version</a></li>
-<li><a href="#command-line-usage-compress">Compress</a></li>
-<li><a href="#command-line-usage-clean-css">Clean CSS</a></li>
-<li><a href="#command-line-usage-clean-css-options">Clean CSS Options</a></li>
-<li><a href="#command-line-usage-source-map-output-filename">Source Map Output Filename</a></li>
-<li><a href="#command-line-usage-source-map-rootpath">Source Map Rootpath</a></li>
-<li><a href="#command-line-usage-source-map-basepath">Source Map Basepath</a></li>
-<li><a href="#command-line-usage-source-map-less-inline">Source Map Less Inline</a></li>
-<li><a href="#command-line-usage-source-map-map-inline">Source Map Map Inline</a></li>
-<li><a href="#command-line-usage-source-map-url">Source Map URL</a></li>
-<li><a href="#command-line-usage-rootpath">Rootpath</a></li>
-<li><a href="#command-line-usage-relative-urls">Relative URLs</a></li>
-<li><a href="#command-line-usage-strict-math">Strict Math</a></li>
-<li><a href="#command-line-usage-strict-units">Strict Units</a></li>
-<li><a href="#command-line-usage-global-variable">Global Variable</a></li>
-<li><a href="#command-line-usage-modify-variable">Modify Variable</a></li>
-<li><a href="#command-line-usage-url-arguments">URL Arguments</a></li>
-<li><a href="#command-line-usage-line-numbers">Line Numbers</a></li></ul></li>
+<li><a href="#command-line-usage-options">Options</a></li></ul></li>
 <li><a href="#using-less-in-the-browser">Using Less in the Browser</a><ul class="nav"><li><a href="#using-less-in-the-browser-watch-mode">Watch mode</a></li>
 <li><a href="#using-less-in-the-browser-modify-variables">Modify variables</a></li>
 <li><a href="#using-less-in-the-browser-debugging">Debugging</a></li>
-<li><a href="#using-less-in-the-browser-client-side-usage">Client-side Usage</a></li>
-<li><a href="#using-less-in-the-browser-client-side-options">Client side options</a></li>
-<li><a href="#using-less-in-the-browser-async">async</a></li>
-<li><a href="#using-less-in-the-browser-dumplinenumbers">dumpLineNumbers</a></li>
-<li><a href="#using-less-in-the-browser-env">env</a></li>
-<li><a href="#using-less-in-the-browser-errorreporting">errorReporting</a></li>
-<li><a href="#using-less-in-the-browser-fileasync">fileAsync</a></li>
-<li><a href="#using-less-in-the-browser-functions">functions</a></li>
-<li><a href="#using-less-in-the-browser-loglevel">logLevel</a></li>
-<li><a href="#using-less-in-the-browser-poll">poll</a></li>
-<li><a href="#using-less-in-the-browser-relativeurls">relativeUrls</a></li>
-<li><a href="#using-less-in-the-browser-globalvars">globalVars</a></li>
-<li><a href="#using-less-in-the-browser-modifyvars">modifyVars</a></li>
-<li><a href="#using-less-in-the-browser-rootpath">rootpath</a></li></ul></li>
+<li><a href="#using-less-in-the-browser-options">Options</a></li>
+<li><a href="#using-less-in-the-browser-relativeurls">relativeUrls</a></li></ul></li>
 <li><a href="#browser-support">Browser Support</a></li>
+<li><a href="#plugins">Plugins</a><ul class="nav"><li><a href="#plugins-how-do-i-use-a-plugin-command-line">How do I use a plugin ? - command line</a></li>
+<li><a href="#plugins-using-a-plugin-in-code">Using a plugin in code</a></li>
+<li><a href="#plugins-in-the-browser">In the browser</a></li>
+<li><a href="#plugins-list-of-less-plugins">List of less plugins</a></li>
+<li><a href="#plugins-for-plugin-authors">For plugin authors</a></li></ul></li>
+<li><a href="#programmatic-usage">Programmatic Usage</a><ul class="nav"><li><a href="#programmatic-usage-getting-access-to-the-log">Getting access to the log</a></li></ul></li>
 <li><a href="#online-less-compilers">Online Less Compilers</a><ul class="nav"><li><a href="#online-less-compilers--less2css-org-http-less2css-org-">less2css.org</a></li>
 <li><a href="#online-less-compilers--winless-org-online-less-compiler-http-winless-org-online-less-compiler-">winless.org/online-less-compiler</a></li>
 <li><a href="#online-less-compilers--lesstester-com-http-lesstester-com-">lesstester.com</a></li>
@@ -202,16 +171,14 @@
 <li><a href="#frameworks-using-less-mixin-libraries">Mixin Libraries</a></li></ul></li>
 <li><a href="#developing-less">Developing Less</a><ul class="nav"><li><a href="#developing-less-install-these-tools">Install these tools</a></li>
 <li><a href="#developing-less-usage">Usage</a></li>
+<li><a href="#developing-less-how-to-run-less-in-other-environments">How to run less in other environments</a></li>
 <li><a href="#developing-less-guide">Guide</a></li>
 <li><a href="#developing-less-books">Books</a></li></ul></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
-          
-<div class="panel docs-content">
-  
-
-<!-- Usage
+          <div class="panel docs-content">
+  <!-- Usage
 =================================== -->
 <div class="docs-section">
   <h1 class="docs-heading">Using Less<span class="anchor-target" id="using-less-environments"></span>
@@ -220,6 +187,60 @@
 </div>
 
 
+
+  <!-- V2 Upgrade Guide -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 class="docs-heading">V2 Upgrade Guide<span class="anchor-target" id="v2-upgrade-guide"></span>
+<a href="#v2-upgrade-guide" name="v2-upgrade-guide" class="anchor glyphicon glyphicon-link"></a></h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md" data-content="v2-upgrademd" target="_blank"></a>
+
+
+
+<a id="v2-upgrademd" href="https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md" target="_blank">Edit the markdown source for &quot;v2-upgrade&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+      <!-- v2-upgrade -->
+       
+
+
+<h2 class="docs-heading">Command line usage<span class="anchor-target" id="v2-upgrade-guide-command-line-usage"></span>
+<a href="#v2-upgrade-guide-command-line-usage" name="v2-upgrade-guide-command-line-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading">Clean Css<span class="anchor-target" id="v2-upgrade-guide-clean-css"></span>
+<a href="#v2-upgrade-guide-clean-css" name="v2-upgrade-guide-clean-css" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>We have removed the dependency on clean css and moved it to a <a href="https://github.com/less/less-plugin-clean-css">plugin</a>.
+This allows us to 1. update the dependency and integration without a less release 2. Does not tie people who do not use clean css into having it downloaded by npm.</p>
+<p>The usage is similar, just install the plugin (<code>npm install -g less-plugin-clean-css</code>) then tell less to use it by using the
+<code>--clean-css</code> argument.</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># old</span>
+lessc --clean-css --clean-option=--compatibility:ie8 --clean-option=--advanced
+<span class="hljs-comment"># new</span>
+lessc --clean-css=<span class="hljs-string">&quot;--compatibility=ie8 --advanced&quot;</span>
+</code></pre>
+<h3 class="docs-heading">Sourcemaps<span class="anchor-target" id="v2-upgrade-guide-sourcemaps"></span>
+<a href="#v2-upgrade-guide-sourcemaps" name="v2-upgrade-guide-sourcemaps" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>We have improved the source map options and path generation so the sourcemap should be generated at the correct path without specifying any options.</p>
+<h2 class="docs-heading">Programmatic Usage<span class="anchor-target" id="v2-upgrade-guide-programmatic-usage"></span>
+<a href="#v2-upgrade-guide-programmatic-usage" name="v2-upgrade-guide-programmatic-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>We have deprecated the use of less.Parser and toCss to generate the css. Instead we require you to use the <code>less.render</code> shorthand.
+See (Programmatic Usage)[#programmatic-usage] for more information.</p>
+<p>If you already use <code>less.render</code> you should not require any changes.</p>
+<h2 class="docs-heading">Browser usage<span class="anchor-target" id="v2-upgrade-guide-browser-usage"></span>
+<a href="#v2-upgrade-guide-browser-usage" name="v2-upgrade-guide-browser-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>The browser usage has not changed.</p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
 
   <!-- Command Line Usage -->
   <div class="docs-section">
@@ -238,7 +259,6 @@
 <a id="command-line-usagemd" href="https://github.com/less/less-docs/blob/master/content/usage/command-line-usage.md" target="_blank">Edit the markdown source for &quot;command-line-usage&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- command-line-usage -->
        
@@ -262,8 +282,8 @@
 <p>This will install the latest official version of lessc in your project folder, also adding it to the <code>devDependencies</code> in your project&apos;s <code>package.json</code>.</p>
 <p>Note that a <a href="https://www.npmjs.org/doc/misc/semver.html#Ranges">tilde version range</a> will be automatically specified in <code>package.json</code>. This is good, as new patch releases of the latest version will be installable by npm.</p>
 <h4 id="beta-releases-of-lessc">Beta releases of lessc</h4>
-<p>Periodically, as new functionality is being developed, lessc builds will be published to npm, tagged as. These builds will <em>not</em> be published as a <code>@latest</code> official release, and will typically have a build number or alpha/beta/release candidate designation.</p>
-<p>Since patch releases are non-breaking we will publish patch releases immediately and alpha/beta/candidate versions will be published as minor or major version upgrades (we endevour since 1.4.0 to follow <a href="http://semver.org/">semantic versioning</a>).</p>
+<p>Periodically, as new functionality is being developed, lessc builds will be published to npm, tagged as beta. These builds will <em>not</em> be published as a <code>@latest</code> official release, and will typically have beta in the version (use <code>lessc -v</code> to get current version).</p>
+<p>Since patch releases are non-breaking we will publish patch releases immediately and alpha/beta/candidate versions will be published as minor or major version upgrades (we endeavour since 1.4.0 to follow <a href="http://semver.org/">semantic versioning</a>).</p>
 <h4 id="installing-an-unpublished-development-version-of-lessc">Installing an unpublished development version of lessc</h4>
 <p>If you want to install a bleeding-edge, unpublished version of lessc, follow the instructions for specifying a <a href="https://npmjs.org/doc/json.html#Git-URLs-as-Dependencies">git URL as a dependency</a> and be sure to specify an actual commit SHA (not a branch name) as the <code>commit-ish</code>. This will guarantee that your project always uses that exact version of lessc.</p>
 <p>The specified git URL may be that of the official lessc repo or a fork.</p>
@@ -283,14 +303,14 @@ $ lessc bootstrap.less bootstrap.css
 <span class="hljs-comment"># compile bootstrap.less to bootstrap.css and minify (compress) the result</span>
 $ lessc -x bootstrap.less bootstrap.css
 </code></pre>
-<h3 class="docs-heading">Help<span class="anchor-target" id="command-line-usage-help"></span>
-<a href="#command-line-usage-help" name="command-line-usage-help" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading">Options<span class="anchor-target" id="command-line-usage-options"></span>
+<a href="#command-line-usage-options" name="command-line-usage-options" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="help">Help</h4>
 <pre><code class="lang-bash">lessc --help
 lessc --h
 </code></pre>
 <p>Prints a help message with available options and exits.</p>
-<h3 class="docs-heading">Include paths<span class="anchor-target" id="command-line-usage-include-paths"></span>
-<a href="#command-line-usage-include-paths" name="command-line-usage-include-paths" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="include-paths">Include paths</h4>
 <pre><code class="lang-bash">lessc --include-path=PATH1;PATH2
 </code></pre>
 <p>Sets available include paths. Separated by &apos;:&apos; or &apos;;&apos; on Windows.</p>
@@ -298,111 +318,87 @@ lessc --h
 <p>In node, set a paths option</p>
 <pre><code class="lang-js">{ paths: [<span class="hljs-string">&apos;PATH1&apos;</span>, <span class="hljs-string">&apos;PATH2&apos;</span>]  }
 </code></pre>
-<h3 class="docs-heading">Makefile<span class="anchor-target" id="command-line-usage-makefile"></span>
-<a href="#command-line-usage-makefile" name="command-line-usage-makefile" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="makefile">Makefile</h4>
 <pre><code class="lang-bash">lessc -M
 lessc --depends
 </code></pre>
-<h3 class="docs-heading">No Color<span class="anchor-target" id="command-line-usage-no-color"></span>
-<a href="#command-line-usage-no-color" name="command-line-usage-no-color" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="no-color">No Color</h4>
 <pre><code class="lang-bash">lessc --no-color
 </code></pre>
-<h3 class="docs-heading">No IE Compatability<span class="anchor-target" id="command-line-usage-no-ie-compatability"></span>
-<a href="#command-line-usage-no-ie-compatability" name="command-line-usage-no-ie-compatability" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="no-ie-compatability">No IE Compatability</h4>
 <pre><code class="lang-bash">lessc --no-ie-compat
 </code></pre>
 <p>Currently only used for the data-uri function to ensure that images aren&apos;t created that are too large for the browser to handle.</p>
-<h3 class="docs-heading">Disable JavaScript<span class="anchor-target" id="command-line-usage-disable-javascript"></span>
-<a href="#command-line-usage-disable-javascript" name="command-line-usage-disable-javascript" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="disable-javascript">Disable JavaScript</h4>
 <pre><code class="lang-bash">lessc --no-js
 </code></pre>
-<h3 class="docs-heading">Lint<span class="anchor-target" id="command-line-usage-lint"></span>
-<a href="#command-line-usage-lint" name="command-line-usage-lint" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="lint">Lint</h4>
 <pre><code class="lang-bash">lessc --lint
 lessc -<span class="hljs-operator">-l</span>
 </code></pre>
 <p>Runs the less parser and just reports errors without any output.</p>
-<h3 class="docs-heading">Silent<span class="anchor-target" id="command-line-usage-silent"></span>
-<a href="#command-line-usage-silent" name="command-line-usage-silent" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="silent">Silent</h4>
 <pre><code class="lang-bash">lessc <span class="hljs-operator">-s</span>
 lessc --silent
 </code></pre>
-<h3 class="docs-heading">Strict Imports<span class="anchor-target" id="command-line-usage-strict-imports"></span>
-<a href="#command-line-usage-strict-imports" name="command-line-usage-strict-imports" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>Stops any warnings from being shown.</p>
+<h4 id="strict-imports">Strict Imports</h4>
 <pre><code class="lang-bash">lessc --strict-imports
 </code></pre>
-<h3 class="docs-heading">Allow imports from insecure https hosts<span class="anchor-target" id="command-line-usage-allow-imports-from-insecure-https-hosts"></span>
-<a href="#command-line-usage-allow-imports-from-insecure-https-hosts" name="command-line-usage-allow-imports-from-insecure-https-hosts" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="allow-imports-from-insecure-https-hosts">Allow imports from insecure https hosts</h4>
 <pre><code class="lang-bash">lessc --insecure
 </code></pre>
-<h3 class="docs-heading">Version<span class="anchor-target" id="command-line-usage-version"></span>
-<a href="#command-line-usage-version" name="command-line-usage-version" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="version">Version</h4>
 <pre><code class="lang-bash">lessc -v
 lessc --version
 </code></pre>
-<h3 class="docs-heading">Compress<span class="anchor-target" id="command-line-usage-compress"></span>
-<a href="#command-line-usage-compress" name="command-line-usage-compress" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="compress">Compress</h4>
 <pre><code class="lang-bash">lessc -x
 lessc --compress
 </code></pre>
 <p>Compress using less built-in compression. This does an okay job but does not utilise all the tricks of dedicated css compression. Please feel free to improve our compressed output with a pull request.</p>
-<h3 class="docs-heading">Clean CSS<span class="anchor-target" id="command-line-usage-clean-css"></span>
-<a href="#command-line-usage-clean-css" name="command-line-usage-clean-css" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-bash">lessc --clean-css
-</code></pre>
-<p>Clean CSS is our minifer of choice if you want to get the most minified you can. This option switches it on.</p>
-<p>Note - it does not yet support sourcemaps, for that you can only use our own compression.</p>
-<h3 class="docs-heading">Clean CSS Options<span class="anchor-target" id="command-line-usage-clean-css-options"></span>
-<a href="#command-line-usage-clean-css-options" name="command-line-usage-clean-css-options" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-bash">lessc --clean-css --clean-option=--selectors-merge-mode:ie8 --clean-option=--advanced
-</code></pre>
-<p>Use this to pass options to clean css. The default options are the safest, so are IE8 compatible.</p>
-<h3 class="docs-heading">Source Map Output Filename<span class="anchor-target" id="command-line-usage-source-map-output-filename"></span>
-<a href="#command-line-usage-source-map-output-filename" name="command-line-usage-source-map-output-filename" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="clean-css">Clean CSS</h4>
+<p>In v2 of less, Clean CSS is no longer included as a direct dependency. To use clean css with lessc, use the <a href="https://github.com/less/less-plugin-clean-css">clean css plugin</a>.</p>
+<h4 id="source-map-output-filename">Source Map Output Filename</h4>
 <pre><code class="lang-bash">lessc --source-map
 lessc --source-map=file.map
 </code></pre>
 <p>Tells less to generate a sourcemap. If you have the sourcemap option without a filename it will use the source less file name but with the extension map.</p>
-<h3 class="docs-heading">Source Map Rootpath<span class="anchor-target" id="command-line-usage-source-map-rootpath"></span>
-<a href="#command-line-usage-source-map-rootpath" name="command-line-usage-source-map-rootpath" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="source-map-rootpath">Source Map Rootpath</h4>
 <pre><code class="lang-bash">lessc --source-map-rootpath=dev-files/
 </code></pre>
 <p>Specifies a rootpath that should be prepended to each of the less file paths inside the sourcemap and also to the path to the map file specified in your output css.</p>
+<p>Because the basepath defaults to the directory of the input less file, the rootpath defaults to the path from the sourcemap output file to the base directory of the input less file.</p>
 <p>Use this option if for instance you have a css file generated in the root on your web server but have your source less/css/map files in a different folder. So for the option above you might have</p>
 <pre><code class="lang-bash">output.css
 dev-files/output.map
 dev-files/main.less
 </code></pre>
-<h3 class="docs-heading">Source Map Basepath<span class="anchor-target" id="command-line-usage-source-map-basepath"></span>
-<a href="#command-line-usage-source-map-basepath" name="command-line-usage-source-map-basepath" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="source-map-basepath">Source Map Basepath</h4>
 <pre><code class="lang-bash">lessc --source-map-basepath=less-files/
 </code></pre>
-<p>This is the opposite of the rootpath option, it specifies a path which should be removed from the output paths. For instance if you are compiling a file in the less-files directory but the source files will be available on your web server in the root or current directory, you can specify this to remove the additional <code>less-files</code> part of the path</p>
-<h3 class="docs-heading">Source Map Less Inline<span class="anchor-target" id="command-line-usage-source-map-less-inline"></span>
-<a href="#command-line-usage-source-map-less-inline" name="command-line-usage-source-map-less-inline" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>This is the opposite of the rootpath option, it specifies a path which should be removed from the output paths. For instance if you are compiling a file in the less-files directory but the source files will be available on your web server in the root or current directory, you can specify this to remove the additional <code>less-files</code> part of the path.</p>
+<p>It defaults to the path to the input less file.</p>
+<h4 id="source-map-less-inline">Source Map Less Inline</h4>
 <pre><code class="lang-bash">lessc --source-map-less-inline
 </code></pre>
 <p>This option specifies that we should include all of the Less files in to the sourcemap. This means that you only need your map file to get to your original source.</p>
 <p>This can be used in conjunction with the map inline option so that you do not need to have any additional external files at all.</p>
-<h3 class="docs-heading">Source Map Map Inline<span class="anchor-target" id="command-line-usage-source-map-map-inline"></span>
-<a href="#command-line-usage-source-map-map-inline" name="command-line-usage-source-map-map-inline" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="source-map-map-inline">Source Map Map Inline</h4>
 <pre><code class="lang-bash">lessc --source-map-map-inline
 </code></pre>
 <p>This option specifies that the map file should be inline in the output CSS. This is not recommended for production, but for development it allows the compiler to produce a single output file which in browsers that support it, use the compiled css but show you the non-compiled less source.</p>
-<h3 class="docs-heading">Source Map URL<span class="anchor-target" id="command-line-usage-source-map-url"></span>
-<a href="#command-line-usage-source-map-url" name="command-line-usage-source-map-url" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="source-map-url">Source Map URL</h4>
 <pre><code class="lang-bash">lessc --source-map-url=../my-map.json
 </code></pre>
 <p>Allows you to override the URL in the css that points at the map file. This is for cases when the rootpath and basepath options are not producing exactly what you need.</p>
-<h3 class="docs-heading">Rootpath<span class="anchor-target" id="command-line-usage-rootpath"></span>
-<a href="#command-line-usage-rootpath" name="command-line-usage-rootpath" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="rootpath">Rootpath</h4>
 <pre><code class="lang-bash">lessc -rp=resources/
 lessc --rootpath=resources/
 </code></pre>
 <p>Allows you to add a path to every generated import and url in your css. This does not affect less import statements that are processed, just ones that are left in the output css.</p>
 <p>For instance, if all the images the css use are in a folder called resources, you can use this option to add this on to the URL&apos;s and then have the name of that folder configurable.</p>
-<h3 class="docs-heading">Relative URLs<span class="anchor-target" id="command-line-usage-relative-urls"></span>
-<a href="#command-line-usage-relative-urls" name="command-line-usage-relative-urls" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="relative-urls">Relative URLs</h4>
 <pre><code class="lang-bash">lessc -ru
 lessc --relative-urls
 </code></pre>
@@ -425,12 +421,11 @@ lessc --relative-urls
 }
 </code></pre>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
-<h3 class="docs-heading">Strict Math<span class="anchor-target" id="command-line-usage-strict-math"></span>
-<a href="#command-line-usage-strict-math" name="command-line-usage-strict-math" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="strict-math">Strict Math</h4>
 <pre><code class="lang-bash">lessc -sm=on
 lessc --strict-math=on
 </code></pre>
-<p>Defaults to Off. </p>
+<p>Defaults to Off.</p>
 <p>Without this option on Less will try and process all maths in your css e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
   <span class="hljs-attribute">height</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">10px</span>);
@@ -451,8 +446,7 @@ lessc --strict-math=on
 }
 </code></pre>
 <p>We originally planned to default this to true in the future, but it has been a contraversial option and we are considering whether we have solved the problem in the right way, or whether less should just have exceptions for instances where <code>/</code> is valid or calc is used.</p>
-<h3 class="docs-heading">Strict Units<span class="anchor-target" id="command-line-usage-strict-units"></span>
-<a href="#command-line-usage-strict-units" name="command-line-usage-strict-units" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="strict-units">Strict Units</h4>
 <pre><code class="lang-bash">lessc -su=on
 lessc --strict-units=on
 </code></pre>
@@ -464,28 +458,34 @@ lessc --strict-units=on
 </code></pre>
 <p>In this case, things are clearly not right - a length multiplied by a length gives an area, but css does not support specifying areas. So we assume that the user meant for one of the values to be a value, not a unit of length and we output <code>2px</code>.</p>
 <p>With strict units on, we assume this is a bug in the calculation and throw an error.</p>
-<h3 class="docs-heading">Global Variable<span class="anchor-target" id="command-line-usage-global-variable"></span>
-<a href="#command-line-usage-global-variable" name="command-line-usage-global-variable" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="global-variable">Global Variable</h4>
 <pre><code class="lang-bash">lessc --global-var=<span class="hljs-string">&quot;my-background=red&quot;</span>
 </code></pre>
 <p>This option defines a variable that can be referenced by the file. Effectively the declaration is put at the top of your base Less file, meaning it can be used but it also can be overridden if this variable is defined in the file.</p>
-<h3 class="docs-heading">Modify Variable<span class="anchor-target" id="command-line-usage-modify-variable"></span>
-<a href="#command-line-usage-modify-variable" name="command-line-usage-modify-variable" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="modify-variable">Modify Variable</h4>
 <pre><code class="lang-bash">lessc --modify-var=<span class="hljs-string">&quot;my-background=red&quot;</span>
 </code></pre>
 <p>As opposed to the global variable option, this puts the declaration at the end of your base file, meaning it will override anything defined in your Less file.</p>
-<h3 class="docs-heading">URL Arguments<span class="anchor-target" id="command-line-usage-url-arguments"></span>
-<a href="#command-line-usage-url-arguments" name="command-line-usage-url-arguments" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="url-arguments">URL Arguments</h4>
 <pre><code class="lang-bash">lessc --url-args=<span class="hljs-string">&quot;cache726357&quot;</span>
 </code></pre>
 <p>This option allows you to specify a argument to go on to every URL. This may be used for cache-busting for instance.</p>
-<h3 class="docs-heading">Line Numbers<span class="anchor-target" id="command-line-usage-line-numbers"></span>
-<a href="#command-line-usage-line-numbers" name="command-line-usage-line-numbers" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="line-numbers">Line Numbers</h4>
 <pre><code class="lang-bash">lessc --line-numbers=comments
 lessc --line-numbers=mediaquery
 lessc --line-numbers=all
 </code></pre>
 <p>Generates inline source-mapping. This was the only option before browsers started supporting sourcemaps. We are consider deprecating, so please get in touch if you want this option to stick around.</p>
+<h4 id="plugin">Plugin</h4>
+<pre><code class="lang-bash">lessc --clean-css
+lessc --plugin=clean-css=<span class="hljs-string">&quot;advanced&quot;</span>
+</code></pre>
+<p>--plugin Loads a plugin. You can also omit the --plugin= if the plugin begins
+less-plugin. E.g. the clean css plugin is called less-plugin-clean-css
+once installed (npm install less-plugin-clean-css), use either with
+--plugin=less-plugin-clean-css or just --clean-css
+specify options afterwards e.g. --plugin=less-plugin-clean-css=&quot;advanced&quot;
+or --clean-css=&quot;advanced&quot;</p>
 
 
       <br>
@@ -512,15 +512,27 @@ lessc --line-numbers=all
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- using-less-in-the-browser -->
        
 
 
+<p>We recommend using less in the browser only for development or when you need to dynamically compile less and cannot do it serverside.
+This is because less is a large javascript file and compiling less before the user can see the page means a delay for the user. In addition,
+consider that mobile devices will compile slower. For development consider if using a watcher and live reload (e.g. with grunt or gulp) would
+be better suited.</p>
+<p>To use less in the browser, you firstly need to include the less script.</p>
+<pre><code class="lang-html"><span class="hljs-comment">&lt;!-- Optionally set less = any options and include any less plugin scripts --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+</code></pre>
+<p>This will find any less style tags on the page</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;styles.less&quot;</span> /&gt;</span>
+</code></pre>
+<p>and create style tags with the compiled css synchronously.</p>
 <h3 class="docs-heading">Watch mode<span class="anchor-target" id="using-less-in-the-browser-watch-mode"></span>
 <a href="#using-less-in-the-browser-watch-mode" name="using-less-in-the-browser-watch-mode" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>To enable Watch mode, option <code>env</code> must be set to <code>development</code>. Then AFTER the less.js file is included, call <code>less.watch()</code>, like this:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">less = { env: <span class="hljs-string">&apos;development&apos;</span>};</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">less.watch();</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>Alternatively, you can enable Watch mode temporarily by appending <code>#!watch</code> to the URL.</p>
@@ -537,8 +549,8 @@ lessc --line-numbers=all
 <p>It is possible to output rules in your CSS which allow tools to locate the source of the rule.</p>
 <p>Either specify the option <code>dumpLineNumbers</code> as above or add <code>!dumpLineNumbers:mediaquery</code> to the url.</p>
 <p>You can use the <code>comments</code> option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> and the <code>mediaquery</code> option with FireBug/Chrome dev tools (it is identical to the SCSS media query debugging format).</p>
-<h2 class="docs-heading">Client-side Usage<span class="anchor-target" id="using-less-in-the-browser-client-side-usage"></span>
-<a href="#using-less-in-the-browser-client-side-usage" name="using-less-in-the-browser-client-side-usage" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading">Options<span class="anchor-target" id="using-less-in-the-browser-options"></span>
+<a href="#using-less-in-the-browser-options" name="using-less-in-the-browser-options" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
 <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- set options before less.js script --&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
@@ -560,23 +572,18 @@ lessc --line-numbers=all
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
-<h2 class="docs-heading">Client side options<span class="anchor-target" id="using-less-in-the-browser-client-side-options"></span>
-<a href="#using-less-in-the-browser-client-side-options" name="using-less-in-the-browser-client-side-options" class="anchor glyphicon glyphicon-link"></a></h2>
-<h3 class="docs-heading">async<span class="anchor-target" id="using-less-in-the-browser-async"></span>
-<a href="#using-less-in-the-browser-async" name="using-less-in-the-browser-async" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="async">async</h4>
 <p>Type: <code>Boolean</code></p>
 <p>Default: <code>false</code></p>
 <p>Whether to request the import files with the async option or not. See <a href="#using-less-in-the-browser-fileasync">fileAsync</a>.</p>
-<h3 class="docs-heading">dumpLineNumbers<span class="anchor-target" id="using-less-in-the-browser-dumplinenumbers"></span>
-<a href="#using-less-in-the-browser-dumplinenumbers" name="using-less-in-the-browser-dumplinenumbers" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="dumplinenumbers">dumpLineNumbers</h4>
 <p>Type: <code>String</code>
 Options: <code>&apos;&apos;</code>| <code>&apos;comments&apos;</code>|<code>&apos;mediaquery&apos;</code>|<code>&apos;all&apos;</code>
 Default: <code>&apos;&apos;</code></p>
 <p>When set, this adds source line information to the output css file. This helps you debug where a particular rule came from.</p>
 <p>The <code>comments</code> option is used for outputting user-understandable content, whilst <code>mediaquery</code> is for use with a firefox extension which parses the css and extracts the information.</p>
 <p>In the future we hope this option to be superseded by sourcemaps.</p>
-<h3 class="docs-heading">env<span class="anchor-target" id="using-less-in-the-browser-env"></span>
-<a href="#using-less-in-the-browser-env" name="using-less-in-the-browser-env" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="env">env</h4>
 <p>Type: <code>String</code>
 Default: depends on page URL</p>
 <p>Environment to run may be either <code>development</code> or <code>production</code>.</p>
@@ -585,25 +592,22 @@ Default: depends on page URL</p>
 <p>e.g.</p>
 <pre><code class="lang-js">less = { env: <span class="hljs-string">&apos;production&apos;</span> };
 </code></pre>
-<h3 class="docs-heading">errorReporting<span class="anchor-target" id="using-less-in-the-browser-errorreporting"></span>
-<a href="#using-less-in-the-browser-errorreporting" name="using-less-in-the-browser-errorreporting" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="errorreporting">errorReporting</h4>
 <p>Type: <code>String</code></p>
 <p>Options: <code>html</code>|<code>console</code>|<code>function</code></p>
 <p>Default: <code>html</code></p>
 <p>Set the method of error reporting when compilation fails.</p>
-<h3 class="docs-heading">fileAsync<span class="anchor-target" id="using-less-in-the-browser-fileasync"></span>
-<a href="#using-less-in-the-browser-fileasync" name="using-less-in-the-browser-fileasync" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="fileasync">fileAsync</h4>
 <p>Type: <code>Boolean</code></p>
 <p>Default: <code>false</code></p>
 <p>Whether to request the import asynchronously when in a page with a file protocol.</p>
-<h3 class="docs-heading">functions<span class="anchor-target" id="using-less-in-the-browser-functions"></span>
-<a href="#using-less-in-the-browser-functions" name="using-less-in-the-browser-functions" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="functions">functions</h4>
 <p>Type: <code>object</code></p>
 <p>User functions, keyed by name.</p>
 <p>e.g.</p>
-<pre><code class="lang-js">less = { 
-    functions: { 
-        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ 
+<pre><code class="lang-js">less = {
+    functions: {
+        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span>(less.tree.Dimension)(<span class="hljs-number">1</span>);
         }
     }
@@ -614,8 +618,7 @@ Default: depends on page URL</p>
   <span class="hljs-attribute">border-width</span>: <span class="hljs-function">unit</span>(<span class="hljs-function">myfunc</span>(), px);
 }
 </code></pre>
-<h3 class="docs-heading">logLevel<span class="anchor-target" id="using-less-in-the-browser-loglevel"></span>
-<a href="#using-less-in-the-browser-loglevel" name="using-less-in-the-browser-loglevel" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="loglevel">logLevel</h4>
 <p>Type: <code>Number</code></p>
 <p>Default: 2</p>
 <p>The amount of logging in the javascript console. Note: If you are in the <code>production</code> environment you will not get any logging.</p>
@@ -623,8 +626,7 @@ Default: depends on page URL</p>
 <span class="hljs-number">1</span> - Errors
 <span class="hljs-number">0</span> - Nothing
 </code></pre>
-<h3 class="docs-heading">poll<span class="anchor-target" id="using-less-in-the-browser-poll"></span>
-<a href="#using-less-in-the-browser-poll" name="using-less-in-the-browser-poll" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="poll">poll</h4>
 <p>Type: <code>Integer</code></p>
 <p>Default: <code>1000</code></p>
 <p>The amount of time (in milliseconds) between polls while in watch mode.</p>
@@ -633,23 +635,20 @@ Default: depends on page URL</p>
 <p>Type: <code>Boolean</code></p>
 <p>Default: <code>false</code></p>
 <p>Optionally adjust URLs to be relative. When false, URLs are already relative to the entry less file.</p>
-<h3 class="docs-heading">globalVars<span class="anchor-target" id="using-less-in-the-browser-globalvars"></span>
-<a href="#using-less-in-the-browser-globalvars" name="using-less-in-the-browser-globalvars" class="anchor glyphicon glyphicon-link"></a></h3>
+<h4 id="globalvars">globalVars</h4>
 <p>Type: <code>Object</code></p>
 <p>Default: <code>undefined</code></p>
-<p>Programmatic version of <a href="#command-line-usage-global-variable">Global Variable</a>.</p>
 <p>List of global variables to be injected into the code. Keys of the object are variables names, values are variables values. Variables of &quot;string&quot; type must explicitly include quotes if needed.</p>
 <p>E.g.</p>
 <pre><code class="lang-js">less.globalVars = { myvar: <span class="hljs-string">&quot;#ddffee&quot;</span>, mystr: <span class="hljs-string">&quot;\&quot;quoted\&quot;&quot;</span> };
 </code></pre>
-<h3 class="docs-heading">modifyVars<span class="anchor-target" id="using-less-in-the-browser-modifyvars"></span>
-<a href="#using-less-in-the-browser-modifyvars" name="using-less-in-the-browser-modifyvars" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>This option defines a variable that can be referenced by the file. Effectively the declaration is put at the top of your base Less file, meaning it can be used but it also can be overridden if this variable is defined in the file.</p>
+<h4 id="modifyvars">modifyVars</h4>
 <p>Type: <code>Object</code></p>
 <p>Default: <code>undefined</code></p>
-<p>Programmatic version of <a href="#command-line-usage-modify-variable">Modify Variable</a>.</p>
 <p>Same format as <a href="#using-less-in-the-browser-globalvars">globalVars</a>.</p>
-<h3 class="docs-heading">rootpath<span class="anchor-target" id="using-less-in-the-browser-rootpath"></span>
-<a href="#using-less-in-the-browser-rootpath" name="using-less-in-the-browser-rootpath" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>As opposed to the <a href="#using-less-in-the-browser-globalvars">globalVars</a> option, this puts the declaration at the end of your base file, meaning it will override anything defined in your Less file.</p>
+<h4 id="rootpath">rootpath</h4>
 <p>Type: <code>String</code></p>
 <p>Default: <code>false</code></p>
 <p>A path to add on to the start of every URL resource.</p>
@@ -679,7 +678,6 @@ Default: depends on page URL</p>
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- browser-support -->
        
 
@@ -688,6 +686,147 @@ Default: depends on page URL</p>
 <p>Note that PhantomJS does not currently implement <code>Function.prototype.bind</code> so you will require a es-5 shim for this function to run under PhantomJS (We use PhantomJS for tests and we append an es5-shim to make it work).</p>
 <p>There are reasons to use client-side less in production, such as if you want to allow users to tweak variables which will affect the theme and you want to show it to them in real-time - in this instance a user is not worried about waiting for a style to update before seeing it.</p>
 <p>If you need to run less in an older browser, please use an <a href="https://github.com/kriskowal/es5-shim">es-5 shim</a> which will add the javascript features that less requires.</p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Plugins -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 class="docs-heading">Plugins<span class="anchor-target" id="plugins"></span>
+<a href="#plugins" name="plugins" class="anchor glyphicon glyphicon-link"></a></h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/usage/plugins.md" data-content="pluginsmd" target="_blank"></a>
+
+
+
+<a id="pluginsmd" href="https://github.com/less/less-docs/blob/master/content/usage/plugins.md" target="_blank">Edit the markdown source for &quot;plugins&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+      <!-- plugins -->
+       
+
+
+<h2 class="docs-heading">How do I use a plugin ? - command line<span class="anchor-target" id="plugins-how-do-i-use-a-plugin-command-line"></span>
+<a href="#plugins-how-do-i-use-a-plugin-command-line" name="plugins-how-do-i-use-a-plugin-command-line" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>If you are using lessc, the first thing you need to do is install that plugin. We reccommend the plugin starts &quot;less-plugin&quot; though that isn&apos;t required. For the clean css plugin you would install <code>npm install less-plugin-clean-css</code>.</p>
+<p>To use the plugin, if you specify a unrecognised option, we attempt to load that, for example</p>
+<pre><code>lessc --clean-css=&quot;advanced&quot;
+</code></pre><p>Will use the plugin you just installed. You can also be more direct, for example</p>
+<pre><code>lessc --plugin=path_to_plugin=options
+</code></pre><h2 class="docs-heading">Using a plugin in code<span class="anchor-target" id="plugins-using-a-plugin-in-code"></span>
+<a href="#plugins-using-a-plugin-in-code" name="plugins-using-a-plugin-in-code" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>In Node, require the plugin and pass it to less in an array as an option plugins. E.g.</p>
+<pre><code>var myPlugin = require(&quot;my-plugin&quot;);
+less.render(myCSS, { plugins: [myPlugin] })
+   .then(function(css) {
+    },
+    function(error) {
+    });
+</code></pre><h2 class="docs-heading">In the browser<span class="anchor-target" id="plugins-in-the-browser"></span>
+<a href="#plugins-in-the-browser" name="plugins-in-the-browser" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>Plugin authors should provide a javascript file, just include that in the page <em>before</em> the less.js script.</p>
+<h2 class="docs-heading">List of less plugins<span class="anchor-target" id="plugins-list-of-less-plugins"></span>
+<a href="#plugins-list-of-less-plugins" name="plugins-list-of-less-plugins" class="anchor glyphicon glyphicon-link"></a></h2>
+<ul>
+<li><a href="https://github.com/less/less-plugin-clean-css">Clean CSS plugin to compress less</a></li>
+<li><a href="https://github.com/less/less-plugin-autoprefix">Autoprefixer plugin to add backwards compatibility to your css</a></li>
+<li><a href="https://github.com/less/less-plugin-inline-urls">Inline urls - converts <code>url()</code> to a call to <code>data-uri()</code></a></li>
+<li><a href="https://github.com/less/less-plugin-npm-import">Npm Import - import from a sub npm repository</a></li>
+</ul>
+<h2 class="docs-heading">For plugin authors<span class="anchor-target" id="plugins-for-plugin-authors"></span>
+<a href="#plugins-for-plugin-authors" name="plugins-for-plugin-authors" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>Less supports some entry points that allow an author to integrate with less. We may add some more in the future.</p>
+<p>The plugin itself has a very simple signtaure, like this</p>
+<pre><code>{
+    install: function(less, pluginManager) {
+    },
+    minVersion: [2, 0, 0] /* optional */
+}
+</code></pre><p>So, the plugin gets the less object, which in v2 has more classes on it (making it easy to extend), a plugin manager which provides some hooks to add visitors, file managers and post processors.</p>
+<p>If your plugin supports lessc, there are a few more details and the signature looks like this</p>
+<pre><code>{
+    install: function(less, pluginManager) {
+    },
+    setOptions: function(argumentString) { /* optional */
+    },
+    printUsage: function() { /* optional */
+    },
+    minVersion: [2, 0, 0] /* optional */
+}
+</code></pre><p>The additions are the setOptions function which passes the string the user enters when specifying your plugin and also the printUsage function which you should use to explain your options and how the plugin works.</p>
+<p>Here are some example repos showing the different plugin types
+post-processor: <a href="https://github.com/less/less-plugin-clean-css">https://github.com/less/less-plugin-clean-css</a>
+visitor: <a href="https://github.com/less/less-plugin-inline-urls">https://github.com/less/less-plugin-inline-urls</a>
+file-manager: <a href="https://github.com/less/less-plugin-npm-import">https://github.com/less/less-plugin-npm-import</a></p>
+<p>Note: Plugins are different from creating a version of less for a different environment but they do have similarities, for example node provides 2 file managers by default and browser provides one and that is the main step in getting less to run within a specific environment. The plugin allows you to add file managers.</p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Programmatic Usage -->
+  <div class="docs-section">
+    <div class="page-header">
+      <h1 class="docs-heading">Programmatic Usage<span class="anchor-target" id="programmatic-usage"></span>
+<a href="#programmatic-usage" name="programmatic-usage" class="anchor glyphicon glyphicon-link"></a></h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md" data-content="programmatic-usagemd" target="_blank"></a>
+
+
+
+<a id="programmatic-usagemd" href="https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md" target="_blank">Edit the markdown source for &quot;programmatic-usage&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+      <!-- programmatic-usage -->
+       
+
+
+<p>The main entry point into less is the less.render function. This takes the following format</p>
+<pre><code>less.render(css, options)
+    .then(function(css) {
+    },
+    function(error) {
+    });
+
+// or...
+
+less.render(css, options, function(error, css) {})
+</code></pre><p>The options argument is optional. If you specify a callback then a promise will not be returned, where as if you do not specify a callback a promise will be given.
+Under the hood, if a callback is given it runs itself again to get a promise and then calls the callback in the 2 promise states - so we recommend using the promise version.</p>
+<p>Previously we also recommended creating a less.Parser and then calling toCSS on the result. However this had 2 serious drawbacks - it meant that our parser was in fact tied to all of less and 2nd it meant that the toCSS call had to be synchronous.</p>
+<p>You can still get the less parse tree, but it requires more steps. You can see how this is done <a href="https://github.com/less/less.js/blob/master/lib/less/render.js">in the render function</a> but we <em>do not</em> support using less in this way and may change this function in a minor release version bump (we will not break it in a patch release).</p>
+<h3 class="docs-heading">Getting access to the log<span class="anchor-target" id="programmatic-usage-getting-access-to-the-log"></span>
+<a href="#programmatic-usage-getting-access-to-the-log" name="programmatic-usage-getting-access-to-the-log" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>You can add a log listener with the following code</p>
+<pre><code>less.logger.addListener({
+    debug: function(msg) {
+    },
+    info: function(msg) {
+    },
+    warn: function(msg) {
+    },
+    error: function(msg) {
+    }
+});
+</code></pre><p>Note: all functions are optional. An error will not be logged, but instead is passed back to the callback or promise in less.render</p>
 
 
       <br>
@@ -713,7 +852,6 @@ Default: depends on page URL</p>
 <a id="online-less-compilersmd" href="https://github.com/less/less-docs/blob/master/content/usage/online-less-compilers.md" target="_blank">Edit the markdown source for &quot;online-less-compilers&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- online-less-compilers -->
        
@@ -806,7 +944,6 @@ Default: depends on page URL</p>
 <a id="guis-for-lessmd" href="https://github.com/less/less-docs/blob/master/content/usage/guis-for-less.md" target="_blank">Edit the markdown source for &quot;guis-for-less&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
-
 
       <!-- guis-for-less -->
        
@@ -917,7 +1054,6 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- editors-and-plugins -->
        
 
@@ -999,7 +1135,6 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- third-party-compilers -->
        
 
@@ -1067,7 +1202,6 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- frameworks-using-less -->
        
 
@@ -1107,7 +1241,7 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 <td>Small &quot;mobile first&quot; CSS framework for front-end developers who build responsive web applications</td>
 </tr>
 <tr>
-<td><a href="http://csshor.us/">CSSH&#xF3;rus</a></td>
+<td><a href="https://github.com/firminoweb/csshorus">CSSH&#xF3;rus</a></td>
 <td>Library for development of responsive and mobile websites</td>
 </tr>
 <tr>
@@ -1337,7 +1471,6 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
-
       <!-- developing-less -->
        
 
@@ -1367,9 +1500,22 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 <li><code>grunt stable</code> to create a new release</li>
 <li><code>grunt readme</code> to generate a new readme.md in the root directory (after each release)</li>
 </ul>
+<h2 class="docs-heading">How to run less in other environments<span class="anchor-target" id="developing-less-how-to-run-less-in-other-environments"></span>
+<a href="#developing-less-how-to-run-less-in-other-environments" name="developing-less-how-to-run-less-in-other-environments" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>If you look in the libs folder you will see <code>less</code>, <code>less-node</code>, <code>less-browser</code>. The less folder is pure javascript with no environment
+specifics. if you require <code>less/libs/less</code>, you get a function that takes an environment object and an array of file managers. The file
+managers are the same file managers that can also be written as a plugin.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> createLess = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;less/libs/less&quot;</span>),
+    myLess = createLess(environment, [myFileManager]);
+</code></pre>
+<p>The environment api is specified in <a href="https://github.com/less/less.js/blob/master/lib/less/environment/environment-api.js">less/libs/less/environment/environment-api.js</a>
+and the file manager api is specified in <a href="https://github.com/less/less.js/blob/master/lib/less/environment/file-manager-api.js">less/libs/less/environment/file-manager-api.js</a>.</p>
+<p>For file managers we highly recommend setting the prototype as a new AbstractFileManager - this allows you to override what is needed and allows us
+to implement new functions without breaking existing file managers. For an example of file managers, see the 2 node implementations, the browser implementation or
+the npm import plugin implementation.</p>
 <h2 class="docs-heading">Guide<span class="anchor-target" id="developing-less-guide"></span>
 <a href="#developing-less-guide" name="developing-less-guide" class="anchor glyphicon glyphicon-link"></a></h2>
-<p>If you look at <a href="http://www.gliffy.com/go/publish/4784259">http://www.gliffy.com/go/publish/4784259</a>,  This is an overview diagram of how less works.</p>
+<p>If you look at <a href="http://www.gliffy.com/go/publish/4784259">http://www.gliffy.com/go/publish/4784259</a>,  This is an overview diagram of how less works. Warning! It needs updating with v2 changes.</p>
 <h2 class="docs-heading">Books<span class="anchor-target" id="developing-less-books"></span>
 <a href="#developing-less-books" name="developing-less-books" class="anchor glyphicon glyphicon-link"></a></h2>
 <ul>
@@ -1401,11 +1547,10 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
     </li>
   </ul>
 </div>
-
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v1.7.5</li>
+      <li>Currently v2.0.0-b1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -1418,7 +1563,6 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
   </div>
 </footer>
 
-
     
     <!-- Core JavaScript
 ================================================== -->
@@ -1429,7 +1573,6 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 <script src="../public/js/application.js"></script>
-
 
 
 

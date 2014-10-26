@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.0.0-b1 has been released -
+    less v2.0.0-b2 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -1721,7 +1721,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Detached ruleset can use all variables and mixins accessible on place where it is <em>defined</em> and where it is <em>called</em>. Otherwise said, both definition and caller scopes are available to it. If both scopes contains the same variable or mixin, declaration scope value takes precedence. </p>
 <p><em>Declaration scope</em> is the one where detached ruleset body is defined. Copying  detached ruleset from one variable into another can not modify its scope. Ruleset does not gain access to new scopes just by being referenced there.</p>
 <p>Lastly, detached ruleset can gain access to scope by being unlocked (imported) into it.</p>
-<h4 id="definition-and-caller-scope-visibility">Definition and Caller Scope Visibility</h4>
+<h4 class="docs-heading">Definition and Caller Scope Visibility<span class="anchor-target" id="detached-rulesets-feature-definition-and-caller-scope-visibility"></span>
+<a href="#detached-rulesets-feature-definition-and-caller-scope-visibility" name="detached-rulesets-feature-definition-and-caller-scope-visibility" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Detached mixin sees callers variables and mixins:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@detached-ruleset:</span> {
   <span class="hljs-attribute">caller-variable</span>: <span class="hljs-variable">@callerVariable</span>; <span class="hljs-comment">// variable is undefined here</span>
@@ -1763,7 +1764,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">variable</span>: global;
 }
 </code></pre>
-<h4 id="referencing-won-t-modify-detached-ruleset-scope">Referencing <em>Won&apos;t</em> Modify Detached Ruleset Scope</h4>
+<h4 class="docs-heading">Referencing <em>Won&apos;t</em> Modify Detached Ruleset Scope<span class="anchor-target" id="detached-rulesets-feature-referencing-won-t-modify-detached-ruleset-scope"></span>
+<a href="#detached-rulesets-feature-referencing-won-t-modify-detached-ruleset-scope" name="detached-rulesets-feature-referencing-won-t-modify-detached-ruleset-scope" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Ruleset does not gain access to new scopes just by being referenced there:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@detached-1:</span> { <span class="hljs-attribute">scope-detached</span>: <span class="hljs-variable">@one</span> <span class="hljs-variable">@two</span>; };
 <span class="hljs-class">.one</span> {
@@ -1781,7 +1783,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </code></pre>
 <p>throws an error:</p>
 <pre><code>ERROR 1:32 The variable &quot;@one&quot; was not declared.
-</code></pre><h4 id="unlocking-will-modify-detached-ruleset-scope">Unlocking <em>Will</em> Modify Detached Ruleset Scope</h4>
+</code></pre><h4 class="docs-heading">Unlocking <em>Will</em> Modify Detached Ruleset Scope<span class="anchor-target" id="detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope"></span>
+<a href="#detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope" name="detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Detached ruleset gains access by being unlocked (imported) inside a scope:</p>
 <pre><code class="lang-less"><span class="hljs-id">#space</span> {
   <span class="hljs-class">.importer1</span>() {
@@ -2458,9 +2461,9 @@ For example, when using Modernizr, you might want to specify different rules bas
 <a href="#parent-selectors-feature-combinatorial-explosion" name="parent-selectors-feature-combinatorial-explosion" class="anchor glyphicon glyphicon-link"></a></h3>
 <p><code>&amp;</code> can also be used to generate every possible permutation of selectors in a comma separated list:</p>
 <pre><code class="lang-less"><span class="hljs-tag">p</span>, <span class="hljs-tag">a</span>, <span class="hljs-tag">ul</span>, <span class="hljs-tag">li</span> {
-<span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> dotted <span class="hljs-hexcolor">#366</span>;
+  <span class="hljs-attribute">border-top</span>: <span class="hljs-number">2px</span> dotted <span class="hljs-hexcolor">#366</span>;
   <span class="hljs-keyword">&amp;</span> + <span class="hljs-keyword">&amp;</span> {
-      <span class="hljs-attribute">border-top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">border-top</span>: <span class="hljs-number">0</span>;
   }
 }
 </code></pre>
@@ -2519,7 +2522,7 @@ For example, when using Modernizr, you might want to specify different rules bas
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.0.0-b1</li>
+      <li>Currently v2.0.0-b2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

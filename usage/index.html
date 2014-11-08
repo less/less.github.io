@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.0.0-b2 has been released -
+    less v2.0.0-b3 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -728,6 +728,12 @@ Default: depends on page URL</p>
 <p>Type: <code>String</code></p>
 <p>Default: <code>false</code></p>
 <p>A path to add on to the start of every URL resource.</p>
+<h4 class="docs-heading">useFileCache<span class="anchor-target" id="using-less-in-the-browser-usefilecache"></span>
+<a href="#using-less-in-the-browser-usefilecache" name="using-less-in-the-browser-usefilecache" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>Type: <code>Boolean</code></p>
+<p>Default: <code>true</code> (previously <code>false</code> in before v2)</p>
+<p>Whether to use the per session file cache. This caches less files so that you can call modifyVars and it will not retrieve all the less files again.
+If you use the watcher or call refresh with reload set to true, then the cache will be cleared before running.</p>
 
 
       <br>
@@ -1635,7 +1641,7 @@ the npm import plugin implementation.</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.0.0-b2</li>
+      <li>Currently v2.0.0-b3</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

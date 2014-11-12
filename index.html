@@ -200,8 +200,8 @@ the <code>--clean-css</code> <a href="https://github.com/less/less-plugin-clean-
 <p>You can invoke the compiler from node, as such:</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> less = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;less&apos;</span>);
 
-less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, css)</span> </span>{
-  <span class="hljs-built_in">console</span>.log(css);
+less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, output)</span> </span>{
+  <span class="hljs-built_in">console</span>.log(output.css);
 });
 </code></pre>
 <p>which will output</p>
@@ -220,8 +220,8 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
       filename: <span class="hljs-string">&apos;style.less&apos;</span>, <span class="hljs-comment">// Specify a filename, for better error messages</span>
       compress: <span class="hljs-literal">true</span>          <span class="hljs-comment">// Minify CSS output</span>
     },
-    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, css)</span> </span>{
-       <span class="hljs-built_in">console</span>.log(css);
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(e, output)</span> </span>{
+       <span class="hljs-built_in">console</span>.log(output.css);
     });
 </code></pre>
 <p>See <a href="usage/index.html">Usage</a> for more information.</p>

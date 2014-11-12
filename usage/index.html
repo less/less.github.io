@@ -235,7 +235,7 @@ lessc --clean-css=<span class="hljs-string">&quot;--compatibility=ie8 --advanced
 <a href="#v2-upgrade-guide-programmatic-usage" name="v2-upgrade-guide-programmatic-usage" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>We have deprecated the use of less.Parser and toCss to generate the css. Instead we require you to use the <code>less.render</code> shorthand.
 See <a href="#programmatic-usage">Programmatic Usage</a> for more information.</p>
-<p>If you already use <code>less.render</code> you should not require any changes.</p>
+<p>Further, instead of returning a string which is the css, we return an object with a <code>css</code> field set to the string and a <code>map</code> field set to the sourcemap (if applicable).</p>
 <h2 class="docs-heading">Browser usage<span class="anchor-target" id="v2-upgrade-guide-browser-usage"></span>
 <a href="#v2-upgrade-guide-browser-usage" name="v2-upgrade-guide-browser-usage" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>The browser usage has not changed significantly. Options set on the <code>less</code> object are exposed as <code>less.options</code> after the less script has run, rather than polluting <code>less</code>.</p>
@@ -811,7 +811,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 <p>In Node, require the plugin and pass it to less in an array as an option plugins. E.g.</p>
 <pre><code>var myPlugin = require(&quot;my-plugin&quot;);
 less.render(myCSS, { plugins: [myPlugin] })
-   .then(function(css) {
+   .then(function(output) {
     },
     function(error) {
     });
@@ -885,15 +885,17 @@ file-manager: <a href="https://github.com/less/less-plugin-npm-import">https://g
 
 
 <p>The main entry point into less is the less.render function. This takes the following format</p>
-<pre><code>less.render(css, options)
-    .then(function(css) {
+<pre><code>less.render(lessInput, options)
+    .then(function(output) {
+        // output.css = string of css
+        // output.map = string of sourcemap
     },
     function(error) {
     });
 
 // or...
 
-less.render(css, options, function(error, css) {})
+less.render(css, options, function(error, output) {})
 </code></pre><p>The options argument is optional. If you specify a callback then a promise will not be returned, where as if you do not specify a callback a promise will be given.
 Under the hood, if a callback is given it runs itself again to get a promise and then calls the callback in the 2 promise states - so we recommend using the promise version.</p>
 <p>Previously we also recommended creating a less.Parser and then calling toCSS on the result. However this had 2 serious drawbacks - it meant that our parser was in fact tied to all of less and 2nd it meant that the toCSS call had to be synchronous.</p>
@@ -1158,6 +1160,7 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
 <li><a href="https://netbeans.org/downloads/">NetBeans</a> (built-in <a href="http://wiki.netbeans.org/NetBeans_74_NewAndNoteworthy#CSS_Preprocessors">syntax highlighting</a>)</li>
 <li><a href="https://github.com/appden/less.tmbundle">TextMate</a></li>
 <li><a href="https://github.com/groenewege/vim-less">Vim</a></li>
+<li><a href="https://github.com/purcell/less-css-mode">Emacs</a></li>
 <li><a href="http://www.jetbrains.com/webstorm/">jetBrains WebStorm</a> and <a href="http://www.jetbrains.com/phpstorm/">PhpStorm</a> (built-in support)</li>
 <li><a href="http://brackets.io/">Brackets</a> (built-in syntax highlighting, <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">several extensions</a> for compilation)</li>
 <li><a href="http://www.codelobster.com/">CodeLobster</a> (built-in <a href="http://www.codelobster.com/sass_less.html">syntax highlighting</a>)</li>

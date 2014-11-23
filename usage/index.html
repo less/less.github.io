@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.0.0 has been released -
+    less v2.1.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -236,6 +236,7 @@ lessc --clean-css=<span class="hljs-string">&quot;--compatibility=ie8 --advanced
 <p>We have deprecated the use of less.Parser and toCss to generate the css. Instead we require you to use the <code>less.render</code> shorthand.
 See <a href="#programmatic-usage">Programmatic Usage</a> for more information.</p>
 <p>Further, instead of returning a string which is the css, we return an object with a <code>css</code> field set to the string and a <code>map</code> field set to the sourcemap (if applicable).</p>
+<p>The sourcemap options are now to be set on sourceMap instead of directly on options. So instead of <code>options.sourceMapFullFilename =</code> you would set <code>options.sourceMap = { sourceMapFullFilename:</code>.</p>
 <h2 class="docs-heading">Browser usage<span class="anchor-target" id="v2-upgrade-guide-browser-usage"></span>
 <a href="#v2-upgrade-guide-browser-usage" name="v2-upgrade-guide-browser-usage" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>The browser usage has not changed significantly. Options set on the <code>less</code> object are exposed as <code>less.options</code> after the less script has run, rather than polluting <code>less</code>.</p>
@@ -889,6 +890,7 @@ file-manager: <a href="https://github.com/less/less-plugin-npm-import">https://g
     .then(function(output) {
         // output.css = string of css
         // output.map = string of sourcemap
+        // output.imports = array of string filenames of the imports referenced
     },
     function(error) {
     });
@@ -897,8 +899,27 @@ file-manager: <a href="https://github.com/less/less-plugin-npm-import">https://g
 
 less.render(css, options, function(error, output) {})
 </code></pre><p>The options argument is optional. If you specify a callback then a promise will not be returned, where as if you do not specify a callback a promise will be given.
-Under the hood, if a callback is given it runs itself again to get a promise and then calls the callback in the 2 promise states - so we recommend using the promise version.</p>
-<p>Previously we also recommended creating a less.Parser and then calling toCSS on the result. However this had 2 serious drawbacks - it meant that our parser was in fact tied to all of less and 2nd it meant that the toCSS call had to be synchronous.</p>
+Under the hood, the callback version is used so that less can be used synchronously.</p>
+<p>If you wanted to render a file, you would first read it into a string (to pass to less.render) and then set the filename field on options to be the filename of the main file. less will handle all the processing of the imports.</p>
+<p>The <code>sourceMap</code> option is an object which enables you to set sub sourcemap options. Available sub options are: <code>sourceMapURL</code>,<code>sourceMapBasepath</code>,<code>sourceMapRootpath</code>,<code>outputSourceFiles</code> and <code>sourceMapFileInline</code>.</p>
+<pre><code>less.render(lessInput)
+    .then(function(output) {
+        // output.css = string of css
+        // output.map = undefined
+}
+//,
+less.render(lessInput)
+    .then(function(output,{sourceMap:{}}) {
+        // output.css = string of css
+        // output.map = string of sourcemap
+}
+//or,
+less.render(lessInput)
+    .then(function(output,{sourceMap: { sourceMapFileInline: true}}) {
+        // output.css = string of css \n /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJ..= */
+        // output.map = undefined
+}
+</code></pre><p>Previously we also recommended creating a less.Parser and then calling toCSS on the result. However this had 2 serious drawbacks - it meant that our parser was in fact tied to all of less and 2nd it meant that the toCSS call had to be synchronous.</p>
 <p>You can still get the less parse tree, but it requires more steps. You can see how this is done <a href="https://github.com/less/less.js/blob/master/lib/less/render.js">in the render function</a> but we <em>do not</em> support using less in this way and may change this function in a minor release version bump (we will not break it in a patch release).</p>
 <h3 class="docs-heading">Getting access to the log<span class="anchor-target" id="programmatic-usage-getting-access-to-the-log"></span>
 <a href="#programmatic-usage-getting-access-to-the-log" name="programmatic-usage-getting-access-to-the-log" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1644,7 +1665,7 @@ the npm import plugin implementation.</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.0.0</li>
+      <li>Currently v2.1.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.1.0 has been released -
+    less v2.2.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -185,7 +185,7 @@
 <div class="docs-section">
   <h1 class="docs-heading">Using Less<span class="anchor-target" id="using-less-environments"></span>
 <a href="#using-less-environments" name="using-less-environments" class="anchor glyphicon glyphicon-link"></a></h1>
-  <p class="lead">Using less in node, browser and third party. For general installation instructions and an overview, please read the <a href="../index.html/#using-less">Using Less</a> section on our front page.</p>
+  <p class="lead">Using less in node, browser and third party. For general installation instructions and an overview, please read the <a href="/#using-less">Using Less</a> section on our front page.</p>
 </div>
 
 
@@ -819,7 +819,14 @@ less.render(myCSS, { plugins: [myPlugin] })
 </code></pre><h2 class="docs-heading">In the browser<span class="anchor-target" id="plugins-in-the-browser"></span>
 <a href="#plugins-in-the-browser" name="plugins-in-the-browser" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Plugin authors should provide a javascript file, just include that in the page <em>before</em> the less.js script.</p>
-<h2 class="docs-heading">List of less plugins<span class="anchor-target" id="plugins-list-of-less-plugins"></span>
+<pre><code>&lt;script src=&quot;plugin.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+less = { 
+    plugins: [plugin]
+};
+&lt;/script&gt;  
+&lt;script src=&quot;less.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h2 class="docs-heading">List of less plugins<span class="anchor-target" id="plugins-list-of-less-plugins"></span>
 <a href="#plugins-list-of-less-plugins" name="plugins-list-of-less-plugins" class="anchor glyphicon glyphicon-link"></a></h2>
 <ul>
 <li><a href="https://github.com/less/less-plugin-clean-css">Clean CSS plugin to compress less</a></li>
@@ -828,6 +835,11 @@ less.render(myCSS, { plugins: [myPlugin] })
 <li><a href="https://github.com/less/less-plugin-npm-import">Npm Import - import from a sub npm repository</a></li>
 <li><a href="https://github.com/Mercateo/less-plugin-bower-resolve">Bower Resolve - import from a Bower package</a></li>
 <li><a href="https://github.com/bassjobsen/less-plugin-group-css-media-queries">Group CSS Media Queries - group CSS media queries</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-csswring">Compresses the css output from Less using csswring</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-css-flip">Generate left-to-right (LTR) or right-to-left (RTL) CSS from Less using css-flip</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-pleeease">Postprocess Less using pleeease</a></li>
+<li><a href="https://github.com/less/less-plugin-advanced-color-functions/">Adds some advanced colour functions that helps in finding more contrasting colors</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-cubehelix">The cubehelix(y,a,b,t) function returns a color between the two colors a and b, using a gamma correction value of 1</a>. (Based on <a href="https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/">Dave Green&apos;s `cubehelix&apos; colour scheme</a>)</li>
 </ul>
 <h2 class="docs-heading">For plugin authors<span class="anchor-target" id="plugins-for-plugin-authors"></span>
 <a href="#plugins-for-plugin-authors" name="plugins-for-plugin-authors" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1259,7 +1271,7 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
 <ul>
 <li><strong><a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a></strong></li>
 <li><strong><a href="https://github.com/assemble/assemble-less">assemble-less</a></strong>: Full-featured Grunt.js plugin for compiling Less files to CSS, with additional options for maintaining libraries of Less components and themes. For advanced users, this plugin allows you to define and manage Less &quot;packages&quot; or &quot;bundles&quot; using JSON, <a href="https://github.com/bestiejs/lodash">Lo-dash</a>(underscore) templates (e.g. <code>&lt;%= bootstrap.less %&gt;</code>), and <a href="https://github.com/isaacs/node-glob">node-glob</a> / <a href="https://github.com/isaacs/minimatch">minimatch</a> (e.g. <code>&apos;../src/**/*.less&quot;</code>). <em>assemble-less</em> also has a number of options including minifying CSS</li>
-<li><strong><a href="https://github.com/plus3network/gulp-less">gulp-less</a></strong>: Please note that this plugin only generates inline sourcemaps (with <code>sourceMap: true</code>) - specifying a <code>sourceMapFilename</code> option will do nothing.</li>
+<li><strong><a href="https://github.com/plus3network/gulp-less">gulp-less</a></strong>: Please note that this plugin discards <code>source-map</code> options, opting to instead using the <a href="https://github.com/floridoo/gulp-sourcemaps">gulp-sourcemaps</a> library.</li>
 <li><strong><a href="https://github.com/twitter/recess">RECESS</a></strong>: Twitter&apos;s code quality tool for CSS built on top of Less. RECESS has options for compiling Less to CSS, as well as linting, formatting and minifying CSS.</li>
 <li><strong><a href="https://github.com/jgonera/autoless">autoless</a></strong>: A Less files watcher, with dependency tracking (changes to imported files cause other files to be updated too) and growl notifications.</li>
 <li><strong><a href="https://github.com/emberfeather/less.js-middleware">Connect Middleware for Less.js</a></strong>: Connect Middleware for Less.js compiling</li>
@@ -1665,7 +1677,7 @@ the npm import plugin implementation.</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.1.0</li>
+      <li>Currently v2.2.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

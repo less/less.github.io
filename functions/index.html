@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.1.0 has been released -
+    less v2.2.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -115,6 +115,9 @@
   
 <ul class="nav sidenav"><li><a href="#functions-overview">Functions</a></li>
 <li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li>
+<li><a href="#misc-functions-image-size">image-size</a></li>
+<li><a href="#misc-functions-image-width">image-width</a></li>
+<li><a href="#misc-functions-image-height">image-height</a></li>
 <li><a href="#misc-functions-convert">convert</a></li>
 <li><a href="#misc-functions-data-uri">data-uri</a></li>
 <li><a href="#misc-functions-default">default</a></li>
@@ -240,6 +243,39 @@
 <p>Returns: <code>color</code></p>
 <p>Example: <code>color(&quot;#aaa&quot;);</code></p>
 <p>Output: <code>#aaa</code></p>
+<h3 class="docs-heading">image-size<span class="anchor-target" id="misc-functions-image-size"></span>
+<a href="#misc-functions-image-size" name="misc-functions-image-size" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Gets the image dimensions from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-size(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px 10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 class="docs-heading">image-width<span class="anchor-target" id="misc-functions-image-width"></span>
+<a href="#misc-functions-image-width" name="misc-functions-image-width" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Gets the image width from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-width(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 class="docs-heading">image-height<span class="anchor-target" id="misc-functions-image-height"></span>
+<a href="#misc-functions-image-height" name="misc-functions-image-height" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Gets the image height from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-height(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
 <h3 class="docs-heading">convert<span class="anchor-target" id="misc-functions-convert"></span>
 <a href="#misc-functions-convert" name="misc-functions-convert" class="anchor glyphicon glyphicon-link"></a></h3>
 <blockquote>
@@ -2192,7 +2228,7 @@ Parameters:</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.1.0</li>
+      <li>Currently v2.2.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

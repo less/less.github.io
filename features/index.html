@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.1.0 has been released -
+    less v2.2.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -645,7 +645,7 @@ This means that this usage is typically limited to when you inject a variable in
 
 
 <blockquote>
-<p>Extend is a Less Pseudo-Class which merges the selector it is put on with ones that match what it references.</p>
+<p>Extend is a Less pseudo-class which merges the selector it is put on with ones that match what it references.</p>
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
 <pre><code class="lang-less"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
@@ -675,7 +675,7 @@ This means that this usage is typically limited to when you inject a variable in
 <p>Notice how the <code>nav ul:extend(.inline)</code> selector gets output as <code>nav ul</code> - the extend gets removed before output and the selector block left as-is. If no properties are put in that block then it gets removed from the output (but the extend still may affect other selectors).</p>
 <h2 class="docs-heading">Extend syntax<span class="anchor-target" id="extend-feature-extend-syntax"></span>
 <a href="#extend-feature-extend-syntax" name="extend-feature-extend-syntax" class="anchor glyphicon glyphicon-link"></a></h2>
-<p>The extend is either attached to a selector or placed into a ruleset. It looks like a pseudoclass with selector parameter optionally followed by the keyword <code>all</code>:</p>
+<p>The extend is either attached to a selector or placed into a ruleset. It looks like a pseudo-class with selector parameter optionally followed by the keyword <code>all</code>:</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.b</span>) {}
 
@@ -701,7 +701,7 @@ This means that this usage is typically limited to when you inject a variable in
 </code></pre>
 <h3 class="docs-heading">Extend attached to selector<span class="anchor-target" id="extend-feature-extend-attached-to-selector"></span>
 <a href="#extend-feature-extend-attached-to-selector" name="extend-feature-extend-attached-to-selector" class="anchor glyphicon glyphicon-link"></a></h3>
-<p>Extend attached to a selector looks like an ordinary pseudoclass with selector as a parameter. A selector can contain multiple extend clauses, but all extends must be at the end of the selector.</p>
+<p>Extend attached to a selector looks like an ordinary pseudo-class with selector as a parameter. A selector can contain multiple extend clauses, but all extends must be at the end of the selector.</p>
 <ul>
 <li>Extend after the selector: <code>pre:hover:extend(div pre)</code>.</li>
 <li>Space between selector and extend is allowed: <code>pre:hover :extend(div pre)</code>.</li>
@@ -717,7 +717,7 @@ This means that this usage is typically limited to when you inject a variable in
 </code></pre>
 <h3 class="docs-heading">Extend inside ruleset<span class="anchor-target" id="extend-feature-extend-inside-ruleset"></span>
 <a href="#extend-feature-extend-inside-ruleset" name="extend-feature-extend-inside-ruleset" class="anchor glyphicon glyphicon-link"></a></h3>
-<p>Extend can be placed into rulesets body using <code>&amp;:extend(selector)</code> syntax. Placing extend into a body is a shortcut for placing it into every single selector of that ruleset.</p>
+<p>Extend can be placed into a ruleset&apos;s body using <code>&amp;:extend(selector)</code> syntax. Placing extend into a body is a shortcut for placing it into every single selector of that ruleset.</p>
 <p>Extend inside a body:</p>
 <pre><code class="lang-less"><span class="hljs-tag">pre</span><span class="hljs-pseudo">:hover</span>,
 <span class="hljs-class">.some-class</span> {
@@ -782,7 +782,7 @@ This means that this usage is typically limited to when you inject a variable in
   <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
-<p>Order of pseudoclasses does matter. Selectors <code>link:hover:visited</code> and <code>link:visited:hover</code> match the same set of elements, but extend treats them as different:</p>
+<p>Order of pseudo-classes does matter. Selectors <code>link:hover:visited</code> and <code>link:visited:hover</code> match the same set of elements, but extend treats them as different:</p>
 <pre><code class="lang-less"><span class="hljs-tag">link</span><span class="hljs-pseudo">:hover</span><span class="hljs-pseudo">:visited</span> {
   <span class="hljs-attribute">color</span>: blue;
 }
@@ -2522,7 +2522,7 @@ For example, when using Modernizr, you might want to specify different rules bas
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.1.0</li>
+      <li>Currently v2.2.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

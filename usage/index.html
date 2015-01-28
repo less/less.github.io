@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.2.0 has been released -
+    less v2.3.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -585,14 +585,14 @@ be better suited.</p>
 <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-env</span>=<span class="hljs-value">&quot;development&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>And you can also do this on link tags to override certain settings (some less settings like verbose are global and can not be overridden).</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">data-dump-line-numbers</span>=<span class="hljs-value">&quot;all&quot;</span> <span class="hljs-attribute">data-global-vars</span>=<span class="hljs-value">&apos;{ myvar: &quot;#ddffee&quot;, mystr: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;less/styles.less&quot;</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">data-dump-line-numbers</span>=<span class="hljs-value">&quot;all&quot;</span> <span class="hljs-attribute">data-global-vars</span>=<span class="hljs-value">&apos;{ &quot;myvar&quot;: &quot;#ddffee&quot;, &quot;mystr&quot;: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;less/styles.less&quot;</span>&gt;</span>
 </code></pre>
 <p>The important points for attribute options are..</p>
 <ul>
 <li>importance level: window.less &lt; script tag &lt; link tag</li>
 <li>data attributes names are not camelCase (e.g logLevel -&gt; data-log-level)</li>
 <li>link tag options are just render time options (e.g verbose, logLevel ... are not supported)</li>
-<li>non-string data attributes values should be JSON valid (e.g use double quotes instead of single quotes like in <code>data-global-vars=&apos;{ myvar: &quot;#ddffee&quot;, mystr: &quot;\&quot;quoted\&quot;&quot; }&apos;</code>)</li>
+<li>non-string data attributes values should be JSON valid (e.g use double quotes instead of single quotes like in <code>data-global-vars=&apos;{ &quot;myvar&quot;: &quot;#ddffee&quot;, &quot;mystr&quot;: &quot;\&quot;quoted\&quot;&quot; }&apos;</code>)</li>
 </ul>
 <h3 class="docs-heading">Watch mode<span class="anchor-target" id="using-less-in-the-browser-watch-mode"></span>
 <a href="#using-less-in-the-browser-watch-mode" name="using-less-in-the-browser-watch-mode" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -913,21 +913,21 @@ less.render(css, options, function(error, output) {})
 </code></pre><p>The options argument is optional. If you specify a callback then a promise will not be returned, where as if you do not specify a callback a promise will be given.
 Under the hood, the callback version is used so that less can be used synchronously.</p>
 <p>If you wanted to render a file, you would first read it into a string (to pass to less.render) and then set the filename field on options to be the filename of the main file. less will handle all the processing of the imports.</p>
-<p>The <code>sourceMap</code> option is an object which enables you to set sub sourcemap options. Available sub options are: <code>sourceMapURL</code>,<code>sourceMapBasepath</code>,<code>sourceMapRootpath</code>,<code>outputSourceFiles</code> and <code>sourceMapFileInline</code>.</p>
+<p>The <code>sourceMap</code> option is an object which enables you to set sub sourcemap options. Available sub options are: <code>sourceMapURL</code>,<code>sourceMapBasepath</code>,<code>sourceMapRootpath</code>,<code>outputSourceFiles</code> and <code>sourceMapFileInline</code>. Notice that the <code>sourceMap</code> option is not available for the less.js in browser compiler now.</p>
 <pre><code>less.render(lessInput)
     .then(function(output) {
         // output.css = string of css
         // output.map = undefined
 }
 //,
-less.render(lessInput)
-    .then(function(output,{sourceMap:{}}) {
+less.render(lessInput, {sourceMap: {}})
+    .then(function(output) {
         // output.css = string of css
         // output.map = string of sourcemap
 }
 //or,
-less.render(lessInput)
-    .then(function(output,{sourceMap: { sourceMapFileInline: true}}) {
+less.render(lessInput, {sourceMap: {sourceMapFileInline: true}})
+    .then(function(output) {
         // output.css = string of css \n /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJ..= */
         // output.map = undefined
 }
@@ -1114,13 +1114,12 @@ less.render(lessInput)
 </blockquote>
 <p>Get more info at <a href="http://alphapixels.com/prepros">http://alphapixels.com/prepros</a></p>
 <p><img src="http://alphapixels.com/prepros/static/img/prepros.jpg" alt="Prepros screenshot"></p>
-<h4 class="docs-heading"><a href="http://winless.org">WinLess</a><span class="anchor-target" id="guis-for-less--winless-http-winless-org-"></span>
-<a href="#guis-for-less--winless-http-winless-org-" name="guis-for-less--winless-http-winless-org-" class="anchor glyphicon glyphicon-link"></a></h4>
+<h4 class="docs-heading"><a href="https://github.com/marklagendijk/WinLess">WinLess</a><span class="anchor-target" id="guis-for-less--winless-https-github-com-marklagendijk-winless-"></span>
+<a href="#guis-for-less--winless-https-github-com-marklagendijk-winless-" name="guis-for-less--winless-https-github-com-marklagendijk-winless-" class="anchor glyphicon glyphicon-link"></a></h4>
 <blockquote>
 <p>WinLess started out as a clone of Less.app, it takes a more feature-complete approach and has several settings. It also supports starting with command line arguments.</p>
 </blockquote>
-<p>Get more info: <a href="http://winless.org">http://winless.org</a></p>
-<p><img src="http://winless.org/style/images/WinLess_Screenshot.png" alt="WinLess screenshot"></p>
+<p>Get more info: <a href="https://github.com/marklagendijk/WinLess">https://github.com/marklagendijk/WinLess</a></p>
 <h3 class="docs-heading">OSx<span class="anchor-target" id="guis-for-less-osx"></span>
 <a href="#guis-for-less-osx" name="guis-for-less-osx" class="anchor glyphicon glyphicon-link"></a></h3>
 <h4 class="docs-heading"><a href="http://incident57.com/less">LESS.app</a><span class="anchor-target" id="guis-for-less--less-app-http-incident57-com-less-"></span>
@@ -1432,6 +1431,10 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 </thead>
 <tbody>
 <tr>
+<td><a href="http://flexible.gs">Flexible Grid System</a></td>
+<td></td>
+</tr>
+<tr>
 <td><a href="https://github.com/amazingSurge/adaptGrid">adaptGrid</a></td>
 <td></td>
 </tr>
@@ -1677,7 +1680,7 @@ the npm import plugin implementation.</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.2.0</li>
+      <li>Currently v2.3.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

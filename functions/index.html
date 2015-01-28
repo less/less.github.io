@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.2.0 has been released -
+    less v2.3.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -155,7 +155,8 @@
 <li><a href="#type-functions-ispixel">ispixel</a></li>
 <li><a href="#type-functions-isem">isem</a></li>
 <li><a href="#type-functions-ispercentage">ispercentage</a></li>
-<li><a href="#type-functions-isunit">isunit</a></li></ul></li>
+<li><a href="#type-functions-isunit">isunit</a></li>
+<li><a href="#type-functions-isruleset">isruleset</a></li></ul></li>
 <li><a href="#color-definition">Color Definition Functions</a><ul class="nav"><li><a href="#color-definition-rgb">rgb</a></li>
 <li><a href="#color-definition-rgba">rgba</a></li>
 <li><a href="#color-definition-argb">argb</a></li>
@@ -1146,6 +1147,31 @@ NaN%
 <span class="hljs-attribute">isunit</span>(<span class="hljs-number">1234</span>, em);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isunit</span>(<span class="hljs-hexcolor">#ff0</span>, pt);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isunit</span>(<span class="hljs-string">&quot;mm&quot;</span>, mm);  <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 class="docs-heading">isruleset<span class="anchor-target" id="type-functions-isruleset"></span>
+<a href="#type-functions-isruleset" name="type-functions-isruleset" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a ruleset, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>value</code> - a variable being evaluated.</li>
+</ul>
+<p>Returns: <code>true</code> if value is a ruleset, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@rules:</span> {
+    <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-function">isruleset</span>(<span class="hljs-variable">@rules</span>);   <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 
 
@@ -2228,7 +2254,7 @@ Parameters:</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.2.0</li>
+      <li>Currently v2.3.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

@@ -99,7 +99,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.2.0 has been released -
+    less v2.3.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -164,7 +164,8 @@
 <li><a href="#import-options-less">less</a></li>
 <li><a href="#import-options-css">css</a></li>
 <li><a href="#import-options-once">once</a></li>
-<li><a href="#import-options-multiple">multiple</a></li></ul></li>
+<li><a href="#import-options-multiple">multiple</a></li>
+<li><a href="#import-options-optional">optional</a></li></ul></li>
 <li><a href="#mixin-guards-feature">Mixin Guards</a><ul class="nav"><li><a href="#mixin-guards-feature-guard-comparison-operators">Guard comparison operators</a></li>
 <li><a href="#mixin-guards-feature-guard-logical-operators">Guard logical operators</a></li>
 <li><a href="#mixin-guards-feature-type-checking-functions">Type checking functions</a></li>
@@ -518,9 +519,7 @@ style comment! */</span>
 <a href="#variables-feature-import-statements" name="variables-feature-import-statements" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Version: 1.4.0</p>
 <p>Syntax: <code>@import &quot;@{themes}/tidal-wave.less&quot;;</code></p>
-<p>Note that currently, only variables which have been declared in the root or current scope will be considered and that only the current file and calling files will be considered when looking for a variable.
-This means that this usage is typically limited to when you inject a variable into the compile process or define a variable at the beginning of your root file.</p>
-<p>When you are importing a css file and not using the inline option (e.g. the import statement will be kept intact) then the above does not apply.</p>
+<p>Note that before v2.0.0, only variables which have been declared in the root or current scope were considered and that only the current file and calling files were considered when looking for a variable.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
 <span class="hljs-variable">@themes:</span> <span class="hljs-string">&quot;../../src/themes&quot;</span>;
@@ -1876,6 +1875,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <li><code>css</code>: treat the file as a CSS file, no matter what the file extension</li>
 <li><code>once</code>: only include the file once (this is default behavior)</li>
 <li><code>multiple</code>: include the file multiple times</li>
+<li><code>optional</code>: continue compiling when file is not found</li>
 </ul>
 <h2 class="docs-heading">reference<span class="anchor-target" id="import-options-reference"></span>
 <a href="#import-options-reference" name="import-options-reference" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1960,6 +1960,12 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">color</span>: green;
 }
 </code></pre>
+<h2 class="docs-heading">optional<span class="anchor-target" id="import-options-optional"></span>
+<a href="#import-options-optional" name="import-options-optional" class="anchor glyphicon glyphicon-link"></a></h2>
+<blockquote>
+<p>Use <code>@import (optional)</code> to allow importing of a file only when it exists. Without the <code>optional</code> keyword Less throws a FileError and stops compiling when importing a file that can not be found. </p>
+</blockquote>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v2.3.0</a></p>
 
 
       <br>
@@ -2522,7 +2528,7 @@ For example, when using Modernizr, you might want to specify different rules bas
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.2.0</li>
+      <li>Currently v2.3.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

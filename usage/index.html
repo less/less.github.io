@@ -37,6 +37,7 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="../public/ico/favicon.ico">
+
   </head>
   <body class="usage">
     
@@ -87,6 +88,7 @@
   </div>
 </header>
 
+
     
 <div class="docs-header" id="content">
   <div class="container">
@@ -99,12 +101,13 @@
 
 <div class="banner">
   <div class="container">
-    less v2.3.1 has been released -
+    less v2.5.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
   </div>
 </div>
+
 
     
     <div class="container docs-container">
@@ -136,6 +139,9 @@
 <li><a href="#plugins-using-a-plugin-in-code">Using a plugin in code</a></li>
 <li><a href="#plugins-in-the-browser">In the browser</a></li>
 <li><a href="#plugins-list-of-less-plugins">List of less plugins</a></li>
+<li><a href="#plugins-postprocessor-feature-plugins-">Postprocessor/Feature Plugins:</a></li>
+<li><a href="#plugins-framework-library-wrappers-and-preprocessors-">Framework/Library Wrappers and Preprocessors:</a></li>
+<li><a href="#plugins-function-libraries-">Function Libraries:</a></li>
 <li><a href="#plugins-for-plugin-authors">For plugin authors</a></li></ul></li>
 <li><a href="#programmatic-usage">Programmatic Usage</a><ul class="nav"><li><a href="#programmatic-usage-getting-access-to-the-log">Getting access to the log</a></li></ul></li>
 <li><a href="#online-less-compilers">Online Less Compilers</a><ul class="nav"><li><a href="#online-less-compilers--less2css-org-http-less2css-org-">less2css.org</a></li>
@@ -145,6 +151,7 @@
 <li><a href="#online-less-compilers--lessphp-gpeasy-com-demo-http-lessphp-gpeasy-com-demo-">lessphp.gpeasy.com/demo</a></li>
 <li><a href="#online-less-compilers--leafo-net-lessphp-editor-http-leafo-net-lessphp-editor-html-">leafo.net/lessphp/editor</a></li>
 <li><a href="#online-less-compilers--precess-http-precess-co-">precess</a></li>
+<li><a href="#online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-">estFiddle</a></li>
 <li><a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support">Online Web IDEs/Playgrounds with Less support</a></li>
 <li><a href="#online-less-compilers--cssdeck-labs-http-cssdeck-com-labs-">CSSDeck Labs</a></li>
 <li><a href="#online-less-compilers--codepen-http-codepen-io-">CodePen</a></li>
@@ -179,8 +186,11 @@
           </div>
         </div>
         <div class="col-md-9" role="main">
-          <div class="panel docs-content">
-  <!-- Usage
+          
+<div class="panel docs-content">
+  
+
+<!-- Usage
 =================================== -->
 <div class="docs-section">
   <h1 class="docs-heading">Using Less<span class="anchor-target" id="using-less-environments"></span>
@@ -207,6 +217,7 @@
 <a id="v2-upgrademd" href="https://github.com/less/less-docs/blob/master/content/usage/v2-upgrade.md" target="_blank">Edit the markdown source for &quot;v2-upgrade&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- v2-upgrade -->
        
@@ -267,6 +278,7 @@ See <a href="#programmatic-usage">Programmatic Usage</a> for more information.</
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- command-line-usage -->
        
 
@@ -287,7 +299,7 @@ See <a href="#programmatic-usage">Programmatic Usage</a> for more information.</
 <pre><code class="lang-bash">npm i less --save-dev
 </code></pre>
 <p>This will install the latest official version of lessc in your project folder, also adding it to the <code>devDependencies</code> in your project&apos;s <code>package.json</code>.</p>
-<p>Note that a <a href="https://www.npmjs.org/doc/misc/semver.html#Ranges">tilde version range</a> will be automatically specified in <code>package.json</code>. This is good, as new patch releases of the latest version will be installable by npm.</p>
+<p>Note that a <a href="https://www.npmjs.org/doc/misc/semver.html#ranges">caret version range</a> will be automatically specified in <code>package.json</code>. This is good, as new minor releases of the latest version will be installable by npm.</p>
 <h4 class="docs-heading">Beta releases of lessc<span class="anchor-target" id="command-line-usage-beta-releases-of-lessc"></span>
 <a href="#command-line-usage-beta-releases-of-lessc" name="command-line-usage-beta-releases-of-lessc" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Periodically, as new functionality is being developed, lessc builds will be published to npm, tagged as beta. These builds will <em>not</em> be published as a <code>@latest</code> official release, and will typically have beta in the version (use <code>lessc -v</code> to get current version).</p>
@@ -550,6 +562,7 @@ or --clean-css=&quot;advanced&quot;</p>
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- using-less-in-the-browser -->
        
 
@@ -614,7 +627,7 @@ be better suited.</p>
 <a href="#using-less-in-the-browser-debugging" name="using-less-in-the-browser-debugging" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>It is possible to output rules in your CSS which allow tools to locate the source of the rule.</p>
 <p>Either specify the option <code>dumpLineNumbers</code> as above or add <code>!dumpLineNumbers:mediaquery</code> to the url.</p>
-<p>You can use the <code>comments</code> option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> and the <code>mediaquery</code> option with FireBug/Chrome dev tools (it is identical to the SCSS media query debugging format).</p>
+<p>You can use the <code>mediaquery</code> option with <a href="https://addons.mozilla.org/en-us/firefox/addon/fireless/">FireLESS</a> (it is identical to the SCSS media query debugging format). Also see <a href="http://bassjobsen.weblogs.fm/fireless-less-v2/">FireLess and Less v2</a>. The <code>comment</code> option can be used to display file information and line numbers in the inline compiled CSS code.</p>
 <h3 class="docs-heading">Options<span class="anchor-target" id="using-less-in-the-browser-options"></span>
 <a href="#using-less-in-the-browser-options" name="using-less-in-the-browser-options" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
@@ -761,6 +774,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- browser-support -->
        
 
@@ -796,6 +810,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- plugins -->
        
 
@@ -828,18 +843,38 @@ less = {
 &lt;script src=&quot;less.min.js&quot;&gt;&lt;/script&gt;
 </code></pre><h2 class="docs-heading">List of less plugins<span class="anchor-target" id="plugins-list-of-less-plugins"></span>
 <a href="#plugins-list-of-less-plugins" name="plugins-list-of-less-plugins" class="anchor glyphicon glyphicon-link"></a></h2>
+<h3 class="docs-heading">Postprocessor/Feature Plugins:<span class="anchor-target" id="plugins-postprocessor-feature-plugins-"></span>
+<a href="#plugins-postprocessor-feature-plugins-" name="plugins-postprocessor-feature-plugins-" class="anchor glyphicon glyphicon-link"></a></h3>
 <ul>
-<li><a href="https://github.com/less/less-plugin-clean-css">Clean CSS plugin to compress less</a></li>
 <li><a href="https://github.com/less/less-plugin-autoprefix">Autoprefixer plugin to add backwards compatibility to your css</a></li>
-<li><a href="https://github.com/less/less-plugin-inline-urls">Inline urls - converts <code>url()</code> to a call to <code>data-uri()</code></a></li>
-<li><a href="https://github.com/less/less-plugin-npm-import">Npm Import - import from a sub npm repository</a></li>
-<li><a href="https://github.com/Mercateo/less-plugin-bower-resolve">Bower Resolve - import from a Bower package</a></li>
-<li><a href="https://github.com/bassjobsen/less-plugin-group-css-media-queries">Group CSS Media Queries - group CSS media queries</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-csscomb/">CSScomb plugin for less.js</a></li>
+<li><a href="https://github.com/less/less-plugin-clean-css">Clean CSS plugin to compress less</a></li>
 <li><a href="https://github.com/bassjobsen/less-plugin-csswring">Compresses the css output from Less using csswring</a></li>
 <li><a href="https://github.com/bassjobsen/less-plugin-css-flip">Generate left-to-right (LTR) or right-to-left (RTL) CSS from Less using css-flip</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-group-css-media-queries">Group CSS Media Queries - group CSS media queries</a></li>
+<li><a href="https://github.com/less/less-plugin-inline-urls">Inline urls - converts <code>url()</code> to a call to <code>data-uri()</code></a></li>
 <li><a href="https://github.com/bassjobsen/less-plugin-pleeease">Postprocess Less using pleeease</a></li>
-<li><a href="https://github.com/less/less-plugin-advanced-color-functions/">Adds some advanced colour functions that helps in finding more contrasting colors</a></li>
-<li><a href="https://github.com/bassjobsen/less-plugin-cubehelix">The cubehelix(y,a,b,t) function returns a color between the two colors a and b, using a gamma correction value of 1</a>. (Based on <a href="https://www.mrao.cam.ac.uk/~dag/CUBEHELIX/">Dave Green&apos;s `cubehelix&apos; colour scheme</a>)</li>
+<li><a href="https://github.com/less/less-plugin-rtl">Reverses Less code from ltr to rtl</a></li>
+</ul>
+<h3 class="docs-heading">Framework/Library Wrappers and Preprocessors:<span class="anchor-target" id="plugins-framework-library-wrappers-and-preprocessors-"></span>
+<a href="#plugins-framework-library-wrappers-and-preprocessors-" name="plugins-framework-library-wrappers-and-preprocessors-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="https://github.com/bassjobsen/less-plugin-bootstrap/">Bootstrap for less.js</a></li>
+<li><a href="https://github.com/Mercateo/less-plugin-bower-resolve">Bower Resolve - import from a Bower package</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-cardinal">Cardinal CSS for less.js</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-flexboxgrid">Flexbox grid from flexboxgrid.com for less.js</a> </li>
+<li><a href="https://github.com/bassjobsen/less-plugin-flexiblegs">Flexible Grid System (flexible.gs) for less.js </a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-ionic">Ionic for less.js</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-lesshat/">Lesshat for less.js</a></li>
+<li><a href="https://github.com/less/less-plugin-npm-import">Npm Import - import from a sub npm repository</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-skeleton">Skeleton for less.js</a></li>
+</ul>
+<h3 class="docs-heading">Function Libraries:<span class="anchor-target" id="plugins-function-libraries-"></span>
+<a href="#plugins-function-libraries-" name="plugins-function-libraries-" class="anchor glyphicon glyphicon-link"></a></h3>
+<ul>
+<li><a href="https://github.com/less/less-plugin-advanced-color-functions/">advanced-color-functions. Adds some advanced colour functions that helps in finding more contrasting colors</a></li>
+<li><a href="https://github.com/bassjobsen/less-plugin-cubehelix">cubehelix. The <code>cubehelix(y,a,b,t)</code> function returns a color between the two colors a and b, using a gamma correction value of 1</a>.</li>
+<li><a href="https://github.com/seven-phases-max/less-plugin-lists">less-plugin-lists. Lists/arrays manipulation functions library</a></li>
 </ul>
 <h2 class="docs-heading">For plugin authors<span class="anchor-target" id="plugins-for-plugin-authors"></span>
 <a href="#plugins-for-plugin-authors" name="plugins-for-plugin-authors" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -892,6 +927,7 @@ file-manager: <a href="https://github.com/less/less-plugin-npm-import">https://g
 <a id="programmatic-usagemd" href="https://github.com/less/less-docs/blob/master/content/usage/programmatic-usage.md" target="_blank">Edit the markdown source for &quot;programmatic-usage&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- programmatic-usage -->
        
@@ -973,6 +1009,7 @@ less.render(lessInput, {sourceMap: {sourceMapFileInline: true}})
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- online-less-compilers -->
        
 
@@ -1011,6 +1048,11 @@ less.render(lessInput, {sourceMap: {sourceMapFileInline: true}})
 <a href="#online-less-compilers--precess-http-precess-co-" name="online-less-compilers--precess-http-precess-co-" class="anchor glyphicon glyphicon-link"></a></h3>
 <blockquote>
 <p>A real time preprocesser compiler. </p>
+</blockquote>
+<h3 class="docs-heading"><a href="http://ecomfe.github.io/est/fiddle/">estFiddle</a><span class="anchor-target" id="online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-"></span>
+<a href="#online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-" name="online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Online Less compiler providing live demo for Less and <a href="http://ecomfe.github.io/est/">est</a>. Allowing users to switch among all versions of Less after <code>1.4.0</code> with optional est/Autoprefixer functionalities.</p>
 </blockquote>
 <h2 class="docs-heading">Online Web IDEs/Playgrounds with Less support<span class="anchor-target" id="online-less-compilers-online-web-ides-playgrounds-with-less-support"></span>
 <a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support" name="online-less-compilers-online-web-ides-playgrounds-with-less-support" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1065,6 +1107,7 @@ less.render(lessInput, {sourceMap: {sourceMapFileInline: true}})
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- guis-for-less -->
        
 
@@ -1107,19 +1150,20 @@ less.render(lessInput, {sourceMap: {sourceMapFileInline: true}})
 <a href="#guis-for-less-specific-platforms" name="guis-for-less-specific-platforms" class="anchor glyphicon glyphicon-link"></a></h2>
 <h3 class="docs-heading">Windows<span class="anchor-target" id="guis-for-less-windows"></span>
 <a href="#guis-for-less-windows" name="guis-for-less-windows" class="anchor glyphicon glyphicon-link"></a></h3>
-<h4 class="docs-heading"><a href="http://alphapixels.com/prepros">Prepros App</a><span class="anchor-target" id="guis-for-less--prepros-app-http-alphapixels-com-prepros-"></span>
-<a href="#guis-for-less--prepros-app-http-alphapixels-com-prepros-" name="guis-for-less--prepros-app-http-alphapixels-com-prepros-" class="anchor glyphicon glyphicon-link"></a></h4>
+<h4 class="docs-heading"><a href="https://prepros.io/">Prepros</a><span class="anchor-target" id="guis-for-less--prepros-https-prepros-io-"></span>
+<a href="#guis-for-less--prepros-https-prepros-io-" name="guis-for-less--prepros-https-prepros-io-" class="anchor glyphicon glyphicon-link"></a></h4>
 <blockquote>
-<p>Prepros is a free and open source app that can compile less, sass, stylus, jade, haml and much more with live browser refresh.</p>
+<p>Prepros is a tool to compile LESS, Sass, Compass, Stylus, Jade and much more.</p>
 </blockquote>
-<p>Get more info at <a href="http://alphapixels.com/prepros">http://alphapixels.com/prepros</a></p>
-<p><img src="http://alphapixels.com/prepros/static/img/prepros.jpg" alt="Prepros screenshot"></p>
-<h4 class="docs-heading"><a href="https://github.com/marklagendijk/WinLess">WinLess</a><span class="anchor-target" id="guis-for-less--winless-https-github-com-marklagendijk-winless-"></span>
-<a href="#guis-for-less--winless-https-github-com-marklagendijk-winless-" name="guis-for-less--winless-https-github-com-marklagendijk-winless-" class="anchor glyphicon glyphicon-link"></a></h4>
+<p>Get more info at <a href="https://prepros.io/">https://prepros.io/</a></p>
+<p><img src="https://prepros.io/img/shot-shadow.png" alt="Prepros screenshot"></p>
+<h4 class="docs-heading"><a href="http://winless.org">WinLess</a><span class="anchor-target" id="guis-for-less--winless-http-winless-org-"></span>
+<a href="#guis-for-less--winless-http-winless-org-" name="guis-for-less--winless-http-winless-org-" class="anchor glyphicon glyphicon-link"></a></h4>
 <blockquote>
 <p>WinLess started out as a clone of Less.app, it takes a more feature-complete approach and has several settings. It also supports starting with command line arguments.</p>
 </blockquote>
-<p>Get more info: <a href="https://github.com/marklagendijk/WinLess">https://github.com/marklagendijk/WinLess</a></p>
+<p>Get more info: <a href="http://winless.org">http://winless.org</a></p>
+<p><img src="http://winless.org/style/images/WinLess_Screenshot.png" alt="WinLess screenshot"></p>
 <h3 class="docs-heading">OSx<span class="anchor-target" id="guis-for-less-osx"></span>
 <a href="#guis-for-less-osx" name="guis-for-less-osx" class="anchor glyphicon glyphicon-link"></a></h3>
 <h4 class="docs-heading"><a href="http://incident57.com/less">LESS.app</a><span class="anchor-target" id="guis-for-less--less-app-http-incident57-com-less-"></span>
@@ -1179,6 +1223,7 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- editors-and-plugins -->
        
 
@@ -1236,7 +1281,6 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
 <!-- invisible links -->
 
 
-
       <br>
     </div>
     
@@ -1260,6 +1304,7 @@ Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte9
 <a id="third-party-compilersmd" href="https://github.com/less/less-docs/blob/master/content/usage/third-party-compilers.md" target="_blank">Edit the markdown source for &quot;third-party-compilers&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- third-party-compilers -->
        
@@ -1327,6 +1372,7 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 <a id="frameworks-using-lessmd" href="https://github.com/less/less-docs/blob/master/content/usage/frameworks-using-less.md" target="_blank">Edit the markdown source for &quot;frameworks-using-less&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- frameworks-using-less -->
        
@@ -1417,6 +1463,14 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
 <tr>
 <td><a href="http://getuikit.com/">UIkit</a></td>
 <td>Lightweight and modular front-end framework for developing web interfaces</td>
+</tr>
+<tr>
+<td><a href="http://bit.ly/ngBoilerplate">ngBoilerplate</a></td>
+<td>An opinionated kickstarter for AngularJS projects</td>
+</tr>
+<tr>
+<td><a href="http://github.com/metaskills/less-rails">less-rail</a></td>
+<td>Less.js for Rails</td>
 </tr>
 </tbody>
 </table>
@@ -1601,6 +1655,7 @@ Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-w
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- developing-less -->
        
 
@@ -1650,6 +1705,7 @@ the npm import plugin implementation.</p>
 <a href="#developing-less-books" name="developing-less-books" class="anchor glyphicon glyphicon-link"></a></h2>
 <ul>
 <li><a href="http://www.packtpub.com/less-web-development-essentials/book">Less Web Development Essentials</a>, by Bass Jobsen, Foreword by Alexis Sellier</li>
+<li><a href="https://www.packtpub.com/web-development/less-web-development-cookbook">Less Web Development Cookbook</a>, by Bass Jobsen and Amin Meyghani, Foreword by Luke Page</li>
 </ul>
 
 
@@ -1658,6 +1714,7 @@ the npm import plugin implementation.</p>
     
 
   </div>
+
 
 </div>
         </div>
@@ -1677,10 +1734,11 @@ the npm import plugin implementation.</p>
     </li>
   </ul>
 </div>
+
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.3.1</li>
+      <li>Currently v2.5.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -1693,6 +1751,7 @@ the npm import plugin implementation.</p>
   </div>
 </footer>
 
+
     
     <!-- Core JavaScript
 ================================================== -->
@@ -1703,6 +1762,7 @@ the npm import plugin implementation.</p>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 <script src="../public/js/application.js"></script>
+
 
 
 

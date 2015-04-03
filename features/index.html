@@ -37,6 +37,7 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="../public/ico/favicon.ico">
+
   </head>
   <body class="features">
     
@@ -87,6 +88,7 @@
   </div>
 </header>
 
+
     
 <div class="docs-header" id="content">
   <div class="container">
@@ -99,12 +101,13 @@
 
 <div class="banner">
   <div class="container">
-    less v2.3.1 has been released -
+    less v2.5.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
   </div>
 </div>
+
 
     
     <div class="container docs-container">
@@ -180,8 +183,11 @@
           </div>
         </div>
         <div class="col-md-9" role="main">
-          <div class="panel docs-content">
+          
+<div class="panel docs-content">
   
+
+
   <!-- Overview -->
   <div class="docs-section">
     <div class="page-header">
@@ -199,6 +205,7 @@
 <a id="features-overviewmd" href="https://github.com/less/less-docs/blob/master/content/features-overview.md" target="_blank">Edit the markdown source for &quot;features-overview&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- features-overview -->
        
@@ -295,13 +302,13 @@
 <h3 class="docs-heading">Media query bubbling and nested media queries<span class="anchor-target" id="features-overview-feature-media-query-bubbling-and-nested-media-queries"></span>
 <a href="#features-overview-feature-media-query-bubbling-and-nested-media-queries" name="features-overview-feature-media-query-bubbling-and-nested-media-queries" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Media queries can be nested in the same way as selectors. Selectors are copied into the body of the media query:</p>
-<pre><code class="lang-less"><span class="hljs-class">.screencolor</span>{
+<pre><code class="lang-less"><span class="hljs-class">.screen-color</span> {
   <span class="hljs-at_rule">@media</span> screen {
     <span class="hljs-attribute">color</span>: green;
-    <span class="hljs-at_rule">@media</span> (min-width:<span class="hljs-number">768px</span>) {
-    <span class="hljs-attribute">color</span>: red;
+    <span class="hljs-at_rule">@media</span> (min-width: <span class="hljs-number">768px</span>) {
+      <span class="hljs-attribute">color</span>: red;
     }
-    }
+  }
   <span class="hljs-at_rule">@media</span> tv {
     <span class="hljs-attribute">color</span>: black;
   }
@@ -309,17 +316,17 @@
 </code></pre>
 <p>outputs:</p>
 <pre><code class="lang-css"><span class="hljs-at_rule">@media</span> screen {
-  <span class="hljs-class">.screencolor</span> {
+  <span class="hljs-class">.screen-color</span> {
     <span class="hljs-attribute">color</span>: green;
   }
 }
 <span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">768px</span>) {
-  <span class="hljs-class">.screencolor</span> {
+  <span class="hljs-class">.screen-color</span> {
     <span class="hljs-attribute">color</span>: red;
   }
 }
 <span class="hljs-at_rule">@media</span> tv {
-  <span class="hljs-class">.screencolor</span> {
+  <span class="hljs-class">.screen-color</span> {
     <span class="hljs-attribute">color</span>: black;
   }
 }
@@ -444,6 +451,7 @@ style comment! */</span>
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- variables -->
        
 
@@ -488,10 +496,10 @@ style comment! */</span>
 <a href="#variables-feature-selectors" name="variables-feature-selectors" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Version: 1.4.0</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
-<span class="hljs-variable">@mySelector:</span> banner;
+<span class="hljs-variable">@my-selector:</span> banner;
 
 <span class="hljs-comment">// Usage</span>
-<span class="hljs-class">.@{mySelector}</span> {
+<span class="hljs-class">.@{my-selector}</span> {
   <span class="hljs-attribute">font-weight</span>: bold;
   <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
@@ -638,6 +646,7 @@ style comment! */</span>
 <a id="extendmd" href="https://github.com/less/less-docs/blob/master/content/features/extend.md" target="_blank">Edit the markdown source for &quot;extend&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- extend -->
        
@@ -1121,6 +1130,7 @@ style comment! */</span>
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- mixins -->
        
 
@@ -1279,6 +1289,7 @@ style comment! */</span>
 <a id="mixins-parametricmd" href="https://github.com/less/less-docs/blob/master/content/features/mixins-parametric.md" target="_blank">Edit the markdown source for &quot;mixins-parametric&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- mixins-parametric -->
        
@@ -1508,6 +1519,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- mixins-as-functions -->
        
 
@@ -1611,6 +1623,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- detached-rulesets -->
        
 
@@ -1619,7 +1632,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Allow wrapping of a css block, defined in a mixin</p>
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
-<p>Detached ruleset is a group of css properties, nested rulesets, media declarations or anything else stored in a variable. You can include it into a ruleset or another structure and all its properties are going to be copied there. You can also use it as a mixin argument and pass it around as any other variable.</p>
+<p>A detached ruleset is a group of css properties, nested rulesets, media declarations or anything else stored in a variable. You can include it into a ruleset or another structure and all its properties are going to be copied there. You can also use it as a mixin argument and pass it around as any other variable.</p>
 <p>Simple example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// declare detached ruleset</span>
 <span class="hljs-variable">@detached-ruleset:</span> { <span class="hljs-attribute">background</span>: red; };
@@ -1634,8 +1647,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">background</span>: red;
 }
 </code></pre>
-<p>Parentheses after detached ruleset call are mandatory. The <code>@detached-ruleset;</code> call would NOT work.</p>
-<p>It is usefull when you want to define a mixin that abstracts out either wrapping a piece of code in a media query or a non supported browser class name. The rulesets can be passed to mixin so that the mixin can wrap the content. E.g.</p>
+<p>Parentheses after a detached ruleset call are mandatory. The call <code>@detached-ruleset;</code> would NOT work.</p>
+<p>It is useful when you want to define a mixin that abstracts out either wrapping a piece of code in a media query or a non-supported browser class name. The rulesets can be passed to mixin so that the mixin can wrap the content, e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.desktop-and-old-ie</span>(<span class="hljs-variable">@rules</span>) {
   <span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200</span>) { <span class="hljs-variable">@rules</span>(); }
   <span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> <span class="hljs-keyword">&amp;</span>                       { <span class="hljs-variable">@rules</span>(); }
@@ -1649,7 +1662,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   });
 }
 </code></pre>
-<p>Here the <code>desktop-and-old-ie</code> mixin defines the media query and root class so that you can use a mixin to wrap a piece of code. This will output..</p>
+<p>Here the <code>desktop-and-old-ie</code> mixin defines the media query and root class so that you can use a mixin to wrap a piece of code. This will output</p>
 <pre><code class="lang-css"><span class="hljs-tag">header</span> {
   <span class="hljs-attribute">background-color</span>: blue;
 }
@@ -1688,7 +1701,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   }
 }
 </code></pre>
-<p>Detached ruleset call unlocks (returns) all its mixins into caller the same way as mixin calls do. However, it does NOT return variables.</p>
+<p>A detached ruleset call unlocks (returns) all its mixins into caller the same way as mixin calls do. However, it does NOT return variables.</p>
 <p>Returned mixin:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// detached ruleset with a mixin</span>
 <span class="hljs-variable">@detached-ruleset:</span> { 
@@ -1717,12 +1730,12 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </code></pre>
 <h2 class="docs-heading">Scoping<span class="anchor-target" id="detached-rulesets-feature-scoping"></span>
 <a href="#detached-rulesets-feature-scoping" name="detached-rulesets-feature-scoping" class="anchor glyphicon glyphicon-link"></a></h2>
-<p>Detached ruleset can use all variables and mixins accessible on place where it is <em>defined</em> and where it is <em>called</em>. Otherwise said, both definition and caller scopes are available to it. If both scopes contains the same variable or mixin, declaration scope value takes precedence. </p>
-<p><em>Declaration scope</em> is the one where detached ruleset body is defined. Copying  detached ruleset from one variable into another can not modify its scope. Ruleset does not gain access to new scopes just by being referenced there.</p>
-<p>Lastly, detached ruleset can gain access to scope by being unlocked (imported) into it.</p>
+<p>A detached ruleset can use all variables and mixins accessible where it is <em>defined</em> and where it is <em>called</em>. Otherwise said, both definition and caller scopes are available to it. If both scopes contains the same variable or mixin, declaration scope value takes precedence. </p>
+<p><em>Declaration scope</em> is the one where detached ruleset body is defined. Copying a detached ruleset from one variable into another cannot modify its scope. The ruleset does not gain access to new scopes just by being referenced there.</p>
+<p>Lastly, a detached ruleset can gain access to scope by being unlocked (imported) into it.</p>
 <h4 class="docs-heading">Definition and Caller Scope Visibility<span class="anchor-target" id="detached-rulesets-feature-definition-and-caller-scope-visibility"></span>
 <a href="#detached-rulesets-feature-definition-and-caller-scope-visibility" name="detached-rulesets-feature-definition-and-caller-scope-visibility" class="anchor glyphicon glyphicon-link"></a></h4>
-<p>Detached mixin sees callers variables and mixins:</p>
+<p>A detached ruleset sees the caller&apos;s variables and mixins:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@detached-ruleset:</span> {
   <span class="hljs-attribute">caller-variable</span>: <span class="hljs-variable">@callerVariable</span>; <span class="hljs-comment">// variable is undefined here</span>
   <span class="hljs-class">.callerMixin</span>(); <span class="hljs-comment">// mixin is undefined here</span>
@@ -1745,7 +1758,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">variable</span>: declaration;
 }
 </code></pre>
-<p>Variable and mixins accessible form definition win over those available in caller:</p>
+<p>Variable and mixins accessible form definition win over those available in the caller:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@variable:</span> global;
 <span class="hljs-variable">@detached-ruleset:</span> {
   <span class="hljs-comment">// will use global variable, because it is accessible</span>
@@ -1765,7 +1778,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </code></pre>
 <h4 class="docs-heading">Referencing <em>Won&apos;t</em> Modify Detached Ruleset Scope<span class="anchor-target" id="detached-rulesets-feature-referencing-won-t-modify-detached-ruleset-scope"></span>
 <a href="#detached-rulesets-feature-referencing-won-t-modify-detached-ruleset-scope" name="detached-rulesets-feature-referencing-won-t-modify-detached-ruleset-scope" class="anchor glyphicon glyphicon-link"></a></h4>
-<p>Ruleset does not gain access to new scopes just by being referenced there:</p>
+<p>A ruleset does not gain access to new scopes just by being referenced there:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@detached-1:</span> { <span class="hljs-attribute">scope-detached</span>: <span class="hljs-variable">@one</span> <span class="hljs-variable">@two</span>; };
 <span class="hljs-class">.one</span> {
   <span class="hljs-variable">@one:</span> visible;
@@ -1784,7 +1797,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <pre><code>ERROR 1:32 The variable &quot;@one&quot; was not declared.
 </code></pre><h4 class="docs-heading">Unlocking <em>Will</em> Modify Detached Ruleset Scope<span class="anchor-target" id="detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope"></span>
 <a href="#detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope" name="detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope" class="anchor glyphicon glyphicon-link"></a></h4>
-<p>Detached ruleset gains access by being unlocked (imported) inside a scope:</p>
+<p>A detached ruleset gains access by being unlocked (imported) inside a scope:</p>
 <pre><code class="lang-less"><span class="hljs-id">#space</span> {
   <span class="hljs-class">.importer1</span>() {
     <span class="hljs-variable">@detached:</span> { <span class="hljs-attribute">scope-detached</span>: <span class="hljs-variable">@variable</span>; }; <span class="hljs-comment">// define detached ruleset</span>
@@ -1832,6 +1845,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- import-directives -->
        
 
@@ -1877,6 +1891,10 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <li><code>multiple</code>: include the file multiple times</li>
 <li><code>optional</code>: continue compiling when file is not found</li>
 </ul>
+<blockquote>
+<p>More than one keyword per <code>@import</code> is allowed, you will have to use commas to seperate the keywords:</p>
+</blockquote>
+<p>Example: <code>@import (optional, reference) &quot;foo.less&quot;;</code></p>
 <h2 class="docs-heading">reference<span class="anchor-target" id="import-options-reference"></span>
 <a href="#import-options-reference" name="import-options-reference" class="anchor glyphicon glyphicon-link"></a></h2>
 <blockquote>
@@ -1884,7 +1902,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 </blockquote>
 <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (reference) &quot;foo.less&quot;;</code></p>
-<p><code>reference</code> is one of the most powerful features in the Less language. Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as <a href="#mixins-feature">mixins</a> or <a href="#extend-feature">extended</a>.</p>
+<p>Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as <a href="#mixins-feature">mixins</a> or <a href="#extend-feature">extended</a>.</p>
 <p>Additionally, <strong><code>reference</code></strong> produces different results depending on which method was used (mixin or extend):</p>
 <ul>
 <li><strong><a href="#extend-feature">extend</a></strong>: When a selector is extended, only the new selector is marked as <em>not referenced</em>, and it is pulled in at the position of the reference <code>@import</code> statement.</li>
@@ -1991,6 +2009,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a id="mixin-guardsmd" href="https://github.com/less/less-docs/blob/master/content/features/mixin-guards.md" target="_blank">Edit the markdown source for &quot;mixin-guards&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- mixin-guards -->
        
@@ -2111,6 +2130,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- css-guards -->
        
 
@@ -2168,6 +2188,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a id="loopsmd" href="https://github.com/less/less-docs/blob/master/content/features/loops.md" target="_blank">Edit the markdown source for &quot;loops&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- loops -->
        
@@ -2246,6 +2267,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- merge -->
        
 
@@ -2320,6 +2342,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a id="parent-selectorsmd" href="https://github.com/less/less-docs/blob/master/content/features/parent-selectors.md" target="_blank">Edit the markdown source for &quot;parent-selectors&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- parent-selectors -->
        
@@ -2525,10 +2548,11 @@ For example, when using Modernizr, you might want to specify different rules bas
     </li>
   </ul>
 </div>
+
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.3.1</li>
+      <li>Currently v2.5.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -2541,6 +2565,7 @@ For example, when using Modernizr, you might want to specify different rules bas
   </div>
 </footer>
 
+
     
     <!-- Core JavaScript
 ================================================== -->
@@ -2551,6 +2576,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 <script src="../public/js/application.js"></script>
+
 
 
 

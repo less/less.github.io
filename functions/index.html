@@ -37,6 +37,7 @@
 
 <!-- Favicons -->
 <link rel="shortcut icon" href="../public/ico/favicon.ico">
+
   </head>
   <body class="functions">
     
@@ -87,6 +88,7 @@
   </div>
 </header>
 
+
     
 <div class="docs-header" id="content">
   <div class="container">
@@ -99,12 +101,13 @@
 
 <div class="banner">
   <div class="container">
-    less v2.3.1 has been released -
+    less v2.5.0 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
   </div>
 </div>
+
 
     
     <div class="container docs-container">
@@ -199,8 +202,11 @@
           </div>
         </div>
         <div class="col-md-9" role="main">
-          <div class="panel docs-content">
+          
+<div class="panel docs-content">
   
+
+
 
 <div class="docs-section">
   <div class="page-header">
@@ -230,6 +236,7 @@
 <a id="misc-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" target="_blank">Edit the markdown source for &quot;misc-functions&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- misc-functions.md -->
        
@@ -315,6 +322,8 @@
 <li><code>mimetype</code>: (Optional) A MIME type string.</li>
 <li><code>url</code>: The URL of the file to inline.</li>
 </ul>
+<p>If there is no mimetype, data-uri function guesses it from filename suffix. Text and svg files are encoded as utf-8 and anything else is encoded as base64. </p>
+<p>If user provided mimetype, the function uses base64 if mimetype argument ends with ;base64. For example, <code>image/jpeg;base64</code> is encoded into base64 while <code>text/html</code> is encoded into utf-8. </p>
 <p>Example: <code>data-uri(&apos;../data/image.jpg&apos;);</code></p>
 <p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
 <p>Output in browser: <code>url(&apos;../data/image.jpg&apos;);</code></p>
@@ -439,7 +448,7 @@
 <li><code>dimension</code>: A number, with or without a dimension.</li>
 <li><code>unit</code>: (Optional) the unit to change to, or if omitted it will remove the unit.</li>
 </ul>
-<p>See <a href="#misc-functions-convert">convert</a> for changing the unit without conversion.</p>
+<p>See <a href="#misc-functions-convert">convert</a> for changing the unit with conversion.</p>
 <p>Example: <code>unit(5, px)</code></p>
 <p>Output: <code>5px</code></p>
 <p>Example: <code>unit(5em)</code></p>
@@ -474,16 +483,17 @@
 <li><code>color percent</code> pair: (optional) n-th color and its relative position</li>
 <li><code>color [percentage]</code> pair: last color and its relative position (position is optional)</li>
 </ul>
-<p>Returns: <code>url</code> with base64 encoded svg gradient.</p>
+<p>Returns: <code>url</code> with &quot;URI-Encoded&quot; svg gradient.</p>
 <p>Example:</p>
 <pre><code>div {
   background-image: svg-gradient(to right, red, green 30%, blue);
 }
 </code></pre><p>results in:</p>
 <pre><code>div {
-  background-image: url(&apos;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZGllbnQiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmMDAwMCIvPjxzdG9wIG9mZnNldD0iMzAlIiBzdG9wLWNvbG9yPSIjMDA4MDAwIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMGZmIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWRpZW50KSIgLz48L3N2Zz4=&apos;)
+  background-image: url(&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient)%22%20%2F%3E%3C%2Fsvg%3E&apos;);
 }
-</code></pre><p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
+</code></pre><p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
+<p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
 <pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">svg</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1.1&quot;</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">viewBox</span>=<span class="hljs-value">&quot;0 0 1 1&quot;</span> <span class="hljs-attribute">preserveAspectRatio</span>=<span class="hljs-value">&quot;none&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-title">linearGradient</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;gradient&quot;</span> <span class="hljs-attribute">gradientUnits</span>=<span class="hljs-value">&quot;userSpaceOnUse&quot;</span> <span class="hljs-attribute">x1</span>=<span class="hljs-value">&quot;0%&quot;</span> <span class="hljs-attribute">y1</span>=<span class="hljs-value">&quot;0%&quot;</span> <span class="hljs-attribute">x2</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">y2</span>=<span class="hljs-value">&quot;0%&quot;</span>&gt;</span>
@@ -519,6 +529,7 @@
 <a id="string-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/string-functions.md" target="_blank">Edit the markdown source for &quot;string-functions&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- string-functions.md -->
        
@@ -568,7 +579,7 @@ The function escapes all special characters except <code>()&apos;~!</code>. Spac
 <p>Placeholders:</p>
 <ul>
 <li><code>d</code>, <code>D</code>, <code>a</code>, <code>A</code> - can be replaced by any kind of argument (color, number, escaped value, expression, ...). If you use them in combination with string, the whole string will be used - including its quotes. However, the quotes are placed into the string as they are, they are not escaped by &quot;/&quot; nor anything similar.</li>
-<li><code>s</code>, <code>S</code> - can be replaced by any kind of argument except color. If you use them in combination with string, only the string value will be used - string quotes are omitted.</li>
+<li><code>s</code>, <code>S</code> - can be replaced by any expression. If you use it with string, only the string value is used - quotes are omitted.</li>
 </ul>
 <p>Parameters:</p>
 <ul>
@@ -640,6 +651,7 @@ bar-2;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- list-functions.md -->
        
 
@@ -701,6 +713,7 @@ Output: <code>dotted</code></p>
 <a id="math-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/math-functions.md" target="_blank">Edit the markdown source for &quot;math-functions&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- math-functions.md -->
        
@@ -986,6 +999,7 @@ NaN%
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- type-functions.md -->
        
 
@@ -1199,6 +1213,7 @@ NaN%
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- color-definition.md -->
        
 
@@ -1330,6 +1345,7 @@ Parameters:</p>
 <a id="color-channelmd" href="https://github.com/less/less-docs/blob/master/content/functions/color-channel.md" target="_blank">Edit the markdown source for &quot;color-channel&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- color-channel.md -->
        
@@ -1471,11 +1487,12 @@ Parameters:</p>
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
+
       <!-- color-operations.md -->
        
 
 
-<p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%, not 11%, and values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&apos;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
+<p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%. Set the option method parameter to relative for relative percentages. When using relative percentages increasing a 10% value by 10% results in 11%. Values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&apos;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
 <h3 class="docs-heading">saturate<span class="anchor-target" id="color-operations-saturate"></span>
 <a href="#color-operations-saturate" name="color-operations-saturate" class="anchor glyphicon glyphicon-link"></a></h3>
 <blockquote>
@@ -1485,6 +1502,7 @@ Parameters:</p>
 <ul>
 <li><code>color</code>: A color object.</li>
 <li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
@@ -1499,6 +1517,7 @@ Parameters:</p>
 <ul>
 <li><code>color</code>: A color object.</li>
 <li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
@@ -1513,6 +1532,7 @@ Parameters:</p>
 <ul>
 <li><code>color</code>: A color object.</li>
 <li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
@@ -1527,6 +1547,7 @@ Parameters:</p>
 <ul>
 <li><code>color</code>: A color object.</li>
 <li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
@@ -1542,6 +1563,7 @@ Parameters:</p>
 <ul>
 <li><code>color</code>: A color object.</li>
 <li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
@@ -1555,6 +1577,7 @@ Parameters:</p>
 <ul>
 <li><code>color</code>: A color object.</li>
 <li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
 </ul>
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
@@ -1703,6 +1726,7 @@ Parameters:</p>
 <a id="color-blendingmd" href="https://github.com/less/less-docs/blob/master/content/functions/color-blending.md" target="_blank">Edit the markdown source for &quot;color-blending&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
+
 
       <!-- color-blending.md -->
        
@@ -2233,6 +2257,7 @@ Parameters:</p>
 
   </div>
 
+
 </div>
         </div>
       </div>
@@ -2251,10 +2276,11 @@ Parameters:</p>
     </li>
   </ul>
 </div>
+
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.3.1</li>
+      <li>Currently v2.5.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
@@ -2267,6 +2293,7 @@ Parameters:</p>
   </div>
 </footer>
 
+
     
     <!-- Core JavaScript
 ================================================== -->
@@ -2277,6 +2304,7 @@ Parameters:</p>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
 <script src="../public/js/application.js"></script>
+
 
 
 

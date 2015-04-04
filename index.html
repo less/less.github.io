@@ -56,23 +56,32 @@
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
+        
         <li>
           <a href="features/">Language Features</a>
         </li>
         
+        
+        
         <li>
           <a href="functions/">Function Reference</a>
         </li>
+                
+       
         <li>
           <a href="usage/">Usage</a>
         </li>
         
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
+               
         
         <li>
           <a href="about/">About</a>
         </li>
+           
+        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -257,7 +266,7 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;styles.less&quot;</span> /&gt;</span>
 </code></pre>
 <p>Next, <a href="https://github.com/less/less.js/archive/master.zip">download less.js</a> and include it in a <code>&lt;script&gt;&lt;/script&gt;</code> tag in the <code>&lt;head&gt;</code> element of your page:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <h3 class="docs-heading">Tips<span class="anchor-target" id="client-side-usage-tips"></span>
 <a href="#client-side-usage-tips" name="client-side-usage-tips" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -270,22 +279,22 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
 <a href="#client-side-usage-browser-options" name="client-side-usage-browser-options" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
 <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- set options before less.js script --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="bash">
   less = {
     env: <span class="hljs-string">&quot;development&quot;</span>,
     async: <span class="hljs-literal">false</span>,
     fileAsync: <span class="hljs-literal">false</span>,
     poll: <span class="hljs-number">1000</span>,
-    functions: {},
+    <span class="hljs-built_in">functions</span>: {},
     dumpLineNumbers: <span class="hljs-string">&quot;comments&quot;</span>,
     relativeUrls: <span class="hljs-literal">false</span>,
     rootpath: <span class="hljs-string">&quot;:/a.com/&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>Or for brevity they can be set as attributes on the script and link tags (requires JSON.parse browser support or polyfill).</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-poll</span>=<span class="hljs-value">&quot;1000&quot;</span> <span class="hljs-attribute">data-relative-urls</span>=<span class="hljs-value">&quot;false&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-poll</span>=<span class="hljs-value">&quot;1000&quot;</span> <span class="hljs-attribute">data-relative-urls</span>=<span class="hljs-value">&quot;false&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">data-dump-line-numbers</span>=<span class="hljs-value">&quot;all&quot;</span> <span class="hljs-attribute">data-global-vars</span>=<span class="hljs-value">&apos;{ myvar: &quot;#ddffee&quot;, mystr: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;less/styles.less&quot;</span>&gt;</span>
 </code></pre>
 <p>Learn more about <a href="usage/#using-less-in-the-browser-setting-options">Browser Options</a></p>
@@ -324,7 +333,7 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
   <div class="cdn-options">
     <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-0-less-min-js-"></span>
 <a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-0-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-0-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.0/less.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 
   </div>

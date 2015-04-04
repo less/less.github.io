@@ -56,23 +56,32 @@
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
+        
         <li class="active">
-          <a href="./">Language Features</a>
+          <span>Language Features</span>
         </li>
+        
+        
         
         <li>
           <a href="../functions/">Function Reference</a>
         </li>
+                
+       
         <li>
           <a href="../usage/">Usage</a>
         </li>
         
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
+               
         
         <li>
           <a href="../about/">About</a>
         </li>
+           
+        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
           <ul class="dropdown-menu">
@@ -119,8 +128,9 @@
 <ul class="nav sidenav"><li><a href="#features-overview-feature">Overview</a><ul class="nav"><li><a href="#features-overview-feature-variables">Variables</a></li>
 <li><a href="#features-overview-feature-mixins">Mixins</a></li>
 <li><a href="#features-overview-feature-nested-rules">Nested rules</a></li>
-<li><a href="#features-overview-feature-media-query-bubbling-and-nested-media-queries">Media query bubbling and nested media queries</a></li>
+<li><a href="#features-overview-feature-nested-directives-and-bubbling">Nested directives and bubbling</a></li>
 <li><a href="#features-overview-feature-operations">Operations</a></li>
+<li><a href="#features-overview-feature-escaping">Escaping</a></li>
 <li><a href="#features-overview-feature-functions">Functions</a></li>
 <li><a href="#features-overview-feature-namespaces-and-accessors">Namespaces and Accessors</a></li>
 <li><a href="#features-overview-feature-scope">Scope</a></li>
@@ -152,6 +162,7 @@
 <li><a href="#mixins-feature">Mixins</a><ul class="nav"><li><a href="#mixins-feature-not-outputting-the-mixin">Not outputting the mixin</a></li>
 <li><a href="#mixins-feature-selectors-in-mixins">Selectors in mixins</a></li>
 <li><a href="#mixins-feature-namespaces">Namespaces</a></li>
+<li><a href="#mixins-feature-guarded-namespaces">Guarded Namespaces</a></li>
 <li><a href="#mixins-feature-the-important-keyword">The !important keyword</a></li></ul></li>
 <li><a href="#mixins-parametric-feature">Parametric Mixins</a><ul class="nav"><li><a href="#mixins-parametric-feature-mixins-with-multiple-parameters">Mixins With Multiple Parameters</a></li>
 <li><a href="#mixins-parametric-feature-named-parameters">Named Parameters</a></li>
@@ -299,9 +310,10 @@
 <ul>
 <li><a href="#parent-selectors-feature">Parent Selectors</a></li>
 </ul>
-<h3 class="docs-heading">Media query bubbling and nested media queries<span class="anchor-target" id="features-overview-feature-media-query-bubbling-and-nested-media-queries"></span>
-<a href="#features-overview-feature-media-query-bubbling-and-nested-media-queries" name="features-overview-feature-media-query-bubbling-and-nested-media-queries" class="anchor glyphicon glyphicon-link"></a></h3>
-<p>Media queries can be nested in the same way as selectors. Selectors are copied into the body of the media query:</p>
+<h3 class="docs-heading">Nested directives and bubbling<span class="anchor-target" id="features-overview-feature-nested-directives-and-bubbling"></span>
+<a href="#features-overview-feature-nested-directives-and-bubbling" name="features-overview-feature-nested-directives-and-bubbling" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>Directives such as <code>media</code> or <code>keyframe</code> can be nested in the same way as selectors. Directive is placed on top and relative order against other elements inside the same ruleset remains unchanged. This is called bubbling.</p>
+<p>Conditional directives e.g. <code>@Media</code>, <code>@supports</code> and <code>@document</code> have also selectors copied into their bodies:</p>
 <pre><code class="lang-less"><span class="hljs-class">.screen-color</span> {
   <span class="hljs-at_rule">@media</span> screen {
     <span class="hljs-attribute">color</span>: green;
@@ -331,6 +343,26 @@
   }
 }
 </code></pre>
+<p>Remaining non-conditional directives, for example <code>font-face</code> or <code>keyframes</code>, are bubbled up too. Their bodies do not change:</p>
+<pre><code class="lang-less"><span class="hljs-id">#a</span> {
+  <span class="hljs-attribute">color</span>: blue;
+  <span class="hljs-at_rule">@font-face</span> {
+    <span class="hljs-attribute">src</span>: made-up-url;
+  }
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span>;
+}
+</code></pre>
+<p>outputs:</p>
+<pre><code class="lang-less"><span class="hljs-id">#a</span> {
+  <span class="hljs-attribute">color</span>: blue;
+}
+<span class="hljs-at_rule">@font-face</span> {
+  <span class="hljs-attribute">src</span>: made-up-url;
+}
+<span class="hljs-id">#a</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span>;
+}
+</code></pre>
 <h3 class="docs-heading">Operations<span class="anchor-target" id="features-overview-feature-operations"></span>
 <a href="#features-overview-feature-operations" name="features-overview-feature-operations" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Any number, color or variable can be operated on. Here are a couple of examples:</p>
@@ -346,6 +378,18 @@
 <pre><code class="lang-less"><span class="hljs-variable">@var:</span> <span class="hljs-number">1px</span> + <span class="hljs-number">5</span>;
 </code></pre>
 <p>Less will use that unit for the final output&#x2014;<code>6px</code> in this case.</p>
+<h3 class="docs-heading">Escaping<span class="anchor-target" id="features-overview-feature-escaping"></span>
+<a href="#features-overview-feature-escaping" name="features-overview-feature-escaping" class="anchor glyphicon glyphicon-link"></a></h3>
+<p>Escaping allows you to use any arbitrary string as property or variable value. Anything inside <code>~&quot;anything&quot;</code> or <code>~&apos;anything&apos;</code> is used as is with no changes except <a href="#variables-feature-variable-interpolation">interpolation</a>. </p>
+<pre><code class="lang-less"><span class="hljs-class">.weird-element</span> {
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">~&quot;^//* some horrible but needed css hack&quot;</span>;
+}
+</code></pre>
+<p>resuts in:</p>
+<pre><code class="lang-less"><span class="hljs-class">.weird-element</span> {
+  <span class="hljs-attribute">content</span>: ^<span class="hljs-comment">//* some horrible but needed css hack;</span>
+}
+</code></pre>
 <h3 class="docs-heading">Functions<span class="anchor-target" id="features-overview-feature-functions"></span>
 <a href="#features-overview-feature-functions" name="features-overview-feature-functions" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Less provides a variety of functions which transform colors, manipulate strings and do maths. They are documented fully in the function reference.</p>
@@ -1237,6 +1281,24 @@ style comment! */</span>
 <span class="hljs-comment">// which can be used like this</span>
 <span class="hljs-class">.class</span> {
   <span class="hljs-id">#my-library</span> &gt; <span class="hljs-class">.my-mixin</span>();
+}
+</code></pre>
+<h2 class="docs-heading">Guarded Namespaces<span class="anchor-target" id="mixins-feature-guarded-namespaces"></span>
+<a href="#mixins-feature-guarded-namespaces" name="mixins-feature-guarded-namespaces" class="anchor glyphicon glyphicon-link"></a></h2>
+<p>If namespace have a guard, mixins defined by it are used only if guard condition returns true. Namespace guard is evaluated exactly the same way as guard on mixin, so next two mixins work the same way:</p>
+<pre><code class="lang-less"><span class="hljs-id">#namespace</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span>=huge) {
+  <span class="hljs-class">.mixin</span>() { <span class="hljs-comment">/* */</span> }
+}
+
+<span class="hljs-id">#namespace</span> {
+  <span class="hljs-class">.mixin</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span>=huge) { <span class="hljs-comment">/* */</span> }
+}
+</code></pre>
+<p>The <code>default</code> function is assumed to have the same value for all nested namespaces and mixin. Following mixin is never evaluated, one of its guards is guaranteed to be false:</p>
+<pre><code class="lang-less"><span class="hljs-id">#sp_1</span> <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) {
+  <span class="hljs-id">#sp_2</span> <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) {
+    <span class="hljs-class">.mixin</span>() <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) { <span class="hljs-comment">/* */</span> }
+  }
 }
 </code></pre>
 <h2 class="docs-heading">The <code>!important</code> keyword<span class="anchor-target" id="mixins-feature-the-important-keyword"></span>

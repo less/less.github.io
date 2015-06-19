@@ -110,7 +110,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.5.0 has been released -
+    less v2.5.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -380,12 +380,12 @@
 <p>Less will use that unit for the final output&#x2014;<code>6px</code> in this case.</p>
 <h3 class="docs-heading">Escaping<span class="anchor-target" id="features-overview-feature-escaping"></span>
 <a href="#features-overview-feature-escaping" name="features-overview-feature-escaping" class="anchor glyphicon glyphicon-link"></a></h3>
-<p>Escaping allows you to use any arbitrary string as property or variable value. Anything inside <code>~&quot;anything&quot;</code> or <code>~&apos;anything&apos;</code> is used as is with no changes except <a href="#variables-feature-variable-interpolation">interpolation</a>. </p>
+<p>Escaping allows you to use any arbitrary string as property or variable value. Anything inside <code>~&quot;anything&quot;</code> or <code>~&apos;anything&apos;</code> is used as is with no changes except <a href="#variables-feature-variable-interpolation">interpolation</a>.</p>
 <pre><code class="lang-less"><span class="hljs-class">.weird-element</span> {
   <span class="hljs-attribute">content</span>: <span class="hljs-string">~&quot;^//* some horrible but needed css hack&quot;</span>;
 }
 </code></pre>
-<p>resuts in:</p>
+<p>results in:</p>
 <pre><code class="lang-less"><span class="hljs-class">.weird-element</span> {
   <span class="hljs-attribute">content</span>: ^<span class="hljs-comment">//* some horrible but needed css hack;</span>
 }
@@ -664,7 +664,7 @@ style comment! */</span>
 <span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;library.less&quot;</span>;
 <span class="hljs-variable">@base-color:</span> red;
 </code></pre>
-<p>This works fine because of <a href="#variables-feature-lazy-loading">Lazy Loading</a> - base-color is overidden and dark-color is a dark red.</p>
+<p>This works fine because of <a href="#variables-feature-lazy-loading">Lazy Loading</a> - base-color is overridden and dark-color is a dark red.</p>
 
 
       <br>
@@ -1624,15 +1624,16 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
 }
 </code></pre>
-<p>Variable defined directly in callers scope can not be overriden. However, variable defined in callers parent scope is not protected and will be overriden:</p>
+<p>Variables defined directly in callers scope cannot be overridden. However, variables defined in callers parent scope is not protected and will be
+overridden:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
-  <span class="hljs-variable">@size:</span> in-mixin; 
+  <span class="hljs-variable">@size:</span> in-mixin;
   <span class="hljs-variable">@definedOnlyInMixin:</span> in-mixin;
 }
 
 <span class="hljs-class">.class</span> {
   <span class="hljs-attribute">margin</span>: <span class="hljs-variable">@size</span> <span class="hljs-variable">@definedOnlyInMixin</span>;
-  <span class="hljs-class">.mixin</span>(); 
+  <span class="hljs-class">.mixin</span>();
 }
 
 <span class="hljs-variable">@size:</span> globaly-defined-value; <span class="hljs-comment">// callers parent scope - no protection</span>
@@ -1651,7 +1652,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 
 <span class="hljs-id">#namespace</span> {
   <span class="hljs-class">.unlock</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">// unlock doSomething mixin</span>
-  <span class="hljs-class">.doSomething</span>(); <span class="hljs-comment">//nested mixin was copied here and is usable </span>
+  <span class="hljs-class">.doSomething</span>(); <span class="hljs-comment">//nested mixin was copied here and is usable</span>
 }
 </code></pre>
 <p>Results in:</p>
@@ -1799,8 +1800,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a href="#detached-rulesets-feature-definition-and-caller-scope-visibility" name="detached-rulesets-feature-definition-and-caller-scope-visibility" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>A detached ruleset sees the caller&apos;s variables and mixins:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@detached-ruleset:</span> {
-  <span class="hljs-attribute">caller-variable</span>: <span class="hljs-variable">@callerVariable</span>; <span class="hljs-comment">// variable is undefined here</span>
-  <span class="hljs-class">.callerMixin</span>(); <span class="hljs-comment">// mixin is undefined here</span>
+  <span class="hljs-attribute">caller-variable</span>: <span class="hljs-variable">@caller-variable</span>; <span class="hljs-comment">// variable is undefined here</span>
+  <span class="hljs-class">.caller-mixin</span>(); <span class="hljs-comment">// mixin is undefined here</span>
 };
 
 <span class="hljs-tag">selector</span> {
@@ -1808,8 +1809,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-variable">@detached-ruleset</span>(); 
 
   <span class="hljs-comment">// define variable and mixin needed inside the detached ruleset</span>
-  <span class="hljs-variable">@callerVariable:</span> value;
-  <span class="hljs-class">.callerMixin</span>() {
+  <span class="hljs-variable">@caller-variable:</span> value;
+  <span class="hljs-class">.caller-mixin</span>() {
     <span class="hljs-attribute">variable</span>: declaration;
   }
 }
@@ -1850,7 +1851,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   }
 }
 
-<span class="hljs-class">.usePlace</span> {
+<span class="hljs-class">.use-place</span> {
   <span class="hljs-class">.one</span> &gt; <span class="hljs-class">.two</span>(); 
   <span class="hljs-variable">@detached-2</span>();
 }
@@ -1861,23 +1862,23 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <a href="#detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope" name="detached-rulesets-feature-unlocking-will-modify-detached-ruleset-scope" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>A detached ruleset gains access by being unlocked (imported) inside a scope:</p>
 <pre><code class="lang-less"><span class="hljs-id">#space</span> {
-  <span class="hljs-class">.importer1</span>() {
+  <span class="hljs-class">.importer-1</span>() {
     <span class="hljs-variable">@detached:</span> { <span class="hljs-attribute">scope-detached</span>: <span class="hljs-variable">@variable</span>; }; <span class="hljs-comment">// define detached ruleset</span>
   }
 }
 
-<span class="hljs-class">.importer2</span>() {
+<span class="hljs-class">.importer-2</span>() {
   <span class="hljs-variable">@variable:</span> value; <span class="hljs-comment">// unlocked detached ruleset CAN see this variable</span>
-  <span class="hljs-id">#space</span> &gt; <span class="hljs-class">.importer1</span>(); <span class="hljs-comment">// unlock/import detached ruleset</span>
+  <span class="hljs-id">#space</span> &gt; <span class="hljs-class">.importer-1</span>(); <span class="hljs-comment">// unlock/import detached ruleset</span>
 }
 
-<span class="hljs-class">.usePlace</span> {
-  <span class="hljs-class">.importer2</span>(); <span class="hljs-comment">// unlock/import detached ruleset second time</span>
+<span class="hljs-class">.use-place</span> {
+  <span class="hljs-class">.importer-2</span>(); <span class="hljs-comment">// unlock/import detached ruleset second time</span>
    <span class="hljs-variable">@detached</span>();
 }
 </code></pre>
 <p>compiles into:</p>
-<pre><code class="lang-css"><span class="hljs-class">.usePlace</span> {
+<pre><code class="lang-css"><span class="hljs-class">.use-place</span> {
   <span class="hljs-attribute">scope-detached</span>: value;
 }
 </code></pre>
@@ -1954,7 +1955,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <li><code>optional</code>: continue compiling when file is not found</li>
 </ul>
 <blockquote>
-<p>More than one keyword per <code>@import</code> is allowed, you will have to use commas to seperate the keywords:</p>
+<p>More than one keyword per <code>@import</code> is allowed, you will have to use commas to separate the keywords:</p>
 </blockquote>
 <p>Example: <code>@import (optional, reference) &quot;foo.less&quot;;</code></p>
 <h2 class="docs-heading">reference<span class="anchor-target" id="import-options-reference"></span>
@@ -2614,7 +2615,7 @@ For example, when using Modernizr, you might want to specify different rules bas
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.5.0</li>
+      <li>Currently v2.5.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

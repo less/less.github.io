@@ -110,7 +110,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.5.0 has been released -
+    less v2.5.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -511,10 +511,11 @@
 }
 </code></pre>
 <p>both result in:</p>
-<pre><code>div {
-  background-image: url(&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient)%22%20%2F%3E%3C%2Fsvg%3E&apos;);
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
 }
-</code></pre><p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
+</code></pre>
+<p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
 <p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
 <pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">svg</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1.1&quot;</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">viewBox</span>=<span class="hljs-value">&quot;0 0 1 1&quot;</span> <span class="hljs-attribute">preserveAspectRatio</span>=<span class="hljs-value">&quot;none&quot;</span>&gt;</span>
@@ -1170,7 +1171,7 @@ NaN%
 <p>Parameters:</p>
 <ul>
 <li><code>value</code> - a value or variable being evaluated.</li>
-<li><code>unit</code> - a unit identifier (optionaly quoted) to test for.</li>
+<li><code>unit</code> - a unit identifier (optionally quoted) to test for.</li>
 </ul>
 <p>Returns: <code>true</code> if value is a number in specified units, <code>false</code> otherwise.</p>
 <p>Example:</p>
@@ -1379,7 +1380,7 @@ Parameters:</p>
 <p>Extracts the hue channel of a color object in the HSL color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>integer</code> <code>0-360</code></p>
+<p>Returns: <code>integer</code> 0-360</p>
 <p>Example: <code>hue(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
 <h3 class="docs-heading">saturation<span class="anchor-target" id="color-channel-saturation"></span>
@@ -1388,7 +1389,7 @@ Parameters:</p>
 <p>Extracts the saturation channel of a color object in the HSL color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>percentage</code> <code>0-100</code></p>
+<p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>saturation(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
 <h3 class="docs-heading">lightness<span class="anchor-target" id="color-channel-lightness"></span>
@@ -1397,7 +1398,7 @@ Parameters:</p>
 <p>Extracts the lightness channel of a color object in the HSL color space.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>percentage</code> <code>0-100</code></p>
+<p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>lightness(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
 <h3 class="docs-heading">hsvhue<span class="anchor-target" id="color-channel-hsvhue"></span>
@@ -1433,7 +1434,7 @@ Parameters:</p>
 <p>Extracts the red channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>integer</code> <code>0-255</code></p>
+<p>Returns: <code>float</code> 0-255</p>
 <p>Example: <code>red(rgb(10, 20, 30))</code></p>
 <p>Output: <code>10</code></p>
 <h3 class="docs-heading">green<span class="anchor-target" id="color-channel-green"></span>
@@ -1442,7 +1443,7 @@ Parameters:</p>
 <p>Extracts the green channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>integer</code> 0-255</p>
+<p>Returns: <code>float</code> 0-255</p>
 <p>Example: <code>green(rgb(10, 20, 30))</code></p>
 <p>Output: <code>20</code></p>
 <h3 class="docs-heading">blue<span class="anchor-target" id="color-channel-blue"></span>
@@ -1451,7 +1452,7 @@ Parameters:</p>
 <p>Extracts the blue channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>integer</code> 0-255</p>
+<p>Returns: <code>float</code> 0-255</p>
 <p>Example: <code>blue(rgb(10, 20, 30))</code></p>
 <p>Output: <code>30</code></p>
 <h3 class="docs-heading">alpha<span class="anchor-target" id="color-channel-alpha"></span>
@@ -1460,7 +1461,7 @@ Parameters:</p>
 <p>Extracts the alpha channel of a color object.</p>
 </blockquote>
 <p>Parameters: <code>color</code> - a color object.</p>
-<p>Returns: <code>float</code> <code>0-1</code></p>
+<p>Returns: <code>float</code> 0-1</p>
 <p>Example: <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
 <p>Output: <code>0.5</code></p>
 <h3 class="docs-heading">luma<span class="anchor-target" id="color-channel-luma"></span>
@@ -1710,14 +1711,15 @@ Parameters:</p>
 }
 </code></pre>
 <p>Output:</p>
-<pre><code>p {
-    a: #000000 // black
-    b: #ffffff // white
-    c: #dddddd
-    d: #000000 // black
-    e: #ffffff // white
+<pre><code class="lang-css"><span class="hljs-tag">p</span> {
+    <span class="hljs-attribute">a</span>: <span class="hljs-hexcolor">#000000</span> <span class="hljs-comment">// black</span>
+    b: <span class="hljs-hexcolor">#ffffff</span> <span class="hljs-comment">// white</span>
+    c: <span class="hljs-hexcolor">#dddddd</span>
+    d: <span class="hljs-hexcolor">#000000</span> <span class="hljs-comment">// black</span>
+    e: <span class="hljs-hexcolor">#ffffff</span> <span class="hljs-comment">// white</span>
 }
-</code></pre><p>These examples use the above calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&apos;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
+</code></pre>
+<p>These examples use the above calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&apos;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#bbbbbb:#000000/text:000000">
 <img alt="Color 1" data-src="holder.js/100x40/#222222:#ffffff/text:ffffff">
 <img alt="Color 1" data-src="holder.js/100x40/#222222:#dddddd/text:dddddd">
@@ -1864,12 +1866,12 @@ Parameters:</p>
 <pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
-<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
 <img alt="Color 3" data-src="holder.js/100x40/#ffff00:#ffffff/text:ffff00"></p>
 <pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
-<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
 <h3 class="docs-heading">overlay<span class="anchor-target" id="color-blending-overlay"></span>
 <a href="#color-blending-overlay" name="color-blending-overlay" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -2302,7 +2304,7 @@ Parameters:</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.5.0</li>
+      <li>Currently v2.5.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

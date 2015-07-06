@@ -127,12 +127,12 @@
   
 <ul class="nav sidenav"><li><a href="#getting-started">Getting Started</a></li>
 <li><a href="#using-less">Using Less</a><ul class="nav"><li><a href="#using-less-installation">Installation</a></li>
-<li><a href="#using-less-command-line-usage">Command-line usage</a></li>
+<li><a href="#using-less-command-line-usage">Command-line Usage</a></li>
 <li><a href="#using-less-usage-in-code">Usage in Code</a></li>
 <li><a href="#using-less-configuration">Configuration</a></li>
-<li><a href="#using-less-third-party-tools">Third party tools</a></li></ul></li>
-<li><a href="#command-line-with-rhino">Command-line With Rhino</a></li>
-<li><a href="#client-side-usage">Client-side usage</a><ul class="nav"><li><a href="#client-side-usage-tips">Tips</a></li>
+<li><a href="#using-less-third-party-tools">Third Party Tools</a></li></ul></li>
+<li><a href="#command-line-with-rhino">Command-line with Rhino</a></li>
+<li><a href="#client-side-usage">Client-side Usage</a><ul class="nav"><li><a href="#client-side-usage-tips">Tips</a></li>
 <li><a href="#client-side-usage-browser-options">Browser Options</a></li></ul></li>
 <li><a href="#download-options">Get Less.js</a><ul class="nav"><li><a href="#download-options-browser-downloads">Browser downloads</a></li>
 <li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-1-less-min-js-">Less CDN</a></li></ul></li>
@@ -198,7 +198,7 @@ detailed information.</p>
 <p>The easiest way to install Less on the server, is via npm, the <a href="http://nodejs.org/">node.js</a> package manager, as so:</p>
 <pre><code class="lang-bash">$ npm install -g less
 </code></pre>
-<h2 class="docs-heading">Command-line usage<span class="anchor-target" id="using-less-command-line-usage"></span>
+<h2 class="docs-heading">Command-line Usage<span class="anchor-target" id="using-less-command-line-usage"></span>
 <a href="#using-less-command-line-usage" name="using-less-command-line-usage" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Once installed, you can invoke the compiler from the command-line, as such:</p>
 <pre><code class="lang-bash">$ lessc styles.less
@@ -240,23 +240,23 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
     });
 </code></pre>
 <p>See <a href="usage/index.html">Usage</a> for more information.</p>
-<h2 class="docs-heading">Third party tools<span class="anchor-target" id="using-less-third-party-tools"></span>
+<h2 class="docs-heading">Third Party Tools<span class="anchor-target" id="using-less-third-party-tools"></span>
 <a href="#using-less-third-party-tools" name="using-less-third-party-tools" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>See the <a href="usage/index.html">Usage</a> section for details of other tools.</p>
-<h1 class="docs-heading">Command-line With Rhino<span class="anchor-target" id="command-line-with-rhino"></span>
+<h1 class="docs-heading">Command-line with Rhino<span class="anchor-target" id="command-line-with-rhino"></span>
 <a href="#command-line-with-rhino" name="command-line-with-rhino" class="anchor glyphicon glyphicon-link"></a></h1>
 <blockquote>
 <p>Each less.js release contains also rhino-compatible version.</p>
 </blockquote>
 <p>Command line rhino version requires two files:</p>
 <ul>
-<li>less-rhino-<version>.js - compiler implementation,</version></li>
-<li>lessc-rhino-<version>.js - command line support.</version></li>
+<li>less-rhino-&lt;version&gt;.js - compiler implementation,</li>
+<li>lessc-rhino-&lt;version&gt;.js - command line support.</li>
 </ul>
 <p>Command to run the compiler:</p>
 <pre><code>java -jar js.jar -f less-rhino-&lt;version&gt;.js lessc-rhino-&lt;version&gt;.js styles.less styles.css
 </code></pre><p>This will compile styles.less file and save the result to styles.css file. The output file parameter is optional. If it is missing, less will output the result to <code>stdout</code>.</p>
-<h1 class="docs-heading">Client-side usage<span class="anchor-target" id="client-side-usage"></span>
+<h1 class="docs-heading">Client-side Usage<span class="anchor-target" id="client-side-usage"></span>
 <a href="#client-side-usage" name="client-side-usage" class="anchor glyphicon glyphicon-link"></a></h1>
 <blockquote>
 <p>Using less.js in the browser is great for development, but it&apos;s not recommended for production</p>
@@ -266,7 +266,7 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;styles.less&quot;</span> /&gt;</span>
 </code></pre>
 <p>Next, <a href="https://github.com/less/less.js/archive/master.zip">download less.js</a> and include it in a <code>&lt;script&gt;&lt;/script&gt;</code> tag in the <code>&lt;head&gt;</code> element of your page:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/javascript&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <h3 class="docs-heading">Tips<span class="anchor-target" id="client-side-usage-tips"></span>
 <a href="#client-side-usage-tips" name="client-side-usage-tips" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -279,22 +279,22 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
 <a href="#client-side-usage-browser-options" name="client-side-usage-browser-options" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Options are defined by setting them on a global <code>less</code> object <strong>before</strong> the <code>&lt;script src=&quot;less.js&quot;&gt;&lt;/script&gt;</code>:</p>
 <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- set options before less.js script --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="bash">
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
   less = {
     env: <span class="hljs-string">&quot;development&quot;</span>,
     async: <span class="hljs-literal">false</span>,
     fileAsync: <span class="hljs-literal">false</span>,
     poll: <span class="hljs-number">1000</span>,
-    <span class="hljs-built_in">functions</span>: {},
+    functions: {},
     dumpLineNumbers: <span class="hljs-string">&quot;comments&quot;</span>,
     relativeUrls: <span class="hljs-literal">false</span>,
     rootpath: <span class="hljs-string">&quot;:/a.com/&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>Or for brevity they can be set as attributes on the script and link tags (requires JSON.parse browser support or polyfill).</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-poll</span>=<span class="hljs-value">&quot;1000&quot;</span> <span class="hljs-attribute">data-relative-urls</span>=<span class="hljs-value">&quot;false&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-poll</span>=<span class="hljs-value">&quot;1000&quot;</span> <span class="hljs-attribute">data-relative-urls</span>=<span class="hljs-value">&quot;false&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">data-dump-line-numbers</span>=<span class="hljs-value">&quot;all&quot;</span> <span class="hljs-attribute">data-global-vars</span>=<span class="hljs-value">&apos;{ myvar: &quot;#ddffee&quot;, mystr: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;less/styles.less&quot;</span>&gt;</span>
 </code></pre>
 <p>Learn more about <a href="usage/#using-less-in-the-browser-setting-options">Browser Options</a></p>
@@ -316,10 +316,10 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
   <a class="btn btn-default" href="https://raw.github.com/less/less.js/v2.5.1/dist/less.min.js">Download Less.js v2.5.1</a>
 
   <div class="docs-dl-options">
-    <h4 class="docs-heading"><a href="https://github.com/less/less.js/archive/v2.5.1.zip">Download source code</a><span class="anchor-target" id="download-options--download-source-code-https-github-com-less-less-js-archive-v2-5-1-zip-"></span>
+    <h4 class="docs-heading"><a href="https://github.com/less/less.js/archive/v2.5.1.zip">Download Source Code</a><span class="anchor-target" id="download-options--download-source-code-https-github-com-less-less-js-archive-v2-5-1-zip-"></span>
 <a href="#download-options--download-source-code-https-github-com-less-less-js-archive-v2-5-1-zip-" name="download-options--download-source-code-https-github-com-less-less-js-archive-v2-5-1-zip-" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Get the latest Less.js source code by downloading it directly from GitHub.</p>
-<h4 class="docs-heading"><a href="https://github.com/less/less.js.git">Clone or fork via GitHub</a><span class="anchor-target" id="download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-"></span>
+<h4 class="docs-heading"><a href="https://github.com/less/less.js.git">Clone or Fork via GitHub</a><span class="anchor-target" id="download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-"></span>
 <a href="#download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-" name="download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Fork the project and send us a pull request!</p>
 <h4 class="docs-heading"><a href="http://bower.io">Install with Bower</a><span class="anchor-target" id="download-options--install-with-bower-http-bower-io-"></span>
@@ -333,7 +333,7 @@ less.render(<span class="hljs-string">&apos;.class { width: (1 + 1) }&apos;</spa
   <div class="cdn-options">
     <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-1-less-min-js-"></span>
 <a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-1-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-5-1-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.5.1/less.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 
   </div>

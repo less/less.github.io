@@ -203,13 +203,13 @@ detailed information.</p>
 <p>Once installed, you can invoke the compiler from the command-line, as such:</p>
 <pre><code class="lang-bash">$ lessc styles.less
 </code></pre>
-<p>This will output the compiled CSS to <code>stdout</code>, you may then redirect it to a file of your choice:</p>
-<pre><code class="lang-bash">$ lessc styles.less &gt; styles.css
+<p>This will output the compiled CSS to <code>stdout</code>. To save the CSS result to a file of your choice use:</p>
+<pre><code class="lang-bash">$ lessc styles.less styles.css
 </code></pre>
-<p>To output minified CSS, simply pass the <code>-x</code> option. If you would like more involved minification,
-the <a href="https://github.com/GoalSmashers/clean-css">Clean CSS</a> is also available with
-the <code>--clean-css</code> <a href="https://github.com/less/less-plugin-clean-css">plugin</a>.</p>
-<p>To see all the command line options run lessc without parameters or see <a href="usage/index.html">Usage</a>.</p>
+<p>To output minified you can CSS use <a href="https://github.com/less/less-plugin-clean-css"><code>clean-css</code> plugin</a>. When the plugin is installed, a minified CSS output is specified with <code>--clean-css</code> option: </p>
+<pre><code class="lang-bash">$ lessc --clean-css styles.less styles.min.css
+</code></pre>
+<p>To see all the command line options run <code>lessc</code> without parameters or see <a href="usage/index.html">Usage</a>.</p>
 <h2 class="docs-heading">Usage in Code<span class="anchor-target" id="using-less-usage-in-code"></span>
 <a href="#using-less-usage-in-code" name="using-less-usage-in-code" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>You can invoke the compiler from node, as such:</p>

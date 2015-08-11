@@ -236,7 +236,11 @@
 <h3 class="docs-heading">Clean CSS<span class="anchor-target" id="v2-upgrade-guide-clean-css"></span>
 <a href="#v2-upgrade-guide-clean-css" name="v2-upgrade-guide-clean-css" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>We have removed the dependency on clean css and moved it to a <a href="https://github.com/less/less-plugin-clean-css">plugin</a>.
-This allows us to 1. update the dependency and integration without a less release 2. Does not tie people who do not use clean css into having it downloaded by npm.</p>
+This allows us to:</p>
+<ol>
+<li>update the dependency and integration without a less release</li>
+<li>not tie people who do not use clean css into having it downloaded by npm.</li>
+</ol>
 <p>The usage is similar, just install the plugin (<code>npm install -g less-plugin-clean-css</code>) then tell less to use it by using the
 <code>--clean-css</code> argument.</p>
 <pre><code class="lang-bash"><span class="hljs-comment"># old</span>
@@ -335,7 +339,7 @@ $ lessc -x bootstrap.less bootstrap.css
 <h4 class="docs-heading">Help<span class="anchor-target" id="command-line-usage-help"></span>
 <a href="#command-line-usage-help" name="command-line-usage-help" class="anchor glyphicon glyphicon-link"></a></h4>
 <pre><code class="lang-bash">lessc --help
-lessc --h
+lessc -h
 </code></pre>
 <p>Prints a help message with available options and exits.</p>
 <h4 class="docs-heading">Include Paths<span class="anchor-target" id="command-line-usage-include-paths"></span>
@@ -368,7 +372,7 @@ lessc --depends
 <h4 class="docs-heading">Lint<span class="anchor-target" id="command-line-usage-lint"></span>
 <a href="#command-line-usage-lint" name="command-line-usage-lint" class="anchor glyphicon glyphicon-link"></a></h4>
 <pre><code class="lang-bash">lessc --lint
-lessc -<span class="hljs-operator">-l</span>
+lessc <span class="hljs-operator">-l</span>
 </code></pre>
 <p>Runs the less parser and just reports errors without any output.</p>
 <h4 class="docs-heading">Silent<span class="anchor-target" id="command-line-usage-silent"></span>
@@ -895,6 +899,10 @@ less = {
 <tr>
 <td><a href="https://github.com/seven-phases-max/less-plugin-functions">functions</a></td>
 <td>Write custom Less functions in Less itself</td>
+</tr>
+<tr>
+<td><a href="https://github.com/just-boris/less-plugin-glob">glob</a></td>
+<td>Globbing support in Less imports</td>
 </tr>
 <tr>
 <td><a href="https://github.com/bassjobsen/less-plugin-group-css-media-queries">group-css-media-queries</a></td>

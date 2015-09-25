@@ -110,7 +110,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.5.1 has been released -
+    less v2.5.3 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -365,19 +365,28 @@
 </code></pre>
 <h3 class="docs-heading">Operations<span class="anchor-target" id="features-overview-feature-operations"></span>
 <a href="#features-overview-feature-operations" name="features-overview-feature-operations" class="anchor glyphicon glyphicon-link"></a></h3>
-<p>Any number, color or variable can be operated on. Here are a couple of examples:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-number">5%</span>;
-<span class="hljs-variable">@filler:</span> <span class="hljs-variable">@base</span> * <span class="hljs-number">2</span>;
-<span class="hljs-variable">@other:</span> <span class="hljs-variable">@base</span> + <span class="hljs-variable">@filler</span>;
+<p>Arithmetical operations <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> can operate on any number, color or variable. If it is possible, mathematical operations take units into account and convert numbers before adding, subtracting or comparing them. The result has leftmost explicitly stated unit type. If the conversion is impossible or not meaningful, units are ignored. Example of impossible conversion: px to cm or rad to %.</p>
+<pre><code class="lang-less"><span class="hljs-comment">// numbers are converted into the same units</span>
+<span class="hljs-variable">@conversion-1:</span> <span class="hljs-number">5cm</span> + <span class="hljs-number">10mm</span>; <span class="hljs-comment">// result is 6cm</span>
+<span class="hljs-variable">@conversion-2:</span> <span class="hljs-number">2</span> - <span class="hljs-number">3cm</span> - <span class="hljs-number">5mm</span>; <span class="hljs-comment">// result is 1.5cm</span>
 
-<span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#888</span> / <span class="hljs-number">4</span>;
-<span class="hljs-attribute">background-color</span>: <span class="hljs-variable">@base-color</span> + <span class="hljs-hexcolor">#111</span>;
-<span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span> / <span class="hljs-number">2</span> + <span class="hljs-variable">@filler</span>;
+<span class="hljs-comment">// conversion is impossible</span>
+<span class="hljs-variable">@incompatible-units:</span> <span class="hljs-number">2</span> + <span class="hljs-number">5px</span> - <span class="hljs-number">3cm</span>; <span class="hljs-comment">// result is 4px</span>
+
+<span class="hljs-comment">// example with variables</span>
+<span class="hljs-variable">@base:</span> <span class="hljs-number">5%</span>;
+<span class="hljs-variable">@filler:</span> <span class="hljs-variable">@base</span> * <span class="hljs-number">2</span>; <span class="hljs-comment">// result is 10%</span>
+<span class="hljs-variable">@other:</span> <span class="hljs-variable">@base</span> + <span class="hljs-variable">@filler</span>; <span class="hljs-comment">// result is 15%</span>
 </code></pre>
-<p>The output is pretty much what you expect&#x2014;Less understands the difference between colors and units. If a unit is used in an operation, like in:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@var:</span> <span class="hljs-number">1px</span> + <span class="hljs-number">5</span>;
+<p>Multiplication and division do not convert numbers. It would not be meaningful in most cases - a length multiplied by a length gives an area and css does not support specifying areas. Less will operate on numbers as they are and assign explicitly stated unit type to the result.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-number">2cm</span> * <span class="hljs-number">3mm</span>; <span class="hljs-comment">// result is 6cm</span>
 </code></pre>
-<p>Less will use that unit for the final output&#x2014;<code>6px</code> in this case.</p>
+<p>Colors are split into their red, green, blue and alpha dimensions. The operation is applied to each color dimension separately. E.g., if the user added two colors, then the green dimension of the result is equal to sum of green dimensions of input colors. If the user multiplied a color by a number, each color dimension will get multiplied.</p>
+<p>Note: arithmetic operation on alpha is not defined, because math operation on colors do not have standard agreed upon meaning. Do not rely on current implemention as it <a href="https://github.com/less/less.js/issues/2694">may change</a> in later versions.</p>
+<p>An operation on colors always produces valid color. If some color dimension of the result ends up being bigger than <code>ff</code> or smaller than <code>00</code>, the dimension is rounded to either <code>ff</code> or <code>00</code>. If alpha ends up being bigger than <code>1.0</code> or smaller than <code>0.0</code>, the alpha is rounded to either <code>1.0</code> or <code>0.0</code>.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@color:</span> <span class="hljs-hexcolor">#224488</span> / <span class="hljs-number">2</span>; <span class="hljs-comment">//results in #112244</span>
+<span class="hljs-attribute">background-color</span>: <span class="hljs-hexcolor">#112244</span> + <span class="hljs-hexcolor">#111</span>; <span class="hljs-comment">// result is #223355</span>
+</code></pre>
 <h3 class="docs-heading">Escaping<span class="anchor-target" id="features-overview-feature-escaping"></span>
 <a href="#features-overview-feature-escaping" name="features-overview-feature-escaping" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>Escaping allows you to use any arbitrary string as property or variable value. Anything inside <code>~&quot;anything&quot;</code> or <code>~&apos;anything&apos;</code> is used as is with no changes except <a href="#variables-feature-variable-interpolation">interpolation</a>.</p>
@@ -2616,7 +2625,7 @@ For example, when using Modernizr, you might want to specify different rules bas
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.5.1</li>
+      <li>Currently v2.5.3</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

@@ -110,7 +110,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.5.1 has been released -
+    less v2.5.3 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -157,6 +157,7 @@
 <li><a href="#online-less-compilers--leafo-net-lessphp-editor-http-leafo-net-lessphp-editor-html-">leafo.net/lessphp/editor</a></li>
 <li><a href="#online-less-compilers--precess-http-precess-co-">precess</a></li>
 <li><a href="#online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-">estFiddle</a></li>
+<li><a href="#online-less-compilers--iless-http-demo-iless-rhcloud-com-">ILess</a></li>
 <li><a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support">Online Web IDEs/Playgrounds with Less support</a></li>
 <li><a href="#online-less-compilers--cssdeck-labs-http-cssdeck-com-labs-">CSSDeck Labs</a></li>
 <li><a href="#online-less-compilers--codepen-http-codepen-io-">CodePen</a></li>
@@ -582,7 +583,7 @@ consider that mobile devices will compile slower. For development consider if us
 be better suited.</p>
 <p>To use less in the browser, you firstly need to include the less script.</p>
 <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- Here: include any less plugin scripts, any required browser shims and optionally set less = any options  --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>This will find any less style tags on the page</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;styles.less&quot;</span> /&gt;</span>
@@ -591,20 +592,20 @@ be better suited.</p>
 <h3 class="docs-heading">Setting Options<span class="anchor-target" id="using-less-in-the-browser-setting-options"></span>
 <a href="#using-less-in-the-browser-setting-options" name="using-less-in-the-browser-setting-options" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>You can set options either programmatically, by setting them on a less object before the script tag - this then effects all initial link tags and programmatic usage of less.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
   less = {
     env: <span class="hljs-string">&quot;development&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>The other way is to specify the options on the script tag, e.g.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">
   less = {
     env: <span class="hljs-string">&quot;development&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-env</span>=<span class="hljs-value">&quot;development&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span> <span class="hljs-attribute">data-env</span>=<span class="hljs-value">&quot;development&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>And you can also do this on link tags to override certain settings (some less settings like verbose are global and can not be overridden).</p>
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">data-dump-line-numbers</span>=<span class="hljs-value">&quot;all&quot;</span> <span class="hljs-attribute">data-global-vars</span>=<span class="hljs-value">&apos;{ &quot;myvar&quot;: &quot;#ddffee&quot;, &quot;mystr&quot;: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attribute">rel</span>=<span class="hljs-value">&quot;stylesheet/less&quot;</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">&quot;text/css&quot;</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">&quot;less/styles.less&quot;</span>&gt;</span>
@@ -619,9 +620,9 @@ be better suited.</p>
 <h3 class="docs-heading">Watch Mode<span class="anchor-target" id="using-less-in-the-browser-watch-mode"></span>
 <a href="#using-less-in-the-browser-watch-mode" name="using-less-in-the-browser-watch-mode" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>To enable Watch mode, option <code>env</code> must be set to <code>development</code>. Then AFTER the less.js file is included, call <code>less.watch()</code>, like this:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">less = { env: <span class="hljs-string">&apos;development&apos;</span>};</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">less.watch();</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="actionscript">less = { env: <span class="hljs-string">&apos;development&apos;</span>};</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="undefined">less.watch();</span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <p>Alternatively, you can enable Watch mode temporarily by appending <code>#!watch</code> to the URL.</p>
 <h3 class="docs-heading">Modify Variables<span class="anchor-target" id="using-less-in-the-browser-modify-variables"></span>
@@ -645,7 +646,7 @@ be better suited.</p>
   less = {
     env: <span class="hljs-string">&quot;development&quot;</span>,
     logLevel: <span class="hljs-number">2</span>,
-    async: <span class="hljs-literal">false</span>,
+    <span class="hljs-keyword">async</span>: <span class="hljs-literal">false</span>,
     fileAsync: <span class="hljs-literal">false</span>,
     poll: <span class="hljs-number">1000</span>,
     functions: {},
@@ -658,7 +659,7 @@ be better suited.</p>
     rootpath: <span class="hljs-string">&quot;:/a.com/&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <h4 class="docs-heading">async<span class="anchor-target" id="using-less-in-the-browser-async"></span>
 <a href="#using-less-in-the-browser-async" name="using-less-in-the-browser-async" class="anchor glyphicon glyphicon-link"></a></h4>
@@ -701,7 +702,7 @@ Default: depends on page URL</p>
 <p>e.g.</p>
 <pre><code class="lang-js">less = {
     functions: {
-        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+        myfunc: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
             <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span>(less.tree.Dimension)(<span class="hljs-number">1</span>);
         }
     }
@@ -840,21 +841,21 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 <p>In Node, require the plugin and pass it to less in an array as an option plugins. E.g.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> myPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;my-plugin&quot;</span>);
 less.render(myCSS, { plugins: [myPlugin] })
-   .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(output)</span> </span>{
+   .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{
     },
-    <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
     });
 </code></pre>
 <h2 class="docs-heading">In the Browser<span class="anchor-target" id="plugins-in-the-browser"></span>
 <a href="#plugins-in-the-browser" name="plugins-in-the-browser" class="anchor glyphicon glyphicon-link"></a></h2>
 <p>Plugin authors should provide a javascript file, just include that in the page <em>before</em> the less.js script.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;plugin.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="javascript">
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;plugin.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span><span class="undefined">
 less = { 
     plugins: [plugin]
 };
 </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>  
-<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.min.js&quot;</span>&gt;</span><span class="javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;less.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 <h2 class="docs-heading">List of Less Plugins<span class="anchor-target" id="plugins-list-of-less-plugins"></span>
 <a href="#plugins-list-of-less-plugins" name="plugins-list-of-less-plugins" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -999,7 +1000,7 @@ less = {
 <p>Less supports some entry points that allow an author to integrate with less. We may add some more in the future.</p>
 <p>The plugin itself has a very simple signature, like this</p>
 <pre><code class="lang-js">{
-    install: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(less, pluginManager)</span> </span>{
+    install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager</span>) </span>{
     },
     minVersion: [<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>] <span class="hljs-comment">/* optional */</span>
 }
@@ -1007,11 +1008,11 @@ less = {
 <p>So, the plugin gets the less object, which in v2 has more classes on it (making it easy to extend), a plugin manager which provides some hooks to add visitors, file managers and post processors.</p>
 <p>If your plugin supports <code>lessc</code>, there are a few more details and the signature looks like this</p>
 <pre><code class="lang-js">{
-    install: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(less, pluginManager)</span> </span>{
+    install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager</span>) </span>{
     },
-    setOptions: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(argumentString)</span> </span>{ <span class="hljs-comment">/* optional */</span>
+    setOptions: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">argumentString</span>) </span>{ <span class="hljs-comment">/* optional */</span>
     },
-    printUsage: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">/* optional */</span>
+    printUsage: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">/* optional */</span>
     },
     minVersion: [<span class="hljs-number">2</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>] <span class="hljs-comment">/* optional */</span>
 }
@@ -1057,36 +1058,36 @@ less = {
 
 <p>The main entry point into less is the less.render function. This takes the following format</p>
 <pre><code class="lang-js">less.render(lessInput, options)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(output)</span> </span>{
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{
         <span class="hljs-comment">// output.css = string of css</span>
         <span class="hljs-comment">// output.map = string of sourcemap</span>
         <span class="hljs-comment">// output.imports = array of string filenames of the imports referenced</span>
     },
-    <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error)</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
     });
 
 <span class="hljs-comment">// or...</span>
 
-less.render(css, options, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(error, output)</span> </span>{})
+less.render(css, options, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, output</span>) </span>{})
 </code></pre>
 <p>The options argument is optional. If you specify a callback then a promise will not be returned, where as if you do not specify a callback a promise will be given.
 Under the hood, the callback version is used so that less can be used synchronously.</p>
 <p>If you wanted to render a file, you would first read it into a string (to pass to less.render) and then set the filename field on options to be the filename of the main file. less will handle all the processing of the imports.</p>
 <p>The <code>sourceMap</code> option is an object which enables you to set sub sourcemap options. Available sub options are: <code>sourceMapURL</code>,<code>sourceMapBasepath</code>,<code>sourceMapRootpath</code>,<code>outputSourceFiles</code> and <code>sourceMapFileInline</code>. Notice that the <code>sourceMap</code> option is not available for the less.js in browser compiler now.</p>
 <pre><code class="lang-js">less.render(lessInput)
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(output)</span> </span>{
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{
         <span class="hljs-comment">// output.css = string of css</span>
         <span class="hljs-comment">// output.map = undefined</span>
 }
 <span class="hljs-comment">//,</span>
 less.render(lessInput, {sourceMap: {}})
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(output)</span> </span>{
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{
         <span class="hljs-comment">// output.css = string of css</span>
         <span class="hljs-comment">// output.map = string of sourcemap</span>
 }
 <span class="hljs-comment">//or,</span>
 less.render(lessInput, {sourceMap: {sourceMapFileInline: <span class="hljs-literal">true</span>}})
-    .then(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(output)</span> </span>{
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{
         <span class="hljs-comment">// output.css = string of css \n /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJ..= */</span>
         <span class="hljs-comment">// output.map = undefined</span>
 }
@@ -1097,13 +1098,13 @@ less.render(lessInput, {sourceMap: {sourceMapFileInline: <span class="hljs-liter
 <a href="#programmatic-usage-getting-access-to-the-log" name="programmatic-usage-getting-access-to-the-log" class="anchor glyphicon glyphicon-link"></a></h3>
 <p>You can add a log listener with the following code</p>
 <pre><code class="lang-js">less.logger.addListener({
-    debug: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(msg)</span> </span>{
+    debug: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg</span>) </span>{
     },
-    info: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(msg)</span> </span>{
+    info: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg</span>) </span>{
     },
-    warn: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(msg)</span> </span>{
+    warn: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg</span>) </span>{
     },
-    error: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(msg)</span> </span>{
+    error: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">msg</span>) </span>{
     }
 });
 </code></pre>
@@ -1178,6 +1179,11 @@ less.render(lessInput, {sourceMap: {sourceMapFileInline: <span class="hljs-liter
 <a href="#online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-" name="online-less-compilers--estfiddle-http-ecomfe-github-io-est-fiddle-" class="anchor glyphicon glyphicon-link"></a></h3>
 <blockquote>
 <p>Online Less compiler providing live demo for Less and <a href="http://ecomfe.github.io/est/">est</a>. Allowing users to switch among all versions of Less after <code>1.4.0</code> with optional est/Autoprefixer functionalities.</p>
+</blockquote>
+<h3 class="docs-heading"><a href="http://demo-iless.rhcloud.com/">ILess</a><span class="anchor-target" id="online-less-compilers--iless-http-demo-iless-rhcloud-com-"></span>
+<a href="#online-less-compilers--iless-http-demo-iless-rhcloud-com-" name="online-less-compilers--iless-http-demo-iless-rhcloud-com-" class="anchor glyphicon glyphicon-link"></a></h3>
+<blockquote>
+<p>Live demo of  <a href="https://github.com/mishal/iless">ILess</a> PHP compiler</p>
 </blockquote>
 <h2 class="docs-heading">Online Web IDEs/Playgrounds with Less support<span class="anchor-target" id="online-less-compilers-online-web-ides-playgrounds-with-less-support"></span>
 <a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support" name="online-less-compilers-online-web-ides-playgrounds-with-less-support" class="anchor glyphicon glyphicon-link"></a></h2>
@@ -1876,7 +1882,7 @@ the npm import plugin implementation.</p>
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.5.1</li>
+      <li>Currently v2.5.3</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

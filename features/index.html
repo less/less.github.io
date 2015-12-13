@@ -371,7 +371,7 @@
 <p>Arithmetical operations <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code> can operate on any number, color or variable. If it is possible, mathematical operations take units into account and convert numbers before adding, subtracting or comparing them. The result has leftmost explicitly stated unit type. If the conversion is impossible or not meaningful, units are ignored. Example of impossible conversion: px to cm or rad to %.</p>
 <pre><code class="lang-less"><span class="hljs-comment">// numbers are converted into the same units</span>
 <span class="hljs-variable">@conversion-1:</span> <span class="hljs-number">5cm</span> + <span class="hljs-number">10mm</span>; <span class="hljs-comment">// result is 6cm</span>
-<span class="hljs-variable">@conversion-2:</span> <span class="hljs-number">2</span> - <span class="hljs-number">3cm</span> - <span class="hljs-number">5mm</span>; <span class="hljs-comment">// result is 1.5cm</span>
+<span class="hljs-variable">@conversion-2:</span> <span class="hljs-number">2</span> - <span class="hljs-number">3cm</span> - <span class="hljs-number">5mm</span>; <span class="hljs-comment">// result is -1.5cm</span>
 
 <span class="hljs-comment">// conversion is impossible</span>
 <span class="hljs-variable">@incompatible-units:</span> <span class="hljs-number">2</span> + <span class="hljs-number">5px</span> - <span class="hljs-number">3cm</span>; <span class="hljs-comment">// result is 4px</span>

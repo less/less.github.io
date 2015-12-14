@@ -6172,22 +6172,8 @@ h3 {
 html {
   font-size: 16px;
 }
-@media (min-width: 48em) {
-  html {
-    font-size: 20px;
-  }
-}
 img {
   max-width: 100%;
-}
-body {
-  font: 1rem/1.5 "PT Sans", sans-serif;
-  color: #5a5a5a;
-  background: #f7f7f7;
-  padding-top: 60px;
-}
-.about {
-  font-size: 16px;
 }
 /*
  * Advertisement that shows on all pages (except homepage) in page headers.
@@ -6442,6 +6428,11 @@ body {
 .docs-content .container-fluid {
   padding: 0;
 }
+@media (max-width: 767px) {
+  .docs-content {
+    padding: 1px 20px;
+  }
+}
 .docs-content {
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -6512,6 +6503,8 @@ body {
   .sidebar.affix {
     position: fixed;
     top: 45px;
+    bottom: 0;
+    overflow: auto;
   }
   .sidebar.affix-bottom {
     position: absolute;

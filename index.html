@@ -113,7 +113,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.6.1 has been released -
+    less v2.7.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -137,7 +137,7 @@
 <li><a href="#client-side-usage">Client-side Usage</a><ul class="nav"><li><a href="#client-side-usage-tips">Tips</a></li>
 <li><a href="#client-side-usage-browser-options">Browser Options</a></li></ul></li>
 <li><a href="#download-options">Get Less.js</a><ul class="nav"><li><a href="#download-options-browser-downloads">Browser downloads</a></li>
-<li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-6-1-less-min-js-">Less CDN</a></li></ul></li>
+<li><a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-7-1-less-min-js-">Less CDN</a></li></ul></li>
 <li><a href="#license-faqs">License FAQs</a></li></ul></div>
           </div>
         </div>
@@ -152,7 +152,7 @@
     <h1 class="docs-heading">Getting Started<span class="anchor-target" id="getting-started"></span>
 <a href="#getting-started" name="getting-started" class="anchor glyphicon glyphicon-link"></a></h1>
   </div>
-  <p>Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themable and extendable.</p>
+  <p>Less is a CSS pre-processor, meaning that it extends the CSS language, adding features that allow variables, mixins, functions and many other techniques that allow you to make CSS that is more maintainable, themeable and extendable.</p>
 <p>Less runs inside Node, in the browser and inside Rhino. There are also many 3rd party tools that allow you to compile your files and watch for changes. The quickest place for first experiments with less is our <a href="http://lesscss.org/less-preview/">online editor</a>.</p>
 <p>For example:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-hexcolor">#f938ab</span>;
@@ -208,7 +208,7 @@ detailed information.</p>
 <p>This will output the compiled CSS to <code>stdout</code>. To save the CSS result to a file of your choice use:</p>
 <pre><code class="lang-bash">$ lessc styles.less styles.css
 </code></pre>
-<p>To output minified you can CSS use <a href="https://github.com/less/less-plugin-clean-css"><code>clean-css</code> plugin</a>. When the plugin is installed, a minified CSS output is specified with <code>--clean-css</code> option: </p>
+<p>To output minified CSS you can use the <a href="https://github.com/less/less-plugin-clean-css"><code>clean-css</code> plugin</a>. When the plugin is installed, a minified CSS output is specified with <code>--clean-css</code> option: </p>
 <pre><code class="lang-bash">$ lessc --clean-css styles.less styles.min.css
 </code></pre>
 <p>To see all the command line options run <code>lessc</code> without parameters or see <a href="usage/index.html">Usage</a>.</p>
@@ -315,11 +315,11 @@ This will compile styles.less file and save the result to styles.css file. The o
 
   <h2 class="docs-heading">Browser downloads<span class="anchor-target" id="download-options-browser-downloads"></span>
 <a href="#download-options-browser-downloads" name="download-options-browser-downloads" class="anchor glyphicon glyphicon-link"></a></h2>
-  <a class="btn btn-default" href="https://raw.github.com/less/less.js/v2.6.1/dist/less.min.js">Download Less.js v2.6.1</a>
+  <a class="btn btn-default" href="https://raw.github.com/less/less.js/v2.7.1/dist/less.min.js">Download Less.js v2.7.1</a>
 
   <div class="docs-dl-options">
-    <h4 class="docs-heading"><a href="https://github.com/less/less.js/archive/v2.6.1.zip">Download Source Code</a><span class="anchor-target" id="download-options--download-source-code-https-github-com-less-less-js-archive-v2-6-1-zip-"></span>
-<a href="#download-options--download-source-code-https-github-com-less-less-js-archive-v2-6-1-zip-" name="download-options--download-source-code-https-github-com-less-less-js-archive-v2-6-1-zip-" class="anchor glyphicon glyphicon-link"></a></h4>
+    <h4 class="docs-heading"><a href="https://github.com/less/less.js/archive/v2.7.1.zip">Download Source Code</a><span class="anchor-target" id="download-options--download-source-code-https-github-com-less-less-js-archive-v2-7-1-zip-"></span>
+<a href="#download-options--download-source-code-https-github-com-less-less-js-archive-v2-7-1-zip-" name="download-options--download-source-code-https-github-com-less-less-js-archive-v2-7-1-zip-" class="anchor glyphicon glyphicon-link"></a></h4>
 <p>Get the latest Less.js source code by downloading it directly from GitHub.</p>
 <h4 class="docs-heading"><a href="https://github.com/less/less.js.git">Clone or Fork via GitHub</a><span class="anchor-target" id="download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-"></span>
 <a href="#download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-" name="download-options--clone-or-fork-via-github-https-github-com-less-less-js-git-" class="anchor glyphicon glyphicon-link"></a></h4>
@@ -333,9 +333,9 @@ This will compile styles.less file and save the result to styles.css file. The o
   </div>
 
   <div class="cdn-options">
-    <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.6.1/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-6-1-less-min-js-"></span>
-<a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-6-1-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-6-1-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.6.1/less.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+    <h3 class="docs-heading"><a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js">Less CDN</a><span class="anchor-target" id="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-7-1-less-min-js-"></span>
+<a href="#download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-7-1-less-min-js-" name="download-options--less-cdn-cdnjs-cloudflare-com-ajax-libs-less-js-2-7-1-less-min-js-" class="anchor glyphicon glyphicon-link"></a></h3>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">&quot;//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
 </code></pre>
 
   </div>
@@ -406,7 +406,7 @@ This will compile styles.less file and save the result to styles.css file. The o
     <p>Less.js and these docs are maintained by <a href="about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.6.1</li>
+      <li>Currently v2.7.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

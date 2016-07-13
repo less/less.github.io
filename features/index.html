@@ -113,7 +113,7 @@
 
 <div class="banner">
   <div class="container">
-    less v2.6.1 has been released -
+    less v2.7.1 has been released -
     <strong>
       <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">See what&apos;s new</a>
     </strong>
@@ -711,7 +711,7 @@ style comment! */</span>
 <blockquote>
 <p>Extend is a Less pseudo-class which merges the selector it is put on with ones that match what it references.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <pre><code class="lang-less"><span class="hljs-tag">nav</span> <span class="hljs-tag">ul</span> {
   <span class="hljs-keyword">&amp;</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.inline</span>);
   <span class="hljs-attribute">background</span>: blue;
@@ -1707,7 +1707,7 @@ overridden:</p>
 <blockquote>
 <p>Allow wrapping of a css block, defined in a mixin</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.7.0</a></p>
 <p>A detached ruleset is a group of css properties, nested rulesets, media declarations or anything else stored in a variable. You can include it into a ruleset or another structure and all its properties are going to be copied there. You can also use it as a mixin argument and pass it around as any other variable.</p>
 <p>Simple example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// declare detached ruleset</span>
@@ -1726,8 +1726,8 @@ overridden:</p>
 <p>Parentheses after a detached ruleset call are mandatory. The call <code>@detached-ruleset;</code> would NOT work.</p>
 <p>It is useful when you want to define a mixin that abstracts out either wrapping a piece of code in a media query or a non-supported browser class name. The rulesets can be passed to mixin so that the mixin can wrap the content, e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.desktop-and-old-ie</span>(<span class="hljs-variable">@rules</span>) {
-  <span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200</span>) { <span class="hljs-variable">@rules</span>(); }
-  <span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> <span class="hljs-keyword">&amp;</span>                       { <span class="hljs-variable">@rules</span>(); }
+  <span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200px</span>) { <span class="hljs-variable">@rules</span>(); }
+  <span class="hljs-tag">html</span><span class="hljs-class">.lt-ie9</span> <span class="hljs-keyword">&amp;</span>                         { <span class="hljs-variable">@rules</span>(); }
 }
 
 <span class="hljs-tag">header</span> {
@@ -1742,7 +1742,7 @@ overridden:</p>
 <pre><code class="lang-css"><span class="hljs-tag">header</span> {
   <span class="hljs-attribute">background-color</span>: blue;
 }
-<span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200</span>) {
+<span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200px</span>) {
   <span class="hljs-tag">header</span> {
     <span class="hljs-attribute">background-color</span>: red;
   }
@@ -1797,7 +1797,7 @@ overridden:</p>
 }
 </code></pre>
 <p>Private variables:</p>
-<pre><code class="lang-less"><span class="hljs-tag">detached-ruleset</span>: { 
+<pre><code class="lang-less"><span class="hljs-variable">@detached-ruleset:</span> { 
     <span class="hljs-variable">@color:</span>blue; <span class="hljs-comment">// this variable is private</span>
 };
 <span class="hljs-class">.caller</span> {
@@ -1976,7 +1976,7 @@ overridden:</p>
 <blockquote>
 <p>Use <code>@import (reference)</code> to import external files, but without adding the imported styles to the compiled output unless referenced.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (reference) &quot;foo.less&quot;;</code></p>
 <p>Imagine that <code>reference</code> marks every directive and selector with a <em>reference flag</em> in the imported file, imports as normal, but when the CSS is generated, &quot;reference&quot; selectors (as well as any media queries containing only reference selectors) are not output. <code>reference</code> styles will not show up in your generated CSS unless the reference styles are used as <a href="#mixins-feature">mixins</a> or <a href="#extend-feature">extended</a>.</p>
 <p>Additionally, <strong><code>reference</code></strong> produces different results depending on which method was used (mixin or extend):</p>
@@ -1995,7 +1995,7 @@ overridden:</p>
 <blockquote>
 <p>Use <code>@import (inline)</code> to include external files, but not process them.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example: <code>@import (inline) &quot;not-less-compatible.css&quot;;</code></p>
 <p>You will use this when a CSS file may not be Less compatible; this is because although Less supports most known standards CSS, it does not support comments in some places and does not support all known CSS hacks without modifying the CSS.</p>
 <p>So you can use this to include the file in the output so that all CSS will be in one file.</p>
@@ -2004,7 +2004,7 @@ overridden:</p>
 <blockquote>
 <p>Use <code>@import (less)</code> to treat imported files as Less, regardless of file extension.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (less) <span class="hljs-string">&quot;foo.css&quot;</span>;
 </code></pre>
@@ -2013,7 +2013,7 @@ overridden:</p>
 <blockquote>
 <p>Use <code>@import (css)</code> to treat imported files as regular CSS, regardless of file extension. This means the import statement will be left as it is.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (css) <span class="hljs-string">&quot;foo.less&quot;</span>;
 </code></pre>
@@ -2025,7 +2025,7 @@ overridden:</p>
 <blockquote>
 <p>The default behavior of <code>@import</code> statements. It means the file is imported only once and subsequent import statements for that file will be ignored.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>This is the default behavior of <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> (once) <span class="hljs-string">&quot;foo.less&quot;</span>;
@@ -2036,7 +2036,7 @@ overridden:</p>
 <blockquote>
 <p>Use <code>@import (multiple)</code> to allow importing of multiple files with the same name. This is the opposite behavior to once.</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.4.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.4.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// file: foo.less</span>
 <span class="hljs-class">.a</span> {
@@ -2059,7 +2059,7 @@ overridden:</p>
 <blockquote>
 <p>Use <code>@import (optional)</code> to allow importing of a file only when it exists. Without the <code>optional</code> keyword Less throws a FileError and stops compiling when importing a file that can not be found. </p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v2.3.0</a></p>
+<p>Released <a href="CHANGELOG.md">v2.3.0</a></p>
 
 
       <br>
@@ -2214,7 +2214,7 @@ overridden:</p>
 <blockquote>
 <p>&quot;if&quot;&apos;s around selectors</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Guards can also be applied to css selectors, which is syntactic sugar for declaring the mixin and then calling it immediately.</p>
 <p>For instance, before 1.5.0 you would have had to do this:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-optional-style</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@my-option</span> = true) {
@@ -2357,7 +2357,7 @@ overridden:</p>
 <blockquote>
 <p>Append property value with comma</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.5.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.5.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-attribute">box-shadow</span>+: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-hexcolor">#555</span>;
@@ -2377,7 +2377,7 @@ overridden:</p>
 <blockquote>
 <p>Append property value with space</p>
 </blockquote>
-<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
+<p>Released <a href="CHANGELOG.md">v1.7.0</a></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-attribute">transform</span>+_: <span class="hljs-function">scale</span>(<span class="hljs-number">2</span>);
@@ -2628,7 +2628,7 @@ For example, when using Modernizr, you might want to specify different rules bas
     <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.6.1</li>
+      <li>Currently v2.7.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>

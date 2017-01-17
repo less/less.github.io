@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Less extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
+">
+<meta name="author" content="The Core Less Team">
+
+<title>
+  Tools for Less | Less.js
+</title>
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif|Oxygen" rel="stylesheet">
+
+<!-- Main styles -->
+<link href="../public/css/index.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
+
+  </head>
+  <body class="tools">
+
+    
+    
+    
+    <div class="container docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="sidebar hidden-print" role="complementary">
+            <div id="navigation">
+  
+<ul class="nav sidenav"><li><a href="#frameworks-using-less">Frameworks Using Less</a><ul class="nav"><li><a href="#frameworks-using-less-ui-theme-frameworks-and-components">UI/Theme Frameworks and Components</a></li>
+<li><a href="#frameworks-using-less-grid-systems">Grid Systems</a></li>
+<li><a href="#frameworks-using-less-mixin-libraries">Mixin Libraries</a></li></ul></li>
+<li><a href="#editors-and-plugins">Editors and Editor Plugins</a><ul class="nav"><li><a href="#editors-and-plugins-editors-and-ides">Editors and IDEs</a></li>
+<li><a href="#editors-and-plugins--sublime-text-2-3-http-sublimetext-com-"><a href="http://sublimetext.com/">Sublime Text 2 &amp; 3</a></a></li>
+<li><a href="#editors-and-plugins--eclipse-http-www-eclipse-org-"><a href="http://www.eclipse.org/">Eclipse</a></a></li>
+<li><a href="#editors-and-plugins--komodo-edit-ide-http-komodoide-com-"><a href="http://komodoide.com/">Komodo Edit/IDE</a></a></li>
+<li><a href="#editors-and-plugins--visual-studio-http-www-visualstudio-com-"><a href="http://www.visualstudio.com/">Visual Studio</a></a></li>
+<li><a href="#editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-"><a href="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a></a></li>
+<li><a href="#editors-and-plugins--notepad-6-x-npp-"><a href="http://notepad-plus-plus.org/">Notepad++ 6.x</a></a></li></ul></li>
+<li><a href="#plugins">Less.js Plugins</a></li>
+<li><a href="#guis-for-less">GUIs for Less</a><ul class="nav"><li><a href="#guis-for-less-cross-platform">Cross platform</a></li>
+<li><a href="#guis-for-less--crunch-2-http-getcrunch-co-"><a href="http://getcrunch.co/">Crunch 2!</a></a></li>
+<li><a href="#guis-for-less--simpless-http-wearekiss-com-simpless-"><a href="http://wearekiss.com/simpless">SimpLESS</a></a></li>
+<li><a href="#guis-for-less--koala-http-koala-app-com-"><a href="http://koala-app.com/">Koala</a></a></li>
+<li><a href="#guis-for-less-specific-platforms">Specific platforms</a></li>
+<li><a href="#guis-for-less-windows">Windows</a></li>
+<li><a href="#guis-for-less-os-x">OS X</a></li>
+<li><a href="#guis-for-less-linux">Linux</a></li></ul></li>
+<li><a href="#online-less-compilers">Online Less Compilers</a><ul class="nav"><li><a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support">Online Web IDEs/Playgrounds with Less support</a></li></ul></li>
+<li><a href="#third-party-compilers">Third Party Compilers</a><ul class="nav"><li><a href="#third-party-compilers-node-js-compilers">Node.js Compilers</a></li>
+<li><a href="#third-party-compilers-other-technologies">Other Technologies</a></li></ul></li>
+<li><a href="#ports">Ports of Less.js</a><ul class="nav"><li><a href="#ports-java">Java</a></li>
+<li><a href="#ports--net">.Net</a></li>
+<li><a href="#ports-php">PHP</a></li>
+<li><a href="#ports-python">Python</a></li>
+<li><a href="#ports-ruby">Ruby</a></li>
+<li><a href="#ports-go">Go</a></li></ul></li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+          
+          <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li>
+          <a href="../#">Overview</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../usage/">Using Less.js</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../functions/">Functions</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../features/">In-Depth Guide</a>
+        </li>
+        
+
+        
+
+        
+        <li class="active">
+          <span>Tools</span>
+        </li>
+        
+
+       
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
+            <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
+            <li class="divider"></li>
+            <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+          
+<div class="panel docs-content">
+  
+
+<!-- Tools
+=================================== -->
+
+
+
+  <!-- Frameworks Using Less -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="frameworks-using-less"></span>
+<a href="#frameworks-using-less" name="frameworks-using-less" class="anchor glyphicon glyphicon-link"></a>Frameworks Using Less</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/frameworks-using-less.md" data-content="frameworks-using-lessmd" target="_blank"></a>
+
+
+
+<a id="frameworks-using-lessmd" href="https://github.com/less/less-docs/blob/master/content/tools/frameworks-using-less.md" target="_blank">Edit the markdown source for &quot;frameworks-using-less&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- frameworks-using-less -->
+       
+
+
+<h2 class="docs-heading"><span class="anchor-target" id="frameworks-using-less-ui-theme-frameworks-and-components"></span>
+<a href="#frameworks-using-less-ui-theme-frameworks-and-components" name="frameworks-using-less-ui-theme-frameworks-and-components" class="anchor glyphicon glyphicon-link"></a>UI/Theme Frameworks and Components</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://rriepe.github.io/1pxdeep/">1pxdeep</a></td>
+<td>Brings designing by relative visual weight, or designing with color schemes, to Bootstrap</td>
+</tr>
+<tr>
+<td><a href="http://github.com/ant-design/ant-design/">Ant Design</a></td>
+<td>An enterprise-class UI design language and React-based implementation.</td>
+</tr>
+<tr>
+<td><a href="http://www.flathemes.com/">Bootflat</a></td>
+<td>Open source Flat UI KIT based on Bootstrap</td>
+</tr>
+<tr>
+<td><a href="https://www.bootpress.org/">BootPress</a></td>
+<td>A PHP Framework with a built in Blog and Flat File CMS</td>
+</tr>
+<tr>
+<td><a href="http://getbootstrap.com/">Bootstrap</a></td>
+<td>Front-end framework for developing responsive, mobile first projects on the web</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/bootstrap-a11y-theme">Bootstrap a11y theme</a></td>
+<td>Makes web accessibility easier for Bootstrap developers</td>
+</tr>
+<tr>
+<td><a href="http://bootswatch.com/">Bootswatch</a></td>
+<td>Collection of free themes for Bootstrap</td>
+</tr>
+<tr>
+<td><a href="http://cardinalcss.com/">Cardinal</a></td>
+<td>Small &quot;mobile first&quot; CSS framework for front-end developers who build responsive web applications</td>
+</tr>
+<tr>
+<td><a href="https://github.com/firminoweb/csshorus">CSSH&#xF3;rus</a></td>
+<td>Library for development of responsive and mobile websites</td>
+</tr>
+<tr>
+<td><a href="http://designmodo.com/flat-free/">Flat UI Free</a></td>
+<td>Theme and framework for Bootstrap</td>
+</tr>
+<tr>
+<td><a href="https://github.com/vitto/frontsize-less">frontsize</a></td>
+<td>CSS front end framework</td>
+</tr>
+<tr>
+<td><a href="http://brunodsgn.github.io/InContent/">InContent</a></td>
+<td>Image content with description created with CSS</td>
+</tr>
+<tr>
+<td><a href="http://ink.sapo.pt/">Ink</a></td>
+<td>set of tools for quick development of web interfaces</td>
+</tr>
+<tr>
+<td><a href="http://jbst.eu/">JBST</a></td>
+<td>Theme framework that can be used as a standalone website builder or to create WordPress themes</td>
+</tr>
+<tr>
+<td><a href="http://www.knacss.com/">KNACSS</a></td>
+<td>Minimalist, responsive and extensible style sheet to kick-start your HTML / CSS projects</td>
+</tr>
+<tr>
+<td><a href="http://imperavi.com/kube/">Kube</a></td>
+<td>Minimalistic CSS-framework for developers and designers</td>
+</tr>
+<tr>
+<td><a href="http://metroui.org.ua/">Metro UI CSS</a></td>
+<td>Set of styles to create a site with an interface similar to Windows 8</td>
+</tr>
+<tr>
+<td><a href="http://madscript.com/pre/">Pre</a></td>
+<td>CSS framework</td>
+</tr>
+<tr>
+<td><a href="https://github.com/amazingSurge/prelude">prelude</a></td>
+<td>Lightweight, responsive and extensible front-end framework</td>
+</tr>
+<tr>
+<td><a href="http://danmalarkey.github.io/schema/">Schema</a></td>
+<td>Light, responsive, and lean frontend UI framework</td>
+</tr>
+<tr>
+<td><a href="http://www.semantic-ui.com/">Semantic UI</a></td>
+<td>UI component framework based around useful principles from natural language</td>
+</tr>
+<tr>
+<td><a href="http://getuikit.com/">UIkit</a></td>
+<td>Lightweight and modular front-end framework for developing web interfaces</td>
+</tr>
+<tr>
+<td><a href="http://bit.ly/ngBoilerplate">ngBoilerplate</a></td>
+<td>An opinionated kickstarter for AngularJS projects</td>
+</tr>
+<tr>
+<td><a href="http://github.com/metaskills/less-rails">less-rail</a></td>
+<td>Less.js for Rails</td>
+</tr>
+<tr>
+<td><a href="https://www.weepower.com">Wee</a></td>
+<td>Lightweight front-end framework for logically building complex, responsive web projects</td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-heading"><span class="anchor-target" id="frameworks-using-less-grid-systems"></span>
+<a href="#frameworks-using-less-grid-systems" name="frameworks-using-less-grid-systems" class="anchor glyphicon glyphicon-link"></a>Grid Systems</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://flexible.gs">Flexible Grid System</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/amazingSurge/adaptGrid">adaptGrid</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://fluidable.com/">Fluidable</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://goldengridsystem.com/">Golden Grid System</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/LESS-Zen-Grid">Less Zen Grid</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/chromice/order.less">Order.less</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="https://github.com/BuschFunker/responsibly">responsibly</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://responsiveboilerplate.com/">Responsive Boilerplate</a></td>
+<td></td>
+</tr>
+<tr>
+<td><a href="http://semantic.gs/">Semantic.gs</a></td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-heading"><span class="anchor-target" id="frameworks-using-less-mixin-libraries"></span>
+<a href="#frameworks-using-less-mixin-libraries" name="frameworks-using-less-mixin-libraries" class="anchor glyphicon glyphicon-link"></a>Mixin Libraries</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://mateuszkocz.github.io/3l/">3L</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/joshuapekera/animate">animate</a></td>
+<td>Library of CSS3 keyframe animations</td>
+</tr>
+<tr>
+<td><a href="http://clearleft.github.io/clearless/">Clearless</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="http://chrsr.com/css3lessplease/">Css3LessPlease</a></td>
+<td>Conversion of css3please.com to Less mixins</td>
+</tr>
+<tr>
+<td><a href="http://adodson.com/css-effects/">CssEffects</a></td>
+<td>Collection of CSS style effects</td>
+</tr>
+<tr>
+<td><a href="http://cssowl.owl-stars.com/">Cssowl</a></td>
+<td>Mixin library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/sparanoid/cube.less">cube.less</a></td>
+<td>Animated 3D cube using only CSS</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ecomfe/est/">est</a></td>
+<td>Mixin library</td>
+</tr>
+<tr>
+<td><a href="http://db0company.github.io/css-hexagon/">Hexagon</a></td>
+<td>Generate CSS hexagons with custom size and color</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pixelass/homeless">homeless</a></td>
+<td>Mixin library</td>
+</tr>
+<tr>
+<td><a href="http://lesselements.com/">Less Elements</a></td>
+<td>Set of mixins</td>
+</tr>
+<tr>
+<td><a href="http://lesshat.com/">Less Hat</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pixelass/lessley">lessley</a></td>
+<td>A jasmine like testing suite written in pure less</td>
+</tr>
+<tr>
+<td><a href="https://github.com/belyan/lessmore">Lessmore</a></td>
+<td>Mixins library. Cross-browser support for the CSS3 features and more</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielkatz/less-bidi">LESS-bidi</a></td>
+<td>Set of mixins for creating bi-directional styling</td>
+</tr>
+<tr>
+<td><a href="http://denysdovhan.github.io/LESS-Mix/">LESS-Mix</a></td>
+<td>Mixins library</td>
+</tr>
+<tr>
+<td><a href="https://github.com/himedlooff/media-query-to-type">media-query-to-type</a></td>
+<td>Media Queries to Media Types with Less</td>
+</tr>
+<tr>
+<td><a href="http://jasonrobb.github.io/More-Colors.less/">More-Colors.less</a></td>
+<td>Variables for easier color manipulation while you design in the browser</td>
+</tr>
+<tr>
+<td><a href="https://github.com/roelvanhintum/More-Less">more-less</a></td>
+<td>Mixin lib supporting Less 1.7</td>
+</tr>
+<tr>
+<td><a href="https://github.com/weinitz/More.less">More.less</a></td>
+<td>Mixins, animations, shapes and more</td>
+</tr>
+<tr>
+<td><a href="https://github.com/pixelass/more-or-less">more-or-less</a></td>
+<td>for-loops and other functions + css3 mixins</td>
+</tr>
+<tr>
+<td><a href="https://github.com/segundofdez/normalize.less">normalize.less</a></td>
+<td>Modularized famous normalize.css using less</td>
+</tr>
+<tr>
+<td><a href="http://oban.io/">Oban</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="http://getpreboot.com/">Preboot</a></td>
+<td>Collection of variables and mixins. The precursor to Bootstrap</td>
+</tr>
+<tr>
+<td><a href="https://github.com/amazingSurge/prelude-mixins">prelude-mixins</a></td>
+<td>Collection of mixins</td>
+</tr>
+<tr>
+<td><a href="https://github.com/fahad19/shape.less">Shape.LESS</a></td>
+<td>Collection of mixins for various shapes</td>
+</tr>
+<tr>
+<td><a href="https://github.com/therebelrobot/tRRtoolbelt.less">tRRtoolbelt.less</a></td>
+<td>Mixins and functions for common actions</td>
+</tr>
+</tbody>
+</table>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Editors and Editor Plugins -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="editors-and-plugins"></span>
+<a href="#editors-and-plugins" name="editors-and-plugins" class="anchor glyphicon glyphicon-link"></a>Editors and Editor Plugins</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/editors-and-plugins.md" data-content="editors-and-pluginsmd" target="_blank"></a>
+
+
+
+<a id="editors-and-pluginsmd" href="https://github.com/less/less-docs/blob/master/content/tools/editors-and-plugins.md" target="_blank">Edit the markdown source for &quot;editors-and-plugins&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- editors-and-plugins -->
+       
+
+
+<p>Also see: <a href="#guis-for-less">GUIs for Less.js</a></p>
+<h2 class="docs-heading"><span class="anchor-target" id="editors-and-plugins-editors-and-ides"></span>
+<a href="#editors-and-plugins-editors-and-ides" name="editors-and-plugins-editors-and-ides" class="anchor glyphicon glyphicon-link"></a>Editors and IDEs</h2>
+<ul>
+<li><a href="https://getcrunch.co/">Crunch 2!</a> (built-in compiling, debugging, and searching across @imports)</li>
+<li><a href="http://visualstudiogallery.msdn.microsoft.com/2b96d16a-c986-4501-8f97-8008f9db141a">Mindscape Web Workbench</a> (built-in support)</li>
+<li><a href="https://netbeans.org/downloads/">NetBeans</a> (built-in <a href="http://wiki.netbeans.org/NetBeans_74_NewAndNoteworthy#CSS_Preprocessors">syntax highlighting</a>)</li>
+<li><a href="https://github.com/appden/less.tmbundle">TextMate</a></li>
+<li><a href="https://github.com/groenewege/vim-less">Vim</a></li>
+<li><a href="https://github.com/purcell/less-css-mode">Emacs</a></li>
+<li><a href="http://www.jetbrains.com/webstorm/">jetBrains WebStorm</a> and <a href="http://www.jetbrains.com/phpstorm/">PhpStorm</a> (built-in support)</li>
+<li><a href="http://brackets.io/">Brackets</a> (built-in syntax highlighting, <a href="https://github.com/adobe/brackets/wiki/Brackets-Extensions">several extensions</a> for compilation)</li>
+<li><a href="http://www.codelobster.com/">CodeLobster</a> (built-in <a href="http://www.codelobster.com/sass_less.html">syntax highlighting</a>)</li>
+<li><a href="http://kineticwing.com/download">KineticWing IDE</a> (built-in <a href="http://kineticwing.com//assets/img/screenshots/LessEditor.png">support</a>)</li>
+<li><a href="https://www.npmjs.org/package/node-mirror">nodeMirror</a> (built-in support, built-in HTML/CSS/Less preview)</li>
+<li><a href="http://www.htmlkit.com/tools/">HTML-Kit Tools</a> (built-in support)</li>
+<li><a href="http://www.adobe.com/products/dreamweaver">Dreamweaver CC</a> (built-in support)</li>
+</ul>
+<h3 class="docs-heading"><span class="anchor-target" id="editors-and-plugins--sublime-text-2-3-http-sublimetext-com-"></span>
+<a href="#editors-and-plugins--sublime-text-2-3-http-sublimetext-com-" name="editors-and-plugins--sublime-text-2-3-http-sublimetext-com-" class="anchor glyphicon glyphicon-link"></a><a href="http://sublimetext.com/">Sublime Text 2 &amp; 3</a></h3>
+<ul>
+<li><a href="https://github.com/danro/Less-sublime" title="Sublime Text Package for Less.js">Less-sublime</a></li>
+<li><a href="https://github.com/timdouglas/sublime-less2css" title="Sublime Text Package for Less.js">Sublime-Less-to-CSS</a></li>
+<li><a href="https://github.com/berfarah/Less-build-sublime" title="Sublime Text Package for Less.js">Less-build-sublime</a></li>
+<li><a href="https://github.com/alexnj/SublimeOnSaveBuild" title="Sublime Text Package for Less.js">SublimeOnSaveBuild</a></li>
+</ul>
+<h3 class="docs-heading"><span class="anchor-target" id="editors-and-plugins--eclipse-http-www-eclipse-org-"></span>
+<a href="#editors-and-plugins--eclipse-http-www-eclipse-org-" name="editors-and-plugins--eclipse-http-www-eclipse-org-" class="anchor glyphicon glyphicon-link"></a><a href="http://www.eclipse.org/">Eclipse</a></h3>
+<ul>
+<li><a href="http://www.normalesup.org/~simonet/soft/ow/eclipse-less.en.html">Eclipse Less Plugin</a> by Vincent Simonet</li>
+<li><a href="https://github.com/gossi/eclipse-transpiler-plugin">Transpiler Plugin</a> by Thomas Gossmann</li>
+</ul>
+<h3 class="docs-heading"><span class="anchor-target" id="editors-and-plugins--komodo-edit-ide-http-komodoide-com-"></span>
+<a href="#editors-and-plugins--komodo-edit-ide-http-komodoide-com-" name="editors-and-plugins--komodo-edit-ide-http-komodoide-com-" class="anchor glyphicon glyphicon-link"></a><a href="http://komodoide.com/">Komodo Edit/IDE</a></h3>
+<ul>
+<li><a href="https://github.com/babobski/Komodo-LESS-Compiler">Komodo Less Compiler</a> by Bob de Haas</li>
+</ul>
+<h3 class="docs-heading"><span class="anchor-target" id="editors-and-plugins--visual-studio-http-www-visualstudio-com-"></span>
+<a href="#editors-and-plugins--visual-studio-http-www-visualstudio-com-" name="editors-and-plugins--visual-studio-http-www-visualstudio-com-" class="anchor glyphicon glyphicon-link"></a><a href="http://www.visualstudio.com/">Visual Studio</a></h3>
+<ul>
+<li><a href="http://visualstudiogallery.msdn.microsoft.com/dd5635b0-3c70-484f-abcb-cbdcabaa9923">CSS Is Less</a> (Visual Studio)</li>
+<li><a href="http://tinyurl.com/WebEssentials2012">Web Essentials 2012</a> (Visual Studio 2012)</li>
+<li><a href="http://vswebessentials.com/">Web Essentials 2013</a> (Visual Studio 2013)</li>
+<li><a href="http://www.asp.net/downloads">Web Tools 2013</a> (Visual Studio)</li>
+</ul>
+<h3 class="docs-heading"><span class="anchor-target" id="editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-"></span>
+<a href="#editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-" name="editors-and-plugins--dreamweaver-http-www-adobe-com-products-dreamweaver-html-" class="anchor glyphicon glyphicon-link"></a><a href="http://www.adobe.com/products/dreamweaver.html">Dreamweaver</a></h3>
+<ul>
+<li><a href="http://www.dmxzone.com/go/21514/dmxzone-less-css-compiler-features-unveiled/">DMXzone Less CSS Compiler</a></li>
+</ul>
+<h3 class="docs-heading"><span class="anchor-target" id="editors-and-plugins--notepad-6-x-npp-"></span>
+<a href="#editors-and-plugins--notepad-6-x-npp-" name="editors-and-plugins--notepad-6-x-npp-" class="anchor glyphicon glyphicon-link"></a><a href="http://notepad-plus-plus.org/">Notepad++ 6.x</a></h3>
+<ul>
+<li><a href="http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files#L">Less.js Syntax Highlighting</a> User Defined Language by Ra&#xFA;l Salitrero</li>
+<li><a href="https://github.com/azrafe7/LESS-for-Notepad-plusplus">Less.js Syntax Highlighting</a> User Defined Language by azrafe7</li>
+<li><a href="http://sourceforge.net/apps/mediawiki/notepad-plus/?title=User_Defined_Language_Files#How_to_install_user_defined_language_files" title="how to install User Defined Language files">How to Install</a></li>
+</ul>
+<!-- invisible links -->
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Less.js Plugins -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="plugins"></span>
+<a href="#plugins" name="plugins" class="anchor glyphicon glyphicon-link"></a>Less.js Plugins</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/plugins.md" data-content="pluginsmd" target="_blank"></a>
+
+
+
+<a id="pluginsmd" href="https://github.com/less/less-docs/blob/master/content/tools/plugins.md" target="_blank">Edit the markdown source for &quot;plugins&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- plugins -->
+       
+
+
+<blockquote>
+<p>Available Less plugins. Find more at the <a href="https://www.npmjs.com/search?q=%22less-plugin%22">NPM Registry</a></p>
+</blockquote>
+<h4 class="docs-heading"><span class="anchor-target" id="plugins-preprocessors"></span>
+<a href="#plugins-preprocessors" name="plugins-preprocessors" class="anchor glyphicon glyphicon-link"></a>Preprocessors</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/mediafreakch/less-plugin-sass2less">sass2less</a></td>
+<td>Convert SASS to LESS or import SASS files into your .less files and re-use varialbes, mixins and more </td>
+</tr>
+</tbody>
+</table>
+<h4 class="docs-heading"><span class="anchor-target" id="plugins-postprocessor-feature-plugins"></span>
+<a href="#plugins-postprocessor-feature-plugins" name="plugins-postprocessor-feature-plugins" class="anchor glyphicon glyphicon-link"></a>Postprocessor / Feature Plugins</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/less/less-plugin-autoprefix">Autoprefixer</a></td>
+<td>Add vendor prefixes</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-csscomb/">CSScomb</a></td>
+<td>Beautify/format</td>
+</tr>
+<tr>
+<td><a href="https://github.com/less/less-plugin-clean-css">clean-css</a></td>
+<td>Compress/minify</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-csswring">CSSWring</a></td>
+<td>Compress/minify</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-css-flip">css-flip</a></td>
+<td>Generate left-to-right (LTR) or right-to-left (RTL) CSS</td>
+</tr>
+<tr>
+<td><a href="https://github.com/seven-phases-max/less-plugin-functions">functions</a></td>
+<td>Write custom Less functions in Less itself</td>
+</tr>
+<tr>
+<td><a href="https://github.com/just-boris/less-plugin-glob">glob</a></td>
+<td>Globbing support in Less imports</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-group-css-media-queries">group-css-media-queries</a></td>
+<td>Group CSS media queries</td>
+</tr>
+<tr>
+<td><a href="https://github.com/less/less-plugin-inline-urls">inline-urls</a></td>
+<td>Convert <code>url()</code> to a call to <code>data-uri()</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/lesshint/lesshint">lesshint</a></td>
+<td>Lint your Less</td>
+</tr>
+<tr>
+<td><a href="https://github.com/less/less-plugin-npm-import">npm-import</a></td>
+<td>Import from npm packages</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-pleeease">pleeease</a></td>
+<td>Postprocess using pleeease</td>
+</tr>
+<tr>
+<td><a href="https://github.com/less/less-plugin-rtl">rtl</a></td>
+<td>Reverse from ltr to rtl</td>
+</tr>
+</tbody>
+</table>
+<h4 class="docs-heading"><span class="anchor-target" id="plugins-function-libraries"></span>
+<a href="#plugins-function-libraries" name="plugins-function-libraries" class="anchor glyphicon glyphicon-link"></a>Function Libraries</h4>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/less/less-plugin-advanced-color-functions/">advanced-color-functions</a></td>
+<td>Some advanced colour functions that helps in finding more contrasting </td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-cubehelix">cubehelix</a></td>
+<td><code>cubehelix(y,a,b,t)</code> function returns a color between the two colors a and b, using a gamma correction value of 1</td>
+</tr>
+<tr>
+<td><a href="https://github.com/seven-phases-max/less-plugin-lists">lists</a></td>
+<td>Lists/arrays manipulation functions library</td>
+</tr>
+</tbody>
+</table>
+<h4 class="docs-heading"><span class="anchor-target" id="plugins-framework-library-importers"></span>
+<a href="#plugins-framework-library-importers" name="plugins-framework-library-importers" class="anchor glyphicon glyphicon-link"></a>Framework/Library Importers</h4>
+<!-- currently false, but rewriting the file importer for less-node -->
+<p><em>Note: many of these are no longer necessary since Less.js can import NPM-installed libraries since v3.0.</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-bootstrap/">Bootstrap</a></td>
+<td>import Bootstrap</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Mercateo/less-plugin-bower-resolve">Bower Resolve</a></td>
+<td>import from a Bower package</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-cardinal">Cardinal CSS for less.js</a></td>
+<td>import Cardinal</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-flexboxgrid">Flexbox Grid</a></td>
+<td>import <a href="http://flexboxgrid.com/">Flexbox Grid</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-flexiblegs">Flexible Grid System</a></td>
+<td>import <a href="http://flexible.gs/">Flexible Grid System</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-ionic">Ionic</a></td>
+<td>import Ionic</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-lesshat/">Lesshat</a></td>
+<td>import Lesshat</td>
+</tr>
+<tr>
+<td><a href="https://github.com/bassjobsen/less-plugin-skeleton">Skeleton</a></td>
+<td>import Skeleton</td>
+</tr>
+</tbody>
+</table>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- GUIs for Less -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="guis-for-less"></span>
+<a href="#guis-for-less" name="guis-for-less" class="anchor glyphicon glyphicon-link"></a>GUIs for Less</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/guis-for-less.md" data-content="guis-for-lessmd" target="_blank"></a>
+
+
+
+<a id="guis-for-lessmd" href="https://github.com/less/less-docs/blob/master/content/tools/guis-for-less.md" target="_blank">Edit the markdown source for &quot;guis-for-less&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- guis-for-less -->
+       
+
+
+<p><span class="warning"><strong>Tip</strong>: try out the different Less tools available for your platform to see which one meets your needs.</span></p>
+<p><em>This page focuses on GUI compilers. For command line usage and tools see <a href="#command-line-usage">Command Line Usage</a>.</em></p>
+<h2 class="docs-heading"><span class="anchor-target" id="guis-for-less-cross-platform"></span>
+<a href="#guis-for-less-cross-platform" name="guis-for-less-cross-platform" class="anchor glyphicon glyphicon-link"></a>Cross platform</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="guis-for-less--crunch-2-http-getcrunch-co-"></span>
+<a href="#guis-for-less--crunch-2-http-getcrunch-co-" name="guis-for-less--crunch-2-http-getcrunch-co-" class="anchor glyphicon glyphicon-link"></a><a href="http://getcrunch.co/">Crunch 2!</a></h3>
+<blockquote>
+<p>The editor and compiler for awesome people.</p>
+</blockquote>
+<p>Crunch 2 is a cross-platform (Windows, Mac, and Linux) editor with integrated compiling. If you work with large Less projects, you should definitely try it out, as you only need the free version for Less files. Available at: <a href="http://getcrunch.co/">https://getcrunch.co/</a>.</p>
+<p><img src="http://getcrunch.co/wp-content/uploads/2015/10/crunch_retina2.jpg" alt="Crunch screenshot"></p>
+<h3 class="docs-heading"><span class="anchor-target" id="guis-for-less--simpless-http-wearekiss-com-simpless-"></span>
+<a href="#guis-for-less--simpless-http-wearekiss-com-simpless-" name="guis-for-less--simpless-http-wearekiss-com-simpless-" class="anchor glyphicon glyphicon-link"></a><a href="http://wearekiss.com/simpless">SimpLESS</a></h3>
+<blockquote>
+<p>SimpLess is a minimalistic Less compiler. Just drag, drop and compile.</p>
+</blockquote>
+<p>One of the unique features of SimpLess is that it supports &apos;prefixing&apos; your CSS by using <a href="http://prefixr.com">http://prefixr.com.</a>. SimpLess is built on the Titanium platform. Get more info: <a href="http://wearekiss.com/simpless">http://wearekiss.com/simpless</a></p>
+<p><img src="http://wearekiss.com/lib/img/simpless/app-windows.png?1" alt="SimpLess screenshot"></p>
+<h3 class="docs-heading"><span class="anchor-target" id="guis-for-less--koala-http-koala-app-com-"></span>
+<a href="#guis-for-less--koala-http-koala-app-com-" name="guis-for-less--koala-http-koala-app-com-" class="anchor glyphicon glyphicon-link"></a><a href="http://koala-app.com/">Koala</a></h3>
+<blockquote>
+<p>Koala is a cross-platform GUI application for compiling less, sass and coffeescript.</p>
+</blockquote>
+<p>Features: cross platform, compile error notification supports and compile options supports.</p>
+<p>Get more info: <a href="http://koala-app.com/">http://koala-app.com/</a></p>
+<p><img src="http://koala-app.com/img/screenshot.png" alt="koala screenshot"></p>
+<h4 class="docs-heading"><span class="anchor-target" id="guis-for-less--prepros-https-prepros-io-"></span>
+<a href="#guis-for-less--prepros-https-prepros-io-" name="guis-for-less--prepros-https-prepros-io-" class="anchor glyphicon glyphicon-link"></a><a href="https://prepros.io/">Prepros</a></h4>
+<blockquote>
+<p>Prepros is a tool to compile LESS, Sass, Compass, Stylus, Jade and much more.</p>
+</blockquote>
+<p>Get more info at <a href="https://prepros.io/">https://prepros.io/</a></p>
+<p><img src="https://prepros.io/img/shot-shadow.png" alt="Prepros screenshot"></p>
+<h2 class="docs-heading"><span class="anchor-target" id="guis-for-less-specific-platforms"></span>
+<a href="#guis-for-less-specific-platforms" name="guis-for-less-specific-platforms" class="anchor glyphicon glyphicon-link"></a>Specific platforms</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="guis-for-less-windows"></span>
+<a href="#guis-for-less-windows" name="guis-for-less-windows" class="anchor glyphicon glyphicon-link"></a>Windows</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="guis-for-less--winless-http-winless-org-"></span>
+<a href="#guis-for-less--winless-http-winless-org-" name="guis-for-less--winless-http-winless-org-" class="anchor glyphicon glyphicon-link"></a><a href="http://winless.org">WinLess</a></h4>
+<blockquote>
+<p>WinLess started out as a clone of Less.app, it takes a more feature-complete approach and has several settings. It also supports starting with command line arguments.</p>
+</blockquote>
+<p>Get more info: <a href="http://winless.org">http://winless.org</a></p>
+<p><img src="http://winless.org/style/images/WinLess_Screenshot.png" alt="WinLess screenshot"></p>
+<h3 class="docs-heading"><span class="anchor-target" id="guis-for-less-os-x"></span>
+<a href="#guis-for-less-os-x" name="guis-for-less-os-x" class="anchor glyphicon glyphicon-link"></a>OS X</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="guis-for-less--codekit-http-incident57-com-codekit-"></span>
+<a href="#guis-for-less--codekit-http-incident57-com-codekit-" name="guis-for-less--codekit-http-incident57-com-codekit-" class="anchor glyphicon glyphicon-link"></a><a href="http://incident57.com/codekit">CodeKit</a></h4>
+<blockquote>
+<p>CodeKit is the successor to LESS.app, and supports Less among many other preprocessing languages, such as SASS, Jade, Markdown, and many more.</p>
+</blockquote>
+<p>Get more info: <a href="http://incident57.com/codekit">http://incident57.com/codekit</a></p>
+<p><img src="http://incident57.com/codekit/images/screenshot-images.jpg" alt="CodeKit screenshot"></p>
+<h4 class="docs-heading"><span class="anchor-target" id="guis-for-less--livereload-http-livereload-com-"></span>
+<a href="#guis-for-less--livereload-http-livereload-com-" name="guis-for-less--livereload-http-livereload-com-" class="anchor glyphicon glyphicon-link"></a><a href="http://livereload.com">LiveReload</a></h4>
+<blockquote>
+<p>CSS edits and image changes apply live. CoffeeScript, SASS, Less and others just work.</p>
+</blockquote>
+<p>Get more info: <a href="http://livereload.com">http://livereload.com</a></p>
+<p><img src="http://assets.livereload.com/embedded-images/LiveReload-LESS-screenshot-on-white.png" alt="LiveReload screenshot"></p>
+<h3 class="docs-heading"><span class="anchor-target" id="guis-for-less-linux"></span>
+<a href="#guis-for-less-linux" name="guis-for-less-linux" class="anchor glyphicon glyphicon-link"></a>Linux</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="guis-for-less--plessc-https-github-com-mte90-plessc-"></span>
+<a href="#guis-for-less--plessc-https-github-com-mte90-plessc-" name="guis-for-less--plessc-https-github-com-mte90-plessc-" class="anchor glyphicon glyphicon-link"></a><a href="https://github.com/Mte90/Plessc">Plessc</a></h4>
+<blockquote>
+<p>Plessc is a gui fronted made with PyQT.</p>
+</blockquote>
+<p>Auto compile, log viewer, open the less file with the editor chosen, settings for compile the file.
+Get more info: <a href="https://github.com/Mte90/Plessc">https://github.com/Mte90/Plessc</a></p>
+<p><img src="https://github.com/Mte90/Plessc/raw/master/screenshot.png" alt="Plessc screenshot"></p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Online Less Compilers -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="online-less-compilers"></span>
+<a href="#online-less-compilers" name="online-less-compilers" class="anchor glyphicon glyphicon-link"></a>Online Less Compilers</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/online-less-compilers.md" data-content="online-less-compilersmd" target="_blank"></a>
+
+
+
+<a id="online-less-compilersmd" href="https://github.com/less/less-docs/blob/master/content/tools/online-less-compilers.md" target="_blank">Edit the markdown source for &quot;online-less-compilers&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- online-less-compilers -->
+       
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://less2css.org/">less2css.org</a></td>
+<td>Online Integrated Development Environment (IDE) that is hosted in a browser allowing users to edit and compile Less to CSS in real-time.</td>
+</tr>
+<tr>
+<td><a href="http://winless.org/online-less-compiler">winless.org/online-less-compiler</a></td>
+<td>This Online Less Compiler can help you to learn Less. You can go through the examples below or try your own Less code.</td>
+</tr>
+<tr>
+<td><a href="http://lesstester.com/">lesstester.com</a></td>
+<td>Online compiler for Less CSS.</td>
+</tr>
+<tr>
+<td><a href="http://www.dopefly.com/less-converter/less-converter.html">dopefly.com/less-converter</a></td>
+<td>A simple Less CSS file converter using the Less JS project.</td>
+</tr>
+<tr>
+<td><a href="http://lessphp.gpeasy.com/demo">lessphp.gpeasy.com/demo</a></td>
+<td><a href="http://lessphp.gpeasy.com/">less.php</a> live demo.</td>
+</tr>
+<tr>
+<td><a href="http://leafo.net/lessphp/editor.html">leafo.net/lessphp/editor</a></td>
+<td><a href="http://leafo.net/lessphp/">lessphp</a> live demo.</td>
+</tr>
+<tr>
+<td><a href="http://precess.co/">precess</a></td>
+<td>A real time preprocesser compiler.</td>
+</tr>
+<tr>
+<td><a href="http://ecomfe.github.io/est/fiddle/">estFiddle</a></td>
+<td>Online Less compiler providing live demo for Less and <a href="http://ecomfe.github.io/est/">est</a>. Allowing users to switch among all versions of Less after <code>1.4.0</code> with optional est/Autoprefixer functionalities.</td>
+</tr>
+<tr>
+<td><a href="http://demo-iless.rhcloud.com/">ILess</a></td>
+<td>Live demo of  <a href="https://github.com/mishal/iless">ILess</a> PHP compiler</td>
+</tr>
+<tr>
+<td><a href="http://beautifytools.com/less-compiler.php">BeautifyTools Less Compiler</a></td>
+<td>Online Less compiler with optional formatting and minification at <a href="http://beautifytools.com">BeautifyTools</a></td>
+</tr>
+</tbody>
+</table>
+<h2 class="docs-heading"><span class="anchor-target" id="online-less-compilers-online-web-ides-playgrounds-with-less-support"></span>
+<a href="#online-less-compilers-online-web-ides-playgrounds-with-less-support" name="online-less-compilers-online-web-ides-playgrounds-with-less-support" class="anchor glyphicon glyphicon-link"></a>Online Web IDEs/Playgrounds with Less support</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://cssdeck.com/labs">CSSDeck Labs</a></td>
+<td>CSSDeck Labs is a place where you can quickly create some experiments (or testcases) that involves HTML, CSS, JS code.</td>
+</tr>
+<tr>
+<td><a href="http://codepen.io">CodePen</a></td>
+<td>CodePen is a playground for the front end side of the web.</td>
+</tr>
+<tr>
+<td><a href="http://fiddlesalad.com/less/">Fiddle Salad</a></td>
+<td>An online playground with an instantly ready coding environment.</td>
+</tr>
+<tr>
+<td><a href="http://jsbin.com">JS Bin</a></td>
+<td>JS Bin is a webapp specifically designed to help JavaScript and CSS folk test snippets of code.</td>
+</tr>
+<tr>
+<td><a href="http://jsfiddle.net/hb2rsm2x">jsFiddle</a></td>
+<td>Online Web Editor</td>
+</tr>
+</tbody>
+</table>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Third Party Compilers -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="third-party-compilers"></span>
+<a href="#third-party-compilers" name="third-party-compilers" class="anchor glyphicon glyphicon-link"></a>Third Party Compilers</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/third-party-compilers.md" data-content="third-party-compilersmd" target="_blank"></a>
+
+
+
+<a id="third-party-compilersmd" href="https://github.com/less/less-docs/blob/master/content/tools/third-party-compilers.md" target="_blank">Edit the markdown source for &quot;third-party-compilers&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- third-party-compilers -->
+       
+
+
+<h2 class="docs-heading"><span class="anchor-target" id="third-party-compilers-node-js-compilers"></span>
+<a href="#third-party-compilers-node-js-compilers" name="third-party-compilers-node-js-compilers" class="anchor glyphicon glyphicon-link"></a>Node.js Compilers</h2>
+<ul>
+<li><strong><a href="https://github.com/gruntjs/grunt-contrib-less">grunt-contrib-less</a></strong></li>
+<li><strong><a href="https://github.com/assemble/assemble-less">assemble-less</a></strong>: Full-featured Grunt.js plugin for compiling Less files to CSS, with additional options for maintaining libraries of Less components and themes. For advanced users, this plugin allows you to define and manage Less &quot;packages&quot; or &quot;bundles&quot; using JSON, <a href="https://github.com/bestiejs/lodash">Lo-dash</a>(underscore) templates (e.g. <code>&lt;%= bootstrap.less %&gt;</code>), and <a href="https://github.com/isaacs/node-glob">node-glob</a> / <a href="https://github.com/isaacs/minimatch">minimatch</a> (e.g. <code>&apos;../src/**/*.less&quot;</code>). <em>assemble-less</em> also has a number of options including minifying CSS</li>
+<li><strong><a href="https://github.com/plus3network/gulp-less">gulp-less</a></strong>: Please note that this plugin discards <code>source-map</code> options, opting to instead using the <a href="https://github.com/floridoo/gulp-sourcemaps">gulp-sourcemaps</a> library.</li>
+<li><strong><a href="https://github.com/jgonera/autoless">autoless</a></strong>: A Less files watcher, with dependency tracking (changes to imported files cause other files to be updated too) and growl notifications.</li>
+<li><strong><a href="https://github.com/emberfeather/less.js-middleware">Connect Middleware for Less.js</a></strong>: Connect Middleware for Less.js compiling</li>
+</ul>
+<h2 class="docs-heading"><span class="anchor-target" id="third-party-compilers-other-technologies"></span>
+<a href="#third-party-compilers-other-technologies" name="third-party-compilers-other-technologies" class="anchor glyphicon glyphicon-link"></a>Other Technologies</h2>
+<p><strong>Wro4j Runner CLI</strong>
+Download the <a href="http://wro4j.googlecode.com/files/wro4j-runner-1.4.1-jar-with-dependencies.jar">wro4j-runner.jar</a> file and run the following command:</p>
+<pre><code class="lang-bash">java -jar wro4j-runner-1.5.0-jar-with-dependencies.jar --preProcessors lessCss
+</code></pre>
+<p>More details can be found here: <a href="http://code.google.com/p/wro4j/wiki/wro4jRunner">Wro4j Runner CLI</a></p>
+<p><strong>CSS::LESSp</strong></p>
+<p><a href="http://search.cpan.org/~drinchev/CSS-LESSp/">http://search.cpan.org/~drinchev/CSS-LESSp/</a></p>
+<pre><code class="lang-bash">lessp.pl styles.less &gt; styles.css
+</code></pre>
+<p><strong>Windows Script Host</strong></p>
+<p>Note - the official Less node runs on windows, so we are not sure why you would use this.</p>
+<p><a href="https://github.com/duncansmart/less.js-windows">Less.js for Windows</a> with this usage:</p>
+<pre><code class="lang-bash">cscript //nologo lessc.wsf input.less [output.css] [-compress]
+</code></pre>
+<p>or</p>
+<pre><code class="lang-bash">lessc input.less [output.css] [-compress]
+</code></pre>
+<p><strong>dotless</strong></p>
+<p><a href="http://www.dotlesscss.org/">dotless for Windows</a> can be run like this:</p>
+<pre><code class="lang-bash">dotless.Compiler.exe [-switches] &lt;inputfile&gt; [outputfile]
+</code></pre>
+<p><strong>Also see:</strong> </p>
+<ul>
+<li><a href="/about/#ports">Ports of Less</a></li>
+</ul>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Ports of Less.js -->
+  <div class="docs-section">
+    <div class="">
+      <h1 class="docs-heading"><span class="anchor-target" id="ports"></span>
+<a href="#ports" name="ports" class="anchor glyphicon glyphicon-link"></a>Ports of Less.js</h1>
+    </div>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/tools/ports.md" data-content="portsmd" target="_blank"></a>
+
+
+
+<a id="portsmd" href="https://github.com/less/less-docs/blob/master/content/tools/ports.md" target="_blank">Edit the markdown source for &quot;ports&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- ports -->
+       
+
+
+<h2 class="docs-heading"><span class="anchor-target" id="ports-java"></span>
+<a href="#ports-java" name="ports-java" class="anchor glyphicon glyphicon-link"></a>Java</h2>
+<ul>
+<li><a href="https://github.com/houbie/lesscss">Lesscss</a> (Runs less.js using Rhino, Nasshorn or node.js engine; 1.7.0 compliant)</li>
+<li><a href="https://github.com/houbie/lesscss-gradle-plugin">Lesscss gradle plugin</a> (Gradle plugin based on Lesscss)</li>
+<li><a href="https://github.com/Asual/lesscss-engine">Less Engine</a> (Runs less.js in the Rhino JVM-based JavaScript interpreter)</li>
+<li><a href="https://github.com/marceloverdijk/lesscss-java">Less CSS Compiler for Java</a> (Runs less.js in the Rhino JVM-based JavaScript interpreter)</li>
+<li><a href="https://github.com/SomMeri/less4j">Less4j</a> (Native Java implementation.)</li>
+<li><a href="https://github.com/i-net-software/jlessc">JLessC</a> (Less compiler written completely in Java)</li>
+</ul>
+<h2 class="docs-heading"><span class="anchor-target" id="ports--net"></span>
+<a href="#ports--net" name="ports--net" class="anchor glyphicon glyphicon-link"></a>.Net</h2>
+<ul>
+<li><a href="http://www.dotlesscss.org/">Less CSS for .Net</a></li>
+<li><a href="http://www.nuget.org/packages/BundleTransformer.Less/">BundleTransformer.Less</a></li>
+</ul>
+<h2 class="docs-heading"><span class="anchor-target" id="ports-php"></span>
+<a href="#ports-php" name="ports-php" class="anchor glyphicon glyphicon-link"></a>PHP</h2>
+<ul>
+<li><a href="http://leafo.net/lessphp/docs/">lessphp</a></li>
+<li><a href="http://wordpress.org/extend/plugins/bw-less-css/">BW Less CSS</a> (WordPress Plugin)</li>
+<li><a href="http://lessphp.gpeasy.com/">less.php</a></li>
+<li><a href="https://github.com/mishal/iless">ILess</a></li>
+</ul>
+<h2 class="docs-heading"><span class="anchor-target" id="ports-python"></span>
+<a href="#ports-python" name="ports-python" class="anchor glyphicon glyphicon-link"></a>Python</h2>
+<ul>
+<li><a href="https://github.com/lesscpy/lesscpy">Python Less Compiler</a></li>
+</ul>
+<h2 class="docs-heading"><span class="anchor-target" id="ports-ruby"></span>
+<a href="#ports-ruby" name="ports-ruby" class="anchor glyphicon glyphicon-link"></a>Ruby</h2>
+<ul>
+<li><a href="https://github.com/cowboyd/less.rb">Less.js In Ruby&apos;s V8 Engine</a></li>
+</ul>
+<h2 class="docs-heading"><span class="anchor-target" id="ports-go"></span>
+<a href="#ports-go" name="ports-go" class="anchor glyphicon glyphicon-link"></a>Go</h2>
+<ul>
+<li><a href="https://github.com/kib357/less-go">Less.js In Go</a> (Runs less.js inside embedded Javascript engine)</li>
+</ul>
+<p>Know of another port that should be added to this list? Please <a href="https://github.com/less/less-docs/issues/new">let us know</a>.</p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+
+</div>
+        </div>
+      </div>
+    </div>
+
+    
+    <footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-social">
+  <ul class="bs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=less&amp;repo=less.js&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="http://ghbtns.com/github-btn.html?user=less&amp;repo=less.js&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+  </ul>
+</div>
+
+    <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
+    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <ul class="footer-links">
+      <li>Currently v2.7.2</li>
+      
+      <li class="muted">&#xB7;</li>
+      <li><a href="../about">About Less</a></li>
+      <li class="muted">&#xB7;</li>
+      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+      <li class="muted">&#xB7;</li>
+      <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
+      <li class="muted">&#xB7;</li>
+      <li><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
+      
+    </ul>
+  </div>
+</footer>
+
+
+    
+    <!-- Core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
+<script src="../public/js/application.js"></script>
+
+
+
+
+  </body>
+</html>

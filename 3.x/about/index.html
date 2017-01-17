@@ -12,22 +12,10 @@
   About | Less.js
 </title>
 
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif|Oxygen" rel="stylesheet">
+
 <!-- Main styles -->
 <link href="../public/css/index.css" rel="stylesheet">
-
-<!-- Webfonts -->
-<script type="text/javascript">
-  WebFontConfig = {google: {families: ['PT+Sans:400,700,400italic,700italic', 'PT+Mono&subset=latin,cyrillic'] }};
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })();
-</script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -40,8 +28,26 @@
 
   </head>
   <body class="about">
+
     
-    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+    
+    
+    <div class="container docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="sidebar hidden-print" role="complementary">
+            <div id="navigation">
+  
+<ul class="nav sidenav"><li><a href="#history">History</a></li>
+<li><a href="#team">Core team</a></li>
+<li><a href="#community">Community</a></li>
+<li><a href="#translations">Translations</a></li>
+<li><a href="#license-faqs">License FAQs</a></li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+          
+          <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -50,40 +56,46 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="../#" class="navbar-brand" alt="Less">
-        <img src="../public/img/logo.png">
-      </a>
     </div>
     <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
         
         <li>
-          <a href="../features/">Language Features</a>
+          <a href="../#">Overview</a>
         </li>
         
-        
+
         
         <li>
-          <a href="../functions/">Function Reference</a>
+          <a href="../usage/">Using Less.js</a>
         </li>
-                
+        
+
+        
+        <li>
+          <a href="../functions/">Functions</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../features/">In-Depth Guide</a>
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="../tools/">Tools</a>
+        </li>
+        
+
        
-        <li>
-          <a href="../usage/">Usage</a>
-        </li>
-        
-        <li>
-          <a href="/less-preview">Try it</a>
-        </li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-               
         
-        <li class="active">
-          <span>About</span>
-        </li>
-           
         
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
@@ -100,66 +112,28 @@
   </div>
 </header>
 
-
-    
-<div class="docs-header" id="content">
-  <div class="container">
-    <h1>About</h1>
-    <p>Learn about the history of Less, meet the core team, and check out the ever-growing community resources.</p>
-    
-  </div>
-</div>
-
-
-<div class="banner">
-  <div class="container">
-    Less 3.0 is coming! See the <a href="3.x/">updated documenation</a>!
-  </div>
-</div>
-
-
-    
-    <div class="container docs-container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="sidebar hidden-print" role="complementary">
-            <div id="navigation">
-  
-<ul class="nav sidenav"><li><a href="#history">History</a></li>
-<li><a href="#team">Core team</a></li>
-<li><a href="#community">Community</a></li>
-<li><a href="#ports">Ports of Less.js</a><ul class="nav"><li><a href="#ports-java">Java</a></li>
-<li><a href="#ports--net">.Net</a></li>
-<li><a href="#ports-php">PHP</a></li>
-<li><a href="#ports-python">Python</a></li>
-<li><a href="#ports-ruby">Ruby</a></li>
-<li><a href="#ports-go">Go</a></li></ul></li>
-<li><a href="#translations">Translations</a></li></ul></div>
-          </div>
-        </div>
-        <div class="col-md-9" role="main">
           
 <div class="panel docs-content">
   
 
 
 <div class="docs-section">
-  <div class="page-header">
-    <h1 class="docs-heading">History<span class="anchor-target" id="history"></span>
-<a href="#history" name="history" class="anchor glyphicon glyphicon-link"></a></h1>
+  <div class="">
+    <h1 class="docs-heading"><span class="anchor-target" id="history"></span>
+<a href="#history" name="history" class="anchor glyphicon glyphicon-link"></a>History</h1>
   </div>
   <p>Less was created in 2009 by <a href="https://github.com/cloudhead">Alexis Sellier</a>, more commonly known as <a href="https://twitter.com/cloudhead">@cloudhead</a>. Originally written in Ruby, it was then ported to JavaScript.</p>
-<p>In May 2012 Alexis relinquished control and development over to a core team of contributors who now manage, fix and extend the language.</p>
+<p>Less was originally inspired by <a href="http://sass-lang.com/">Sass</a>, with a leaner feature set and a syntax closely matching CSS, which Sass did not have at the time. (Sass was later inspired by Less to create SCSS, its own CSS-like syntax.)</p>
+<p>In May 2012 Alexis turned over control and development to a core team of contributors who now manage, fix and extend the language.</p>
 
 </div>
 
 
 
 <div class="docs-section">
-  <div class="page-header">
-    <h1 class="docs-heading">Core team<span class="anchor-target" id="team"></span>
-<a href="#team" name="team" class="anchor glyphicon glyphicon-link"></a></h1>
-  </div>
+  <h1 class="docs-heading"><span class="anchor-target" id="team"></span>
+<a href="#team" name="team" class="anchor glyphicon glyphicon-link"></a>Core team</h1>
+  
   <p class="lead">Less is maintained by a group of invaluable core contributors, with the massive support and involvement of our community. No one person is in charge and everyone has their own areas and donates the time they can afford. In alphabetical order:</p>
   <div class="list-group less-team">
 
@@ -222,9 +196,9 @@
 
 
 <div class="docs-section">
-  <div class="page-header">
-    <h1 class="docs-heading">Community<span class="anchor-target" id="community"></span>
-<a href="#community" name="community" class="anchor glyphicon glyphicon-link"></a></h1>
+  <div class="">
+    <h1 class="docs-heading"><span class="anchor-target" id="community"></span>
+<a href="#community" name="community" class="anchor glyphicon glyphicon-link"></a>Community</h1>
   </div>
   <p class="lead">Stay up to date on the development of Less.js and reach out to the community with these helpful resources.</p>
   <ul>
@@ -241,61 +215,9 @@
 
 
 <div class="docs-section">
-  <div class="page-header">
-    <h1 class="docs-heading">Ports of Less.js<span class="anchor-target" id="ports"></span>
-<a href="#ports" name="ports" class="anchor glyphicon glyphicon-link"></a></h1>
-  </div>
-  <p class="lead">Less has been ported to several other programming languages.</p>
-
-  <h2 class="docs-heading">Java<span class="anchor-target" id="ports-java"></span>
-<a href="#ports-java" name="ports-java" class="anchor glyphicon glyphicon-link"></a></h2>
-<ul>
-<li><a href="https://github.com/houbie/lesscss">Lesscss</a> (Runs less.js using Rhino, Nasshorn or node.js engine; 1.7.0 compliant)</li>
-<li><a href="https://github.com/houbie/lesscss-gradle-plugin">Lesscss gradle plugin</a> (Gradle plugin based on Lesscss)</li>
-<li><a href="https://github.com/Asual/lesscss-engine">Less Engine</a> (Runs less.js in the Rhino JVM-based JavaScript interpreter)</li>
-<li><a href="https://github.com/marceloverdijk/lesscss-java">Less CSS Compiler for Java</a> (Runs less.js in the Rhino JVM-based JavaScript interpreter)</li>
-<li><a href="https://github.com/SomMeri/less4j">Less4j</a> (Native Java implementation.)</li>
-<li><a href="https://github.com/i-net-software/jlessc">JLessC</a> (Less compiler written completely in Java)</li>
-</ul>
-<h2 class="docs-heading">.Net<span class="anchor-target" id="ports--net"></span>
-<a href="#ports--net" name="ports--net" class="anchor glyphicon glyphicon-link"></a></h2>
-<ul>
-<li><a href="http://www.dotlesscss.org/">Less CSS for .Net</a></li>
-<li><a href="http://www.nuget.org/packages/BundleTransformer.Less/">BundleTransformer.Less</a></li>
-</ul>
-<h2 class="docs-heading">PHP<span class="anchor-target" id="ports-php"></span>
-<a href="#ports-php" name="ports-php" class="anchor glyphicon glyphicon-link"></a></h2>
-<ul>
-<li><a href="http://leafo.net/lessphp/docs/">lessphp</a></li>
-<li><a href="http://wordpress.org/extend/plugins/bw-less-css/">BW Less CSS</a> (WordPress Plugin)</li>
-<li><a href="http://lessphp.gpeasy.com/">less.php</a></li>
-<li><a href="https://github.com/mishal/iless">ILess</a></li>
-</ul>
-<h2 class="docs-heading">Python<span class="anchor-target" id="ports-python"></span>
-<a href="#ports-python" name="ports-python" class="anchor glyphicon glyphicon-link"></a></h2>
-<ul>
-<li><a href="https://github.com/lesscpy/lesscpy">Python Less Compiler</a></li>
-</ul>
-<h2 class="docs-heading">Ruby<span class="anchor-target" id="ports-ruby"></span>
-<a href="#ports-ruby" name="ports-ruby" class="anchor glyphicon glyphicon-link"></a></h2>
-<ul>
-<li><a href="https://github.com/cowboyd/less.rb">Less.js In Ruby&apos;s V8 Engine</a></li>
-</ul>
-<h2 class="docs-heading">Go<span class="anchor-target" id="ports-go"></span>
-<a href="#ports-go" name="ports-go" class="anchor glyphicon glyphicon-link"></a></h2>
-<ul>
-<li><a href="https://github.com/kib357/less-go">Less.js In Go</a> (Runs less.js inside embedded Javascript engine)</li>
-</ul>
-<p>Know of another port that should be added to this list? Please <a href="https://github.com/less/less-docs/issues/new">let us know</a>.</p>
-
-</div>
-
-
-
-<div class="docs-section">
-  <div class="page-header">
-    <h1 class="docs-heading">Translations<span class="anchor-target" id="translations"></span>
-<a href="#translations" name="translations" class="anchor glyphicon glyphicon-link"></a></h1>
+  <div class="">
+    <h1 class="docs-heading"><span class="anchor-target" id="translations"></span>
+<a href="#translations" name="translations" class="anchor glyphicon glyphicon-link"></a>Translations</h1>
   </div>
   <p class="lead">Community members have translated Less.js&apos;s documentation into various languages.</p>
 
@@ -338,6 +260,49 @@
   <p>Have another language to add, or perhaps a different or better translation? Let us know by <a href="https://github.com/less/less.js/issues/new">opening an issue</a>.</p>
 </div>
 
+
+
+
+<div class="docs-section">
+  <div class="">
+    <h1 class="docs-heading"><span class="anchor-target" id="license-faqs"></span>
+<a href="#license-faqs" name="license-faqs" class="anchor glyphicon glyphicon-link"></a>License FAQs</h1>
+  </div>
+  <p class="lead">Less.js is released under the Apache 2 License (<a href="https://github.com/less/less.js/issues/1029">though there are plans to dual license it</a>). Copyright 2009-2017, Alexis Sellier and the Less Core Team (see about). Boiled down to smaller chunks, it can be described with the following conditions.</p>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h4>It allows you to:</h4>
+      <ul>
+        <li>Freely download and use Less.js, in whole or in part, for personal, company internal or commercial purposes</li>
+        <li>Use Less.js in packages or distributions that you create</li>
+      </ul>
+    </div>
+    <div class="col-12 col-lg-6">
+      <h4>It forbids you to:</h4>
+      <ul>
+        <li>Redistribute any piece of Less.js without proper attribution</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-lg-6">
+      <h4>It requires you to:</h4>
+      <ul>
+        <li>Include a copy of the license in any redistribution you may make that includes Less.js</li>
+        <li>Provide clear attribution to The Less Core Team for any distributions that include Less.js</li>
+      </ul>
+    </div>
+    <div class="col-12 col-lg-6">
+      <h4>It does not require you to:</h4>
+      <ul>
+        <li>Include the source of Less.js itself, or of any modifications you may have made to it, in any redistribution you may assemble that includes it</li>
+        <li>Submit changes that you make to Less.js back to the Less.js project (though such feedback is encouraged)</li>
+      </ul>
+    </div>
+  </div>
+  <p>The full Less.js license is located <a href="https://github.com/less/less.js/blob/master/LICENSE">in the project repository</a> for more information.</p>
+</div>
+
 </div>
         </div>
       </div>
@@ -362,6 +327,8 @@
     <ul class="footer-links">
       <li>Currently v2.7.2</li>
       
+      <li class="muted">&#xB7;</li>
+      <li><a href=".">About Less</a></li>
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
       <li class="muted">&#xB7;</li>

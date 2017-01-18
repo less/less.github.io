@@ -2358,15 +2358,13 @@ overridden:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@plugin</span> <span class="hljs-string">&quot;my-plugin&quot;</span>;  <span class="hljs-comment">// automatically appends .js if no extension</span>
 </code></pre>
 <p>Less.js Plugins are (modifed) UMD (universal module definition)-format JavaScript files. The basic guts of a plugin looks like:</p>
-<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">root, registerPlugin</span>) </span>{ 
+<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">root, factory</span>) </span>{ 
     <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">&apos;function&apos;</span> &amp;&amp; define.amd) { 
-        define([], registerPlugin);
+        define([], factory);
     } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">&apos;object&apos;</span> &amp;&amp; <span class="hljs-built_in">module</span>.exports) { 
-        <span class="hljs-built_in">module</span>.exports = registerPlugin();
+        <span class="hljs-built_in">module</span>.exports = factory();
     } <span class="hljs-keyword">else</span> { 
-        <span class="hljs-keyword">if</span> (!root.less) { root.less = {}; } 
-        <span class="hljs-keyword">if</span> (!root.less.plugins) { root.less.plugins = []; }
-        root.less.plugins.push(registerPlugin());
+        (root.LESS_PLUGINS = root.LESS_PLUGINS || []).push(factory());
     } 
 }(<span class="hljs-keyword">this</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-comment">// Less.js Plugin object</span>

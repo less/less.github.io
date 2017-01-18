@@ -950,17 +950,22 @@ dev-files/main.less
 <a href="#plugins-node-js" name="plugins-node-js" class="anchor glyphicon glyphicon-link"></a>Node.js</h2>
 <h3 class="docs-heading"><span class="anchor-target" id="plugins-using-the-command-line"></span>
 <a href="#plugins-using-the-command-line" name="plugins-using-the-command-line" class="anchor glyphicon glyphicon-link"></a>Using the Command Line</h3>
-<p>If you are using lessc, the first thing you need to do is install that plugin. In registries like NPM, we recommend a Less.js plugin is registered with the &quot;less-plugin-&quot; prefix (for easier searching), though that isn&apos;t required. So, for the clean-css plugin you would install with:</p>
-<pre><code>npm install less-plugin-clean-css
-</code></pre><p>To use the plugin, if you specify a unrecognised option, we attempt to load that, for example</p>
-<pre><code>lessc --clean-css=&quot;advanced&quot;
-</code></pre><p>Will use the plugin you just installed. You can also be more direct, for example</p>
-<pre><code>lessc --plugin=path_to_plugin=options
+<p>If you are using lessc, the first thing you need to do is install that plugin. In registries like NPM, we recommend a Less.js plugin is registered with the &quot;less-plugin-&quot; prefix (for easier searching), though that isn&apos;t required. So, for a custom plugin, you might install with:</p>
+<pre><code>npm install less-plugin-myplugin
+</code></pre><p>To use the plugin, you can pass this on the command line by simply writing:</p>
+<pre><code>lessc --myplugin
+</code></pre><p>Less.js will try to load either the &quot;less-plugin-myplugin&quot; and the &quot;myplugin&quot; modules as plugins whenever there&apos;s an unknown Less option (like &quot;myplugin&quot;).</p>
+<p>You can also explicitly specify the plugin with:</p>
+<pre><code>lessc --plugin=myplugin
+</code></pre><p>To pass options to the plugin, you can write that in one of two ways.</p>
+<pre><code>lessc --myplugin=&quot;advanced&quot;
+lessc --plugin=myplugin=advanced
 </code></pre><h2 class="docs-heading"><span class="anchor-target" id="plugins-loading-a-plugin-via-less-js"></span>
 <a href="#plugins-loading-a-plugin-via-less-js" name="plugins-loading-a-plugin-via-less-js" class="anchor glyphicon glyphicon-link"></a>Loading a Plugin via Less.js</h2>
-<p>In Node, pass it to less in an array as an option plugins. E.g.</p>
-<p>TODO: Just passing the string name of the plugin doesn&apos;t actually work yet in 3.0 alpha.</p>
-<pre><code class="lang-js">less.render(myCSS, { <span class="hljs-attr">plugins</span>: [<span class="hljs-string">&quot;less-plugin-clean-css&quot;</span>] })
+<p>In Node, pass it to less in an array on the options object e.g.</p>
+<p><em>TODO: Just passing the string name of the plugin to the render function doesn&apos;t actually work yet in 3.0 alpha.</em></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> 
+less.render(myCSS, { <span class="hljs-attr">plugins</span>: [<span class="hljs-string">&quot;less-plugin-myplugin&quot;</span>] })
   .then(
     <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{ },
     <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{ }
@@ -968,18 +973,10 @@ dev-files/main.less
 </code></pre>
 <h2 class="docs-heading"><span class="anchor-target" id="plugins-pre-loading-a-plugin-in-the-browser"></span>
 <a href="#plugins-pre-loading-a-plugin-in-the-browser" name="plugins-pre-loading-a-plugin-in-the-browser" class="anchor glyphicon glyphicon-link"></a>Pre-Loading a Plugin In the Browser</h2>
-<p>To pre-load a plugin in the browser, just include that in your Less options.</p>
-<p>TODO: This doesn&apos;t actually work yet in 3.0 alpha.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
-less = { 
-    plugins: [<span class="hljs-string">&apos;./plugin&apos;</span>]
-};
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>  
+<p>To pre-load a plugin in the browser, include the plugin script <em>before</em> you load Less.js.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less-plugin-myplugin.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.min.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
-<!-- Should this just be
-<script src="less.min.js" data-less="{ plugins: ['./plugin'] }"></script>
-More modern? -->
 
 
       <br>

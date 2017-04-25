@@ -573,7 +573,7 @@ style comment! */</span>
 <span class="hljs-comment">// Usage</span>
 <span class="hljs-tag">body</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#444</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;@{images}/white-sand.png&quot;</span>);
+  <span class="hljs-attribute">background</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;@{images}/white-sand.png&quot;</span>);
 }
 </code></pre>
 <h3 class="docs-heading">Import Statements<span class="anchor-target" id="variables-feature-import-statements"></span>
@@ -1079,7 +1079,7 @@ style comment! */</span>
 }
 </code></pre>
 <p>and you want to have a subtype of animal which overrides the background color then you have two options, firstly change your HTML</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;animal bear&quot;</span>&gt;</span>Bear<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;animal bear&quot;</span>&gt;</span>Bear<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 </code></pre>
 <pre><code class="lang-css"><span class="hljs-class">.animal</span> {
   <span class="hljs-attribute">background-color</span>: black;
@@ -1090,7 +1090,7 @@ style comment! */</span>
 }
 </code></pre>
 <p>or have simplified html and use extend in your less. e.g.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;bear&quot;</span>&gt;</span>Bear<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">&quot;bear&quot;</span>&gt;</span>Bear<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
 </code></pre>
 <pre><code class="lang-less"><span class="hljs-class">.animal</span> {
   <span class="hljs-attribute">background-color</span>: black;
@@ -1106,7 +1106,7 @@ style comment! */</span>
 <p>Mixins copy all of the properties into a selector, which can lead to unnecessary duplication. Therefore you can use extends instead of mixins to move the selector up to the properties you wish to use, which leads to less css being generated.</p>
 <p>Example - with mixin:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-inline-block</span>() {
-    <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
 }
 <span class="hljs-class">.thing1</span> {
@@ -2445,26 +2445,26 @@ overridden:</p>
 <p>The &quot;parent selectors&quot; operator has a variety of uses. Basically any time you need the selectors of the nested rules to be combined in other ways than the default. For example another typical use of the <code>&amp;</code> is to produce repetitive class names:</p>
 <pre><code class="lang-less"><span class="hljs-class">.button</span> {
   <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-ok</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;ok.png&quot;</span>);
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;ok.png&quot;</span>);
   }
   <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-cancel</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;cancel.png&quot;</span>);
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;cancel.png&quot;</span>);
   }
 
   <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-custom</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;custom.png&quot;</span>);
+    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;custom.png&quot;</span>);
   }
 }
 </code></pre>
 <p>output:</p>
 <pre><code class="lang-css"><span class="hljs-class">.button-ok</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;ok.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;ok.png&quot;</span>);
 }
 <span class="hljs-class">.button-cancel</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;cancel.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;cancel.png&quot;</span>);
 }
 <span class="hljs-class">.button-custom</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;custom.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&quot;custom.png&quot;</span>);
 }
 </code></pre>
 <h3 class="docs-heading">Multiple <code>&amp;</code><span class="anchor-target" id="parent-selectors-feature-multiple-"></span>
@@ -2546,7 +2546,7 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-class">.menu</span> {
     <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
     <span class="hljs-class">.no-borderradius</span> <span class="hljs-keyword">&amp;</span> {
-      <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;images/button-background.png&apos;</span>);
+      <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&apos;images/button-background.png&apos;</span>);
     }
   }
 }
@@ -2556,7 +2556,7 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
 }
 <span class="hljs-class">.no-borderradius</span> <span class="hljs-class">.header</span> <span class="hljs-class">.menu</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;images/button-background.png&apos;</span>);
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&apos;images/button-background.png&apos;</span>);
 }
 </code></pre>
 <h3 class="docs-heading">Combinatorial Explosion<span class="anchor-target" id="parent-selectors-feature-combinatorial-explosion"></span>

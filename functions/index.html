@@ -514,20 +514,20 @@
 </code></pre>
 <p>both result in:</p>
 <pre><code class="lang-css"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span>(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
 }
 </code></pre>
 <p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
 <p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
-<pre><code class="lang-xml"><span class="hljs-pi">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-title">svg</span> <span class="hljs-attribute">xmlns</span>=<span class="hljs-value">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attribute">version</span>=<span class="hljs-value">&quot;1.1&quot;</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">viewBox</span>=<span class="hljs-value">&quot;0 0 1 1&quot;</span> <span class="hljs-attribute">preserveAspectRatio</span>=<span class="hljs-value">&quot;none&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">linearGradient</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">&quot;gradient&quot;</span> <span class="hljs-attribute">gradientUnits</span>=<span class="hljs-value">&quot;userSpaceOnUse&quot;</span> <span class="hljs-attribute">x1</span>=<span class="hljs-value">&quot;0%&quot;</span> <span class="hljs-attribute">y1</span>=<span class="hljs-value">&quot;0%&quot;</span> <span class="hljs-attribute">x2</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">y2</span>=<span class="hljs-value">&quot;0%&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">stop</span> <span class="hljs-attribute">offset</span>=<span class="hljs-value">&quot;0%&quot;</span> <span class="hljs-attribute">stop-color</span>=<span class="hljs-value">&quot;#ff0000&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">stop</span> <span class="hljs-attribute">offset</span>=<span class="hljs-value">&quot;30%&quot;</span> <span class="hljs-attribute">stop-color</span>=<span class="hljs-value">&quot;#008000&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-title">stop</span> <span class="hljs-attribute">offset</span>=<span class="hljs-value">&quot;100%&quot;</span> <span class="hljs-attribute">stop-color</span>=<span class="hljs-value">&quot;#0000ff&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-title">linearGradient</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-title">rect</span> <span class="hljs-attribute">x</span>=<span class="hljs-value">&quot;0&quot;</span> <span class="hljs-attribute">y</span>=<span class="hljs-value">&quot;0&quot;</span> <span class="hljs-attribute">width</span>=<span class="hljs-value">&quot;1&quot;</span> <span class="hljs-attribute">height</span>=<span class="hljs-value">&quot;1&quot;</span> <span class="hljs-attribute">fill</span>=<span class="hljs-value">&quot;url(#gradient)&quot;</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-title">svg</span>&gt;</span>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.1&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 1 1&quot;</span> <span class="hljs-attr">preserveAspectRatio</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gradient&quot;</span> <span class="hljs-attr">gradientUnits</span>=<span class="hljs-string">&quot;userSpaceOnUse&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;0%&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#ff0000&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;30%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#008000&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#0000ff&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#gradient)&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 </code></pre>
 
 
@@ -1044,7 +1044,7 @@ NaN%
 <span class="hljs-attribute">isnumber</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">isnumber</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">isnumber</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isnumber</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isnumber</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">isstring<span class="anchor-target" id="type-functions-isstring"></span>
 <a href="#type-functions-isstring" name="type-functions-isstring" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1061,7 +1061,7 @@ NaN%
 <span class="hljs-attribute">isstring</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isstring</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isstring</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isstring</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">iscolor<span class="anchor-target" id="type-functions-iscolor"></span>
 <a href="#type-functions-iscolor" name="type-functions-iscolor" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1078,7 +1078,7 @@ NaN%
 <span class="hljs-attribute">iscolor</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iscolor</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iscolor</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">iscolor</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">iskeyword<span class="anchor-target" id="type-functions-iskeyword"></span>
 <a href="#type-functions-iskeyword" name="type-functions-iskeyword" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1095,7 +1095,7 @@ NaN%
 <span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iskeyword</span>(keyword);  <span class="hljs-comment">// true</span>
-<span class="hljs-attribute">iskeyword</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">isurl<span class="anchor-target" id="type-functions-isurl"></span>
 <a href="#type-functions-isurl" name="type-functions-isurl" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1112,7 +1112,7 @@ NaN%
 <span class="hljs-attribute">isurl</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isurl</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isurl</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isurl</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isurl</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// true</span>
 </code></pre>
 <h3 class="docs-heading">ispixel<span class="anchor-target" id="type-functions-ispixel"></span>
 <a href="#type-functions-ispixel" name="type-functions-ispixel" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1129,7 +1129,7 @@ NaN%
 <span class="hljs-attribute">ispixel</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">ispixel</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">ispixel</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">ispixel</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">isem<span class="anchor-target" id="type-functions-isem"></span>
 <a href="#type-functions-isem" name="type-functions-isem" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1146,7 +1146,7 @@ NaN%
 <span class="hljs-attribute">isem</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isem</span>(<span class="hljs-number">7.8em</span>);    <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">isem</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isem</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">ispercentage<span class="anchor-target" id="type-functions-ispercentage"></span>
 <a href="#type-functions-ispercentage" name="type-functions-ispercentage" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1163,7 +1163,7 @@ NaN%
 <span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">ispercentage</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">ispercentage</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading">isunit<span class="anchor-target" id="type-functions-isunit"></span>
 <a href="#type-functions-isunit" name="type-functions-isunit" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -1210,7 +1210,7 @@ NaN%
 <span class="hljs-attribute">isruleset</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isruleset</span>(<span class="hljs-function">url</span>(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 
 

@@ -543,8 +543,8 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  color: #333333;
+  background-color: #eeeeee;
   white-space: nowrap;
   border-radius: 4px;
 }
@@ -6023,7 +6023,7 @@ body {
   margin-bottom: 5px;
 }
 /*
-    Code coloring (minimalistic (sort of) scheme)
+    Minimalistic code coloring scheme
     Assuming we only highlight the following languages:
     less, css, html, js and "generic shell"
 */
@@ -6427,7 +6427,7 @@ hr {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .docs-section + .docs-section {
-  padding-top: 40px;
+  padding-top: 20px;
 }
 @media (max-width: 767px) {
   .docs-content {

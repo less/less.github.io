@@ -332,8 +332,8 @@ See <a href="#programmatic-usage">Programmatic Usage</a> for more information.</
 <pre><code class="lang-bash"><span class="hljs-comment"># compile bootstrap.less to bootstrap.css</span>
 $ lessc bootstrap.less bootstrap.css
 
-<span class="hljs-comment"># compile bootstrap.less to bootstrap.css and minify (compress) the result</span>
-$ lessc -x bootstrap.less bootstrap.css
+<span class="hljs-comment"># compile bootstrap.less to bootstrap.css with strict math expressions</span>
+$ lessc -sm=on bootstrap.less bootstrap.css
 </code></pre>
 <h3 class="docs-heading">Options<span class="anchor-target" id="command-line-usage-options"></span>
 <a href="#command-line-usage-options" name="command-line-usage-options" class="anchor glyphicon glyphicon-link"></a></h3>
@@ -397,12 +397,15 @@ lessc --version
 </code></pre>
 <h4 class="docs-heading">Compress<span class="anchor-target" id="command-line-usage-compress"></span>
 <a href="#command-line-usage-compress" name="command-line-usage-compress" class="anchor glyphicon glyphicon-link"></a></h4>
+<p><em>Deprecated</em>. Use <a href="#plugins-postprocessor-feature-plugins">compression plugins</a> instead.</p>
 <pre><code class="lang-bash">lessc -x
 lessc --compress
 </code></pre>
-<p>Compress using less built-in compression. This does an okay job but does not utilise all the tricks of dedicated css compression. Please feel free to improve our compressed output with a pull request.</p>
+<p>Compress using built-in compression.</p>
 <h4 class="docs-heading">Clean CSS<span class="anchor-target" id="command-line-usage-clean-css"></span>
 <a href="#command-line-usage-clean-css" name="command-line-usage-clean-css" class="anchor glyphicon glyphicon-link"></a></h4>
+<pre><code class="lang-bash">less --clean-css
+</code></pre>
 <p>In v2 of less, Clean CSS is no longer included as a direct dependency. To use clean css with lessc, use the <a href="https://github.com/less/less-plugin-clean-css">clean css plugin</a>.</p>
 <h4 class="docs-heading">Source Map Output Filename<span class="anchor-target" id="command-line-usage-source-map-output-filename"></span>
 <a href="#command-line-usage-source-map-output-filename" name="command-line-usage-source-map-output-filename" class="anchor glyphicon glyphicon-link"></a></h4>
@@ -530,11 +533,12 @@ lessc --strict-units=on
 <p>This option allows you to specify a argument to go on to every URL. This may be used for cache-busting for instance.</p>
 <h4 class="docs-heading">Line Numbers<span class="anchor-target" id="command-line-usage-line-numbers"></span>
 <a href="#command-line-usage-line-numbers" name="command-line-usage-line-numbers" class="anchor glyphicon glyphicon-link"></a></h4>
+<p><em>Deprecated</em>.</p>
 <pre><code class="lang-bash">lessc --line-numbers=comments
 lessc --line-numbers=mediaquery
 lessc --line-numbers=all
 </code></pre>
-<p>Generates inline source-mapping. This was the only option before browsers started supporting sourcemaps. We are consider deprecating, so please get in touch if you want this option to stick around.</p>
+<p>Generates inline source-mapping. This was the only option before browsers started supporting sourcemaps.</p>
 <h4 class="docs-heading">Plugin<span class="anchor-target" id="command-line-usage-plugin"></span>
 <a href="#command-line-usage-plugin" name="command-line-usage-plugin" class="anchor glyphicon glyphicon-link"></a></h4>
 <pre><code class="lang-bash">lessc --clean-css

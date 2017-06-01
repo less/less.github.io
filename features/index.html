@@ -91,8 +91,8 @@
             <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
             <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
             <li class="divider"></li>
-            <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
           </ul>
         </li>
       </ul>
@@ -949,7 +949,7 @@ style comment! */</span>
 <span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-variable">@{variable}</span>) {} <span class="hljs-comment">// interpolated selector matches nothing</span>
 <span class="hljs-variable">@variable:</span> .bucket;
 </code></pre>
-<p>Both of the previous examples compile into:</p>
+<p>Both of the above examples compile into:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
   <span class="hljs-attribute">color</span>: blue;
 }
@@ -961,7 +961,7 @@ style comment! */</span>
 <span class="hljs-variable">@{variable}</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bucket</span>) {}
 <span class="hljs-variable">@variable:</span> .selector;
 </code></pre>
-<p>previous less compiles into:</p>
+<p>compiles to:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span>, <span class="hljs-class">.selector</span> {
   <span class="hljs-attribute">color</span>: blue;
 }
@@ -1099,7 +1099,7 @@ style comment! */</span>
 </code></pre>
 <h4 class="docs-heading">Reducing CSS Size<span class="anchor-target" id="extend-feature-reducing-css-size"></span>
 <a href="#extend-feature-reducing-css-size" name="extend-feature-reducing-css-size" class="anchor glyphicon glyphicon-link"></a></h4>
-<p>Mixins copy all of the properties into a selector, which can lead to unnecessary duplication. Therefore you can use extends instead of mixins to move the selector up to the properties you wish to use, which leads to less css being generated.</p>
+<p>Mixins copy all of the properties into a selector, which can lead to unnecessary duplication. Therefore you can use extends instead of mixins to move the selector up to the properties you wish to use, which leads to less CSS being generated.</p>
 <p>Example - with mixin:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-inline-block</span>() {
   <span class="hljs-attribute">display</span>: inline-block;
@@ -1744,7 +1744,7 @@ overridden:</p>
   <span class="hljs-attribute">background-color</span>: red;
 }
 </code></pre>
-<p>A ruleset can be now assigned to a variable or passed in to a mixin and can contain the full set of less features, e.g.</p>
+<p>A ruleset can be now assigned to a variable or passed in to a mixin and can contain the full set of Less features, e.g.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@my-ruleset:</span> {
     <span class="hljs-class">.my-selector</span> {
       <span class="hljs-attribute">background-color</span>: black;
@@ -1922,7 +1922,7 @@ overridden:</p>
 <blockquote>
 <p>Import styles from other style sheets</p>
 </blockquote>
-<p>In standard CSS, <code>@import</code> at-rules must precede all other types of rules. But Less.js doesn&apos;t care where you put <code>@import</code> statements.</p>
+<p>In standard CSS, <code>@import</code> at-rules must precede all other types of rules. But Less doesn&apos;t care where you put <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.foo</span> {
   <span class="hljs-attribute">background</span>: <span class="hljs-hexcolor">#900</span>;
@@ -1940,7 +1940,7 @@ overridden:</p>
 <p>Examples:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo&quot;</span>;      <span class="hljs-comment">// foo.less is imported</span>
 <span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.less&quot;</span>; <span class="hljs-comment">// foo.less is imported</span>
-<span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.php&quot;</span>;  <span class="hljs-comment">// foo.php imported as a less file</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.php&quot;</span>;  <span class="hljs-comment">// foo.php imported as a Less file</span>
 <span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.css&quot;</span>;  <span class="hljs-comment">// statement left in place, as-is</span>
 </code></pre>
 <p>The following options can be used to override this behavior.</p>
@@ -2618,13 +2618,13 @@ For example, when using Modernizr, you might want to specify different rules bas
   </ul>
 </div>
 
-    <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
+    <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
       <li>Currently v2.7.2</li>
       
       <li class="muted">&#xB7;</li>
-      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&#xB7;</li>

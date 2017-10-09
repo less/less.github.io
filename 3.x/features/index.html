@@ -41,12 +41,9 @@
 <ul class="nav sidenav"><li><a href="#features-overview-feature">Overview</a></li>
 <li><a href="#variables-feature">Variables</a><ul class="nav"><li><a href="#variables-feature-overview">Overview</a></li>
 <li><a href="#variables-feature-variable-interpolation">Variable Interpolation</a></li>
-<li><a href="#variables-feature-selectors">Selectors</a></li>
 <li><a href="#variables-feature-urls">URLs</a></li>
-<li><a href="#variables-feature-import-statements">Import Statements</a></li>
-<li><a href="#variables-feature-properties">Properties</a></li>
 <li><a href="#variables-feature-variable-variables">Variable Variables</a></li>
-<li><a href="#variables-feature-lazy-loading">Lazy Loading</a></li>
+<li><a href="#variables-feature-lazy-evaluation">Lazy Evaluation</a></li>
 <li><a href="#variables-feature-default-variables">Default Variables</a></li></ul></li>
 <li><a href="#parent-selectors-feature">Parent Selectors</a><ul class="nav"><li><a href="#parent-selectors-feature-multiple-">Multiple <code>&amp;</code></a></li>
 <li><a href="#parent-selectors-feature-changing-selector-order">Changing Selector Order</a></li>
@@ -61,10 +58,7 @@
 <li><a href="#extend-feature-selector-interpolation-with-extend">Selector Interpolation with Extend</a></li>
 <li><a href="#extend-feature-scoping-extend-inside-media">Scoping / Extend Inside @media</a></li>
 <li><a href="#extend-feature-duplication-detection">Duplication Detection</a></li>
-<li><a href="#extend-feature-use-cases-for-extend">Use Cases for Extend</a></li>
-<li><a href="#extend-feature-classic-use-case">Classic Use Case</a></li>
-<li><a href="#extend-feature-reducing-css-size">Reducing CSS Size</a></li>
-<li><a href="#extend-feature-combining-styles-a-more-advanced-mixin">Combining Styles / A More Advanced Mixin</a></li></ul></li>
+<li><a href="#extend-feature-use-cases-for-extend">Use Cases for Extend</a></li></ul></li>
 <li><a href="#merge-feature">Merge</a><ul class="nav"><li><a href="#merge-feature-comma">Comma</a></li>
 <li><a href="#merge-feature-space">Space</a></li></ul></li>
 <li><a href="#mixins-feature">Mixins</a><ul class="nav"><li><a href="#mixins-feature-not-outputting-the-mixin">Not Outputting the Mixin</a></li>
@@ -160,8 +154,8 @@
             <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
             <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
             <li class="divider"></li>
-            <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
           </ul>
         </li>
       </ul>
@@ -239,8 +233,8 @@
         <blockquote>
 <p>Control commonly used values in a single location.</p>
 </blockquote>
-<h2 class="docs-heading"><span class="anchor-target" id="variables-feature-overview"></span>
-<a href="#variables-feature-overview" name="variables-feature-overview" class="anchor glyphicon glyphicon-link"></a>Overview</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-overview"></span>
+<a href="#variables-feature-overview" name="variables-feature-overview" class="anchor glyphicon glyphicon-link"></a>Overview</h3>
 <p>It&apos;s not uncommon to see the same value repeated dozens <em>if not hundreds of times</em> across your stylesheets:</p>
 <pre><code class="lang-css"><span class="hljs-tag">a</span>,
 <span class="hljs-class">.link</span> {
@@ -269,11 +263,11 @@
   <span class="hljs-attribute">background</span>: <span class="hljs-variable">@link-color</span>;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="variables-feature-variable-interpolation"></span>
-<a href="#variables-feature-variable-interpolation" name="variables-feature-variable-interpolation" class="anchor glyphicon glyphicon-link"></a>Variable Interpolation</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-variable-interpolation"></span>
+<a href="#variables-feature-variable-interpolation" name="variables-feature-variable-interpolation" class="anchor glyphicon glyphicon-link"></a>Variable Interpolation</h3>
 <p>The examples above focused on using variables to control <em>values in CSS rules</em>, but they can also be used in other places as well, such as selector names, property names, URLs and <code>@import</code> statements.</p>
-<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-selectors"></span>
-<a href="#variables-feature-selectors" name="variables-feature-selectors" class="anchor glyphicon glyphicon-link"></a>Selectors</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="variables-feature-selectors"></span>
+<a href="#variables-feature-selectors" name="variables-feature-selectors" class="anchor glyphicon glyphicon-link"></a>Selectors</h4>
 <p>Version: 1.4.0</p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
 <span class="hljs-variable">@my-selector:</span> banner;
@@ -300,11 +294,11 @@
 <span class="hljs-comment">// Usage</span>
 <span class="hljs-tag">body</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#444</span>;
-  <span class="hljs-attribute">background</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;@{images}/white-sand.png&quot;</span>);
+  <span class="hljs-attribute">background</span>: url(<span class="hljs-string">&quot;@{images}/white-sand.png&quot;</span>);
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-import-statements"></span>
-<a href="#variables-feature-import-statements" name="variables-feature-import-statements" class="anchor glyphicon glyphicon-link"></a>Import Statements</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="variables-feature-import-statements"></span>
+<a href="#variables-feature-import-statements" name="variables-feature-import-statements" class="anchor glyphicon glyphicon-link"></a>Import Statements</h4>
 <p>Version: 1.4.0</p>
 <p>Syntax: <code>@import &quot;@{themes}/tidal-wave.less&quot;;</code></p>
 <p>Note that before v2.0.0, only variables which have been declared in the root or current scope were considered and that only the current file and calling files were considered when looking for a variable.</p>
@@ -315,8 +309,8 @@
 <span class="hljs-comment">// Usage</span>
 <span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;@{themes}/tidal-wave.less&quot;</span>;
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-properties"></span>
-<a href="#variables-feature-properties" name="variables-feature-properties" class="anchor glyphicon glyphicon-link"></a>Properties</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="variables-feature-properties"></span>
+<a href="#variables-feature-properties" name="variables-feature-properties" class="anchor glyphicon glyphicon-link"></a>Properties</h4>
 <p>Version: 1.6.0</p>
 <pre><code class="lang-less"><span class="hljs-variable">@property:</span> color;
 
@@ -331,8 +325,8 @@
   <span class="hljs-attribute">background-color</span>: <span class="hljs-hexcolor">#999</span>;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="variables-feature-variable-variables"></span>
-<a href="#variables-feature-variable-variables" name="variables-feature-variable-variables" class="anchor glyphicon glyphicon-link"></a>Variable Variables</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-variable-variables"></span>
+<a href="#variables-feature-variable-variables" name="variables-feature-variable-variables" class="anchor glyphicon glyphicon-link"></a>Variable Variables</h3>
 <p>In Less, you can define a variable&apos;s name using another variable.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@primary:</span>  green;
 <span class="hljs-variable">@secondary:</span> blue;
@@ -350,8 +344,10 @@
   <span class="hljs-attribute">color</span>: green;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="variables-feature-lazy-loading"></span>
-<a href="#variables-feature-lazy-loading" name="variables-feature-lazy-loading" class="anchor glyphicon glyphicon-link"></a>Lazy Loading</h2>
+<p><span class="anchor-target" id="variables-feature-lazy-loading"></span>
+<!-- ^ please keep old anchor to not break zillion outer links --></p>
+<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-lazy-evaluation"></span>
+<a href="#variables-feature-lazy-evaluation" name="variables-feature-lazy-evaluation" class="anchor glyphicon glyphicon-link"></a>Lazy Evaluation</h3>
 <blockquote>
 <p>Variables do not have to be declared before being used.</p>
 </blockquote>
@@ -398,8 +394,8 @@
   <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="variables-feature-default-variables"></span>
-<a href="#variables-feature-default-variables" name="variables-feature-default-variables" class="anchor glyphicon glyphicon-link"></a>Default Variables</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-default-variables"></span>
+<a href="#variables-feature-default-variables" name="variables-feature-default-variables" class="anchor glyphicon glyphicon-link"></a>Default Variables</h3>
 <p>We sometimes get requests for default variables - an ability to set a variable only if it is not already set. This feature is not required because you can easily override a variable by putting the definition afterwards.</p>
 <p>For instance:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// library</span>
@@ -469,26 +465,26 @@
 <p>The &quot;parent selectors&quot; operator has a variety of uses. Basically any time you need the selectors of the nested rules to be combined in other ways than the default. For example another typical use of the <code>&amp;</code> is to produce repetitive class names:</p>
 <pre><code class="lang-less"><span class="hljs-class">.button</span> {
   <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-ok</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;ok.png&quot;</span>);
+    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;ok.png&quot;</span>);
   }
   <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-cancel</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;cancel.png&quot;</span>);
+    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;cancel.png&quot;</span>);
   }
 
   <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-custom</span> {
-    <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;custom.png&quot;</span>);
+    <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;custom.png&quot;</span>);
   }
 }
 </code></pre>
 <p>output:</p>
 <pre><code class="lang-css"><span class="hljs-class">.button-ok</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;ok.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;ok.png&quot;</span>);
 }
 <span class="hljs-class">.button-cancel</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;cancel.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;cancel.png&quot;</span>);
 }
 <span class="hljs-class">.button-custom</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&quot;custom.png&quot;</span>);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&quot;custom.png&quot;</span>);
 }
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="parent-selectors-feature-multiple-"></span>
@@ -570,7 +566,7 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-class">.menu</span> {
     <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
     <span class="hljs-class">.no-borderradius</span> <span class="hljs-keyword">&amp;</span> {
-      <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;images/button-background.png&apos;</span>);
+      <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;images/button-background.png&apos;</span>);
     }
   }
 }
@@ -580,7 +576,7 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">5px</span>;
 }
 <span class="hljs-class">.no-borderradius</span> <span class="hljs-class">.header</span> <span class="hljs-class">.menu</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;images/button-background.png&apos;</span>);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;images/button-background.png&apos;</span>);
 }
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="parent-selectors-feature-combinatorial-explosion"></span>
@@ -682,8 +678,8 @@ For example, when using Modernizr, you might want to specify different rules bas
 }
 </code></pre>
 <p>Notice how the <code>nav ul:extend(.inline)</code> selector gets output as <code>nav ul</code> - the extend gets removed before output and the selector block left as-is. If no properties are put in that block then it gets removed from the output (but the extend still may affect other selectors).</p>
-<h2 class="docs-heading"><span class="anchor-target" id="extend-feature-extend-syntax"></span>
-<a href="#extend-feature-extend-syntax" name="extend-feature-extend-syntax" class="anchor glyphicon glyphicon-link"></a>Extend Syntax</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-extend-syntax"></span>
+<a href="#extend-feature-extend-syntax" name="extend-feature-extend-syntax" class="anchor glyphicon glyphicon-link"></a>Extend Syntax</h3>
 <p>The extend is either attached to a selector or placed into a ruleset. It looks like a pseudo-class with selector parameter optionally followed by the keyword <code>all</code>:</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.b</span>) {}
@@ -852,8 +848,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="extend-feature-extend-all-"></span>
-<a href="#extend-feature-extend-all-" name="extend-feature-extend-all-" class="anchor glyphicon glyphicon-link"></a>Extend &quot;all&quot;</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-extend-all-"></span>
+<a href="#extend-feature-extend-all-" name="extend-feature-extend-all-" class="anchor glyphicon glyphicon-link"></a>Extend &quot;all&quot;</h3>
 <p>When you specify the all keyword last in an extend argument it tells Less to match that selector as part of another selector. The selector will be copied and the matched part of the selector only will then be replaced with the extend, making a new selector.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-class">.b</span><span class="hljs-class">.test</span>,
@@ -901,7 +897,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 <span class="hljs-class">.some-class</span><span class="hljs-keyword">:extend</span>(<span class="hljs-variable">@{variable}</span>) {} <span class="hljs-comment">// interpolated selector matches nothing</span>
 <span class="hljs-variable">@variable:</span> .bucket;
 </code></pre>
-<p>Both of the previous examples compile into:</p>
+<p>Both of the above examples compile into:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span> {
   <span class="hljs-attribute">color</span>: blue;
 }
@@ -913,13 +909,13 @@ For example, when using Modernizr, you might want to specify different rules bas
 <span class="hljs-variable">@{variable}</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.bucket</span>) {}
 <span class="hljs-variable">@variable:</span> .selector;
 </code></pre>
-<p>previous less compiles into:</p>
+<p>compiles to:</p>
 <pre><code class="lang-less"><span class="hljs-class">.bucket</span>, <span class="hljs-class">.selector</span> {
   <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="extend-feature-scoping-extend-inside-media"></span>
-<a href="#extend-feature-scoping-extend-inside-media" name="extend-feature-scoping-extend-inside-media" class="anchor glyphicon glyphicon-link"></a>Scoping / Extend Inside @media</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-scoping-extend-inside-media"></span>
+<a href="#extend-feature-scoping-extend-inside-media" name="extend-feature-scoping-extend-inside-media" class="anchor glyphicon glyphicon-link"></a>Scoping / Extend Inside @media</h3>
 <p>Currently, an <code>:extend</code> inside a <code>@media</code> declaration will only match selectors inside the same media declaration:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@media</span> print {
   <span class="hljs-class">.screenClass</span><span class="hljs-keyword">:extend</span>(<span class="hljs-class">.selector</span>) {} <span class="hljs-comment">// extend inside media</span>
@@ -1016,10 +1012,10 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-comment">/* declarations */</span>
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="extend-feature-use-cases-for-extend"></span>
-<a href="#extend-feature-use-cases-for-extend" name="extend-feature-use-cases-for-extend" class="anchor glyphicon glyphicon-link"></a>Use Cases for Extend</h2>
-<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-classic-use-case"></span>
-<a href="#extend-feature-classic-use-case" name="extend-feature-classic-use-case" class="anchor glyphicon glyphicon-link"></a>Classic Use Case</h3>
+<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-use-cases-for-extend"></span>
+<a href="#extend-feature-use-cases-for-extend" name="extend-feature-use-cases-for-extend" class="anchor glyphicon glyphicon-link"></a>Use Cases for Extend</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="extend-feature-classic-use-case"></span>
+<a href="#extend-feature-classic-use-case" name="extend-feature-classic-use-case" class="anchor glyphicon glyphicon-link"></a>Classic Use Case</h4>
 <p>The classic use case is to avoid adding a base class. For example, if you have</p>
 <pre><code class="lang-css"><span class="hljs-class">.animal</span> {
   <span class="hljs-attribute">background-color</span>: black;
@@ -1049,12 +1045,12 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">background-color</span>: brown;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-reducing-css-size"></span>
-<a href="#extend-feature-reducing-css-size" name="extend-feature-reducing-css-size" class="anchor glyphicon glyphicon-link"></a>Reducing CSS Size</h3>
-<p>Mixins copy all of the properties into a selector, which can lead to unnecessary duplication. Therefore you can use extends instead of mixins to move the selector up to the properties you wish to use, which leads to less css being generated.</p>
+<h4 class="docs-heading"><span class="anchor-target" id="extend-feature-reducing-css-size"></span>
+<a href="#extend-feature-reducing-css-size" name="extend-feature-reducing-css-size" class="anchor glyphicon glyphicon-link"></a>Reducing CSS Size</h4>
+<p>Mixins copy all of the properties into a selector, which can lead to unnecessary duplication. Therefore you can use extends instead of mixins to move the selector up to the properties you wish to use, which leads to less CSS being generated.</p>
 <p>Example - with mixin:</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-inline-block</span>() {
-    <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
 }
 <span class="hljs-class">.thing1</span> {
@@ -1094,8 +1090,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-combining-styles-a-more-advanced-mixin"></span>
-<a href="#extend-feature-combining-styles-a-more-advanced-mixin" name="extend-feature-combining-styles-a-more-advanced-mixin" class="anchor glyphicon glyphicon-link"></a>Combining Styles / A More Advanced Mixin</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="extend-feature-combining-styles-a-more-advanced-mixin"></span>
+<a href="#extend-feature-combining-styles-a-more-advanced-mixin" name="extend-feature-combining-styles-a-more-advanced-mixin" class="anchor glyphicon glyphicon-link"></a>Combining Styles / A More Advanced Mixin</h4>
 <p>Another use-case is as an alternative for a mixin - because mixins can only be used with simple selectors, if you have two different blocks of html, but need to apply the same styles to both you can use extends to relate two areas.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-tag">li</span><span class="hljs-class">.list</span> &gt; <span class="hljs-tag">a</span> {
@@ -1143,8 +1139,8 @@ For example, when using Modernizr, you might want to specify different rules bas
 <p>Combine properties</p>
 </blockquote>
 <p>The <code>merge</code> feature allows for aggregating values from multiple properties into a comma or space separated list under a single property. <code>merge</code> is useful for properties such as background and transform.</p>
-<h2 class="docs-heading"><span class="anchor-target" id="merge-feature-comma"></span>
-<a href="#merge-feature-comma" name="merge-feature-comma" class="anchor glyphicon glyphicon-link"></a>Comma</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="merge-feature-comma"></span>
+<a href="#merge-feature-comma" name="merge-feature-comma" class="anchor glyphicon glyphicon-link"></a>Comma</h3>
 <blockquote>
 <p>Append property value with comma</p>
 </blockquote>
@@ -1163,8 +1159,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">10px</span> <span class="hljs-hexcolor">#555</span>, <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span> black;
 }
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="merge-feature-space"></span>
-<a href="#merge-feature-space" name="merge-feature-space" class="anchor glyphicon glyphicon-link"></a>Space</h2>
+<h3 class="docs-heading"><span class="anchor-target" id="merge-feature-space"></span>
+<a href="#merge-feature-space" name="merge-feature-space" class="anchor glyphicon glyphicon-link"></a>Space</h3>
 <blockquote>
 <p>Append property value with space</p>
 </blockquote>
@@ -2016,7 +2012,7 @@ overridden:</p>
   <span class="hljs-attribute">background-color</span>: red;
 }
 </code></pre>
-<p>A ruleset can be now assigned to a variable or passed in to a mixin and can contain the full set of less features, e.g.</p>
+<p>A ruleset can be now assigned to a variable or passed in to a mixin and can contain the full set of Less features, e.g.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@my-ruleset:</span> {
     <span class="hljs-class">.my-selector</span> {
       <span class="hljs-attribute">background-color</span>: black;
@@ -2197,7 +2193,7 @@ overridden:</p>
         <blockquote>
 <p>Import styles from other style sheets</p>
 </blockquote>
-<p>In standard CSS, <code>@import</code> at-rules must precede all other types of rules. But Less.js doesn&apos;t care where you put <code>@import</code> statements.</p>
+<p>In standard CSS, <code>@import</code> at-rules must precede all other types of rules. But Less doesn&apos;t care where you put <code>@import</code> statements.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.foo</span> {
   <span class="hljs-attribute">background</span>: <span class="hljs-hexcolor">#900</span>;
@@ -2215,7 +2211,7 @@ overridden:</p>
 <p>Examples:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo&quot;</span>;      <span class="hljs-comment">// foo.less is imported</span>
 <span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.less&quot;</span>; <span class="hljs-comment">// foo.less is imported</span>
-<span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.php&quot;</span>;  <span class="hljs-comment">// foo.php imported as a less file</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.php&quot;</span>;  <span class="hljs-comment">// foo.php imported as a Less file</span>
 <span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;foo.css&quot;</span>;  <span class="hljs-comment">// statement left in place, as-is</span>
 </code></pre>
 <p>The following options can be used to override this behavior.</p>
@@ -2402,7 +2398,7 @@ install: <span class="hljs-function"><span class="hljs-keyword">function</span>(
 <p>However, you would need to return a proper Less node if you wanted to, say, multiply that against other values or do other Less operations. Otherwise the output in your stylesheet is plain text (which may be fine for your purposes).</p>
 <p>Meaning, this is more correct:</p>
 <pre><code class="lang-js">functions.add(<span class="hljs-string">&apos;pi&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">return</span> less.Dimension(<span class="hljs-built_in">Math</span>.PI);
+    <span class="hljs-keyword">return</span> less.dimension(<span class="hljs-built_in">Math</span>.PI);
 });
 </code></pre>
 <p><em>Note: A dimension is a number with or without a unit, like &quot;10px&quot;, which would be <code>less.Dimension(10, &quot;px&quot;)</code>. For a list of units, see the <a href="TODO">Less API</a>.</em></p>
@@ -2479,7 +2475,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 </code></pre>
 <p>Later you could do something like:</p>
 <pre><code class="lang-js">functions.add(<span class="hljs-string">&apos;retrieve&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>) </span>{
-    <span class="hljs-keyword">return</span> less.Value(collection);
+    <span class="hljs-keyword">return</span> less.value(collection);
 });
 </code></pre>
 <pre><code class="lang-less"><span class="hljs-class">.get-my-values</span> {
@@ -2559,15 +2555,13 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
   </ul>
 </div>
 
-    <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
+    <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
       <li>Currently v2.7.2</li>
       
       <li class="muted">&#xB7;</li>
-      <li><a href="../about">About Less</a></li>
-      <li class="muted">&#xB7;</li>
-      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&#xB7;</li>

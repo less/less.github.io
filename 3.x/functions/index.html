@@ -183,8 +183,8 @@
             <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
             <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
             <li class="divider"></li>
-            <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
           </ul>
         </li>
       </ul>
@@ -492,7 +492,7 @@
 </code></pre>
 <p>both result in:</p>
 <pre><code class="lang-css"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
 }
 </code></pre>
 <p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
@@ -1018,7 +1018,7 @@ NaN%
 <span class="hljs-attribute">isnumber</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">isnumber</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">isnumber</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isnumber</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isnumber</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-isstring"></span>
 <a href="#type-functions-isstring" name="type-functions-isstring" class="anchor glyphicon glyphicon-link"></a>isstring</h3>
@@ -1035,7 +1035,7 @@ NaN%
 <span class="hljs-attribute">isstring</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isstring</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isstring</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isstring</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-iscolor"></span>
 <a href="#type-functions-iscolor" name="type-functions-iscolor" class="anchor glyphicon glyphicon-link"></a>iscolor</h3>
@@ -1052,7 +1052,7 @@ NaN%
 <span class="hljs-attribute">iscolor</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iscolor</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iscolor</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">iscolor</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-iskeyword"></span>
 <a href="#type-functions-iskeyword" name="type-functions-iskeyword" class="anchor glyphicon glyphicon-link"></a>iskeyword</h3>
@@ -1069,7 +1069,7 @@ NaN%
 <span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iskeyword</span>(keyword);  <span class="hljs-comment">// true</span>
-<span class="hljs-attribute">iskeyword</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-isurl"></span>
 <a href="#type-functions-isurl" name="type-functions-isurl" class="anchor glyphicon glyphicon-link"></a>isurl</h3>
@@ -1086,7 +1086,7 @@ NaN%
 <span class="hljs-attribute">isurl</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isurl</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isurl</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isurl</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isurl</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// true</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-ispixel"></span>
 <a href="#type-functions-ispixel" name="type-functions-ispixel" class="anchor glyphicon glyphicon-link"></a>ispixel</h3>
@@ -1103,7 +1103,7 @@ NaN%
 <span class="hljs-attribute">ispixel</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">ispixel</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">ispixel</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">ispixel</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-isem"></span>
 <a href="#type-functions-isem" name="type-functions-isem" class="anchor glyphicon glyphicon-link"></a>isem</h3>
@@ -1120,7 +1120,7 @@ NaN%
 <span class="hljs-attribute">isem</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isem</span>(<span class="hljs-number">7.8em</span>);    <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">isem</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isem</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-ispercentage"></span>
 <a href="#type-functions-ispercentage" name="type-functions-ispercentage" class="anchor glyphicon glyphicon-link"></a>ispercentage</h3>
@@ -1137,7 +1137,7 @@ NaN%
 <span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">ispercentage</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">ispercentage</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="type-functions-isunit"></span>
 <a href="#type-functions-isunit" name="type-functions-isunit" class="anchor glyphicon glyphicon-link"></a>isunit</h3>
@@ -1184,7 +1184,7 @@ NaN%
 <span class="hljs-attribute">isruleset</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(keyword);  <span class="hljs-comment">// false</span>
-<span class="hljs-attribute">isruleset</span>(<span class="hljs-function">url</span><span class="hljs-string">(...</span>)); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
 
 
@@ -1285,7 +1285,7 @@ NaN%
 <li><code>alpha</code>: A percentage 0-100% or number 0-1.</li>
 </ul>
 <p>Returns: <code>color</code></p>
-<p>Example: <code>hsl(90, 100%, 50%, 0.5)</code></p>
+<p>Example: <code>hsla(90, 100%, 50%, 0.5)</code></p>
 <p>Output: <code>rgba(128, 255, 0, 0.5)</code></p>
 <h3 class="docs-heading"><span class="anchor-target" id="color-definition-hsv"></span>
 <a href="#color-definition-hsv" name="color-definition-hsv" class="anchor glyphicon glyphicon-link"></a>hsv</h3>
@@ -2313,15 +2313,13 @@ NaN%
   </ul>
 </div>
 
-    <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
+    <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
       <li>Currently v2.7.2</li>
       
       <li class="muted">&#xB7;</li>
-      <li><a href="../about">About Less</a></li>
-      <li class="muted">&#xB7;</li>
-      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&#xB7;</li>

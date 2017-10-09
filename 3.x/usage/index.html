@@ -64,9 +64,7 @@
 <li><a href="#developing-less">Contributing to Less.js</a><ul class="nav"><li><a href="#developing-less-install-these-tools">Install These Tools</a></li>
 <li><a href="#developing-less-usage">Usage</a></li>
 <li><a href="#developing-less-how-to-run-less-in-other-environments">How to Run Less in Other Environments</a></li>
-<li><a href="#developing-less-guide">Guide</a></li>
-<li><a href="#developing-less-books">Books</a></li>
-<li><a href="#developing-less-videos">Videos</a></li></ul></li></ul></div>
+<li><a href="#developing-less-guide">Guide</a></li></ul></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -127,8 +125,8 @@
             <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
             <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
             <li class="divider"></li>
-            <li> <a href="https://github.com/less/less.js.git">Less.js Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues">Less.js Issues</a> </li>
+            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
           </ul>
         </li>
       </ul>
@@ -243,6 +241,7 @@ lessc --depends
 <p>Outputs a makefile import dependency list to stdout.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="command-line-usage-no-color"></span>
 <a href="#command-line-usage-no-color" name="command-line-usage-no-color" class="anchor glyphicon glyphicon-link"></a>No Color</h4>
+<p><em>Deprecated</em>.</p>
 <pre><code class="lang-bash">lessc --no-color
 </code></pre>
 <h4 class="docs-heading"><span class="anchor-target" id="command-line-usage-clean-css"></span>
@@ -552,12 +551,12 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </code></pre>
 <p>this will output the following normally</p>
 <pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;images/lamp-post.png&apos;</span>);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;images/lamp-post.png&apos;</span>);
 }
 </code></pre>
 <p>but with <code>relativeUrls: true</code>, it will instead output</p>
 <pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">url</span><span class="hljs-string">(&apos;files/images/lamp-post.png&apos;</span>);
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;files/images/lamp-post.png&apos;</span>);
 }
 </code></pre>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
@@ -962,10 +961,9 @@ dev-files/main.less
 lessc --plugin=myplugin=advanced
 </code></pre><h2 class="docs-heading"><span class="anchor-target" id="plugins-loading-a-plugin-via-less-js"></span>
 <a href="#plugins-loading-a-plugin-via-less-js" name="plugins-loading-a-plugin-via-less-js" class="anchor glyphicon glyphicon-link"></a>Loading a Plugin via Less.js</h2>
-<p>In Node, pass it to less in an array on the options object e.g.</p>
-<p><em>TODO: Just passing the string name of the plugin to the render function doesn&apos;t actually work yet in 3.0 alpha.</em></p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> 
-less.render(myCSS, { <span class="hljs-attr">plugins</span>: [<span class="hljs-string">&quot;less-plugin-myplugin&quot;</span>] })
+<p>In Node, require the plugin and pass it to <code>less</code> in an array as an option plugins. E.g.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> LessPlugin = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;less-plugin-myplugin&apos;</span>);
+less.render(myCSS, { <span class="hljs-attr">plugins</span>: [LessPlugin] })
   .then(
     <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{ },
     <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{ }
@@ -1008,7 +1006,7 @@ less.render(myCSS, { <span class="hljs-attr">plugins</span>: [<span class="hljs-
        
 
 
-<p>The main entry point into less is the less.render function. This takes the following format</p>
+<p>The main entry point into <code>less</code> is the <code>less.render</code> function. This takes the following format</p>
 <pre><code class="lang-js">less.render(lessInput, options)
     .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">output</span>) </span>{
         <span class="hljs-comment">// output.css = string of css</span>
@@ -1139,10 +1137,10 @@ less.render(lessInput, {<span class="hljs-attr">sourceMap</span>: {<span class="
 </ul>
 <h2 class="docs-heading"><span class="anchor-target" id="developing-less-usage"></span>
 <a href="#developing-less-usage" name="developing-less-usage" class="anchor glyphicon glyphicon-link"></a>Usage</h2>
-<p>If you go to the root of the less repository you should be able to do <code>grunt test</code> - this should run all the tests. For the browser specific only, run <code>grunt browsertest</code> If you want to try out the current version of less against a file, from here do <code>node bin/lessc path/to/file.less</code></p>
+<p>If you go to the root of the Less repository you should be able to do <code>grunt test</code> - this should run all the tests. For the browser specific only, run <code>grunt browsertest</code> If you want to try out the current version of less against a file, from here do <code>node bin/lessc path/to/file.less</code></p>
 <p>To debug the browser tests, run <code>grunt browsertest-server</code> then go to <a href="http://localhost:8088/tmp/browser/">http://localhost:8088/tmp/browser/</a> to see the test runner pages.</p>
-<p>Optional: To get the current version of the less compiler do <code>npm -g install less</code> - npm is the node package manager and &quot;-g&quot; installs it to be available globally.</p>
-<p>You should now be able to do <code>lessc file.less</code> and if there is an appropriate file.less then it will be compiled and output to the stdout. You can then compare it to running locally (<code>node bin/lessc file.less</code>).</p>
+<p>Optional: To get the current version of the Less compiler do <code>npm -g install less</code> - npm is the node package manager and &quot;-g&quot; installs it to be available globally.</p>
+<p>You should now be able to do <code>lessc file.less</code> and if there is an appropriate <code>file.less</code> then it will be compiled and output to the stdout. You can then compare it to running locally (<code>node bin/lessc file.less</code>).</p>
 <p>Other grunt commands</p>
 <ul>
 <li><code>grunt benchmark</code> - run our benchmark tests to get some numbers on performance</li>
@@ -1151,7 +1149,7 @@ less.render(lessInput, {<span class="hljs-attr">sourceMap</span>: {<span class="
 </ul>
 <h2 class="docs-heading"><span class="anchor-target" id="developing-less-how-to-run-less-in-other-environments"></span>
 <a href="#developing-less-how-to-run-less-in-other-environments" name="developing-less-how-to-run-less-in-other-environments" class="anchor glyphicon glyphicon-link"></a>How to Run Less in Other Environments</h2>
-<p>If you look in the libs folder you will see <code>less</code>, <code>less-node</code>, <code>less-browser</code>. The less folder is pure javascript with no environment
+<p>If you look in the libs folder you will see <code>less</code>, <code>less-node</code>, <code>less-browser</code>. The <code>less</code> folder is pure javascript with no environment
 specifics. if you require <code>less/libs/less</code>, you get a function that takes an environment object and an array of file managers. The file
 managers are the same file managers that can also be written as a plugin.</p>
 <pre><code class="lang-js"><span class="hljs-keyword">var</span> createLess = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;less/libs/less&quot;</span>),
@@ -1165,17 +1163,6 @@ the npm import plugin implementation.</p>
 <h2 class="docs-heading"><span class="anchor-target" id="developing-less-guide"></span>
 <a href="#developing-less-guide" name="developing-less-guide" class="anchor glyphicon glyphicon-link"></a>Guide</h2>
 <p>If you look at <a href="http://www.gliffy.com/go/publish/4784259">http://www.gliffy.com/go/publish/4784259</a>,  This is an overview diagram of how less works. Warning! It needs updating with v2 changes.</p>
-<h2 class="docs-heading"><span class="anchor-target" id="developing-less-books"></span>
-<a href="#developing-less-books" name="developing-less-books" class="anchor glyphicon glyphicon-link"></a>Books</h2>
-<ul>
-<li><a href="http://www.packtpub.com/less-web-development-essentials/book">Less Web Development Essentials</a>, by Bass Jobsen, Foreword by Alexis Sellier</li>
-<li><a href="https://www.packtpub.com/web-development/less-web-development-cookbook">Less Web Development Cookbook</a>, by Bass Jobsen and Amin Meyghani, Foreword by Luke Page</li>
-</ul>
-<h2 class="docs-heading"><span class="anchor-target" id="developing-less-videos"></span>
-<a href="#developing-less-videos" name="developing-less-videos" class="anchor glyphicon glyphicon-link"></a>Videos</h2>
-<ul>
-<li><a href="https://www.packtpub.com/web-development/learning-less-video">Learning LESS</a>, by Anthony Killeen</li>
-</ul>
 
 
       <br>
@@ -1204,15 +1191,13 @@ the npm import plugin implementation.</p>
   </ul>
 </div>
 
-    <p>Less.js and these docs are maintained by <a href="../about/#team">the core less team</a>.</p>
+    <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
       <li>Currently v2.7.2</li>
       
       <li class="muted">&#xB7;</li>
-      <li><a href="../about">About Less</a></li>
-      <li class="muted">&#xB7;</li>
-      <li><a href="https://github.com/less/less.js/issues">Less.js Issues</a></li>
+      <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&#xB7;</li>

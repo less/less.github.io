@@ -48,7 +48,8 @@
 <li><a href="#misc-functions-default">default</a></li>
 <li><a href="#misc-functions-unit">unit</a></li>
 <li><a href="#misc-functions-get-unit">get-unit</a></li>
-<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li></ul></li>
+<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li>
+<li><a href="#misc-functions-if">if</a></li></ul></li>
 <li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li>
 <li><a href="#string-functions-e">e</a></li>
 <li><a href="#string-functions--format">% format</a></li>
@@ -506,6 +507,44 @@
     <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#gradient)&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-if"></span>
+<a href="#misc-functions-if" name="misc-functions-if" class="anchor glyphicon glyphicon-link"></a>if</h3>
+<blockquote>
+<p>Returns one of two values depending on a condition.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>condition</code>: A boolean expression</li>
+<li><code>value1</code>: A value returned if <code>condition</code> is true.</li>
+<li><code>value2</code>: A value returned if <code>condition</code> is not true.</li>
+</ul>
+<p>Released: v3.00</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@some:</span> foo;
+
+<span class="hljs-tag">div</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-function">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), <span class="hljs-number">0</span>, <span class="hljs-number">3px</span>);
+    <span class="hljs-attribute">color</span>:  <span class="hljs-function">if</span>((<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@some</span>)), <span class="hljs-function">darken</span>(<span class="hljs-variable">@some</span>, <span class="hljs-number">10%</span>), black);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">color</span>:  black;
+}
+</code></pre>
+<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.
+Note however that any boolean expression for the <code>condition</code> parameter require an extra set of parens:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// OK</span>
+<span class="hljs-attribute">if</span>(<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>, blue, green);   <span class="hljs-comment">// Error</span>
+<span class="hljs-attribute">if</span>((true), blue, green);  <span class="hljs-comment">// OK</span>
+<span class="hljs-attribute">if</span>(true, blue, green);    <span class="hljs-comment">// Error</span>
+</code></pre>
+<p>The only operators that can be w/o parens are: <code>not</code>, <code>and</code> and <code>or</code>:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>(not (true), foo, bar);
+<span class="hljs-attribute">if</span>((true) and (<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), foo, bar);
+<span class="hljs-attribute">if</span>((false) or (<span class="hljs-function">isstring</span>(<span class="hljs-string">&quot;boo!&quot;</span>)), foo, bar);
 </code></pre>
 
 
@@ -2316,7 +2355,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.7.2</li>
+      <li>Currently v2.7.3</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

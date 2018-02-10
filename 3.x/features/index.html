@@ -360,7 +360,7 @@
 <span class="hljs-variable">@a:</span> <span class="hljs-number">9%</span>;
 </code></pre>
 <p>this is valid Less too:</p>
-<pre><code class="lang-less"><span class="hljs-class">.lazy-eval-scope</span> {
+<pre><code class="lang-less"><span class="hljs-class">.lazy-eval</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-variable">@var</span>;
   <span class="hljs-variable">@a:</span> <span class="hljs-number">9%</span>;
 }
@@ -369,7 +369,7 @@
 <span class="hljs-variable">@a:</span> <span class="hljs-number">100%</span>;
 </code></pre>
 <p>both compile into:</p>
-<pre><code class="lang-css"><span class="hljs-class">.lazy-eval-scope</span> {
+<pre><code class="lang-css"><span class="hljs-class">.lazy-eval</span> {
   <span class="hljs-attribute">width</span>: <span class="hljs-number">9%</span>;
 }
 </code></pre>
@@ -2353,29 +2353,27 @@ overridden:</p>
 <p>Using a <code>@plugin</code> at-rule is similar to using an <code>@import</code> for your <code>.less</code> files.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@plugin</span> <span class="hljs-string">&quot;my-plugin&quot;</span>;  <span class="hljs-comment">// automatically appends .js if no extension</span>
 </code></pre>
-<p>Less.js Plugins are (modifed) UMD (universal module definition)-format JavaScript files. The basic guts of a plugin looks like:</p>
-<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">root, factory</span>) </span>{ 
-    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> define === <span class="hljs-string">&apos;function&apos;</span> &amp;&amp; define.amd) { 
-        define([], factory);
-    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">module</span> === <span class="hljs-string">&apos;object&apos;</span> &amp;&amp; <span class="hljs-built_in">module</span>.exports) { 
-        <span class="hljs-built_in">module</span>.exports = factory();
-    } <span class="hljs-keyword">else</span> { 
-        (root.LESS_PLUGINS = root.LESS_PLUGINS || []).push(factory());
-    } 
-}(<span class="hljs-keyword">this</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-    <span class="hljs-comment">// Less.js Plugin object</span>
-    <span class="hljs-keyword">return</span> {
-        <span class="hljs-attr">install</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{
-            <span class="hljs-comment">// functions.add(&apos;&apos;)</span>
-        }
-    };
-}));
+<p>Since Less plugins are evaluated within the Less scope, the plugin definition can be quite simple.</p>
+<pre><code class="lang-js">registerPlugin({
+    <span class="hljs-attr">install</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{
+        functions.add(<span class="hljs-string">&apos;pi&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.PI;
+        });
+    }
+})
 </code></pre>
-<p>Most of that is boilerplate UMD. The only part you need to modify is the returned plugin object.</p>
-<p><em>Note: Less.js Plugins should have this signature to be compatible with Less 3.x features moving forward, but Less 3.x is backwards-compatible with existing Less 2.x plugins.</em></p>
+<p>or you can use <code>module.exports</code> (shimmed to work in browser as well as Node.js).</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">install</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{
+        functions.add(<span class="hljs-string">&apos;pi&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.PI;
+        });
+    }
+};
+</code></pre>
+<p>Note that other Node.js CommonJS conventions, like <code>require()</code> are not available in the browser. Keep this in mind when writing cross-platform plugins.</p>
 <p>What can you do with a plugin? A lot, but let&apos;s start with the basics. We&apos;ll focus first on what you might put inside the <code>install</code> function. Let&apos;s say you write this:</p>
 <pre><code class="lang-js"><span class="hljs-comment">// my-plugin.js</span>
-<span class="hljs-comment">// ...boilerplate UMD</span>
 install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{
     functions.add(<span class="hljs-string">&apos;pi&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.PI;
@@ -2489,7 +2487,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 <pre><code class="lang-js">{
     <span class="hljs-comment">/* Called immediately after the plugin is 
      * first imported, only once. */</span>
-    install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager</span>) </span>{ },
+    install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{ },
 
     <span class="hljs-comment">/* Called for each instance of your @plugin. */</span>
     use: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context</span>) </span>{ },
@@ -2558,7 +2556,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.7.2</li>
+      <li>Currently v2.7.3</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

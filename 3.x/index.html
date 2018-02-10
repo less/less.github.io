@@ -43,7 +43,7 @@
       <br><br>
       <p>Or the browser:</p>
       <code>&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</code><br>
-      <code>&lt;script src=&quot;<a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js">//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.2/less.min.js</a>&quot; &gt;&lt;/script&gt;</code><br>
+      <code>&lt;script src=&quot;<a href="//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.3/less.min.js">//cdnjs.cloudflare.com/ajax/libs/less.js/2.7.3/less.min.js</a>&quot; &gt;&lt;/script&gt;</code><br>
 
     </div>
   </div>
@@ -69,7 +69,7 @@
 <li><a href="#variables">Variables</a></li>
 <li><a href="#mixins">Mixins</a></li>
 <li><a href="#nesting">Nesting</a><ul class="nav"><li><a href="#nesting-nested-at-rules-and-bubbling">Nested At-Rules and Bubbling</a></li></ul></li>
-<li><a href="#operations">Operations</a></li>
+<li><a href="#operations">Operations</a><ul class="nav"><li><a href="#operations-calc-exception">calc() exception</a></li></ul></li>
 <li><a href="#escaping">Escaping</a></li>
 <li><a href="#functions">Functions</a></li>
 <li><a href="#namespaces-and-accessors">Namespaces and Accessors</a></li>
@@ -157,7 +157,7 @@
 <a href="#overview" name="overview" class="anchor glyphicon glyphicon-link"></a>Overview</h1>
   </div>
   <blockquote>
-<p>LESS (which stands for Leaner Style Sheets) is a backwards-compatible language extension for CSS. This is the official documentation for LESS, the language, and Less.js, the JavaScript tool that converts your Less styles to CSS styles.</p>
+<p>Less (which stands for Leaner Style Sheets) is a backwards-compatible language extension for CSS. This is the official documentation for Less, the language and Less.js, the JavaScript tool that converts your Less styles to CSS styles.</p>
 </blockquote>
 <p>Because Less looks just like CSS, learning it is a breeze. Less only makes a few convenient additions to the CSS language, which is one of the reasons it can be learned so quickly.</p>
 <ul>
@@ -304,6 +304,14 @@
 <span class="hljs-attribute">background-color</span>: <span class="hljs-hexcolor">#112244</span> + <span class="hljs-hexcolor">#111</span>; <span class="hljs-comment">// result is #223355</span>
 </code></pre>
 <p>However, you may find Less&apos;s <a href="../functions/#color-operations">Color Functions</a> more useful.</p>
+<h2 class="docs-heading"><span class="anchor-target" id="operations-calc-exception"></span>
+<a href="#operations-calc-exception" name="operations-calc-exception" class="anchor glyphicon glyphicon-link"></a>calc() exception</h2>
+<p><em>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.0.0</a></em></p>
+<p>For CSS compatibility, <code>calc()</code> does not evaluate math expressions, but will evaluate variables
+and math in nested functions.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@var:</span> <span class="hljs-number">50vh</span>/<span class="hljs-number">2</span>;
+<span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">50%</span> + (<span class="hljs-variable">@var</span> - <span class="hljs-number">20px</span>));  <span class="hljs-comment">// result is calc(50% + (25vh - 20px))</span>
+</code></pre>
 <h1 class="docs-heading"><span class="anchor-target" id="escaping"></span>
 <a href="#escaping" name="escaping" class="anchor glyphicon glyphicon-link"></a>Escaping</h1>
 <p>Escaping allows you to use any arbitrary string as property or variable value. Anything inside <code>~&quot;anything&quot;</code> or <code>~&apos;anything&apos;</code> is used as is with no changes except <a href="../features/#variables-feature-variable-interpolation">interpolation</a>.</p>
@@ -427,7 +435,7 @@
     <p>Less and these docs are maintained by <a href="about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.7.2</li>
+      <li>Currently v2.7.3</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

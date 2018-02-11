@@ -41,9 +41,9 @@
 <ul class="nav sidenav"><li><a href="#features-overview-feature">Overview</a></li>
 <li><a href="#variables-feature">Variables</a><ul class="nav"><li><a href="#variables-feature-overview">Overview</a></li>
 <li><a href="#variables-feature-variable-interpolation">Variable Interpolation</a></li>
-<li><a href="#variables-feature-urls">URLs</a></li>
 <li><a href="#variables-feature-variable-variables">Variable Variables</a></li>
 <li><a href="#variables-feature-lazy-evaluation">Lazy Evaluation</a></li>
+<li><a href="#variables-feature-properties-as-variables">Properties as Variables</a></li>
 <li><a href="#variables-feature-default-variables">Default Variables</a></li></ul></li>
 <li><a href="#parent-selectors-feature">Parent Selectors</a><ul class="nav"><li><a href="#parent-selectors-feature-multiple-">Multiple <code>&amp;</code></a></li>
 <li><a href="#parent-selectors-feature-changing-selector-order">Changing Selector Order</a></li>
@@ -268,7 +268,7 @@
 <p>The examples above focused on using variables to control <em>values in CSS rules</em>, but they can also be used in other places as well, such as selector names, property names, URLs and <code>@import</code> statements.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="variables-feature-selectors"></span>
 <a href="#variables-feature-selectors" name="variables-feature-selectors" class="anchor glyphicon glyphicon-link"></a>Selectors</h4>
-<p>Version: 1.4.0</p>
+<p><em>v1.4.0</em></p>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
 <span class="hljs-variable">@my-selector:</span> banner;
 
@@ -286,8 +286,8 @@
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-urls"></span>
-<a href="#variables-feature-urls" name="variables-feature-urls" class="anchor glyphicon glyphicon-link"></a>URLs</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="variables-feature-urls"></span>
+<a href="#variables-feature-urls" name="variables-feature-urls" class="anchor glyphicon glyphicon-link"></a>URLs</h4>
 <pre><code class="lang-less"><span class="hljs-comment">// Variables</span>
 <span class="hljs-variable">@images:</span> <span class="hljs-string">&quot;../img&quot;</span>;
 
@@ -299,7 +299,7 @@
 </code></pre>
 <h4 class="docs-heading"><span class="anchor-target" id="variables-feature-import-statements"></span>
 <a href="#variables-feature-import-statements" name="variables-feature-import-statements" class="anchor glyphicon glyphicon-link"></a>Import Statements</h4>
-<p>Version: 1.4.0</p>
+<p><em>v1.4.0</em></p>
 <p>Syntax: <code>@import &quot;@{themes}/tidal-wave.less&quot;;</code></p>
 <p>Note that before v2.0.0, only variables which have been declared in the root or current scope were considered and that only the current file and calling files were considered when looking for a variable.</p>
 <p>Example:</p>
@@ -311,7 +311,7 @@
 </code></pre>
 <h4 class="docs-heading"><span class="anchor-target" id="variables-feature-properties"></span>
 <a href="#variables-feature-properties" name="variables-feature-properties" class="anchor glyphicon glyphicon-link"></a>Properties</h4>
-<p>Version: 1.6.0</p>
+<p><em>v1.6.0</em></p>
 <pre><code class="lang-less"><span class="hljs-variable">@property:</span> color;
 
 <span class="hljs-class">.widget</span> {
@@ -392,6 +392,41 @@
 }
 <span class="hljs-class">.class</span> <span class="hljs-class">.brass</span> {
   <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>;
+}
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="variables-feature-properties-as-variables"></span>
+<a href="#variables-feature-properties-as-variables" name="variables-feature-properties-as-variables" class="anchor glyphicon glyphicon-link"></a>Properties as Variables</h3>
+<p><em>v2.5.0</em></p>
+<p>You can easily treat properties like variables using the <code>$prop</code> syntax. Sometimes this can
+make your code a little lighter.</p>
+<pre><code class="lang-less"><span class="hljs-class">.widget</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#efefef</span>;
+  <span class="hljs-attribute">background-color</span>: $color;
+}
+</code></pre>
+<p>Compiles to:</p>
+<pre><code class="lang-css"><span class="hljs-class">.widget</span> {
+  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#efefef</span>;
+  <span class="hljs-attribute">background-color</span>: <span class="hljs-hexcolor">#efefef</span>;
+}
+</code></pre>
+<p>Note that, like variables, Less will choose the last property within the current/parent scope
+as being the &quot;final&quot; value.</p>
+<pre><code class="lang-less"><span class="hljs-class">.block</span> {
+  <span class="hljs-attribute">color</span>: red; 
+  <span class="hljs-class">.inner</span> {
+    <span class="hljs-attribute">background-color</span>: $color; 
+  }
+  <span class="hljs-attribute">color</span>: blue;  
+}
+</code></pre>
+<p>Compiles to:</p>
+<pre><code class="lang-css"><span class="hljs-class">.block</span> {
+  <span class="hljs-attribute">color</span>: red; 
+  <span class="hljs-attribute">color</span>: blue;  
+} 
+<span class="hljs-class">.block</span> <span class="hljs-class">.inner</span> {
+  <span class="hljs-attribute">background-color</span>: blue; 
 }
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="variables-feature-default-variables"></span>

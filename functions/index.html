@@ -12,22 +12,10 @@
   Functions | Less.js
 </title>
 
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif|Oxygen" rel="stylesheet">
+
 <!-- Main styles -->
 <link href="../public/css/index.css" rel="stylesheet">
-
-<!-- Webfonts -->
-<script type="text/javascript">
-  WebFontConfig = {google: {families: ['PT+Sans:400,700,400italic,700italic', 'PT+Mono&subset=latin,cyrillic'] }};
-  (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-  })();
-</script>
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -40,84 +28,9 @@
 
   </head>
   <body class="functions">
-    
-    <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="../#" class="navbar-brand" alt="Less">
-        <img src="../public/img/logo.png">
-      </a>
-    </div>
-    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        
-        <li>
-          <a href="../features/">Language Features</a>
-        </li>
-        
-        
-        
-        <li class="active">
-          <span>Function Reference</span>
-        </li>
-                
-       
-        <li>
-          <a href="../usage/">Usage</a>
-        </li>
-        
-        <li>
-          <a href="/less-preview">Try it</a>
-        </li>
-        
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-               
-        
-        <li>
-          <a href="../about/">About</a>
-        </li>
-           
-        
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
-            <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
-            <li class="divider"></li>
-            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
-            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
 
     
-<div class="docs-header" id="content">
-  <div class="container">
-    <h1>Functions</h1>
-    <p>Function reference</p>
     
-  </div>
-</div>
-
-
-<div class="banner">
-  <div class="container">
-    Less 3.0 is coming! See the <a href="/3.x/">updated documentation</a>!
-  </div>
-</div>
-
-
     
     <div class="container docs-container">
       <div class="row">
@@ -135,7 +48,8 @@
 <li><a href="#misc-functions-default">default</a></li>
 <li><a href="#misc-functions-unit">unit</a></li>
 <li><a href="#misc-functions-get-unit">get-unit</a></li>
-<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li></ul></li>
+<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li>
+<li><a href="#misc-functions-if">if</a></li></ul></li>
 <li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li>
 <li><a href="#string-functions-e">e</a></li>
 <li><a href="#string-functions--format">% format</a></li>
@@ -214,15 +128,81 @@
         </div>
         <div class="col-md-9" role="main">
           
+          <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li>
+          <a href="../#">Overview</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../usage/">Using Less.js</a>
+        </li>
+        
+
+        
+        <li class="active">
+          <span>Functions</span>
+        </li>
+        
+
+        
+        <li>
+          <a href="../features/">In-Depth Guide</a>
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="../tools/">Tools</a>
+        </li>
+        
+
+       
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
+            <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
+            <li class="divider"></li>
+            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+          
 <div class="panel docs-content">
   
 
 
 
 <div class="docs-section">
-  <div class="page-header">
-    <h1 class="docs-heading">Functions<span class="anchor-target" id="functions-overview"></span>
-<a href="#functions-overview" name="functions-overview" class="anchor glyphicon glyphicon-link"></a></h1>
+  <div class="">
+    <h1 class="docs-heading"><span class="anchor-target" id="functions-overview"></span>
+<a href="#functions-overview" name="functions-overview" class="anchor glyphicon glyphicon-link"></a>Functions</h1>
   </div>
   <p class="lead">Built-in functions supported by Less.</p>
 </div>
@@ -232,10 +212,9 @@
 
   <!-- Misc Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Misc Functions<span class="anchor-target" id="misc-functions"></span>
-<a href="#misc-functions" name="misc-functions" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="misc-functions"></span>
+<a href="#misc-functions" name="misc-functions" class="anchor glyphicon glyphicon-link"></a>Misc Functions</h1>
 
     
     <div class="section-content">
@@ -253,8 +232,8 @@
        
 
 
-<h3 class="docs-heading">color<span class="anchor-target" id="misc-functions-color"></span>
-<a href="#misc-functions-color" name="misc-functions-color" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-color"></span>
+<a href="#misc-functions-color" name="misc-functions-color" class="anchor glyphicon glyphicon-link"></a>color</h3>
 <blockquote>
 <p>Parses a color, so a string representing a color becomes a color.</p>
 </blockquote>
@@ -262,8 +241,8 @@
 <p>Returns: <code>color</code></p>
 <p>Example: <code>color(&quot;#aaa&quot;);</code></p>
 <p>Output: <code>#aaa</code></p>
-<h3 class="docs-heading">image-size<span class="anchor-target" id="misc-functions-image-size"></span>
-<a href="#misc-functions-image-size" name="misc-functions-image-size" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-size"></span>
+<a href="#misc-functions-image-size" name="misc-functions-image-size" class="anchor glyphicon glyphicon-link"></a>image-size</h3>
 <blockquote>
 <p>Gets the image dimensions from a file.</p>
 </blockquote>
@@ -273,8 +252,8 @@
 <p>Output: <code>10px 10px</code></p>
 <p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
 <p>Added in: v2.2.0</p>
-<h3 class="docs-heading">image-width<span class="anchor-target" id="misc-functions-image-width"></span>
-<a href="#misc-functions-image-width" name="misc-functions-image-width" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-width"></span>
+<a href="#misc-functions-image-width" name="misc-functions-image-width" class="anchor glyphicon glyphicon-link"></a>image-width</h3>
 <blockquote>
 <p>Gets the image width from a file.</p>
 </blockquote>
@@ -284,8 +263,8 @@
 <p>Output: <code>10px</code></p>
 <p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
 <p>Added in: v2.2.0</p>
-<h3 class="docs-heading">image-height<span class="anchor-target" id="misc-functions-image-height"></span>
-<a href="#misc-functions-image-height" name="misc-functions-image-height" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-height"></span>
+<a href="#misc-functions-image-height" name="misc-functions-image-height" class="anchor glyphicon glyphicon-link"></a>image-height</h3>
 <blockquote>
 <p>Gets the image height from a file.</p>
 </blockquote>
@@ -295,8 +274,8 @@
 <p>Output: <code>10px</code></p>
 <p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
 <p>Added in: v2.2.0</p>
-<h3 class="docs-heading">convert<span class="anchor-target" id="misc-functions-convert"></span>
-<a href="#misc-functions-convert" name="misc-functions-convert" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-convert"></span>
+<a href="#misc-functions-convert" name="misc-functions-convert" class="anchor glyphicon glyphicon-link"></a>convert</h3>
 <blockquote>
 <p>Convert a number from one unit into another.</p>
 </blockquote>
@@ -323,8 +302,8 @@
 <pre><code>9000ms
 140mm
 8
-</code></pre><h3 class="docs-heading">data-uri<span class="anchor-target" id="misc-functions-data-uri"></span>
-<a href="#misc-functions-data-uri" name="misc-functions-data-uri" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="misc-functions-data-uri"></span>
+<a href="#misc-functions-data-uri" name="misc-functions-data-uri" class="anchor glyphicon glyphicon-link"></a>data-uri</h3>
 <blockquote>
 <p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.</p>
 </blockquote>
@@ -342,8 +321,8 @@
 <p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
 <p>Example: <code>data-uri(&apos;image/svg+xml;charset=UTF-8&apos;, &apos;image.svg&apos;);</code></p>
 <p>Output: <code>url(&quot;data:image/svg+xml;charset=UTF-8,%3Csvg%3E%3Ccircle%20r%3D%229%22%2F%3E%3C%2Fsvg%3E&quot;);</code></p>
-<h3 class="docs-heading">default<span class="anchor-target" id="misc-functions-default"></span>
-<a href="#misc-functions-default" name="misc-functions-default" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-default"></span>
+<a href="#misc-functions-default" name="misc-functions-default" class="anchor glyphicon glyphicon-link"></a>default</h3>
 <blockquote>
 <p>Available only inside guard conditions and returns <code>true</code> only if no other mixin matches, <code>false</code> otherwise.</p>
 </blockquote>
@@ -449,8 +428,8 @@
   <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
 }
 </code></pre>
-<h3 class="docs-heading">unit<span class="anchor-target" id="misc-functions-unit"></span>
-<a href="#misc-functions-unit" name="misc-functions-unit" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-unit"></span>
+<a href="#misc-functions-unit" name="misc-functions-unit" class="anchor glyphicon glyphicon-link"></a>unit</h3>
 <blockquote>
 <p>Remove or change the unit of a dimension</p>
 </blockquote>
@@ -464,8 +443,8 @@
 <p>Output: <code>5px</code></p>
 <p>Example: <code>unit(5em)</code></p>
 <p>Output: <code>5</code></p>
-<h3 class="docs-heading">get-unit<span class="anchor-target" id="misc-functions-get-unit"></span>
-<a href="#misc-functions-get-unit" name="misc-functions-get-unit" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-get-unit"></span>
+<a href="#misc-functions-get-unit" name="misc-functions-get-unit" class="anchor glyphicon glyphicon-link"></a>get-unit</h3>
 <blockquote>
 <p>Returns units of a number.</p>
 </blockquote>
@@ -478,8 +457,8 @@
 <p>Output: <code>px</code></p>
 <p>Example: <code>get-unit(5)</code></p>
 <p>Output: <code>//nothing</code> </p>
-<h3 class="docs-heading">svg-gradient<span class="anchor-target" id="misc-functions-svg-gradient"></span>
-<a href="#misc-functions-svg-gradient" name="misc-functions-svg-gradient" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-svg-gradient"></span>
+<a href="#misc-functions-svg-gradient" name="misc-functions-svg-gradient" class="anchor glyphicon glyphicon-link"></a>svg-gradient</h3>
 <blockquote>
 <p>Generates multi-stop svg gradients.</p>
 </blockquote>
@@ -529,6 +508,44 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#gradient)&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 </code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-if"></span>
+<a href="#misc-functions-if" name="misc-functions-if" class="anchor glyphicon glyphicon-link"></a>if</h3>
+<blockquote>
+<p>Returns one of two values depending on a condition.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>condition</code>: A boolean expression</li>
+<li><code>value1</code>: A value returned if <code>condition</code> is true.</li>
+<li><code>value2</code>: A value returned if <code>condition</code> is not true.</li>
+</ul>
+<p>Released: v3.00</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@some:</span> foo;
+
+<span class="hljs-tag">div</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-function">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), <span class="hljs-number">0</span>, <span class="hljs-number">3px</span>);
+    <span class="hljs-attribute">color</span>:  <span class="hljs-function">if</span>((<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@some</span>)), <span class="hljs-function">darken</span>(<span class="hljs-variable">@some</span>, <span class="hljs-number">10%</span>), black);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">color</span>:  black;
+}
+</code></pre>
+<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.
+Note however that any boolean expression for the <code>condition</code> parameter require an extra set of parens:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// OK</span>
+<span class="hljs-attribute">if</span>(<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>, blue, green);   <span class="hljs-comment">// Error</span>
+<span class="hljs-attribute">if</span>((true), blue, green);  <span class="hljs-comment">// OK</span>
+<span class="hljs-attribute">if</span>(true, blue, green);    <span class="hljs-comment">// Error</span>
+</code></pre>
+<p>The only operators that can be w/o parens are: <code>not</code>, <code>and</code> and <code>or</code>:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>(not (true), foo, bar);
+<span class="hljs-attribute">if</span>((true) and (<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), foo, bar);
+<span class="hljs-attribute">if</span>((false) or (<span class="hljs-function">isstring</span>(<span class="hljs-string">&quot;boo!&quot;</span>)), foo, bar);
+</code></pre>
 
 
       <br>
@@ -539,10 +556,9 @@
 
   <!-- String Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">String Functions<span class="anchor-target" id="string-functions"></span>
-<a href="#string-functions" name="string-functions" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="string-functions"></span>
+<a href="#string-functions" name="string-functions" class="anchor glyphicon glyphicon-link"></a>String Functions</h1>
 
     
     <div class="section-content">
@@ -560,8 +576,8 @@
        
 
 
-<h3 class="docs-heading">escape<span class="anchor-target" id="string-functions-escape"></span>
-<a href="#string-functions-escape" name="string-functions-escape" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="string-functions-escape"></span>
+<a href="#string-functions-escape" name="string-functions-escape" class="anchor glyphicon glyphicon-link"></a>escape</h3>
 <blockquote>
 <p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
 </blockquote>
@@ -578,8 +594,8 @@
 <pre><code class="lang-css"><span class="hljs-attribute">a</span>%<span class="hljs-number">3</span>D1
 </code></pre>
 <p>Note: if the parameter is not a string, output is not defined. The current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behavior should not be relied on and may change in the future.</p>
-<h3 class="docs-heading">e<span class="anchor-target" id="string-functions-e"></span>
-<a href="#string-functions-e" name="string-functions-e" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="string-functions-e"></span>
+<a href="#string-functions-e" name="string-functions-e" class="anchor glyphicon glyphicon-link"></a>e</h3>
 <blockquote>
 <p>CSS escaping, replaced with <code>~&quot;value&quot;</code> syntax.</p>
 </blockquote>
@@ -593,8 +609,8 @@
 <pre><code class="lang-css"><span class="hljs-attribute">filter</span>: ms:alwaysHasItsOwnSyntax.For.<span class="hljs-function">Stuff</span>();
 </code></pre>
 <p>Note: The function accepts also <code>~&quot;&quot;</code> escaped values and numbers as parameters. Anything else returns an error.</p>
-<h3 class="docs-heading">% format<span class="anchor-target" id="string-functions--format"></span>
-<a href="#string-functions--format" name="string-functions--format" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="string-functions--format"></span>
+<a href="#string-functions--format" name="string-functions--format" class="anchor glyphicon glyphicon-link"></a>% format</h3>
 <blockquote>
 <p>The function <code>%(string, arguments ...)</code> formats a string.</p>
 </blockquote>
@@ -624,8 +640,8 @@ The function escapes all special characters except <code>()&apos;~!</code>. Spac
 <span class="hljs-attribute">format-s</span>: <span class="hljs-string">&quot;repetitions: 3 file: directory/file.less&quot;</span>;
 <span class="hljs-attribute">format-s-upper</span>: <span class="hljs-string">&quot;repetitions: 3 file: directory%2Ffile.less&quot;</span>;
 </code></pre>
-<h3 class="docs-heading">replace<span class="anchor-target" id="string-functions-replace"></span>
-<a href="#string-functions-replace" name="string-functions-replace" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="string-functions-replace"></span>
+<a href="#string-functions-replace" name="string-functions-replace" class="anchor glyphicon glyphicon-link"></a>replace</h3>
 <blockquote>
 <p>Replaces a text within a string.</p>
 </blockquote>
@@ -660,10 +676,9 @@ bar-2;
 
   <!-- List Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">List Functions<span class="anchor-target" id="list-functions"></span>
-<a href="#list-functions" name="list-functions" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="list-functions"></span>
+<a href="#list-functions" name="list-functions" class="anchor glyphicon glyphicon-link"></a>List Functions</h1>
 
     
     <div class="section-content">
@@ -681,8 +696,8 @@ bar-2;
        
 
 
-<h3 class="docs-heading">length<span class="anchor-target" id="list-functions-length"></span>
-<a href="#list-functions-length" name="list-functions-length" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="list-functions-length"></span>
+<a href="#list-functions-length" name="list-functions-length" class="anchor glyphicon glyphicon-link"></a>length</h3>
 <blockquote>
 <p>Returns the number of elements in a value list.</p>
 </blockquote>
@@ -696,8 +711,8 @@ Output: <code>3</code></p>
 </code></pre>
 <p>Output:</p>
 <pre><code>n: 4;
-</code></pre><h3 class="docs-heading">extract<span class="anchor-target" id="list-functions-extract"></span>
-<a href="#list-functions-extract" name="list-functions-extract" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="list-functions-extract"></span>
+<a href="#list-functions-extract" name="list-functions-extract" class="anchor glyphicon glyphicon-link"></a>extract</h3>
 <blockquote>
 <p>Returns the value at a specified position in a list.</p>
 </blockquote>
@@ -723,10 +738,9 @@ Output: <code>dotted</code></p>
 
   <!-- Math Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Math Functions<span class="anchor-target" id="math-functions"></span>
-<a href="#math-functions" name="math-functions" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="math-functions"></span>
+<a href="#math-functions" name="math-functions" class="anchor glyphicon glyphicon-link"></a>Math Functions</h1>
 
     
     <div class="section-content">
@@ -744,8 +758,8 @@ Output: <code>dotted</code></p>
        
 
 
-<h3 class="docs-heading">ceil<span class="anchor-target" id="math-functions-ceil"></span>
-<a href="#math-functions-ceil" name="math-functions-ceil" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-ceil"></span>
+<a href="#math-functions-ceil" name="math-functions-ceil" class="anchor glyphicon glyphicon-link"></a>ceil</h3>
 <blockquote>
 <p>Rounds up to the next highest integer.</p>
 </blockquote>
@@ -753,8 +767,8 @@ Output: <code>dotted</code></p>
 <p>Returns: <code>integer</code></p>
 <p>Example: <code>ceil(2.4)</code></p>
 <p>Output: <code>3</code></p>
-<h3 class="docs-heading">floor<span class="anchor-target" id="math-functions-floor"></span>
-<a href="#math-functions-floor" name="math-functions-floor" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-floor"></span>
+<a href="#math-functions-floor" name="math-functions-floor" class="anchor glyphicon glyphicon-link"></a>floor</h3>
 <blockquote>
 <p>Rounds down to the next lowest integer.</p>
 </blockquote>
@@ -762,8 +776,8 @@ Output: <code>dotted</code></p>
 <p>Returns: <code>integer</code></p>
 <p>Example: <code>floor(2.6)</code></p>
 <p>Output: <code>2</code></p>
-<h3 class="docs-heading">percentage<span class="anchor-target" id="math-functions-percentage"></span>
-<a href="#math-functions-percentage" name="math-functions-percentage" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-percentage"></span>
+<a href="#math-functions-percentage" name="math-functions-percentage" class="anchor glyphicon glyphicon-link"></a>percentage</h3>
 <blockquote>
 <p>Converts a floating point number into a percentage string.</p>
 </blockquote>
@@ -771,8 +785,8 @@ Output: <code>dotted</code></p>
 <p>Returns: <code>string</code></p>
 <p>Example: <code>percentage(0.5)</code></p>
 <p>Output: <code>50%</code></p>
-<h3 class="docs-heading">round<span class="anchor-target" id="math-functions-round"></span>
-<a href="#math-functions-round" name="math-functions-round" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-round"></span>
+<a href="#math-functions-round" name="math-functions-round" class="anchor glyphicon glyphicon-link"></a>round</h3>
 <blockquote>
 <p>Applies rounding.</p>
 </blockquote>
@@ -786,8 +800,8 @@ Output: <code>dotted</code></p>
 <p>Output: <code>2</code></p>
 <p>Example: <code>round(1.67, 1)</code></p>
 <p>Output: <code>1.7</code></p>
-<h3 class="docs-heading">sqrt<span class="anchor-target" id="math-functions-sqrt"></span>
-<a href="#math-functions-sqrt" name="math-functions-sqrt" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-sqrt"></span>
+<a href="#math-functions-sqrt" name="math-functions-sqrt" class="anchor glyphicon glyphicon-link"></a>sqrt</h3>
 <blockquote>
 <p>Calculates square root of a number. Keeps units as they are.</p>
 </blockquote>
@@ -805,8 +819,8 @@ Output: <code>dotted</code></p>
 <p>Output:</p>
 <pre><code class="lang-js"><span class="hljs-number">4.312771730569565</span>%;
 </code></pre>
-<h3 class="docs-heading">abs<span class="anchor-target" id="math-functions-abs"></span>
-<a href="#math-functions-abs" name="math-functions-abs" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-abs"></span>
+<a href="#math-functions-abs" name="math-functions-abs" class="anchor glyphicon glyphicon-link"></a>abs</h3>
 <blockquote>
 <p>Calculates absolute value of a number. Keeps units as they are.</p>
 </blockquote>
@@ -816,8 +830,8 @@ Output: <code>dotted</code></p>
 <p>Output: <code>25cm</code></p>
 <p>Example #2: <code>abs(-18.6%)</code></p>
 <p>Output: <code>18.6%;</code></p>
-<h3 class="docs-heading">sin<span class="anchor-target" id="math-functions-sin"></span>
-<a href="#math-functions-sin" name="math-functions-sin" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-sin"></span>
+<a href="#math-functions-sin" name="math-functions-sin" class="anchor glyphicon glyphicon-link"></a>sin</h3>
 <blockquote>
 <p>Calculates sine function.</p>
 </blockquote>
@@ -833,8 +847,8 @@ Output: <code>dotted</code></p>
 <pre><code>0.8414709848078965; // sine of 1 radian
 0.01745240643728351; // sine of 1 degree
 0.015707317311820675; // sine of 1 gradian
-</code></pre><h3 class="docs-heading">asin<span class="anchor-target" id="math-functions-asin"></span>
-<a href="#math-functions-asin" name="math-functions-asin" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-asin"></span>
+<a href="#math-functions-asin" name="math-functions-asin" class="anchor glyphicon glyphicon-link"></a>asin</h3>
 <blockquote>
 <p>Calculates arcsine (inverse of sine) function.</p>
 </blockquote>
@@ -850,8 +864,8 @@ Output: <code>dotted</code></p>
 <pre><code>-1rad
 0rad
 NaNrad
-</code></pre><h3 class="docs-heading">cos<span class="anchor-target" id="math-functions-cos"></span>
-<a href="#math-functions-cos" name="math-functions-cos" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-cos"></span>
+<a href="#math-functions-cos" name="math-functions-cos" class="anchor glyphicon glyphicon-link"></a>cos</h3>
 <blockquote>
 <p>Calculates cosine function.</p>
 </blockquote>
@@ -867,8 +881,8 @@ NaNrad
 <pre><code>0.5403023058681398 // cosine of 1 radian
 0.9998476951563913 // cosine of 1 degree
 0.9998766324816606 // cosine of 1 gradian
-</code></pre><h3 class="docs-heading">acos<span class="anchor-target" id="math-functions-acos"></span>
-<a href="#math-functions-acos" name="math-functions-acos" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-acos"></span>
+<a href="#math-functions-acos" name="math-functions-acos" class="anchor glyphicon glyphicon-link"></a>acos</h3>
 <blockquote>
 <p>Calculates arccosine (inverse of cosine) function.</p>
 </blockquote>
@@ -884,8 +898,8 @@ NaNrad
 <pre><code>1rad
 0rad
 NaNrad
-</code></pre><h3 class="docs-heading">tan<span class="anchor-target" id="math-functions-tan"></span>
-<a href="#math-functions-tan" name="math-functions-tan" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-tan"></span>
+<a href="#math-functions-tan" name="math-functions-tan" class="anchor glyphicon glyphicon-link"></a>tan</h3>
 <blockquote>
 <p>Calculates tangent function.</p>
 </blockquote>
@@ -901,8 +915,8 @@ NaNrad
 <pre><code>1.5574077246549023   // tangent of 1 radian
 0.017455064928217585 // tangent of 1 degree
 0.015709255323664916 // tangent of 1 gradian
-</code></pre><h3 class="docs-heading">atan<span class="anchor-target" id="math-functions-atan"></span>
-<a href="#math-functions-atan" name="math-functions-atan" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-atan"></span>
+<a href="#math-functions-atan" name="math-functions-atan" class="anchor glyphicon glyphicon-link"></a>atan</h3>
 <blockquote>
 <p>Calculates arctangent (inverse of tangent) function.</p>
 </blockquote>
@@ -918,8 +932,8 @@ NaNrad
 <pre><code>-1rad
 0rad
 1.525373rad;
-</code></pre><h3 class="docs-heading">pi<span class="anchor-target" id="math-functions-pi"></span>
-<a href="#math-functions-pi" name="math-functions-pi" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-pi"></span>
+<a href="#math-functions-pi" name="math-functions-pi" class="anchor glyphicon glyphicon-link"></a>pi</h3>
 <blockquote>
 <p>Returns &#x3C0; (pi);</p>
 </blockquote>
@@ -930,8 +944,8 @@ NaNrad
 </code></pre>
 <p>Output:</p>
 <pre><code>3.141592653589793
-</code></pre><h3 class="docs-heading">pow<span class="anchor-target" id="math-functions-pow"></span>
-<a href="#math-functions-pow" name="math-functions-pow" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-pow"></span>
+<a href="#math-functions-pow" name="math-functions-pow" class="anchor glyphicon glyphicon-link"></a>pow</h3>
 <blockquote>
 <p>Returns the value of the first argument raised to the power of the second argument.</p>
 </blockquote>
@@ -955,8 +969,8 @@ NaNrad
 5
 NaN
 NaN%
-</code></pre><h3 class="docs-heading">mod<span class="anchor-target" id="math-functions-mod"></span>
-<a href="#math-functions-mod" name="math-functions-mod" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-mod"></span>
+<a href="#math-functions-mod" name="math-functions-mod" class="anchor glyphicon glyphicon-link"></a>mod</h3>
 <blockquote>
 <p>Returns the value of the first argument modulus second argument.</p>
 </blockquote>
@@ -976,8 +990,8 @@ NaN%
 <pre><code>NaNcm;
 5cm
 -1%;
-</code></pre><h3 class="docs-heading">min<span class="anchor-target" id="math-functions-min"></span>
-<a href="#math-functions-min" name="math-functions-min" class="anchor glyphicon glyphicon-link"></a></h3>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="math-functions-min"></span>
+<a href="#math-functions-min" name="math-functions-min" class="anchor glyphicon glyphicon-link"></a>min</h3>
 <blockquote>
 <p>Returns the lowest of one or more values.</p>
 </blockquote>
@@ -987,8 +1001,8 @@ NaN%
 <p>Output: <code>5</code></p>
 <p>Example: <code>min(3px, 42px, 1px, 16px);</code></p>
 <p>Output: <code>1px</code></p>
-<h3 class="docs-heading">max<span class="anchor-target" id="math-functions-max"></span>
-<a href="#math-functions-max" name="math-functions-max" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="math-functions-max"></span>
+<a href="#math-functions-max" name="math-functions-max" class="anchor glyphicon glyphicon-link"></a>max</h3>
 <blockquote>
 <p>Returns the highest of one or more values.</p>
 </blockquote>
@@ -1008,10 +1022,9 @@ NaN%
 
   <!-- Type Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Type Functions<span class="anchor-target" id="type-functions"></span>
-<a href="#type-functions" name="type-functions" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="type-functions"></span>
+<a href="#type-functions" name="type-functions" class="anchor glyphicon glyphicon-link"></a>Type Functions</h1>
 
     
     <div class="section-content">
@@ -1029,8 +1042,8 @@ NaN%
        
 
 
-<h3 class="docs-heading">isnumber<span class="anchor-target" id="type-functions-isnumber"></span>
-<a href="#type-functions-isnumber" name="type-functions-isnumber" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isnumber"></span>
+<a href="#type-functions-isnumber" name="type-functions-isnumber" class="anchor glyphicon glyphicon-link"></a>isnumber</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a number, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1046,8 +1059,8 @@ NaN%
 <span class="hljs-attribute">isnumber</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isnumber</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">isstring<span class="anchor-target" id="type-functions-isstring"></span>
-<a href="#type-functions-isstring" name="type-functions-isstring" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isstring"></span>
+<a href="#type-functions-isstring" name="type-functions-isstring" class="anchor glyphicon glyphicon-link"></a>isstring</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a string, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1063,8 +1076,8 @@ NaN%
 <span class="hljs-attribute">isstring</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isstring</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">iscolor<span class="anchor-target" id="type-functions-iscolor"></span>
-<a href="#type-functions-iscolor" name="type-functions-iscolor" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-iscolor"></span>
+<a href="#type-functions-iscolor" name="type-functions-iscolor" class="anchor glyphicon glyphicon-link"></a>iscolor</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a color, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1080,8 +1093,8 @@ NaN%
 <span class="hljs-attribute">iscolor</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">iscolor</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">iskeyword<span class="anchor-target" id="type-functions-iskeyword"></span>
-<a href="#type-functions-iskeyword" name="type-functions-iskeyword" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-iskeyword"></span>
+<a href="#type-functions-iskeyword" name="type-functions-iskeyword" class="anchor glyphicon glyphicon-link"></a>iskeyword</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a keyword, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1097,8 +1110,8 @@ NaN%
 <span class="hljs-attribute">iskeyword</span>(keyword);  <span class="hljs-comment">// true</span>
 <span class="hljs-attribute">iskeyword</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">isurl<span class="anchor-target" id="type-functions-isurl"></span>
-<a href="#type-functions-isurl" name="type-functions-isurl" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isurl"></span>
+<a href="#type-functions-isurl" name="type-functions-isurl" class="anchor glyphicon glyphicon-link"></a>isurl</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a url, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1114,8 +1127,8 @@ NaN%
 <span class="hljs-attribute">isurl</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isurl</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// true</span>
 </code></pre>
-<h3 class="docs-heading">ispixel<span class="anchor-target" id="type-functions-ispixel"></span>
-<a href="#type-functions-ispixel" name="type-functions-ispixel" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-ispixel"></span>
+<a href="#type-functions-ispixel" name="type-functions-ispixel" class="anchor glyphicon glyphicon-link"></a>ispixel</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a number in pixels, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1131,8 +1144,8 @@ NaN%
 <span class="hljs-attribute">ispixel</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">ispixel</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">isem<span class="anchor-target" id="type-functions-isem"></span>
-<a href="#type-functions-isem" name="type-functions-isem" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isem"></span>
+<a href="#type-functions-isem" name="type-functions-isem" class="anchor glyphicon glyphicon-link"></a>isem</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is an em value, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1148,8 +1161,8 @@ NaN%
 <span class="hljs-attribute">isem</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isem</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">ispercentage<span class="anchor-target" id="type-functions-ispercentage"></span>
-<a href="#type-functions-ispercentage" name="type-functions-ispercentage" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-ispercentage"></span>
+<a href="#type-functions-ispercentage" name="type-functions-ispercentage" class="anchor glyphicon glyphicon-link"></a>ispercentage</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a percentage value, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1165,8 +1178,8 @@ NaN%
 <span class="hljs-attribute">ispercentage</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">ispercentage</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">isunit<span class="anchor-target" id="type-functions-isunit"></span>
-<a href="#type-functions-isunit" name="type-functions-isunit" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isunit"></span>
+<a href="#type-functions-isunit" name="type-functions-isunit" class="anchor glyphicon glyphicon-link"></a>isunit</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a number in specified units, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1187,8 +1200,8 @@ NaN%
 <span class="hljs-attribute">isunit</span>(<span class="hljs-hexcolor">#ff0</span>, pt);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isunit</span>(<span class="hljs-string">&quot;mm&quot;</span>, mm);  <span class="hljs-comment">// false</span>
 </code></pre>
-<h3 class="docs-heading">isruleset<span class="anchor-target" id="type-functions-isruleset"></span>
-<a href="#type-functions-isruleset" name="type-functions-isruleset" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isruleset"></span>
+<a href="#type-functions-isruleset" name="type-functions-isruleset" class="anchor glyphicon glyphicon-link"></a>isruleset</h3>
 <blockquote>
 <p>Returns <code>true</code> if a value is a ruleset, <code>false</code> otherwise.</p>
 </blockquote>
@@ -1222,10 +1235,9 @@ NaN%
 
   <!-- Color Definition Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Color Definition Functions<span class="anchor-target" id="color-definition"></span>
-<a href="#color-definition" name="color-definition" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="color-definition"></span>
+<a href="#color-definition" name="color-definition" class="anchor glyphicon glyphicon-link"></a>Color Definition Functions</h1>
 
     
     <div class="section-content">
@@ -1243,8 +1255,8 @@ NaN%
        
 
 
-<h3 class="docs-heading">rgb<span class="anchor-target" id="color-definition-rgb"></span>
-<a href="#color-definition-rgb" name="color-definition-rgb" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-rgb"></span>
+<a href="#color-definition-rgb" name="color-definition-rgb" class="anchor glyphicon glyphicon-link"></a>rgb</h3>
 <blockquote>
 <p>Creates an opaque color object from decimal red, green and blue (RGB) values.</p>
 </blockquote>
@@ -1258,8 +1270,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgb(90, 129, 32)</code></p>
 <p>Output: <code>#5a8120</code></p>
-<h3 class="docs-heading">rgba<span class="anchor-target" id="color-definition-rgba"></span>
-<a href="#color-definition-rgba" name="color-definition-rgba" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-rgba"></span>
+<a href="#color-definition-rgba" name="color-definition-rgba" class="anchor glyphicon glyphicon-link"></a>rgba</h3>
 <blockquote>
 <p>Creates a transparent color object from decimal red, green, blue and alpha (RGBA) values.</p>
 </blockquote>
@@ -1273,8 +1285,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>rgba(90, 129, 32, 0.5)</code></p>
 <p>Output: <code>rgba(90, 129, 32, 0.5)</code></p>
-<h3 class="docs-heading">argb<span class="anchor-target" id="color-definition-argb"></span>
-<a href="#color-definition-argb" name="color-definition-argb" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-argb"></span>
+<a href="#color-definition-argb" name="color-definition-argb" class="anchor glyphicon glyphicon-link"></a>argb</h3>
 <blockquote>
 <p>Creates a hex representation of a color in <code>#AARRGGBB</code> format (<strong>NOT</strong> <code>#RRGGBBAA</code>!).</p>
 </blockquote>
@@ -1283,8 +1295,8 @@ NaN%
 <p>Returns: <code>string</code></p>
 <p>Example: <code>argb(rgba(90, 23, 148, 0.5));</code></p>
 <p>Output: <code>#805a1794</code></p>
-<h3 class="docs-heading">hsl<span class="anchor-target" id="color-definition-hsl"></span>
-<a href="#color-definition-hsl" name="color-definition-hsl" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-hsl"></span>
+<a href="#color-definition-hsl" name="color-definition-hsl" class="anchor glyphicon glyphicon-link"></a>hsl</h3>
 <blockquote>
 <p>Creates an opaque color object from hue, saturation and lightness (HSL) values.</p>
 </blockquote>
@@ -1299,8 +1311,8 @@ NaN%
 <p>Output: <code>#80ff00</code></p>
 <p>This is useful if you want to create a new color based on another color&apos;s channel, forExample: <code>@new: hsl(hue(@old), 45%, 90%);</code></p>
 <p><code>@new</code> will have <code>@old</code>&apos;s <em>hue</em>, and its own saturation and lightness.</p>
-<h3 class="docs-heading">hsla<span class="anchor-target" id="color-definition-hsla"></span>
-<a href="#color-definition-hsla" name="color-definition-hsla" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-hsla"></span>
+<a href="#color-definition-hsla" name="color-definition-hsla" class="anchor glyphicon glyphicon-link"></a>hsla</h3>
 <blockquote>
 <p>Creates a transparent color object from hue, saturation, lightness and alpha (HSLA) values.</p>
 </blockquote>
@@ -1314,8 +1326,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsla(90, 100%, 50%, 0.5)</code></p>
 <p>Output: <code>rgba(128, 255, 0, 0.5)</code></p>
-<h3 class="docs-heading">hsv<span class="anchor-target" id="color-definition-hsv"></span>
-<a href="#color-definition-hsv" name="color-definition-hsv" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-hsv"></span>
+<a href="#color-definition-hsv" name="color-definition-hsv" class="anchor glyphicon glyphicon-link"></a>hsv</h3>
 <blockquote>
 <p>Creates an opaque color object from hue, saturation and value (HSV) values.</p>
 </blockquote>
@@ -1329,8 +1341,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>hsv(90, 100%, 50%)</code></p>
 <p>Output: <code>#408000</code></p>
-<h3 class="docs-heading">hsva<span class="anchor-target" id="color-definition-hsva"></span>
-<a href="#color-definition-hsva" name="color-definition-hsva" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-definition-hsva"></span>
+<a href="#color-definition-hsva" name="color-definition-hsva" class="anchor glyphicon glyphicon-link"></a>hsva</h3>
 <blockquote>
 <p>Creates a transparent color object from hue, saturation, value and alpha (HSVA) values.</p>
 </blockquote>
@@ -1355,10 +1367,9 @@ NaN%
 
   <!-- Color Channel Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Color Channel Functions<span class="anchor-target" id="color-channel"></span>
-<a href="#color-channel" name="color-channel" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="color-channel"></span>
+<a href="#color-channel" name="color-channel" class="anchor glyphicon glyphicon-link"></a>Color Channel Functions</h1>
 
     
     <div class="section-content">
@@ -1376,8 +1387,8 @@ NaN%
        
 
 
-<h3 class="docs-heading">hue<span class="anchor-target" id="color-channel-hue"></span>
-<a href="#color-channel-hue" name="color-channel-hue" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-hue"></span>
+<a href="#color-channel-hue" name="color-channel-hue" class="anchor glyphicon glyphicon-link"></a>hue</h3>
 <blockquote>
 <p>Extracts the hue channel of a color object in the HSL color space.</p>
 </blockquote>
@@ -1385,8 +1396,8 @@ NaN%
 <p>Returns: <code>integer</code> 0-360</p>
 <p>Example: <code>hue(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3 class="docs-heading">saturation<span class="anchor-target" id="color-channel-saturation"></span>
-<a href="#color-channel-saturation" name="color-channel-saturation" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-saturation"></span>
+<a href="#color-channel-saturation" name="color-channel-saturation" class="anchor glyphicon glyphicon-link"></a>saturation</h3>
 <blockquote>
 <p>Extracts the saturation channel of a color object in the HSL color space.</p>
 </blockquote>
@@ -1394,8 +1405,8 @@ NaN%
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>saturation(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3 class="docs-heading">lightness<span class="anchor-target" id="color-channel-lightness"></span>
-<a href="#color-channel-lightness" name="color-channel-lightness" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-lightness"></span>
+<a href="#color-channel-lightness" name="color-channel-lightness" class="anchor glyphicon glyphicon-link"></a>lightness</h3>
 <blockquote>
 <p>Extracts the lightness channel of a color object in the HSL color space.</p>
 </blockquote>
@@ -1403,8 +1414,8 @@ NaN%
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>lightness(hsl(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3 class="docs-heading">hsvhue<span class="anchor-target" id="color-channel-hsvhue"></span>
-<a href="#color-channel-hsvhue" name="color-channel-hsvhue" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-hsvhue"></span>
+<a href="#color-channel-hsvhue" name="color-channel-hsvhue" class="anchor glyphicon glyphicon-link"></a>hsvhue</h3>
 <blockquote>
 <p>Extracts the hue channel of a color object in the HSV color space.</p>
 </blockquote>
@@ -1412,8 +1423,8 @@ NaN%
 <p>Returns: <code>integer</code> <code>0-360</code></p>
 <p>Example: <code>hsvhue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>90</code></p>
-<h3 class="docs-heading">hsvsaturation<span class="anchor-target" id="color-channel-hsvsaturation"></span>
-<a href="#color-channel-hsvsaturation" name="color-channel-hsvsaturation" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-hsvsaturation"></span>
+<a href="#color-channel-hsvsaturation" name="color-channel-hsvsaturation" class="anchor glyphicon glyphicon-link"></a>hsvsaturation</h3>
 <blockquote>
 <p>Extracts the saturation channel of a color object in the HSV color space.</p>
 </blockquote>
@@ -1421,8 +1432,8 @@ NaN%
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvsaturation(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>100%</code></p>
-<h3 class="docs-heading">hsvvalue<span class="anchor-target" id="color-channel-hsvvalue"></span>
-<a href="#color-channel-hsvvalue" name="color-channel-hsvvalue" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-hsvvalue"></span>
+<a href="#color-channel-hsvvalue" name="color-channel-hsvvalue" class="anchor glyphicon glyphicon-link"></a>hsvvalue</h3>
 <blockquote>
 <p>Extracts the value channel of a color object in the HSV color space.</p>
 </blockquote>
@@ -1430,8 +1441,8 @@ NaN%
 <p>Returns: <code>percentage</code> 0-100</p>
 <p>Example: <code>hsvvalue(hsv(90, 100%, 50%))</code></p>
 <p>Output: <code>50%</code></p>
-<h3 class="docs-heading">red<span class="anchor-target" id="color-channel-red"></span>
-<a href="#color-channel-red" name="color-channel-red" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-red"></span>
+<a href="#color-channel-red" name="color-channel-red" class="anchor glyphicon glyphicon-link"></a>red</h3>
 <blockquote>
 <p>Extracts the red channel of a color object.</p>
 </blockquote>
@@ -1439,8 +1450,8 @@ NaN%
 <p>Returns: <code>float</code> 0-255</p>
 <p>Example: <code>red(rgb(10, 20, 30))</code></p>
 <p>Output: <code>10</code></p>
-<h3 class="docs-heading">green<span class="anchor-target" id="color-channel-green"></span>
-<a href="#color-channel-green" name="color-channel-green" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-green"></span>
+<a href="#color-channel-green" name="color-channel-green" class="anchor glyphicon glyphicon-link"></a>green</h3>
 <blockquote>
 <p>Extracts the green channel of a color object.</p>
 </blockquote>
@@ -1448,8 +1459,8 @@ NaN%
 <p>Returns: <code>float</code> 0-255</p>
 <p>Example: <code>green(rgb(10, 20, 30))</code></p>
 <p>Output: <code>20</code></p>
-<h3 class="docs-heading">blue<span class="anchor-target" id="color-channel-blue"></span>
-<a href="#color-channel-blue" name="color-channel-blue" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-blue"></span>
+<a href="#color-channel-blue" name="color-channel-blue" class="anchor glyphicon glyphicon-link"></a>blue</h3>
 <blockquote>
 <p>Extracts the blue channel of a color object.</p>
 </blockquote>
@@ -1457,8 +1468,8 @@ NaN%
 <p>Returns: <code>float</code> 0-255</p>
 <p>Example: <code>blue(rgb(10, 20, 30))</code></p>
 <p>Output: <code>30</code></p>
-<h3 class="docs-heading">alpha<span class="anchor-target" id="color-channel-alpha"></span>
-<a href="#color-channel-alpha" name="color-channel-alpha" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-alpha"></span>
+<a href="#color-channel-alpha" name="color-channel-alpha" class="anchor glyphicon glyphicon-link"></a>alpha</h3>
 <blockquote>
 <p>Extracts the alpha channel of a color object.</p>
 </blockquote>
@@ -1466,8 +1477,8 @@ NaN%
 <p>Returns: <code>float</code> 0-1</p>
 <p>Example: <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
 <p>Output: <code>0.5</code></p>
-<h3 class="docs-heading">luma<span class="anchor-target" id="color-channel-luma"></span>
-<a href="#color-channel-luma" name="color-channel-luma" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-luma"></span>
+<a href="#color-channel-luma" name="color-channel-luma" class="anchor glyphicon glyphicon-link"></a>luma</h3>
 <blockquote>
 <p>Calculates the <a href="http://en.wikipedia.org/wiki/Luma_%28video%29">luma</a> (perceptual brightness) of a color object.</p>
 </blockquote>
@@ -1477,8 +1488,8 @@ NaN%
 <p>Returns: <code>percentage</code> 0-100%</p>
 <p>Example: <code>luma(rgb(100, 200, 30))</code></p>
 <p>Output: <code>44%</code></p>
-<h3 class="docs-heading">luminance<span class="anchor-target" id="color-channel-luminance"></span>
-<a href="#color-channel-luminance" name="color-channel-luminance" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-channel-luminance"></span>
+<a href="#color-channel-luminance" name="color-channel-luminance" class="anchor glyphicon glyphicon-link"></a>luminance</h3>
 <blockquote>
 <p>Calculates the value of the luma without gamma correction (this function was named <code>luma</code> before v1.7.0)</p>
 </blockquote>
@@ -1496,10 +1507,9 @@ NaN%
 
   <!-- Color Operation Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Color Operation Functions<span class="anchor-target" id="color-operations"></span>
-<a href="#color-operations" name="color-operations" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="color-operations"></span>
+<a href="#color-operations" name="color-operations" class="anchor glyphicon glyphicon-link"></a>Color Operation Functions</h1>
 
     
     <div class="section-content">
@@ -1518,8 +1528,8 @@ NaN%
 
 
 <p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%. Set the option method parameter to relative for relative percentages. When using relative percentages increasing a 10% value by 10% results in 11%. Values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&apos;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
-<h3 class="docs-heading">saturate<span class="anchor-target" id="color-operations-saturate"></span>
-<a href="#color-operations-saturate" name="color-operations-saturate" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-saturate"></span>
+<a href="#color-operations-saturate" name="color-operations-saturate" class="anchor glyphicon glyphicon-link"></a>saturate</h3>
 <blockquote>
 <p>Increase the saturation of a color in the HSL color space by an absolute amount.</p>
 </blockquote>
@@ -1533,8 +1543,8 @@ NaN%
 <p>Example: <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80ff00 // hsl(90, 100%, 50%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#80ff00:#000000/text:80ff00"></p>
-<h3 class="docs-heading">desaturate<span class="anchor-target" id="color-operations-desaturate"></span>
-<a href="#color-operations-desaturate" name="color-operations-desaturate" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-desaturate"></span>
+<a href="#color-operations-desaturate" name="color-operations-desaturate" class="anchor glyphicon glyphicon-link"></a>desaturate</h3>
 <blockquote>
 <p>Decrease the saturation of a color in the HSL color space by an absolute amount.</p>
 </blockquote>
@@ -1548,8 +1558,8 @@ NaN%
 <p>Example: <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#80cc33 // hsl(90, 60%, 50%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#80cc33:#000000/text:80cc33"></p>
-<h3 class="docs-heading">lighten<span class="anchor-target" id="color-operations-lighten"></span>
-<a href="#color-operations-lighten" name="color-operations-lighten" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-lighten"></span>
+<a href="#color-operations-lighten" name="color-operations-lighten" class="anchor glyphicon glyphicon-link"></a>lighten</h3>
 <blockquote>
 <p>Increase the lightness of a color in the HSL color space by an absolute amount.</p>
 </blockquote>
@@ -1563,8 +1573,8 @@ NaN%
 <p>Example: <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#b3f075 // hsl(90, 80%, 70%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#b3f075:#000000/text:b3f075"></p>
-<h3 class="docs-heading">darken<span class="anchor-target" id="color-operations-darken"></span>
-<a href="#color-operations-darken" name="color-operations-darken" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-darken"></span>
+<a href="#color-operations-darken" name="color-operations-darken" class="anchor glyphicon glyphicon-link"></a>darken</h3>
 <blockquote>
 <p>Decrease the lightness of a color in the HSL color space by an absolute amount.</p>
 </blockquote>
@@ -1578,8 +1588,8 @@ NaN%
 <p>Example: <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
 <p>Output: <code>#4d8a0f // hsl(90, 80%, 30%)</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#4d8a0f:#000000/text:4d8a0f"></p>
-<h3 class="docs-heading">fadein<span class="anchor-target" id="color-operations-fadein"></span>
-<a href="#color-operations-fadein" name="color-operations-fadein" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-fadein"></span>
+<a href="#color-operations-fadein" name="color-operations-fadein" class="anchor glyphicon glyphicon-link"></a>fadein</h3>
 <blockquote>
 <p>Decrease the transparency (or increase the opacity) of a color, making it more opaque.</p>
 </blockquote>
@@ -1593,8 +1603,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)</code></p>
-<h3 class="docs-heading">fadeout<span class="anchor-target" id="color-operations-fadeout"></span>
-<a href="#color-operations-fadeout" name="color-operations-fadeout" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-fadeout"></span>
+<a href="#color-operations-fadeout" name="color-operations-fadeout" class="anchor glyphicon glyphicon-link"></a>fadeout</h3>
 <blockquote>
 <p>Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use <code>fadein</code>.</p>
 </blockquote>
@@ -1607,8 +1617,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.4)</code></p>
-<h3 class="docs-heading">fade<span class="anchor-target" id="color-operations-fade"></span>
-<a href="#color-operations-fade" name="color-operations-fade" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-fade"></span>
+<a href="#color-operations-fade" name="color-operations-fade" class="anchor glyphicon glyphicon-link"></a>fade</h3>
 <blockquote>
 <p>Set the absolute opacity of a color. Can be applied to colors whether they already have an opacity value or not.</p>
 </blockquote>
@@ -1620,8 +1630,8 @@ NaN%
 <p>Returns: <code>color</code></p>
 <p>Example: <code>fade(hsl(90, 90%, 50%), 10%)</code></p>
 <p>Output: <code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)</code></p>
-<h3 class="docs-heading">spin<span class="anchor-target" id="color-operations-spin"></span>
-<a href="#color-operations-spin" name="color-operations-spin" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-spin"></span>
+<a href="#color-operations-spin" name="color-operations-spin" class="anchor glyphicon glyphicon-link"></a>spin</h3>
 <blockquote>
 <p>Rotate the hue angle of a color in either direction.</p>
 </blockquote>
@@ -1648,8 +1658,8 @@ NaN%
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#f2a60d:#000000/text:f2a60d"></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#f20d59:#000000/text:f20d59"></p>
-<h3 class="docs-heading">mix<span class="anchor-target" id="color-operations-mix"></span>
-<a href="#color-operations-mix" name="color-operations-mix" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-mix"></span>
+<a href="#color-operations-mix" name="color-operations-mix" class="anchor glyphicon glyphicon-link"></a>mix</h3>
 <blockquote>
 <p>Mix two colors together in variable proportion. Opacity is included in the calculations.</p>
 </blockquote>
@@ -1669,8 +1679,8 @@ NaN%
 <span class="hljs-tag">rgba</span>(<span class="hljs-number">75</span>, <span class="hljs-number">25</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.75</span>)
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"> + <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"> &#x279C; <img alt="Color 3" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
-<h3 class="docs-heading">tint<span class="anchor-target" id="color-operations-tint"></span>
-<a href="#color-operations-tint" name="color-operations-tint" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-tint"></span>
+<a href="#color-operations-tint" name="color-operations-tint" class="anchor glyphicon glyphicon-link"></a>tint</h3>
 <blockquote>
 <p>Mix color with white in variable proportion. It is the same as calling <code>mix(#ffffff, @color, @weight)</code></p>
 </blockquote>
@@ -1689,8 +1699,8 @@ NaN%
 <span class="hljs-attribute">with-alpha</span>: <span class="hljs-function">rgba</span>(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0.75</span>);
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff00ff:#ffffff/text:ff00ff"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#ff80ff:#ffffff/text:ff80ff"></p>
-<h3 class="docs-heading">shade<span class="anchor-target" id="color-operations-shade"></span>
-<a href="#color-operations-shade" name="color-operations-shade" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-shade"></span>
+<a href="#color-operations-shade" name="color-operations-shade" class="anchor glyphicon glyphicon-link"></a>shade</h3>
 <blockquote>
 <p>Mix color with black in variable proportion. It is the same as calling <code>mix(#000000, @color, @weight)</code></p>
 </blockquote>
@@ -1709,8 +1719,8 @@ NaN%
 <span class="hljs-attribute">with-alpha</span>: <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>, <span class="hljs-number">0.75</span>);
 </code></pre>
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff00ff:#ffffff/text:ff00ff"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
-<h3 class="docs-heading">greyscale<span class="anchor-target" id="color-operations-greyscale"></span>
-<a href="#color-operations-greyscale" name="color-operations-greyscale" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-greyscale"></span>
+<a href="#color-operations-greyscale" name="color-operations-greyscale" class="anchor glyphicon glyphicon-link"></a>greyscale</h3>
 <blockquote>
 <p>Remove all saturation from a color in the HSL color space; the same as calling <code>desaturate(@color, 100%)</code>.</p>
 </blockquote>
@@ -1728,8 +1738,8 @@ NaN%
 <p>Output: <code>#cacaca</code></p>
 <p><img alt="Color 1" data-src="holder.js/100x40/#80f20d:#000000/text:80f20d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#cacaca:#000000/text:cacaca"></p>
 <p>This time the grey&apos;s lightness looks about the same as the green, though its value is actually higher.</p>
-<h3 class="docs-heading">contrast<span class="anchor-target" id="color-operations-contrast"></span>
-<a href="#color-operations-contrast" name="color-operations-contrast" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-operations-contrast"></span>
+<a href="#color-operations-contrast" name="color-operations-contrast" class="anchor glyphicon glyphicon-link"></a>contrast</h3>
 <blockquote>
 <p>Choose which of two colors provides the greatest contrast with another.</p>
 </blockquote>
@@ -1777,10 +1787,9 @@ NaN%
 
   <!-- Color Blending Functions -->
   <div class="docs-section">
-    <div class="page-header">
-      <h1 class="docs-heading">Color Blending Functions<span class="anchor-target" id="color-blending"></span>
-<a href="#color-blending" name="color-blending" class="anchor glyphicon glyphicon-link"></a></h1>
-    </div>
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="color-blending"></span>
+<a href="#color-blending" name="color-blending" class="anchor glyphicon glyphicon-link"></a>Color Blending Functions</h1>
 
     
     <div class="section-content">
@@ -1801,8 +1810,8 @@ NaN%
 <blockquote>
 <p>These operations are <em>similar</em> (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks, or GIMP, so you can use them to make your CSS colors match your images.</p>
 </blockquote>
-<h3 class="docs-heading">multiply<span class="anchor-target" id="color-blending-multiply"></span>
-<a href="#color-blending-multiply" name="color-blending-multiply" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-multiply"></span>
+<a href="#color-blending-multiply" name="color-blending-multiply" class="anchor glyphicon glyphicon-link"></a>multiply</h3>
 <blockquote>
 <p>Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.</p>
 </blockquote>
@@ -1858,8 +1867,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
-<h3 class="docs-heading">screen<span class="anchor-target" id="color-blending-screen"></span>
-<a href="#color-blending-screen" name="color-blending-screen" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-screen"></span>
+<a href="#color-blending-screen" name="color-blending-screen" class="anchor glyphicon glyphicon-link"></a>screen</h3>
 <blockquote>
 <p>Do the opposite of <code>multiply</code>. The result is a brighter color.</p>
 </blockquote>
@@ -1915,8 +1924,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h3 class="docs-heading">overlay<span class="anchor-target" id="color-blending-overlay"></span>
-<a href="#color-blending-overlay" name="color-blending-overlay" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-overlay"></span>
+<a href="#color-blending-overlay" name="color-blending-overlay" class="anchor glyphicon glyphicon-link"></a>overlay</h3>
 <blockquote>
 <p>Combines the effects of both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
 </blockquote>
@@ -1972,8 +1981,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
-<h3 class="docs-heading">softlight<span class="anchor-target" id="color-blending-softlight"></span>
-<a href="#color-blending-softlight" name="color-blending-softlight" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-softlight"></span>
+<a href="#color-blending-softlight" name="color-blending-softlight" class="anchor glyphicon glyphicon-link"></a>softlight</h3>
 <blockquote>
 <p>Similar to <code>overlay</code> but avoids pure black resulting in pure black, and pure white resulting in pure white.</p>
 </blockquote>
@@ -2029,8 +2038,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
-<h3 class="docs-heading">hardlight<span class="anchor-target" id="color-blending-hardlight"></span>
-<a href="#color-blending-hardlight" name="color-blending-hardlight" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-hardlight"></span>
+<a href="#color-blending-hardlight" name="color-blending-hardlight" class="anchor glyphicon glyphicon-link"></a>hardlight</h3>
 <blockquote>
 <p>The same as <code>overlay</code> but with the color roles reversed.</p>
 </blockquote>
@@ -2086,8 +2095,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"></p>
-<h3 class="docs-heading">difference<span class="anchor-target" id="color-blending-difference"></span>
-<a href="#color-blending-difference" name="color-blending-difference" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-difference"></span>
+<a href="#color-blending-difference" name="color-blending-difference" class="anchor glyphicon glyphicon-link"></a>difference</h3>
 <blockquote>
 <p>Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.</p>
 </blockquote>
@@ -2143,8 +2152,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h3 class="docs-heading">exclusion<span class="anchor-target" id="color-blending-exclusion"></span>
-<a href="#color-blending-exclusion" name="color-blending-exclusion" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-exclusion"></span>
+<a href="#color-blending-exclusion" name="color-blending-exclusion" class="anchor glyphicon glyphicon-link"></a>exclusion</h3>
 <blockquote>
 <p>A similar effect to <code>difference</code> with lower contrast.</p>
 </blockquote>
@@ -2200,8 +2209,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
-<h3 class="docs-heading">average<span class="anchor-target" id="color-blending-average"></span>
-<a href="#color-blending-average" name="color-blending-average" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-average"></span>
+<a href="#color-blending-average" name="color-blending-average" class="anchor glyphicon glyphicon-link"></a>average</h3>
 <blockquote>
 <p>Compute the average of two colors on a per-channel (RGB) basis.</p>
 </blockquote>
@@ -2257,8 +2266,8 @@ NaN%
 <p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
 <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
 <img alt="Color 3" data-src="holder.js/100x40/#803380:#ffffff/text:803380"></p>
-<h3 class="docs-heading">negation<span class="anchor-target" id="color-blending-negation"></span>
-<a href="#color-blending-negation" name="color-blending-negation" class="anchor glyphicon glyphicon-link"></a></h3>
+<h3 class="docs-heading"><span class="anchor-target" id="color-blending-negation"></span>
+<a href="#color-blending-negation" name="color-blending-negation" class="anchor glyphicon glyphicon-link"></a>negation</h3>
 <blockquote>
 <p>Do the opposite effect to <code>difference</code>.</p>
 </blockquote>
@@ -2346,7 +2355,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v2.7.2</li>
+      <li>Currently v3.0.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

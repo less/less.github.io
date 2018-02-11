@@ -315,10 +315,10 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  color: inherit;
+  color: #1d365d;
 }
 h1 small,
 h2 small,
@@ -378,19 +378,19 @@ h6 .small {
 }
 h1,
 .h1 {
-  font-size: 38px;
+  font-size: 35px;
 }
 h2,
 .h2 {
-  font-size: 31px;
+  font-size: 28px;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 25px;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 21px;
 }
 h5,
 .h5 {
@@ -543,8 +543,8 @@ samp {
 code {
   padding: 2px 4px;
   font-size: 90%;
-  color: #333333;
-  background-color: #eeeeee;
+  color: #428bca;
+  background-color: #f5f5f5;
   white-space: nowrap;
   border-radius: 4px;
 }
@@ -6030,56 +6030,68 @@ body {
 pre code {
   display: block;
   padding: 0.5em;
-  color: #657b83;
+  color: #393939;
 }
 .hljs-comment {
-  color: #93a1a1;
+  color: #939393;
   font-style: italic;
 }
 .hljs-id {
-  color: #268bd2;
+  color: #d64f00;
 }
 .hljs-class {
-  color: #284a80;
-}
-.hljs-tag {
-  color: #4b5e64;
+  color: #00358a;
 }
 .hljs-variable {
-  color: #4b5e64;
+  color: #6500a3;
 }
-.hljs-attribute {
-  color: #4b5e64;
+.hljs-tag {
+  color: #00358a;
 }
 .hljs-keyword {
-  color: #4b5e64;
+  color: #00358a;
 }
 .hljs-built_in {
-  color: #4b5e64;
+  color: #00358a;
+}
+.hljs-pseudo {
+  color: #6500a3;
 }
 .hljs-value {
-  color: #2aa198;
+  color: #00a3a3;
 }
 .hljs-number {
-  color: #2aa198;
+  color: #00a3a3;
 }
 .hljs-hexcolor {
-  color: #2aa198;
+  color: #00a3a3;
 }
 .hljs-literal {
-  color: #2aa198;
+  color: #00a3a3;
 }
-.hljs-string {
-  color: #2aa198;
+.hljs-attribute {
+  color: #0078bd;
 }
 .hljs-attr_selector {
-  color: #d33682;
+  color: #d64f00;
+}
+.hljs-attr {
+  color: #d64f00;
+}
+.hljs-name {
+  color: #0078bd;
 }
 .hljs-at_rule {
-  color: #cb4b16;
+  color: #f00800;
+}
+.hljs-string {
+  color: #4c8a00;
+}
+.lang-less .hljs-keyword {
+  color: #00358a;
 }
 .lang-less .hljs-built_in {
-  color: #859900;
+  color: #a37200;
 }
 h1,
 h2,
@@ -6099,7 +6111,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333333;
@@ -6275,6 +6287,8 @@ hr {
   background-color: #fafafa;
   border-top: 1px solid #fff;
   border-bottom: 1px solid #e5e5e5;
+  z-index: 3;
+  position: relative;
 }
 .banner strong {
   color: #555;
@@ -6321,12 +6335,23 @@ hr {
 .docs-header {
   padding: 30px 15px 50px;
   /* side padding builds on .container 15px, so 30px */
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 .docs-header h1 {
   color: #fff;
+}
+.docs-header h3,
+.docs-header p {
+  color: #b9c8e0;
+}
+.docs-header h3 {
+  margin-bottom: 3em;
+}
+.docs-header code {
+  background: #0b1a28;
+  padding: 2px 4px;
 }
 .docs-header p {
   font-weight: 300;
@@ -6337,18 +6362,15 @@ hr {
 }
 @media (min-width: 768px) {
   .docs-header {
-    font-size: 21px;
+    font-size: 16px;
     text-align: left;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
   }
   .docs-header h1 {
     font-size: 60px;
     line-height: 1;
-  }
-}
-@media (min-width: 992px) {
-  .docs-header h1,
-  .docs-header p {
-    margin-right: 380px;
   }
 }
 .footer {
@@ -6412,9 +6434,8 @@ hr {
 .docs-content {
   position: relative;
   overflow: hidden;
-  background: #fff;
-  background-color: #fff;
-  padding: 1px 60px 80px 60px;
+  background-color: #FFF;
+  padding: 50px 60px 80px 60px;
   margin: 0 -15px;
   border: none;
   border-radius: 0 0 4px 4px;
@@ -6426,13 +6447,96 @@ hr {
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.docs-section + .docs-section {
-  padding-top: 20px;
-}
 @media (max-width: 767px) {
   .docs-content {
     padding: 1px 20px;
   }
+}
+.docs-container {
+  margin-top: -50px;
+}
+.docs-section {
+  margin-bottom: 40px;
+}
+.docs-section:last-child {
+  margin-bottom: 0;
+}
+/**
+ * Add a width to docs-headings inside section-content,
+ * so we easily get the .anchor when hovering over headings.
+ *
+ * **Example**:
+ *
+ * ```html
+ * <div class="docs-section">
+ *   <div class="section-content">
+ *     <h3 class="docs-heading"></h3>
+ *   </div>
+ * </div>
+ * ```
+ */
+.section-content .docs-heading {
+  max-width: 80%;
+  margin-top: 20px;
+}
+/**
+ * Remove the width on major headings, so we don't cause them to wrap.
+ * This class is probably unnecessary, but we'll do it for insurance.
+ *
+ * **Example**:
+ *
+ * ```html
+ * <div class="docs-section">
+ *   <div class="page-heading">
+ *     <h3 class="docs-heading"></h3>
+ *   </div>
+ * </div>
+ * ```
+ */
+.page-heading .docs-heading {
+  max-width: auto;
+}
+h1[id] {
+  margin-top: 0;
+}
+.docs-section {
+  font-family: "Oxygen", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.docs-section h1:first-child {
+  margin-top: 40px;
+}
+.docs-section p {
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 10px 0 20px;
+}
+.docs-section blockquote {
+  position: relative;
+  font-style: normal;
+  font-weight: 500;
+  color: inherit;
+  margin: 0;
+  border-left-style: none;
+  padding: 0;
+}
+.docs-section blockquote > p {
+  line-height: 1.5;
+  color: inherit;
+  padding: 0px;
+}
+.docs-section blockquote > p:first-child {
+  font-size: 18px;
+}
+.docs-section td {
+  padding: 0 10px 5px 0;
+  vertical-align: top;
+  min-width: 150px;
+}
+.docs-section img {
+  max-width: 100%;
+}
+.section-content {
+  position: relative;
 }
 .sidebar {
   display: none;
@@ -6442,7 +6546,7 @@ hr {
 }
 /* First level of nav */
 .sidenav {
-  margin-top: 30px;
+  margin-top: 6px;
   margin-bottom: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -6485,7 +6589,7 @@ hr {
 @media (min-width: 992px) {
   .sidebar {
     display: block;
-    padding-top: 15px;
+    padding-top: 65px;
   }
   .sidebar .nav > .active > ul {
     display: block;
@@ -6496,7 +6600,7 @@ hr {
   }
   .sidebar.affix {
     position: fixed;
-    top: 45px;
+    top: 15px;
     bottom: 0;
     overflow: auto;
   }
@@ -6597,10 +6701,10 @@ h2 .anchor {
   margin-bottom: -3px;
 }
 h3 .anchor {
-  margin-bottom: -7px;
+  margin-bottom: -5px;
 }
 h4 .anchor {
-  margin-bottom: -11px;
+  margin-bottom: -7px;
 }
 h1,
 h2,
@@ -6620,6 +6724,7 @@ h3 .anchor:hover {
   position: absolute;
   margin-top: -80px;
   padding-top: 80px;
+  width: 2px;
 }
 .anchor-target-small {
   margin-top: -40px;
@@ -6631,7 +6736,8 @@ h3 .anchor:hover {
  * This link
  */
 .section-content .source-link {
-  top: -5px;
+  top: -27px;
+  left: 10px;
   width: 100px;
   padding: 15px;
   color: #999999;

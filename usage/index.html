@@ -505,7 +505,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tr>
 </tbody>
 </table>
-<p>If the file in an <code>@import</code> rule does not exist at that exact location, less will look for it at the location(s) passed to this option. You might use this for instance to specify a path to a library which you want to be referenced simply and relatively in the less files.</p>
+<p>If the file in an <code>@import</code> rule does not exist at that exact location, Less will look for it at the location(s) passed to this option. You might use this for instance to specify a path to a library which you want to be referenced simply and relatively in the Less files.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="less-options-rootpath"></span>
 <a href="#less-options-rootpath" name="less-options-rootpath" class="anchor glyphicon glyphicon-link"></a>Rootpath</h4>
 <table>
@@ -522,7 +522,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tr>
 </tbody>
 </table>
-<p>Allows you to add a path to every generated import and url in your css. This does not affect less import statements that are processed, just ones that are left in the output css.</p>
+<p>Allows you to add a path to every generated import and url in your css. This does not affect Less import statements that are processed, just ones that are left in the output css.</p>
 <p>For instance, if all the images the css use are in a folder called resources, you can use this option to add this on to the URL&apos;s and then have the name of that folder configurable.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="less-options-relative-urls"></span>
 <a href="#less-options-relative-urls" name="less-options-relative-urls" class="anchor glyphicon glyphicon-link"></a>Relative URLs</h4>
@@ -576,26 +576,26 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tbody>
 </table>
 <p>Defaults to off/false.</p>
-<p>Without this option on, Less will try and process all math in your css e.g.</p>
+<p>Without this option on, Less will try and process all math in your css, e.g. in:</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">height</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">10px</span>);
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">6</span>;
 }
 </code></pre>
-<p>will be processed currently.</p>
+<p><code>3 / 6</code> will result in <code>2</code>.</p>
 <p>With strict math on, only math that is inside un-necessary parenthesis will be processed. For instance.</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - ((<span class="hljs-number">10px</span>  - <span class="hljs-number">5px</span>)));
-  <span class="hljs-attribute">height</span>: (<span class="hljs-number">100px</span> / <span class="hljs-number">4px</span>);
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">6</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>;
+  <span class="hljs-attribute">height</span>: (<span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>);
 }
 </code></pre>
 <pre><code class="lang-css"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-function">calc</span>(<span class="hljs-number">100%</span> - <span class="hljs-number">5px</span>);
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">25px</span>;
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1</span> / <span class="hljs-number">4</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">6</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">42px</span>;
 }
 </code></pre>
-<p>We originally planned to default this to true in the future, but it has been a controversial option and we are considering whether we have solved the problem in the right way, or whether less should just have exceptions for instances where <code>/</code> is valid or calc is used.</p>
+<p>We originally planned to default this to true in the future, but it has been a controversial option and we are considering whether we have solved the problem in the right way, or whether Less should just have exceptions for instances where <code>/</code> is valid or not.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="less-options-strict-units"></span>
 <a href="#less-options-strict-units" name="less-options-strict-units" class="anchor glyphicon glyphicon-link"></a>Strict Units</h4>
 <table>
@@ -613,7 +613,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tbody>
 </table>
 <p>Defaults to off/false.</p>
-<p>Without this option, less attempts to guess at the output unit when it does maths. For instance</p>
+<p>Without this option, Less attempts to guess at the output unit when it does maths. For instance</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
   <span class="hljs-attribute">property</span>: <span class="hljs-number">1px</span> * <span class="hljs-number">2px</span>;
 }
@@ -1126,19 +1126,19 @@ less.render(lessInput, {<span class="hljs-attr">sourceMap</span>: {<span class="
 <ul>
 <li>clone your less.js repository locally</li>
 <li>navigate to your local less.js repository and run <code>npm install</code> this installs less&apos; npm dependencies.</li>
-<li>If you haven&apos;t used grunt before, run <code>npm install grunt-cli -g</code> - this allows you to use the &quot;grunt&quot; command anywhere</li>
 </ul>
 <h2 class="docs-heading"><span class="anchor-target" id="developing-less-usage"></span>
 <a href="#developing-less-usage" name="developing-less-usage" class="anchor glyphicon glyphicon-link"></a>Usage</h2>
-<p>If you go to the root of the Less repository you should be able to do <code>grunt test</code> - this should run all the tests. For the browser specific only, run <code>grunt browsertest</code> If you want to try out the current version of less against a file, from here do <code>node bin/lessc path/to/file.less</code></p>
-<p>To debug the browser tests, run <code>grunt browsertest-server</code> then go to <a href="http://localhost:8088/tmp/browser/">http://localhost:8088/tmp/browser/</a> to see the test runner pages.</p>
+<p><a href="https://gruntjs.com/">Grunt</a> is used in order to run development commands such as tests, builds, and benchmarks. You can run them either with <code>grunt [command_name]</code> if you have <code>grunt-cli</code> installed globally or with <code>npm run grunt -- [command_name]</code>.</p>
+<p>If you go to the root of the Less repository you should be able to do <code>npm test</code> (a handy alias for <code>npm run grunt -- test</code>) - this should run all the tests. For the browser specific only, run <code>npm run grunt -- browsertest</code> If you want to try out the current version of less against a file, from here do <code>node bin/lessc path/to/file.less</code></p>
+<p>To debug the browser tests, run <code>npm run grunt -- browsertest-server</code> then go to <a href="http://localhost:8088/tmp/browser/">http://localhost:8088/tmp/browser/</a> to see the test runner pages.</p>
 <p>Optional: To get the current version of the Less compiler do <code>npm -g install less</code> - npm is the node package manager and &quot;-g&quot; installs it to be available globally.</p>
 <p>You should now be able to do <code>lessc file.less</code> and if there is an appropriate <code>file.less</code> then it will be compiled and output to the stdout. You can then compare it to running locally (<code>node bin/lessc file.less</code>).</p>
 <p>Other grunt commands</p>
 <ul>
-<li><code>grunt benchmark</code> - run our benchmark tests to get some numbers on performance</li>
-<li><code>grunt stable</code> to create a new release</li>
-<li><code>grunt readme</code> to generate a new readme.md in the root directory (after each release)</li>
+<li><code>npm run grunt -- benchmark</code> - run our benchmark tests to get some numbers on performance</li>
+<li><code>npm run grunt -- stable</code> to create a new release</li>
+<li><code>npm run grunt -- readme</code> to generate a new readme.md in the root directory (after each release)</li>
 </ul>
 <h2 class="docs-heading"><span class="anchor-target" id="developing-less-how-to-run-less-in-other-environments"></span>
 <a href="#developing-less-how-to-run-less-in-other-environments" name="developing-less-how-to-run-less-in-other-environments" class="anchor glyphicon glyphicon-link"></a>How to Run Less in Other Environments</h2>
@@ -1187,7 +1187,7 @@ the npm import plugin implementation.</p>
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.0.0</li>
+      <li>Currently v3.0.2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

@@ -54,7 +54,7 @@
 <li><a href="#extend-feature-extending-nested-selectors">Extending Nested Selectors</a></li>
 <li><a href="#extend-feature-exact-matching-with-extend">Exact Matching with Extend</a></li>
 <li><a href="#extend-feature-nth-expression">nth Expression</a></li>
-<li><a href="#extend-feature-extend-all-">Extend &quot;all&quot;</a></li>
+<li><a href="#extend-feature-extend-all">Extend &quot;all&quot;</a></li>
 <li><a href="#extend-feature-selector-interpolation-with-extend">Selector Interpolation with Extend</a></li>
 <li><a href="#extend-feature-scoping-extend-inside-media">Scoping / Extend Inside @media</a></li>
 <li><a href="#extend-feature-duplication-detection">Duplication Detection</a></li>
@@ -418,7 +418,7 @@ as being the &quot;final&quot; value.</p>
     <span class="hljs-attribute">background-color</span>: $color; 
   }
   <span class="hljs-attribute">color</span>: blue;  
-}
+} 
 </code></pre>
 <p>Compiles to:</p>
 <pre><code class="lang-css"><span class="hljs-class">.block</span> {
@@ -883,8 +883,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">color</span>: blue;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-extend-all-"></span>
-<a href="#extend-feature-extend-all-" name="extend-feature-extend-all-" class="anchor glyphicon glyphicon-link"></a>Extend &quot;all&quot;</h3>
+<h3 class="docs-heading"><span class="anchor-target" id="extend-feature-extend-all"></span>
+<a href="#extend-feature-extend-all" name="extend-feature-extend-all" class="anchor glyphicon glyphicon-link"></a>Extend &quot;all&quot;</h3>
 <p>When you specify the all keyword last in an extend argument it tells Less to match that selector as part of another selector. The selector will be copied and the matched part of the selector only will then be replaced with the extend, making a new selector.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span><span class="hljs-class">.b</span><span class="hljs-class">.test</span>,
@@ -1665,6 +1665,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">width</span>:  <span class="hljs-variable">@width</span>;
   <span class="hljs-attribute">height</span>: <span class="hljs-variable">@height</span>;
 }
+
 </code></pre>
 <p>Results in:</p>
 <pre><code class="lang-css"><span class="hljs-class">.caller</span> {

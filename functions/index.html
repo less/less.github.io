@@ -597,18 +597,18 @@ Note however that any boolean expression for the <code>condition</code> paramete
 <h3 class="docs-heading"><span class="anchor-target" id="string-functions-e"></span>
 <a href="#string-functions-e" name="string-functions-e" class="anchor glyphicon glyphicon-link"></a>e</h3>
 <blockquote>
-<p>CSS escaping, replaced with <code>~&quot;value&quot;</code> syntax.</p>
+<p>String escaping.</p>
 </blockquote>
 <p>It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which Less doesn&apos;t recognize.</p>
 <p>Parameters: <code>string</code> - a string to escape.</p>
 <p>Returns: <code>string</code> - the escaped string, without quotes.</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-attribute">filter</span>: <span class="hljs-function">e</span>(<span class="hljs-string">&quot;ms:alwaysHasItsOwnSyntax.For.Stuff()&quot;</span>);
+<pre><code class="lang-less"><span class="hljs-variable">@mscode:</span> <span class="hljs-string">&quot;ms:alwaysHasItsOwnSyntax.For.Stuff()&quot;</span> 
+filter: <span class="hljs-function">e</span>(<span class="hljs-variable">@mscode</span>);
 </code></pre>
 <p>Output:</p>
 <pre><code class="lang-css"><span class="hljs-attribute">filter</span>: ms:alwaysHasItsOwnSyntax.For.<span class="hljs-function">Stuff</span>();
 </code></pre>
-<p>Note: The function accepts also <code>~&quot;&quot;</code> escaped values and numbers as parameters. Anything else returns an error.</p>
 <h3 class="docs-heading"><span class="anchor-target" id="string-functions--format"></span>
 <a href="#string-functions--format" name="string-functions--format" class="anchor glyphicon glyphicon-link"></a>% format</h3>
 <blockquote>
@@ -2355,7 +2355,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.0.2</li>
+      <li>Currently v3.5.0-beta.2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

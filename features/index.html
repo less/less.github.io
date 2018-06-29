@@ -1828,13 +1828,13 @@ overridden:</p>
           <p>Guards are useful when you want to match on <em>expressions</em>, as opposed to simple values or arity. If you are familiar with functional programming, you have probably encountered them already.</p>
 <p>In trying to stay as close as possible to the declarative nature of CSS, Less has opted to implement conditional execution via <strong>guarded mixins</strong> instead of <code>if</code>/<code>else</code> statements, in the vein of <code>@media</code> query feature specifications.</p>
 <p>Let&apos;s start with an example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">lightness</span>(<span class="hljs-variable">@a</span>) &gt;= <span class="hljs-number">50%</span>) {
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">lightness</span>(<span class="hljs-variable">@a</span>) &gt;= <span class="hljs-number">50%</span>) {
   <span class="hljs-attribute">background-color</span>: black;
 }
-<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">lightness</span>(<span class="hljs-variable">@a</span>) &lt; <span class="hljs-number">50%</span>) {
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">lightness</span>(<span class="hljs-variable">@a</span>) &lt; <span class="hljs-number">50%</span>) {
   <span class="hljs-attribute">background-color</span>: white;
 }
-<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) {
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) {
   <span class="hljs-attribute">color</span>: <span class="hljs-variable">@a</span>;
 }
 </code></pre>
@@ -1855,8 +1855,8 @@ overridden:</p>
 <h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-guard-comparison-operators"></span>
 <a href="#mixins-feature-guard-comparison-operators" name="mixins-feature-guard-comparison-operators" class="anchor glyphicon glyphicon-link"></a>Guard Comparison Operators</h3>
 <p>The full list of comparison operators usable in guards are: <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>=&lt;</code>, <code>&lt;</code>. Additionally, the keyword <code>true</code> is the only truthy value, making these two mixins equivalent:</p>
-<pre><code class="lang-less"><span class="hljs-class">.truth</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span>) { ... }
-<span class="hljs-class">.truth</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> = true) { ... }
+<pre><code class="lang-less"><span class="hljs-class">.truth</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span>) { ... }
+<span class="hljs-class">.truth</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> = true) { ... }
 </code></pre>
 <p>Any value other than the keyword <code>true</code> is falsy:</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
@@ -1866,29 +1866,29 @@ overridden:</p>
 <p>Note that you can also compare arguments with each other, or with non-arguments:</p>
 <pre><code class="lang-less"><span class="hljs-at_rule">@media</span>: mobile;
 
-<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@media</span> = mobile) { ... }
-<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@media</span> = desktop) { ... }
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@media</span> = mobile) { ... }
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@media</span> = desktop) { ... }
 
-<span class="hljs-class">.max</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@a</span> }
-<span class="hljs-class">.max</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &lt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@b</span> }
+<span class="hljs-class">.max</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@a</span> }
+<span class="hljs-class">.max</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &lt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@b</span> }
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-guard-logical-operators"></span>
 <a href="#mixins-feature-guard-logical-operators" name="mixins-feature-guard-logical-operators" class="anchor glyphicon glyphicon-link"></a>Guard Logical Operators</h3>
 <p>You can use logical operators with guards. The syntax is based on CSS media queries.</p>
 <p>Use the <code>and</code> keyword to combine guards:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@a</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">0</span>) { ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@a</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">0</span>) { ... }
 </code></pre>
 <p>You can emulate the <em>or</em> operator by separating guards with a comma <code>,</code>. If any of the guards evaluate to true, it&apos;s considered a match:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">10</span>), (<span class="hljs-variable">@a</span> &lt; -<span class="hljs-number">10</span>) { ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">10</span>), (<span class="hljs-variable">@a</span> &lt; -<span class="hljs-number">10</span>) { ... }
 </code></pre>
 <p>Use the <code>not</code> keyword to negate conditions:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@b</span> &gt; <span class="hljs-number">0</span>) { ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@b</span> &gt; <span class="hljs-number">0</span>) { ... }
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-type-checking-functions"></span>
 <a href="#mixins-feature-type-checking-functions" name="mixins-feature-type-checking-functions" class="anchor glyphicon glyphicon-link"></a>Type Checking Functions</h3>
 <p>Lastly, if you want to match mixins based on value type, you can use the <code>is</code> functions:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: <span class="hljs-number">0</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@b</span>)) { ... }
-<span class="hljs-class">.mixin</span> (<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: black) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@b</span>)) { ... }
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: <span class="hljs-number">0</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@b</span>)) { ... }
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: black) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@b</span>)) { ... }
 </code></pre>
 <p>Here are the basic type checking functions:</p>
 <ul>
@@ -2591,7 +2591,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.0.2</li>
+      <li>Currently v3.5.0-beta.2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

@@ -43,7 +43,7 @@
       <br><br>
       <p>Or the browser:</p>
       <code>&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</code><br>
-      <code>&lt;script src=&quot;<a href="//cdnjs.cloudflare.com/ajax/libs/less.js/3.5.0-beta.2/less.min.js">//cdnjs.cloudflare.com/ajax/libs/less.js/3.5.0-beta.2/less.min.js</a>&quot; &gt;&lt;/script&gt;</code><br>
+      <code>&lt;script src=&quot;<a href="//cdnjs.cloudflare.com/ajax/libs/less.js/3.5.0-beta.4/less.min.js">//cdnjs.cloudflare.com/ajax/libs/less.js/3.5.0-beta.4/less.min.js</a>&quot; &gt;&lt;/script&gt;</code><br>
 
     </div>
   </div>
@@ -73,6 +73,7 @@
 <li><a href="#escaping">Escaping</a></li>
 <li><a href="#functions">Functions</a></li>
 <li><a href="#namespaces-and-accessors">Namespaces and Accessors</a></li>
+<li><a href="#maps">Maps</a></li>
 <li><a href="#scope">Scope</a></li>
 <li><a href="#comments">Comments</a></li>
 <li><a href="#importing">Importing</a></li></ul></div>
@@ -170,16 +171,18 @@
 <h1 class="docs-heading"><span class="anchor-target" id="variables"></span>
 <a href="#variables" name="variables" class="anchor glyphicon glyphicon-link"></a>Variables</h1>
 <p>These are pretty self-explanatory:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@nice-blue:</span> <span class="hljs-hexcolor">#5B83AD</span>;
-<span class="hljs-variable">@light-blue:</span> <span class="hljs-variable">@nice-blue</span> + <span class="hljs-hexcolor">#111</span>;
+<pre><code class="lang-less"><span class="hljs-variable">@width:</span> <span class="hljs-number">10px</span>;
+<span class="hljs-variable">@height:</span> <span class="hljs-variable">@width</span> + <span class="hljs-number">10px</span>;
 
 <span class="hljs-id">#header</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@light-blue</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-variable">@width</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-variable">@height</span>;
 }
 </code></pre>
 <p>Outputs:</p>
 <pre><code class="lang-css"><span class="hljs-id">#header</span> {
-  <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#6c94be</span>;
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">10px</span>;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;
 }
 </code></pre>
 <p><strong><a href="../features/#variables-feature">Learn More About Variables</a></strong> </p>
@@ -194,12 +197,12 @@
 <p>And we want to use these properties inside other rule-sets. Well, we just have to drop in the name of the class where we want the properties, like so:</p>
 <pre><code class="lang-less"><span class="hljs-id">#menu</span> <span class="hljs-tag">a</span> {
   <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#111</span>;
-  <span class="hljs-class">.bordered</span>;
+  <span class="hljs-class">.bordered</span>();
 }
 
 <span class="hljs-class">.post</span> <span class="hljs-tag">a</span> {
   <span class="hljs-attribute">color</span>: red;
-  <span class="hljs-class">.bordered</span>;
+  <span class="hljs-class">.bordered</span>();
 }
 </code></pre>
 <p>The properties of the <code>.bordered</code> class will now appear in both <code>#menu a</code> and <code>.post a</code>. (Note that you can also use <code>#ids</code> as mixins.)</p>
@@ -330,6 +333,15 @@ and math in nested functions.</p>
   }
 }
 </code></pre>
+<p>Note, as of Less 3.5, you can simply write:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@min768:</span> (min-width: <span class="hljs-number">768px</span>);
+<span class="hljs-class">.element</span> {
+  <span class="hljs-at_rule">@media</span> <span class="hljs-variable">@min768</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.2rem</span>;
+  }
+}
+</code></pre>
+<p>In 3.5+, many cases previously requiring &quot;quote-escaping&quot; are not needed.</p>
 <h1 class="docs-heading"><span class="anchor-target" id="functions"></span>
 <a href="#functions" name="functions" class="anchor glyphicon glyphicon-link"></a>Functions</h1>
 <p>Less provides a variety of functions which transform colors, manipulate strings and do maths. They are documented fully in the <a href="../functions/">function reference</a>.</p>
@@ -364,14 +376,33 @@ and math in nested functions.</p>
 <p>Now if we want to mixin the <code>.button</code> class in our <code>#header a</code>, we can do:</p>
 <pre><code class="lang-less"><span class="hljs-id">#header</span> <span class="hljs-tag">a</span> {
   <span class="hljs-attribute">color</span>: orange;
-  <span class="hljs-id">#bundle</span> &gt; <span class="hljs-class">.button</span>;  <span class="hljs-comment">// can also be written as #bundle.button</span>
+  <span class="hljs-id">#bundle</span><span class="hljs-class">.button</span>();  <span class="hljs-comment">// can also be written as #bundle &gt; .button</span>
 }
 </code></pre>
-<p>Note: append <code>()</code> to your namespace if you don&apos;t want it to appear in your CSS output i.e. <code>#bundle .tab</code>.</p>
-<p>Also note that variables declared within a namespace will be scoped to that namespace only and will not be available outside of the scope via the same syntax that you would use to reference a mixin (<code>#Namespace &gt; .mixin-name</code>). So, for example, you can&apos;t do the following: <code>#Namespace &gt; @this-will-not-work</code>.</p>
+<p>Note: append <code>()</code> to your namespace (e.g. <code>#bundle()</code>) if you don&apos;t want it to appear in your CSS output i.e. <code>#bundle .tab</code>.</p>
+<h1 class="docs-heading"><span class="anchor-target" id="maps"></span>
+<a href="#maps" name="maps" class="anchor glyphicon glyphicon-link"></a>Maps</h1>
+<p>As of Less 3.5, you can also use mixins and rulesets as maps of values.</p>
+<pre><code class="lang-less"><span class="hljs-id">#colors</span>() {
+  <span class="hljs-attribute">primary</span>: blue;
+  <span class="hljs-attribute">secondary</span>: green;
+}
+
+<span class="hljs-class">.button</span> {
+  <span class="hljs-attribute">color</span>: #colors[primary];
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid #colors[secondary];
+}
+</code></pre>
+<p>This outputs, as expected:</p>
+<pre><code class="lang-css"><span class="hljs-class">.button</span> {
+  <span class="hljs-attribute">color</span>: blue;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid green;
+}
+</code></pre>
+<p><strong><a href="../features/#maps-feature">See also: Maps</a></strong></p>
 <h1 class="docs-heading"><span class="anchor-target" id="scope"></span>
 <a href="#scope" name="scope" class="anchor glyphicon glyphicon-link"></a>Scope</h1>
-<p>Scope in Less is very similar to that of programming languages. Variables and mixins are first looked for locally, and if they aren&apos;t found, the compiler will look in the parent scope, and so on.</p>
+<p>Scope in Less is very similar to that of CSS. Variables and mixins are first looked for locally, and if they aren&apos;t found, it&apos;s inherited from the &quot;parent&quot; scope.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@var:</span> red;
 
 <span class="hljs-id">#page</span> {
@@ -381,7 +412,7 @@ and math in nested functions.</p>
   }
 }
 </code></pre>
-<p>Mixin and variable definitions do not have to be placed before a line where they are referenced. So the following Less code is identical to the previous example:</p>
+<p>Like CSS custom properties, mixin and variable definitions do not have to be placed before a line where they are referenced. So the following Less code is identical to the previous example:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@var:</span> red;
 
 <span class="hljs-id">#page</span> {
@@ -436,7 +467,7 @@ and math in nested functions.</p>
     <p>Less and these docs are maintained by <a href="about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.5.0-beta.2</li>
+      <li>Currently v3.5.0-beta.4</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

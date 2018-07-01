@@ -73,11 +73,14 @@
 <li><a href="#mixins-feature-advanced-arguments-and-the-rest-variable">Advanced Arguments and the <code>@rest</code> Variable</a></li>
 <li><a href="#mixins-feature-pattern-matching">Pattern-matching</a></li>
 <li><a href="#mixins-feature-mixins-as-functions-feature">Return values from mixins</a></li>
+<li><a href="#mixins-feature-mixin-return-values">Mixin return values</a></li>
 <li><a href="#mixins-feature-loops-feature">Recursive mixins</a></li>
 <li><a href="#mixins-feature-mixin-guards-feature">Mixin Guards</a></li>
 <li><a href="#mixins-feature-guard-comparison-operators">Guard Comparison Operators</a></li>
 <li><a href="#mixins-feature-guard-logical-operators">Guard Logical Operators</a></li>
-<li><a href="#mixins-feature-type-checking-functions">Type Checking Functions</a></li></ul></li>
+<li><a href="#mixins-feature-type-checking-functions">Type Checking Functions</a></li>
+<li><a href="#mixins-feature-mixin-aliasing-feature">Aliasing Mixins</a></li>
+<li><a href="#mixins-feature-variable-calls">Variable calls</a></li></ul></li>
 <li><a href="#css-guards-feature">CSS Guards</a></li>
 <li><a href="#detached-rulesets-feature">Detached Rulesets</a><ul class="nav"><li><a href="#detached-rulesets-feature-scoping">Scoping</a></li></ul></li>
 <li><a href="#import-atrules-feature">@import At-Rules</a><ul class="nav"><li><a href="#import-atrules-feature-file-extensions">File Extensions</a></li>
@@ -89,11 +92,12 @@
 <li><a href="#import-atrules-feature-once">once</a></li>
 <li><a href="#import-atrules-feature-multiple">multiple</a></li>
 <li><a href="#import-atrules-feature-optional">optional</a></li></ul></li>
-<li><a href="#plugin-atrules-feature">@plugin At-Rules <small>(NEW!)</small></a><ul class="nav"><li><a href="#plugin-atrules-feature-writing-your-first-plugin">Writing your first plugin</a></li>
+<li><a href="#plugin-atrules-feature">@plugin At-Rules</a><ul class="nav"><li><a href="#plugin-atrules-feature-writing-your-first-plugin">Writing your first plugin</a></li>
 <li><a href="#plugin-atrules-feature-plugin-scope">Plugin Scope</a></li>
 <li><a href="#plugin-atrules-feature-null-functions">Null Functions</a></li>
 <li><a href="#plugin-atrules-feature-the-less-js-plugin-object">The Less.js Plugin Object</a></li>
-<li><a href="#plugin-atrules-feature-pre-loaded-plugins">Pre-Loaded Plugins</a></li></ul></li></ul></div>
+<li><a href="#plugin-atrules-feature-pre-loaded-plugins">Pre-Loaded Plugins</a></li></ul></li>
+<li><a href="#maps-feature">Maps <small>(NEW!)</small></a></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -394,6 +398,14 @@
   <span class="hljs-attribute">three</span>: <span class="hljs-number">3</span>;
 }
 </code></pre>
+<p>Essentially, each scope has a &quot;final&quot; value, similar to properties in the browser, like this example using custom properties:</p>
+<pre><code class="lang-css"><span class="hljs-class">.header</span> {
+  <span class="hljs-attribute">--color</span>: white;
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">var</span>(--color);  <span class="hljs-comment">// the color is black</span>
+  <span class="hljs-attribute">--color</span>: black;
+}
+</code></pre>
+<p>This means that, unlike other CSS pre-processing languages, Less variables behave very much like CSS&apos;s.</p>
 <h3 class="docs-heading"><span class="anchor-target" id="variables-feature-properties-as-variables-new-"></span>
 <a href="#variables-feature-properties-as-variables-new-" name="variables-feature-properties-as-variables-new-" class="anchor glyphicon glyphicon-link"></a>Properties as Variables <strong>(NEW!)</strong></h3>
 <p><em>v3.0.0</em></p>
@@ -1281,7 +1293,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 </code></pre>
 <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-not-outputting-the-mixin"></span>
 <a href="#mixins-feature-not-outputting-the-mixin" name="mixins-feature-not-outputting-the-mixin" class="anchor glyphicon glyphicon-link"></a>Not Outputting the Mixin</h2>
-<p>If you want to create a mixin but you do not want that mixin to be output, you can put parentheses after it.</p>
+<p>If you want to create a mixin but you do not want that mixin to be in your CSS output, put parentheses after the mixin definition.</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-mixin</span> {
   <span class="hljs-attribute">color</span>: black;
 }
@@ -1323,17 +1335,17 @@ For example, when using Modernizr, you might want to specify different rules bas
 <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-namespaces"></span>
 <a href="#mixins-feature-namespaces" name="mixins-feature-namespaces" class="anchor glyphicon glyphicon-link"></a>Namespaces</h2>
 <p>If you want to mixin properties inside a more complicated selector, you can stack up multiple id&apos;s or classes.</p>
-<pre><code class="lang-less"><span class="hljs-id">#outer</span> {
+<pre><code class="lang-less"><span class="hljs-id">#outer</span>() {
   <span class="hljs-class">.inner</span> {
     <span class="hljs-attribute">color</span>: red;
   }
 }
 
 <span class="hljs-class">.c</span> {
-  <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>;
+  <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>();
 }
 </code></pre>
-<p>and again both <code>&gt;</code> and whitespace are optional</p>
+<p>Both <code>&gt;</code> and whitespace are optional, as are parentheses</p>
 <pre><code class="lang-less"><span class="hljs-comment">// all do the same thing</span>
 <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>;
 <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>();
@@ -1351,18 +1363,18 @@ For example, when using Modernizr, you might want to specify different rules bas
 }
 <span class="hljs-comment">// which can be used like this</span>
 <span class="hljs-class">.class</span> {
-  <span class="hljs-id">#my-library</span> &gt; <span class="hljs-class">.my-mixin</span>();
+  <span class="hljs-id">#my-library</span><span class="hljs-class">.my-mixin</span>();
 }
 </code></pre>
 <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-guarded-namespaces"></span>
 <a href="#mixins-feature-guarded-namespaces" name="mixins-feature-guarded-namespaces" class="anchor glyphicon glyphicon-link"></a>Guarded Namespaces</h2>
 <p>If namespace have a guard, mixins defined by it are used only if guard condition returns true. Namespace guard is evaluated exactly the same way as guard on mixin, so next two mixins work the same way:</p>
-<pre><code class="lang-less"><span class="hljs-id">#namespace</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span>=huge) {
+<pre><code class="lang-less"><span class="hljs-id">#namespace</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span> = huge) {
   <span class="hljs-class">.mixin</span>() { <span class="hljs-comment">/* */</span> }
 }
 
 <span class="hljs-id">#namespace</span> {
-  <span class="hljs-class">.mixin</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span>=huge) { <span class="hljs-comment">/* */</span> }
+  <span class="hljs-class">.mixin</span>() <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span> = huge) { <span class="hljs-comment">/* */</span> }
 }
 </code></pre>
 <p>The <code>default</code> function is assumed to have the same value for all nested namespaces and mixin. Following mixin is never evaluated, one of its guards is guaranteed to be false:</p>
@@ -1673,15 +1685,16 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
 }
 </code></pre>
-<p>Thus variables defined in a mixin can act as its return values. This allows us to create a mixin that can be used almost like a function.</p>
+<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixin-return-values"></span>
+<a href="#mixins-feature-mixin-return-values" name="mixins-feature-mixin-return-values" class="anchor glyphicon glyphicon-link"></a>Mixin return values</h3>
+<p>Starting in Less 3.5, you can use property/variable accessors to get a &quot;return value&quot; from a mixin. Essentially using it like a function.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-variable">@x</span>, <span class="hljs-variable">@y</span>) {
-  <span class="hljs-variable">@average:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
+  <span class="hljs-variable">@result:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
 }
 
 <span class="hljs-tag">div</span> {
-  <span class="hljs-class">.average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>); <span class="hljs-comment">// &quot;call&quot; the mixin</span>
-  <span class="hljs-attribute">padding</span>: <span class="hljs-variable">@average</span>;    <span class="hljs-comment">// use its &quot;return&quot; value</span>
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-function">average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>)[<span class="hljs-variable">@result</span>];  <span class="hljs-comment">// call a mixin and look up its &quot;@return&quot; value</span>
 }
 </code></pre>
 <p>Results in:</p>
@@ -1689,8 +1702,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
 }
 </code></pre>
-<p>Variables defined directly in callers scope cannot be overridden. However, variables defined in callers parent scope is not protected and will be
-overridden:</p>
+<p>Variables defined directly in callers scope cannot be overridden. However, variables defined in callers parent scope is not protected and will be overridden:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-variable">@size:</span> in-mixin;
   <span class="hljs-variable">@definedOnlyInMixin:</span> in-mixin;
@@ -1906,6 +1918,102 @@ overridden:</p>
 <li><code>isem</code></li>
 <li><code>isunit</code></li>
 </ul>
+
+
+          <br>
+        </div>
+      
+    
+
+      <!-- Aliasing Mixins -->
+      <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixin-aliasing-feature"></span>
+<a href="#mixins-feature-mixin-aliasing-feature" name="mixins-feature-mixin-aliasing-feature" class="anchor glyphicon glyphicon-link"></a>Aliasing Mixins</h2>
+      
+      
+        <div class="section-content">
+          
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/features/mixins-aliasing.md" data-content="mixins-aliasingmd" target="_blank"></a>
+
+
+
+<a id="mixins-aliasingmd" href="https://github.com/less/less-docs/blob/master/content/features/mixins-aliasing.md" target="_blank">Edit the markdown source for &quot;mixins-aliasing&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+          <!-- mixins-aliasing -->
+           
+
+
+          <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0-beta.4</a></p>
+<blockquote>
+<p>Assigning mixin calls to a variable</p>
+</blockquote>
+<p>Mixins can be assigned to a variable to be called as a variable call, or can be used for map lookup.</p>
+<pre><code class="lang-less"><span class="hljs-id">#theme</span><span class="hljs-class">.dark</span><span class="hljs-class">.navbar</span> {
+  <span class="hljs-class">.colors</span>(light) {
+    <span class="hljs-attribute">primary</span>: purple;
+  }
+  <span class="hljs-class">.colors</span>(dark) {
+    <span class="hljs-attribute">primary</span>: black;
+    <span class="hljs-attribute">secondary</span>: grey;
+  }
+}
+
+<span class="hljs-class">.navbar</span> {
+  <span class="hljs-variable">@colors:</span> #theme.dark.navbar.<span class="hljs-function">colors</span>(dark);
+  <span class="hljs-attribute">background</span>: <span class="hljs-variable">@colors</span>[primary];
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid <span class="hljs-variable">@colors</span>[secondary];
+}
+</code></pre>
+<p>This would output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.navbar</span> {
+  <span class="hljs-attribute">background</span>: black;
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid grey;
+}
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-variable-calls"></span>
+<a href="#mixins-feature-variable-calls" name="mixins-feature-variable-calls" class="anchor glyphicon glyphicon-link"></a>Variable calls</h3>
+<p>Entire mixin calls can be aliased and called as variable calls. As in:</p>
+<pre><code class="lang-less"><span class="hljs-id">#library</span>() {
+  <span class="hljs-class">.rules</span>() {
+    <span class="hljs-attribute">background</span>: green;
+  }
+}
+<span class="hljs-class">.box</span> {
+  <span class="hljs-variable">@alias:</span> #library.<span class="hljs-function">rules</span>();
+  <span class="hljs-variable">@alias</span>();
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">background</span>: green;
+}
+</code></pre>
+<p>Note, unlike mixins used in root, mixin calls assigned to variables and <em>called with no arguments</em> always require parentheses. The following is not valid.</p>
+<pre><code class="lang-less"><span class="hljs-id">#library</span>() {
+  <span class="hljs-class">.rules</span>() {
+    <span class="hljs-attribute">background</span>: green;
+  }
+}
+<span class="hljs-class">.box</span> {
+  <span class="hljs-variable">@alias:</span> #library.colors;
+  <span class="hljs-variable">@alias</span>();   <span class="hljs-comment">// ERROR: Could not evaluate variable call @alias</span>
+}
+</code></pre>
+<p>This is because it&apos;s ambiguous if variable is assigned a list of selectors or a mixin call. For example, in Less 3.5+, this variable could be used this way.</p>
+<pre><code class="lang-less"><span class="hljs-class">.box</span> {
+  <span class="hljs-variable">@alias:</span> #library.colors;
+  <span class="hljs-variable">@{alias}</span> {
+    <span class="hljs-attribute">a</span>: b;
+  }
+}
+</code></pre>
+<p>The above would output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> <span class="hljs-id">#library</span><span class="hljs-class">.colors</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+</code></pre>
 
 
           <br>
@@ -2356,11 +2464,11 @@ overridden:</p>
 
   </div>
 
-  <!-- @plugin At-Rules &lt;small&gt;(NEW!)&lt;/small&gt; -->
+  <!-- @plugin At-Rules -->
   <div class="docs-section">
     
     <h1 class="docs-heading"><span class="anchor-target" id="plugin-atrules-feature"></span>
-<a href="#plugin-atrules-feature" name="plugin-atrules-feature" class="anchor glyphicon glyphicon-link"></a>@plugin At-Rules <small>(NEW!)</small></h1>
+<a href="#plugin-atrules-feature" name="plugin-atrules-feature" class="anchor glyphicon glyphicon-link"></a>@plugin At-Rules</h1>
     
 
     
@@ -2570,6 +2678,99 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 
   </div>
 
+  <!-- Maps &lt;small&gt;(NEW!)&lt;/small&gt; -->
+  <div class="docs-section">
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="maps-feature"></span>
+<a href="#maps-feature" name="maps-feature" class="anchor glyphicon glyphicon-link"></a>Maps <small>(NEW!)</small></h1>
+    
+
+    
+      
+      <div class="section-content">
+        
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/features/maps.md" data-content="mapsmd" target="_blank"></a>
+
+
+
+<a id="mapsmd" href="https://github.com/less/less-docs/blob/master/content/features/maps.md" target="_blank">Edit the markdown source for &quot;maps&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+        <!-- maps -->
+         
+
+
+        <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0-beta.4</a></p>
+<blockquote>
+<p>Use rulesets and mixins as de facto maps of values</p>
+</blockquote>
+<p>By combining namespacing with the lookup <code>[]</code> syntax, you can turn your rulesets / mixins into maps.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@sizes:</span> {
+  <span class="hljs-attribute">mobile</span>: <span class="hljs-number">320px</span>;
+  <span class="hljs-attribute">tablet</span>: <span class="hljs-number">768px</span>;
+  <span class="hljs-attribute">desktop</span>: <span class="hljs-number">1024px</span>;
+};
+
+<span class="hljs-class">.navbar</span> {
+  <span class="hljs-attribute">display</span>: block;
+
+  <span class="hljs-at_rule">@media</span> (min-width: <span class="hljs-variable">@sizes</span>[tablet]) {
+    <span class="hljs-attribute">display</span>: inline-block;
+  }
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.navbar</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+<span class="hljs-at_rule">@media</span> (min-width: <span class="hljs-number">768px</span>) {
+  <span class="hljs-class">.navbar</span> {
+    <span class="hljs-attribute">display</span>: inline-block;
+  }
+}
+</code></pre>
+<p>Mixins are a little more versatile as maps because of namespacing and the ability to overload mixins.</p>
+<pre><code class="lang-less"><span class="hljs-id">#library</span>() {
+  <span class="hljs-class">.colors</span>() {
+    <span class="hljs-attribute">primary</span>: green;
+    <span class="hljs-attribute">secondary</span>: blue;
+  }
+}
+
+<span class="hljs-id">#library</span>() {
+  <span class="hljs-class">.colors</span>() { <span class="hljs-attribute">primary</span>: grey; }
+}
+
+<span class="hljs-class">.button</span> {
+  <span class="hljs-attribute">color</span>: #library.colors[primary];
+  <span class="hljs-attribute">border-color</span>: #library.colors[secondary];
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.button</span> {
+  <span class="hljs-attribute">color</span>: grey;
+  <span class="hljs-attribute">border-color</span>: blue;
+}
+</code></pre>
+<p>You can also make this easier by <a href="#mixins-feature-mixin-aliasing-feature">aliasing mixins</a>.  That is:</p>
+<pre><code class="lang-less"><span class="hljs-class">.button</span> {
+  <span class="hljs-variable">@colors:</span> #library.<span class="hljs-function">colors</span>();
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@colors</span>[primary];
+  <span class="hljs-attribute">border-color</span>: <span class="hljs-variable">@colors</span>[secondary];
+}
+</code></pre>
+
+
+        <br>
+      </div>
+    
+
+    
+
+  </div>
+
 </div>
         </div>
       </div>
@@ -2592,7 +2793,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.5.0-beta.2</li>
+      <li>Currently v3.5.0-beta.4</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

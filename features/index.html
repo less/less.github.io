@@ -97,7 +97,7 @@
 <li><a href="#plugin-atrules-feature-null-functions">Null Functions</a></li>
 <li><a href="#plugin-atrules-feature-the-less-js-plugin-object">The Less.js Plugin Object</a></li>
 <li><a href="#plugin-atrules-feature-pre-loaded-plugins">Pre-Loaded Plugins</a></li></ul></li>
-<li><a href="#maps-feature">Maps <small>(NEW!)</small></a></li></ul></div>
+<li><a href="#maps-feature">Maps <small>(NEW!)</small></a><ul class="nav"><li><a href="#maps-feature-using-variable-variables-in-lookups">Using variable variables in lookups</a></li></ul></li></ul></div>
           </div>
         </div>
         <div class="col-md-9" role="main">
@@ -2704,7 +2704,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 
         <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0-beta.4</a></p>
 <blockquote>
-<p>Use rulesets and mixins as de facto maps of values</p>
+<p>Use rulesets and mixins as maps of values</p>
 </blockquote>
 <p>By combining namespacing with the lookup <code>[]</code> syntax, you can turn your rulesets / mixins into maps.</p>
 <pre><code class="lang-less"><span class="hljs-variable">@sizes:</span> {
@@ -2776,6 +2776,25 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 </code></pre>
 <p>In this way, rulesets and variable calls can emulate a type of &quot;namespacing&quot;, similar to mixins.</p>
 <p>As far as whether to use mixins or rulesets assigned to variables as maps, it&apos;s up to you. You may want to replace entire maps by re-declaring a variable assigned to a rulset. Or you may want to &quot;merge&quot; individual key/value pairs, in which case mixins as maps might be more appropriate.</p>
+<h3 class="docs-heading"><span class="anchor-target" id="maps-feature-using-variable-variables-in-lookups"></span>
+<a href="#maps-feature-using-variable-variables-in-lookups" name="maps-feature-using-variable-variables-in-lookups" class="anchor glyphicon glyphicon-link"></a>Using variable variables in lookups</h3>
+<p>One important thing to notice is that the value in <code>[@lookup]</code> is the key (variable) name <code>@lookup</code>, and is not evaluated as a variable. If you want the key name itself to be variable, you can use the <code>@@variable</code> syntax.</p>
+<p>E.g.</p>
+<pre><code class="lang-less"><span class="hljs-class">.foods</span>() {
+  <span class="hljs-variable">@dessert:</span> ice cream;
+}
+
+<span class="hljs-variable">@key-to-lookup:</span> dessert;
+
+<span class="hljs-class">.lunch</span> {
+  <span class="hljs-attribute">treat</span>: .foods[<span class="hljs-variable">@@key-to-lookup</span>];
+}
+</code></pre>
+<p>This would output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.lunch</span> {
+  <span class="hljs-attribute">treat</span>: ice cream;
+}
+</code></pre>
 
 
         <br>

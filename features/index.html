@@ -2116,7 +2116,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>A detached ruleset is a group of css properties, nested rulesets, media declarations or anything else stored in a variable. You can include it into a ruleset or another structure and all its properties are going to be copied there. You can also use it as a mixin argument and pass it around as any other variable.</p>
 <p>Simple example:</p>
 <pre><code class="lang-less"><span class="hljs-comment">// declare detached ruleset</span>
-<span class="hljs-variable">@detached-ruleset:</span> { <span class="hljs-attribute">background</span>: red; };
+<span class="hljs-variable">@detached-ruleset:</span> { <span class="hljs-attribute">background</span>: red; }; <span class="hljs-comment">// semi-colon is optional in 3.5.0+</span>
 
 <span class="hljs-comment">// use detached ruleset</span>
 <span class="hljs-class">.top</span> {
@@ -2711,9 +2711,9 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
   <span class="hljs-attribute">mobile</span>: <span class="hljs-number">320px</span>;
   <span class="hljs-attribute">tablet</span>: <span class="hljs-number">768px</span>;
   <span class="hljs-attribute">desktop</span>: <span class="hljs-number">1024px</span>;
-};
+}
 
-<span class="hljs-class">.navbar</span> {
+.navbar {
   <span class="hljs-attribute">display</span>: block;
 
   <span class="hljs-at_rule">@media</span> (min-width: <span class="hljs-variable">@sizes</span>[tablet]) {
@@ -2761,6 +2761,21 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
   <span class="hljs-attribute">border-color</span>: <span class="hljs-variable">@colors</span>[secondary];
 }
 </code></pre>
+<p>Note, if a lookup value produces another ruleset, you can append a second <code>[]</code> lookup, as in:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@config:</span> {
+  <span class="hljs-variable">@options:</span> {
+    <span class="hljs-attribute">library-on</span>: true
+  }
+}
+
+&amp; when (<span class="hljs-variable">@config</span>[<span class="hljs-variable">@options</span>][library-on] = true) {
+  <span class="hljs-class">.produce-ruleset</span> {
+    <span class="hljs-attribute">prop</span>: val;
+  }
+}
+</code></pre>
+<p>In this way, rulesets and variable calls can emulate a type of &quot;namespacing&quot;, similar to mixins.</p>
+<p>As far as whether to use mixins or rulesets assigned to variables as maps, it&apos;s up to you. You may want to replace entire maps by re-declaring a variable assigned to a rulset. Or you may want to &quot;merge&quot; individual key/value pairs, in which case mixins as maps might be more appropriate.</p>
 
 
         <br>
@@ -2793,7 +2808,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.5.0-beta.4</li>
+      <li>Currently v3.5.0-beta.5</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

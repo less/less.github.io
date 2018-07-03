@@ -67,20 +67,11 @@
 <li><a href="#mixins-feature-guarded-namespaces">Guarded Namespaces</a></li>
 <li><a href="#mixins-feature-the-important-keyword">The <code>!important</code> keyword</a></li>
 <li><a href="#mixins-feature-mixins-parametric-feature">Parametric Mixins</a></li>
-<li><a href="#mixins-feature-mixins-with-multiple-parameters">Mixins with Multiple Parameters</a></li>
-<li><a href="#mixins-feature-named-parameters">Named Parameters</a></li>
-<li><a href="#mixins-feature-the-arguments-variable">The <code>@arguments</code> Variable</a></li>
-<li><a href="#mixins-feature-advanced-arguments-and-the-rest-variable">Advanced Arguments and the <code>@rest</code> Variable</a></li>
 <li><a href="#mixins-feature-pattern-matching">Pattern-matching</a></li>
 <li><a href="#mixins-feature-mixins-as-functions-feature">Return values from mixins</a></li>
-<li><a href="#mixins-feature-mixin-return-values">Mixin return values</a></li>
 <li><a href="#mixins-feature-loops-feature">Recursive mixins</a></li>
 <li><a href="#mixins-feature-mixin-guards-feature">Mixin Guards</a></li>
-<li><a href="#mixins-feature-guard-comparison-operators">Guard Comparison Operators</a></li>
-<li><a href="#mixins-feature-guard-logical-operators">Guard Logical Operators</a></li>
-<li><a href="#mixins-feature-type-checking-functions">Type Checking Functions</a></li>
-<li><a href="#mixins-feature-mixin-aliasing-feature">Aliasing Mixins</a></li>
-<li><a href="#mixins-feature-variable-calls">Variable calls</a></li></ul></li>
+<li><a href="#mixins-feature-mixin-aliasing-feature">Aliasing Mixins</a></li></ul></li>
 <li><a href="#css-guards-feature">CSS Guards</a></li>
 <li><a href="#detached-rulesets-feature">Detached Rulesets</a><ul class="nav"><li><a href="#detached-rulesets-feature-scoping">Scoping</a></li></ul></li>
 <li><a href="#import-atrules-feature">@import At-Rules</a><ul class="nav"><li><a href="#import-atrules-feature-file-extensions">File Extensions</a></li>
@@ -1286,10 +1277,9 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
-<p>Notice that when you call the mixin, the parentheses are optional.</p>
-<pre><code class="lang-less"><span class="hljs-comment">// these two statements do the same thing:</span>
-<span class="hljs-class">.a</span>(); 
-<span class="hljs-class">.a</span>;
+<p>Currently and historically, the parentheses in a mixin call are optional, but optional parentheses are deprecated and will be required in a future release.</p>
+<pre><code class="lang-less"><span class="hljs-class">.a</span>(); 
+<span class="hljs-class">.a</span>;  <span class="hljs-comment">// currently works, but deprecated; don&apos;t use</span>
 </code></pre>
 <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-not-outputting-the-mixin"></span>
 <a href="#mixins-feature-not-outputting-the-mixin" name="mixins-feature-not-outputting-the-mixin" class="anchor glyphicon glyphicon-link"></a>Not Outputting the Mixin</h2>
@@ -1301,8 +1291,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">background</span>: white;
 }
 <span class="hljs-class">.class</span> {
-  <span class="hljs-class">.my-mixin</span>;
-  <span class="hljs-class">.my-other-mixin</span>;
+  <span class="hljs-class">.my-mixin</span>();
+  <span class="hljs-class">.my-other-mixin</span>();
 }
 </code></pre>
 <p>outputs</p>
@@ -1345,16 +1335,13 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>();
 }
 </code></pre>
-<p>Both <code>&gt;</code> and whitespace are optional, as are parentheses</p>
+<p>Both <code>&gt;</code> and whitespace are optional</p>
 <pre><code class="lang-less"><span class="hljs-comment">// all do the same thing</span>
-<span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>;
 <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>();
-<span class="hljs-id">#outer</span> <span class="hljs-class">.inner</span>;
 <span class="hljs-id">#outer</span> <span class="hljs-class">.inner</span>();
-<span class="hljs-id">#outer</span><span class="hljs-class">.inner</span>;
 <span class="hljs-id">#outer</span><span class="hljs-class">.inner</span>();
 </code></pre>
-<p>One use of this is known as namespacing. You can put your mixins under a id selector and this makes sure it won&apos;t conflict with another library.</p>
+<p>Namespacing your mixins like reduces conflict with other library mixins or user mixins, but it can also be a way to &quot;organize&quot; groups of mixins.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-id">#my-library</span> {
   <span class="hljs-class">.my-mixin</span>() {
@@ -1368,7 +1355,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 </code></pre>
 <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-guarded-namespaces"></span>
 <a href="#mixins-feature-guarded-namespaces" name="mixins-feature-guarded-namespaces" class="anchor glyphicon glyphicon-link"></a>Guarded Namespaces</h2>
-<p>If namespace have a guard, mixins defined by it are used only if guard condition returns true. Namespace guard is evaluated exactly the same way as guard on mixin, so next two mixins work the same way:</p>
+<p>If a namespace has a guard, mixins defined by it are used only if the guard condition returns true. A namespace guard is evaluated exactly the same way as a guard on mixin, so the following two mixins work the same way:</p>
 <pre><code class="lang-less"><span class="hljs-id">#namespace</span> <span class="hljs-keyword">when</span> (<span class="hljs-variable">@mode</span> = huge) {
   <span class="hljs-class">.mixin</span>() { <span class="hljs-comment">/* */</span> }
 }
@@ -1465,7 +1452,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 </code></pre>
 <p>We can invoke it like this now:</p>
 <pre><code class="lang-less"><span class="hljs-id">#header</span> {
-  <span class="hljs-class">.border-radius</span>;
+  <span class="hljs-class">.border-radius</span>();
 }
 </code></pre>
 <p>And it will include a 5px border-radius.</p>
@@ -1477,7 +1464,7 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">word-wrap</span>: break-word;
 }
 
-<span class="hljs-tag">pre</span> { <span class="hljs-class">.wrap</span> }
+<span class="hljs-tag">pre</span> { <span class="hljs-class">.wrap</span>() }
 </code></pre>
 <p>Which would output:</p>
 <pre><code class="lang-css"><span class="hljs-tag">pre</span> {
@@ -1487,8 +1474,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">word-wrap</span>: break-word;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixins-with-multiple-parameters"></span>
-<a href="#mixins-feature-mixins-with-multiple-parameters" name="mixins-feature-mixins-with-multiple-parameters" class="anchor glyphicon glyphicon-link"></a>Mixins with Multiple Parameters</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixins-with-multiple-parameters"></span>
+<a href="#mixins-feature-mixins-with-multiple-parameters" name="mixins-feature-mixins-with-multiple-parameters" class="anchor glyphicon glyphicon-link"></a>Mixins with Multiple Parameters</h4>
 <p>Parameters are either <em>semicolon</em> or <em>comma</em> separated. It is recommended to use <em>semicolon</em>. The symbol comma has double meaning: it can be interpreted either as a mixin parameters separator or css list separator.</p>
 <p>Using comma as mixin separator makes it impossible to create comma separated lists as an argument. On the other hand, if the compiler sees at least one semicolon inside mixin call or declaration, it assumes that arguments are separated by semicolons and all commas belong to css lists:</p>
 <ul>
@@ -1521,8 +1508,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">padding-2</span>: <span class="hljs-number">2</span>;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-named-parameters"></span>
-<a href="#mixins-feature-named-parameters" name="mixins-feature-named-parameters" class="anchor glyphicon glyphicon-link"></a>Named Parameters</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-named-parameters"></span>
+<a href="#mixins-feature-named-parameters" name="mixins-feature-named-parameters" class="anchor glyphicon glyphicon-link"></a>Named Parameters</h4>
 <p>A mixin reference can supply parameters values by their names instead of just positions. Any parameter can be referenced by its name and they do not have to be in any special order:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@color</span>: black; <span class="hljs-variable">@margin</span>: <span class="hljs-number">10px</span>; <span class="hljs-variable">@padding</span>: <span class="hljs-number">20px</span>) {
   <span class="hljs-attribute">color</span>: <span class="hljs-variable">@color</span>;
@@ -1548,8 +1535,8 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">40px</span>;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-the-arguments-variable"></span>
-<a href="#mixins-feature-the-arguments-variable" name="mixins-feature-the-arguments-variable" class="anchor glyphicon glyphicon-link"></a>The <code>@arguments</code> Variable</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-the-arguments-variable"></span>
+<a href="#mixins-feature-the-arguments-variable" name="mixins-feature-the-arguments-variable" class="anchor glyphicon glyphicon-link"></a>The <code>@arguments</code> Variable</h4>
 <p><code>@arguments</code> has a special meaning inside mixins, it contains all the arguments passed, when the mixin was called. This is useful if you don&apos;t want to deal with individual parameters:</p>
 <pre><code class="lang-less"><span class="hljs-class">.box-shadow</span>(<span class="hljs-variable">@x</span>: <span class="hljs-number">0</span>; <span class="hljs-variable">@y</span>: <span class="hljs-number">0</span>; <span class="hljs-variable">@blur</span>: <span class="hljs-number">1px</span>; <span class="hljs-variable">@color</span>: <span class="hljs-hexcolor">#000</span>) {
   <span class="hljs-attribute">-webkit-box-shadow</span>: <span class="hljs-variable">@arguments</span>;
@@ -1567,8 +1554,8 @@ For example, when using Modernizr, you might want to specify different rules bas
           <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">2px</span> <span class="hljs-number">5px</span> <span class="hljs-number">1px</span> <span class="hljs-hexcolor">#000</span>;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-advanced-arguments-and-the-rest-variable"></span>
-<a href="#mixins-feature-advanced-arguments-and-the-rest-variable" name="mixins-feature-advanced-arguments-and-the-rest-variable" class="anchor glyphicon glyphicon-link"></a>Advanced Arguments and the <code>@rest</code> Variable</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-advanced-arguments-and-the-rest-variable"></span>
+<a href="#mixins-feature-advanced-arguments-and-the-rest-variable" name="mixins-feature-advanced-arguments-and-the-rest-variable" class="anchor glyphicon glyphicon-link"></a>Advanced Arguments and the <code>@rest</code> Variable</h4>
 <p>You can use <code>...</code> if you want your mixin to take a variable number of arguments. Using this after a variable name will assign those arguments to the variable.</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>(...) {        <span class="hljs-comment">// matches 0-N arguments</span>
 <span class="hljs-class">.mixin</span>() {           <span class="hljs-comment">// matches exactly 0 arguments</span>
@@ -1665,7 +1652,25 @@ but if we call it with <em>two</em> arguments, we will get the second definition
           <blockquote>
 <p>Return variables or mixins from mixins</p>
 </blockquote>
-<p>Variables and mixins defined in a mixin are visible and can be used in caller&apos;s scope. There is only one exception, a variable is not copied if the caller contains a variable with the same name (that includes variables defined by another mixin call).  Only variables present in callers local scope are protected. Variables inherited from parent scopes are overridden.</p>
+<p>Starting in Less 3.5, you can use property/variable accessors to get a &quot;return value&quot; from a mixin, essentially using it like a function.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-variable">@x</span>, <span class="hljs-variable">@y</span>) {
+  <span class="hljs-variable">@result:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
+}
+
+<span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-function">average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>)[<span class="hljs-variable">@result</span>];  <span class="hljs-comment">// call a mixin and look up its &quot;@return&quot; value</span>
+}
+</code></pre>
+<p>Results in:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
+}
+</code></pre>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-variables-in-caller-scope"></span>
+<a href="#mixins-feature-variables-in-caller-scope" name="mixins-feature-variables-in-caller-scope" class="anchor glyphicon glyphicon-link"></a>Variables in caller scope</h4>
+<p><strong><em>DEPRECATED - Use Property / Value Accessors</em></strong></p>
+<p>Variables and mixins defined in a mixin are visible and can be used in caller&apos;s scope. There is only one exception: a variable is not copied if the caller contains a variable with the same name (that includes variables defined by another mixin call).  Only variables present in callers local scope are protected. Variables inherited from parent scopes are overridden.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-variable">@width:</span>  <span class="hljs-number">100%</span>;
@@ -1683,23 +1688,6 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <pre><code class="lang-css"><span class="hljs-class">.caller</span> {
   <span class="hljs-attribute">width</span>:  <span class="hljs-number">100%</span>;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
-}
-</code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixin-return-values"></span>
-<a href="#mixins-feature-mixin-return-values" name="mixins-feature-mixin-return-values" class="anchor glyphicon glyphicon-link"></a>Mixin return values</h3>
-<p>Starting in Less 3.5, you can use property/variable accessors to get a &quot;return value&quot; from a mixin. Essentially using it like a function.</p>
-<p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-variable">@x</span>, <span class="hljs-variable">@y</span>) {
-  <span class="hljs-variable">@result:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
-}
-
-<span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">padding</span>: .<span class="hljs-function">average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>)[<span class="hljs-variable">@result</span>];  <span class="hljs-comment">// call a mixin and look up its &quot;@return&quot; value</span>
-}
-</code></pre>
-<p>Results in:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
 }
 </code></pre>
 <p>Variables defined directly in callers scope cannot be overridden. However, variables defined in callers parent scope is not protected and will be overridden:</p>
@@ -1865,8 +1853,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">color</span>: <span class="hljs-hexcolor">#555</span>;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-guard-comparison-operators"></span>
-<a href="#mixins-feature-guard-comparison-operators" name="mixins-feature-guard-comparison-operators" class="anchor glyphicon glyphicon-link"></a>Guard Comparison Operators</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-guard-comparison-operators"></span>
+<a href="#mixins-feature-guard-comparison-operators" name="mixins-feature-guard-comparison-operators" class="anchor glyphicon glyphicon-link"></a>Guard Comparison Operators</h4>
 <p>The full list of comparison operators usable in guards are: <code>&gt;</code>, <code>&gt;=</code>, <code>=</code>, <code>=&lt;</code>, <code>&lt;</code>. Additionally, the keyword <code>true</code> is the only truthy value, making these two mixins equivalent:</p>
 <pre><code class="lang-less"><span class="hljs-class">.truth</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span>) { ... }
 <span class="hljs-class">.truth</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> = true) { ... }
@@ -1885,8 +1873,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <span class="hljs-class">.max</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@a</span> }
 <span class="hljs-class">.max</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> (<span class="hljs-variable">@a</span> &lt; <span class="hljs-variable">@b</span>) { <span class="hljs-attribute">width</span>: <span class="hljs-variable">@b</span> }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-guard-logical-operators"></span>
-<a href="#mixins-feature-guard-logical-operators" name="mixins-feature-guard-logical-operators" class="anchor glyphicon glyphicon-link"></a>Guard Logical Operators</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-guard-logical-operators"></span>
+<a href="#mixins-feature-guard-logical-operators" name="mixins-feature-guard-logical-operators" class="anchor glyphicon glyphicon-link"></a>Guard Logical Operators</h4>
 <p>You can use logical operators with guards. The syntax is based on CSS media queries.</p>
 <p>Use the <code>and</code> keyword to combine guards:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@a</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-variable">@a</span> &gt; <span class="hljs-number">0</span>) { ... }
@@ -1897,8 +1885,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Use the <code>not</code> keyword to negate conditions:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@b</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span> (<span class="hljs-variable">@b</span> &gt; <span class="hljs-number">0</span>) { ... }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-type-checking-functions"></span>
-<a href="#mixins-feature-type-checking-functions" name="mixins-feature-type-checking-functions" class="anchor glyphicon glyphicon-link"></a>Type Checking Functions</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-type-checking-functions"></span>
+<a href="#mixins-feature-type-checking-functions" name="mixins-feature-type-checking-functions" class="anchor glyphicon glyphicon-link"></a>Type Checking Functions</h4>
 <p>Lastly, if you want to match mixins based on value type, you can use the <code>is</code> functions:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: <span class="hljs-number">0</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isnumber</span>(<span class="hljs-variable">@b</span>)) { ... }
 <span class="hljs-class">.mixin</span>(<span class="hljs-variable">@a</span>; <span class="hljs-variable">@b</span>: black) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@b</span>)) { ... }
@@ -1972,8 +1960,8 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid grey;
 }
 </code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="mixins-feature-variable-calls"></span>
-<a href="#mixins-feature-variable-calls" name="mixins-feature-variable-calls" class="anchor glyphicon glyphicon-link"></a>Variable calls</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-variable-calls"></span>
+<a href="#mixins-feature-variable-calls" name="mixins-feature-variable-calls" class="anchor glyphicon glyphicon-link"></a>Variable calls</h4>
 <p>Entire mixin calls can be aliased and called as variable calls. As in:</p>
 <pre><code class="lang-less"><span class="hljs-id">#library</span>() {
   <span class="hljs-class">.rules</span>() {

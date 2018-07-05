@@ -68,12 +68,13 @@
 <li><a href="#mixins-feature-the-important-keyword">The <code>!important</code> keyword</a></li>
 <li><a href="#mixins-feature-mixins-parametric-feature">Parametric Mixins</a></li>
 <li><a href="#mixins-feature-pattern-matching">Pattern-matching</a></li>
-<li><a href="#mixins-feature-mixins-as-functions-feature">Return values from mixins</a></li>
-<li><a href="#mixins-feature-loops-feature">Recursive mixins</a></li>
+<li><a href="#mixins-feature-mixins-as-functions-feature">Using Mixins as Functions</a></li>
+<li><a href="#mixins-feature-loops-feature">Recursive Mixins</a></li>
 <li><a href="#mixins-feature-mixin-guards-feature">Mixin Guards</a></li>
 <li><a href="#mixins-feature-mixin-aliasing-feature">Aliasing Mixins</a></li></ul></li>
 <li><a href="#css-guards-feature">CSS Guards</a></li>
-<li><a href="#detached-rulesets-feature">Detached Rulesets</a><ul class="nav"><li><a href="#detached-rulesets-feature-scoping">Scoping</a></li></ul></li>
+<li><a href="#detached-rulesets-feature">Detached Rulesets</a><ul class="nav"><li><a href="#detached-rulesets-feature-scoping">Scoping</a></li>
+<li><a href="#detached-rulesets-feature-property-variable-accessors">Property / variable accessors</a></li></ul></li>
 <li><a href="#import-atrules-feature">@import At-Rules</a><ul class="nav"><li><a href="#import-atrules-feature-file-extensions">File Extensions</a></li>
 <li><a href="#import-atrules-feature-import-options">Import Options</a></li>
 <li><a href="#import-atrules-feature-reference">reference</a></li>
@@ -1629,9 +1630,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
       
     
 
-      <!-- Return values from mixins -->
+      <!-- Using Mixins as Functions -->
       <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixins-as-functions-feature"></span>
-<a href="#mixins-feature-mixins-as-functions-feature" name="mixins-feature-mixins-as-functions-feature" class="anchor glyphicon glyphicon-link"></a>Return values from mixins</h2>
+<a href="#mixins-feature-mixins-as-functions-feature" name="mixins-feature-mixins-as-functions-feature" class="anchor glyphicon glyphicon-link"></a>Using Mixins as Functions</h2>
       
       
         <div class="section-content">
@@ -1650,16 +1651,20 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 
 
           <blockquote>
-<p>Return variables or mixins from mixins</p>
+<p>Selecting properties and variables from mixin calls</p>
 </blockquote>
-<p>Starting in Less 3.5, you can use property/variable accessors to get a &quot;return value&quot; from a mixin, essentially using it like a function.</p>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-property-value-accessors"></span>
+<a href="#mixins-feature-property-value-accessors" name="mixins-feature-property-value-accessors" class="anchor glyphicon glyphicon-link"></a>Property / value accessors</h4>
+<p><em>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0</a></em></p>
+<p>Starting in Less 3.5, you can use property/variable accessors to select a value from an evaluated mixin&apos;s rules. This can allow you to use mixins similar to functions.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-variable">@x</span>, <span class="hljs-variable">@y</span>) {
   <span class="hljs-variable">@result:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
 }
 
 <span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">padding</span>: .<span class="hljs-function">average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>)[<span class="hljs-variable">@result</span>];  <span class="hljs-comment">// call a mixin and look up its &quot;@return&quot; value</span>
+  <span class="hljs-comment">// call a mixin and look up its &quot;@return&quot; value</span>
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-function">average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>)[<span class="hljs-variable">@result</span>];
 }
 </code></pre>
 <p>Results in:</p>
@@ -1667,10 +1672,69 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
 }
 </code></pre>
-<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-variables-in-caller-scope"></span>
-<a href="#mixins-feature-variables-in-caller-scope" name="mixins-feature-variables-in-caller-scope" class="anchor glyphicon glyphicon-link"></a>Variables in caller scope</h4>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-overriding-mixin-values"></span>
+<a href="#mixins-feature-overriding-mixin-values" name="mixins-feature-overriding-mixin-values" class="anchor glyphicon glyphicon-link"></a>Overriding mixin values</h4>
+<p>If you have multiple matching mixins, all rules are evaluated and merged, and the last matching value with that identifier is returned. This is similar to the cascade in CSS, and it allows you to &quot;override&quot; mixin values.</p>
+<pre><code class="lang-less"><span class="hljs-comment">// library.less</span>
+<span class="hljs-id">#library</span>() {
+  <span class="hljs-class">.mixin</span>() {
+    <span class="hljs-attribute">prop</span>: foo;
+  }
+}
+
+<span class="hljs-comment">// customize.less</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;library&quot;</span>;
+<span class="hljs-id">#library</span>() {
+  <span class="hljs-class">.mixin</span>() {
+    <span class="hljs-attribute">prop</span>: bar;
+  }
+}
+
+<span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">my-value</span>: #library.mixin[prop];
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">my-value</span>: bar;
+}
+</code></pre>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-unnamed-lookups"></span>
+<a href="#mixins-feature-unnamed-lookups" name="mixins-feature-unnamed-lookups" class="anchor glyphicon glyphicon-link"></a>Unnamed lookups</h4>
+<p>If you don&apos;t specify a lookup value in <code>[@lookup]</code> and instead write <code>[]</code> after a mixin or ruleset call, <em>all</em> values will cascade and the last declared value will be selected.</p>
+<p>Meaning: the averaging mixin from the above example could be written as:</p>
+<pre><code class="lang-less"><span class="hljs-class">.average</span>(<span class="hljs-variable">@x</span>, <span class="hljs-variable">@y</span>) {
+  <span class="hljs-variable">@result:</span> ((<span class="hljs-variable">@x</span> + <span class="hljs-variable">@y</span>) / <span class="hljs-number">2</span>);
+}
+
+<span class="hljs-tag">div</span> {
+  <span class="hljs-comment">// call a mixin and look up its final value</span>
+  <span class="hljs-attribute">padding</span>: .<span class="hljs-function">average</span>(<span class="hljs-number">16px</span>, <span class="hljs-number">50px</span>)[];
+}
+</code></pre>
+<p>The output is the same:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">33px</span>;
+}
+</code></pre>
+<p>The same cascading behavior is true for rulesets or variables aliased to mixin calls.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@dr:</span> {
+  <span class="hljs-attribute">value</span>: foo;
+}
+.box {
+  <span class="hljs-attribute">my-value</span>: <span class="hljs-variable">@dr</span>[];
+}
+</code></pre>
+<p>This outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">my-value</span>: foo;
+}
+</code></pre>
+<h4 class="docs-heading"><span class="anchor-target" id="mixins-feature-unlocking-mixins-variables-into-caller-scope"></span>
+<a href="#mixins-feature-unlocking-mixins-variables-into-caller-scope" name="mixins-feature-unlocking-mixins-variables-into-caller-scope" class="anchor glyphicon glyphicon-link"></a>Unlocking mixins &amp; variables into caller scope</h4>
 <p><strong><em>DEPRECATED - Use Property / Value Accessors</em></strong></p>
 <p>Variables and mixins defined in a mixin are visible and can be used in caller&apos;s scope. There is only one exception: a variable is not copied if the caller contains a variable with the same name (that includes variables defined by another mixin call).  Only variables present in callers local scope are protected. Variables inherited from parent scopes are overridden.</p>
+<p><em>Note: this behavior is deprecated, and in the future, variables and mixins will not be merged into the caller scope in this way.</em></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-class">.mixin</span>() {
   <span class="hljs-variable">@width:</span>  <span class="hljs-number">100%</span>;
@@ -1732,9 +1796,9 @@ but if we call it with <em>two</em> arguments, we will get the second definition
       
     
 
-      <!-- Recursive mixins -->
+      <!-- Recursive Mixins -->
       <h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-loops-feature"></span>
-<a href="#mixins-feature-loops-feature" name="mixins-feature-loops-feature" class="anchor glyphicon glyphicon-link"></a>Recursive mixins</h2>
+<a href="#mixins-feature-loops-feature" name="mixins-feature-loops-feature" class="anchor glyphicon glyphicon-link"></a>Recursive Mixins</h2>
       
       
         <div class="section-content">
@@ -1933,7 +1997,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
            
 
 
-          <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0-beta.4</a></p>
+          <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0</a></p>
 <blockquote>
 <p>Assigning mixin calls to a variable</p>
 </blockquote>
@@ -2116,7 +2180,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">background</span>: red;
 }
 </code></pre>
-<p>Parentheses after a detached ruleset call are mandatory. The call <code>@detached-ruleset;</code> would NOT work.</p>
+<p>Parentheses after a detached ruleset call are mandatory (except when followed by a <a href="#detached-rulesets-feature-property-variable-accessors">lookup value</a>). The call <code>@detached-ruleset;</code> would not work.</p>
 <p>It is useful when you want to define a mixin that abstracts out either wrapping a piece of code in a media query or a non-supported browser class name. The rulesets can be passed to mixin so that the mixin can wrap the content, e.g.</p>
 <pre><code class="lang-less"><span class="hljs-class">.desktop-and-old-ie</span>(<span class="hljs-variable">@rules</span>) {
   <span class="hljs-at_rule">@media</span> screen and (min-width: <span class="hljs-number">1200px</span>) { <span class="hljs-variable">@rules</span>(); }
@@ -2175,7 +2239,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <pre><code class="lang-less"><span class="hljs-comment">// detached ruleset with a mixin</span>
 <span class="hljs-variable">@detached-ruleset:</span> { 
     <span class="hljs-class">.mixin</span>() {
-        <span class="hljs-attribute">color</span>:blue;
+        <span class="hljs-attribute">color</span>: blue;
     }
 };
 <span class="hljs-comment">// call detached ruleset</span>
@@ -2202,6 +2266,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>A detached ruleset can use all variables and mixins accessible where it is <em>defined</em> and where it is <em>called</em>. Otherwise said, both definition and caller scopes are available to it. If both scopes contains the same variable or mixin, declaration scope value takes precedence. </p>
 <p><em>Declaration scope</em> is the one where detached ruleset body is defined. Copying a detached ruleset from one variable into another cannot modify its scope. The ruleset does not gain access to new scopes just by being referenced there.</p>
 <p>Lastly, a detached ruleset can gain access to scope by being unlocked (imported) into it.</p>
+<p><em>Note: unlocking variables into scope via a called mixin is deprecated. Use <a href="#detached-rulesets-feature-property-variable-accessors">property / variable accessors</a>.</em></p>
 <h4 class="docs-heading"><span class="anchor-target" id="detached-rulesets-feature-definition-and-caller-scope-visibility"></span>
 <a href="#detached-rulesets-feature-definition-and-caller-scope-visibility" name="detached-rulesets-feature-definition-and-caller-scope-visibility" class="anchor glyphicon glyphicon-link"></a>Definition and Caller Scope Visibility</h4>
 <p>A detached ruleset sees the caller&apos;s variables and mixins:</p>
@@ -2227,7 +2292,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   <span class="hljs-attribute">variable</span>: declaration;
 }
 </code></pre>
-<p>Variable and mixins accessible form definition win over those available in the caller:</p>
+<p>Variable and mixins accessible from definition win over those available in the caller:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@variable:</span> global;
 <span class="hljs-variable">@detached-ruleset:</span> {
   <span class="hljs-comment">// will use global variable, because it is accessible</span>
@@ -2286,6 +2351,63 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>compiles into:</p>
 <pre><code class="lang-css"><span class="hljs-class">.use-place</span> {
   <span class="hljs-attribute">scope-detached</span>: value;
+}
+</code></pre>
+<h2 class="docs-heading"><span class="anchor-target" id="detached-rulesets-feature-property-variable-accessors"></span>
+<a href="#detached-rulesets-feature-property-variable-accessors" name="detached-rulesets-feature-property-variable-accessors" class="anchor glyphicon glyphicon-link"></a>Property / variable accessors</h2>
+<h4 class="docs-heading"><span class="anchor-target" id="detached-rulesets-feature--lookup-values-"></span>
+<a href="#detached-rulesets-feature--lookup-values-" name="detached-rulesets-feature--lookup-values-" class="anchor glyphicon glyphicon-link"></a>(Lookup values)</h4>
+<p><em>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0</a></em></p>
+<p>Starting in Less 3.5, you can use property/variable accessors (also called &quot;lookups&quot;) to select a value from variable (detached) rulesets.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@config:</span> {
+  <span class="hljs-attribute">option1</span>: true;
+  <span class="hljs-attribute">option2</span>: false;
+}
+
+.<span class="hljs-function">mixin</span>() when (<span class="hljs-variable">@config</span>[option1] = true) {
+  <span class="hljs-attribute">selected</span>: value;
+}
+
+.box {
+  <span class="hljs-class">.mixin</span>();
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">selected</span>: value;
+}
+</code></pre>
+<p>If what is returned from a lookup is another detached ruleset, you can use a second lookup to get that value.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@config:</span> {
+  <span class="hljs-variable">@colors:</span> {
+    <span class="hljs-attribute">primary</span>: blue;
+  }
+}
+
+.box {
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@config</span>[<span class="hljs-variable">@colors</span>][primary];
+}
+</code></pre>
+<h4 class="docs-heading"><span class="anchor-target" id="detached-rulesets-feature-variable-variables-in-lookups"></span>
+<a href="#detached-rulesets-feature-variable-variables-in-lookups" name="detached-rulesets-feature-variable-variables-in-lookups" class="anchor glyphicon glyphicon-link"></a>Variable variables in lookups</h4>
+<p>The lookup value that is returned can itself be variable. As in, you can write:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@config:</span> {
+  <span class="hljs-variable">@dark:</span> {
+    <span class="hljs-attribute">primary</span>: darkblue;
+  }
+  <span class="hljs-variable">@light</span>: {
+    <span class="hljs-attribute">primary</span>: lightblue;
+  }
+}
+
+.box {
+  <span class="hljs-variable">@lookup:</span> dark;
+  <span class="hljs-attribute">color</span>: <span class="hljs-variable">@config</span>[<span class="hljs-variable">@@lookup</span>][primary];
+}
+</code></pre>
+<p>This will output:</p>
+<pre><code class="lang-less"><span class="hljs-class">.box</span> {
+  <span class="hljs-attribute">color</span>: darkblue;
 }
 </code></pre>
 
@@ -2690,7 +2812,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
          
 
 
-        <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0-beta.4</a></p>
+        <p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.5.0</a></p>
 <blockquote>
 <p>Use rulesets and mixins as maps of values</p>
 </blockquote>
@@ -2815,7 +2937,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.5.0-beta.5</li>
+      <li>Currently v3.5.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

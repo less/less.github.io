@@ -39,17 +39,8 @@
             <div id="navigation">
   
 <ul class="nav sidenav"><li><a href="#functions-overview">Functions</a></li>
-<li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li>
-<li><a href="#misc-functions-image-size">image-size</a></li>
-<li><a href="#misc-functions-image-width">image-width</a></li>
-<li><a href="#misc-functions-image-height">image-height</a></li>
-<li><a href="#misc-functions-convert">convert</a></li>
-<li><a href="#misc-functions-data-uri">data-uri</a></li>
-<li><a href="#misc-functions-default">default</a></li>
-<li><a href="#misc-functions-unit">unit</a></li>
-<li><a href="#misc-functions-get-unit">get-unit</a></li>
-<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li>
-<li><a href="#misc-functions-if">if</a></li></ul></li>
+<li><a href="#logical-functions">Logical Functions</a><ul class="nav"><li><a href="#logical-functions-if">if</a></li>
+<li><a href="#logical-functions-boolean">boolean</a></li></ul></li>
 <li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li>
 <li><a href="#string-functions-e">e</a></li>
 <li><a href="#string-functions--format">% format</a></li>
@@ -83,6 +74,16 @@
 <li><a href="#type-functions-ispercentage">ispercentage</a></li>
 <li><a href="#type-functions-isunit">isunit</a></li>
 <li><a href="#type-functions-isruleset">isruleset</a></li></ul></li>
+<li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li>
+<li><a href="#misc-functions-image-size">image-size</a></li>
+<li><a href="#misc-functions-image-width">image-width</a></li>
+<li><a href="#misc-functions-image-height">image-height</a></li>
+<li><a href="#misc-functions-convert">convert</a></li>
+<li><a href="#misc-functions-data-uri">data-uri</a></li>
+<li><a href="#misc-functions-default">default</a></li>
+<li><a href="#misc-functions-unit">unit</a></li>
+<li><a href="#misc-functions-get-unit">get-unit</a></li>
+<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li></ul></li>
 <li><a href="#color-definition">Color Definition Functions</a><ul class="nav"><li><a href="#color-definition-rgb">rgb</a></li>
 <li><a href="#color-definition-rgba">rgba</a></li>
 <li><a href="#color-definition-argb">argb</a></li>
@@ -210,306 +211,30 @@
 
 
 
-  <!-- Misc Functions -->
+  <!-- Logical Functions -->
   <div class="docs-section">
     
-    <h1 class="docs-heading"><span class="anchor-target" id="misc-functions"></span>
-<a href="#misc-functions" name="misc-functions" class="anchor glyphicon glyphicon-link"></a>Misc Functions</h1>
+    <h1 class="docs-heading"><span class="anchor-target" id="logical-functions"></span>
+<a href="#logical-functions" name="logical-functions" class="anchor glyphicon glyphicon-link"></a>Logical Functions</h1>
 
     
     <div class="section-content">
       
-<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" data-content="misc-functionsmd" target="_blank"></a>
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/logical-functions.md" data-content="logical-functionsmd" target="_blank"></a>
 
 
 
-<a id="misc-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" target="_blank">Edit the markdown source for &quot;misc-functions&quot;
+<a id="logical-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/logical-functions.md" target="_blank">Edit the markdown source for &quot;logical-functions&quot;
   <span class="glyphicon glyphicon-new-window"></span>
 </a>
 
 
-      <!-- misc-functions.md -->
+      <!-- logical-functions.md -->
        
 
 
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-color"></span>
-<a href="#misc-functions-color" name="misc-functions-color" class="anchor glyphicon glyphicon-link"></a>color</h3>
-<blockquote>
-<p>Parses a color, so a string representing a color becomes a color.</p>
-</blockquote>
-<p>Parameters: <code>string</code>: a string of the specified color.</p>
-<p>Returns: <code>color</code></p>
-<p>Example: <code>color(&quot;#aaa&quot;);</code></p>
-<p>Output: <code>#aaa</code></p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-size"></span>
-<a href="#misc-functions-image-size" name="misc-functions-image-size" class="anchor glyphicon glyphicon-link"></a>image-size</h3>
-<blockquote>
-<p>Gets the image dimensions from a file.</p>
-</blockquote>
-<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
-<p>Returns: <code>dimension</code></p>
-<p>Example: <code>image-size(&quot;file.png&quot;);</code></p>
-<p>Output: <code>10px 10px</code></p>
-<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
-<p>Added in: v2.2.0</p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-width"></span>
-<a href="#misc-functions-image-width" name="misc-functions-image-width" class="anchor glyphicon glyphicon-link"></a>image-width</h3>
-<blockquote>
-<p>Gets the image width from a file.</p>
-</blockquote>
-<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
-<p>Returns: <code>dimension</code></p>
-<p>Example: <code>image-width(&quot;file.png&quot;);</code></p>
-<p>Output: <code>10px</code></p>
-<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
-<p>Added in: v2.2.0</p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-height"></span>
-<a href="#misc-functions-image-height" name="misc-functions-image-height" class="anchor glyphicon glyphicon-link"></a>image-height</h3>
-<blockquote>
-<p>Gets the image height from a file.</p>
-</blockquote>
-<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
-<p>Returns: <code>dimension</code></p>
-<p>Example: <code>image-height(&quot;file.png&quot;);</code></p>
-<p>Output: <code>10px</code></p>
-<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
-<p>Added in: v2.2.0</p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-convert"></span>
-<a href="#misc-functions-convert" name="misc-functions-convert" class="anchor glyphicon glyphicon-link"></a>convert</h3>
-<blockquote>
-<p>Convert a number from one unit into another.</p>
-</blockquote>
-<p>The first argument contains a number with units and second argument contains units. If the units are compatible, the number is converted. If they are not compatible, the first argument is returned unmodified.</p>
-<p>See <a href="#misc-functions-unit">unit</a> for changing the unit without conversion.</p>
-<p><em>Compatible unit groups</em>:</p>
-<ul>
-<li>lengths: <code>m</code>, <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code> and <code>pc</code>,</li>
-<li>time: <code>s</code> and <code>ms</code>,</li>
-<li>angle: <code>rad</code>, <code>deg</code>, <code>grad</code> and <code>turn</code>.</li>
-</ul>
-<p>Parameters:</p>
-<ul>
-<li><code>number</code>: a floating point number with units.</li>
-<li><code>identifier</code>, <code>string</code> or <code>escaped value</code>: units</li>
-</ul>
-<p>Returns: <code>number</code></p>
-<p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-attribute">convert</span>(<span class="hljs-number">9s</span>, <span class="hljs-string">&quot;ms&quot;</span>)
-<span class="hljs-function">convert</span>(<span class="hljs-number">14cm</span>, mm)
-<span class="hljs-function">convert</span>(<span class="hljs-number">8</span>, mm) <span class="hljs-comment">// incompatible unit types</span>
-</code></pre>
-<p>Output:</p>
-<pre><code>9000ms
-140mm
-8
-</code></pre><h3 class="docs-heading"><span class="anchor-target" id="misc-functions-data-uri"></span>
-<a href="#misc-functions-data-uri" name="misc-functions-data-uri" class="anchor glyphicon glyphicon-link"></a>data-uri</h3>
-<blockquote>
-<p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.</p>
-</blockquote>
-<p>Parameters:</p>
-<ul>
-<li><code>mimetype</code>: (Optional) A MIME type string.</li>
-<li><code>url</code>: The URL of the file to inline.</li>
-</ul>
-<p>If there is no mimetype, data-uri function guesses it from filename suffix. Text and svg files are encoded as utf-8 and anything else is encoded as base64. </p>
-<p>If user provided mimetype, the function uses base64 if mimetype argument ends with ;base64. For example, <code>image/jpeg;base64</code> is encoded into base64 while <code>text/html</code> is encoded into utf-8. </p>
-<p>Example: <code>data-uri(&apos;../data/image.jpg&apos;);</code></p>
-<p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
-<p>Output in browser: <code>url(&apos;../data/image.jpg&apos;);</code></p>
-<p>Example: <code>data-uri(&apos;image/jpeg;base64&apos;, &apos;../data/image.jpg&apos;);</code></p>
-<p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
-<p>Example: <code>data-uri(&apos;image/svg+xml;charset=UTF-8&apos;, &apos;image.svg&apos;);</code></p>
-<p>Output: <code>url(&quot;data:image/svg+xml;charset=UTF-8,%3Csvg%3E%3Ccircle%20r%3D%229%22%2F%3E%3C%2Fsvg%3E&quot;);</code></p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-default"></span>
-<a href="#misc-functions-default" name="misc-functions-default" class="anchor glyphicon glyphicon-link"></a>default</h3>
-<blockquote>
-<p>Available only inside guard conditions and returns <code>true</code> only if no other mixin matches, <code>false</code> otherwise.</p>
-</blockquote>
-<p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-number">1</span>)                   {<span class="hljs-attribute">x</span>: <span class="hljs-number">11</span>}
-<span class="hljs-class">.mixin</span>(<span class="hljs-number">2</span>)                   {<span class="hljs-attribute">y</span>: <span class="hljs-number">22</span>}
-<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) {<span class="hljs-attribute">z</span>: <span class="hljs-variable">@x</span>}
-
-<span class="hljs-tag">div</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-number">3</span>);
-}
-
-<span class="hljs-tag">div</span><span class="hljs-class">.special</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-number">1</span>);
-}
-</code></pre>
-<p>Output:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">z</span>: <span class="hljs-number">3</span>;
-}
-<span class="hljs-tag">div</span><span class="hljs-class">.special</span> {
-  <span class="hljs-attribute">x</span>: <span class="hljs-number">11</span>;
-}
-</code></pre>
-<p>It is possible to use the value returned by <code>default</code> with guard operators. For example <code>.mixin() when not(default()) {}</code> will match only if there&apos;s at least one more mixin definition that matches<code>.mixin()</code> call:</p>
-<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@value</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">ispixel</span>(<span class="hljs-variable">@value</span>)) {<span class="hljs-attribute">width</span>: <span class="hljs-variable">@value</span>}
-<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@value</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>())    {<span class="hljs-attribute">padding</span>: (<span class="hljs-variable">@value</span> / <span class="hljs-number">5</span>)}
-
-<span class="hljs-tag">div-1</span> {
-  <span class="hljs-class">.mixin</span>(<span class="hljs-number">100px</span>);
-}
-
-<span class="hljs-tag">div-2</span> {
-  <span class="hljs-comment">/* ... */</span>
-  <span class="hljs-class">.mixin</span>(<span class="hljs-number">100%</span>);
-}
-</code></pre>
-<p>result:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div-1</span> {
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
-}
-<span class="hljs-tag">div-2</span> {
-  <span class="hljs-comment">/* ... */</span>
-}
-</code></pre>
-<p>It is allowed to make multiple <code>default()</code> calls in the same guard condition or in a different conditions of a mixins with the same name:</p>
-<pre><code class="lang-less"><span class="hljs-tag">div</span> {
-  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()), <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>())    {<span class="hljs-attribute">always</span>: <span class="hljs-variable">@x</span>}
-  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) {<span class="hljs-attribute">never</span>:  <span class="hljs-variable">@x</span>}
-
-  <span class="hljs-class">.m</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// OK</span>
-}
-</code></pre>
-<p>However Less will throw a error if it detects a <em>potential</em> conflict between multiple mixin definitions using <code>default()</code>:</p>
-<pre><code class="lang-less"><span class="hljs-tag">div</span> {
-  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>())    {}
-  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) {}
-
-  <span class="hljs-class">.m</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// Error</span>
-}
-</code></pre>
-<p>In above example it is impossible to determine what value each <code>default()</code> call should return since they recursively depend on each other.</p>
-<p>Advanced multiple <code>default()</code> usage:</p>
-<pre><code class="lang-less"><span class="hljs-class">.x</span> {
-  <span class="hljs-class">.m</span>(red)                                    {<span class="hljs-attribute">case-1</span>: darkred}
-  <span class="hljs-class">.m</span>(blue)                                   {<span class="hljs-attribute">case-2</span>: darkblue}
-  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@x</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-function">default</span>())  {<span class="hljs-attribute">default-color</span>: <span class="hljs-variable">@x</span>}
-  <span class="hljs-class">.m</span>(<span class="hljs-string">&apos;foo&apos;</span>)                                  {<span class="hljs-attribute">case-1</span>: I am <span class="hljs-string">&apos;foo&apos;</span>}
-  <span class="hljs-class">.m</span>(<span class="hljs-string">&apos;bar&apos;</span>)                                  {<span class="hljs-attribute">case-2</span>: I am <span class="hljs-string">&apos;bar&apos;</span>}
-  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isstring</span>(<span class="hljs-variable">@x</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-function">default</span>()) {<span class="hljs-attribute">default-string</span>: and I am the default}
-
-  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-blue</span>  {<span class="hljs-class">.m</span>(blue)}
-  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-green</span> {<span class="hljs-class">.m</span>(green)}
-  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-foo</span>   {<span class="hljs-class">.m</span>(<span class="hljs-string">&apos;foo&apos;</span>)}
-  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-baz</span>   {<span class="hljs-class">.m</span>(<span class="hljs-string">&apos;baz&apos;</span>)}
-}
-</code></pre>
-<p>Result:</p>
-<pre><code class="lang-css"><span class="hljs-class">.x-blue</span> {
-  <span class="hljs-attribute">case-2</span>: <span class="hljs-hexcolor">#00008b</span>;
-}
-<span class="hljs-class">.x-green</span> {
-  <span class="hljs-attribute">default-color</span>: <span class="hljs-hexcolor">#008000</span>;
-}
-<span class="hljs-class">.x-foo</span> {
-  <span class="hljs-attribute">case-1</span>: I am <span class="hljs-string">&apos;foo&apos;</span>;
-}
-<span class="hljs-class">.x-baz</span> {
-  <span class="hljs-attribute">default-string</span>: and I am the default;
-}
-</code></pre>
-<p>The <code>default</code> function is available as a Less built-in function <em>only inside guard expressions</em>. If used outside of a mixin guard condition it is interpreted as a regular CSS value:</p>
-<p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">foo</span>: <span class="hljs-function">default</span>();
-  <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
-}
-</code></pre>
-<p>Result:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">foo</span>: <span class="hljs-function">default</span>();
-  <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
-}
-</code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-unit"></span>
-<a href="#misc-functions-unit" name="misc-functions-unit" class="anchor glyphicon glyphicon-link"></a>unit</h3>
-<blockquote>
-<p>Remove or change the unit of a dimension</p>
-</blockquote>
-<p>Parameters:</p>
-<ul>
-<li><code>dimension</code>: A number, with or without a dimension.</li>
-<li><code>unit</code>: (Optional) the unit to change to, or if omitted it will remove the unit.</li>
-</ul>
-<p>See <a href="#misc-functions-convert">convert</a> for changing the unit with conversion.</p>
-<p>Example: <code>unit(5, px)</code></p>
-<p>Output: <code>5px</code></p>
-<p>Example: <code>unit(5em)</code></p>
-<p>Output: <code>5</code></p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-get-unit"></span>
-<a href="#misc-functions-get-unit" name="misc-functions-get-unit" class="anchor glyphicon glyphicon-link"></a>get-unit</h3>
-<blockquote>
-<p>Returns units of a number.</p>
-</blockquote>
-<p>If the argument contains a number with units, the function returns its units. The argument without units results in an empty return value.</p>
-<p>Parameters:</p>
-<ul>
-<li><code>number</code>: a number with or without units.</li>
-</ul>
-<p>Example: <code>get-unit(5px)</code></p>
-<p>Output: <code>px</code></p>
-<p>Example: <code>get-unit(5)</code></p>
-<p>Output: <code>//nothing</code> </p>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-svg-gradient"></span>
-<a href="#misc-functions-svg-gradient" name="misc-functions-svg-gradient" class="anchor glyphicon glyphicon-link"></a>svg-gradient</h3>
-<blockquote>
-<p>Generates multi-stop svg gradients.</p>
-</blockquote>
-<p>Svg-gradient function generates multi-stop svg gradients. It must have at least three parameters. First parameter specifies gradient type and direction and remaining parameters list colors and their positions. The position of first and last specified color are optional, remaining colors must have positions specified.</p>
-<p>The direction must be one of <code>to bottom</code>, <code>to right</code>, <code>to bottom right</code>, <code>to top right</code>, <code>ellipse</code> or <code>ellipse at center</code>. The direction can be specified as both escaped value <code>~&apos;to bottom&apos;</code> and space separated list of words <code>to bottom</code>.</p>
-<p>The direction must be followed by two or more color stops. They can be supplied either inside a list or you can specify each color stops in separate argument. </p>
-<p>Parameters - colors stops in list:</p>
-<ul>
-<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
-<li><code>list</code> - all colors and their positions in list</li>
-</ul>
-<p>Parameters - color stops in arguments:</p>
-<ul>
-<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
-<li><code>color [percentage]</code> pair: first color and its relative position (position is optional)</li>
-<li><code>color percent</code> pair: (optional) second color and its relative position</li>
-<li>...</li>
-<li><code>color percent</code> pair: (optional) n-th color and its relative position</li>
-<li><code>color [percentage]</code> pair: last color and its relative position (position is optional)</li>
-</ul>
-<p>Returns: <code>url</code> with &quot;URI-Encoded&quot; svg gradient.</p>
-<p>Example - colors stops in list:</p>
-<pre><code class="lang-less"><span class="hljs-tag">div</span> {
-  <span class="hljs-variable">@list:</span> red, green <span class="hljs-number">30%</span>, blue;
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">svg-gradient</span>(to right, <span class="hljs-variable">@list</span>);
-}
-</code></pre>
-<p>equivalent - color stops in arguments:</p>
-<pre><code class="lang-less"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">svg-gradient</span>(to right, red, green <span class="hljs-number">30%</span>, blue);
-}
-</code></pre>
-<p>both result in:</p>
-<pre><code class="lang-css"><span class="hljs-tag">div</span> {
-  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
-}
-</code></pre>
-<p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
-<p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
-<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> <span class="hljs-meta">?&gt;</span></span>
-<span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.1&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 1 1&quot;</span> <span class="hljs-attr">preserveAspectRatio</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gradient&quot;</span> <span class="hljs-attr">gradientUnits</span>=<span class="hljs-string">&quot;userSpaceOnUse&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;0%&quot;</span>&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#ff0000&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;30%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#008000&quot;</span>/&gt;</span>
-        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#0000ff&quot;</span>/&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#gradient)&quot;</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
-</code></pre>
-<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-if"></span>
-<a href="#misc-functions-if" name="misc-functions-if" class="anchor glyphicon glyphicon-link"></a>if</h3>
+<h3 class="docs-heading"><span class="anchor-target" id="logical-functions-if"></span>
+<a href="#logical-functions-if" name="logical-functions-if" class="anchor glyphicon glyphicon-link"></a>if</h3>
 <blockquote>
 <p>Returns one of two values depending on a condition.</p>
 </blockquote>
@@ -519,7 +244,8 @@
 <li><code>value1</code>: A value returned if <code>condition</code> is true.</li>
 <li><code>value2</code>: A value returned if <code>condition</code> is not true.</li>
 </ul>
-<p>Released: v3.00</p>
+<p>Released: v3.0.0
+Updated: v3.6.0</p>
 <p><strong>Examples</strong>:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@some:</span> foo;
 
@@ -534,17 +260,41 @@
     <span class="hljs-attribute">color</span>:  black;
 }
 </code></pre>
-<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.
-Note however that any boolean expression for the <code>condition</code> parameter require an extra set of parens:</p>
-<pre><code class="lang-less"><span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// OK</span>
-<span class="hljs-attribute">if</span>(<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>, blue, green);   <span class="hljs-comment">// Error</span>
-<span class="hljs-attribute">if</span>((true), blue, green);  <span class="hljs-comment">// OK</span>
-<span class="hljs-attribute">if</span>(true, blue, green);    <span class="hljs-comment">// Error</span>
-</code></pre>
-<p>The only operators that can be w/o parens are: <code>not</code>, <code>and</code> and <code>or</code>:</p>
+<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.</p>
 <pre><code class="lang-less"><span class="hljs-attribute">if</span>(not (true), foo, bar);
 <span class="hljs-attribute">if</span>((true) and (<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), foo, bar);
 <span class="hljs-attribute">if</span>((false) or (<span class="hljs-function">isstring</span>(<span class="hljs-string">&quot;boo!&quot;</span>)), foo, bar);
+</code></pre>
+<p>Note: before Less 3.6, the condition required a set of parentheses.</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>(<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>, blue, green);   <span class="hljs-comment">// Causes an error in 3.0-3.5.3</span>
+<span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// Ok 3.0+</span>
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="logical-functions-boolean"></span>
+<a href="#logical-functions-boolean" name="logical-functions-boolean" class="anchor glyphicon glyphicon-link"></a>boolean</h3>
+<blockquote>
+<p>Evaluates to true or false</p>
+</blockquote>
+<p>You can &quot;store&quot; a boolean test for later evaluation in a guard or <code>if()</code>.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>condition</code>: A boolean expression</li>
+</ul>
+<p>Released: v3.0.0
+Updated: v3.6.0</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@bg:</span> black;
+<span class="hljs-variable">@bg-light:</span> <span class="hljs-function">boolean</span>(<span class="hljs-function">luma</span>(<span class="hljs-variable">@bg</span>) &gt; <span class="hljs-number">50%</span>);
+
+<span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-variable">@bg</span>; 
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">if</span>(<span class="hljs-variable">@bg-light</span>, black, white);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background</span>: black;
+  <span class="hljs-attribute">color</span>: white;
+}
 </code></pre>
 
 
@@ -1224,6 +974,312 @@ NaN%
 <span class="hljs-attribute">isruleset</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Misc Functions -->
+  <div class="docs-section">
+    
+    <h1 class="docs-heading"><span class="anchor-target" id="misc-functions"></span>
+<a href="#misc-functions" name="misc-functions" class="anchor glyphicon glyphicon-link"></a>Misc Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" data-content="misc-functionsmd" target="_blank"></a>
+
+
+
+<a id="misc-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" target="_blank">Edit the markdown source for &quot;misc-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- misc-functions.md -->
+       
+
+
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-color"></span>
+<a href="#misc-functions-color" name="misc-functions-color" class="anchor glyphicon glyphicon-link"></a>color</h3>
+<blockquote>
+<p>Parses a color, so a string representing a color becomes a color.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: a string of the specified color.</p>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>color(&quot;#aaa&quot;);</code></p>
+<p>Output: <code>#aaa</code></p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-size"></span>
+<a href="#misc-functions-image-size" name="misc-functions-image-size" class="anchor glyphicon glyphicon-link"></a>image-size</h3>
+<blockquote>
+<p>Gets the image dimensions from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-size(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px 10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-width"></span>
+<a href="#misc-functions-image-width" name="misc-functions-image-width" class="anchor glyphicon glyphicon-link"></a>image-width</h3>
+<blockquote>
+<p>Gets the image width from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-width(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-image-height"></span>
+<a href="#misc-functions-image-height" name="misc-functions-image-height" class="anchor glyphicon glyphicon-link"></a>image-height</h3>
+<blockquote>
+<p>Gets the image height from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-height(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-convert"></span>
+<a href="#misc-functions-convert" name="misc-functions-convert" class="anchor glyphicon glyphicon-link"></a>convert</h3>
+<blockquote>
+<p>Convert a number from one unit into another.</p>
+</blockquote>
+<p>The first argument contains a number with units and second argument contains units. If the units are compatible, the number is converted. If they are not compatible, the first argument is returned unmodified.</p>
+<p>See <a href="#misc-functions-unit">unit</a> for changing the unit without conversion.</p>
+<p><em>Compatible unit groups</em>:</p>
+<ul>
+<li>lengths: <code>m</code>, <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code> and <code>pc</code>,</li>
+<li>time: <code>s</code> and <code>ms</code>,</li>
+<li>angle: <code>rad</code>, <code>deg</code>, <code>grad</code> and <code>turn</code>.</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: a floating point number with units.</li>
+<li><code>identifier</code>, <code>string</code> or <code>escaped value</code>: units</li>
+</ul>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">convert</span>(<span class="hljs-number">9s</span>, <span class="hljs-string">&quot;ms&quot;</span>)
+<span class="hljs-function">convert</span>(<span class="hljs-number">14cm</span>, mm)
+<span class="hljs-function">convert</span>(<span class="hljs-number">8</span>, mm) <span class="hljs-comment">// incompatible unit types</span>
+</code></pre>
+<p>Output:</p>
+<pre><code>9000ms
+140mm
+8
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="misc-functions-data-uri"></span>
+<a href="#misc-functions-data-uri" name="misc-functions-data-uri" class="anchor glyphicon glyphicon-link"></a>data-uri</h3>
+<blockquote>
+<p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>mimetype</code>: (Optional) A MIME type string.</li>
+<li><code>url</code>: The URL of the file to inline.</li>
+</ul>
+<p>If there is no mimetype, data-uri function guesses it from filename suffix. Text and svg files are encoded as utf-8 and anything else is encoded as base64. </p>
+<p>If user provided mimetype, the function uses base64 if mimetype argument ends with ;base64. For example, <code>image/jpeg;base64</code> is encoded into base64 while <code>text/html</code> is encoded into utf-8. </p>
+<p>Example: <code>data-uri(&apos;../data/image.jpg&apos;);</code></p>
+<p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
+<p>Output in browser: <code>url(&apos;../data/image.jpg&apos;);</code></p>
+<p>Example: <code>data-uri(&apos;image/jpeg;base64&apos;, &apos;../data/image.jpg&apos;);</code></p>
+<p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
+<p>Example: <code>data-uri(&apos;image/svg+xml;charset=UTF-8&apos;, &apos;image.svg&apos;);</code></p>
+<p>Output: <code>url(&quot;data:image/svg+xml;charset=UTF-8,%3Csvg%3E%3Ccircle%20r%3D%229%22%2F%3E%3C%2Fsvg%3E&quot;);</code></p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-default"></span>
+<a href="#misc-functions-default" name="misc-functions-default" class="anchor glyphicon glyphicon-link"></a>default</h3>
+<blockquote>
+<p>Available only inside guard conditions and returns <code>true</code> only if no other mixin matches, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-number">1</span>)                   {<span class="hljs-attribute">x</span>: <span class="hljs-number">11</span>}
+<span class="hljs-class">.mixin</span>(<span class="hljs-number">2</span>)                   {<span class="hljs-attribute">y</span>: <span class="hljs-number">22</span>}
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) {<span class="hljs-attribute">z</span>: <span class="hljs-variable">@x</span>}
+
+<span class="hljs-tag">div</span> {
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">3</span>);
+}
+
+<span class="hljs-tag">div</span><span class="hljs-class">.special</span> {
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">1</span>);
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">z</span>: <span class="hljs-number">3</span>;
+}
+<span class="hljs-tag">div</span><span class="hljs-class">.special</span> {
+  <span class="hljs-attribute">x</span>: <span class="hljs-number">11</span>;
+}
+</code></pre>
+<p>It is possible to use the value returned by <code>default</code> with guard operators. For example <code>.mixin() when not(default()) {}</code> will match only if there&apos;s at least one more mixin definition that matches<code>.mixin()</code> call:</p>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@value</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">ispixel</span>(<span class="hljs-variable">@value</span>)) {<span class="hljs-attribute">width</span>: <span class="hljs-variable">@value</span>}
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@value</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>())    {<span class="hljs-attribute">padding</span>: (<span class="hljs-variable">@value</span> / <span class="hljs-number">5</span>)}
+
+<span class="hljs-tag">div-1</span> {
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">100px</span>);
+}
+
+<span class="hljs-tag">div-2</span> {
+  <span class="hljs-comment">/* ... */</span>
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">100%</span>);
+}
+</code></pre>
+<p>result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div-1</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+<span class="hljs-tag">div-2</span> {
+  <span class="hljs-comment">/* ... */</span>
+}
+</code></pre>
+<p>It is allowed to make multiple <code>default()</code> calls in the same guard condition or in a different conditions of a mixins with the same name:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()), <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>())    {<span class="hljs-attribute">always</span>: <span class="hljs-variable">@x</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) {<span class="hljs-attribute">never</span>:  <span class="hljs-variable">@x</span>}
+
+  <span class="hljs-class">.m</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// OK</span>
+}
+</code></pre>
+<p>However Less will throw a error if it detects a <em>potential</em> conflict between multiple mixin definitions using <code>default()</code>:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>())    {}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) {}
+
+  <span class="hljs-class">.m</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// Error</span>
+}
+</code></pre>
+<p>In above example it is impossible to determine what value each <code>default()</code> call should return since they recursively depend on each other.</p>
+<p>Advanced multiple <code>default()</code> usage:</p>
+<pre><code class="lang-less"><span class="hljs-class">.x</span> {
+  <span class="hljs-class">.m</span>(red)                                    {<span class="hljs-attribute">case-1</span>: darkred}
+  <span class="hljs-class">.m</span>(blue)                                   {<span class="hljs-attribute">case-2</span>: darkblue}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@x</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-function">default</span>())  {<span class="hljs-attribute">default-color</span>: <span class="hljs-variable">@x</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-string">&apos;foo&apos;</span>)                                  {<span class="hljs-attribute">case-1</span>: I am <span class="hljs-string">&apos;foo&apos;</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-string">&apos;bar&apos;</span>)                                  {<span class="hljs-attribute">case-2</span>: I am <span class="hljs-string">&apos;bar&apos;</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isstring</span>(<span class="hljs-variable">@x</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-function">default</span>()) {<span class="hljs-attribute">default-string</span>: and I am the default}
+
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-blue</span>  {<span class="hljs-class">.m</span>(blue)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-green</span> {<span class="hljs-class">.m</span>(green)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-foo</span>   {<span class="hljs-class">.m</span>(<span class="hljs-string">&apos;foo&apos;</span>)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-baz</span>   {<span class="hljs-class">.m</span>(<span class="hljs-string">&apos;baz&apos;</span>)}
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-class">.x-blue</span> {
+  <span class="hljs-attribute">case-2</span>: <span class="hljs-hexcolor">#00008b</span>;
+}
+<span class="hljs-class">.x-green</span> {
+  <span class="hljs-attribute">default-color</span>: <span class="hljs-hexcolor">#008000</span>;
+}
+<span class="hljs-class">.x-foo</span> {
+  <span class="hljs-attribute">case-1</span>: I am <span class="hljs-string">&apos;foo&apos;</span>;
+}
+<span class="hljs-class">.x-baz</span> {
+  <span class="hljs-attribute">default-string</span>: and I am the default;
+}
+</code></pre>
+<p>The <code>default</code> function is available as a Less built-in function <em>only inside guard expressions</em>. If used outside of a mixin guard condition it is interpreted as a regular CSS value:</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">foo</span>: <span class="hljs-function">default</span>();
+  <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">foo</span>: <span class="hljs-function">default</span>();
+  <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
+}
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-unit"></span>
+<a href="#misc-functions-unit" name="misc-functions-unit" class="anchor glyphicon glyphicon-link"></a>unit</h3>
+<blockquote>
+<p>Remove or change the unit of a dimension</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>dimension</code>: A number, with or without a dimension.</li>
+<li><code>unit</code>: (Optional) the unit to change to, or if omitted it will remove the unit.</li>
+</ul>
+<p>See <a href="#misc-functions-convert">convert</a> for changing the unit with conversion.</p>
+<p>Example: <code>unit(5, px)</code></p>
+<p>Output: <code>5px</code></p>
+<p>Example: <code>unit(5em)</code></p>
+<p>Output: <code>5</code></p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-get-unit"></span>
+<a href="#misc-functions-get-unit" name="misc-functions-get-unit" class="anchor glyphicon glyphicon-link"></a>get-unit</h3>
+<blockquote>
+<p>Returns units of a number.</p>
+</blockquote>
+<p>If the argument contains a number with units, the function returns its units. The argument without units results in an empty return value.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: a number with or without units.</li>
+</ul>
+<p>Example: <code>get-unit(5px)</code></p>
+<p>Output: <code>px</code></p>
+<p>Example: <code>get-unit(5)</code></p>
+<p>Output: <code>//nothing</code> </p>
+<h3 class="docs-heading"><span class="anchor-target" id="misc-functions-svg-gradient"></span>
+<a href="#misc-functions-svg-gradient" name="misc-functions-svg-gradient" class="anchor glyphicon glyphicon-link"></a>svg-gradient</h3>
+<blockquote>
+<p>Generates multi-stop svg gradients.</p>
+</blockquote>
+<p>Svg-gradient function generates multi-stop svg gradients. It must have at least three parameters. First parameter specifies gradient type and direction and remaining parameters list colors and their positions. The position of first and last specified color are optional, remaining colors must have positions specified.</p>
+<p>The direction must be one of <code>to bottom</code>, <code>to right</code>, <code>to bottom right</code>, <code>to top right</code>, <code>ellipse</code> or <code>ellipse at center</code>. The direction can be specified as both escaped value <code>~&apos;to bottom&apos;</code> and space separated list of words <code>to bottom</code>.</p>
+<p>The direction must be followed by two or more color stops. They can be supplied either inside a list or you can specify each color stops in separate argument. </p>
+<p>Parameters - colors stops in list:</p>
+<ul>
+<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
+<li><code>list</code> - all colors and their positions in list</li>
+</ul>
+<p>Parameters - color stops in arguments:</p>
+<ul>
+<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
+<li><code>color [percentage]</code> pair: first color and its relative position (position is optional)</li>
+<li><code>color percent</code> pair: (optional) second color and its relative position</li>
+<li>...</li>
+<li><code>color percent</code> pair: (optional) n-th color and its relative position</li>
+<li><code>color [percentage]</code> pair: last color and its relative position (position is optional)</li>
+</ul>
+<p>Returns: <code>url</code> with &quot;URI-Encoded&quot; svg gradient.</p>
+<p>Example - colors stops in list:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-variable">@list:</span> red, green <span class="hljs-number">30%</span>, blue;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">svg-gradient</span>(to right, <span class="hljs-variable">@list</span>);
+}
+</code></pre>
+<p>equivalent - color stops in arguments:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">svg-gradient</span>(to right, red, green <span class="hljs-number">30%</span>, blue);
+}
+</code></pre>
+<p>both result in:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
+}
+</code></pre>
+<p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
+<p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
+<pre><code class="lang-xml"><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">&quot;1.0&quot;</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.1&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 1 1&quot;</span> <span class="hljs-attr">preserveAspectRatio</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gradient&quot;</span> <span class="hljs-attr">gradientUnits</span>=<span class="hljs-string">&quot;userSpaceOnUse&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;0%&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#ff0000&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;30%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#008000&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#0000ff&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#gradient)&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
 </code></pre>
 
 
@@ -2355,7 +2411,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.5.0</li>
+      <li>Currently v3.6.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

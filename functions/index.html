@@ -46,7 +46,8 @@
 <li><a href="#string-functions--format">% format</a></li>
 <li><a href="#string-functions-replace">replace</a></li></ul></li>
 <li><a href="#list-functions">List Functions</a><ul class="nav"><li><a href="#list-functions-length">length</a></li>
-<li><a href="#list-functions-extract">extract</a></li></ul></li>
+<li><a href="#list-functions-extract">extract</a></li>
+<li><a href="#list-functions-each">each</a></li></ul></li>
 <li><a href="#math-functions">Math Functions</a><ul class="nav"><li><a href="#math-functions-ceil">ceil</a></li>
 <li><a href="#math-functions-floor">floor</a></li>
 <li><a href="#math-functions-percentage">percentage</a></li>
@@ -478,7 +479,76 @@ Output: <code>dotted</code></p>
 </code></pre>
 <p>Output:</p>
 <pre><code>value: coconut;
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="list-functions-each"></span>
+<a href="#list-functions-each" name="list-functions-each" class="anchor glyphicon glyphicon-link"></a>each</h3>
+<p><em>Released v3.7.0</em></p>
+<p>Bind the evaluation of a ruleset to each member of a list.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@selectors:</span> blue, green, red;
+
+<span class="hljs-tag">each</span>(<span class="hljs-variable">@selectors</span>, {
+  <span class="hljs-class">.sel-@{value}</span> {
+    <span class="hljs-attribute">a</span>: b;
+  }
+});
 </code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.sel-blue</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+<span class="hljs-class">.sel-green</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+<span class="hljs-class">.sel-red</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+</code></pre>
+<p>By default, each ruleset is bound, per list member, to a <code>@value</code>, <code>@key</code>, and <code>@index</code> variable. For most lists, <code>@key</code> and <code>@index</code> will be assigned the same value (numerical position, 1-based). However, you can also use rulesets <em>themselves</em> as structured lists. As in:</p>
+<pre><code class="lang-less">
+<span class="hljs-variable">@set:</span> {
+  <span class="hljs-attribute">one</span>: blue;
+  <span class="hljs-attribute">two</span>: green;
+  <span class="hljs-attribute">three</span>: red;
+}
+.set {
+  <span class="hljs-tag">each</span>(<span class="hljs-variable">@set</span>, {
+    <span class="hljs-attribute">@{key}-@{index}</span>: <span class="hljs-variable">@value</span>;
+  });
+}
+</code></pre>
+<p>This will output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.set</span> {
+  <span class="hljs-attribute">one-1</span>: blue;
+  <span class="hljs-attribute">two-2</span>: green;
+  <span class="hljs-attribute">three-3</span>: red;
+}
+</code></pre>
+<p>Since you can, of course, call mixins with guards for each ruleset call, this makes <code>each()</code> a very powerful function.</p>
+<h4 class="docs-heading"><span class="anchor-target" id="list-functions-setting-variable-names-in-each-"></span>
+<a href="#list-functions-setting-variable-names-in-each-" name="list-functions-setting-variable-names-in-each-" class="anchor glyphicon glyphicon-link"></a>Setting variable names in <code>each()</code></h4>
+<p>You don&apos;t have to use <code>@value</code>, <code>@key</code>, and <code>@index</code> in your <code>each()</code> function. In Less 3.7, with the <code>each()</code> function, Less is introducing the concept of anonymous mixins, which may expand to other parts of the syntax at a later date.</p>
+<p>An anonymous mixin uses the form of <code>#()</code> or <code>.()</code> starting with <code>.</code> or <code>#</code> just like a regular mixin would. In <code>each()</code>, you can use it like this:</p>
+<pre><code class="lang-less"><span class="hljs-class">.set-2</span>() {
+  <span class="hljs-attribute">one</span>: blue;
+  <span class="hljs-attribute">two</span>: green;
+  <span class="hljs-attribute">three</span>: red;
+}
+<span class="hljs-class">.set-2</span> {
+  <span class="hljs-comment">// Call mixin and iterate each rule</span>
+  <span class="hljs-tag">each</span>(.<span class="hljs-function">set-2</span>(), .(<span class="hljs-variable">@v</span>, <span class="hljs-variable">@k</span>, <span class="hljs-variable">@i</span>) {
+    <span class="hljs-attribute">@{k}-@{i}</span>: <span class="hljs-variable">@v</span>;
+  });
+}
+</code></pre>
+<p>This outputs, as expected:</p>
+<pre><code class="lang-css"><span class="hljs-class">.set-2</span> {
+  <span class="hljs-attribute">one-1</span>: blue;
+  <span class="hljs-attribute">two-2</span>: green;
+  <span class="hljs-attribute">three-3</span>: red;
+}
+</code></pre>
+<p>The <code>each()</code> function will take the variable names defined in the anonymous mixin and bind them to the <code>@value</code>, <code>@key</code> and <code>@index</code> values, in that order. If you only write <code>each(@list, #(@value) {})</code>, then neither <code>@key</code> nor <code>@index</code> will be defined.</p>
+
 
       <br>
     </div>
@@ -2411,7 +2481,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.6.0</li>
+      <li>Currently v3.7.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

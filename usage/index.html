@@ -53,6 +53,11 @@
 <li><a href="#using-less-in-the-browser-options">Options</a></li>
 <li><a href="#using-less-in-the-browser-options-specific-to-less-js-in-the-browser">Options specific to Less.js in the browser</a></li></ul></li>
 <li><a href="#less-options">Less.js Options</a><ul class="nav"><li><a href="#less-options-cross-platform-options">Cross-Platform Options</a></li>
+<li><a href="#less-options-include-paths">Include Paths</a></li>
+<li><a href="#less-options-rootpath">Rootpath</a></li>
+<li><a href="#less-options-relative-urls">Relative URLs</a></li>
+<li><a href="#less-options-math">Math</a></li>
+<li><a href="#less-options-strict-units">Strict Units</a></li>
 <li><a href="#less-options-source-map-options">Source Map Options</a></li></ul></li>
 <li><a href="#plugins">Pre-Loaded Plugins</a><ul class="nav"><li><a href="#plugins-preprocessing">Preprocessing</a></li>
 <li><a href="#plugins-node-js">Node.js</a></li>
@@ -489,8 +494,8 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 
 <h2 class="docs-heading"><span class="anchor-target" id="less-options-cross-platform-options"></span>
 <a href="#less-options-cross-platform-options" name="less-options-cross-platform-options" class="anchor glyphicon glyphicon-link"></a>Cross-Platform Options</h2>
-<h4 class="docs-heading"><span class="anchor-target" id="less-options-include-paths"></span>
-<a href="#less-options-include-paths" name="less-options-include-paths" class="anchor glyphicon glyphicon-link"></a>Include Paths</h4>
+<h3 class="docs-heading"><span class="anchor-target" id="less-options-include-paths"></span>
+<a href="#less-options-include-paths" name="less-options-include-paths" class="anchor glyphicon glyphicon-link"></a>Include Paths</h3>
 <table>
 <thead>
 <tr>
@@ -506,8 +511,8 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tbody>
 </table>
 <p>If the file in an <code>@import</code> rule does not exist at that exact location, Less will look for it at the location(s) passed to this option. You might use this for instance to specify a path to a library which you want to be referenced simply and relatively in the Less files.</p>
-<h4 class="docs-heading"><span class="anchor-target" id="less-options-rootpath"></span>
-<a href="#less-options-rootpath" name="less-options-rootpath" class="anchor glyphicon glyphicon-link"></a>Rootpath</h4>
+<h3 class="docs-heading"><span class="anchor-target" id="less-options-rootpath"></span>
+<a href="#less-options-rootpath" name="less-options-rootpath" class="anchor glyphicon glyphicon-link"></a>Rootpath</h3>
 <table>
 <thead>
 <tr>
@@ -524,8 +529,8 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </table>
 <p>Allows you to add a path to every generated import and url in your css. This does not affect Less import statements that are processed, just ones that are left in the output css.</p>
 <p>For instance, if all the images the css use are in a folder called resources, you can use this option to add this on to the URL&apos;s and then have the name of that folder configurable.</p>
-<h4 class="docs-heading"><span class="anchor-target" id="less-options-relative-urls"></span>
-<a href="#less-options-relative-urls" name="less-options-relative-urls" class="anchor glyphicon glyphicon-link"></a>Relative URLs</h4>
+<h3 class="docs-heading"><span class="anchor-target" id="less-options-relative-urls"></span>
+<a href="#less-options-relative-urls" name="less-options-relative-urls" class="anchor glyphicon glyphicon-link"></a>Relative URLs</h3>
 <table>
 <thead>
 <tr>
@@ -559,8 +564,98 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 }
 </code></pre>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
-<h4 class="docs-heading"><span class="anchor-target" id="less-options-strict-math"></span>
-<a href="#less-options-strict-math" name="less-options-strict-math" class="anchor glyphicon glyphicon-link"></a>Strict Math</h4>
+<h3 class="docs-heading"><span class="anchor-target" id="less-options-math"></span>
+<a href="#less-options-math" name="less-options-math" class="anchor glyphicon glyphicon-link"></a>Math</h3>
+<p><em>Released v3.7.0</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lessc -m=[option]</code><br><code>lessc --math=[option]</code></td>
+<td><code>{ math: &apos;[option]&apos; }</code></td>
+</tr>
+</tbody>
+</table>
+<p>Less has re-built math options to offer an in-between feature between the previous <code>strictMath</code> setting, which required parentheses all the time, and the default, which performed math in all situations.</p>
+<p>In order to cause fewer conflicts with CSS, which now liberally uses the <code>/</code> symbol between values, there is now a math mode that <em>only</em> requires parentheses for division. &quot;Strict math&quot; has also been tweaked to operate more intuitively, although the legacy behavior is supported.</p>
+<p>The for options available for <code>math</code> are:</p>
+<ul>
+<li><code>always</code>  (current default) - Less eagerly does math</li>
+<li><code>parens-division</code> <strong>(future default)</strong> - No division is performed outside of parens using <code>/</code> operator (but can be &quot;forced&quot; outside of parens with <code>./</code> operator)</li>
+<li><code>parens</code> | <code>strict</code> - A more intuitive form of legacy <code>strictMath: true</code></li>
+<li><code>strict-legacy</code> (deprecated) - As named, operates exactly like current <code>strictMath: true</code>, with the exception that <code>width: -(1);</code> (single dimension values in parens) will now output <code>width: -1;</code> vs previous behavior of <code>width: -(1)</code></li>
+</ul>
+<p><strong>always</strong>
+Example:</p>
+<pre><code class="lang-less"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">1</span> + <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: <span class="hljs-number">2px</span> ./ <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">d</span>: (<span class="hljs-number">2px</span> / <span class="hljs-number">2</span>);
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">c</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">d</span>: <span class="hljs-number">1px</span>;
+}
+</code></pre>
+<p><strong>parens-division</strong></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">1</span> + <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: <span class="hljs-number">2px</span> ./ <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">d</span>: (<span class="hljs-number">2px</span> / <span class="hljs-number">2</span>);
+}
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: <span class="hljs-number">1px</span>;
+  <span class="hljs-attribute">d</span>: <span class="hljs-number">1px</span>;
+}
+</code></pre>
+<p><strong>strict</strong></p>
+<pre><code class="lang-less"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">1</span> + <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: (<span class="hljs-number">2px</span> / <span class="hljs-number">2</span>) + (<span class="hljs-number">3px</span> / <span class="hljs-number">1</span>);
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">1</span> + <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: <span class="hljs-number">1px</span> + <span class="hljs-number">3px</span>;
+}
+</code></pre>
+<p><strong>strict-legacy</strong></p>
+<p>In legacy <code>strictMath</code> mode, mixed expressions outside of parentheses means entire parentheses won&apos;t evaluate. (Probably not what you want.)</p>
+<pre><code class="lang-less"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">1</span> + <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: (<span class="hljs-number">2px</span> / <span class="hljs-number">2</span>) + (<span class="hljs-number">3px</span> / <span class="hljs-number">1</span>);
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.math</span> {
+  <span class="hljs-attribute">a</span>: <span class="hljs-number">1</span> + <span class="hljs-number">1</span>;
+  <span class="hljs-attribute">b</span>: <span class="hljs-number">2px</span> / <span class="hljs-number">2</span>;
+  <span class="hljs-attribute">c</span>: (<span class="hljs-number">2px</span> / <span class="hljs-number">2</span>) + (<span class="hljs-number">3px</span> / <span class="hljs-number">1</span>);
+}
+</code></pre>
+<h4 class="docs-heading"><span class="anchor-target" id="less-options-strict-math-deprecated-"></span>
+<a href="#less-options-strict-math-deprecated-" name="less-options-strict-math-deprecated-" class="anchor glyphicon glyphicon-link"></a>Strict Math (Deprecated)</h4>
+<p><em>This has been replaced by the <a href="#less-options-math"><code>math</code></a> option.</em></p>
 <table>
 <thead>
 <tr>
@@ -576,28 +671,27 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tbody>
 </table>
 <p>Defaults to off/false.</p>
-<p>Without this option on, Less will try and process all math in your css, e.g. in:</p>
+<p>With this option off (default), Less will try and process all math in your css, e.g. in:</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">6</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">6</span> / <span class="hljs-number">3</span>;
 }
 </code></pre>
-<p><code>3 / 6</code> will result in <code>2</code>.</p>
-<p>With strict math on, only math that is inside un-necessary parenthesis will be processed. For instance.</p>
+<p><code>6 / 3</code> will result in <code>2</code>.</p>
+<p>With strict math on, only math that is inside un-necessary parenthesis will be processed. For instance:</p>
 <pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">6</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">6</span> / <span class="hljs-number">3</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>;
   <span class="hljs-attribute">height</span>: (<span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>);
 }
 </code></pre>
 <pre><code class="lang-css"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">3</span> / <span class="hljs-number">6</span>;
+  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">6</span> / <span class="hljs-number">3</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">42px</span>;
 }
 </code></pre>
-<p>We originally planned to default this to true in the future, but it has been a controversial option and we are considering whether we have solved the problem in the right way, or whether Less should just have exceptions for instances where <code>/</code> is valid or not.</p>
-<h4 class="docs-heading"><span class="anchor-target" id="less-options-strict-units"></span>
-<a href="#less-options-strict-units" name="less-options-strict-units" class="anchor glyphicon glyphicon-link"></a>Strict Units</h4>
+<h3 class="docs-heading"><span class="anchor-target" id="less-options-strict-units"></span>
+<a href="#less-options-strict-units" name="less-options-strict-units" class="anchor glyphicon glyphicon-link"></a>Strict Units</h3>
 <table>
 <thead>
 <tr>
@@ -743,8 +837,8 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tbody>
 </table>
 <p>Runs the less parser and just reports errors without any output.</p>
-<h4 class="docs-heading"><span class="anchor-target" id="less-options-compress"></span>
-<a href="#less-options-compress" name="less-options-compress" class="anchor glyphicon glyphicon-link"></a>Compress</h4>
+<h4 class="docs-heading"><span class="anchor-target" id="less-options-compress-deprecated-"></span>
+<a href="#less-options-compress-deprecated-" name="less-options-compress-deprecated-" class="anchor glyphicon glyphicon-link"></a>Compress (Deprecated)</h4>
 <table>
 <thead>
 <tr>
@@ -759,7 +853,7 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tr>
 </tbody>
 </table>
-<p>Compress using less built-in compression. This does an okay job but does not utilise all the tricks of dedicated css compression. Please feel free to improve our compressed output with a pull request.</p>
+<p>Compress using less built-in compression. This does an okay job but does not utilise all the tricks of dedicated css compression. In general, we recommend looking at third-party tools that clean and compress CSS after your Less has been transformed to CSS.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="less-options-allow-imports-from-insecure-https-hosts"></span>
 <a href="#less-options-allow-imports-from-insecure-https-hosts" name="less-options-allow-imports-from-insecure-https-hosts" class="anchor glyphicon glyphicon-link"></a>Allow Imports from Insecure HTTPS Hosts</h4>
 <table>
@@ -776,8 +870,8 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </tr>
 </tbody>
 </table>
-<h3 class="docs-heading"><span class="anchor-target" id="less-options-source-map-options"></span>
-<a href="#less-options-source-map-options" name="less-options-source-map-options" class="anchor glyphicon glyphicon-link"></a>Source Map Options</h3>
+<h2 class="docs-heading"><span class="anchor-target" id="less-options-source-map-options"></span>
+<a href="#less-options-source-map-options" name="less-options-source-map-options" class="anchor glyphicon glyphicon-link"></a>Source Map Options</h2>
 <p>Most of these options are not applicable to using Less.js in the browser, as you should generate a source map with your pre-compiled Less files.</p>
 <h4 class="docs-heading"><span class="anchor-target" id="less-options-generate-a-source-map"></span>
 <a href="#less-options-generate-a-source-map" name="less-options-generate-a-source-map" class="anchor glyphicon glyphicon-link"></a>Generate a Source Map</h4>
@@ -1187,7 +1281,7 @@ the npm import plugin implementation.</p>
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.6.0</li>
+      <li>Currently v3.7.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

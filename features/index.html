@@ -2127,6 +2127,17 @@ but if we call it with <em>two</em> arguments, we will get the second definition
   }
 }
 </code></pre>
+<p>Note that you can also achieve a similar pattern by using the actual <code>if()</code> function and a variable call. As in:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@dr:</span> <span class="hljs-function">if</span>(<span class="hljs-variable">@my-option</span> = true, {
+  <span class="hljs-tag">button</span> {
+    <span class="hljs-attribute">color</span>: white;
+  }
+  a {
+    <span class="hljs-attribute">color</span>: blue;
+  }
+});
+<span class="hljs-variable">@dr</span>();
+</code></pre>
 
 
         <br>
@@ -2937,7 +2948,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.6.0</li>
+      <li>Currently v3.7.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

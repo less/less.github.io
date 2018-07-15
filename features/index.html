@@ -2661,7 +2661,7 @@ install: <span class="hljs-function"><span class="hljs-keyword">function</span>(
 <p>However, you would need to return a proper Less node if you wanted to, say, multiply that against other values or do other Less operations. Otherwise the output in your stylesheet is plain text (which may be fine for your purposes).</p>
 <p>Meaning, this is more correct:</p>
 <pre><code class="lang-js">functions.add(<span class="hljs-string">&apos;pi&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">return</span> less.dimension(<span class="hljs-built_in">Math</span>.PI);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> tree.Dimension(<span class="hljs-built_in">Math</span>.PI);
 });
 </code></pre>
 <p><em>Note: A dimension is a number with or without a unit, like &quot;10px&quot;, which would be <code>less.Dimension(10, &quot;px&quot;)</code>. For a list of units, see the <a href="TODO">Less API</a>.</em></p>
@@ -2738,7 +2738,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 </code></pre>
 <p>Later you could do something like:</p>
 <pre><code class="lang-js">functions.add(<span class="hljs-string">&apos;retrieve&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">val</span>) </span>{
-    <span class="hljs-keyword">return</span> less.value(collection);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> tree.Value(collection);
 });
 </code></pre>
 <pre><code class="lang-less"><span class="hljs-class">.get-my-values</span> {
@@ -2948,7 +2948,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.7.0</li>
+      <li>Currently v3.7.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

@@ -55,7 +55,6 @@
 <li><a href="#less-options">Less.js Options</a><ul class="nav"><li><a href="#less-options-cross-platform-options">Cross-Platform Options</a></li>
 <li><a href="#less-options-include-paths">Include Paths</a></li>
 <li><a href="#less-options-rootpath">Rootpath</a></li>
-<li><a href="#less-options-relative-urls">Relative URLs</a></li>
 <li><a href="#less-options-math">Math</a></li>
 <li><a href="#less-options-strict-units">Strict Units</a></li>
 <li><a href="#less-options-source-map-options">Source Map Options</a></li></ul></li>
@@ -529,8 +528,8 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </table>
 <p>Allows you to add a path to every generated import and url in your css. This does not affect Less import statements that are processed, just ones that are left in the output css.</p>
 <p>For instance, if all the images the css use are in a folder called resources, you can use this option to add this on to the URL&apos;s and then have the name of that folder configurable.</p>
-<h3 class="docs-heading"><span class="anchor-target" id="less-options-relative-urls"></span>
-<a href="#less-options-relative-urls" name="less-options-relative-urls" class="anchor glyphicon glyphicon-link"></a>Relative URLs</h3>
+<h4 class="docs-heading"><span class="anchor-target" id="less-options-rewrite-urls"></span>
+<a href="#less-options-rewrite-urls" name="less-options-rewrite-urls" class="anchor glyphicon glyphicon-link"></a>Rewrite URLs</h4>
 <table>
 <thead>
 <tr>
@@ -540,29 +539,50 @@ If you use the watcher or call refresh with reload set to true, then the cache w
 </thead>
 <tbody>
 <tr>
-<td><code>lessc -ru</code><br><code>lessc --relative-urls</code></td>
-<td><code>{ relativeUrls: true }</code></td>
+<td><code>lessc -ru=off</code><br><code>lessc --rewrite-urls=off</code></td>
+<td><code>{ rewriteUrls: &apos;off&apos; }</code></td>
+</tr>
+<tr>
+<td><code>lessc -ru=all</code><br><code>lessc --rewrite-urls=all</code></td>
+<td><code>{ rewriteUrls: &apos;all&apos; }</code></td>
+</tr>
+<tr>
+<td><code>lessc -ru=local</code><br><code>lessc --rewrite-urls=local</code></td>
+<td><code>{ rewriteUrls: &apos;local&apos; }</code></td>
 </tr>
 </tbody>
 </table>
-<p>By default URLs are kept as-is, so if you import a file in a sub-directory that references an image, exactly the same URL will be output in the css. This option allows you to re-write URL&apos;s in imported files so that the URL is always relative to the base imported file. E.g.</p>
-<pre><code class="lang-less"># main.less
-@import &quot;files/backgrounds.less&quot;;
-# files/backgrounds.less
-.icon-1 {
-  background-image: url(&apos;images/lamp-post.png&apos;);
+<p>By default URLs are kept as-is (<code>off</code>), so if you import a file in a sub-directory that references an image, exactly the same URL will be output in the css. This option allows you to rewrite URLs in imported files so that the URL is always relative to the base file that has been passed to Less. E.g.</p>
+<pre><code class="lang-css"><span class="hljs-comment">/* main.less */</span>
+<span class="hljs-at_rule">@import</span> <span class="hljs-string">&quot;global/fonts.less&quot;</span>;
+</code></pre>
+<pre><code class="lang-css"><span class="hljs-comment">/* global/fonts.less */</span>
+<span class="hljs-at_rule">@font-face</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&apos;MyFont&apos;</span>;
+  <span class="hljs-attribute">src</span>: url(<span class="hljs-string">&apos;myfont/myfont.woff2&apos;</span>) <span class="hljs-function">format</span>(<span class="hljs-string">&apos;woff2&apos;</span>);
 }
 </code></pre>
-<p>this will output the following normally</p>
-<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
-  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;images/lamp-post.png&apos;</span>);
+<p>With nothing set or with <code>rewriteUrls:  &apos;off&apos;</code>, compiling <code>main.less</code> will output:</p>
+<pre><code class="lang-css"><span class="hljs-comment">/* main.less */</span>
+<span class="hljs-comment">/* global/fonts.less */</span>
+<span class="hljs-at_rule">@font-face</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&apos;MyFont&apos;</span>;
+  <span class="hljs-attribute">src</span>: url(<span class="hljs-string">&apos;myfont/myfont.woff2&apos;</span>) <span class="hljs-function">format</span>(<span class="hljs-string">&apos;woff2&apos;</span>);
 }
 </code></pre>
-<p>but with <code>relativeUrls: true</code>, it will instead output</p>
-<pre><code class="lang-css"><span class="hljs-class">.icon-1</span> {
-  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;files/images/lamp-post.png&apos;</span>);
+<p>With <code>rewriteUrls: &apos;all&apos;</code>, it will output:</p>
+<pre><code class="lang-css"><span class="hljs-comment">/* main.less */</span>
+<span class="hljs-comment">/* global/fonts.less */</span>
+<span class="hljs-at_rule">@font-face</span> {
+  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">&apos;MyFont&apos;</span>;
+  <span class="hljs-attribute">src</span>: url(<span class="hljs-string">&apos;./global/myfont/myfont.woff2&apos;</span>) <span class="hljs-function">format</span>(<span class="hljs-string">&apos;woff2&apos;</span>);
 }
 </code></pre>
+<p>With <code>rewriteUrls: &apos;local&apos;</code>, it will only rewrite URLs that are explicitly relative (those starting with a <code>.</code>):</p>
+<pre><code class="lang-css"><span class="hljs-attribute">url</span>(<span class="hljs-string">&apos;./myfont/myfont.woff2&apos;</span>) <span class="hljs-comment">/* becomes */</span> url(<span class="hljs-string">&apos;./global/myfont/myfont.woff2&apos;</span>)
+url(<span class="hljs-string">&apos;myfont/myfont.woff2&apos;</span>) <span class="hljs-comment">/* stays */</span> url(<span class="hljs-string">&apos;myfont/myfont.woff2&apos;</span>)
+</code></pre>
+<p>This can be useful in case you&apos;re combining Less with <a href="https://github.com/css-modules/css-modules">CSS Modules</a> which use similar resolving semantics like Node.js.</p>
 <p>You may also want to consider using the data-uri function instead of this option, which will embed images into the css.</p>
 <h3 class="docs-heading"><span class="anchor-target" id="less-options-math"></span>
 <a href="#less-options-math" name="less-options-math" class="anchor glyphicon glyphicon-link"></a>Math</h3>
@@ -656,6 +676,8 @@ Example:</p>
 <h4 class="docs-heading"><span class="anchor-target" id="less-options-strict-math-deprecated-"></span>
 <a href="#less-options-strict-math-deprecated-" name="less-options-strict-math-deprecated-" class="anchor glyphicon glyphicon-link"></a>Strict Math (Deprecated)</h4>
 <p><em>This has been replaced by the <a href="#less-options-math"><code>math</code></a> option.</em></p>
+<h4 class="docs-heading"><span class="anchor-target" id="less-options-relative-urls-deprecated-"></span>
+<a href="#less-options-relative-urls-deprecated-" name="less-options-relative-urls-deprecated-" class="anchor glyphicon glyphicon-link"></a>Relative URLs (deprecated)</h4>
 <table>
 <thead>
 <tr>
@@ -665,31 +687,12 @@ Example:</p>
 </thead>
 <tbody>
 <tr>
-<td><code>lessc -sm=on</code><br><code>lessc --strict-math=on</code></td>
-<td><code>{ strictMath: true }</code></td>
+<td><code>lessc -ru</code><br><code>lessc --relative-urls</code></td>
+<td><code>{ relativeUrls: true }</code></td>
 </tr>
 </tbody>
 </table>
-<p>Defaults to off/false.</p>
-<p>With this option off (default), Less will try and process all math in your css, e.g. in:</p>
-<pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">6</span> / <span class="hljs-number">3</span>;
-}
-</code></pre>
-<p><code>6 / 3</code> will result in <code>2</code>.</p>
-<p>With strict math on, only math that is inside un-necessary parenthesis will be processed. For instance:</p>
-<pre><code class="lang-less"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">6</span> / <span class="hljs-number">3</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>;
-  <span class="hljs-attribute">height</span>: (<span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>);
-}
-</code></pre>
-<pre><code class="lang-css"><span class="hljs-class">.class</span> {
-  <span class="hljs-attribute">grid-column</span>: <span class="hljs-number">6</span> / <span class="hljs-number">3</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">40px</span> + <span class="hljs-number">2px</span>;
-  <span class="hljs-attribute">height</span>: <span class="hljs-number">42px</span>;
-}
-</code></pre>
+<p><em>Has been replaced by <code>rewriteUrls: &quot;all&quot;</code></em></p>
 <h3 class="docs-heading"><span class="anchor-target" id="less-options-strict-units"></span>
 <a href="#less-options-strict-units" name="less-options-strict-units" class="anchor glyphicon glyphicon-link"></a>Strict Units</h3>
 <table>
@@ -1281,7 +1284,7 @@ the npm import plugin implementation.</p>
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.7.1</li>
+      <li>Currently v3.8.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

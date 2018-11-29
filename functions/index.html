@@ -47,6 +47,7 @@
 <li><a href="#string-functions-replace">replace</a></li></ul></li>
 <li><a href="#list-functions">List Functions</a><ul class="nav"><li><a href="#list-functions-length">length</a></li>
 <li><a href="#list-functions-extract">extract</a></li>
+<li><a href="#list-functions-range">range</a></li>
 <li><a href="#list-functions-each">each</a></li></ul></li>
 <li><a href="#math-functions">Math Functions</a><ul class="nav"><li><a href="#math-functions-ceil">ceil</a></li>
 <li><a href="#math-functions-floor">floor</a></li>
@@ -452,10 +453,12 @@ bar-2;
 <blockquote>
 <p>Returns the number of elements in a value list.</p>
 </blockquote>
-<p>Parameters: <code>list</code> - a comma or space separated list of values.
-Returns: an integer number of elements in a list</p>
-<p>Example: <code>length(1px solid #0080ff);</code>
-Output: <code>3</code></p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>list</code> - a comma or space separated list of values.</li>
+</ul>
+<p>Example: <code>length(1px solid #0080ff);</code></p>
+<p>Output: <code>3</code></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@list:</span> <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;tomato&quot;</span>, <span class="hljs-string">&quot;potato&quot;</span>, <span class="hljs-string">&quot;peach&quot;</span>;
 <span class="hljs-attribute">n</span>: <span class="hljs-function">length</span>(<span class="hljs-variable">@list</span>);
@@ -467,22 +470,54 @@ Output: <code>3</code></p>
 <blockquote>
 <p>Returns the value at a specified position in a list.</p>
 </blockquote>
-<p>Parameters:
-<code>list</code> - a comma or space separated list of values.
-<code>index</code> - an integer that specifies a position of a list element to return.
-Returns: a value at the specified position in a list.</p>
-<p>Example: <code>extract(8px dotted red, 2);</code>
-Output: <code>dotted</code></p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>list</code> - a comma or space separated list of values.</li>
+<li><code>index</code> - an integer that specifies a position of a list element to return.</li>
+</ul>
+<p>Example: <code>extract(8px dotted red, 2);</code></p>
+<p>Output: <code>dotted</code></p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@list:</span> apple, pear, coconut, orange;
 <span class="hljs-attribute">value</span>: <span class="hljs-function">extract</span>(<span class="hljs-variable">@list</span>, <span class="hljs-number">3</span>);
 </code></pre>
 <p>Output:</p>
 <pre><code>value: coconut;
-</code></pre><h3 class="docs-heading"><span class="anchor-target" id="list-functions-each"></span>
+</code></pre><h3 class="docs-heading"><span class="anchor-target" id="list-functions-range"></span>
+<a href="#list-functions-range" name="list-functions-range" class="anchor glyphicon glyphicon-link"></a>range</h3>
+<p><em>Released v3.9.0</em></p>
+<blockquote>
+<p>Generate a list spanning a range of values</p>
+</blockquote>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>start</code> - (optional) The start value <em>e.g. 1 or 1px</em></li>
+<li><code>end</code> - The end value <em>e.g. 5px</em></li>
+<li><code>step</code> - (optional) The amount to increment by</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">value</span>: <span class="hljs-function">range</span>(<span class="hljs-number">4</span>);
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">value</span>: <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>;
+</code></pre>
+<p>The output of each value in the range will be the same unit as the <code>end</code> value. For example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">value</span>: <span class="hljs-function">range</span>(<span class="hljs-number">10px</span>, <span class="hljs-number">30px</span>, <span class="hljs-number">10</span>);
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">value</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">30px</span>;
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="list-functions-each"></span>
 <a href="#list-functions-each" name="list-functions-each" class="anchor glyphicon glyphicon-link"></a>each</h3>
 <p><em>Released v3.7.0</em></p>
+<blockquote>
 <p>Bind the evaluation of a ruleset to each member of a list.</p>
+</blockquote>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>list</code> - a comma or space separated list of values.</li>
+<li><code>rules</code> - An anonymous ruleset/mixin</li>
+</ul>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-variable">@selectors:</span> blue, green, red;
 
@@ -548,6 +583,31 @@ Output: <code>dotted</code></p>
 }
 </code></pre>
 <p>The <code>each()</code> function will take the variable names defined in the anonymous mixin and bind them to the <code>@value</code>, <code>@key</code> and <code>@index</code> values, in that order. If you only write <code>each(@list, #(@value) {})</code>, then neither <code>@key</code> nor <code>@index</code> will be defined.</p>
+<h4 class="docs-heading"><span class="anchor-target" id="list-functions-creating-a-for-loop-using-range-and-each"></span>
+<a href="#list-functions-creating-a-for-loop-using-range-and-each" name="list-functions-creating-a-for-loop-using-range-and-each" class="anchor glyphicon glyphicon-link"></a>Creating a <code>for</code> loop using <code>range</code> and <code>each</code></h4>
+<p><em>Requires Less v3.9.0</em></p>
+<p>You can emulate a <code>for</code> loop simply by generating a numerical list and using <code>each</code> to expand it to a ruleset.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-tag">each</span>(<span class="hljs-function">range</span>(<span class="hljs-number">4</span>), {
+  <span class="hljs-class">.col-@{value}</span> {
+    <span class="hljs-attribute">height</span>: (<span class="hljs-variable">@value</span> * <span class="hljs-number">50px</span>);
+  }
+});
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.col-1</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+}
+<span class="hljs-class">.col-2</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+}
+<span class="hljs-class">.col-3</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+}
+<span class="hljs-class">.col-4</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre>
 
 
       <br>
@@ -2481,7 +2541,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.8.1</li>
+      <li>Currently v3.9.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

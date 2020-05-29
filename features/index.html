@@ -61,7 +61,7 @@
 <li><a href="#extend-feature-use-cases-for-extend">Use Cases for Extend</a></li></ul></li>
 <li><a href="#merge-feature">Merge</a><ul class="nav"><li><a href="#merge-feature-comma">Comma</a></li>
 <li><a href="#merge-feature-space">Space</a></li></ul></li>
-<li><a href="#mixins-feature">Mixins</a><ul class="nav"><li><a href="#mixins-feature-not-outputting-the-mixin">Not Outputting the Mixin</a></li>
+<li><a href="#mixins-feature">Mixins</a><ul class="nav"><li><a href="#mixins-feature-mixins-with-parentheses">Mixins With Parentheses</a></li>
 <li><a href="#mixins-feature-selectors-in-mixins">Selectors in Mixins</a></li>
 <li><a href="#mixins-feature-namespaces">Namespaces</a></li>
 <li><a href="#mixins-feature-guarded-namespaces">Guarded Namespaces</a></li>
@@ -1278,12 +1278,13 @@ For example, when using Modernizr, you might want to specify different rules bas
   <span class="hljs-attribute">color</span>: red;
 }
 </code></pre>
-<p>Currently and historically, the parentheses in a mixin call are optional, but optional parentheses are deprecated and will be required in a future release.</p>
+<p>Historically, the parentheses in a mixin call are optional, but optional parentheses are deprecated and will be required in a future release.</p>
 <pre><code class="lang-less"><span class="hljs-class">.a</span>(); 
-<span class="hljs-class">.a</span>;  <span class="hljs-comment">// currently works, but deprecated; don&apos;t use</span>
+<span class="hljs-class">.a</span>;    <span class="hljs-comment">// currently works, but deprecated; don&apos;t use</span>
+<span class="hljs-class">.a</span> (); <span class="hljs-comment">// white-space before parentheses is also deprecated</span>
 </code></pre>
-<h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-not-outputting-the-mixin"></span>
-<a href="#mixins-feature-not-outputting-the-mixin" name="mixins-feature-not-outputting-the-mixin" class="anchor glyphicon glyphicon-link"></a>Not Outputting the Mixin</h2>
+<h2 class="docs-heading"><span class="anchor-target" id="mixins-feature-mixins-with-parentheses"></span>
+<a href="#mixins-feature-mixins-with-parentheses" name="mixins-feature-mixins-with-parentheses" class="anchor glyphicon glyphicon-link"></a>Mixins With Parentheses</h2>
 <p>If you want to create a mixin but you do not want that mixin to be in your CSS output, put parentheses after the mixin definition.</p>
 <pre><code class="lang-less"><span class="hljs-class">.my-mixin</span> {
   <span class="hljs-attribute">color</span>: black;
@@ -1333,16 +1334,15 @@ For example, when using Modernizr, you might want to specify different rules bas
 }
 
 <span class="hljs-class">.c</span> {
-  <span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>();
+  <span class="hljs-id">#outer</span><span class="hljs-class">.inner</span>();
 }
 </code></pre>
-<p>Both <code>&gt;</code> and whitespace are optional</p>
-<pre><code class="lang-less"><span class="hljs-comment">// all do the same thing</span>
-<span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>();
-<span class="hljs-id">#outer</span> <span class="hljs-class">.inner</span>();
-<span class="hljs-id">#outer</span><span class="hljs-class">.inner</span>();
+<p>Note: legacy Less syntax allows <code>&gt;</code> and whitespace between namespaces and mixins. This syntax is deprecated and may be removed. Currently, these do the same thing.</p>
+<pre><code class="lang-less"><span class="hljs-id">#outer</span> &gt; <span class="hljs-class">.inner</span>(); <span class="hljs-comment">// deprecated</span>
+<span class="hljs-id">#outer</span> <span class="hljs-class">.inner</span>();   <span class="hljs-comment">// deprecated</span>
+<span class="hljs-id">#outer</span><span class="hljs-class">.inner</span>();    <span class="hljs-comment">// preferred</span>
 </code></pre>
-<p>Namespacing your mixins like reduces conflict with other library mixins or user mixins, but it can also be a way to &quot;organize&quot; groups of mixins.</p>
+<p>Namespacing your mixins can reduce conflict with other library mixins or user mixins, but it can also be a way to &quot;organize&quot; groups of mixins.</p>
 <p>Example:</p>
 <pre><code class="lang-less"><span class="hljs-id">#my-library</span> {
   <span class="hljs-class">.my-mixin</span>() {
@@ -1376,7 +1376,7 @@ For example, when using Modernizr, you might want to specify different rules bas
 <a href="#mixins-feature-the-important-keyword" name="mixins-feature-the-important-keyword" class="anchor glyphicon glyphicon-link"></a>The <code>!important</code> keyword</h2>
 <p>Use the <code>!important</code> keyword after mixin call to mark all properties inherited by it as <code>!important</code>:</p>
 <p>Example:</p>
-<pre><code class="lang-less"><span class="hljs-class">.foo</span> (<span class="hljs-variable">@bg</span>: <span class="hljs-hexcolor">#f5f5f5</span>, <span class="hljs-variable">@color</span>: <span class="hljs-hexcolor">#900</span>) {
+<pre><code class="lang-less"><span class="hljs-class">.foo</span> (<span class="hljs-variable">@bg</span>: <span class="hljs-hexcolor">#f5f5f5</span>; <span class="hljs-variable">@color</span>: <span class="hljs-hexcolor">#900</span>) {
   <span class="hljs-attribute">background</span>: <span class="hljs-variable">@bg</span>;
   <span class="hljs-attribute">color</span>: <span class="hljs-variable">@color</span>;
 }
@@ -2948,7 +2948,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.9.0</li>
+      <li>Currently v3.11.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

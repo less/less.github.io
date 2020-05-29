@@ -253,7 +253,7 @@ Updated: v3.6.0</p>
 
 <span class="hljs-tag">div</span> {
     <span class="hljs-attribute">margin</span>: <span class="hljs-function">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), <span class="hljs-number">0</span>, <span class="hljs-number">3px</span>);
-    <span class="hljs-attribute">color</span>:  <span class="hljs-function">if</span>((<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@some</span>)), <span class="hljs-function">darken</span>(<span class="hljs-variable">@some</span>, <span class="hljs-number">10%</span>), black);
+    <span class="hljs-attribute">color</span>:  <span class="hljs-function">if</span>((<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@some</span>)), <span class="hljs-variable">@some</span>, black);
 }
 </code></pre>
 <p>Result:</p>
@@ -262,7 +262,7 @@ Updated: v3.6.0</p>
     <span class="hljs-attribute">color</span>:  black;
 }
 </code></pre>
-<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.</p>
+<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="/features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.</p>
 <pre><code class="lang-less"><span class="hljs-attribute">if</span>(not (true), foo, bar);
 <span class="hljs-attribute">if</span>((true) and (<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), foo, bar);
 <span class="hljs-attribute">if</span>((false) or (<span class="hljs-function">isstring</span>(<span class="hljs-string">&quot;boo!&quot;</span>)), foo, bar);
@@ -662,7 +662,7 @@ bar-2;
 <p>Converts a floating point number into a percentage string.</p>
 </blockquote>
 <p>Parameters: <code>number</code> - a floating point number.</p>
-<p>Returns: <code>string</code></p>
+<p>Returns: <code>number</code></p>
 <p>Example: <code>percentage(0.5)</code></p>
 <p>Output: <code>50%</code></p>
 <h3 class="docs-heading"><span class="anchor-target" id="math-functions-round"></span>
@@ -2541,7 +2541,7 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.9.0</li>
+      <li>Currently v3.11.1</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

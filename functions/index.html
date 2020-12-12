@@ -19,8 +19,8 @@
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-  <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
 <!-- Favicons -->
@@ -75,7 +75,8 @@
 <li><a href="#type-functions-isem">isem</a></li>
 <li><a href="#type-functions-ispercentage">ispercentage</a></li>
 <li><a href="#type-functions-isunit">isunit</a></li>
-<li><a href="#type-functions-isruleset">isruleset</a></li></ul></li>
+<li><a href="#type-functions-isruleset">isruleset</a></li>
+<li><a href="#type-functions-isdefined">isdefined</a></li></ul></li>
 <li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li>
 <li><a href="#misc-functions-image-size">image-size</a></li>
 <li><a href="#misc-functions-image-width">image-width</a></li>
@@ -270,7 +271,7 @@ Updated: v3.6.0</p>
 </code></pre>
 <p>Note: before Less 3.6, the condition required a set of parentheses.</p>
 <pre><code class="lang-less"><span class="hljs-attribute">if</span>(<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>, blue, green);   <span class="hljs-comment">// Causes an error in 3.0-3.5.3</span>
-<span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// Ok 3.0+</span>
+<span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// Ok 3.6+</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="logical-functions-boolean"></span>
 <a href="#logical-functions-boolean" name="logical-functions-boolean" class="anchor glyphicon glyphicon-link"></a>boolean</h3>
@@ -398,7 +399,7 @@ The function escapes all special characters except <code>()&apos;~!</code>. Spac
 <blockquote>
 <p>Replaces a text within a string.</p>
 </blockquote>
-<p>Released <a href="CHANGELOG.md">v1.7.0</a></p>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
 <p>Parameters:</p>
 <ul>
 <li><code>string</code>: The string to search and replace in.</li>
@@ -1105,6 +1106,18 @@ NaN%
 <span class="hljs-attribute">isruleset</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(keyword);  <span class="hljs-comment">// false</span>
 <span class="hljs-attribute">isruleset</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 class="docs-heading"><span class="anchor-target" id="type-functions-isdefined"></span>
+<a href="#type-functions-isdefined" name="type-functions-isdefined" class="anchor glyphicon glyphicon-link"></a>isdefined</h3>
+<p><em>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v4.0.0</a></em></p>
+<blockquote>
+<p>Returns <code>true</code> if a variable is defined, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>variable</code> - a variable being evaluated.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@foo:</span> <span class="hljs-number">1</span>;
+<span class="hljs-attribute">isdefined</span>(<span class="hljs-variable">@foo</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isdefined</span>(<span class="hljs-variable">@bar</span>);     <span class="hljs-comment">// false</span>
 </code></pre>
 
 
@@ -2542,14 +2555,14 @@ NaN%
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v3.12.0</li>
+      <li>Currently v3.13.0</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
       <li class="muted">&#xB7;</li>
-      <li><a href="CHANGELOG.md">Changelog</a></li>
+      <li><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
       
     </ul>
   </div>

@@ -6402,6 +6402,7 @@ hr {
 .docs-header code {
   background: #0b1a28;
   padding: 2px 4px;
+  white-space: pre-wrap;
 }
 .docs-header p {
   font-weight: 300;

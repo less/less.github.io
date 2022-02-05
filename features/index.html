@@ -2643,7 +2643,7 @@ but if we call it with <em>two</em> arguments, we will get the second definition
 <p>Note that other Node.js CommonJS conventions, like <code>require()</code> are not available in the browser. Keep this in mind when writing cross-platform plugins.</p>
 <p>What can you do with a plugin? A lot, but let&apos;s start with the basics. We&apos;ll focus first on what you might put inside the <code>install</code> function. Let&apos;s say you write this:</p>
 <pre><code class="lang-js"><span class="hljs-comment">// my-plugin.js</span>
-install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{
+<span class="hljs-attr">install</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{
     functions.add(<span class="hljs-string">&apos;pi&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
         <span class="hljs-keyword">return</span> <span class="hljs-built_in">Math</span>.PI;
     });
@@ -2756,29 +2756,29 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
 <pre><code class="lang-js">{
     <span class="hljs-comment">/* Called immediately after the plugin is 
      * first imported, only once. */</span>
-    install: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{ },
+    <span class="hljs-attr">install</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">less, pluginManager, functions</span>) </span>{ },
 
     <span class="hljs-comment">/* Called for each instance of your @plugin. */</span>
-    use: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context</span>) </span>{ },
+    <span class="hljs-attr">use</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context</span>) </span>{ },
 
     <span class="hljs-comment">/* Called for each instance of your @plugin, 
      * when rules are being evaluated.
      * It&apos;s just later in the evaluation lifecycle */</span>
-    <span class="hljs-built_in">eval</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context</span>) </span>{ },
+    <span class="hljs-attr">eval</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">context</span>) </span>{ },
 
     <span class="hljs-comment">/* Passes an arbitrary string to your plugin 
      * e.g. @plugin (args) &quot;file&quot;;
      * This string is not parsed for you, 
      * so it can contain (almost) anything */</span>
-    setOptions: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">argumentString</span>) </span>{ },
+    <span class="hljs-attr">setOptions</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">argumentString</span>) </span>{ },
 
     <span class="hljs-comment">/* Set a minimum Less compatibility string
      * You can also use an array, as in [3, 0] */</span>
-    minVersion: [<span class="hljs-string">&apos;3.0&apos;</span>],
+    <span class="hljs-attr">minVersion</span>: [<span class="hljs-string">&apos;3.0&apos;</span>],
 
     <span class="hljs-comment">/* Used for lessc only, to explain 
      * options in a Terminal */</span>
-    printUsage: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ },
+    <span class="hljs-attr">printUsage</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ },
 
 }
 </code></pre>
@@ -2952,7 +2952,7 @@ functions.add(<span class="hljs-string">&apos;store&apos;</span>, <span class="h
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v4.1.1</li>
+      <li>Currently v4.1.2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

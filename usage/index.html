@@ -290,35 +290,35 @@ lessc --depends
 <pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet/less&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;styles.less&quot;</span> /&gt;</span>
 </code></pre>
 <p>Next, <a href="https://github.com/less/less.js/archive/master.zip">download less.js</a> and include it in a <code>&lt;script&gt;&lt;/script&gt;</code> tag in the <code>&lt;head&gt;</code> element of your page:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/javascript&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <h3 class="docs-heading"><span class="anchor-target" id="using-less-in-the-browser-setting-options"></span>
 <a href="#using-less-in-the-browser-setting-options" name="using-less-in-the-browser-setting-options" class="anchor glyphicon glyphicon-link"></a>Setting Options</h3>
 <p>You can set options either programmatically, by setting them on a less object <strong>before</strong> the script tag - this then affects all initial link tags and programmatic usage of less.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   less = {
-    env: <span class="hljs-string">&quot;development&quot;</span>,
-    async: <span class="hljs-literal">false</span>,
-    fileAsync: <span class="hljs-literal">false</span>,
-    poll: <span class="hljs-number">1000</span>,
-    functions: {},
-    dumpLineNumbers: <span class="hljs-string">&quot;comments&quot;</span>,
-    relativeUrls: <span class="hljs-literal">false</span>,
-    rootpath: <span class="hljs-string">&quot;:/a.com/&quot;</span>
+    <span class="hljs-attr">env</span>: <span class="hljs-string">&quot;development&quot;</span>,
+    <span class="hljs-attr">async</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">fileAsync</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">poll</span>: <span class="hljs-number">1000</span>,
+    <span class="hljs-attr">functions</span>: {},
+    <span class="hljs-attr">dumpLineNumbers</span>: <span class="hljs-string">&quot;comments&quot;</span>,
+    <span class="hljs-attr">relativeUrls</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">rootpath</span>: <span class="hljs-string">&quot;:/a.com/&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>The other way is to specify the options on the script tag, e.g.</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   less = {
-    env: <span class="hljs-string">&quot;development&quot;</span>
+    <span class="hljs-attr">env</span>: <span class="hljs-string">&quot;development&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span> <span class="hljs-attr">data-env</span>=<span class="hljs-string">&quot;development&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span> <span class="hljs-attr">data-env</span>=<span class="hljs-string">&quot;development&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>Or for brevity they can be set as attributes on the script and link tags:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span> <span class="hljs-attr">data-poll</span>=<span class="hljs-string">&quot;1000&quot;</span> <span class="hljs-attr">data-relative-urls</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span> <span class="hljs-attr">data-poll</span>=<span class="hljs-string">&quot;1000&quot;</span> <span class="hljs-attr">data-relative-urls</span>=<span class="hljs-string">&quot;false&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">data-dump-line-numbers</span>=<span class="hljs-string">&quot;all&quot;</span> <span class="hljs-attr">data-global-vars</span>=<span class="hljs-string">&apos;{ &quot;myvar&quot;: &quot;#ddffee&quot;, &quot;mystr&quot;: &quot;\&quot;quoted\&quot;&quot; }&apos;</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet/less&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text/css&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;less/styles.less&quot;</span>&gt;</span>
 </code></pre>
 <!-- 
@@ -350,9 +350,9 @@ The important points for attribute options are..
 <h3 class="docs-heading"><span class="anchor-target" id="using-less-in-the-browser-watch-mode"></span>
 <a href="#using-less-in-the-browser-watch-mode" name="using-less-in-the-browser-watch-mode" class="anchor glyphicon glyphicon-link"></a>Watch Mode</h3>
 <p>To enable Watch mode, option <code>env</code> must be set to <code>development</code>. Then AFTER the less.js file is included, call <code>less.watch()</code>, like this:</p>
-<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">less = { env: <span class="hljs-string">&apos;development&apos;</span>};</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="undefined">less.watch();</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">less = { <span class="hljs-attr">env</span>: <span class="hljs-string">&apos;development&apos;</span>};</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span>less.watch();<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <p>Alternatively, you can enable Watch mode temporarily by appending <code>#!watch</code> to the URL.</p>
 <h3 class="docs-heading"><span class="anchor-target" id="using-less-in-the-browser-modify-variables"></span>
@@ -372,24 +372,24 @@ The important points for attribute options are..
 <a href="#using-less-in-the-browser-options" name="using-less-in-the-browser-options" class="anchor glyphicon glyphicon-link"></a>Options</h3>
 <p>Set options in a global <code>less</code> object <strong>before</strong> loading the less.js script:</p>
 <pre><code class="lang-html"><span class="hljs-comment">&lt;!-- set options before less.js script --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
   less = {
-    env: <span class="hljs-string">&quot;development&quot;</span>,
-    logLevel: <span class="hljs-number">2</span>,
-    async: <span class="hljs-literal">false</span>,
-    fileAsync: <span class="hljs-literal">false</span>,
-    poll: <span class="hljs-number">1000</span>,
-    functions: {},
-    dumpLineNumbers: <span class="hljs-string">&quot;comments&quot;</span>,
-    relativeUrls: <span class="hljs-literal">false</span>,
-    globalVars: {
-      var1: <span class="hljs-string">&apos;&quot;quoted value&quot;&apos;</span>,
-      var2: <span class="hljs-string">&apos;regular value&apos;</span>
+    <span class="hljs-attr">env</span>: <span class="hljs-string">&quot;development&quot;</span>,
+    <span class="hljs-attr">logLevel</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-attr">async</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">fileAsync</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">poll</span>: <span class="hljs-number">1000</span>,
+    <span class="hljs-attr">functions</span>: {},
+    <span class="hljs-attr">dumpLineNumbers</span>: <span class="hljs-string">&quot;comments&quot;</span>,
+    <span class="hljs-attr">relativeUrls</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">globalVars</span>: {
+      <span class="hljs-attr">var1</span>: <span class="hljs-string">&apos;&quot;quoted value&quot;&apos;</span>,
+      <span class="hljs-attr">var2</span>: <span class="hljs-string">&apos;regular value&apos;</span>
     },
-    rootpath: <span class="hljs-string">&quot;:/a.com/&quot;</span>
+    <span class="hljs-attr">rootpath</span>: <span class="hljs-string">&quot;:/a.com/&quot;</span>
   };
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;less.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre>
 <h2 class="docs-heading"><span class="anchor-target" id="using-less-in-the-browser-options-specific-to-less-js-in-the-browser"></span>
 <a href="#using-less-in-the-browser-options-specific-to-less-js-in-the-browser" name="using-less-in-the-browser-options-specific-to-less-js-in-the-browser" class="anchor glyphicon glyphicon-link"></a>Options specific to Less.js in the browser</h2>
@@ -605,9 +605,9 @@ url(<span class="hljs-string">&apos;myfont/myfont.woff2&apos;</span>) <span clas
 </table>
 <p>Less has re-built math options to offer an in-between feature between the previous <code>strictMath</code> setting, which required parentheses all the time, and the default, which performed math in all situations.</p>
 <p>In order to cause fewer conflicts with CSS, which now liberally uses the <code>/</code> symbol between values, there is now a math mode that <em>only</em> requires parentheses for division. (This is now the default in Less 4.) &quot;Strict math&quot; has also been tweaked to operate more intuitively, although the legacy behavior is supported.</p>
-<p>The for options available for <code>math</code> are:</p>
+<p>The four options available for <code>math</code> are:</p>
 <ul>
-<li><code>always</code>  (3.x default) - Less eagerly does math</li>
+<li><code>always</code>  (3.x default) - Less does math eagerly</li>
 <li><code>parens-division</code> <strong>(4.0 default)</strong> - No division is performed outside of parens using <code>/</code> operator (but can be &quot;forced&quot; outside of parens with <code>./</code> operator - <code>./</code> is deprecated)</li>
 <li><code>parens</code> | <code>strict</code> - Parens required for all math expressions.</li>
 <li><code>strict-legacy</code> (removed in 4.0) - In some cases, math will not be evaluated if any part of the expression cannot be evaluated.</li>
@@ -1286,7 +1286,7 @@ the npm import plugin implementation.</p>
     <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v4.1.1</li>
+      <li>Currently v4.1.2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

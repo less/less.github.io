@@ -43,7 +43,7 @@
       <br><br>
       <p>Or the browser:</p>
       <code>&lt;link rel=&quot;stylesheet/less&quot; type=&quot;text/css&quot; href=&quot;styles.less&quot; /&gt;</code><br>
-      <code>&lt;script src=&quot;<a href="https://cdn.jsdelivr.net/npm/less@4.1.1">https://cdn.jsdelivr.net/npm/less@4.1.1</a>&quot; &gt;&lt;/script&gt;</code><br>
+      <code>&lt;script src=&quot;<a href="https://cdn.jsdelivr.net/npm/less@4">https://cdn.jsdelivr.net/npm/less@4</a>&quot; &gt;&lt;/script&gt;</code><br>
 
     </div>
   </div>
@@ -305,10 +305,15 @@
 <pre><code class="lang-less"><span class="hljs-variable">@base:</span> <span class="hljs-number">2cm</span> * <span class="hljs-number">3mm</span>; <span class="hljs-comment">// result is 6cm</span>
 </code></pre>
 <p>You can also do arithmetic on colors:</p>
-<pre><code class="lang-less"><span class="hljs-variable">@color:</span> <span class="hljs-hexcolor">#224488</span> / <span class="hljs-number">2</span>; <span class="hljs-comment">//results in #112244</span>
+<pre><code class="lang-less"><span class="hljs-variable">@color:</span> (<span class="hljs-hexcolor">#224488</span> / <span class="hljs-number">2</span>); <span class="hljs-comment">// result is #112244</span>
 <span class="hljs-attribute">background-color</span>: <span class="hljs-hexcolor">#112244</span> + <span class="hljs-hexcolor">#111</span>; <span class="hljs-comment">// result is #223355</span>
 </code></pre>
 <p>However, you may find Less&apos;s <a href="../functions/#color-operations">Color Functions</a> more useful.</p>
+<p>From 4.0, No division is performed outside of parens using <code>/</code> operator.</p>
+<pre><code class="lang-less"><span class="hljs-variable">@color:</span> <span class="hljs-hexcolor">#222</span> / <span class="hljs-number">2</span>; <span class="hljs-comment">// results in `#222 / 2`, not #111</span>
+<span class="hljs-attribute">background-color</span>: (<span class="hljs-hexcolor">#FFFFFF</span> / <span class="hljs-number">16</span>); <span class="hljs-comment">//results is #101010</span>
+</code></pre>
+<p>You can change <a href="../usage/#less-options-math">Math</a> setting, if you want to make it always work, but not recommended.</p>
 <h2 class="docs-heading"><span class="anchor-target" id="operations-calc-exception"></span>
 <a href="#operations-calc-exception" name="operations-calc-exception" class="anchor glyphicon glyphicon-link"></a>calc() exception</h2>
 <p><em>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v3.0.0</a></em></p>
@@ -468,7 +473,7 @@ and math in nested functions.</p>
     <p>Less and these docs are maintained by <a href="about/#team">the core Less team</a>.</p>
     <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
     <ul class="footer-links">
-      <li>Currently v4.1.1</li>
+      <li>Currently v4.1.2</li>
       
       <li class="muted">&#xB7;</li>
       <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>

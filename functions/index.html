@@ -1,0 +1,2620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Less extends CSS with dynamic behavior such as variables, mixins, operations and functions. Less runs on both the server-side (with Node.js and Rhino) or client-side (modern browsers only).
+">
+<meta name="author" content="The Core Less Team">
+
+<title>
+  Functions | Less.js
+</title>
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif|Oxygen" rel="stylesheet">
+
+<!-- Algolia DocSearch styles -->
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@docsearch/css@3">
+
+<!-- Main styles -->
+<link href="../public/css/index.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="shortcut icon" href="../public/ico/favicon.ico">
+
+  </head>
+  <body class="functions">
+
+    
+    
+    
+    <div class="container docs-container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="sidebar hidden-print" role="complementary">
+            <div id="navigation">
+  
+<ul class="nav sidenav"><li><a href="#functions-overview">Functions</a></li>
+<li><a href="#logical-functions">Logical Functions</a><ul class="nav"><li><a href="#logical-functions-if">if</a></li>
+<li><a href="#logical-functions-boolean">boolean</a></li></ul></li>
+<li><a href="#string-functions">String Functions</a><ul class="nav"><li><a href="#string-functions-escape">escape</a></li>
+<li><a href="#string-functions-e">e</a></li>
+<li><a href="#string-functions--format">% format</a></li>
+<li><a href="#string-functions-replace">replace</a></li></ul></li>
+<li><a href="#list-functions">List Functions</a><ul class="nav"><li><a href="#list-functions-length">length</a></li>
+<li><a href="#list-functions-extract">extract</a></li>
+<li><a href="#list-functions-range">range</a></li>
+<li><a href="#list-functions-each">each</a></li></ul></li>
+<li><a href="#math-functions">Math Functions</a><ul class="nav"><li><a href="#math-functions-ceil">ceil</a></li>
+<li><a href="#math-functions-floor">floor</a></li>
+<li><a href="#math-functions-percentage">percentage</a></li>
+<li><a href="#math-functions-round">round</a></li>
+<li><a href="#math-functions-sqrt">sqrt</a></li>
+<li><a href="#math-functions-abs">abs</a></li>
+<li><a href="#math-functions-sin">sin</a></li>
+<li><a href="#math-functions-asin">asin</a></li>
+<li><a href="#math-functions-cos">cos</a></li>
+<li><a href="#math-functions-acos">acos</a></li>
+<li><a href="#math-functions-tan">tan</a></li>
+<li><a href="#math-functions-atan">atan</a></li>
+<li><a href="#math-functions-pi">pi</a></li>
+<li><a href="#math-functions-pow">pow</a></li>
+<li><a href="#math-functions-mod">mod</a></li>
+<li><a href="#math-functions-min">min</a></li>
+<li><a href="#math-functions-max">max</a></li></ul></li>
+<li><a href="#type-functions">Type Functions</a><ul class="nav"><li><a href="#type-functions-isnumber">isnumber</a></li>
+<li><a href="#type-functions-isstring">isstring</a></li>
+<li><a href="#type-functions-iscolor">iscolor</a></li>
+<li><a href="#type-functions-iskeyword">iskeyword</a></li>
+<li><a href="#type-functions-isurl">isurl</a></li>
+<li><a href="#type-functions-ispixel">ispixel</a></li>
+<li><a href="#type-functions-isem">isem</a></li>
+<li><a href="#type-functions-ispercentage">ispercentage</a></li>
+<li><a href="#type-functions-isunit">isunit</a></li>
+<li><a href="#type-functions-isruleset">isruleset</a></li>
+<li><a href="#type-functions-isdefined">isdefined</a></li></ul></li>
+<li><a href="#misc-functions">Misc Functions</a><ul class="nav"><li><a href="#misc-functions-color">color</a></li>
+<li><a href="#misc-functions-image-size">image-size</a></li>
+<li><a href="#misc-functions-image-width">image-width</a></li>
+<li><a href="#misc-functions-image-height">image-height</a></li>
+<li><a href="#misc-functions-convert">convert</a></li>
+<li><a href="#misc-functions-data-uri">data-uri</a></li>
+<li><a href="#misc-functions-default">default</a></li>
+<li><a href="#misc-functions-unit">unit</a></li>
+<li><a href="#misc-functions-get-unit">get-unit</a></li>
+<li><a href="#misc-functions-svg-gradient">svg-gradient</a></li></ul></li>
+<li><a href="#color-definition">Color Definition Functions</a><ul class="nav"><li><a href="#color-definition-rgb">rgb</a></li>
+<li><a href="#color-definition-rgba">rgba</a></li>
+<li><a href="#color-definition-argb">argb</a></li>
+<li><a href="#color-definition-hsl">hsl</a></li>
+<li><a href="#color-definition-hsla">hsla</a></li>
+<li><a href="#color-definition-hsv">hsv</a></li>
+<li><a href="#color-definition-hsva">hsva</a></li></ul></li>
+<li><a href="#color-channel">Color Channel Functions</a><ul class="nav"><li><a href="#color-channel-hue">hue</a></li>
+<li><a href="#color-channel-saturation">saturation</a></li>
+<li><a href="#color-channel-lightness">lightness</a></li>
+<li><a href="#color-channel-hsvhue">hsvhue</a></li>
+<li><a href="#color-channel-hsvsaturation">hsvsaturation</a></li>
+<li><a href="#color-channel-hsvvalue">hsvvalue</a></li>
+<li><a href="#color-channel-red">red</a></li>
+<li><a href="#color-channel-green">green</a></li>
+<li><a href="#color-channel-blue">blue</a></li>
+<li><a href="#color-channel-alpha">alpha</a></li>
+<li><a href="#color-channel-luma">luma</a></li>
+<li><a href="#color-channel-luminance">luminance</a></li></ul></li>
+<li><a href="#color-operations">Color Operation Functions</a><ul class="nav"><li><a href="#color-operations-saturate">saturate</a></li>
+<li><a href="#color-operations-desaturate">desaturate</a></li>
+<li><a href="#color-operations-lighten">lighten</a></li>
+<li><a href="#color-operations-darken">darken</a></li>
+<li><a href="#color-operations-fadein">fadein</a></li>
+<li><a href="#color-operations-fadeout">fadeout</a></li>
+<li><a href="#color-operations-fade">fade</a></li>
+<li><a href="#color-operations-spin">spin</a></li>
+<li><a href="#color-operations-mix">mix</a></li>
+<li><a href="#color-operations-tint">tint</a></li>
+<li><a href="#color-operations-shade">shade</a></li>
+<li><a href="#color-operations-greyscale">greyscale</a></li>
+<li><a href="#color-operations-contrast">contrast</a></li></ul></li>
+<li><a href="#color-blending">Color Blending Functions</a><ul class="nav"><li><a href="#color-blending-multiply">multiply</a></li>
+<li><a href="#color-blending-screen">screen</a></li>
+<li><a href="#color-blending-overlay">overlay</a></li>
+<li><a href="#color-blending-softlight">softlight</a></li>
+<li><a href="#color-blending-hardlight">hardlight</a></li>
+<li><a href="#color-blending-difference">difference</a></li>
+<li><a href="#color-blending-exclusion">exclusion</a></li>
+<li><a href="#color-blending-average">average</a></li>
+<li><a href="#color-blending-negation">negation</a></li></ul></li></ul></div>
+<script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CE7IK5QL&amp;placement=lesscssorg" id="_carbonads_js"></script>
+          </div>
+        </div>
+        <div class="col-md-9" role="main">
+          
+          <header class="navbar navbar-inverse navbar-fixed-top docs-nav" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+      <ul class="nav navbar-nav">
+        
+        <li>
+          <a href="../#">Overview</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../usage/">Using Less.js</a>
+        </li>
+        
+
+        
+        <li class="active">
+          <span>Functions</span>
+        </li>
+        
+
+        
+        <li>
+          <a href="../features/">In-Depth Guide</a>
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="../tools/">Tools</a>
+        </li>
+        
+
+        
+        <li>
+          <a href="../about/">About</a>
+        </li>
+        
+       
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+
+        <li>
+          <div id="docsearch-wrapper">
+            <div id="docsearch"></div>
+          </div>
+        </li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">GitHub <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li> <a href="https://github.com/less/less-docs">Docs Repo</a> </li>
+            <li> <a href="https://github.com/less/less-docs/issues?&amp;state=open">Docs Issues</a> </li>
+            <li class="divider"></li>
+            <li> <a href="https://github.com/less/less.js.git">Less Repo</a> </li>
+            <li> <a href="https://github.com/less/less.js/issues">Less Issues</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+          
+<div class="panel docs-content">
+  
+
+
+
+<div class="docs-section">
+  <div class="">
+    <h1 id="functions-overview" class="docs-heading"><span class="anchor-target" id="functions-overview"></span>
+<a href="#functions-overview" name="functions-overview" class="anchor glyphicon glyphicon-link"></a>Functions</h1>
+  </div>
+  <p class="lead">Built-in functions supported by Less.</p>
+</div>
+
+
+
+
+  <!-- Logical Functions -->
+  <div class="docs-section">
+    
+    <h1 id="logical-functions" class="docs-heading"><span class="anchor-target" id="logical-functions"></span>
+<a href="#logical-functions" name="logical-functions" class="anchor glyphicon glyphicon-link"></a>Logical Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/logical-functions.md" data-content="logical-functionsmd" target="_blank"></a>
+
+
+
+<a id="logical-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/logical-functions.md" target="_blank">Edit the markdown source for &quot;logical-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- logical-functions.md -->
+       
+
+
+<h3 id="logical-functions-if" class="docs-heading"><span class="anchor-target" id="logical-functions-if"></span>
+<a href="#logical-functions-if" name="logical-functions-if" class="anchor glyphicon glyphicon-link"></a>if</h3>
+<blockquote>
+<p>Returns one of two values depending on a condition.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>condition</code>: A boolean expression</li>
+<li><code>value1</code>: A value returned if <code>condition</code> is true.</li>
+<li><code>value2</code>: A value returned if <code>condition</code> is not true.</li>
+</ul>
+<p>Released: v3.0.0
+Updated: v3.6.0</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@some:</span> foo;
+
+<span class="hljs-tag">div</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-function">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), <span class="hljs-number">0</span>, <span class="hljs-number">3px</span>);
+    <span class="hljs-attribute">color</span>:  <span class="hljs-function">if</span>((<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@some</span>)), <span class="hljs-variable">@some</span>, black);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">color</span>:  black;
+}
+</code></pre>
+<p>Notes: A boolean expression supported as the <code>conditional</code> parameter are the same as of <a href="/features/#mixins-feature-mixin-guards-feature">Guard Statements</a>.</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>(not (true), foo, bar);
+<span class="hljs-attribute">if</span>((true) and (<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), foo, bar);
+<span class="hljs-attribute">if</span>((false) or (<span class="hljs-function">isstring</span>(<span class="hljs-string">&quot;boo!&quot;</span>)), foo, bar);
+</code></pre>
+<p>Note: before Less 3.6, the condition required a set of parentheses.</p>
+<pre><code class="lang-less"><span class="hljs-attribute">if</span>(<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>, blue, green);   <span class="hljs-comment">// Causes an error in 3.0-3.5.3</span>
+<span class="hljs-attribute">if</span>((<span class="hljs-number">2</span> &gt; <span class="hljs-number">1</span>), blue, green); <span class="hljs-comment">// Ok 3.6+</span>
+</code></pre>
+<h3 id="logical-functions-boolean" class="docs-heading"><span class="anchor-target" id="logical-functions-boolean"></span>
+<a href="#logical-functions-boolean" name="logical-functions-boolean" class="anchor glyphicon glyphicon-link"></a>boolean</h3>
+<blockquote>
+<p>Evaluates to true or false</p>
+</blockquote>
+<p>You can &quot;store&quot; a boolean test for later evaluation in a guard or <code>if()</code>.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>condition</code>: A boolean expression</li>
+</ul>
+<p>Released: v3.0.0
+Updated: v3.6.0</p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@bg:</span> black;
+<span class="hljs-variable">@bg-light:</span> <span class="hljs-function">boolean</span>(<span class="hljs-function">luma</span>(<span class="hljs-variable">@bg</span>) &gt; <span class="hljs-number">50%</span>);
+
+<span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background</span>: <span class="hljs-variable">@bg</span>; 
+  <span class="hljs-attribute">color</span>: <span class="hljs-function">if</span>(<span class="hljs-variable">@bg-light</span>, black, white);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background</span>: black;
+  <span class="hljs-attribute">color</span>: white;
+}
+</code></pre>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- String Functions -->
+  <div class="docs-section">
+    
+    <h1 id="string-functions" class="docs-heading"><span class="anchor-target" id="string-functions"></span>
+<a href="#string-functions" name="string-functions" class="anchor glyphicon glyphicon-link"></a>String Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/string-functions.md" data-content="string-functionsmd" target="_blank"></a>
+
+
+
+<a id="string-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/string-functions.md" target="_blank">Edit the markdown source for &quot;string-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- string-functions.md -->
+       
+
+
+<h3 id="string-functions-escape" class="docs-heading"><span class="anchor-target" id="string-functions-escape"></span>
+<a href="#string-functions-escape" name="string-functions-escape" class="anchor glyphicon glyphicon-link"></a>escape</h3>
+<blockquote>
+<p>Applies <a href="http://en.wikipedia.org/wiki/Percent-encoding">URL-encoding</a> to special characters found in the input string.</p>
+</blockquote>
+<ul>
+<li>These characters are not encoded: <code>,</code>, <code>/</code>, <code>?</code>, <code>@</code>, <code>&amp;</code>, <code>+</code>, <code>&apos;</code>, <code>~</code>, <code>!</code> and <code>$</code>.</li>
+<li>Most common encoded characters are: <code>\&lt;space\&gt;</code>, <code>#</code>, <code>^</code>, <code>(</code>, <code>)</code>, <code>{</code>, <code>}</code>, <code>|</code>, <code>:</code>, <code>&gt;</code>, <code>&lt;</code>, <code>;</code>, <code>]</code>, <code>[</code> and <code>=</code>.</li>
+</ul>
+<p>Parameters: <code>string</code>: a string to escape.</p>
+<p>Returns: escaped <code>string</code> content without quotes.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">escape</span>(<span class="hljs-string">&apos;a=1&apos;</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">a</span>%<span class="hljs-number">3</span>D1
+</code></pre>
+<p>Note: if the parameter is not a string, output is not defined. The current implementation returns <code>undefined</code> on color and unchanged input on any other kind of argument. This behavior should not be relied on and may change in the future.</p>
+<h3 id="string-functions-e" class="docs-heading"><span class="anchor-target" id="string-functions-e"></span>
+<a href="#string-functions-e" name="string-functions-e" class="anchor glyphicon glyphicon-link"></a>e</h3>
+<blockquote>
+<p>String escaping.</p>
+</blockquote>
+<p>It expects string as a parameter and return its content as is, but without quotes. It can be used to output CSS value which is either not valid CSS syntax, or uses proprietary syntax which Less doesn&apos;t recognize.</p>
+<p>Parameters: <code>string</code> - a string to escape.</p>
+<p>Returns: <code>string</code> - the escaped string, without quotes.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@mscode:</span> <span class="hljs-string">&quot;ms:alwaysHasItsOwnSyntax.For.Stuff()&quot;</span> 
+filter: <span class="hljs-function">e</span>(<span class="hljs-variable">@mscode</span>);
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">filter</span>: ms:alwaysHasItsOwnSyntax.For.<span class="hljs-function">Stuff</span>();
+</code></pre>
+<h3 id="string-functions--format" class="docs-heading"><span class="anchor-target" id="string-functions--format"></span>
+<a href="#string-functions--format" name="string-functions--format" class="anchor glyphicon glyphicon-link"></a>% format</h3>
+<blockquote>
+<p>The function <code>%(string, arguments ...)</code> formats a string.</p>
+</blockquote>
+<p>The first argument is string with placeholders. All placeholders start with percentage symbol <code>%</code> followed by letter <code>s</code>,<code>S</code>,<code>d</code>,<code>D</code>,<code>a</code>, or <code>A</code>. Remaining arguments contain expressions to replace placeholders. If you need to print the percentage symbol, escape it by another percentage <code>%%</code>.</p>
+<p>Use uppercase placeholders if you need to escape special characters into their utf-8 escape codes.
+The function escapes all special characters except <code>()&apos;~!</code>. Space is encoded as <code>%20</code>. Lowercase placeholders leave special characters as they are.</p>
+<p>Placeholders:</p>
+<ul>
+<li><code>d</code>, <code>D</code>, <code>a</code>, <code>A</code> - can be replaced by any kind of argument (color, number, escaped value, expression, ...). If you use them in combination with string, the whole string will be used - including its quotes. However, the quotes are placed into the string as they are, they are not escaped by &quot;/&quot; nor anything similar.</li>
+<li><code>s</code>, <code>S</code> - can be replaced by any expression. If you use it with string, only the string value is used - quotes are omitted.</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>string</code>: format string with placeholders,</li>
+<li><code>anything</code>* : values to replace placeholders.</li>
+</ul>
+<p>Returns: formatted <code>string</code>.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">format-a-d</span>: %(<span class="hljs-string">&quot;repetitions: %a file: %d&quot;</span>, <span class="hljs-number">1</span> + <span class="hljs-number">2</span>, <span class="hljs-string">&quot;directory/file.less&quot;</span>);
+<span class="hljs-attribute">format-a-d-upper</span>: %(<span class="hljs-string">&apos;repetitions: %A file: %D&apos;</span>, <span class="hljs-number">1</span> + <span class="hljs-number">2</span>, <span class="hljs-string">&quot;directory/file.less&quot;</span>);
+<span class="hljs-attribute">format-s</span>: %(<span class="hljs-string">&quot;repetitions: %s file: %s&quot;</span>, <span class="hljs-number">1</span> + <span class="hljs-number">2</span>, <span class="hljs-string">&quot;directory/file.less&quot;</span>);
+<span class="hljs-attribute">format-s-upper</span>: %(<span class="hljs-string">&apos;repetitions: %S file: %S&apos;</span>, <span class="hljs-number">1</span> + <span class="hljs-number">2</span>, <span class="hljs-string">&quot;directory/file.less&quot;</span>);
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">format-a-d</span>: <span class="hljs-string">&quot;repetitions: 3 file: &quot;</span>directory/file.less<span class="hljs-string">&quot;&quot;</span>;
+<span class="hljs-attribute">format-a-d-upper</span>: <span class="hljs-string">&quot;repetitions: 3 file: %22directory%2Ffile.less%22&quot;</span>;
+<span class="hljs-attribute">format-s</span>: <span class="hljs-string">&quot;repetitions: 3 file: directory/file.less&quot;</span>;
+<span class="hljs-attribute">format-s-upper</span>: <span class="hljs-string">&quot;repetitions: 3 file: directory%2Ffile.less&quot;</span>;
+</code></pre>
+<h3 id="string-functions-replace" class="docs-heading"><span class="anchor-target" id="string-functions-replace"></span>
+<a href="#string-functions-replace" name="string-functions-replace" class="anchor glyphicon glyphicon-link"></a>replace</h3>
+<blockquote>
+<p>Replaces a text within a string.</p>
+</blockquote>
+<p>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v1.7.0</a></p>
+<p>Parameters:</p>
+<ul>
+<li><code>string</code>: The string to search and replace in.</li>
+<li><code>pattern</code>: A string or regular expression pattern to search for.</li>
+<li><code>replacement</code>: The string to replace the matched pattern with.</li>
+<li><code>flags</code>: (Optional) regular expression flags.</li>
+</ul>
+<p>Returns: a string with the replaced values.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">replace</span>(<span class="hljs-string">&quot;Hello, Mars?&quot;</span>, <span class="hljs-string">&quot;Mars\?&quot;</span>, <span class="hljs-string">&quot;Earth!&quot;</span>);
+<span class="hljs-attribute">replace</span>(<span class="hljs-string">&quot;One + one = 4&quot;</span>, <span class="hljs-string">&quot;one&quot;</span>, <span class="hljs-string">&quot;2&quot;</span>, <span class="hljs-string">&quot;gi&quot;</span>);
+<span class="hljs-attribute">replace</span>(<span class="hljs-string">&apos;This is a string.&apos;</span>, <span class="hljs-string">&quot;(string)\.$&quot;</span>, <span class="hljs-string">&quot;new $1.&quot;</span>);
+<span class="hljs-attribute">replace</span>(<span class="hljs-string">~&quot;bar-1&quot;</span>, <span class="hljs-string">&apos;1&apos;</span>, <span class="hljs-string">&apos;2&apos;</span>);
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css">&quot;Hello, Earth!&quot;;
+&quot;2 + 2 = 4&quot;;
+&apos;This is a new string.&apos;;
+bar-2;
+</code></pre>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- List Functions -->
+  <div class="docs-section">
+    
+    <h1 id="list-functions" class="docs-heading"><span class="anchor-target" id="list-functions"></span>
+<a href="#list-functions" name="list-functions" class="anchor glyphicon glyphicon-link"></a>List Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/list-functions.md" data-content="list-functionsmd" target="_blank"></a>
+
+
+
+<a id="list-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/list-functions.md" target="_blank">Edit the markdown source for &quot;list-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- list-functions.md -->
+       
+
+
+<h3 id="list-functions-length" class="docs-heading"><span class="anchor-target" id="list-functions-length"></span>
+<a href="#list-functions-length" name="list-functions-length" class="anchor glyphicon glyphicon-link"></a>length</h3>
+<blockquote>
+<p>Returns the number of elements in a value list.</p>
+</blockquote>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>list</code> - a comma or space separated list of values.</li>
+</ul>
+<p>Example: <code>length(1px solid #0080ff);</code></p>
+<p>Output: <code>3</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@list:</span> <span class="hljs-string">&quot;banana&quot;</span>, <span class="hljs-string">&quot;tomato&quot;</span>, <span class="hljs-string">&quot;potato&quot;</span>, <span class="hljs-string">&quot;peach&quot;</span>;
+<span class="hljs-attribute">n</span>: <span class="hljs-function">length</span>(<span class="hljs-variable">@list</span>);
+</code></pre>
+<p>Output:</p>
+<pre><code>n: 4;
+</code></pre><h3 id="list-functions-extract" class="docs-heading"><span class="anchor-target" id="list-functions-extract"></span>
+<a href="#list-functions-extract" name="list-functions-extract" class="anchor glyphicon glyphicon-link"></a>extract</h3>
+<blockquote>
+<p>Returns the value at a specified position in a list.</p>
+</blockquote>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>list</code> - a comma or space separated list of values.</li>
+<li><code>index</code> - an integer that specifies a position of a list element to return.</li>
+</ul>
+<p>Example: <code>extract(8px dotted red, 2);</code></p>
+<p>Output: <code>dotted</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@list:</span> apple, pear, coconut, orange;
+<span class="hljs-attribute">value</span>: <span class="hljs-function">extract</span>(<span class="hljs-variable">@list</span>, <span class="hljs-number">3</span>);
+</code></pre>
+<p>Output:</p>
+<pre><code>value: coconut;
+</code></pre><h3 id="list-functions-range" class="docs-heading"><span class="anchor-target" id="list-functions-range"></span>
+<a href="#list-functions-range" name="list-functions-range" class="anchor glyphicon glyphicon-link"></a>range</h3>
+<p><em>Released v3.9.0</em></p>
+<blockquote>
+<p>Generate a list spanning a range of values</p>
+</blockquote>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>start</code> - (optional) The start value <em>e.g. 1 or 1px</em></li>
+<li><code>end</code> - The end value <em>e.g. 5px</em></li>
+<li><code>step</code> - (optional) The amount to increment by</li>
+</ul>
+<p>Examples:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">value</span>: <span class="hljs-function">range</span>(<span class="hljs-number">4</span>);
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">value</span>: <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span>;
+</code></pre>
+<p>The output of each value in the range will be the same unit as the <code>end</code> value. For example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">value</span>: <span class="hljs-function">range</span>(<span class="hljs-number">10px</span>, <span class="hljs-number">30px</span>, <span class="hljs-number">10</span>);
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">value</span>: <span class="hljs-number">10px</span> <span class="hljs-number">20px</span> <span class="hljs-number">30px</span>;
+</code></pre>
+<h3 id="list-functions-each" class="docs-heading"><span class="anchor-target" id="list-functions-each"></span>
+<a href="#list-functions-each" name="list-functions-each" class="anchor glyphicon glyphicon-link"></a>each</h3>
+<p><em>Released v3.7.0</em></p>
+<blockquote>
+<p>Bind the evaluation of a ruleset to each member of a list.</p>
+</blockquote>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>list</code> - a comma or space separated list of values.</li>
+<li><code>rules</code> - An anonymous ruleset/mixin</li>
+</ul>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@selectors:</span> blue, green, red;
+
+<span class="hljs-tag">each</span>(<span class="hljs-variable">@selectors</span>, {
+  <span class="hljs-class">.sel-@{value}</span> {
+    <span class="hljs-attribute">a</span>: b;
+  }
+});
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.sel-blue</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+<span class="hljs-class">.sel-green</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+<span class="hljs-class">.sel-red</span> {
+  <span class="hljs-attribute">a</span>: b;
+}
+</code></pre>
+<p>By default, each ruleset is bound, per list member, to a <code>@value</code>, <code>@key</code>, and <code>@index</code> variable. For most lists, <code>@key</code> and <code>@index</code> will be assigned the same value (numerical position, 1-based). However, you can also use rulesets <em>themselves</em> as structured lists. As in:</p>
+<pre><code class="lang-less">
+<span class="hljs-variable">@set:</span> {
+  <span class="hljs-attribute">one</span>: blue;
+  <span class="hljs-attribute">two</span>: green;
+  <span class="hljs-attribute">three</span>: red;
+}
+.set {
+  <span class="hljs-tag">each</span>(<span class="hljs-variable">@set</span>, {
+    <span class="hljs-attribute">@{key}-@{index}</span>: <span class="hljs-variable">@value</span>;
+  });
+}
+</code></pre>
+<p>This will output:</p>
+<pre><code class="lang-css"><span class="hljs-class">.set</span> {
+  <span class="hljs-attribute">one-1</span>: blue;
+  <span class="hljs-attribute">two-2</span>: green;
+  <span class="hljs-attribute">three-3</span>: red;
+}
+</code></pre>
+<p>Since you can, of course, call mixins with guards for each ruleset call, this makes <code>each()</code> a very powerful function.</p>
+<h4 id="list-functions-setting-variable-names-in-each-" class="docs-heading"><span class="anchor-target" id="list-functions-setting-variable-names-in-each-"></span>
+<a href="#list-functions-setting-variable-names-in-each-" name="list-functions-setting-variable-names-in-each-" class="anchor glyphicon glyphicon-link"></a>Setting variable names in <code>each()</code></h4>
+<p>You don&apos;t have to use <code>@value</code>, <code>@key</code>, and <code>@index</code> in your <code>each()</code> function. In Less 3.7, with the <code>each()</code> function, Less is introducing the concept of anonymous mixins, which may expand to other parts of the syntax at a later date.</p>
+<p>An anonymous mixin uses the form of <code>#()</code> or <code>.()</code> starting with <code>.</code> or <code>#</code> just like a regular mixin would. In <code>each()</code>, you can use it like this:</p>
+<pre><code class="lang-less"><span class="hljs-class">.set-2</span>() {
+  <span class="hljs-attribute">one</span>: blue;
+  <span class="hljs-attribute">two</span>: green;
+  <span class="hljs-attribute">three</span>: red;
+}
+<span class="hljs-class">.set-2</span> {
+  <span class="hljs-comment">// Call mixin and iterate each rule</span>
+  <span class="hljs-tag">each</span>(.<span class="hljs-function">set-2</span>(), .(<span class="hljs-variable">@v</span>, <span class="hljs-variable">@k</span>, <span class="hljs-variable">@i</span>) {
+    <span class="hljs-attribute">@{k}-@{i}</span>: <span class="hljs-variable">@v</span>;
+  });
+}
+</code></pre>
+<p>This outputs, as expected:</p>
+<pre><code class="lang-css"><span class="hljs-class">.set-2</span> {
+  <span class="hljs-attribute">one-1</span>: blue;
+  <span class="hljs-attribute">two-2</span>: green;
+  <span class="hljs-attribute">three-3</span>: red;
+}
+</code></pre>
+<p>The <code>each()</code> function will take the variable names defined in the anonymous mixin and bind them to the <code>@value</code>, <code>@key</code> and <code>@index</code> values, in that order. If you only write <code>each(@list, #(@value) {})</code>, then neither <code>@key</code> nor <code>@index</code> will be defined.</p>
+<h4 id="list-functions-creating-a-for-loop-using-range-and-each" class="docs-heading"><span class="anchor-target" id="list-functions-creating-a-for-loop-using-range-and-each"></span>
+<a href="#list-functions-creating-a-for-loop-using-range-and-each" name="list-functions-creating-a-for-loop-using-range-and-each" class="anchor glyphicon glyphicon-link"></a>Creating a <code>for</code> loop using <code>range</code> and <code>each</code></h4>
+<p><em>Requires Less v3.9.0</em></p>
+<p>You can emulate a <code>for</code> loop simply by generating a numerical list and using <code>each</code> to expand it to a ruleset.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-tag">each</span>(<span class="hljs-function">range</span>(<span class="hljs-number">4</span>), {
+  <span class="hljs-class">.col-@{value}</span> {
+    <span class="hljs-attribute">height</span>: (<span class="hljs-variable">@value</span> * <span class="hljs-number">50px</span>);
+  }
+});
+</code></pre>
+<p>Outputs:</p>
+<pre><code class="lang-css"><span class="hljs-class">.col-1</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+}
+<span class="hljs-class">.col-2</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;
+}
+<span class="hljs-class">.col-3</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+}
+<span class="hljs-class">.col-4</span> {
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>;
+}
+</code></pre>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Math Functions -->
+  <div class="docs-section">
+    
+    <h1 id="math-functions" class="docs-heading"><span class="anchor-target" id="math-functions"></span>
+<a href="#math-functions" name="math-functions" class="anchor glyphicon glyphicon-link"></a>Math Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/math-functions.md" data-content="math-functionsmd" target="_blank"></a>
+
+
+
+<a id="math-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/math-functions.md" target="_blank">Edit the markdown source for &quot;math-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- math-functions.md -->
+       
+
+
+<h3 id="math-functions-ceil" class="docs-heading"><span class="anchor-target" id="math-functions-ceil"></span>
+<a href="#math-functions-ceil" name="math-functions-ceil" class="anchor glyphicon glyphicon-link"></a>ceil</h3>
+<blockquote>
+<p>Rounds up to the next highest integer.</p>
+</blockquote>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>integer</code></p>
+<p>Example: <code>ceil(2.4)</code></p>
+<p>Output: <code>3</code></p>
+<h3 id="math-functions-floor" class="docs-heading"><span class="anchor-target" id="math-functions-floor"></span>
+<a href="#math-functions-floor" name="math-functions-floor" class="anchor glyphicon glyphicon-link"></a>floor</h3>
+<blockquote>
+<p>Rounds down to the next lowest integer.</p>
+</blockquote>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>integer</code></p>
+<p>Example: <code>floor(2.6)</code></p>
+<p>Output: <code>2</code></p>
+<h3 id="math-functions-percentage" class="docs-heading"><span class="anchor-target" id="math-functions-percentage"></span>
+<a href="#math-functions-percentage" name="math-functions-percentage" class="anchor glyphicon glyphicon-link"></a>percentage</h3>
+<blockquote>
+<p>Converts a floating point number into a percentage string.</p>
+</blockquote>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example: <code>percentage(0.5)</code></p>
+<p>Output: <code>50%</code></p>
+<h3 id="math-functions-round" class="docs-heading"><span class="anchor-target" id="math-functions-round"></span>
+<a href="#math-functions-round" name="math-functions-round" class="anchor glyphicon glyphicon-link"></a>round</h3>
+<blockquote>
+<p>Applies rounding.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: A floating point number.</li>
+<li><code>decimalPlaces</code>: Optional: The number of decimal places to round to. Defaults to 0.</li>
+</ul>
+<p>Returns: <code>number</code></p>
+<p>Example: <code>round(1.67)</code></p>
+<p>Output: <code>2</code></p>
+<p>Example: <code>round(1.67, 1)</code></p>
+<p>Output: <code>1.7</code></p>
+<h3 id="math-functions-sqrt" class="docs-heading"><span class="anchor-target" id="math-functions-sqrt"></span>
+<a href="#math-functions-sqrt" name="math-functions-sqrt" class="anchor glyphicon glyphicon-link"></a>sqrt</h3>
+<blockquote>
+<p>Calculates square root of a number. Keeps units as they are.</p>
+</blockquote>
+<p>Parameters: <code>number</code> - floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">sqrt</span>(<span class="hljs-number">25cm</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">5cm</span>
+</code></pre>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">sqrt</span>(<span class="hljs-number">18.6%</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-js"><span class="hljs-number">4.312771730569565</span>%;
+</code></pre>
+<h3 id="math-functions-abs" class="docs-heading"><span class="anchor-target" id="math-functions-abs"></span>
+<a href="#math-functions-abs" name="math-functions-abs" class="anchor glyphicon glyphicon-link"></a>abs</h3>
+<blockquote>
+<p>Calculates absolute value of a number. Keeps units as they are.</p>
+</blockquote>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example #1: <code>abs(25cm)</code></p>
+<p>Output: <code>25cm</code></p>
+<p>Example #2: <code>abs(-18.6%)</code></p>
+<p>Output: <code>18.6%;</code></p>
+<h3 id="math-functions-sin" class="docs-heading"><span class="anchor-target" id="math-functions-sin"></span>
+<a href="#math-functions-sin" name="math-functions-sin" class="anchor glyphicon glyphicon-link"></a>sin</h3>
+<blockquote>
+<p>Calculates sine function.</p>
+</blockquote>
+<p>Assumes radians on numbers without units.</p>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">sin</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// sine of 1 radian</span>
+<span class="hljs-attribute">sin</span>(<span class="hljs-number">1deg</span>); <span class="hljs-comment">// sine of 1 degree</span>
+<span class="hljs-attribute">sin</span>(<span class="hljs-number">1grad</span>); <span class="hljs-comment">// sine of 1 gradian</span>
+</code></pre>
+<p>Output:</p>
+<pre><code>0.8414709848078965; // sine of 1 radian
+0.01745240643728351; // sine of 1 degree
+0.015707317311820675; // sine of 1 gradian
+</code></pre><h3 id="math-functions-asin" class="docs-heading"><span class="anchor-target" id="math-functions-asin"></span>
+<a href="#math-functions-asin" name="math-functions-asin" class="anchor glyphicon glyphicon-link"></a>asin</h3>
+<blockquote>
+<p>Calculates arcsine (inverse of sine) function.</p>
+</blockquote>
+<p>Returns number in radians e.g. a number between <code>-&#x3C0;/2</code> and <code>&#x3C0;/2</code>.</p>
+<p>Parameters: <code>number</code> - floating point number from <code>[-1, 1]</code> interval.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">asin</span>(-<span class="hljs-number">0.8414709848078965</span>)
+<span class="hljs-function">asin</span>(<span class="hljs-number">0</span>)
+<span class="hljs-function">asin</span>(<span class="hljs-number">2</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code>-1rad
+0rad
+NaNrad
+</code></pre><h3 id="math-functions-cos" class="docs-heading"><span class="anchor-target" id="math-functions-cos"></span>
+<a href="#math-functions-cos" name="math-functions-cos" class="anchor glyphicon glyphicon-link"></a>cos</h3>
+<blockquote>
+<p>Calculates cosine function.</p>
+</blockquote>
+<p>Assumes radians on numbers without units.</p>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">cos</span>(<span class="hljs-number">1</span>) <span class="hljs-comment">// cosine of 1 radian</span>
+<span class="hljs-function">cos</span>(<span class="hljs-number">1deg</span>) <span class="hljs-comment">// cosine of 1 degree</span>
+<span class="hljs-function">cos</span>(<span class="hljs-number">1grad</span>) <span class="hljs-comment">// cosine of 1 gradian</span>
+</code></pre>
+<p>Output:</p>
+<pre><code>0.5403023058681398 // cosine of 1 radian
+0.9998476951563913 // cosine of 1 degree
+0.9998766324816606 // cosine of 1 gradian
+</code></pre><h3 id="math-functions-acos" class="docs-heading"><span class="anchor-target" id="math-functions-acos"></span>
+<a href="#math-functions-acos" name="math-functions-acos" class="anchor glyphicon glyphicon-link"></a>acos</h3>
+<blockquote>
+<p>Calculates arccosine (inverse of cosine) function.</p>
+</blockquote>
+<p>Returns number in radians e.g. a number between 0 and &#x3C0;.</p>
+<p>Parameters: <code>number</code> - a floating point number from [-1, 1] interval.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">acos</span>(<span class="hljs-number">0.5403023058681398</span>)
+<span class="hljs-function">acos</span>(<span class="hljs-number">1</span>)
+<span class="hljs-function">acos</span>(<span class="hljs-number">2</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code>1rad
+0rad
+NaNrad
+</code></pre><h3 id="math-functions-tan" class="docs-heading"><span class="anchor-target" id="math-functions-tan"></span>
+<a href="#math-functions-tan" name="math-functions-tan" class="anchor glyphicon glyphicon-link"></a>tan</h3>
+<blockquote>
+<p>Calculates tangent function.</p>
+</blockquote>
+<p>Assumes radians on numbers without units.</p>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">tan</span>(<span class="hljs-number">1</span>) <span class="hljs-comment">// tangent of 1 radian</span>
+<span class="hljs-function">tan</span>(<span class="hljs-number">1deg</span>) <span class="hljs-comment">// tangent of 1 degree</span>
+<span class="hljs-function">tan</span>(<span class="hljs-number">1grad</span>) <span class="hljs-comment">// tangent of 1 gradian</span>
+</code></pre>
+<p>Output:</p>
+<pre><code>1.5574077246549023   // tangent of 1 radian
+0.017455064928217585 // tangent of 1 degree
+0.015709255323664916 // tangent of 1 gradian
+</code></pre><h3 id="math-functions-atan" class="docs-heading"><span class="anchor-target" id="math-functions-atan"></span>
+<a href="#math-functions-atan" name="math-functions-atan" class="anchor glyphicon glyphicon-link"></a>atan</h3>
+<blockquote>
+<p>Calculates arctangent (inverse of tangent) function.</p>
+</blockquote>
+<p>Returns number in radians e.g. a number between <code>-&#x3C0;/2</code> and <code>&#x3C0;/2</code>.</p>
+<p>Parameters: <code>number</code> - a floating point number.</p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">atan</span>(-<span class="hljs-number">1.5574077246549023</span>)
+<span class="hljs-function">atan</span>(<span class="hljs-number">0</span>)
+<span class="hljs-function">round</span>(<span class="hljs-function">atan</span>(<span class="hljs-number">22</span>), <span class="hljs-number">6</span>) <span class="hljs-comment">// arctangent of 22 rounded to 6 decimal places</span>
+</code></pre>
+<p>Output:</p>
+<pre><code>-1rad
+0rad
+1.525373rad;
+</code></pre><h3 id="math-functions-pi" class="docs-heading"><span class="anchor-target" id="math-functions-pi"></span>
+<a href="#math-functions-pi" name="math-functions-pi" class="anchor glyphicon glyphicon-link"></a>pi</h3>
+<blockquote>
+<p>Returns &#x3C0; (pi);</p>
+</blockquote>
+<p>Parameters: <code>none</code></p>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">pi</span>()
+</code></pre>
+<p>Output:</p>
+<pre><code>3.141592653589793
+</code></pre><h3 id="math-functions-pow" class="docs-heading"><span class="anchor-target" id="math-functions-pow"></span>
+<a href="#math-functions-pow" name="math-functions-pow" class="anchor glyphicon glyphicon-link"></a>pow</h3>
+<blockquote>
+<p>Returns the value of the first argument raised to the power of the second argument.</p>
+</blockquote>
+<p>Returned value has the same dimension as the first parameter and the dimension of the second parameter is ignored.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: base -a floating point number.</li>
+<li><code>number</code>: exponent - a floating point number.</li>
+</ul>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">pow</span>(<span class="hljs-number">0cm</span>, <span class="hljs-number">0px</span>)
+<span class="hljs-function">pow</span>(<span class="hljs-number">25</span>, -<span class="hljs-number">2</span>)
+<span class="hljs-function">pow</span>(<span class="hljs-number">25</span>, <span class="hljs-number">0.5</span>)
+<span class="hljs-function">pow</span>(-<span class="hljs-number">25</span>, <span class="hljs-number">0.5</span>)
+<span class="hljs-function">pow</span>(-<span class="hljs-number">25%</span>, -<span class="hljs-number">0.5</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code>1cm
+0.0016
+5
+NaN
+NaN%
+</code></pre><h3 id="math-functions-mod" class="docs-heading"><span class="anchor-target" id="math-functions-mod"></span>
+<a href="#math-functions-mod" name="math-functions-mod" class="anchor glyphicon glyphicon-link"></a>mod</h3>
+<blockquote>
+<p>Returns the value of the first argument modulus second argument.</p>
+</blockquote>
+<p>Returned value has the same dimension as the first parameter, the dimension of the second parameter is ignored. The function is able to handle also negative and floating point numbers.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: a floating point number.</li>
+<li><code>number</code>: a floating point number.</li>
+</ul>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">mod</span>(<span class="hljs-number">0cm</span>, <span class="hljs-number">0px</span>)
+<span class="hljs-function">mod</span>(<span class="hljs-number">11cm</span>, <span class="hljs-number">6px</span>);
+<span class="hljs-attribute">mod</span>(-<span class="hljs-number">26%</span>, -<span class="hljs-number">5</span>);
+</code></pre>
+<p>Output:</p>
+<pre><code>NaNcm;
+5cm
+-1%;
+</code></pre><h3 id="math-functions-min" class="docs-heading"><span class="anchor-target" id="math-functions-min"></span>
+<a href="#math-functions-min" name="math-functions-min" class="anchor glyphicon glyphicon-link"></a>min</h3>
+<blockquote>
+<p>Returns the lowest of one or more values.</p>
+</blockquote>
+<p>Parameters: <code>value1, ..., valueN</code> - one or more values to compare.</p>
+<p>Returns: the lowest value.</p>
+<p>Example: <code>min(5, 10);</code></p>
+<p>Output: <code>5</code></p>
+<p>Example: <code>min(3px, 42px, 1px, 16px);</code></p>
+<p>Output: <code>1px</code></p>
+<h3 id="math-functions-max" class="docs-heading"><span class="anchor-target" id="math-functions-max"></span>
+<a href="#math-functions-max" name="math-functions-max" class="anchor glyphicon glyphicon-link"></a>max</h3>
+<blockquote>
+<p>Returns the highest of one or more values.</p>
+</blockquote>
+<p>Parameters: <code>value1, ..., valueN</code> - one or more values to compare.</p>
+<p>Returns: the highest value.</p>
+<p>Example: <code>max(5, 10);</code></p>
+<p>Output: <code>10</code></p>
+<p>Example: <code>max(3%, 42%, 1%, 16%);</code></p>
+<p>Output: <code>42%</code></p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Type Functions -->
+  <div class="docs-section">
+    
+    <h1 id="type-functions" class="docs-heading"><span class="anchor-target" id="type-functions"></span>
+<a href="#type-functions" name="type-functions" class="anchor glyphicon glyphicon-link"></a>Type Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/type-functions.md" data-content="type-functionsmd" target="_blank"></a>
+
+
+
+<a id="type-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/type-functions.md" target="_blank">Edit the markdown source for &quot;type-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- type-functions.md -->
+       
+
+
+<h3 id="type-functions-isnumber" class="docs-heading"><span class="anchor-target" id="type-functions-isnumber"></span>
+<a href="#type-functions-isnumber" name="type-functions-isnumber" class="anchor glyphicon glyphicon-link"></a>isnumber</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a number, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a number, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">isnumber</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isnumber</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isnumber</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isnumber</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isnumber</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isnumber</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isnumber</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isnumber</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isstring" class="docs-heading"><span class="anchor-target" id="type-functions-isstring"></span>
+<a href="#type-functions-isstring" name="type-functions-isstring" class="anchor glyphicon glyphicon-link"></a>isstring</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a string, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a string, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">isstring</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isstring</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isstring</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-iscolor" class="docs-heading"><span class="anchor-target" id="type-functions-iscolor"></span>
+<a href="#type-functions-iscolor" name="type-functions-iscolor" class="anchor glyphicon glyphicon-link"></a>iscolor</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a color, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a color, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">iscolor</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">iscolor</span>(blue);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">iscolor</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iscolor</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-iskeyword" class="docs-heading"><span class="anchor-target" id="type-functions-iskeyword"></span>
+<a href="#type-functions-iskeyword" name="type-functions-iskeyword" class="anchor glyphicon glyphicon-link"></a>iskeyword</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a keyword, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a keyword, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">iskeyword</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">iskeyword</span>(keyword);  <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">iskeyword</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isurl" class="docs-heading"><span class="anchor-target" id="type-functions-isurl"></span>
+<a href="#type-functions-isurl" name="type-functions-isurl" class="anchor glyphicon glyphicon-link"></a>isurl</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a url, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a url, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">isurl</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isurl</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// true</span>
+</code></pre>
+<h3 id="type-functions-ispixel" class="docs-heading"><span class="anchor-target" id="type-functions-ispixel"></span>
+<a href="#type-functions-ispixel" name="type-functions-ispixel" class="anchor glyphicon glyphicon-link"></a>ispixel</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a number in pixels, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a pixel, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">ispixel</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">ispixel</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispixel</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isem" class="docs-heading"><span class="anchor-target" id="type-functions-isem"></span>
+<a href="#type-functions-isem" name="type-functions-isem" class="anchor glyphicon glyphicon-link"></a>isem</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is an em value, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is an em value, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">isem</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(<span class="hljs-number">7.8em</span>);    <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isem</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isem</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-ispercentage" class="docs-heading"><span class="anchor-target" id="type-functions-ispercentage"></span>
+<a href="#type-functions-ispercentage" name="type-functions-ispercentage" class="anchor glyphicon glyphicon-link"></a>ispercentage</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a percentage value, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>value</code> - a value or variable being evaluated.</p>
+<p>Returns: <code>true</code> if value is a percentage value, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">ispercentage</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">ispercentage</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">ispercentage</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isunit" class="docs-heading"><span class="anchor-target" id="type-functions-isunit"></span>
+<a href="#type-functions-isunit" name="type-functions-isunit" class="anchor glyphicon glyphicon-link"></a>isunit</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a number in specified units, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>value</code> - a value or variable being evaluated.</li>
+<li><code>unit</code> - a unit identifier (optionally quoted) to test for.</li>
+</ul>
+<p>Returns: <code>true</code> if value is a number in specified units, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">isunit</span>(<span class="hljs-number">11px</span>, px);  <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-number">2.2%</span>, px);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-number">33px</span>, rem); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-number">4rem</span>, rem); <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-number">56px</span>, <span class="hljs-string">&quot;%&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-number">7.8%</span>, <span class="hljs-string">&apos;%&apos;</span>); <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-number">1234</span>, em);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-hexcolor">#ff0</span>, pt);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isunit</span>(<span class="hljs-string">&quot;mm&quot;</span>, mm);  <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isruleset" class="docs-heading"><span class="anchor-target" id="type-functions-isruleset"></span>
+<a href="#type-functions-isruleset" name="type-functions-isruleset" class="anchor glyphicon glyphicon-link"></a>isruleset</h3>
+<blockquote>
+<p>Returns <code>true</code> if a value is a ruleset, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>value</code> - a variable being evaluated.</li>
+</ul>
+<p>Returns: <code>true</code> if value is a ruleset, <code>false</code> otherwise.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@rules:</span> {
+    <span class="hljs-attribute">color</span>: red;
+}
+
+<span class="hljs-function">isruleset</span>(<span class="hljs-variable">@rules</span>);   <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-hexcolor">#ff0</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(blue);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-string">&quot;string&quot;</span>); <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-number">1234</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-number">56px</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(<span class="hljs-number">7.8%</span>);     <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(keyword);  <span class="hljs-comment">// false</span>
+<span class="hljs-attribute">isruleset</span>(url(<span class="hljs-string">...</span>)); <span class="hljs-comment">// false</span>
+</code></pre>
+<h3 id="type-functions-isdefined" class="docs-heading"><span class="anchor-target" id="type-functions-isdefined"></span>
+<a href="#type-functions-isdefined" name="type-functions-isdefined" class="anchor glyphicon glyphicon-link"></a>isdefined</h3>
+<p><em>Released <a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">v4.0.0</a></em></p>
+<blockquote>
+<p>Returns <code>true</code> if a variable is defined, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Parameters: <code>variable</code> - a variable being evaluated.</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@foo:</span> <span class="hljs-number">1</span>;
+<span class="hljs-attribute">isdefined</span>(<span class="hljs-variable">@foo</span>);     <span class="hljs-comment">// true</span>
+<span class="hljs-attribute">isdefined</span>(<span class="hljs-variable">@bar</span>);     <span class="hljs-comment">// false</span>
+</code></pre>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Misc Functions -->
+  <div class="docs-section">
+    
+    <h1 id="misc-functions" class="docs-heading"><span class="anchor-target" id="misc-functions"></span>
+<a href="#misc-functions" name="misc-functions" class="anchor glyphicon glyphicon-link"></a>Misc Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" data-content="misc-functionsmd" target="_blank"></a>
+
+
+
+<a id="misc-functionsmd" href="https://github.com/less/less-docs/blob/master/content/functions/misc-functions.md" target="_blank">Edit the markdown source for &quot;misc-functions&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- misc-functions.md -->
+       
+
+
+<h3 id="misc-functions-color" class="docs-heading"><span class="anchor-target" id="misc-functions-color"></span>
+<a href="#misc-functions-color" name="misc-functions-color" class="anchor glyphicon glyphicon-link"></a>color</h3>
+<blockquote>
+<p>Parses a color, so a string representing a color becomes a color.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: a string of the specified color.</p>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>color(&quot;#aaa&quot;);</code></p>
+<p>Output: <code>#aaa</code></p>
+<h3 id="misc-functions-image-size" class="docs-heading"><span class="anchor-target" id="misc-functions-image-size"></span>
+<a href="#misc-functions-image-size" name="misc-functions-image-size" class="anchor glyphicon glyphicon-link"></a>image-size</h3>
+<blockquote>
+<p>Gets the image dimensions from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-size(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px 10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 id="misc-functions-image-width" class="docs-heading"><span class="anchor-target" id="misc-functions-image-width"></span>
+<a href="#misc-functions-image-width" name="misc-functions-image-width" class="anchor glyphicon glyphicon-link"></a>image-width</h3>
+<blockquote>
+<p>Gets the image width from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-width(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 id="misc-functions-image-height" class="docs-heading"><span class="anchor-target" id="misc-functions-image-height"></span>
+<a href="#misc-functions-image-height" name="misc-functions-image-height" class="anchor glyphicon glyphicon-link"></a>image-height</h3>
+<blockquote>
+<p>Gets the image height from a file.</p>
+</blockquote>
+<p>Parameters: <code>string</code>: the file to get the dimensions for.</p>
+<p>Returns: <code>dimension</code></p>
+<p>Example: <code>image-height(&quot;file.png&quot;);</code></p>
+<p>Output: <code>10px</code></p>
+<p>Note: this function needs to be implemented by each environment. It is currently only available in the node environment.</p>
+<p>Added in: v2.2.0</p>
+<h3 id="misc-functions-convert" class="docs-heading"><span class="anchor-target" id="misc-functions-convert"></span>
+<a href="#misc-functions-convert" name="misc-functions-convert" class="anchor glyphicon glyphicon-link"></a>convert</h3>
+<blockquote>
+<p>Convert a number from one unit into another.</p>
+</blockquote>
+<p>The first argument contains a number with units and second argument contains units. If the units are compatible, the number is converted. If they are not compatible, the first argument is returned unmodified.</p>
+<p>See <a href="#misc-functions-unit">unit</a> for changing the unit without conversion.</p>
+<p><em>Compatible unit groups</em>:</p>
+<ul>
+<li>lengths: <code>m</code>, <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code> and <code>pc</code>,</li>
+<li>time: <code>s</code> and <code>ms</code>,</li>
+<li>angle: <code>rad</code>, <code>deg</code>, <code>grad</code> and <code>turn</code>.</li>
+</ul>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: a floating point number with units.</li>
+<li><code>identifier</code>, <code>string</code> or <code>escaped value</code>: units</li>
+</ul>
+<p>Returns: <code>number</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">convert</span>(<span class="hljs-number">9s</span>, <span class="hljs-string">&quot;ms&quot;</span>)
+<span class="hljs-function">convert</span>(<span class="hljs-number">14cm</span>, mm)
+<span class="hljs-function">convert</span>(<span class="hljs-number">8</span>, mm) <span class="hljs-comment">// incompatible unit types</span>
+</code></pre>
+<p>Output:</p>
+<pre><code>9000ms
+140mm
+8
+</code></pre><h3 id="misc-functions-data-uri" class="docs-heading"><span class="anchor-target" id="misc-functions-data-uri"></span>
+<a href="#misc-functions-data-uri" name="misc-functions-data-uri" class="anchor glyphicon glyphicon-link"></a>data-uri</h3>
+<blockquote>
+<p>Inlines a resource and falls back to <code>url()</code> if the ieCompat option is on and the resource is too large, or if you use the function in the browser. If the MIME type is not given then node uses the mime package to determine the correct mime type.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>mimetype</code>: (Optional) A MIME type string.</li>
+<li><code>url</code>: The URL of the file to inline.</li>
+</ul>
+<p>If there is no mimetype, data-uri function guesses it from filename suffix. Text and svg files are encoded as utf-8 and anything else is encoded as base64. </p>
+<p>If user provided mimetype, the function uses base64 if mimetype argument ends with ;base64. For example, <code>image/jpeg;base64</code> is encoded into base64 while <code>text/html</code> is encoded into utf-8. </p>
+<p>Example: <code>data-uri(&apos;../data/image.jpg&apos;);</code></p>
+<p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
+<p>Output in browser: <code>url(&apos;../data/image.jpg&apos;);</code></p>
+<p>Example: <code>data-uri(&apos;image/jpeg;base64&apos;, &apos;../data/image.jpg&apos;);</code></p>
+<p>Output: <code>url(&apos;data:image/jpeg;base64,bm90IGFjdHVhbGx5IGEganBlZyBmaWxlCg==&apos;);</code></p>
+<p>Example: <code>data-uri(&apos;image/svg+xml;charset=UTF-8&apos;, &apos;image.svg&apos;);</code></p>
+<p>Output: <code>url(&quot;data:image/svg+xml;charset=UTF-8,%3Csvg%3E%3Ccircle%20r%3D%229%22%2F%3E%3C%2Fsvg%3E&quot;);</code></p>
+<h3 id="misc-functions-default" class="docs-heading"><span class="anchor-target" id="misc-functions-default"></span>
+<a href="#misc-functions-default" name="misc-functions-default" class="anchor glyphicon glyphicon-link"></a>default</h3>
+<blockquote>
+<p>Available only inside guard conditions and returns <code>true</code> only if no other mixin matches, <code>false</code> otherwise.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-number">1</span>)                   {<span class="hljs-attribute">x</span>: <span class="hljs-number">11</span>}
+<span class="hljs-class">.mixin</span>(<span class="hljs-number">2</span>)                   {<span class="hljs-attribute">y</span>: <span class="hljs-number">22</span>}
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) {<span class="hljs-attribute">z</span>: <span class="hljs-variable">@x</span>}
+
+<span class="hljs-tag">div</span> {
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">3</span>);
+}
+
+<span class="hljs-tag">div</span><span class="hljs-class">.special</span> {
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">1</span>);
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">z</span>: <span class="hljs-number">3</span>;
+}
+<span class="hljs-tag">div</span><span class="hljs-class">.special</span> {
+  <span class="hljs-attribute">x</span>: <span class="hljs-number">11</span>;
+}
+</code></pre>
+<p>It is possible to use the value returned by <code>default</code> with guard operators. For example <code>.mixin() when not(default()) {}</code> will match only if there&apos;s at least one more mixin definition that matches<code>.mixin()</code> call:</p>
+<pre><code class="lang-less"><span class="hljs-class">.mixin</span>(<span class="hljs-variable">@value</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">ispixel</span>(<span class="hljs-variable">@value</span>)) {<span class="hljs-attribute">width</span>: <span class="hljs-variable">@value</span>}
+<span class="hljs-class">.mixin</span>(<span class="hljs-variable">@value</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>())    {<span class="hljs-attribute">padding</span>: (<span class="hljs-variable">@value</span> / <span class="hljs-number">5</span>)}
+
+<span class="hljs-tag">div-1</span> {
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">100px</span>);
+}
+
+<span class="hljs-tag">div-2</span> {
+  <span class="hljs-comment">/* ... */</span>
+  <span class="hljs-class">.mixin</span>(<span class="hljs-number">100%</span>);
+}
+</code></pre>
+<p>result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div-1</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+  <span class="hljs-attribute">padding</span>: <span class="hljs-number">20px</span>;
+}
+<span class="hljs-tag">div-2</span> {
+  <span class="hljs-comment">/* ... */</span>
+}
+</code></pre>
+<p>It is allowed to make multiple <code>default()</code> calls in the same guard condition or in a different conditions of a mixins with the same name:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()), <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>())    {<span class="hljs-attribute">always</span>: <span class="hljs-variable">@x</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>()) <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) {<span class="hljs-attribute">never</span>:  <span class="hljs-variable">@x</span>}
+
+  <span class="hljs-class">.m</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// OK</span>
+}
+</code></pre>
+<p>However Less will throw a error if it detects a <em>potential</em> conflict between multiple mixin definitions using <code>default()</code>:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">default</span>())    {}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> <span class="hljs-keyword">not</span>(<span class="hljs-function">default</span>()) {}
+
+  <span class="hljs-class">.m</span>(<span class="hljs-number">1</span>); <span class="hljs-comment">// Error</span>
+}
+</code></pre>
+<p>In above example it is impossible to determine what value each <code>default()</code> call should return since they recursively depend on each other.</p>
+<p>Advanced multiple <code>default()</code> usage:</p>
+<pre><code class="lang-less"><span class="hljs-class">.x</span> {
+  <span class="hljs-class">.m</span>(red)                                    {<span class="hljs-attribute">case-1</span>: darkred}
+  <span class="hljs-class">.m</span>(blue)                                   {<span class="hljs-attribute">case-2</span>: darkblue}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">iscolor</span>(<span class="hljs-variable">@x</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-function">default</span>())  {<span class="hljs-attribute">default-color</span>: <span class="hljs-variable">@x</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-string">&apos;foo&apos;</span>)                                  {<span class="hljs-attribute">case-1</span>: I am <span class="hljs-string">&apos;foo&apos;</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-string">&apos;bar&apos;</span>)                                  {<span class="hljs-attribute">case-2</span>: I am <span class="hljs-string">&apos;bar&apos;</span>}
+  <span class="hljs-class">.m</span>(<span class="hljs-variable">@x</span>) <span class="hljs-keyword">when</span> (<span class="hljs-function">isstring</span>(<span class="hljs-variable">@x</span>)) <span class="hljs-keyword">and</span> (<span class="hljs-function">default</span>()) {<span class="hljs-attribute">default-string</span>: and I am the default}
+
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-blue</span>  {<span class="hljs-class">.m</span>(blue)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-green</span> {<span class="hljs-class">.m</span>(green)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-foo</span>   {<span class="hljs-class">.m</span>(<span class="hljs-string">&apos;foo&apos;</span>)}
+  <span class="hljs-keyword">&amp;</span><span class="hljs-tag">-baz</span>   {<span class="hljs-class">.m</span>(<span class="hljs-string">&apos;baz&apos;</span>)}
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-class">.x-blue</span> {
+  <span class="hljs-attribute">case-2</span>: <span class="hljs-hexcolor">#00008b</span>;
+}
+<span class="hljs-class">.x-green</span> {
+  <span class="hljs-attribute">default-color</span>: <span class="hljs-hexcolor">#008000</span>;
+}
+<span class="hljs-class">.x-foo</span> {
+  <span class="hljs-attribute">case-1</span>: I am <span class="hljs-string">&apos;foo&apos;</span>;
+}
+<span class="hljs-class">.x-baz</span> {
+  <span class="hljs-attribute">default-string</span>: and I am the default;
+}
+</code></pre>
+<p>The <code>default</code> function is available as a Less built-in function <em>only inside guard expressions</em>. If used outside of a mixin guard condition it is interpreted as a regular CSS value:</p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">foo</span>: <span class="hljs-function">default</span>();
+  <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
+}
+</code></pre>
+<p>Result:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">foo</span>: <span class="hljs-function">default</span>();
+  <span class="hljs-attribute">bar</span>: <span class="hljs-function">default</span>(<span class="hljs-number">42</span>);
+}
+</code></pre>
+<h3 id="misc-functions-unit" class="docs-heading"><span class="anchor-target" id="misc-functions-unit"></span>
+<a href="#misc-functions-unit" name="misc-functions-unit" class="anchor glyphicon glyphicon-link"></a>unit</h3>
+<blockquote>
+<p>Remove or change the unit of a dimension</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>dimension</code>: A number, with or without a dimension.</li>
+<li><code>unit</code>: (Optional) the unit to change to, or if omitted it will remove the unit.</li>
+</ul>
+<p>See <a href="#misc-functions-convert">convert</a> for changing the unit with conversion.</p>
+<p>Example: <code>unit(5, px)</code></p>
+<p>Output: <code>5px</code></p>
+<p>Example: <code>unit(5em)</code></p>
+<p>Output: <code>5</code></p>
+<h3 id="misc-functions-get-unit" class="docs-heading"><span class="anchor-target" id="misc-functions-get-unit"></span>
+<a href="#misc-functions-get-unit" name="misc-functions-get-unit" class="anchor glyphicon glyphicon-link"></a>get-unit</h3>
+<blockquote>
+<p>Returns units of a number.</p>
+</blockquote>
+<p>If the argument contains a number with units, the function returns its units. The argument without units results in an empty return value.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>number</code>: a number with or without units.</li>
+</ul>
+<p>Example: <code>get-unit(5px)</code></p>
+<p>Output: <code>px</code></p>
+<p>Example: <code>get-unit(5)</code></p>
+<p>Output: <code>//nothing</code> </p>
+<h3 id="misc-functions-svg-gradient" class="docs-heading"><span class="anchor-target" id="misc-functions-svg-gradient"></span>
+<a href="#misc-functions-svg-gradient" name="misc-functions-svg-gradient" class="anchor glyphicon glyphicon-link"></a>svg-gradient</h3>
+<blockquote>
+<p>Generates multi-stop svg gradients.</p>
+</blockquote>
+<p>Svg-gradient function generates multi-stop svg gradients. It must have at least three parameters. First parameter specifies gradient type and direction and remaining parameters list colors and their positions. The position of first and last specified color are optional, remaining colors must have positions specified.</p>
+<p>The direction must be one of <code>to bottom</code>, <code>to right</code>, <code>to bottom right</code>, <code>to top right</code>, <code>ellipse</code> or <code>ellipse at center</code>. The direction can be specified as both escaped value <code>~&apos;to bottom&apos;</code> and space separated list of words <code>to bottom</code>.</p>
+<p>The direction must be followed by two or more color stops. They can be supplied either inside a list or you can specify each color stops in separate argument. </p>
+<p>Parameters - colors stops in list:</p>
+<ul>
+<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
+<li><code>list</code> - all colors and their positions in list</li>
+</ul>
+<p>Parameters - color stops in arguments:</p>
+<ul>
+<li><code>escaped value</code> or <code>list of identifiers</code>: direction</li>
+<li><code>color [percentage]</code> pair: first color and its relative position (position is optional)</li>
+<li><code>color percent</code> pair: (optional) second color and its relative position</li>
+<li>...</li>
+<li><code>color percent</code> pair: (optional) n-th color and its relative position</li>
+<li><code>color [percentage]</code> pair: last color and its relative position (position is optional)</li>
+</ul>
+<p>Returns: <code>url</code> with &quot;URI-Encoded&quot; svg gradient.</p>
+<p>Example - colors stops in list:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-variable">@list:</span> red, green <span class="hljs-number">30%</span>, blue;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">svg-gradient</span>(to right, <span class="hljs-variable">@list</span>);
+}
+</code></pre>
+<p>equivalent - color stops in arguments:</p>
+<pre><code class="lang-less"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-function">svg-gradient</span>(to right, red, green <span class="hljs-number">30%</span>, blue);
+}
+</code></pre>
+<p>both result in:</p>
+<pre><code class="lang-css"><span class="hljs-tag">div</span> {
+  <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">&apos;data:image/svg+xml,%3C%3Fxml%20version%3D%221.0%22%20%3F%3E%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20version%3D%221.1%22%20width%3D%22100%25%22%20height%3D%22100%25%22%20viewBox%3D%220%200%201%201%22%20preserveAspectRatio%3D%22none%22%3E%3ClinearGradient%20id%3D%22gradient%22%20gradientUnits%3D%22userSpaceOnUse%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff0000%22%2F%3E%3Cstop%20offset%3D%2230%25%22%20stop-color%3D%22%23008000%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230000ff%22%2F%3E%3C%2FlinearGradient%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url(%23gradient</span>)%<span class="hljs-number">22%</span><span class="hljs-number">20%</span><span class="hljs-number">2</span>F%<span class="hljs-number">3</span>E%<span class="hljs-number">3</span>C%<span class="hljs-number">2</span>Fsvg%<span class="hljs-number">3</span>E&apos;);
+}
+</code></pre>
+<p>Note: in versions before 2.2.0 the result is <code>base64</code> encoded .</p>
+<p>Generated background image has red color on the left, green at 30% of its width and ends with a blue color. Base64 encoded part contains following svg-gradient:</p>
+<pre><code class="lang-xml"><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; ?&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.w3.org/2000/svg&quot;</span> <span class="hljs-attr">version</span>=<span class="hljs-string">&quot;1.1&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">viewBox</span>=<span class="hljs-string">&quot;0 0 1 1&quot;</span> <span class="hljs-attr">preserveAspectRatio</span>=<span class="hljs-string">&quot;none&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">linearGradient</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;gradient&quot;</span> <span class="hljs-attr">gradientUnits</span>=<span class="hljs-string">&quot;userSpaceOnUse&quot;</span> <span class="hljs-attr">x1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">y1</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">x2</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">y2</span>=<span class="hljs-string">&quot;0%&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;0%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#ff0000&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;30%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#008000&quot;</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">stop</span> <span class="hljs-attr">offset</span>=<span class="hljs-string">&quot;100%&quot;</span> <span class="hljs-attr">stop-color</span>=<span class="hljs-string">&quot;#0000ff&quot;</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">linearGradient</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">rect</span> <span class="hljs-attr">x</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">y</span>=<span class="hljs-string">&quot;0&quot;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&quot;1&quot;</span> <span class="hljs-attr">fill</span>=<span class="hljs-string">&quot;url(#gradient)&quot;</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+</code></pre>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Color Definition Functions -->
+  <div class="docs-section">
+    
+    <h1 id="color-definition" class="docs-heading"><span class="anchor-target" id="color-definition"></span>
+<a href="#color-definition" name="color-definition" class="anchor glyphicon glyphicon-link"></a>Color Definition Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/color-definition.md" data-content="color-definitionmd" target="_blank"></a>
+
+
+
+<a id="color-definitionmd" href="https://github.com/less/less-docs/blob/master/content/functions/color-definition.md" target="_blank">Edit the markdown source for &quot;color-definition&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- color-definition.md -->
+       
+
+
+<h3 id="color-definition-rgb" class="docs-heading"><span class="anchor-target" id="color-definition-rgb"></span>
+<a href="#color-definition-rgb" name="color-definition-rgb" class="anchor glyphicon glyphicon-link"></a>rgb</h3>
+<blockquote>
+<p>Creates an opaque color object from decimal red, green and blue (RGB) values.</p>
+</blockquote>
+<p>Literal color values in standard HTML/CSS formats may also be used to define colors, for example <code>#ff0000</code>.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>red</code>: An integer 0-255 or percentage 0-100%.</li>
+<li><code>green</code>: An integer 0-255 or percentage 0-100%.</li>
+<li><code>blue</code>: An integer 0-255 or percentage 0-100%.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>rgb(90, 129, 32)</code></p>
+<p>Output: <code>#5a8120</code></p>
+<h3 id="color-definition-rgba" class="docs-heading"><span class="anchor-target" id="color-definition-rgba"></span>
+<a href="#color-definition-rgba" name="color-definition-rgba" class="anchor glyphicon glyphicon-link"></a>rgba</h3>
+<blockquote>
+<p>Creates a transparent color object from decimal red, green, blue and alpha (RGBA) values.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>red</code>: An integer 0-255 or percentage 0-100%.</li>
+<li><code>green</code>: An integer 0-255 or percentage 0-100%.</li>
+<li><code>blue</code>: An integer 0-255 or percentage 0-100%.</li>
+<li><code>alpha</code>: A number 0-1 or percentage 0-100%.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>rgba(90, 129, 32, 0.5)</code></p>
+<p>Output: <code>rgba(90, 129, 32, 0.5)</code></p>
+<h3 id="color-definition-argb" class="docs-heading"><span class="anchor-target" id="color-definition-argb"></span>
+<a href="#color-definition-argb" name="color-definition-argb" class="anchor glyphicon glyphicon-link"></a>argb</h3>
+<blockquote>
+<p>Creates a hex representation of a color in <code>#AARRGGBB</code> format (<strong>NOT</strong> <code>#RRGGBBAA</code>!).</p>
+</blockquote>
+<p>This format is used in Internet Explorer, and .NET and Android development.</p>
+<p>Parameters: <code>color</code>, color object.</p>
+<p>Returns: <code>string</code></p>
+<p>Example: <code>argb(rgba(90, 23, 148, 0.5));</code></p>
+<p>Output: <code>#805a1794</code></p>
+<h3 id="color-definition-hsl" class="docs-heading"><span class="anchor-target" id="color-definition-hsl"></span>
+<a href="#color-definition-hsl" name="color-definition-hsl" class="anchor glyphicon glyphicon-link"></a>hsl</h3>
+<blockquote>
+<p>Creates an opaque color object from hue, saturation and lightness (HSL) values.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>hue</code>: An integer 0-360 representing degrees.</li>
+<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>lightness</code>: A percentage 0-100% or number 0-1.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>hsl(90, 100%, 50%)</code></p>
+<p>Output: <code>#80ff00</code></p>
+<p>This is useful if you want to create a new color based on another color&apos;s channel, forExample: <code>@new: hsl(hue(@old), 45%, 90%);</code></p>
+<p><code>@new</code> will have <code>@old</code>&apos;s <em>hue</em>, and its own saturation and lightness.</p>
+<h3 id="color-definition-hsla" class="docs-heading"><span class="anchor-target" id="color-definition-hsla"></span>
+<a href="#color-definition-hsla" name="color-definition-hsla" class="anchor glyphicon glyphicon-link"></a>hsla</h3>
+<blockquote>
+<p>Creates a transparent color object from hue, saturation, lightness and alpha (HSLA) values.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>hue</code>: An integer 0-360 representing degrees.</li>
+<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>lightness</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>alpha</code>: A percentage 0-100% or number 0-1.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>hsla(90, 100%, 50%, 0.5)</code></p>
+<p>Output: <code>rgba(128, 255, 0, 0.5)</code></p>
+<h3 id="color-definition-hsv" class="docs-heading"><span class="anchor-target" id="color-definition-hsv"></span>
+<a href="#color-definition-hsv" name="color-definition-hsv" class="anchor glyphicon glyphicon-link"></a>hsv</h3>
+<blockquote>
+<p>Creates an opaque color object from hue, saturation and value (HSV) values.</p>
+</blockquote>
+<p>Note that this is a color space available in Photoshop, and is not the same as <code>hsl</code>.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>hue</code>: An integer 0-360 representing degrees.</li>
+<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>value</code>: A percentage 0-100% or number 0-1.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>hsv(90, 100%, 50%)</code></p>
+<p>Output: <code>#408000</code></p>
+<h3 id="color-definition-hsva" class="docs-heading"><span class="anchor-target" id="color-definition-hsva"></span>
+<a href="#color-definition-hsva" name="color-definition-hsva" class="anchor glyphicon glyphicon-link"></a>hsva</h3>
+<blockquote>
+<p>Creates a transparent color object from hue, saturation, value and alpha (HSVA) values.</p>
+</blockquote>
+<p>Note that this is not the same as <code>hsla</code>, and is a color space available in Photoshop.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>hue</code>: An integer 0-360 representing degrees.</li>
+<li><code>saturation</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>value</code>: A percentage 0-100% or number 0-1.</li>
+<li><code>alpha</code>: A percentage 0-100% or number 0-1.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>hsva(90, 100%, 50%, 0.5)</code></p>
+<p>Output: <code>rgba(64, 128, 0, 0.5)</code></p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Color Channel Functions -->
+  <div class="docs-section">
+    
+    <h1 id="color-channel" class="docs-heading"><span class="anchor-target" id="color-channel"></span>
+<a href="#color-channel" name="color-channel" class="anchor glyphicon glyphicon-link"></a>Color Channel Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/color-channel.md" data-content="color-channelmd" target="_blank"></a>
+
+
+
+<a id="color-channelmd" href="https://github.com/less/less-docs/blob/master/content/functions/color-channel.md" target="_blank">Edit the markdown source for &quot;color-channel&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- color-channel.md -->
+       
+
+
+<h3 id="color-channel-hue" class="docs-heading"><span class="anchor-target" id="color-channel-hue"></span>
+<a href="#color-channel-hue" name="color-channel-hue" class="anchor glyphicon glyphicon-link"></a>hue</h3>
+<blockquote>
+<p>Extracts the hue channel of a color object in the HSL color space.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>integer</code> 0-360</p>
+<p>Example: <code>hue(hsl(90, 100%, 50%))</code></p>
+<p>Output: <code>90</code></p>
+<h3 id="color-channel-saturation" class="docs-heading"><span class="anchor-target" id="color-channel-saturation"></span>
+<a href="#color-channel-saturation" name="color-channel-saturation" class="anchor glyphicon glyphicon-link"></a>saturation</h3>
+<blockquote>
+<p>Extracts the saturation channel of a color object in the HSL color space.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>percentage</code> 0-100</p>
+<p>Example: <code>saturation(hsl(90, 100%, 50%))</code></p>
+<p>Output: <code>100%</code></p>
+<h3 id="color-channel-lightness" class="docs-heading"><span class="anchor-target" id="color-channel-lightness"></span>
+<a href="#color-channel-lightness" name="color-channel-lightness" class="anchor glyphicon glyphicon-link"></a>lightness</h3>
+<blockquote>
+<p>Extracts the lightness channel of a color object in the HSL color space.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>percentage</code> 0-100</p>
+<p>Example: <code>lightness(hsl(90, 100%, 50%))</code></p>
+<p>Output: <code>50%</code></p>
+<h3 id="color-channel-hsvhue" class="docs-heading"><span class="anchor-target" id="color-channel-hsvhue"></span>
+<a href="#color-channel-hsvhue" name="color-channel-hsvhue" class="anchor glyphicon glyphicon-link"></a>hsvhue</h3>
+<blockquote>
+<p>Extracts the hue channel of a color object in the HSV color space.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>integer</code> <code>0-360</code></p>
+<p>Example: <code>hsvhue(hsv(90, 100%, 50%))</code></p>
+<p>Output: <code>90</code></p>
+<h3 id="color-channel-hsvsaturation" class="docs-heading"><span class="anchor-target" id="color-channel-hsvsaturation"></span>
+<a href="#color-channel-hsvsaturation" name="color-channel-hsvsaturation" class="anchor glyphicon glyphicon-link"></a>hsvsaturation</h3>
+<blockquote>
+<p>Extracts the saturation channel of a color object in the HSV color space.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>percentage</code> 0-100</p>
+<p>Example: <code>hsvsaturation(hsv(90, 100%, 50%))</code></p>
+<p>Output: <code>100%</code></p>
+<h3 id="color-channel-hsvvalue" class="docs-heading"><span class="anchor-target" id="color-channel-hsvvalue"></span>
+<a href="#color-channel-hsvvalue" name="color-channel-hsvvalue" class="anchor glyphicon glyphicon-link"></a>hsvvalue</h3>
+<blockquote>
+<p>Extracts the value channel of a color object in the HSV color space.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>percentage</code> 0-100</p>
+<p>Example: <code>hsvvalue(hsv(90, 100%, 50%))</code></p>
+<p>Output: <code>50%</code></p>
+<h3 id="color-channel-red" class="docs-heading"><span class="anchor-target" id="color-channel-red"></span>
+<a href="#color-channel-red" name="color-channel-red" class="anchor glyphicon glyphicon-link"></a>red</h3>
+<blockquote>
+<p>Extracts the red channel of a color object.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>float</code> 0-255</p>
+<p>Example: <code>red(rgb(10, 20, 30))</code></p>
+<p>Output: <code>10</code></p>
+<h3 id="color-channel-green" class="docs-heading"><span class="anchor-target" id="color-channel-green"></span>
+<a href="#color-channel-green" name="color-channel-green" class="anchor glyphicon glyphicon-link"></a>green</h3>
+<blockquote>
+<p>Extracts the green channel of a color object.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>float</code> 0-255</p>
+<p>Example: <code>green(rgb(10, 20, 30))</code></p>
+<p>Output: <code>20</code></p>
+<h3 id="color-channel-blue" class="docs-heading"><span class="anchor-target" id="color-channel-blue"></span>
+<a href="#color-channel-blue" name="color-channel-blue" class="anchor glyphicon glyphicon-link"></a>blue</h3>
+<blockquote>
+<p>Extracts the blue channel of a color object.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>float</code> 0-255</p>
+<p>Example: <code>blue(rgb(10, 20, 30))</code></p>
+<p>Output: <code>30</code></p>
+<h3 id="color-channel-alpha" class="docs-heading"><span class="anchor-target" id="color-channel-alpha"></span>
+<a href="#color-channel-alpha" name="color-channel-alpha" class="anchor glyphicon glyphicon-link"></a>alpha</h3>
+<blockquote>
+<p>Extracts the alpha channel of a color object.</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>float</code> 0-1</p>
+<p>Example: <code>alpha(rgba(10, 20, 30, 0.5))</code></p>
+<p>Output: <code>0.5</code></p>
+<h3 id="color-channel-luma" class="docs-heading"><span class="anchor-target" id="color-channel-luma"></span>
+<a href="#color-channel-luma" name="color-channel-luma" class="anchor glyphicon glyphicon-link"></a>luma</h3>
+<blockquote>
+<p>Calculates the <a href="http://en.wikipedia.org/wiki/Luma_%28video%29">luma</a> (perceptual brightness) of a color object.</p>
+</blockquote>
+<p>Uses <strong>SMPTE C / Rec. 709</strong> coefficients, as recommended in <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>. This calculation is also used in the contrast function.</p>
+<p>Before v1.7.0 the luma was calculated without gamma correction, use the luminance function to calculate these &quot;old&quot; values.</p>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>percentage</code> 0-100%</p>
+<p>Example: <code>luma(rgb(100, 200, 30))</code></p>
+<p>Output: <code>44%</code></p>
+<h3 id="color-channel-luminance" class="docs-heading"><span class="anchor-target" id="color-channel-luminance"></span>
+<a href="#color-channel-luminance" name="color-channel-luminance" class="anchor glyphicon glyphicon-link"></a>luminance</h3>
+<blockquote>
+<p>Calculates the value of the luma without gamma correction (this function was named <code>luma</code> before v1.7.0)</p>
+</blockquote>
+<p>Parameters: <code>color</code> - a color object.</p>
+<p>Returns: <code>percentage</code> 0-100%</p>
+<p>Example: <code>luminance(rgb(100, 200, 30))</code></p>
+<p>Output: <code>65%</code></p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Color Operation Functions -->
+  <div class="docs-section">
+    
+    <h1 id="color-operations" class="docs-heading"><span class="anchor-target" id="color-operations"></span>
+<a href="#color-operations" name="color-operations" class="anchor glyphicon glyphicon-link"></a>Color Operation Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/color-operations.md" data-content="color-operationsmd" target="_blank"></a>
+
+
+
+<a id="color-operationsmd" href="https://github.com/less/less-docs/blob/master/content/functions/color-operations.md" target="_blank">Edit the markdown source for &quot;color-operations&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- color-operations.md -->
+       
+
+
+<p>Color operations generally take parameters in the same units as the values they are changing, and percentages are handled as absolutes, so increasing a 10% value by 10% results in 20%. Set the option method parameter to relative for relative percentages. When using relative percentages increasing a 10% value by 10% results in 11%. Values are clamped to their allowed ranges; they do not wrap around. Where return values are shown, we&apos;ve used formats that make it clear what each function has done, in addition to the hex versions that you will usually be be working with.</p>
+<h3 id="color-operations-saturate" class="docs-heading"><span class="anchor-target" id="color-operations-saturate"></span>
+<a href="#color-operations-saturate" name="color-operations-saturate" class="anchor glyphicon glyphicon-link"></a>saturate</h3>
+<blockquote>
+<p>Increase the saturation of a color in the HSL color space by an absolute amount.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>saturate(hsl(90, 80%, 50%), 20%)</code></p>
+<p>Output: <code>#80ff00 // hsl(90, 100%, 50%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#80ff00:#000000/text:80ff00"></p>
+<h3 id="color-operations-desaturate" class="docs-heading"><span class="anchor-target" id="color-operations-desaturate"></span>
+<a href="#color-operations-desaturate" name="color-operations-desaturate" class="anchor glyphicon glyphicon-link"></a>desaturate</h3>
+<blockquote>
+<p>Decrease the saturation of a color in the HSL color space by an absolute amount.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>desaturate(hsl(90, 80%, 50%), 20%)</code></p>
+<p>Output: <code>#80cc33 // hsl(90, 60%, 50%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#80cc33:#000000/text:80cc33"></p>
+<h3 id="color-operations-lighten" class="docs-heading"><span class="anchor-target" id="color-operations-lighten"></span>
+<a href="#color-operations-lighten" name="color-operations-lighten" class="anchor glyphicon glyphicon-link"></a>lighten</h3>
+<blockquote>
+<p>Increase the lightness of a color in the HSL color space by an absolute amount.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>lighten(hsl(90, 80%, 50%), 20%)</code></p>
+<p>Output: <code>#b3f075 // hsl(90, 80%, 70%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#b3f075:#000000/text:b3f075"></p>
+<h3 id="color-operations-darken" class="docs-heading"><span class="anchor-target" id="color-operations-darken"></span>
+<a href="#color-operations-darken" name="color-operations-darken" class="anchor glyphicon glyphicon-link"></a>darken</h3>
+<blockquote>
+<p>Decrease the lightness of a color in the HSL color space by an absolute amount.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>darken(hsl(90, 80%, 50%), 20%)</code></p>
+<p>Output: <code>#4d8a0f // hsl(90, 80%, 30%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80e619:#000000/text:80e619"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#4d8a0f:#000000/text:4d8a0f"></p>
+<h3 id="color-operations-fadein" class="docs-heading"><span class="anchor-target" id="color-operations-fadein"></span>
+<a href="#color-operations-fadein" name="color-operations-fadein" class="anchor glyphicon glyphicon-link"></a>fadein</h3>
+<blockquote>
+<p>Decrease the transparency (or increase the opacity) of a color, making it more opaque.</p>
+</blockquote>
+<p>Has no effect on opaque colors. To fade in the other direction use <code>fadeout</code>.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>fadein(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
+<p>Output: <code>rgba(128, 242, 13, 0.6) // hsla(90, 90%, 50%, 0.6)</code></p>
+<h3 id="color-operations-fadeout" class="docs-heading"><span class="anchor-target" id="color-operations-fadeout"></span>
+<a href="#color-operations-fadeout" name="color-operations-fadeout" class="anchor glyphicon glyphicon-link"></a>fadeout</h3>
+<blockquote>
+<p>Increase the transparency (or decrease the opacity) of a color, making it less opaque. To fade in the other direction use <code>fadein</code>.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+<li><code>method</code>: Optional, set to <code>relative</code> for the adjustment to be relative to the current value.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>fadeout(hsla(90, 90%, 50%, 0.5), 10%)</code></p>
+<p>Output: <code>rgba(128, 242, 13, 0.4) // hsla(90, 90%, 50%, 0.4)</code></p>
+<h3 id="color-operations-fade" class="docs-heading"><span class="anchor-target" id="color-operations-fade"></span>
+<a href="#color-operations-fade" name="color-operations-fade" class="anchor glyphicon glyphicon-link"></a>fade</h3>
+<blockquote>
+<p>Set the absolute opacity of a color. Can be applied to colors whether they already have an opacity value or not.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>amount</code>: A percentage 0-100%.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>fade(hsl(90, 90%, 50%), 10%)</code></p>
+<p>Output: <code>rgba(128, 242, 13, 0.1) //hsla(90, 90%, 50%, 0.1)</code></p>
+<h3 id="color-operations-spin" class="docs-heading"><span class="anchor-target" id="color-operations-spin"></span>
+<a href="#color-operations-spin" name="color-operations-spin" class="anchor glyphicon glyphicon-link"></a>spin</h3>
+<blockquote>
+<p>Rotate the hue angle of a color in either direction.</p>
+</blockquote>
+<p>While the angle range is 0-360, it applies a mod 360 operation, so you can pass in much larger (or negative) values and they will wrap around e.g. angles of 360 and 720 will produce the same result. Note that colors are passed through an RGB conversion, which doesn&apos;t retain hue value for greys (because hue has no meaning when there is no saturation), so make sure you apply functions in a way that preserves hue, for example don&apos;t do this:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@c:</span> <span class="hljs-function">saturate</span>(<span class="hljs-function">spin</span>(<span class="hljs-hexcolor">#aaaaaa</span>, <span class="hljs-number">10</span>), <span class="hljs-number">10%</span>);
+</code></pre>
+<p>Do this instead:</p>
+<pre><code class="lang-less"><span class="hljs-variable">@c:</span> <span class="hljs-function">spin</span>(<span class="hljs-function">saturate</span>(<span class="hljs-hexcolor">#aaaaaa</span>, <span class="hljs-number">10%</span>), <span class="hljs-number">10</span>);
+</code></pre>
+<p>Colors are always returned as RGB values, so applying <code>spin</code> to a grey value will do nothing.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>angle</code>: A number of degrees to rotate (+ or -).</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">spin</span>(<span class="hljs-function">hsl</span>(<span class="hljs-number">10</span>, <span class="hljs-number">90%</span>, <span class="hljs-number">50%</span>), <span class="hljs-number">30</span>)
+<span class="hljs-function">spin</span>(<span class="hljs-function">hsl</span>(<span class="hljs-number">10</span>, <span class="hljs-number">90%</span>, <span class="hljs-number">50%</span>), -<span class="hljs-number">30</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-id">#f2a60d</span> <span class="hljs-comment">// hsl(40, 90%, 50%)</span>
+<span class="hljs-id">#f20d59</span> <span class="hljs-comment">// hsl(340, 90%, 50%)</span>
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#f2a60d:#000000/text:f2a60d"></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#f2330d:#000000/text:f2330d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#f20d59:#000000/text:f20d59"></p>
+<h3 id="color-operations-mix" class="docs-heading"><span class="anchor-target" id="color-operations-mix"></span>
+<a href="#color-operations-mix" name="color-operations-mix" class="anchor glyphicon glyphicon-link"></a>mix</h3>
+<blockquote>
+<p>Mix two colors together in variable proportion. Opacity is included in the calculations.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object.</li>
+<li><code>color2</code>: A color object.</li>
+<li><code>weight</code>: Optional, a percentage balance point between the two colors, defaults to 50%.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">mix</span>(<span class="hljs-hexcolor">#ff0000</span>, <span class="hljs-hexcolor">#0000ff</span>, <span class="hljs-number">50%</span>)
+<span class="hljs-function">mix</span>(<span class="hljs-function">rgba</span>(<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1.0</span>), <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.5</span>), <span class="hljs-number">50%</span>)
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-id">#800080</span>
+<span class="hljs-tag">rgba</span>(<span class="hljs-number">75</span>, <span class="hljs-number">25</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.75</span>)
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"> + <img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"> &#x279C; <img alt="Color 3" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
+<h3 id="color-operations-tint" class="docs-heading"><span class="anchor-target" id="color-operations-tint"></span>
+<a href="#color-operations-tint" name="color-operations-tint" class="anchor glyphicon glyphicon-link"></a>tint</h3>
+<blockquote>
+<p>Mix color with white in variable proportion. It is the same as calling <code>mix(#ffffff, @color, @weight)</code></p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>weight</code>: Optional, a percentage balance point between color and white, defaults to 50%.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">no-alpha</span>: <span class="hljs-function">tint</span>(<span class="hljs-hexcolor">#007fff</span>, <span class="hljs-number">50%</span>); 
+<span class="hljs-attribute">with-alpha</span>: <span class="hljs-function">tint</span>(<span class="hljs-function">rgba</span>(<span class="hljs-number">00</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0.5</span>), <span class="hljs-number">50%</span>); 
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">no-alpha</span>: <span class="hljs-hexcolor">#80bfff</span>;
+<span class="hljs-attribute">with-alpha</span>: <span class="hljs-function">rgba</span>(<span class="hljs-number">191</span>, <span class="hljs-number">191</span>, <span class="hljs-number">255</span>, <span class="hljs-number">0.75</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff00ff:#ffffff/text:ff00ff"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#ff80ff:#ffffff/text:ff80ff"></p>
+<h3 id="color-operations-shade" class="docs-heading"><span class="anchor-target" id="color-operations-shade"></span>
+<a href="#color-operations-shade" name="color-operations-shade" class="anchor glyphicon glyphicon-link"></a>shade</h3>
+<blockquote>
+<p>Mix color with black in variable proportion. It is the same as calling <code>mix(#000000, @color, @weight)</code></p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object.</li>
+<li><code>weight</code>: Optional, a percentage balance point between color and black, defaults to 50%.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">no-alpha</span>: <span class="hljs-function">shade</span>(<span class="hljs-hexcolor">#007fff</span>, <span class="hljs-number">50%</span>); 
+<span class="hljs-attribute">with-alpha</span>: <span class="hljs-function">shade</span>(<span class="hljs-function">rgba</span>(<span class="hljs-number">00</span>,<span class="hljs-number">0</span>,<span class="hljs-number">255</span>,<span class="hljs-number">0.5</span>), <span class="hljs-number">50%</span>); 
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-attribute">no-alpha</span>: <span class="hljs-hexcolor">#004080</span>;
+<span class="hljs-attribute">with-alpha</span>: <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>, <span class="hljs-number">0.75</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff00ff:#ffffff/text:ff00ff"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#800080:#ffffff/text:800080"></p>
+<h3 id="color-operations-greyscale" class="docs-heading"><span class="anchor-target" id="color-operations-greyscale"></span>
+<a href="#color-operations-greyscale" name="color-operations-greyscale" class="anchor glyphicon glyphicon-link"></a>greyscale</h3>
+<blockquote>
+<p>Remove all saturation from a color in the HSL color space; the same as calling <code>desaturate(@color, 100%)</code>.</p>
+</blockquote>
+<p>Because the saturation is not affected by hue, the resulting color mapping may be somewhat dull or muddy; <a href="#color-channel-luma"><code>luma</code></a> may provide a better result as it extracts perceptual rather than linear brightness, for example <code>greyscale(&apos;#0000ff&apos;)</code> will return the same value as <code>greyscale(&apos;#00ff00&apos;)</code>, though they appear quite different in brightness to the human eye.</p>
+<p>Parameters: <code>color</code>: A color object.</p>
+<p>Returns: <code>color</code></p>
+<p>Example: <code>greyscale(hsl(90, 90%, 50%))</code></p>
+<p>Output: <code>#808080 // hsl(90, 0%, 50%)</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80f20d:#000000/text:80f20d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#808080:#000000/text:808080"></p>
+<p>Notice that the generated grey looks darker than the original green, even though its lightness value is the same.</p>
+<p>Compare with using <code>luma</code> (usage is different because <code>luma</code> returns a single value, not a color):</p>
+<pre><code class="lang-less"><span class="hljs-variable">@c:</span> <span class="hljs-function">luma</span>(<span class="hljs-function">hsl</span>(<span class="hljs-number">90</span>, <span class="hljs-number">90%</span>, <span class="hljs-number">50%</span>));
+<span class="hljs-attribute">color</span>: <span class="hljs-function">rgb</span>(<span class="hljs-variable">@c</span>, <span class="hljs-variable">@c</span>, <span class="hljs-variable">@c</span>);
+</code></pre>
+<p>Output: <code>#cacaca</code></p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#80f20d:#000000/text:80f20d"> &#x279C; <img alt="Color 2" data-src="holder.js/100x40/#cacaca:#000000/text:cacaca"></p>
+<p>This time the grey&apos;s lightness looks about the same as the green, though its value is actually higher.</p>
+<h3 id="color-operations-contrast" class="docs-heading"><span class="anchor-target" id="color-operations-contrast"></span>
+<a href="#color-operations-contrast" name="color-operations-contrast" class="anchor glyphicon glyphicon-link"></a>contrast</h3>
+<blockquote>
+<p>Choose which of two colors provides the greatest contrast with another.</p>
+</blockquote>
+<p>This is useful for ensuring that a color is readable against a background, which is also useful for accessibility compliance. This function works the same way as the <a href="http://compass-style.org/reference/compass/utilities/color/contrast/">contrast function in Compass for SASS</a>. In accordance with <a href="http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef">WCAG 2.0</a>, colors are compared using their gamma-corrected <a href="#color-channel-luma">luma</a> value, not their lightness.</p>
+<p>The light and dark parameters can be supplied in either order - the function will calculate their luma values and assign light and dark automatically, which means you can&apos;t use this function to select the <em>least</em> contrasting color by reversing the order.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>color</code>: A color object to compare against.</li>
+<li><code>dark</code>: optional - A designated dark color (defaults to black).</li>
+<li><code>light</code>: optional - A designated light color (defaults to white).</li>
+<li><code>threshold</code>: optional - A percentage 0-100% specifying where the transition from &quot;dark&quot; to &quot;light&quot; is (defaults to 43%, matching SASS). This is used to bias the contrast one way or another, for example to allow you to decide whether a 50% grey background should result in black or white text. You would generally set this lower for &apos;lighter&apos; palettes, higher for &apos;darker&apos; ones.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-tag">p</span> {
+    <span class="hljs-attribute">a</span>: <span class="hljs-function">contrast</span>(<span class="hljs-hexcolor">#bbbbbb</span>);
+    <span class="hljs-attribute">b</span>: <span class="hljs-function">contrast</span>(<span class="hljs-hexcolor">#222222</span>, <span class="hljs-hexcolor">#101010</span>);
+    <span class="hljs-attribute">c</span>: <span class="hljs-function">contrast</span>(<span class="hljs-hexcolor">#222222</span>, <span class="hljs-hexcolor">#101010</span>, <span class="hljs-hexcolor">#dddddd</span>);
+    <span class="hljs-attribute">d</span>: <span class="hljs-function">contrast</span>(<span class="hljs-function">hsl</span>(<span class="hljs-number">90</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>), <span class="hljs-hexcolor">#000000</span>, <span class="hljs-hexcolor">#ffffff</span>, <span class="hljs-number">30%</span>);
+    <span class="hljs-attribute">e</span>: <span class="hljs-function">contrast</span>(<span class="hljs-function">hsl</span>(<span class="hljs-number">90</span>, <span class="hljs-number">100%</span>, <span class="hljs-number">50%</span>), <span class="hljs-hexcolor">#000000</span>, <span class="hljs-hexcolor">#ffffff</span>, <span class="hljs-number">80%</span>);
+}
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-css"><span class="hljs-tag">p</span> {
+    <span class="hljs-attribute">a</span>: <span class="hljs-hexcolor">#000000</span> <span class="hljs-comment">// black</span>
+    b: <span class="hljs-hexcolor">#ffffff</span> <span class="hljs-comment">// white</span>
+    c: <span class="hljs-hexcolor">#dddddd</span>
+    d: <span class="hljs-hexcolor">#000000</span> <span class="hljs-comment">// black</span>
+    e: <span class="hljs-hexcolor">#ffffff</span> <span class="hljs-comment">// white</span>
+}
+</code></pre>
+<p>These examples use the above calculated colors for background and foreground; you can see that you never end up with white-on-white, nor black-on-black, though it&apos;s possible to use the threshold to permit lower-contrast outcomes, as in the last example:</p>
+<p><img alt="Color 1" data-src="holder.js/100x40/#bbbbbb:#000000/text:000000">
+<img alt="Color 1" data-src="holder.js/100x40/#222222:#ffffff/text:ffffff">
+<img alt="Color 1" data-src="holder.js/100x40/#222222:#dddddd/text:dddddd">
+<img alt="Color 1" data-src="holder.js/100x40/#80ff00:#000000/text:000000">
+<img alt="Color 1" data-src="holder.js/100x40/#80ff00:#ffffff/text:ffffff"></p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+  <!-- Color Blending Functions -->
+  <div class="docs-section">
+    
+    <h1 id="color-blending" class="docs-heading"><span class="anchor-target" id="color-blending"></span>
+<a href="#color-blending" name="color-blending" class="anchor glyphicon glyphicon-link"></a>Color Blending Functions</h1>
+
+    
+    <div class="section-content">
+      
+<a class="glyphicon glyphicon-pencil source-link right" href="https://github.com/less/less-docs/blob/master/content/functions/color-blending.md" data-content="color-blendingmd" target="_blank"></a>
+
+
+
+<a id="color-blendingmd" href="https://github.com/less/less-docs/blob/master/content/functions/color-blending.md" target="_blank">Edit the markdown source for &quot;color-blending&quot;
+  <span class="glyphicon glyphicon-new-window"></span>
+</a>
+
+
+      <!-- color-blending.md -->
+       
+
+
+<blockquote>
+<p>These operations are <em>similar</em> (though not necessarily identical) to the blend modes found in image editors like Photoshop, Fireworks, or GIMP, so you can use them to make your CSS colors match your images.</p>
+</blockquote>
+<h3 id="color-blending-multiply" class="docs-heading"><span class="anchor-target" id="color-blending-multiply"></span>
+<a href="#color-blending-multiply" name="color-blending-multiply" class="anchor glyphicon glyphicon-link"></a>multiply</h3>
+<blockquote>
+<p>Multiply two colors. Corresponding RGB channels from each of the two colors are multiplied together then divided by 255. The result is a darker color.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object.</li>
+<li><code>color2</code>: A color object.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p><strong>Examples</strong>:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#331400:#ffffff/text:331400"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#662900:#ffffff/text:662900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#993d00:#ffffff/text:993d00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#cc5200:#ffffff/text:cc5200"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">multiply</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
+<h3 id="color-blending-screen" class="docs-heading"><span class="anchor-target" id="color-blending-screen"></span>
+<a href="#color-blending-screen" name="color-blending-screen" class="anchor glyphicon glyphicon-link"></a>screen</h3>
+<blockquote>
+<p>Do the opposite of <code>multiply</code>. The result is a brighter color.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object.</li>
+<li><code>color2</code>: A color object.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#ff8533:#ffffff/text:ff8533"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa366:#ffffff/text:ffa366"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ffc299:#000000/text:ffc299"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ffe0cc:#000000/text:ffe0cc"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ffff00:#ffffff/text:ffff00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">screen</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
+<h3 id="color-blending-overlay" class="docs-heading"><span class="anchor-target" id="color-blending-overlay"></span>
+<a href="#color-blending-overlay" name="color-blending-overlay" class="anchor glyphicon glyphicon-link"></a>overlay</h3>
+<blockquote>
+<p>Combines the effects of both <code>multiply</code> and <code>screen</code>. Conditionally make light channels lighter and dark channels darker. <strong>Note</strong>: The results of the conditions are determined by the first color parameter.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A base color object. Also the determinant color to make the result lighter or darker.</li>
+<li><code>color2</code>: A color object to <em>overlay</em>.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#ff5200:#ffffff/text:ff5200"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff7a00:#ffffff/text:ff7a00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa300:#ffffff/text:ffa300"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffcc00:#ffffff/text:ffcc00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ffcc00:#ffffff/text:ffcc00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">overlay</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<h3 id="color-blending-softlight" class="docs-heading"><span class="anchor-target" id="color-blending-softlight"></span>
+<a href="#color-blending-softlight" name="color-blending-softlight" class="anchor glyphicon glyphicon-link"></a>softlight</h3>
+<blockquote>
+<p>Similar to <code>overlay</code> but avoids pure black resulting in pure black, and pure white resulting in pure white.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object to <em>soft light</em> another.</li>
+<li><code>color2</code>: A color object to be <em>soft lighten</em>.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#ff4100:#ffffff/text:ff4100"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#ff5a00:#ffffff/text:ff5a00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff7200:#ffffff/text:ff7200"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ff8a00:#ffffff/text:ff8a00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa100:#ffffff/text:ffa100"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ffa100:#ffffff/text:ffa100"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">softlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff2900:#ffffff/text:ff2900"></p>
+<h3 id="color-blending-hardlight" class="docs-heading"><span class="anchor-target" id="color-blending-hardlight"></span>
+<a href="#color-blending-hardlight" name="color-blending-hardlight" class="anchor glyphicon glyphicon-link"></a>hardlight</h3>
+<blockquote>
+<p>The same as <code>overlay</code> but with the color roles reversed.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object to <em>overlay</em>.</li>
+<li><code>color2</code>: A base color object. Also the determinant color to make the result lighter or darker.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#000000:#ffffff/text:000000"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#662900:#ffffff/text:662900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#cc5200:#ffffff/text:cc5200"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#ff8533:#ffffff/text:ff8533"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#ffc299:#ffffff/text:ffc299"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">hardlight</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff"></p>
+<h3 id="color-blending-difference" class="docs-heading"><span class="anchor-target" id="color-blending-difference"></span>
+<a href="#color-blending-difference" name="color-blending-difference" class="anchor glyphicon glyphicon-link"></a>difference</h3>
+<blockquote>
+<p>Subtracts the second color from the first color on a channel-by-channel basis. Negative values are inverted. Subtracting black results in no change; subtracting white results in color inversion.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object to act as the minuend.</li>
+<li><code>color2</code>: A color object to act as the subtrahend.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#cc3333:#ffffff/text:cc3333"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#990066:#ffffff/text:990066"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#663399:#ffffff/text:663399"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#3366cc:#ffffff/text:3366cc"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#0099ff:#ffffff/text:0099ff"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ff9900:#ffffff/text:ff9900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">difference</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
+<h3 id="color-blending-exclusion" class="docs-heading"><span class="anchor-target" id="color-blending-exclusion"></span>
+<a href="#color-blending-exclusion" name="color-blending-exclusion" class="anchor glyphicon glyphicon-link"></a>exclusion</h3>
+<blockquote>
+<p>A similar effect to <code>difference</code> with lower contrast.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object to act as the minuend.</li>
+<li><code>color2</code>: A color object to act as the subtrahend.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#cc7033:#ffffff/text:cc7033"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#997a66:#ffffff/text:997a66"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#668599:#ffffff/text:668599"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#338fcc:#ffffff/text:338fcc"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#0099ff:#ffffff/text:0099ff"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ff9900:#ffffff/text:ff9900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">exclusion</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#000000/text:ff66ff"></p>
+<h3 id="color-blending-average" class="docs-heading"><span class="anchor-target" id="color-blending-average"></span>
+<a href="#color-blending-average" name="color-blending-average" class="anchor glyphicon glyphicon-link"></a>average</h3>
+<blockquote>
+<p>Compute the average of two colors on a per-channel (RGB) basis.</p>
+</blockquote>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object.</li>
+<li><code>color2</code>: A color object.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#803300:#ffffff/text:803300"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#994d1a:#ffffff/text:994d1a"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#b36633:#ffffff/text:b36633"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#cc804d:#ffffff/text:cc804d"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#e69966:#ffffff/text:e69966"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#ffb380:#000000/text:ffb380"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff3300:#ffffff/text:ff3300"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#80b300:#ffffff/text:80b300"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">average</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#803380:#ffffff/text:803380"></p>
+<h3 id="color-blending-negation" class="docs-heading"><span class="anchor-target" id="color-blending-negation"></span>
+<a href="#color-blending-negation" name="color-blending-negation" class="anchor glyphicon glyphicon-link"></a>negation</h3>
+<blockquote>
+<p>Do the opposite effect to <code>difference</code>.</p>
+</blockquote>
+<p>The result is a brighter color. <strong>Note</strong>: The <em>opposite</em> effect doesn&apos;t mean the <em>inverted</em> effect as resulting from an <em>addition</em> operation.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>color1</code>: A color object to act as the minuend.</li>
+<li><code>color2</code>: A color object to act as the subtrahend.</li>
+</ul>
+<p>Returns: <code>color</code></p>
+<p>Example:</p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#000000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#000000:#ffffff/text:000000">
+<img alt="Color 3" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#333333</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#333333:#ffffff/text:333333">
+<img alt="Color 3" data-src="holder.js/100x40/#cc9933:#ffffff/text:cc9933"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#666666</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#666666:#ffffff/text:666666">
+<img alt="Color 3" data-src="holder.js/100x40/#99cc66:#ffffff/text:99cc66"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#999999</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#999999:#ffffff/text:999999">
+<img alt="Color 3" data-src="holder.js/100x40/#66ff99:#ffffff/text:66ff99"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#cccccc</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#cccccc:#000000/text:cccccc">
+<img alt="Color 3" data-src="holder.js/100x40/#33cccc:#ffffff/text:33cccc"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ffffff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ffffff:#000000/text:ffffff">
+<img alt="Color 3" data-src="holder.js/100x40/#0099ff:#ffffff/text:0099ff"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#ff0000</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#ff0000:#ffffff/text:ff0000">
+<img alt="Color 3" data-src="holder.js/100x40/#006600:#ffffff/text:006600"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#00ff00</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#00ff00:#ffffff/text:00ff00">
+<img alt="Color 3" data-src="holder.js/100x40/#ff9900:#ffffff/text:ff9900"></p>
+<pre><code class="lang-less"><span class="hljs-attribute">negation</span>(<span class="hljs-hexcolor">#ff6600</span>, <span class="hljs-hexcolor">#0000ff</span>);
+</code></pre>
+<p><img alt="Color 1" data-src="holder.js/100x40/#ff6600:#ffffff/text:ff6600">
+<img alt="Color 2" data-src="holder.js/100x40/#0000ff:#ffffff/text:0000ff">
+<img alt="Color 3" data-src="holder.js/100x40/#ff66ff:#ffffff/text:ff66ff"></p>
+
+
+      <br>
+    </div>
+    
+
+  </div>
+
+
+</div>
+        </div>
+      </div>
+    </div>
+
+    
+    <footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="bs-social">
+  <ul class="bs-social-buttons">
+    <li>
+      <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=less&amp;repo=less.js&amp;type=watch&amp;count=true" width="100" height="20" title="Star on GitHub"></iframe>
+    </li>
+    <li>
+      <iframe class="github-btn" src="https://ghbtns.com/github-btn.html?user=less&amp;repo=less.js&amp;type=fork&amp;count=true" width="102" height="20" title="Fork on GitHub"></iframe>
+    </li>
+  </ul>
+</div>
+
+    <p>Less and these docs are maintained by <a href="../about/#team">the core Less team</a>.</p>
+    <p>Documentation source code released under the <a href="https://github.com/less/less-docs/blob/master/LICENSE-MIT" target="_blank">MIT License</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    <ul class="footer-links">
+      <li>Currently v4.1.3</li>
+      
+      <li class="muted">&#xB7;</li>
+      <li><a href="https://github.com/less/less.js/issues">Less Language and Compiler Issues</a></li>
+      <li class="muted">&#xB7;</li>
+      <li><a href="https://github.com/less/less-docs/issues?&amp;state=open">Less Docs Issues</a></li>
+      <li class="muted">&#xB7;</li>
+      <li><a href="https://github.com/less/less.js/blob/master/CHANGELOG.md">Changelog</a></li>
+      
+    </ul>
+  </div>
+</footer>
+
+
+    
+    <!-- Core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://fastly.jsdelivr.net/npm/@docsearch/js@3"></script>
+<script type="text/javascript">
+  docsearch({
+    appId: 'LELS6COOLE',
+    apiKey: 'ad081396555d043318b6a9af4f27a9ec',
+    indexName: 'lesscss',
+    container: '#docsearch',
+    debug: false // Set debug to true if you want to inspect the modal
+  });
+</script>
+<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/holder/2.2.0/holder.min.js"></script>
+<script src="../public/js/application.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics 4 (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LBC5XBD1L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LBC5XBD1L');
+</script>
+
+
+
+  </body>
+</html>
